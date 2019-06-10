@@ -1,0 +1,17 @@
+<div class="classtabsbox">
+	<div class="classtabs" #classtabsView>
+		<div class="items" #itemsView>
+			<div *ngFor="let item of items;let i = index" class="item" (click)="selectClass(i)" [ngStyle]="getStyle(i)">
+				{{item.name}}
+			</div>
+		</div>
+	</div>
+
+	<div style="clear: both;"></div>
+	<div class="leftmask" #leftmaskView></div>
+	<div class="rightmask" #rightmaskView></div>
+
+	<div class="lefthover" (click)="last()" #lefthoverView><i class="icon iconfont icon-zuo"></i></div>
+	<div class="righthover" (click)="next()" #righthoverView><i class="icon iconfont icon-you"></i></div>
+</div>
+<div style="clear: both;"></div>

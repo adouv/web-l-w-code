@@ -1,0 +1,30 @@
+<nav-sidebar class="bill" module="bill" no-sidebar="true">
+    <div class="side-left" ng-class="{true: 'isfoldSide'}[isfold]" ng-show="!bill.isHideTab">
+        <div class="mainList">
+            <div class="mainListIcon" ng-click="foldSide()">
+                <span class="billiconfont icon-menuUnfold" ng-class="{true: 'icon-menuUp'}[isfold]"></span>
+            </div>
+            <a class="secondList" has-permission="bdp:projectCapital:list"
+               ng-class="{'active':billTab=='projectcapital'}" ui-sref="bill.projectcapital.index">
+                <span class="billiconfont icon_Finance"></span>
+                <span ng-hide="isfold">项目财务库</span>
+                <!-- 鼠标移上去显示标题 -->
+                <div class="billhover_title" ng-if="isfold">
+                    <div class="billhorn_btn"></div>
+                    项目财务库
+                </div>
+            </a>
+            <a class="secondList" has-permission="bdp:capitalNumber:list" ng-class="{'active':billTab=='capitalnumber'}"
+               ui-sref="bill.capitalnumber.index">
+                <span class="billiconfont icon_funds"></span>
+                <span ng-hide="isfold">资金文号库</span>
+                <!-- 鼠标移上去显示标题 -->
+                <div class="billhover_title" ng-if="isfold"> <!--ng-if="isfold"-->
+                    <div class="billhorn_btn"></div>
+                    资金文号库
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="mainContent" ui-view></div>
+</nav-sidebar>

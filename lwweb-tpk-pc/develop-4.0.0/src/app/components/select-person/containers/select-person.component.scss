@@ -1,0 +1,85 @@
+@import "../../../../styles/variable";
+
+.select-person-component::ng-deep{
+    .header{
+        height:30px;
+        line-height:30px;
+        margin-top:computer(10px);
+    }
+    .search-group{
+        font-size: computer(14px);
+		.margin-right-10{
+			color: $color_font-deep;
+		}
+    }
+    .content{
+        margin-top:computer(20px);
+        height:computer(435px);
+        .content-group{
+            border:1px solid $color_border;
+        }
+    }
+    .footer{
+        text-align: center;
+        padding:computer(20px) 0;
+    }
+    .margin-right-10{
+        margin-right:computer(10px);
+    }
+    .margin-right-20{
+        margin-right:computer(20px);
+    }
+    /*阿里样式*/
+    .ant-select-selection--multiple{
+        height:computer(30px);
+        overflow: hidden;
+    }
+    .ant-select .ant-select-selection__placeholder{
+        color:$color_font-light;
+    }
+    .ant-select-selection__choice__content{
+        font-size:computer(12px);
+    }
+    .ant-select-selection__placeholder{
+        font-size:computer(14px);
+    }
+    .ant-select-selection__rendered{
+        // line-height: computer(26px) !important;
+        height: computer(30px);
+        line-height: computer(30px);
+    }
+    .ant-cascader-picker-label{
+        font-size:computer(14px);
+    }
+    .ant-cascader-input::-webkit-input-placeholder{
+        font-size:computer(14px);
+    }
+    .ant-select-selection__rendered > ul{
+        height: computer(30px);
+        overflow: hidden;
+        white-space: nowrap;
+        margin-right: 20px;
+    }
+    nz-select{
+        overflow: hidden;
+    }
+    .ant-select-selection--multiple > ul > li, .ant-select-selection--multiple .ant-select-selection__rendered > ul > li{
+        float:none;
+        display: inline-block;
+    }
+    .ant-select-selection{
+        border-radius: 0 !important;
+    }
+	.ant-btn-background-ghost.ant-btn-primary{
+		background-color: #ffffff;
+		color: $color_main;
+	}
+	.ant-btn-primary {
+		min-width: computer(80px);
+		height: computer(31px);
+		background-color: $color_main;
+		color: #ffffff;
+		border-radius: 3px;
+		border: solid 1px $color_main;
+	}
+}

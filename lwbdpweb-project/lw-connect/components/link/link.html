@@ -1,0 +1,27 @@
+<!--<div class="middle_list overflow_box_sml">-->
+    <!--<ul class="link_list">-->
+        <!--<li class="garden" ng-class="{'active':link.type==='garden'}" ng-click="link.changeView('garden')">-->
+            <!--园区-->
+            <!--<p class="module_desc">了解组群单位的媒体平台</p>-->
+        <!--</li>-->
+        <!--<li class="module" ng-class="{'active':link.type==='module'}"  ng-click="link.changeView('module')">-->
+            <!--模块-->
+            <!--<p class="module_desc">切入功能单元的静态入口</p>-->
+        <!--</li>-->
+        <!--<li  class="scene" ng-class="{'active':link.type==='scene'}"  ng-click="link.changeView('scene')">-->
+            <!--场景-->
+            <!--<p class="module_desc"> 一种更贴近您的价值服务</p>-->
+        <!--</li>-->
+        <!--<li  class="event" ng-class="{'active':link.type==='event'}"  ng-click="link.changeView('event')">-->
+            <!--事件-->
+            <!--<p class="module_desc">与您最相关的焦点热信息</p>-->
+        <!--</li>-->
+    <!--</ul>-->
+<!--</div>-->
+<div class="right_contcent" style="padding-left: 50px" ui-view>
+    <!--<link-garden ng-if="link.type==='garden' && !link.isShowSearch"></link-garden>-->
+    <link-module ng-if="!link.isShowSearch"></link-module>
+    <!--<link-scene  ng-if="link.type==='scene' && !link.isShowSearch"></link-scene>-->
+    <!--<link-scene  ng-if="link.type==='event' && !link.isShowSearch"></link-scene>-->
+    <link-search ng-if="link.isShowSearch"></link-search>
+</div>

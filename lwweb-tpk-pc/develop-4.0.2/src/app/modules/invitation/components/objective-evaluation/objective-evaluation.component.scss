@@ -1,0 +1,88 @@
+@import "../../../../../styles/variable";
+$td-border:#cccccc;
+.evaluate-table{
+	border-right:1px solid $td-border;
+	border-bottom:1px solid $td-border;
+	color: $color_font-deep;
+	width: 100%;
+	font-size: computer(14px);
+	.td-title{
+		width: computer(65px);
+	}
+	.td-title-font{
+		font-weight: bold;
+	}
+	.td-50{
+		width: computer(50px);
+	}
+	.td-100{
+		width: computer(100px);
+	}
+}
+.evaluate-child-table{
+	width: 100%;
+	.td-title{
+		width: computer(50px);
+	}
+	.td-50{
+		width: computer(50px);
+		&.error {
+			outline: 1px solid #ff272e !important;
+		}
+	}
+	.td-100{
+		width: computer(100px);
+	}
+}
+
+.evaluate-one-child-table td{
+	padding: computer(21px) computer(10px) !important;
+}
+.evaluate-table td{
+	border-left:1px solid $td-border;border-top:1px solid $td-border;
+	text-align: center;
+	padding: computer(10px);
+	color: $color_font-deep;
+}
+.no-padding{
+	padding: 0 !important;
+}
+.no-line{
+	//border-left:0 !important;
+	border-top:0 !important;
+}
+.no-left-line{
+	border-left:0 !important;
+}
+.text-left{
+	text-align: left !important;
+}
+.td-input,.inputnum, .inputnum input{
+	text-align: left;
+	height: computer(16px) !important;
+	border: 0;
+	outline-style: none;
+	width: 100%;  /*必须设置宽度*/
+	overflow: hidden;  /*溢出隐藏*/
+	text-overflow: ellipsis; /*以省略号...显示*/
+	white-space: nowrap;  /*强制不换行*/
+}
+.td-input-num{
+	text-align: center;
+	height: computer(16px) !important;
+	border: 0;
+	outline-style: none;
+	width: 100%;
+}
+.no-result{
+	margin-top: computer(70px);
+	text-align: center;
+	color: $color_font-light;
+}
+.time {
+	text-align: right;
+	font-size: computer(14px);
+	color: #333;
+	line-height: 1;
+	margin-bottom: computer(10px);
+}

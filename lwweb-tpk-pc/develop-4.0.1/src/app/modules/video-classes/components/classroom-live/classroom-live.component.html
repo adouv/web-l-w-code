@@ -1,0 +1,24 @@
+<div class="live-clazz">
+    <div class="live-clazz-list">
+        <span *ngFor="let live of liveClassesList; let i=index" [ngClass]="{'active':selectedClazz == i}" (click)="this.selectedClazzObj = live;this.selectedClazzObjIndex = i ; this.load = true;getLiveCoursesList()"><em>{{live.name}}</em></span>
+    </div>
+    <div class="live-clazz-course-wrap" *ngIf="liveClassesList?.length !== 0">
+        <div  #wrap class="live-clazz-course" table-center [isCommit]="true" *ngIf="liveCoursesList?.length > 0 && !load">
+            <!-- <div table-center class="live-clazz-course-box"> -->
+                <div *ngFor="let liveCourse of liveCoursesList; let i=index" class="live-clazz-course-content"
+                (click)="routeToLive(liveCourse)">
+                    <div class="live-clazz-course-content-box" [ngClass]="{'learn':liveCourse.subjectName !== '自习', 'selfStudy':liveCourse.subjectName === '自习' }">
+                        <p> <em class="iconfont camera"></em> <span [title]="liveCourse.className">{{ liveCourse.className }}</span> </p>
+                        <p *ngIf="liveCourse.status != 0" [title]="liveCourse.subjectName"> {{ liveCourse.lessonTitle ? liveCourse.lessonTitle:liveCourse.subjectName + '课' }} </p>
+                        <p *ngIf="liveCourse.subjectName !== '自习'"> {{ liveCourse.status == 0 ? '课间' : '正在进行'}}</p>
+                    </div>
+                </div>
+            <!-- </div> -->
+           
+        </div>
+    </div>
+   
+    <div class="nolesson_name_box" *ngIf="liveClassesList?.length == 0 || liveCoursesList?.length == 0">
+        <div class="nolesson_name">暂无课堂直播
+    </div>
+</div>

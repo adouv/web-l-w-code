@@ -1,0 +1,162 @@
+@import '../../../../../styles/variable';
+.resource-prepare {
+    width: 100%;
+    height: 100%;
+    padding: 0 computer(20px);
+    .breadcrumb {
+        height: computer(40px);
+        line-height: computer(40px);
+    }
+    .prepare-title {
+        font-size: computer(14px);
+        text-align: center;
+        height: computer(34px);
+        line-height: computer(34px);
+        color: $color_font-deep;
+    }
+    .ant-btn {
+        font-size: computer(14px);
+    }
+    /* 上传 */
+    .upload-box {
+        height: computer(60px);
+        display: flex;
+        align-items: center;
+        color: $color_font-deep;
+        font-size: computer(14px);
+        position: relative;
+        justify-content: space-between;
+    }
+    /*  备课列表 */
+    .prepare-list {
+        padding: 0 computer(20px);
+        height: calc(100% - #{computer(185px)});
+    }
+    .progress {
+        .mar8 {
+            margin-right: computer(8px);
+        }
+    }
+    .upload_input {
+        width: 0;
+        height: 0;
+        display: none;
+    }
+    //.ant-btn-default {
+    //	width: computer(100px);
+    //	height: computer(30px);
+    //	background-color: #ffffff;
+    //	border-radius: 15px;
+    //	color: #fd8158;
+    //	border: 1px solid #fea67b;
+    //	background-blend-mode: normal, normal;
+    //	&:hover, &:focus {
+    //		background-color: #ffffff;
+    //	}
+    //	background-image: linear-gradient(90deg, #ffffff 0%, #ffffff 100%), linear-gradient(#34383f, #34383f);
+    //}
+    .footer-btn {
+        height: computer(50px);
+        border-top: 1px solid $color_border;
+        button {
+            margin: 0 computer(20px);
+        }
+    }
+    /* 最小化 */
+    .minimize-box {
+        .download {
+            width: computer(128px) !important;
+        }
+        .upload,
+        .download {
+            width: computer(108px);
+            height: computer(30px);
+            font-size: computer(16px);
+            margin: 0 computer(10px);
+            color: #fff;
+            cursor: pointer;
+        }
+        .upload-btn {
+            font-size: computer(16px);
+            margin-right: computer(2px);
+        }
+        .name {
+            font-size: computer(14px);
+        }
+        .upload,
+        .download {
+            background: rgba(34, 108, 251, 0.5);
+            &:hover {
+                background: $color_main;
+            }
+        }
+    }
+    .tip {
+        width: 100%;
+        padding: 0 computer(14px) 0 computer(10px);
+        display: flex;
+        justify-content: flex-end;
+        height: computer(42px);
+        align-items: center;
+        .tip_mark {
+            position: relative;
+            &:hover {
+                .tip_content {
+                    display: block;
+                }
+            }
+        }
+        .question_mark,
+        .tip_name {
+            color: $color_main;
+            cursor: pointer;
+            font-size: computer(12px);
+            &:before {
+                font-size: computer(16px);
+            }
+        }
+        .tip_content {
+            position: absolute;
+            background: #fff;
+            top: 22px;
+            right: 75px;
+            width: computer(253px);
+            padding: computer(10px);
+            font-size: computer(12px);
+            border-radius: 3px;
+            box-shadow: 0 8px 12px 0 rgba(7, 0, 2, 0.3);
+            border: solid 1px #ebebeb;
+            line-height: 21px;
+            z-index: 9;
+            color: $color_font-light;
+            display: none;
+        }
+    }
+}
+
+::ng-deep {
+    .ant-modal-title {
+        overflow: hidden;
+        .minimize-btn {
+            display: inline-block;
+            width: computer(40px);
+            font-size: computer(14px);
+            position: absolute;
+            right: computer(40px);
+            cursor: pointer;
+            color: $color_font-light;
+        }
+    }
+    .ant-modal-close-x {
+        width: computer(45px) !important;
+    }
+    .popover .ant-modal-body {
+        padding: 0 !important;
+    }
+    .no-courseware {
+        .elliptical-page {
+            margin-top: 0 !important;
+            padding-top: computer(100px);
+        }
+    }
+}

@@ -1,0 +1,30 @@
+
+<nz-collapseset nzAccordion [nzBordered]="false">
+	<nz-collapse *ngFor="let panel of data;let i=index" id="collapse{{panel.id}}" [ngClass]="{'callapse-no-child':panel.childOutlineList==null||panel.childOutlineList.length==0}" class="callapse-child-{{panel.level}}" [nzActive]="panel.isOpen">
+		<!-- title模板 -->
+		<div collapse-title>
+			<div class="title-box" id="{{panel.id}}" [ngClass]="{'title-box-level1':panel.level==1}" *ngIf="!panel.canPrepare" (click)="goInfo(panel,$event,true)">
+				<span>{{panel.title}}</span>
+			</div>
+			<div class="title-box" id="{{panel.id}}"  *ngIf="panel.canPrepare"  (click)="goInfo(panel, $event)">
+				<span [ngClass]="{'check-box':panel.id == clickId}">{{panel.title}}</span>
+				<!-- 最后一级的父级显示标签-->
+				<div *ngIf="isCurrent">
+					<span *ngIf="panel.hasCourseware||panel.hasExercise"  class="iconfont icon-click icon-courseware" (click)="goPrepare(panel)"></span>
+					<span *ngIf="panel.hasQualityCourse" class="iconfont icon-click icon-class_quality" (click)="goManager(panel)"></span>
+					<!-- <span *ngIf="panel.hasExercise" class="iconfont icon-click icon-exercises" (click)="goExercises(panel)"></span> -->
+				</div>
+				<div *ngIf="!isCurrent">
+					<span *ngIf="config.manager||config.exercises" [ngClass]="{'icon-disable': !panel.hasCourseware&&!panel.hasExercise}" class="iconfont icon-click icon-courseware" (click)="goPrepare(panel)"></span>
+					<span *ngIf="config.prepare" [ngClass]="{'icon-disable': !panel.hasQualityCourse}" class="iconfont icon-click icon-class_quality" (click)="goManager(panel)"></span>
+					<!-- <span *ngIf="config.exercises" [ngClass]="{'icon-disable': !panel.hasExercise}" class="iconfont icon-click icon-exercises" (click)="goExercises(panel)"></span> -->
+					<!--<span *ngIf="config.manager" [ngClass]="{'icon-disable': !panel.hasQualityCourse}" class="icon-click-type"  title="精品课管理" (click)="goManager(panel)">精</span>-->
+					<!--<span *ngIf="config.prepare" [ngClass]="{'icon-disable': !panel.hasCourseware}" class="icon-click-type"  title="备课管理" (click)="goPrepare(panel)">课</span>-->
+					<!--<span *ngIf="config.exercises" [ngClass]="{'icon-disable': !panel.hasExercise}" class="icon-click-type " title="习题管理" (click)="goExercises(panel)">题</span>-->
+				</div>
+			</div>
+		</div>
+		<collapse-multilevel [config]="config" [resource]="resource" (nodeClick)="nodeClick.emit($event)"  class="child-collapse"
+							  [data]="panel.childOutlineList" [isCurrent]="isCurrent" [subjectCode]="subjectCode" [clickId]="clickId"></collapse-multilevel>
+	</nz-collapse>
+</nz-collapseset>

@@ -1,0 +1,34 @@
+<style>
+    .modal-dialog,.modal-content{
+        width: 500px;
+        height: 350px
+    }
+</style>
+    <div id="modal-body" class="area-camera modal-body modal-upload-main">
+
+        <div class="win-tab pull-left area">
+            <div class="win-title">园区功能列表</div>
+            <div class="win-content">
+                <area-camera-tree-init></area-camera-tree-init>
+            </div>
+        </div>
+        <div class="win-tab pull-right list">
+            <div class="win-title">
+                摄像头列表
+            </div>
+            <div class="area-list">
+                <div class="win-content" ng-repeat="selected in selectedCameras">
+                    <label class="clearfix"><input type="radio" class="radioClass course-radio" name="cameraUrl" ng-click="getValue(selected.url,selected.id)"> <span class="fl selectName">{{selected.name}}</span> </label>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div >
+<div style="clear: both"></div>
+<div class='camera-ed checked-camera'><span>已选摄像头：</span> <span>{{cameraUrl}}</span>  </div>
+<div class="sure_back clearfix video-area modal-footer">
+    <button class="btn tpk-btn" ng-click="ok()">确 定</button>
+    <button class="btn btn-default tpk-btn-o" ng-click="cancel()">返 回</button>
+</div>
+</div>

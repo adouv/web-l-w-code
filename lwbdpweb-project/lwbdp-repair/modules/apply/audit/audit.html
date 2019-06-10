@@ -1,0 +1,19 @@
+<repair-project-detail
+        back-url="repairForm.backUrl"
+        form-data="repairForm.formData"
+        project-detail="applyDetail"
+        save-audit-data="repairForm.saveAuditData(flag,taskId)"
+        current-task="repairForm.currentTask"
+        show-task-info="repairForm.showTaskInfo(isEdit,taskId)"
+        audited-task-key="auditedTaskKey"
+>
+    <audit-form ng-if="repairForm.formCtrl" ctrl="repairForm.formCtrl"
+        ctrl-as="repairForm" next-audit-info="repairForm.nextAuditInfo"
+        project-detail="applyDetail"
+        current-task-id="repairForm.currentTaskId"
+        audited-task-key="auditedTaskKey"
+        form-data="repairForm.editForm" 
+        audit-task="repairForm.auditTask(formData)"
+        audit-cancel="repairForm.auditCancel(isEdit)">
+    </audit-form>
+</repair-project-detail>

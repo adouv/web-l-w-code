@@ -1,0 +1,35 @@
+<div class="condition-select-box">
+	<p>条件筛选：</p>
+	<div>
+		<nz-select class="radius bg-gray" [ngModel]="condition.gradeId" [nzPlaceHolder]="'年级'"
+				   (ngModelChange)="changeGrade($event)">
+			<nz-option *ngFor="let grade of gradeList"
+					   [nzLabel]="grade.name"
+					   [nzValue]="grade.id">
+			</nz-option>
+		</nz-select>
+		<nz-select class="radius bg-gray" [ngModel]="condition.classId" [nzPlaceHolder]="'班级'"
+				   (ngModelChange)="changeClass($event)" [nzDisabled]="!condition.gradeId">
+			<nz-option *ngFor="let class of classList"
+					   [nzLabel]="class.name"
+					   [nzValue]="class.id">
+			</nz-option>
+		</nz-select>
+		<nz-select class="radius bg-gray" [ngModel]="condition.subjectCode" [nzPlaceHolder]="'学科'"
+				   (ngModelChange)="changeSubject($event)" [nzDisabled]="!condition.classId">
+			<nz-option *ngFor="let subject of subjectList"
+					   [nzLabel]="subject?.name"
+					   [nzValue]="subject?.id">
+			</nz-option>
+		</nz-select>
+		<nz-select class="radius bg-gray" [ngModel]="condition.teacherId" [nzPlaceHolder]="'教师'"
+				   (ngModelChange)="changeTeacher($event)" [nzDisabled]="!condition.subjectCode">
+			<nz-option *ngFor="let teacher of teacherList"
+					   [nzLabel]="teacher.name"
+					   [nzValue]="teacher.id">
+			</nz-option>
+		</nz-select>
+		<nz-rangepicker [ngModel]="condition._date" (ngModelChange)="changeDate($event)"
+						[nzSize]="'large'" [nzPlaceholder]="['开始时间', '结束时间']"></nz-rangepicker>
+	</div>
+</div>

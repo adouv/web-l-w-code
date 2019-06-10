@@ -1,0 +1,79 @@
+.ztree.colleague_tree{padding: 0;}
+.colleague_result_tree{display: none;}
+.colleague_tree.origin_tree>li{
+    height:50px;
+    line-height: 50px !important;
+     border-bottom: 1px solid #ebebeb;
+}
+.colleague_tree.origin_tree>li>a>.button {display: none !important;}
+.colleague_tree li{line-height: 30px;}
+.colleague_tree li ul{ margin:0; padding:0}
+.colleague_tree li {line-height:30px;}
+
+.colleague_tree li a:hover {text-decoration:none; background-color: #e9f1f7;}
+.colleague_tree li a.curSelectedNode {
+    background-color:#d0dae4;border:0;height:100%;
+    }
+.colleague_tree li span {line-height:30px;}
+.colleague_tree li span.button {margin-top: -7px;}
+.colleague_tree li span.button.switch {width: 16px;height: 16px;}
+
+.colleague_tree li a.level0{
+    font-size:14px;
+    padding-left: 10px;
+}
+.colleague_tree li a {width:100%;height:100%;padding-top: 0px;padding-left: 20px;}
+.colleague_tree .node_name{
+    font-size: 14px;
+}
+.colleague_tree li span.button.noline_close:before{
+    content: "\e822";
+    color:#999999;
+}
+.colleague_tree li span.button.noline_open:before{
+    content: "\e821";
+    color:#999999;
+}
+.colleague_tree li span.button.noline_close:after,
+.colleague_tree li span.button.noline_open:after{
+    content: "\e649";
+    color:#7fc8e6;
+    margin-left: 7px;
+}
+
+.colleague_tree li span.button.noline_close,
+.colleague_tree li span.button.noline_open{
+    font-family: "connecticonfont" !important;
+    font-size: 16px;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background: none;
+    vertical-align: sub;
+    width: 42px;
+    height: 16px;
+    margin-right: 7px;
+}
+.colleague_tree .default_user {
+    background: url("../../image/user.png") no-repeat center;
+    background-size: contain;
+    height: 20px;
+    width: 20px;
+    display: inline-block;
+    margin-bottom: -5px;
+}
+.colleague_tree li span.tree_user_head{
+    width:20px;
+    height:20px;
+    background:url('../../image/user.png') no-repeat;
+    background-size: 100% 100%;
+    display: inline-block;
+    vertical-align: middle;
+}
+.colleague_tree li .tree_user_img{
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+    border-radius: 10px;
+    vertical-align: middle;
+}

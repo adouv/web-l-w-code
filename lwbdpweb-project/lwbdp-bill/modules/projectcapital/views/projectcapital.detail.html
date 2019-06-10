@@ -1,0 +1,176 @@
+<div class="projectcapitalDetail income_payout">
+	<div class="breadnav ng-scope">
+		<ul>
+            <!--<li>项目财务管理 ></li>-->
+			<li><a ui-sref="bill.projectcapital.index" class="secondTitle">项目财务库</a> ></li>
+			<li class="thirdTitle">项目{{showName}}详情</li>
+		</ul>
+	</div>
+	<div class="page">
+		<p class="income_nav font_MY">
+            项目{{showName}}详情
+   		</p>
+ 		<div class="infobox recovery">
+	        <div>
+	            <span class="info_name">项目大类：</span>
+	            <span class="info_content">{{projectCapital.projectTypeName}}</span>
+	        </div>
+	        <div>
+	            <span class="info_name">项目/工程类别：</span>
+	            <span class="info_content">{{projectCapital.projectItemTypeName}}</span>
+	        </div>
+	        <div>
+	            <span class="info_name">对应项目名称：</span>
+	            <span class="info_content">{{projectCapital.projectName}}</span>
+	        </div>
+            <div class="more_line">
+                <span class="info_name">{{showPayoutInfo?'':'已安排收入的'}}资金文号及金额：</span>
+                <span class="info_content">
+                    <span ng-if="!showPayoutInfo" ng-repeat="item in projectCapital.billList">{{item.capitalName}}({{item.incomeAmount}});</span>
+                    <span ng-if="showPayoutInfo" ng-repeat="item in projectCapital.simpleCapitalQoList">{{item.name}}({{item.amount}});</span>
+                </span>
+            </div>
+            <div>
+                <span class="info_name">本次安排资金总额：</span>
+                <span class="info_content">{{projectCapital.totalAmount}}万元</span>
+            </div>
+          <div ng-if="!showPayoutInfo">
+            <span class="info_name">收入实际到账时间：</span>
+            <span class="info_content">{{projectCapital.receivedDate| date:'yyyy-MM-dd'}}</span>
+          </div>
+        </div>
+        <div class="infobox recovery" ng-if="showPayoutInfo">
+            <div>
+                <span class="info_name">项目合同金额：</span>
+                <span class="info_content">{{projectCapital.contractAmount?projectCapital.contractAmount+'万元':projectCapital.contractAmount}}</span>
+            </div>
+            <!--<div>-->
+                <!--<span class="info_name">支出费用名称：</span>-->
+                <!--<span class="info_content">{{projectCapital.expenseTypeItemName}}</span>-->
+            <!--</div>-->
+            <div>
+                <span class="info_name">支出费用类别：</span>
+                <span class="info_content">{{projectCapital.expenseTypeName}}</span>
+            </div>
+            <div>
+                <span class="info_name">支付对象：</span>
+                <span class="info_content">{{projectCapital.payeeName}}</span>
+            </div>
+            <div>
+                <span class="info_name">支付实际到账时间：</span>
+                <span class="info_content">{{projectCapital.capitalChangeDate| date:'yyyy-MM-dd'}}</span>
+            </div>
+        </div>
+        <div class="infobox recovery">
+            <div class="more_line">
+                <span class="info_name">备注：</span>
+                <span class="info_content">{{projectCapital.description}}</span>
+            </div>
+            <div>
+                <span class="info_name">点击量：</span>
+                <span class="info_content">{{projectCapital.clickVolume?projectCapital.clickVolume:'0'}}次</span>
+            </div>
+            <div class="posr">
+                <span class="info_name posa">最近更新人：</span>
+                <span class="info_content">{{projectCapital.lastUpdateUser}}</span>
+                <!--<a class="getrecord" href="javascript:void(0);"> 查看更新记录>></a>-->
+            </div>
+            <div>
+                <span class="info_name">更新时间：</span>
+                <span class="info_content">{{projectCapital.lastUpdateTime | date:'yyyy/MM/dd HH:mm'}}</span>
+            </div>
+        </div>
+        <!--<p class="back_tit">-->
+            <!--项目{{showName}}冲红-->
+        <!--</p>-->
+        <div ng-repeat="writeBackItem in projectWriteBack">
+          <div class="infobox recovery" >
+               <p class="income_nav" ng-if="writeBackItem.billType != 6 && $index==0">
+                 项目{{showName}}冲红
+               </p>
+              <div>
+                  <span class="info_name">本次冲红总金额：</span>
+                  <span class="info_content">{{writeBackItem.totalAmount}}万元</span>
+              </div>
+              <div class="more_line">
+                  <span class="info_name">冲红金额在该{{showName}}中的具体分配：</span>
+                  <span class="info_content">
+                      <span ng-repeat="item in writeBackItem.simpleCapitalQoList">{{item.name}}({{item.amount}});</span>
+                  </span>
+              </div>
+              <div class="table_bt" ng-if="!showPayoutInfo && writeBackItem.payoutAutoWriteBackQoList && writeBackItem.payoutAutoWriteBackQoList.length>0">
+                  <span class="info_name">因收入冲红而无效的支出有：</span>
+              </div>
+          </div>
+          <table class="table table-hover"
+                 ng-if="!showPayoutInfo && writeBackItem.payoutAutoWriteBackQoList && writeBackItem.payoutAutoWriteBackQoList.length>0">
+            <thead>
+              <tr>
+                  <th>序号</th>
+                  <th>记账类型</th>
+                  <th>项目名称</th>
+                  <th>建设单位</th>
+                  <th>类型</th>
+                  <th>合同金额</th>
+                  <th>发生金额(万元)</th>
+                  <th>来源/支出对象</th>
+                  <th>实际到账时间</th>
+              </tr>
+              </thead>
+              <!--栗子 start-->
+              <tbody ng-repeat="payout in writeBackItem.payoutAutoWriteBackQoList">
+                  <tr>
+                      <td>{{$index+1}}</td>
+                      <td>支出<span class="blue_down" show-trs>({{payout.payoutWriteBackList.length}})<em class="caret"></em></span></td>
+                      <td class="ell">{{payout.projectName}}</td>
+                      <td class="ell">{{payout.constructUnitName}}</td>
+                      <td class="ell">{{payout.expenseTypeItemName}}</td>
+                      <td class="ell">{{payout.contractAmount}}</td>
+                      <td class="ell">{{payout.amount}}</td>
+                      <td class="ell">{{payout.payeeName}}</td>
+                      <td>{{payout.receivedDate | date:'yyyy/MM/dd'}}</td>
+                  </tr>
+                  <tr class="detail_tr" ng-repeat="pay_detail in payout.payoutWriteBackList">
+                      <td></td>
+                      <td><em ng-if="pay_detail.billType==5">冲红</em>
+                          <em ng-if="pay_detail.billType==6">撤回</em></td>
+                    <td class="ell">{{payout.projectName}}</td>
+                      <td class="ell">{{payout.constructUnitName}}</td>
+                      <td class="ell">{{payout.expenseTypeItemName}}</td>
+                      <td class="ell">{{payout.contractAmount}}</td>
+                      <td class="ell">{{pay_detail.amount}}</td>
+                      <td class="ell">{{payout.payeeName}}</td>
+                      <td class="ell"></td>
+                  </tr>
+              </tbody>
+          </table>
+            <div class="infobox recovery">
+                <p class="income_nav" ng-if="showPayoutInfo && writeBackItem.billType == 6 && $index==0">
+                    项目支出无效
+                </p>
+                <p class="income_nav" ng-if="showPayoutInfo && writeBackItem.billType == 6 && $index!=0 && projectWriteBack[$index-1].billType != 6">
+                    项目支出无效
+                </p>
+            </div>
+          <div class="infobox recovery">
+              <div class="more_line" >
+                  <span class="info_name">冲红原因：</span>
+                  <span class="info_content">
+                      {{writeBackItem.description}}
+                  </span>
+              </div>
+              <div>
+                  <span class="info_name">操作人：</span>
+                  <span class="info_content">{{writeBackItem.operatorName}}</span>
+              </div>
+              <div>
+                  <span class="info_name">操作时间：</span>
+                  <span class="info_content">{{writeBackItem.createTime| date:'yyyy/MM/dd HH:mm'}}</span>
+              </div>
+          </div>
+        </div>
+    <div class="btnbox">
+      <span class="setbtn sureBtn" ng-click="goProjectCapitalList()">返回</span>
+    </div>
+	</div>
+</div>

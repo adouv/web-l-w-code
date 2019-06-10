@@ -1,0 +1,133 @@
+<purchase-project-detail class="audit_info"
+    project="project"
+    back-url="purchaseForm.backUrl"
+    audit-config="purchaseForm.auditConfig">
+    <div class="audit_fail" ng-repeat="info in purchaseForm.auditInfo">
+        <div ng-show="$index==0||$index==purchaseForm.auditInfo.length-1||purchaseForm.isAllShow">
+            <h1 class="fail_title">第{{$index+1|NumberToChinese}}次审核不通过情况</h1>
+            <div class="fail_wrapper">
+                <div class="result_info">
+                    <span class="result_line"></span>
+                    <h2>*被审核节点</h2>
+                    <div class="fail_content">
+                        <div>
+                            <p class="fail_col_span">节点名称：</p>
+                            <p class="fail_col_div">{{info.auditedNode.taskName}}</p>
+                        </div>
+                        <div>
+                            <p class="fail_col_span">节点操作内容：</p>
+                            <p class="fail_col_div">
+                                <button class="btn_bd" ng-if="purchaseForm.isAudit&&purchaseForm.currentTask.isRedo &&
+                             purchaseForm.currentTask.assignee === purchaseForm.account.accountId &&
+                              $index === purchaseForm.auditInfo.length -1" ng-click="purchaseForm.showTaskInfo(true,info.auditedNode.taskId)">编辑</button>
+                                <button class="btn_bd" ng-if="!(purchaseForm.isAudit&&purchaseForm.currentTask.isRedo &&
+                             purchaseForm.currentTask.assignee === purchaseForm.account.accountId &&
+                              $index === purchaseForm.auditInfo.length -1)" ng-click="purchaseForm.showTaskInfo(false,info.auditedNode.taskId)">查看</button>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="result_info">
+                    <span class="result_line"></span>
+                    <h2>*审核节点</h2>
+                    <!-- 单人审核 -->
+                    <div class="fail_content" ng-if="info.auditNode.length == 1">
+                        <div>
+                            <p class="fail_col_span">节点名称：</p>
+                            <p class="fail_col_div">{{info.auditNode[0].taskName}}</p>
+                        </div>
+                        <div>
+                            <p class="fail_col_span">审核人：</p>
+                            <p class="fail_col_div">{{info.auditNode[0].auditor}}</p>
+                        </div>
+                        <div>
+                            <p class="fail_col_span">操作时间：</p>
+                            <p class="fail_col_div">{{info.auditNode[0].auditTime|date:'yyyy/MM/dd HH:mm'}}</p>
+                        </div>
+                        <div>
+                            <p class="fail_col_span">审核结果：</p>
+                            <p class="fail_col_div green" ng-if="info.auditNode[0].auditResult==='true'">通过</p>
+                            <p class="fail_col_div red" ng-if="info.auditNode[0].auditResult==='false'">不通过</p>
+                        </div>
+                        <div ng-if="info.auditNode[0].comment">
+                            <p class="fail_col_span">审核意见：</p>
+                            <p class="fail_col_div">{{info.auditNode[0].comment}}</p>
+                        </div>
+                    </div>
+                    <!-- 多人审核 -->
+                    <div class="fail_content" ng-if="info.auditNode.length > 1">
+                        <div>
+                            <p class="fail_col_span">节点名称：</p>
+                            <p class="fail_col_div">{{info.auditNode[0].taskName}}</p>
+                        </div>
+                        <div>
+                            <p class="fail_col_span">审核人：</p>
+                            <p class="fail_col_div"><span ng-repeat="data in info.auditNode">{{data.auditor}}({{data.auditorGarden}})；</span></p>
+                        </div>
+                        <div>
+                            <p class="fail_col_span">操作时间：</p>
+                            <p class="fail_col_div">{{info.auditNode[0].auditTime|date:'yyyy/MM/dd HH:mm'}}</p>
+                        </div>
+                        <div>
+                            <p class="fail_col_span">审核结果：</p>
+                            <p class="fail_col_div green" ng-if="info.auditNode[0].auditResult==='true'">通过</p>
+                            <p class="fail_col_div red" ng-if="info.auditNode[0].auditResult==='false'">不通过</p>
+                        </div>
+                        <div ng-if="info.auditNode[0].comment">
+                            <p class="fail_col_span">审核意见：</p>
+                            <p class="fail_col_div"><span ng-repeat="data in info.auditNode">{{data.auditor}}───<em class="fail_col_div_em">{{data.comment}}</em></span></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="result_info" ng-class="{'noline':$index==purchaseForm.auditInfo.length-1}">
+                    <span class="result_line"></span>
+                    <h2>*处理情况</h2>
+                    <div class="fail_content">
+                        <div>
+                            <p class="fail_col_span">操作结果：</p>
+                            <p class="fail_col_div" ng-if="info.disposeResult.result&&info.disposeResult.result!=='false'">重新修改提交</p>
+                            <p class="fail_col_div" ng-if="info.disposeResult.result&&info.disposeResult.result==='false'">放弃并结束</p>
+                            <p class="fail_col_div" ng-if="!info.disposeResult.result&&$index==purchaseForm.auditInfo.length-1">待{{info.disposeResult.accountId!=purchaseForm.account.accountId? info.disposeResult.accountName:''}}处理</p>
+                        </div>
+                        <div ng-if="info.disposeResult.result&&info.disposeResult.accountName">
+                            <p class="fail_col_span">操作人：</p>
+                            <p class="fail_col_div">{{info.disposeResult.accountName}}（{{info.disposeResult.gardenName}}）</p>
+                        </div>
+                        <div ng-if="info.disposeResult.result&&info.disposeResult.operateTime">
+                            <p class="fail_col_span">操作时间：</p>
+                            <p class="fail_col_div">{{info.disposeResult.operateTime|date:'yyyy/MM/dd HH:mm'}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--查看更多信息-->
+        <div ng-click="purchaseForm.isAllShow = true" class="check_fail" ng-if="$index==0&&purchaseForm.auditInfo.length>2&&!purchaseForm.isAllShow">
+            点击查看更多审核不通过信息
+            <p class="iconfont icon-arrowLook"></p>
+        </div>
+        <!--放弃并结束 / 重新提交-->
+        <div class="text_center padd_20" ng-if="purchaseForm.isAudit&&purchaseForm.currentTask.isRedo &&
+                         purchaseForm.currentTask.assignee === purchaseForm.account.accountId &&$index === purchaseForm.auditInfo.length -1">
+            <button class="btn_bd" ng-if="purchaseForm.currentTask.isAllowedAbort " ng-click="purchaseForm.saveAuditData(false,info.auditedNode.taskId)">放弃并结束本项目申请</button>
+            <button class="btn_bg" ng-disabled="!purchaseForm.formData||purchaseForm.auditing" ng-click="purchaseForm.saveAuditData(true,info.auditedNode.taskId)">重新提交</button>
+        </div>
+    </div>
+    <!--收起不通过信息-->
+    <div ng-click="purchaseForm.isAllShow = false" class="check_fail" style="margin-top: 20px;" ng-if="purchaseForm.auditInfo.length>2&&purchaseForm.isAllShow">
+        点击收起审核不通过信息
+        <p class="iconfont icon-arrowStop"></p>
+    </div>
+    <div class="split_line" ng-if="purchaseForm.auditFormCtrl&&purchaseForm.auditInfo.length>0"></div>
+    <audit-form ng-if="purchaseForm.auditFormCtrl" ctrl="purchaseForm.auditFormCtrl" ctrl-as="purchaseForm"
+        current-task-id="purchaseForm.currentTaskId"
+        next-audit-info="purchaseForm.nextAuditInfo"
+        project-detail="project"
+        back-url="purchaseForm.backUrl"
+        form-data="purchaseForm.formData"
+        config-cache="purchaseForm.auditConfig.cacheField"
+        attachment-type="purchaseForm.auditConfig.attachmentType"
+        audit-task="purchaseForm.auditTask(formData)"
+        audit-cancel="purchaseForm.auditCancel(isEdit)">
+    </audit-form>
+</purchase-project-detail>

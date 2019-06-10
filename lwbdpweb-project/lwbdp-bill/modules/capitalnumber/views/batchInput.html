@@ -1,0 +1,81 @@
+<div class="batchInput">
+    <div class="breadnav">
+        <ul>
+            <li ng-if="importType=='projects'" ui-sref="bill.projects.index">项目列表 ></li>
+            <li ng-if="importType=='projects'">项目批量导入</li>
+
+            <li ng-if="importType=='contract'" ui-sref="bill.contract.index">项目合同 ></li>
+            <li ng-if="importType=='contract'">项目合同批量导入</li>
+
+            <li ng-if="importType=='capitalnumber'">项目财务管理 ></li>
+            <li ng-if="importType=='capitalnumber'" ui-sref="bill.capitalnumber.index" class="secondTitle">资金文号库 ></li>
+            <li ng-if="importType=='capitalnumber'" class="thirdTitle">资金文号批量导入</li>
+
+            <li ng-if="importType=='income' || importType=='payout' || importType=='recovery'">项目财务管理 ></li>
+            <li ng-if="importType=='income' || importType=='payout' || importType=='recovery'" ui-sref="bill.projectcapital.index" class="secondTitle">项目财务库 ></li>
+            <li ng-if="importType=='income' || importType=='payout' || importType=='recovery'" class="thirdTitle">{{importName}}模板导入</li>
+        </ul>
+    </div>
+    <div class="border_page">
+        <p ng-if="importType=='projects'" class="pagetit font_MY">批量添加新的{{importProjectTypeName}}{{importName}}</p>
+        <p ng-if="importType=='contract'" class="pagetit font_MY">项目合同批量导入</p>
+        <p ng-if="importType=='capitalnumber'" class="pagetit font_MY">资金文号批量导入</p>
+        <div class="batchcon">
+            <p ng-if="importType=='projects' && !importProjectTypeName">请选择您要导入的项目类型:</p>
+            <select ng-show="importType=='projects' && !importProjectTypeName" class="form-control" ng-model="selectedProjectTypeIndex" ng-change="selectProjectType()">
+                <option value="">请选择</option>
+                <option value="{{$index}}" ng-repeat="item in home.projectCategory">{{item.itemName}}</option>
+            </select>
+            <p class="nonext" ng-if="selectedProjectTypeIndex">
+                项目导入模板已经生成：
+                <a href="javascript:void(0);" ng-click="downloadTemplate()">{{selectedProjectTypeName}}{{importName}}导入模板</a>
+            </p>
+
+            <p class="nonext" ng-if="importType!='projects'">
+                <a href="javascript:void(0);" ng-click="downloadTemplate()">{{importName}}批量导入模板.xls</a>
+            </p>
+            <p class="nonext" ng-if="importType=='projects' || importProjectTypeName">
+                <a href="javascript:void(0);" ng-click="downloadTemplate()">{{importProjectTypeName}}批量导入模板.xls</a>
+            </p>
+
+
+            <p>选择数据模板 <span class="warning">(请上传.xls/.xlsx格式文件)</span></p>
+            <div flow-init="{target:'/lw-fileserver/fs/file/upload',query:{folder:'dbp'}}"
+                 flow-files-submitted="uploadSubmit($flow,$index)"
+                 flow-file-added="!!{xls:1,xlsx:1}[$file.getExtension()]"
+                 flow-file-success="uploadSuccess($message,$file,$index)">
+                <div class="export">
+                    <span class="flow-btn" flow-btn></span>
+                </div>
+                <p ng-if="$flow.files.length>0">已选文件:</p>
+                <div class="upload_result">
+                    <div class="clear" ng-repeat="file in $flow.files">
+                        <div class="batch_name">
+                            <p>{{file.name}}</p>
+                        </div>
+                        <div class="batch_cont">
+                            <p>
+                                <em>{{file.progress() * 100}}%</em>
+                                <span class="pink" ng-style="{width: (file.progress() * 100) + '%'}"></span>
+                            </p><span class="del" ng-class="{true:'none'}[file.hideDelIcon]" ng-click="file.cancel();deleteJob(file.jobId)"></span>
+                        </div>
+                    </div>
+                    <!--
+                        <div class="batch_cont">
+                           <p>
+                                <em>10%</em>
+                                <span class="pink"></span>
+                            </p><span class="del"></span>
+                        </div>
+                    </div>-->
+                </div>
+            </div>
+        </div>
+
+        <div class="btnbox">
+            <span class="setbtn cancelBtn" ng-click="goBack()">返回</span>
+        </div>
+    </div>
+</div>
+
+

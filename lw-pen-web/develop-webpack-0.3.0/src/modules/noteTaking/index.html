@@ -1,0 +1,28 @@
+<div class="noteTaking">
+    <div class="note-result">
+        <a-layout>
+            <a-layout-content>
+                <div class="inner-box" id="list" flex>
+                    <div class="bg"></div>
+                    <div class="content">
+                        <div class="name">{{studentInfo.studentName}}</div>
+                        <div class="content-text">
+                            <h2 v-if="autoGrade">提交选项：{{studentInfo.answer}}</h2>
+                            <h2>书写过程：</h2>
+                            <div class="note-box" :id="`inner-box-b${studentId}`">
+                                <lw-note-draw ref="lwNote" type="1" :penId="studentId" :questionId="questionId" :exerciseRecordId="exerciseRecordId"></lw-note-draw>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a-layout-content>
+            <a-layout-footer>
+                <div class="footer">
+                    <div class="lw-tpk-pc footer-right nodrag-area">
+                        <a-button type="default" @click="closeBtn" class="close">关闭</a-button>
+                    </div>
+                </div>
+            </a-layout-footer>
+        </a-layout>
+    </div>
+</div>

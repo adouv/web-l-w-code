@@ -1,0 +1,35 @@
+<div class="basedialog">
+  <p-confirmDialog class='tpk-ui-confirmdialog' width='720' height='400' key="confirmDialogKey" acceptLabel='是' rejectLabel='否'>
+    <!--<p-footer>-->
+      <!--<button type="button" pButton icon="fa-close" label="取消" (click)="cd.reject()"></button>-->
+      <!--<button type="button" pButton icon="fa-check" label="确定" (click)="cd.accept()"></button>-->
+    <!--</p-footer>-->
+  </p-confirmDialog>
+  <div class="head">
+    <div class="title">{{title}}</div>
+    <div class="caozuo">
+      <i class="icon iconfont icon-zuixiaohua zuixiaohua" (click)="minimize()"></i>
+      <i class="icon iconfont icon-guanbi guanbi" (click)="close()"></i>
+    </div>
+  </div>
+  <div class="tip">
+    <div class="tip_mark">
+      <div class="question_mark">?</div>
+      <div class="tip_name">上传须知</div>
+    </div>
+    <div class="tip_content"><p>1、支持常见的office格式和多媒体的文本、图像、视频、音频格式文件的上传；单个文件大小不支持超过50M；</p>
+      <p>2、此处上传文件可能为公共文件，所有上传文件均实名制管理和监测，用户对自己上传的文件和造成的影响负所有责任。</p>
+    </div>
+  </div>
+  <div class="items item_list overflow_box_black">
+    <file-item *ngFor="let item of data.items;let i = index" class='file_item' [uploaderItem]="item"
+               [functionName]="title"
+               (cancelEvent)="cancelOne(i)" (deleteEvent)="deleteOne(i)"></file-item>
+  </div>
+  <div class="wancheng">
+    <div class="wancheng_btn" (click)="unfinished()" [ngClass]="{'active':data.uploadFileView?.isCanClickConfirmButton}">
+      <img src="assets/images/btn_bg.png"/>
+      <div class="btn_name">完成</div>
+    </div>
+  </div>
+</div>

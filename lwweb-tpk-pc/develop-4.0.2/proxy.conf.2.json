@@ -1,0 +1,23 @@
+{
+    "/lw-authz-server": {
+        "target": "http://10.0.0.10:74",
+        "secure": false
+    },
+    "/lw-garden-server": {
+        "target": "http://10.0.0.10:74",
+        "secure": false
+    },
+    "/lw-fileserver": {
+        "target": "http://10.0.0.10:74",
+        "secure": false
+    },
+    "/lwtpk-web": {
+        "target": "http://10.0.0.6:8080",
+        "secure": false
+    },
+    "/lw-stream-cms": {
+        "target": "http://tpktest.laiweitec.com:8081",
+        "secure": false
+    }
+
+}

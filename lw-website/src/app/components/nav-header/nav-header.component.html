@@ -1,0 +1,34 @@
+<header id="main_header_pub">
+    <div>
+        <div class="logo" routerLink="/home">
+            <img src="assets/images/topbanner.png" alt="牛山一中实验小学">
+        </div>
+        <nav>
+            <ul id="main_header_nav">
+                <li *ngFor="let nav of navShowData" [ngClass]="{'active': nav?.isSelected || (this.type === nav?.id)}">
+                    <a [routerLink]="[nav?.routerPath]" href="javascript:void(0);" (click)="onColumnClicked(nav,1)">
+						{{ nav?.name }}
+					</a>
+                </li>
+            </ul>
+            <nz-dropdown *ngIf="!other" style="position:absolute;right:-30px;top:-30px">
+                <a nz-dropdown style="display:inline-block;height:100px;line-height:80px;font-size:43px;color:gray;margin-left:10px;">...</a>
+                <ul nz-menu nzSelectable class="moreMenuBox" [ngClass]="{'other': otherItem}" style="border:1px solid #ccc;top:-25px;left:-55px;z-index:99999;width:140px;">
+                    <!-- [class.active]="currentUrl==oNav.routerPath" -->
+                    <li *ngFor="let oNav of otherNavData" (click)="onColumnClicked(oNav,2)" nz-menu-item [ngClass]="{'active': oNav?.isSelected}">
+                        <a [routerLink]="[oNav?.routerPath]" href="javascript:void(0);" [ngClass]="{'active': oNav?.isSelected}">
+								{{ contentHtmlFilter(oNav?.name) }}
+							</a>
+                    </li>
+                </ul>
+            </nz-dropdown>
+            <!-- <nz-tabset [nzSelectedIndex]="index" [nzSize]="large">
+				<nz-tab *ngFor="let nav of navBars" [nzTitle]="nav.name" [class.active]="currentUrl==nav.routerPath">
+					<a [routerLink]="[nav.routerPath]" href="javascript:void(0);"></a>
+				</nz-tab>
+			</nz-tabset> -->
+        </nav>
+    </div>
+    <div class="look" (click)="redirectTo()">管理员</div>
+
+</header>

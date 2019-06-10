@@ -1,0 +1,55 @@
+<div class="yunhome overflow_box">
+	<!-- <div class="banner" *ngIf="isBannerShow">
+		<img src="assets/images/banner.png"/>
+		<div class="banner_name">让您随时随处可备课，轻轻松松到教室一键上课！</div>
+		<div class="icon iconfont icon-guanbi banner_close" (click)="closeBanner()"></div>
+	</div>
+	<nz-spin [nzSize]="'large'" class="spin-loading" [nzSpinning]="weeks.length == 0"></nz-spin> -->
+
+	<ng-template [ngIf]="weeks.length > 0">
+		<!--animated-->
+		<div class="filter fadeIn" *ngIf="hasGarden">
+			<!-- <p-dropdown class="school tpk-ui-select" [options]="gardens" [style]="{'width':'200px','height':'30px'}" [(ngModel)]="selectedGarden" (onChange)="getSelectedGarden($event)"></p-dropdown> -->
+			<nz-select style="width:200px;height:30px;" class="radius bg-gray" [(ngModel)]="selectedGarden" (ngModelChange)="getSelectedGarden($event)">
+				<nz-option *ngFor="let p of gardens" [nzValue]="p.value" [nzLabel]="p.label"></nz-option>
+			</nz-select>
+			<!-- <p-dropdown class="year tpk-ui-select" [options]="years" [style]="{'width':'150px','height':'30px'}" [(ngModel)]="selectedYear" (onChange)="getSemesterList($event)"></p-dropdown> -->
+			<nz-select class="year radius bg-gray" style="width:150px;height:30px;" [(ngModel)]="selectedYear" (ngModelChange)="yearSelected($event)">
+				<nz-option *ngFor="let p of years" [nzValue]="p.value" [nzLabel]="p.label"></nz-option>
+			</nz-select>
+			<!-- <p-dropdown class="school_year tpk-ui-select" [options]="semesters" [style]="{'width':'150px','height':'30px'}" [(ngModel)]="selectedSemester" (onChange)="getWeekList($event)"></p-dropdown> -->
+			<nz-select class="school_year radius bg-gray" style="width:150px;height:30px;" [(ngModel)]="selectedSemester" (ngModelChange)="semesterSelected($event)">
+				<nz-option *ngFor="let p of semesters" [nzValue]="p.value" [nzLabel]="p.label"></nz-option>
+			</nz-select>
+			<!-- <p-dropdown class="week tpk-ui-select" [options]="weeks" [style]="{'width':'150px','height':'30px'}" [(ngModel)]="selectedWeek" (onChange)="getClassList($event)"></p-dropdown> -->
+			<nz-select class="week radius bg-gray" style="width:150px;height:30px;" [(ngModel)]="selectedWeek" (ngModelChange)="weekSelected($event)">
+				<nz-option *ngFor="let p of weeks" [nzValue]="p" [nzLabel]="p.label"></nz-option>
+			</nz-select>
+			<div class="holder"></div>
+			<div class="greenkuai"></div>
+			<div class="beikename">已备课</div>
+			<div class="bluekuai"></div>
+			<div class="beikename">备课中</div>
+			<div class="blackkuai"></div>
+			<div class="beikename">未备课</div>
+		</div>
+		<course-class-table class="tabs animated fadeIn" [items]="classes" [currItem]="selectedClass" (selected)="classSelected($event)"></course-class-table>
+		<course-time-table [dialog]="'true'" [tabType]="0" [selectList]="checkLessonList" class="sheet animated fadeIn" [items]="lessons"
+		    *ngIf="hasLesson" (prepareLesson)="startPrepareLesson($event)"></course-time-table>
+	</ng-template>
+	<div class="nolesson animated fadeIn" *ngIf="!hasLesson||!hasGarden">
+		<div class="center" *ngIf="!hasLesson && hasGarden">
+			<img src="./assets/images/no-classHour.png" />
+			<div class="nolesson_name">当前周您没有课时安排</div>
+		</div>
+		<div class="center" *ngIf="!hasGarden">
+			<img src="./assets/images/no-schedule.png" />
+			<div class="nolesson_name">目前暂无您的上课课表</div>
+		</div>
+	</div>
+	<div class="footer">
+		<button nz-button [nzType]="'default'" (click)="goBack()">取消</button>
+		<button (click)="sure()" *ngIf="checkLessonList.length>0" nz-button class="ant-btn-danger ant-btn">同步</button>
+		<button disabled *ngIf="checkLessonList.length==0" nz-button class="ant-btn-danger ant-btn">同步</button>
+	</div>
+</div>

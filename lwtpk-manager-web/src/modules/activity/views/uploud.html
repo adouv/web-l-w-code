@@ -1,0 +1,45 @@
+
+<div class="modal-body modal-upload-main" id="modal-body" ng-init="keywords=''">
+  <!--<button type="button" class="close" ng-click="cancel()" style="margin-right: 14px">-->
+    <!--<span>×</span><span class="sr-only">Close</span>-->
+  <!--</button>-->
+  <div class="content_main modal-upload" ng-repeat="video in activity.videoList">
+    <input type="hidden" value="{{$index+1}}">
+
+    <div class="con_name clearfix"
+         flow-init="{target:'/lwtpk-web/ftp/upload?TOKEN='+token,fileParameterName:'file',singleFile:true}"
+         flow-files-submitted="$flow.upload()"
+         flow-file-success="launch.uploadVideoSuccess($message,$index)"
+         flow-file-added="launch.vildFile($file)">
+      <p class="con_left vdo" style="width: 87px">活动视频 :</p>
+
+      <div class="upload_go clearfix fl">
+        <div class="native bdr bd-black" ng-class="{true:'bd-color'}[flag == $index-1]" ng-click="launch.switch1($index)">本地上传</div>
+        <div class="wai bdr"  ng-class="{true:'bd-color'}[flag == $index+4]" ng-click="launch.switch2($index)">外部链接</div>
+        <i class="add_link" ng-click="launch.addVideo()"></i>
+        <i class="add_link jian_link" ng-show="$index!=0" ng-click="launch.removeVideo($index)"></i>
+        <div class="upload_con">
+
+          <input type="text" class="inp form-control linkVideo" ng-if="video.videoName != null" ng-value="video.videoName" style="margin-left: 0">
+          <input type="text" ng-model="video.videoUrl" class="inp form-control linkVideo" ng-if="video.videoName == null" ng-value="video.videoUrl?video.videoUrl:video.videoName"
+                 style="margin-left: 0">
+          <button class="btn mt uploud-btn" flow-btn>上传</button>
+        </div>
+        <div class="upload_progress clearfix">
+          <div class="progress_left" ng-style="{width:($flow.files[0].progress()*100+'%')}"></div>
+          <span>{{$flow.files[0].progress()|flowPercentage}}</span>
+        </div>
+        <!--<div class="actv_vido">
+          <i class="vid_logo"></i>
+        </div>-->
+      </div>
+    </div>
+    <!--<hr/>-->
+  </div>
+</div>
+<div class="modal-footer">
+
+  <p style="overflow: auto;max-height: 60px;">已选择: <span style="font-size: 12px;font-weight: bold">{{nameList}}</span></p>
+  <button class="btn btn-default tpk-btn" type="button" ng-click="ok()">确 定</button>
+  <button class="btn btn-default tpk-btn-o" type="button" ng-click="cancel()">取 消</button>
+</div>

@@ -1,0 +1,28 @@
+<div class="selected-person">
+    <div class="input-search">
+        <input-search [tpkPlaceholder]="'搜索'" [(tpkModel)]="inputPerson" (onKeyupSearch)="searchPerson($event)"></input-search>
+    </div>
+    <div *ngIf="copySelectedData.length==0&&selectedData.length>0" class="selected-person-content no-result" flex="main:center cross:center">
+        <div class="no-result-msg">没有找到对应的人</div>
+    </div>
+    <div *ngIf="selectedData.length==0" class="selected-person-content no-result" flex="main:center cross:center">
+        <div class="no-result-msg">请选择要添加的人</div>
+    </div>
+    <div *ngIf="copySelectedData.length>0" class="selected-person-content">
+        <div *ngIf="!searchStatus" class="allTotal">共选择了{{selectedData.length}}人</div>
+        <div [ngClass]="{'showTotal':!searchStatus}" class="treeData-content auto-scroll-6">
+            <div *ngFor="let std of selectTreeData" class="region-group">
+                <div *ngIf="gardenLength>1" title="{{std.gardenName}}" class="title">{{std.gardenName}}</div>
+                <div *ngFor="let sd of std.list" class="region-content">
+                    <div class="nz-tooltip">
+                        <nz-tooltip nzOverlayClassName="lw-tooltip" [nzTitle]="sd.departmentName" [nzPlacement]="'top'">
+                                <span class="span-tooltip" nz-tooltip>{{sd.name}}</span>
+                        </nz-tooltip>
+                    </div>
+                    <i (click)="deletePerson(sd)" class="deleteperson iconfont icon-icon_shutdown"></i>
+                </div>
+                <!-- <div class="region-content">李四</div> -->
+            </div>
+        </div>
+    </div>
+</div>

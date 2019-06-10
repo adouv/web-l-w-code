@@ -1,0 +1,134 @@
+.myPublish-detail .count{
+    border-bottom: 1px solid #dbe3ee;
+}
+.myPublish-detail .count_title{
+    padding: 15px 10px;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+}
+.myPublish-detail .count_title.cur{
+    background-image: linear-gradient(-180deg, rgb(120, 108, 236) 50%, rgb(0, 150, 255) 50%);
+    background-image: -o-linear-gradient(-180deg, rgb(120, 108, 236) 50%, rgb(0, 150, 255) 50%);
+    background-image: -moz-linear-gradient(-180deg, rgb(120, 108, 236) 50%, rgb(0, 150, 255) 50%);
+    background-image: -webkit-linear-gradient(-180deg, rgb(120, 108, 236) 50%, rgb(0, 150, 255) 50%);
+    background-size: 100% 4px;
+    background-position: bottom right;
+    background-repeat: no-repeat;
+    color: #0096ff;
+}
+.myPublish-detail .read{
+    border-bottom: 1px dashed #dbe3ee;
+}
+.myPublish-detail .read_title{
+    margin: 10px 0;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    padding-right: 20px;
+    font-weight: bold;
+    color: #999999;
+}
+.myPublish-detail .read_title:nth-child(1){
+    border-right: 1px solid #dbe3ee;
+}
+.myPublish-detail .read_title:nth-child(2){
+    padding-left: 20px;
+}
+.myPublish-detail .read_title.cur{
+    color: #333;
+}
+.myPublish-detail .people_box{
+    padding-top: 20px;
+}
+.myPublish-detail .people{
+    display: inline-block;
+    margin-bottom: 20px;
+    margin-right: 20px;
+}
+.myPublish-detail .people div{
+    text-align: center;
+}
+.myPublish-detail .people_img_box{
+    margin-bottom: 10px;
+}
+.myPublish-detail .people_img{
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid #dbe3ee;
+}
+.myPublish-detail .content_textBar{
+    margin-top: 20px;
+    position: relative;
+}
+.myPublish-detail .content_textBar span{
+    position: absolute;
+    right: 10px;
+    top: 0px;
+}
+.myPublish-detail .echo_table{
+    position: relative;
+}
+.myPublish-detail .echo_table_export{
+    position: absolute;
+    right: 0px;
+    top: 20px;
+}
+.myPublish-detail .listTable {
+    margin-top: 20px;
+}
+.myPublish-detail .attachmentList_a{
+    color: #333;
+}
+.myPublish-detail .attachmentList_span{
+    display: block;
+    text-align: center;
+}
+.myPublish-detail .attachmentList_a:hover{
+    color: #0096ff;
+    border-bottom: 1px solid #0096ff;
+}
+/*加载更多*/
+.myPublish-detail .go-more{
+    text-align: center;
+    color: #999999;
+    cursor: pointer;
+}
+.myPublish-detail .go-more:hover{
+    color: #0096ff;
+}
+.myPublish-detail .go-more .icon-dianjijiazaigengduo{
+    margin-right: 5px;
+    font-size: 18px;
+    vertical-align: middle;
+}
+/*回显大图*/
+.myPublish-detail .table_box  .picView .files_name:hover{
+    border-bottom: 1px solid #0096ff;
+    color: #0096ff;
+}
+.myPublish-detail .table_box .picView.img_box{
+    height: auto;
+    margin-bottom: 18px;
+}
+.myPublish-detail .table_box .picView.img_box .file-docx,
+.myPublish-detail .table_box .picView.img_box .file-xlsx,
+.myPublish-detail .table_box .picView.img_box .file-xls,
+.myPublish-detail .table_box .picView.img_box .file-doc,
+.myPublish-detail .table_box .picView.img_box .file-xls,
+.myPublish-detail .table_box .picView.img_box .file-pdf,
+.myPublish-detail .table_box .picView.img_box .file-rar,
+.myPublish-detail .table_box .picView.img_box .file-ppt,
+.myPublish-detail .table_box .picView.img_box .file-pptx,
+.myPublish-detail .table_box .picView.img_box .file-dwg{
+    display: none;
+}
+.myPublish-detail .table_box .picView.img_box img{
+    display: none;
+}
+.myPublish-detail .table_box .ib{
+    width: 100%;
+    margin-top: -10px;
+}

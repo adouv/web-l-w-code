@@ -1,0 +1,1 @@
+export const lwDriectiveInstall = (Vue) => {}

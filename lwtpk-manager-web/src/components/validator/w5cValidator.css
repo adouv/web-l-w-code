@@ -1,0 +1,60 @@
+textarea {
+    width: 400px;
+    height: 300px;
+    font-size: 12px;
+}
+/*.w5c-form input:focus:focus,
+.w5c-form textarea:focus:focus,
+.w5c-form select:focus:focus {
+    border-color: rgba(82, 168, 236, 0.8);
+    outline: 0;
+    outline: thin dotted \9;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
+}*/
+.w5c-form input:focus:focus.error,
+.w5c-form textarea:focus:focus.error,
+.w5c-form select:focus:focus.error {
+    border-color: #b94a48;
+    -webkit-box-shadow: 0 0 6px #f8b9b7;
+    -moz-box-shadow: 0 0 6px #f8b9b7;
+    box-shadow: 0 0 6px #f8b9b7;
+}
+.w5c-form input.error,
+.w5c-form textarea.error,
+form.w5c-form .w5cError,
+.w5c-form select.error {
+    border-color: #b94a48;
+    -webkit-box-shadow: 0 0 6px #f8b9b7;
+    -moz-box-shadow: 0 0 6px #f8b9b7;
+    box-shadow: 0 0 6px #f8b9b7;
+}
+.w5c-form .dropdown-menu {
+    max-height: 400px;
+    overflow-y: auto;
+}
+.w5c-form .alert {
+    margin-bottom: 0px;
+}
+.w5c-form .w5c-error {
+    /*color: #b94a48;*/
+    color:red;
+    display: inline-block;
+    margin-top: 5px;
+    font-size: 12px;
+    border: 1px solid #ff0000;
+}
+.w5c-form input.error + .w5c-main{
+    border:1px solid #b94a48;
+    -webkit-box-shadow: 0 0 6px #f8b9b7;
+    -moz-box-shadow: 0 0 6px #f8b9b7;
+    box-shadow: 0 0 6px #f8b9b7;
+}
+.w5c-form input.error + .w5c-msg-error{
+    display: inline-block;
+}
+.w5c-msg-error {
+    color: red;
+    font-size: 12px;
+    display: none;
+}

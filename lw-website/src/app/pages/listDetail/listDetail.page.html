@@ -1,0 +1,76 @@
+<div [@fadeInAnimation] id="list">
+		<app-tooltip class="tooltip"></app-tooltip>
+	<!-- 	<div class="title">
+			{{ defaultColumn.name }}
+		</div> -->
+		<top-banner></top-banner>
+		<div class="list">
+			<!-- <div class="side-bar">
+				<div class="sidebar">
+					<ul>
+						<li class="sidebar-li" *ngFor="let item of childColumnsList">
+							<div *ngIf="item.childColumns.length>0" class="first-menu" (click)="columnClick(item);" [ngClass]="{'active': item.id==sub}">
+								<span class="title">{{item.name}}</span>
+								<span class="iconfont icon-arrow-top arrow" [ngClass]="{'icon-arrow-r': item.isSubMenu}"></span>
+							</div>
+							<div *ngIf="item.childColumns.length==0" class="first-menu" [ngClass]="{'active': item.id==sub}" (click)="columnClick(item);">
+								<span class="title">
+									{{item.name}}
+								</span>
+							</div>
+							<ul class="sub-menu" *ngIf="item.isSubMenu">
+								<li class="sub-menu-li" *ngFor="let subTit of item.childColumns" [ngClass]="{'active':subTit.id==subs}" (click)="columnClick(item,subTit);">
+									<span class="title">
+										{{subTit.name}}
+									</span>
+								</li>
+							</ul>
+						</li>
+					</ul>
+					<div class="side_pic">
+						<img src="assets/images/side_pic.png" alt="">
+					</div>
+				</div>
+			</div> -->
+			<div class="right list-right" style="text-align: center;">
+			    <h4>当前位置：
+					<a [routerLink]="['/layout/list/'+type+'/'+sub]">{{ defaultColumn.name }}</a> >
+					<a [routerLink]="['/layout/list/'+type+'/'+sub+'/'+subs]"> {{ crumbs }} </a> >
+					<!-- <a href="/layout/list/{{id_nav}}/{{id_list_first}}"> {{ defaultColumn.name }} </a> >
+					<a href="/layout/list/{{id_nav}}/{{id_list}}"> {{ crumbs }} </a> > -->
+					<span> 内容详情页 </span>
+				</h4>
+				<div class="detail">
+					<div>
+						<div *ngIf="registerTitle.title">
+								<p *ngIf="articleType=='register' && registerTitle.value == 'start'" class="register-header" [ngClass]="{'bg-start': registerTitle.value === 'start'}"><span (click)="redirectTo()">{{ registerTitle.title }}</span></p>
+								<p *ngIf="articleType=='register' && registerTitle.value !== 'start'" class="register-header" 
+								[ngClass]="{'bg-rest': registerTitle.value === 'rest','bg-over': registerTitle.value === 'over','bg-dayOver': registerTitle.value === 'dayOver'}">
+									<span>{{ registerTitle.title }}</span></p>
+						</div>
+						
+						<h2 class="title">{{title}}</h2>
+						<div style="font-size: 14px;color: #999999;">
+							<span style="margin-right:79px;">作者：{{author}}</span>
+							<span class="timer" *ngIf="articleType=='richText' || articleType=='picture' || articleType=='video'">
+								发布时间：{{time | date: 'y-MM-dd'}}
+							</span>
+							<span class="timer" *ngIf="articleType=='register'">报名时间：{{rigesterStartTime | date: 'y-MM-dd'}}至{{rigesterEndTime | date: 'y-MM-dd'}}</span>
+						</div>
+						<div style="height:1px;background: #ccc;margin-top: 21px;margin-bottom: 20px;"></div>
+					</div>
+
+					<div *ngIf="articleType=='richText' || articleType=='register'" class="contentHtml" style="text-align: left;">
+						<div [innerHTML]="contentHtml | html"></div>
+					</div>
+					<div *ngIf="articleType=='picture'">
+						<!-- <div>摘要：{{summary}}</div> -->
+						<image-detail [content]="content"></image-detail>
+					</div>
+					<div *ngIf="articleType=='video'"> 
+						<app-video-detail [videoList]="videoList" [content]="content"></app-video-detail>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>

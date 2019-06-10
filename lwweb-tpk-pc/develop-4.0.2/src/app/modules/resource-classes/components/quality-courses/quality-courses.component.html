@@ -1,0 +1,41 @@
+<div>
+	<div *ngIf="qualityCoursesList.length > 0" table-center dnd-sortable-container [sortableData]="qualityCoursesList">
+		<!--padding盒子为了给两个块加间距-->
+		<div class="best-course-card-padding" *ngFor="let item of qualityCoursesList;let i = index"
+			 [hidden]="!item.isShow" dnd-sortable
+			 [sortableIndex]="i" (dragend)="sortQualityCourse($event)">
+			<div class="best-course-card">
+				<div class="img-box">
+					<img src="{{item.subjectCode | courseImg}}" alt="" (dblclick)="openVideo(item)">
+					<!--显示-->
+					<span class="mark" *ngIf="item.isShow"></span>
+					<!--操作栏-->
+					<div class="operate">
+						<div>
+							<span class="iconfont icon-edit" (click)="editCourse(item)"></span>
+							<span class="iconfont icon-del" (click)="deleteCourse(item,i)"></span>
+						</div>
+						<span class="set-main-video" (click)="isShowCourse(item)">
+							{{item.isShow?'取消显示':'设为显示'}}
+						</span>
+					</div>
+				</div>
+
+				<div title="{{item.name}}" class="title">
+					{{item.name}}
+				</div>
+				<div class="description" [ngClass]="{'opacity': item.source === 1}">
+					{{item.gradeName}}{{item.className}} / 周{{item.week | numberToUpperCase}}第{{item.period}}节
+				</div>
+			</div>
+		</div>
+	</div>
+	<elliptical-page *ngIf="!qualityCoursesList || qualityCoursesList.length == 0"
+					 imgName="no-course.png" title="暂无微课"></elliptical-page>
+</div>
+
+<div class="footer">
+	<button [routerLink]="['/resource/home/-1']"  [nzType]="'default'" nz-button >
+		<span>返回</span>
+	</button>
+</div>

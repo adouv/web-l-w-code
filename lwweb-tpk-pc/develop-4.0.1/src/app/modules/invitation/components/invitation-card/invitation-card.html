@@ -1,0 +1,59 @@
+<div>
+	<div *ngIf="list.length > 0" table-center>
+		<!--padding盒子为了给两个块加间距-->
+		<div class="card-padding" *ngFor="let item of list" [hidden]="!item.isSelect && onlyShowSelect">
+			<div class="card" [style.background]="item?.subjectCode | backgroundImgCss">
+				<div class="img-box">
+					<!-- <img src="{{item.subjectCode | courseImg}}" alt="" (dblclick)="openVideo(item)">
+					<div class="img-box-title">
+						<div title="{{item.lessonTitle?item.lessonTitle:'未配置课节名称'}}">
+							{{item.lessonTitle?item.lessonTitle:'未配置课节名称'}}
+						</div>
+					</div> -->
+					<!--显示-->
+					<!-- <span class="mark" *ngIf="item.isSelect"></span> -->
+					<span class="selectMark" *ngIf="item.isSelect" (click)="item.isSelect = false;isShowSelect()">
+						<img src="../../../../../assets/images/class-selected.png" alt="item.subjectName">
+					</span>
+					<!--操作栏-->
+					<div class="operate" *ngIf="!item.isSelect"  (click)="item.isSelect = true;isShowSelect()">
+						<!-- <label class="set-main-video" [(ngModel)]="item.isSelect"
+							   (click)="isShowSelect(item)">
+							<span>{{item.isSelect?'取消选择':'选择'}}</span> -->
+							<img src="../../../../../assets/images/class-hover.png" alt="item.subjectName">
+					</div>
+
+					<div class="video-detail">
+							<div class="video-detail-subjectname">
+								<span>{{ item.subjectName }}</span>
+								<!-- <em class="iconfont xiazai"></em> -->
+							</div>
+							<div class="video-detail-teachername">
+								<em class="iconfont video_start"></em>
+								<div class="video-detail-teachername-info">
+									<span>{{ item.lessonTitle }}</span>
+									<span>{{ item.teacherName }}</span>
+								</div>
+							</div>
+							<div class="video-detail-data">
+								<span class="video-detail-data-left">{{ item.gradeName }}{{ item.className }}</span>
+								<div class="video-detail-data-right">
+									<span>{{ item.startDate }}</span>
+									<span [ngClass]="{'opacity': item.source === 1}">{{item.courseStartTime | date:'yyyy/MM/dd'}} 周{{item.week | numberToUpperCase}}第&nbsp;{{item.period}}&nbsp;节</span>
+								</div>
+							</div>
+						</div>
+				</div>
+<!-- 
+				<div class="title">
+					{{item.gradeName}}{{item.className}} ({{item.subjectName}})
+					<span>{{item.teacherName}}</span>
+				</div>
+				<div class="description" [ngClass]="{'opacity': item.source === 1}">
+					{{item.courseStartTime | date:'yyyy/MM/dd'}} 周{{item.week | numberToUpperCase}}第&nbsp;{{item.period}}节&nbsp;
+				</div> -->
+			</div>
+		</div>
+	</div>
+	<elliptical-page *ngIf="!list || list.length == 0" imgName="no-course.png" title="请先查询选择参评视频"></elliptical-page>
+</div>

@@ -1,0 +1,121 @@
+@import "../../../../../styles/variable";
+
+.exercises-details::ng-deep{
+	width: 100%;
+	height: calc(100% - #{computer(50px)});
+	position: fixed;
+	background-color: #fff;
+	left: 0;
+	top:computer(68px);
+	z-index: 9999999;
+	padding: 0 computer(20px);
+	.dynamicHtml{
+		font-size: computer(30px) !important;
+		p{
+			font-size: computer(30px) !important;
+			color: $color_font-deep;
+			margin-bottom: computer(20px);
+		}
+		span{
+			font-size: computer(30px) !important;
+		}
+	}
+	.exercises-details-flex{
+		display: flex;
+		flex-direction: column;
+		-webkit-box-pack: center;
+		-ms-flex-pack: center;
+		justify-content: center;
+	}
+	.exercises-details-content{
+		height: calc(100% - #{computer(70px)});
+		padding:computer(40px) computer(20px) 0 computer(20px);
+		width: 100%;
+		overflow-x: hidden;
+		.number{
+			font-size: computer(30px);
+			color: $color_font-deep;
+		}
+		.dynamicHtml::ng-deep{
+			font-size: computer(30px) !important;
+			width: calc(100% - #{computer(60px)});
+			word-wrap: break-word;
+			p{
+				width: 100%;
+				font-size: computer(30px) !important;
+				color: $color_font-deep;
+				margin-bottom: computer(20px);
+			}
+			img{
+				max-width: 100%;
+			}
+		}
+		p{
+			font-size: computer(30px) !important;
+			color: $color_font-deep;
+			margin-bottom: computer(20px);
+			span{
+				margin-right: computer(40px);
+			}
+		}
+		.title{
+			font-weight: bold;
+			font-size: computer(30px);
+			color: $color_font-deep;
+			margin-bottom: computer(5px) !important;
+			span{
+				margin-right: computer(40px);
+			}
+		}
+		.right-answer,.answer-analyze{
+			font-size: computer(30px) !important;
+			color: $color_font-deep;
+			p{
+				margin-bottom: computer(5px) !important;
+				span{
+					font-size: computer(30px) !important;
+				}
+			}
+		}
+		.exercises-answer{
+			padding: computer(10px);
+			background-color: rgb(246,246,246);
+		}
+	}
+	.studentLine{
+		font-size: computer(16px);
+		margin-right: computer(40px);
+		position: absolute;
+		right: 0;
+		z-index: 100;
+		span{
+			margin-right: computer(5px);
+		}
+	}
+	.footer{
+		text-align: center;
+		border-top: 1px solid $color_border;
+		padding-top: computer(10px);
+		position: relative;
+		.close{
+			margin-right: computer(20px);
+		}
+		.exercise-footer-handle{
+			position: absolute;
+			top: computer(10px);
+			left: 0;
+			width: 100%;
+			z-index: 99;
+		}
+		.exercise-footer-answer{
+			position: absolute;
+			left: 0;
+			z-index: 100;
+		}
+		.btn-disable{
+			opacity: 0.5;
+			cursor: not-allowed;
+		}
+	}
+}
+

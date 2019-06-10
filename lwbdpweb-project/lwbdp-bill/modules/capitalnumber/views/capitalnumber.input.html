@@ -1,0 +1,81 @@
+<div class="capitalNumInput">
+    <div class="breadnav">
+        <ul>
+            <!--<li>项目财务管理 ></li>-->
+            <li ui-sref="bill.capitalnumber.index" class="secondTitle">资金文号库 ></li>
+            <li class="thirdTitle">添加资金文号</li>
+        </ul>
+    </div>
+    <div class="page">
+        <div class="input_form">
+            <form class="w5c-form" w5c-form novalidate w5c-form-validate name="capitalNumberForm" stop-event>
+                <div class="formItem">
+                    <p class="form_name">资金文号名称 <span>*</span>：</p>
+                    <input type="text" class="form-control"
+                           required placeholder="不超过50字,必填"
+                           name="name"
+                           ng-model="capitalNumber.name" maxlength="50"/>
+                </div>
+                <div class="formItem">
+                    <p class="form_name">所属园区 <span>*</span>：</p>
+                    <input type="text" class="form-control"
+                           required id="selectGarden"
+                           name="gardenId" placeholder="不支持手工输入,必填"
+                           ng-model="capitalNumber.gardenName"/>
+                    <!--<select-garden ids="capitalNumber.gardenId" named="capitalNumber.gardenName" type="mulit"></select-garden>-->
+                    <select-garden ids="capitalNumber.gardenId" named="capitalNumber.gardenName" showcapitalnumber='true'></select-garden>
+                </div>
+                <!-- TODO 校验资金小数js -->
+                <div class="formItem">
+                    <p class="form_name">文号总资金额（万元）<span>*</span></p>
+                    <input type="text" class="form-control"
+                           required placeholder="正实数,小数点后默认6位,必填"
+                           name="totalAmount" number-up-down
+                           ng-change="checkInputAmount(capitalNumber.totalAmount)"
+                           ng-model="capitalNumber.totalAmount"/>
+                </div>
+                <!--TODO 资金来源类型 -->
+                <div class="form-group">
+                    <p class="form_name">资金来源 <span>*</span>：</p>
+                    <select class="form-control" name="capitalSourceTypeId" required
+                            ng-options="item.id as item.name for item in capitalSourceTypeList"
+                            ng-model="capitalNumber.capitalSourceTypeId">
+                    </select>
+                </div>
+
+                <div class="formItem">
+                    <p class="form_name">批复日期：</p>
+                    <!--<input type="date" class="form-control"
+                           name="replyDate"
+                           ng-model="replyDate"/>-->
+                    <div class="form-group">
+                        <input id="replyDate" readonly lw-laydate type="text"
+                               value="{{replyDate | date:'yyyy/MM/dd'}}" ng-model="replyDate"
+                               class="form-control">
+                    </div>
+
+                </div>
+
+                <div class="formItem">
+                    <p class="form_name">收回日期：</p>
+
+                    <!--<input type="date" class="form-control"
+                           name="recoveryDate"
+                           ng-model="recoveryDate"/>-->
+                    <div class="form-group">
+                        <input id="recoveryDate" readonly lw-laydate type="text"
+                               value="{{recoveryDate | date:'yyyy/MM/dd'}}" ng-model="recoveryDate"
+                               class="form-control">
+                    </div>
+                    <p class="form_name">用途备注：</p>
+                    <textarea name="description" placeholder="500字以内,非必填" maxlength="500"
+                              ng-model="capitalNumber.description" class="form-control"></textarea>
+                </div>
+                <div class="btnbox">
+                    <span class="setbtn cancelBtn" ng-click="goCapitalNumberList()">取消</span>
+                    <span class="setbtn sureBtn" ng-click="saveOrUpdateCapitalNumber()">确定</span>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

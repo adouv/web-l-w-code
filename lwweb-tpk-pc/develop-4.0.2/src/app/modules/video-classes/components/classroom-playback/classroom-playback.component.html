@@ -1,0 +1,58 @@
+<div class="classroom">
+    <div *ngIf="myClassesList?.length > 0">
+        <p class="title w50 mb20 mt20">我的课</p>
+        <div class="warp" *ngIf="myClassesList?.length > 0">
+            <div class="box" *ngFor="let clazz of myClassesList">
+                <div class="box-wrap" [style.background]="clazz?.subjectCode | backgroundImgCss" (click)="routeToMyclass(clazz)">
+                    <p class="subject-name" [title]="clazz.subjectName">{{ clazz.subjectName }}</p>
+                    <div class="box-wrap-content">
+                        <div class="mr5"><em class="iconfont video_start"></em></div>
+                        <div class="boxContent">
+                            <p [title]="clazz.gradeClass">{{ clazz.gradeName }}{{ clazz.className }}</p>
+                            <p>已录制&nbsp;{{ clazz.total ? clazz.total : 0 }}&nbsp;节</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <p class="title setting mt20" *ngIf="isShowButton">
+        <span>我关注的课</span>
+        <span (click)="btnFollow(true);"><span class="mr10">重新配置</span><em></em></span>
+    </p>
+    <div *ngIf="myFocusedClassesList?.length > 0">
+        <div class="mt20">
+            <div class="focused-class" *ngFor="let myFocusedClass of myFocusedClassesList; let j=index">
+                <div class="focused-class-grade">
+                    <span>{{myFocusedClass.name}}</span>
+                    <ul class="focused-class-clazz-wrap">
+                        <li class="focused-class-clazz-content" [ngClass]="{'active':myFocusedClass.firstActiveId == focusedClass.id }" (click)="this.focusedLoad=true; selectValue(j,i,myFocusedClass)" *ngFor="let focusedClass of myFocusedClass.classList;let i = index"><em>{{focusedClass.name}}</em></li>
+                    </ul>
+                </div>
+                <div class="focused-class-clazz" *ngIf="!focusedLoad">
+                    <div class="focused-class-clazz-detail">
+                        <div class="focused-class-clazz-detail-content" *ngFor="let detailClass of myFocusedClass.selectedAllClass;let i=index">
+                            <div class="focused-class-clazz-detail-content-wrap" [style.background]="detailClass?.subjectCode | backgroundImgCss" (click)="routeToclazz(detailClass)">
+                                <p class="focused-class-clazz-detail-content-wrap-subjectname" [title]="detailClass.subjectName">{{ detailClass.subjectName }}</p>
+                                <div class="focused-class-clazz-detail-content-wrap-content">
+                                    <em class="iconfont video_start mr5"></em>
+                                    <p>
+                                        <span [title]="detailClass.teacherName">{{ detailClass.teacherName }}</span>
+                                    </p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="no-result" *ngIf="myClassesList?.length <= 0 && !isShowButton">
+    <!-- <img src="../../../../../assets/images/classback-noresult.png" alt="暂无匹配课堂回放数据">  -->
+    <p>暂无课堂回放</p>
+</div>

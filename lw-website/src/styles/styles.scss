@@ -1,0 +1,72 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import "clear";
+@import "variable";
+@import "mixin";
+@import "cover-ant";
+
+
+body{
+	min-height: 100%;
+	height: auto;
+	position: relative;
+	min-width: px2rem(1365px);
+	// min-width: px2rem(1024px);
+	@include scroll-bar();
+}
+
+.scrollbar{
+	@include scroll-bar()
+}
+
+.ant-tabs-nav-scroll {
+    line-height: 65px !important;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	-o-box-sizing: border-box;
+	box-sizing: border-box;
+}
+.ant-tabs-bar {
+    border-bottom: 0 !important;
+}
+.slideshow-container   .slick-dots{
+	top:38px
+}
+.banner-container .slideshow-container  .slick-dots li   button{
+	width: 60px !important;
+	height: 30px !important;
+}
+.banner-container .slideshow-container  .slick-dots  li   button:before{
+    width: 20px !important;
+    height: 20px !important;
+    border-radius: 50% !important;
+}
+.banner-container .slideshow-container .slick-dots  li.slick-active  button:before{
+	background-color:#ffa500 !important;
+	width: 20px !important;
+	height:20px !important;
+	transform: translate(-50%, -50%)scale(1) !important;
+}
+// .ant-dropdown-menu-item{
+// 	padding: 15px 15px 10px;
+// 	margin: 0;
+// 	clear: both;
+// 	font-size: 14px;
+// 	font-weight: normal;
+// 	color: rgba(0, 0, 0, 0.65);
+// 	white-space: nowrap;
+// 	cursor: pointer;
+// 	transition: all .3s;
+// 	line-height: 22px;
+// 	font-size: 18px !important;
+// 	font-family: MicrosoftYaHei;
+// 	color: #666666;
+// }
+// .ant-dropdown-menu-item > a, .ant-dropdown-menu-submenu-title > a {
+// 	color: rgba(0, 0, 0, 0.65);
+// 	display: block;
+// 	padding: 0; 
+// 	margin: 0; 
+// 	transition: all .3s;
+// }

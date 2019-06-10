@@ -1,0 +1,70 @@
+.basicLibrary .set_icon {
+    font-size: 20px;
+    color: #786cec;
+    width: 30px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.basicLibrary .mal10 {
+    margin-left: 10px;
+}
+
+.basicLibrary .verMiddle {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+
+/* 基本信息详情样式 */
+
+.basicDetail {
+    padding: 0 20px;
+    min-width: 1200px;
+    overflow: auto;
+}
+
+.basicDetail .crumbs {
+    padding: 20px 0 10px;
+    font-size: 14px;
+}
+
+.basicDetail .crumbs span {
+    color: #999;
+}
+
+.basicDetail .crumbs_tit:hover {
+    color: #0096ff;
+}
+
+.basicDetail .assetInfo {
+    width: 60%;
+    margin: 0 auto;
+}
+
+.basicDetail .assetInfo_list {
+    padding: 10px 0;
+}
+
+.basicDetail .readAsset_name {
+    text-align: center;
+    height: 40px;
+    line-height: 40px;
+    border-bottom: 1px solid#dbe3ee;
+    font-size: 16px;
+}
+
+.basicDetail .assetName {
+    display: inline-block;
+    width: 230px;
+    text-align: right;
+    vertical-align: middle;
+}
+
+.basicDetail .assetDetail {
+    width: 62%;
+    display: inline-block;
+    line-height: 24px;
+    margin-left: 3px;
+    vertical-align: middle;
+}

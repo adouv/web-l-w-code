@@ -1,0 +1,250 @@
+.bdp.layer_fixed .ngdialog-content {
+    position: absolute;
+    width: 900px;
+    height: 600px;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    bottom: 0;
+    z-index: 999;
+    -webkit-box-shadow: 0 0 12px 0 rgba( 7, 0, 2, 0.3);
+    box-shadow: 0 0 12px 0 rgba( 7, 0, 2, 0.3);
+    background: #fff;
+}
+
+.bdp.layer_fixed .ngdialog-overlay,.bdp.layer_fixed_small .ngdialog-overlay,.bdp.layer_fixed_little .ngdialog-overlay{
+    display: inline-block;
+}
+
+.bdp_list_search .dialog-header {
+    height: 40px;
+    text-align: center;
+    border-bottom: 1px solid #f8f8f8;
+    line-height: 40px;
+    font-size: 16px;
+    margin-bottom: 20px
+}
+.bdp_list_search .dialog-close {
+    float: right;
+    width: 40px;
+    margin-right: 5px;
+}
+.bdp.layer_fixed .ngdialog-close,.bdp.layer_fixed_small .ngdialog-close,.bdp.layer_fixed_little .ngdialog-close{
+    display: none;
+}
+
+.bdp_list_search .dialog-list{
+    width:88%;
+    margin:0 auto;
+}
+
+.bdp_list_search .dialog-list .dialog_name{
+    display: inline-block;
+    width: 150px;
+    text-align: right;
+    font-size: 14px;
+    padding: 15px 0;
+    margin-right:  20px;
+}
+
+.bdp_list_search .dialog-list .dialog_input{
+    display: inline-block;
+    text-align: left;
+    line-height: 30px;
+    height: 30px;
+    vertical-align: middle;
+    width: 542px;
+    border:1px solid #dbe3ee;
+    padding:0 10px;
+    cursor: pointer;
+}
+.bdp_list_search .dialog-list .dialog_input_middle{
+    display: inline-block;
+    border: 1px solid #dae4ee;
+    line-height: 30px;
+    height: 30px;
+    vertical-align: middle;
+    padding:0 10px;
+    width: 100%;
+    cursor: pointer;
+}
+
+.bdp_list_search .dialog-list .dialog_date{
+    position: relative;
+    display: inline-block;
+    width: 260px;
+}
+
+.bdp_list_search .dialog-list .dialog_line{
+    color:#dbe3ee;
+}
+
+.bdp_list_search .dialog-list .dialog_date_icon{
+    position: absolute;
+    right: 10px;
+    top: 2px;
+    color: #786cec ;
+}
+
+.bdp_list_search .dialog-list .dialog_applyAccount{
+    cursor: inherit;
+}
+
+.bdp_list_search .dialog-btn{
+    text-align: center;
+    position: absolute;
+    width: 100%;
+    bottom: 20px;
+}
+
+.bdp_list_search .btn_bg {
+    margin-left: 10px;
+    display: inline-block;
+    padding: 0 15px;
+    height: 30px;
+    line-height: 30px;
+    background-color: #0096ff;
+    border: 1px solid #0096ff;
+    color: #fff;
+    font-size: 14px;
+    border-radius: 3px;
+    cursor: pointer;
+    vertical-align: middle;
+    min-width: 70px;
+    text-align: center;
+}
+
+.bdp_list_search .btn_bg:hover {
+    border-style: solid;
+    border-width: 1px;
+    border-color: #0096ff;
+    border-radius: 3px;
+    background-color: #0096ff;
+    box-shadow: 0 2px 4px 0 rgba(0, 127, 255, 0.5);
+    height: 30px;
+}
+.bdp_list_search .btn_bd {
+    display: inline-block;
+    padding: 0 15px;
+    height: 30px;
+    line-height: 30px;
+    border: 1px solid #0096ff;
+    color: #0096ff;
+    font-size: 14px;
+    border-radius: 3px;
+    cursor: pointer;
+    vertical-align: middle;
+    min-width: 70px;
+    text-align: center;
+}
+
+.bdp_list_search .btn_bd:hover {
+    border-style: solid;
+    border-width: 1px;
+    border-color: #0096ff;
+    border-radius: 3px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px 0 rgba(0, 127, 255, 0.5);
+    height: 30px;
+}
+
+.bdp .dialog-content{
+    padding: 0 20px;
+}
+.bdp .dialog_select{
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    font-size: 14px;
+    width: 542px;
+    height: 30px;
+    color: #333;
+    padding: 0 30px 0 4px;
+    background: url("../images/drop_down.png") no-repeat 100%;
+    background-size: 29px 29px;
+    border: 1px solid #dbe3ee;
+    box-sizing: border-box;
+    margin: 0 10px 0 0;
+    vertical-align: middle;
+    cursor: pointer;
+}
+
+/*400X260小弹窗*/
+.bdp .bdp.layer_fixed_little .ngdialog-content{
+    position: fixed;
+    width: 400px;
+    height: 260px;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    z-index: 999;
+    -webkit-box-shadow: 0 0 12px 0 rgba( 7, 0, 2, 0.3);
+    box-shadow: 0 0 12px 0 rgba( 7, 0, 2, 0.3);
+    background: #fff;
+}
+.bdp .auto-box{
+    max-height: 450px;
+    overflow: auto;
+}
+.bdp .auto-box::-webkit-scrollbar-track {
+    border-radius: 10px;
+    background-color: #ffffff;
+}
+
+.bdp .auto-box::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+    background-color: #ffffff;
+}
+
+.bdp .auto-box::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+/*弹窗中的头部和底部*/
+.bdp .dialog-content-box{
+    width:100%;
+    height: 100%;
+}
+.bdp .dialog-content-box .title-box{
+    line-height: 40px;
+    text-align: center;
+    position: relative;
+    font-size: 16px;
+    border-bottom: 1px solid #dbe3ee;
+}
+.bdp .dialog-content-box .title-box .del_btn{
+    position: absolute;
+    right: 20px;
+}
+.bdp .dialog-content-box .button-box{
+    width: 100%;
+    text-align: center;
+    position: absolute;
+    bottom: 20px;
+}
+.bdp .dialog-content-box .h560-main-box{
+    width: 100%;
+    height: 560px;
+    overflow: auto;
+    padding: 0 20px;
+}
+
+.bdp .dialog-content-box .h560-main-box::-webkit-scrollbar-track {
+    border-radius: 10px;
+    background-color: #ffffff;
+}
+
+.bdp .dialog-content-box .h560-main-box::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+    background-color: #ffffff;
+}
+
+.bdp .dialog-content-box .h560-main-box::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.2);
+}

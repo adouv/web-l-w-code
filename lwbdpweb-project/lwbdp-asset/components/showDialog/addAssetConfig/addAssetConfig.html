@@ -1,0 +1,29 @@
+<div class="basicDialog ui-popup-large">
+    <form class="w5c-form" novalidate name="addConfigForm">
+        <div class="addConfig">
+            <div class="addConfig_tit">
+                添加年限标准置配置
+                <span class="iconfont icon-close del_btn" ng-click="clickEvent()"></span>
+            </div>
+            <div class="addConfig_form">
+                <div class="form_list">
+                    <span class="form_tit">资产小类名称</span>
+                    <input type="text" placeholder="50个汉字以内，必填" class="input_class" ng-model="return.name" name="smlname" required>
+                </div>
+                <div class="form_list">
+                    <span class="form_tit">最低使用年限</span>
+                    <input type="number" min="0" placeholder="只允许输入0和正整数，0表示可以无限使用" class="input_class" 
+                    ng-model="return.minLifecycle" ng-keyup="numFlite()" name="limit" required>
+                </div>
+                <div class="form_list">
+                    <span class="form_tit fl">备注</span>
+                    <textarea class="textarea_class" placeholder="500个汉字以内，不必填" ng-model="return.description"></textarea>
+                </div>
+            </div>
+            <div class="btn_poab">
+                <span class="btn_bd" ng-click="clickEvent()">取消</span>
+                <span class="btn_bg" form-submit-valid="sure()">确定</span>
+            </div>
+        </div>
+    </form>
+</div>

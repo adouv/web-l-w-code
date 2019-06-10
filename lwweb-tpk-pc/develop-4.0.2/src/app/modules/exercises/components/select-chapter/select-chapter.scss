@@ -1,0 +1,84 @@
+@import "../../../../../styles/variable";
+
+.select-chapter::ng-deep{
+	//height: 500px;
+	height: computer(500px);
+	border-bottom: 1px solid #ebebeb;
+}
+
+.chapter-search {
+	padding: computer(10px) computer(20px) computer(10px);
+	border-bottom: 1px solid #ebebeb;
+}
+
+.chapter-search-condition::ng-deep{
+	input {
+		width: computer(240px);
+		font-size: computer(14px);
+	}
+	.anticon-search{
+		font-size: computer(15px) !important;
+	}
+	.select-120 {
+		width: computer(120px);
+		margin: 0 5px;
+	}
+}
+
+.search-result {
+	margin-top: 20px;
+	.choose-name {
+		color: $color_font-light;
+		font-size: computer(14px);
+		float: left;
+	}
+	.no-li{
+		color: $color_font-light;
+	}
+	.search-result-list {
+		max-height: computer(80px);
+		width: 90%;
+		float: left;
+		margin-left: computer(8px);
+		flex-wrap: wrap;
+	}
+	.search-result-li {
+		background-color: $color_border;
+		padding: 0 computer(16px);
+		height: computer(30px);
+		line-height: computer(30px);
+		border-radius: computer(15px);
+		margin: 0 computer(10px) computer(10px) 0;
+		cursor: default;
+		span {
+			font-size: computer(14px);
+		}
+		span.close-btn {
+			color: $color_font-deep;
+			cursor: pointer;
+			margin-left: computer(14px);
+			&:before {
+				font-size: computer(12px) !important;
+			}
+			&:hover{
+				color: $color_main;
+			}
+		}
+	}
+}
+
+.chapter-list {
+	padding: 20px 0;
+	//height: 420px;
+	height: computer(420px);
+	.chapter-list-tree{
+		margin-left: computer(20px);
+	}
+}
+.footer{
+	//height: 50px;
+	height:computer(50px);
+	button{
+		margin: 0 10px;
+	}
+}

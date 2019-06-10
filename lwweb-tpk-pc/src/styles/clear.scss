@@ -1,0 +1,16 @@
+html {
+    padding: 0;
+    font-family: 'HiraginoSansGB-W3', 'Microsoft YaHei', serif;
+    overflow-x: hidden;
+}
+
+body {
+    margin: 0;
+    background: url(../assets/images/new4.0/bg.png) no-repeat;
+    background-size: cover;
+}
+
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px #ffffff inset !important; //输入框背景颜色
+    -webkit-text-fill-color: #333333 !important; //输入框文字颜色
+}

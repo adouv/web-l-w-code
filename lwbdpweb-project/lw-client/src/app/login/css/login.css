@@ -1,0 +1,245 @@
+.client_login {
+    width: 360px;
+    height: 480px;
+    box-shadow: 0px 8px 12px 0px rgba( 7, 0, 2, 0.3);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    text-align: center;
+    border-radius: 6px;
+    background: #ffffff;
+}
+
+.win7_wrap .client_login {
+    border: 2px solid #eee;
+    box-shadow: none;
+    border-radius: 0;
+    box-sizing: content-box;
+}
+
+.client_login .icon-client_close {
+    position: absolute;
+    font-size: 16px;
+    line-height: 16px;
+    width: 16px;
+    height: 16px;
+    text-align: center;
+    top: 15px;
+    right: 15px;
+    cursor: pointer;
+    color: #999;
+    -webkit-app-region: no-drag;
+}
+
+.client_login .icon-client_close:hover {
+    color: black !important;
+}
+
+.client_login .login-content {
+    width: 100%;
+    text-align: center;
+    height: 100%;
+}
+
+.client_login .logo_box {
+    width: 100%;
+    height: 180px;
+    font-size: 16px;
+    text-align: center;
+    background: url('../../../assets/img/loginbg.png') no-repeat;
+}
+
+.client_login .logo_box_newp {
+    background: url('../../../assets/img/newpwabg.png') no-repeat center;
+}
+
+.client_login .login_newp_msg {
+    position: absolute;
+    top: 150px;
+    left: 0px;
+    width: 100%;
+    padding: 0 10px;
+    font-weight: bold;
+    color: #226cfb;
+    text-align: justify !important;
+    text-justify: inter-ideograph;
+    /*IE*/
+}
+
+.client_login .logo_box .red_info {
+    font-size: 14px;
+    color: #ff272e;
+    margin-top: 4px;
+}
+
+.client_login .logo_box .logo {
+    display: inline-block;
+    width: 68px;
+    height: 68px;
+    margin-bottom: 10px;
+    background: url('../image/login_logo.png') center no-repeat;
+    background-size: contain;
+}
+
+.client_login .input_box {
+    padding: 0 30px;
+    margin-top: 36px;
+}
+
+.client_login .input_box .clientIconfont {
+    font-size: 20px;
+    color: #999999;
+    vertical-align: middle;
+    margin-right: 6px;
+}
+
+.client_login .input_box input {
+    border: none;
+    border-bottom: 1px solid #ebebeb;
+    line-height: 40px;
+    width: 269px;
+    height: 40px;
+    margin: 0;
+    padding: 0;
+}
+
+.client_login .input_box .login_input_2 {
+    margin-top: 20px;
+}
+
+.client_login .input_box.first input {
+    width: 300px;
+}
+
+.client_login .input_box .input_class::-webkit-input-placeholder {
+    font-size: 14px;
+}
+
+.client_login .loginButton,
+.btn_white,
+.btn_blue {
+    width: 100px;
+    height: 40px;
+    line-height: 40px !important;
+    text-align: center;
+    color: #ffffff;
+    border-radius: 6px;
+    display: inline-block;
+    margin-top: 30px;
+    cursor: pointer;
+}
+
+.client_login .loginButton {
+    width: 160px;
+}
+
+.client_login .loginButton:hover {
+    box-shadow: 0px 2px 4px 0px rgba( 59, 188, 250, .5);
+}
+
+.client_login .lostMessage {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    color: #226cfb;
+    cursor: pointer;
+}
+
+.client_login .tdcode {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    color: #999999;
+    cursor: pointer;
+}
+
+.client_login .login-garden {
+    height: 100%;
+    background: url(../image/login_bg2.png) bottom no-repeat;
+}
+
+.client_login .login-garden .title {
+    height: 60px;
+    line-height: 60px;
+    font-size: 16px;
+}
+
+.client_login .login-garden .garden-list {
+    padding: 0 30px;
+    height: 360px;
+}
+
+.client_login .garden-list .garden-item {
+    width: 300px;
+    height: 120px;
+    border: 1px solid #ebebeb;
+    border-radius: 6px;
+    text-align: left;
+    padding: 13px 20px;
+    overflow: hidden;
+    margin-bottom: 20px;
+    position: relative;
+    cursor: pointer;
+}
+
+.client_login .garden-list .garden-item:hover {
+    border-color: #3bbcfa;
+}
+
+.client_login .garden-list .garden-item .icon-rightarrowIcon {
+    color: #3bbcfa;
+    display: none;
+    position: absolute;
+    top: 50px;
+    right: 10px;
+}
+
+.client_login .garden-list .garden-item:hover .icon-rightarrowIcon {
+    display: block;
+}
+
+.client_login .icon-authentication {
+    color: #00bb8b;
+    margin-left: 5px;
+}
+
+.client_login .login-garden .login-garden-name img {
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    vertical-align: middle;
+}
+
+.client_login .login-garden .login-garden-name {
+    height: 40px;
+    line-height: 40px;
+    margin: 8px 0px;
+}
+
+.client_login .default_head {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    background: url('../image/user_big.png') center no-repeat;
+    vertical-align: middle;
+    border-radius: 20px;
+    background-size: 40px 40px;
+}
+
+.client_login .login_drag {
+    width: 100%;
+    height: 30px;
+    position: absolute;
+}
+
+.client_login .login_drag span {
+    color: #fff;
+    cursor: pointer;
+}
+
+.client_login .login_drag span:hover {
+    color: #fff !important;
+}

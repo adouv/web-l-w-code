@@ -1,0 +1,210 @@
+@import "../../../styles/variable";
+@import "../../../styles/mixin";
+@import "../../../styles/subjectBg";
+@import "../../../styles/common.scss";
+.video-card {
+    width: computer(189.42px);
+    height: computer(120px);
+    .video-item {
+        // padding: computer(10px);
+        position: relative;
+        cursor: pointer;
+        border-radius: computer(6px);
+        // &:first-child {
+        //     // padding: computer(10px) computer(20px) computer(10px) 0;
+        //     margin: computer(10px) computer(20px) computer(10px) 0;
+        // }
+        // &:last-child {
+        //     width: computer(240px);
+        // }
+        // .out-border {
+        //     border: 2px solid #226cfb;
+        //     border-radius: computer(6px);
+        // }
+        .video-box {
+            width: computer(160px);
+            height: computer(100px);
+            font-weight: normal;
+            font-stretch: normal;
+            letter-spacing: 0px;
+            color: #ffffff;
+            font-family: MicrosoftYaHei, sans-serif;
+            .video-detail {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+            .video-detail-subjectname {
+                font-size: computer(18px);
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+                margin-top: computer(5px);
+                padding: 0 10px;
+                >span {
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                    &.s1 {
+                        max-width: computer(60px);
+                    }
+                    &.s2 {
+                        max-width: computer(150px) !important;
+                        margin: 0 auto;
+                    }
+                    &.s3 {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        >span {
+                            margin: 0;
+                            padding: 0;
+                            display: inline-block;
+                            max-width: computer(60px);
+                            font-size: computer(12px);
+                            overflow: hidden;
+                            text-overflow: ellipsis;
+                            white-space: nowrap;
+                        }
+                    }
+                }
+                .xiazai:before {
+                    content: "\e695";
+                    font-size: computer(21px);
+                }
+            }
+            .video-detail-teachername {
+                display: flex;
+                flex-direction: row;
+                // justify-content: center;
+                align-items: center;
+                width: 100%;
+                // margin: computer(10px) 0;
+                .video_start {
+                    margin-left: computer(10px);
+                }
+                .video_start:before {
+                    content: "\e661";
+                    font-size: computer(25px);
+                }
+                .video-detail-teachername-info {
+                    font-size: computer(14px) !important;
+                    margin-left: computer(5px);
+                    max-width: computer(50px);
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                    overflow: hidden;
+                }
+                .video-detail-teachername-class {
+                    font-size: computer(14px) !important;
+                    margin-left: computer(5px);
+                    max-width: computer(70px);
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                    overflow: hidden;
+                }
+            }
+            .video-detail-data {
+                width: 100%;
+                min-width: computer(180px);
+                display: flex;
+                flex-direction: row;
+                flex-wrap: nowrap;
+                justify-content: space-between;
+                padding: 0 computer(10px);
+                .video-detail-data-left {
+                    overflow: hidden;
+                    max-width: computer(90px);
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                    font-size: computer(14px);
+                }
+                .video-detail-data-right {
+                    overflow: hidden;
+                    max-width: computer(150px);
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                    font-size: computer(12px);
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: center;
+                    align-items: center;
+                    margin: 0 auto;
+                }
+            }
+        }
+        .text-box {
+            flex-direction: row;
+            width: computer(240px);
+            color: $color_font-deep;
+            margin: computer(10px) 0;
+            line-height: 1;
+        }
+        .teacher-name {
+            font-size: computer(13px);
+            color: $color_font-deep;
+            @include line-ell(185px)
+        }
+        .stu-name {
+            @include line-ell(40px);
+            min-width: 40px;
+            margin-left: 20px;
+        }
+        .class-name {
+            color: $color_font-light;
+            line-height: 1;
+            span {
+                font-size: 11px;
+                line-height: 11px;
+            }
+        }
+        .ranking {
+            display: inline-block;
+            font-size: computer(13px);
+            color: #ffffff;
+            text-align: center;
+            width: computer(32px);
+            height: computer(32px);
+            line-height: computer(32px);
+            background-blend-mode: normal, normal;
+            border-radius: 50%;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        .red {
+            background-image: linear-gradient(0deg, #ff7d55 0%, #febb5c 100%), linear-gradient(#ffffff, #ffffff);
+        }
+        .blue {
+            background-image: linear-gradient(0deg, #226cfb 0%, #00d3ec 100%), linear-gradient(#ffffff, #ffffff);
+        }
+    }
+}
+
+.video-disable {
+    opacity: 0.5;
+    .video-item {
+        cursor: not-allowed;
+    }
+}
+
+.video-active {
+    .img-box {
+        position: relative;
+        // &:hover img {
+        // 	margin-top: -6%;
+        // 	margin-left: -10%;
+        // 	width: 120%;
+        // 	height: 120%;
+        // }
+    }
+}
+
+.txt-wrapper.active {
+    p,
+    span {
+        color: #226cfb !important;
+    }
+}

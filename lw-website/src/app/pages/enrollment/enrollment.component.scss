@@ -1,0 +1,216 @@
+//enrollment-bg.jpg
+
+.enrollment {
+	width: 100%;
+	// min-height: 900px;
+	height: 100vh;
+	background: url(../../../assets/images/enrollment-bg.jpg) center center no-repeat;
+	background-size: cover; 
+	padding-top: 60px;
+	overflow: hidden;
+	position: relative;
+	.title {
+		text-align: center;
+		width: 100%;
+		display: flex;
+		justify-content: center;
+		span{
+			font-size: 24px;
+			color: #fff;
+		}
+	}
+	// .huan {      
+	// 	overflow: hidden;
+	// 	background-image:url(../../../assets/images/huan.png);
+	// 	background-repeat: no-repeat;
+	// 	position: absolute;
+	// 	width: 28%;
+	// 	height: 59%;
+	// 	top: 109px;
+	// 	right: 450px;
+	// 	background-size: contain;
+	// }
+	.content {
+		// width: 1020px;
+		// width: 70%;
+		// height: 590px;
+		// height: calc(100vh - 297px);
+		// color: #fff;
+		// margin: 0 auto;
+		// padding-left: 520px;
+		// padding-left: 30%;
+		// font-size: 16px;
+		// line-height: 30px;
+
+
+		width: 70%;
+		height: calc(100vh - 297px);
+		color: #fff;
+		margin: 0 auto;
+		/* padding-left: 30%; */
+		font-size: 16px;
+		line-height: 30px;
+		position: absolute;
+		left: 46%;
+		top: 15%;
+		.huan{
+			// overflow: hidden;
+			// background-image:url(../../../assets/images/huan.png);
+			// background-repeat: no-repeat;
+			// width: 606px;
+			// height: 520px;
+			// height: calc(100vh - 297px);
+			// background-size: contain;
+			overflow: hidden;
+			background-image: url(../../../assets/images/huan.png);
+			background-repeat: no-repeat;
+			width: 606px;
+			height: 520px;
+			background-size: contain;
+
+			.scroll{
+				// overflow-y: auto;
+				// position: absolute;
+				// top: 160px;
+				// height: calc(100vh - 457px);
+				// width: 600px;
+				overflow-y: auto;
+				position: absolute;
+				top: 55px;
+				height: calc(100vh - 535px);
+				width: 515px;
+			}
+		}
+		
+		// div {
+		// 	width: 606px;
+		// }
+	}
+.bottom-slogn-fix{
+	position: fixed;
+	bottom: 27%;
+	// width: 100%;
+	width: 100%;
+	.bmsj {
+		display: flex;
+		justify-content: center;
+		margin-left: 18%;
+		// width: 1000px;
+		height: 50px;
+		color: #fff;
+		// margin: 0 auto;
+		// padding-left: 460px;
+		// margin-top: 20px;
+	}
+}
+	
+
+	.bottom-fix{
+		// width: 100%;
+		width: 100%;
+		position: fixed;
+		bottom: 65px;
+			.btn {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				// padding-top: 100px;
+		
+				span {
+					height: 60px;
+					line-height: 60px;
+					font-size: 21px;
+					border-radius: 5px;
+					background: linear-gradient(to right, #ffa300, #ff6700);
+					padding: 0 52px;
+					color: #fff;
+				}
+		
+				span:first-child {
+					margin-right: 80px;
+				}
+			}		
+	}
+	
+}
+.register-header{
+	margin-bottom: 10px !important;
+	width: 500px;
+	height: 50px;
+	font-size: 18px;
+	margin: 0 auto;
+	background: #00dcff;
+	text-align: center;
+    span{
+		line-height: 50px;
+    }
+}
+
+.bg-start{
+	width: 500px;
+	height: 50px;
+	background: #7552f8;
+	font-size: 18px;
+	margin: 0 auto;
+    span{
+		text-align: center;
+		line-height: 50px;
+    }
+}
+
+.bg-rest{
+    width: 500px;
+	margin: 0 auto;
+	background: #fbb069;
+	font-size: 18px;
+	height: 50px;
+    span{
+        text-align: center;
+		line-height: 50px;
+    }
+}
+.bg-over{
+    width: 500px;
+	margin: 0 auto;
+	background: #f88585;
+	font-size: 18px;
+	height: 50px;
+    span{
+        text-align: center;
+		line-height: 50px;
+    }
+}
+.bg-dayOver{
+	width: 500px;
+	margin: 0 auto;
+	background:#9175f9;
+	font-size: 18px;
+	height: 50px;
+	span{
+		text-align: center;
+		line-height: 50px;
+	}
+  
+}
+
+
+.scroll-l::-webkit-scrollbar {
+    /*滚动条整体样式*/
+    width: 6px;
+    height: 10px;
+    // position: absolute;
+}
+
+.scroll-l::-webkit-scrollbar-thumb {
+    /*滚动条里面小方块*/
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 2px;
+    opacity: 0.2;
+}
+
+.scroll-l::-webkit-scrollbar-track {
+    border-radius: 2px; // background: #EDEDED;
+}
+
+
+

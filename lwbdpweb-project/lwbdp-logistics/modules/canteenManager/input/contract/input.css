@@ -1,0 +1,136 @@
+.canteen_add {}
+
+.canteen_add .canteen_add_title {
+    font-size: 16px;
+    border-bottom: 1px solid #dbe3ee;
+    height: 40px;
+    line-height: 40px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.canteen_add .canteen_add_form {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.canteen_add .canteen_li {
+    margin-bottom: 18px;
+    font-size: 0;
+}
+
+.canteen_add .canteen_li .pact_tit {
+    font-size: 14px;
+    text-align: right;
+    display: inline-block;
+    margin-right: 10px;
+    vertical-align: middle;
+    width: 160px;
+}
+
+.canteen_add .canteen_li .pact_form {
+    width: 500px;
+}
+
+.canteen_add .canteen_li .pact_textArea {
+    height: 76px;
+    width: 75%;
+}
+
+.canteen_add .canteen_li .mart5 {
+    margin-top: 5px;
+}
+
+.canteen_add .canteen_li .pact_span {
+    display: inline-block;
+    width: 232px;
+    position: relative;
+    vertical-align: middle;
+    margin-right: 10px;
+}
+
+.canteen_add .canteen_li .pact_span input {
+    width: 100%;
+}
+
+.canteen_add .canteen_li .line_bot {
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 14px;
+    margin-right: 10px;
+}
+
+.canteen_add .canteen_li .pact_span .dateIcon {
+    position: absolute;
+    top: 0;
+    right: 5px;
+    color: #786cec;
+    font-size: 20px;
+}
+
+.canteen_add .canteen_li .upload_botton {
+    position: relative;
+    width: calc(100% - 170px);
+}
+
+.canteen_add .canteen_li .upload_botton:hover .upload_prompt {
+    display: block;
+}
+
+.canteen_add .canteen_li .upload_prompt {
+    position: absolute;
+    top: 40px;
+    left: 0;
+    width: 318px;
+    background: #fff;
+    box-shadow: 0px 3px 6px 1px rgba(0, 0, 0, .3);
+    font-size: 13px;
+    padding: 16px;
+    line-height: 24px;
+    display: none;
+}
+
+.canteen_add .canteen_li .upload_pics {
+    overflow: hidden;
+}
+
+.canteen_add .upload_pics_list {
+    float: left;
+    margin: 0 30px 20px 0;
+    text-align: center;
+}
+
+.canteen_add .upload_pics_list .upload_pics_liName {
+    font-size: 14px;
+    display: inline-block;
+    margin-top: 8px;
+}
+
+.canteen_add .canteen_add_button {
+    width: 100%;
+    text-align: center;
+    padding: 0px 0 30px;
+}
+
+.canteen_add .canteen_add_button span {
+    display: inline-block;
+    margin-right: 10px;
+}
+/*上传*/
+.canteen_add .attach_upload .head_wrapper .lf_name{
+    /*display: none;*/
+}
+.canteen_add .attach_upload .mar_left160{
+    /*margin-left: 0;*/
+}
+.canteen_add .float-massage{
+    /*left: 0;*/
+    font-size: 14px;
+}
+.canteen_add .filePreview .filePic .file_showPic img{
+    width: auto;
+    height: auto;
+}
+.canteen_add  .attach_upload .title_wrapper{
+    margin-left: 10px;
+}

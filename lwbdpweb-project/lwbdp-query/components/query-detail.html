@@ -1,0 +1,23 @@
+<div class='approval-wrapper'>
+    <div class='search-wrapper'>
+        <div class="search_box clearfix  search_box_small">
+            <div class="query-icon"></div>
+            <p class="input_group">
+                <input type="text" class="input_class" maxlength="50" placeholder="请输入项目审批表编号" ng-keyup="queryDetail.goSearch(queryDetail.searchNumber,$event)"
+                ng-model='queryDetail.searchNumber'>
+                <i class="iconfont icon-search ng-scope" ng-if="!queryDetail.searchNumber.length"></i>
+                <i class="iconfont icon-error" ng-if="queryDetail.searchNumber.length" ng-click="queryDetail.cleanKeywords()"></i>
+            </p>
+            <button class="btn btn-default cur" type='button' ng-click='queryDetail.getApprovalSheet(queryDetail.searchNumber)'>查询 </button>
+            <i class="icon-prompt iconfont"></i>
+            <div class='help-wrapper'>
+            </div>
+        </div>
+    </div>
+    <div ng-bind-html='queryDetail.approvalSheet' class='sheet-detail' ng-if='queryDetail.approvalSheet'>
+    </div>
+    <div ng-if="queryDetail.approvalSheet === null" class='no-data center-hor'>
+        <img src="../images/nodata2.png" alt="暂无数据">
+        <p>无此项目审批表</p>
+    </div>
+</div>

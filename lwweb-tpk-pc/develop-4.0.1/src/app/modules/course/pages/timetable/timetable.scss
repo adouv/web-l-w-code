@@ -1,0 +1,200 @@
+@import "../../../../../styles/variable";
+
+:host {
+	width: 100%;
+}
+
+.yunhome::ng-deep {
+	.ant-tabs-nav-scroll {
+		text-align: center;
+	}
+
+	nz-tabs-nav {
+		margin: 0 computer(20px) !important;
+	}
+
+	.ant-tabs-bar {
+		margin-bottom: 0px !important;
+	}
+
+	.tabPromise {
+		nz-tabs-nav {
+			display: none;
+		}
+	}
+}
+
+.yunhome {
+	width: 100%;
+	height: 100%;
+	position: relative;
+	display: flex;
+	flex-direction: column;
+
+	//padding: 0 computer(20px);
+	.banner {
+		width: 100%;
+		height: computer(100px);
+		position: relative;
+		text-align: center;
+		line-height: computer(100px);
+
+		.banner_close {
+			position: absolute;
+			top: 50%;
+			right: computer(10px);
+			margin-top: -25px;
+			cursor: pointer;
+			font-size: 2.5rem;
+			line-height: 40px;
+			color: rgba(255, 255, 255, 0.5);
+		}
+
+		.banner_name {
+			width: 100%;
+			height: 100%;
+			position: absolute;
+			top: 0;
+			left: 0;
+			color: white;
+			font-size: computer(20px);
+			overflow: hidden;
+			white-space: nowrap;
+			text-overflow: ellipsis;
+			padding: 0 20px;
+		}
+
+		img {
+			width: 100%;
+			height: 100%;
+		}
+	}
+
+	.spin-loading {
+		position: absolute;
+		top: 0;
+		left: 0;
+		text-align: center;
+		width: 100%;
+		height: 100%;
+		background: #fff;
+	}
+
+	.filter {
+		height: computer(80px);
+		display: flex;
+		align-items: center;
+		padding: 0 computer(20px) computer(10px) computer(20px);
+
+		.school {
+			width: 200px;
+			margin: 0 10px;
+			margin-left: 0;
+			z-index: 1;
+		}
+
+		.year {
+			width: 140px;
+			margin: 0 10px;
+			z-index: 1;
+		}
+
+		.school_year {
+			width: 140px;
+			margin: 0 10px;
+			z-index: 1;
+		}
+
+		.week {
+			width: 140px;
+			margin: 0 10px;
+			z-index: 1;
+		}
+
+		.holder {
+			width: 0;
+			flex-grow: 1;
+		}
+
+		.greenkuai {
+			width: computer(20px);
+			height: computer(20px);
+			margin-left: computer(20px);
+			background: #1BC371;
+		}
+
+		.bluekuai {
+			width: computer(20px);
+			height: computer(20px);
+			margin-left: computer(20px);
+			background: #00A1EA;
+		}
+
+		.blackkuai {
+			width: computer(20px);
+			height: computer(20px);
+			margin-left: computer(20px);
+			background: #77879C;
+		}
+
+		.beikename {
+			font-size: computer(14px);
+			margin-left: computer(10px);
+			color: #333;
+		}
+	}
+
+	// .tabs {
+	// 	padding: 0 20px;
+	// }
+	// .sheet {
+	// 	flex-grow: 1;
+	// 	height: 0;
+	// 	padding: 0 0 0 20px;
+	// }
+	.nolesson {
+		width: 100%;
+		height: 100%;
+		position: relative;
+
+		.center {
+			position: absolute;
+			top: 40%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			text-align: center;
+
+			img {
+				width: 240px;
+				height: 11.25rem;
+				margin-bottom: 10px;
+			}
+
+			.nolesson_name {
+				font-size: computer(14px);
+				color: #999;
+			}
+		}
+	}
+}
+
+::ng-deep {
+	.ui-dropdown {
+		.ui-dropdown-label {
+			font-size: computer(14px);
+			line-height: 20px;
+		}
+	}
+
+	.ui-dropdown .ui-dropdown-trigger>.fa {
+		margin-top: .7em;
+		margin-left: -.2em;
+	}
+}
+
+// .footer {
+// 	height: computer(50px);
+// 	line-height: computer(50px);
+// 	text-align: center;
+// 	border-top: 1px solid $color_border;
+// }

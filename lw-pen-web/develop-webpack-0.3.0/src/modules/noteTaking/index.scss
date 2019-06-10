@@ -1,0 +1,101 @@
+@import "../../assets/scss/index.scss";
+.noteTaking {
+    -webkit-app-region: no-drag;
+    position: absolute;
+    left: 0;
+    z-index: 9;
+    right: 0;
+    bottom: 0;
+    overflow: hidden;
+    height: 100%;
+    // canvas {
+    //     border: 1px solid #000;
+    //     margin: 0 auto;
+    //     width: calc(100%-60px);
+    //     height: calc(100%-60px);
+    // }
+    .note-result {
+        background: url("../../assets/images/bg.png");
+        background-size: 100% 100%;
+        height: 100%;
+        font-size: 16px;
+        color: #333333;
+        .ant-layout {
+            background: none;
+            height: 100%;
+        }
+        .ant-layout-content {
+            margin: computer(20px) computer(221px);
+            height: 100%;
+        }
+        .inner-box {
+            background-color: #ffffff;
+            height: calc(100% - #{computer(69px)});
+            overflow: hidden;
+            .bg {
+                background: url("../../assets/images/bibian.png");
+                background-size: 49px;
+                width: 49px;
+                height: 100%;
+            }
+            .content {
+                width: calc(100% - #{computer(49px)});
+                .name {
+                    width: computer(100px);
+                    height: computer(40px);
+                    line-height: computer(40px);
+                    text-align: center;
+                    @include line-ell(79px);
+                    color: #ff7d55;
+                    background-color: #ffffff;
+                    box-shadow: 0px 2px 8px 0px rgba(61, 55, 64, 0.2);
+                    position: absolute;
+                    top: 10px;
+                }
+                .content-text {
+                    margin-top: computer(49px);
+                    padding: 0 computer(18px) computer(10px) 0;
+                    overflow: hidden;
+                    h2 {
+                        font-size: 16px;
+                        font-weight: normal;
+                        color: #333333;
+                    }
+                    .noneImg {
+                        text-align: center;
+                        p {
+                            color: #ff7d55;
+                            opacity: 0.5;
+                            font-size: 14px;
+                        }
+                    }
+                    .note-box {
+                        overflow: hidden;
+                        width: calc(100% - #{computer(10px)});
+                        height: calc(100% - #{computer(25px)});
+                    }
+                }
+            }
+        }
+        .ant-layout-footer {
+            padding: 0;
+            width: 100%;
+            position: fixed;
+            bottom: 0;
+        }
+        .footer {
+            width: 100%;
+            background: #3b5253;
+            height: computer(67px);
+            color: #ff7d55;
+            line-height: computer(67px);
+            .footer-right {
+                position: absolute;
+                right: 40px;
+                .close {
+                    background: none !important;
+                }
+            }
+        }
+    }
+}

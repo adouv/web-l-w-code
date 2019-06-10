@@ -1,0 +1,133 @@
+<div class="exercise-add auto-scroll">
+	<div class="auto-scroll">
+		<div class="header-title">
+			新建习题
+		</div>
+		<div #autoScroll class="exercise-add-content">
+			<div class="exercise-add-container">
+				<div class="exercise-add-type">
+					<nz-select class="exercises-header-select bg-gray radius"
+							   (nzOpenChange)="exerciseTypeChange()"
+							   [(ngModel)]="exerciseTypeCheck"
+							   [nzPlaceHolder]="exerciseTypes.length>0?exerciseTypes[0].name:'暂无题型'">
+						<nz-option *ngFor="let type of exerciseTypes" [nzLabel]="type.name"
+								   [nzValue]="type">
+						</nz-option>
+					</nz-select>
+					<nz-select class="mar-bot-10px radius bg-gray" [nzDisabled]="optionDisable"
+							   (nzOpenChange)="changeGrade($event, selectParams.gradeCode)"
+							   [(ngModel)]="selectParams.gradeCode"
+							   [nzPlaceHolder]="'暂无年级'">
+						<nz-option *ngFor="let grade of gradeList" [nzLabel]="grade.name"
+								   [nzValue]="grade.gradeCode">
+						</nz-option>
+					</nz-select>
+					<nz-select class="mar-bot-10px radius bg-gray" [nzDisabled]="optionDisable"
+							   (nzOpenChange)="changeSubject($event, selectParams.subjectCode)"
+							   [(ngModel)]="selectParams.subjectCode"
+							   [nzPlaceHolder]="'暂无学科'">
+						<nz-option *ngFor="let subject of subjectList" [nzLabel]="subject.name"
+								   [nzValue]="subject.id">
+						</nz-option>
+					</nz-select>
+				</div>
+				<div class="exercise-add-select">
+					<div class="select-content-title-content">
+						<button (click)="selectChapter(0)" tabindex='-1' class="btn-exercise" [nzType]="'default'" nz-button
+								[nzType]="'danger'">
+							<span>选择知识点</span>
+						</button>
+						<div class="select-content-title">已选<span class="margin-left-5">:</span></div>
+					</div>
+					<div class="select-content">
+						<span *ngIf="knowledgeList.length==0" class="no-content-msg">(<span class="margin-left-5">请选择知识点<span class="margin-left-5" style="margin-right: 5px;">,</span>最多可选5个知识点</span><span class="margin-left-5">)</span></span>
+						<span *ngIf="selectStatus" class="span-err">此项不能为空</span>
+						<div *ngIf="knowledgeList&&knowledgeList.length !==0" class="select-contents">
+							<div class="select-tag" *ngFor="let k of knowledgeList">
+								{{k.name}}
+								<span (click)="removeknowledge(k)" class="icon-span">
+								<i class="iconfont icon-label-close"></i>
+							</span>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="exercise-add-select">
+					<div class="select-content-title-content">
+						<button (click)="selectChapter(1)" tabindex='-1' class="btn-exercise" [nzType]="'default'" nz-button
+								[nzType]="'danger'">
+							<span>选择章节</span>
+						</button>
+						<div class="select-content-title">已选<span class="margin-left-5">:</span></div>
+					</div>
+					<div class="select-content">
+						<span *ngIf="outlineList.length==0" class="no-content-msg">(<span class="margin-left-5">请选择章节<span class="margin-left-5" style="margin-right: 5px;">,</span>最多可选5个章节</span><span class="margin-left-5">)</span></span>
+						<span *ngIf="selectStatus" class="span-err">此项不能为空</span>
+						<div *ngIf="outlineList&&outlineList.length !=0" class="select-contents">
+							<div class="select-tag" *ngFor="let k of outlineList">
+								{{k.name}}
+								<span (click)="removeoutline(k)" class="icon-span">
+								<i class="iconfont icon-label-close"></i>
+							</span>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="exercise-editor">
+					<div class="exercise-editor-group exercise-editor-group-stem">
+						<div class="exercise-editor-group-title">
+							题干<span class="margin-left-5">:</span>
+						</div>
+						<div [ngClass]="{'input-err':editContentStatus}" class="exercise-editor-group-content exercise-editor-group-content-ueditor input-err">
+							<ueditor [config]="ueditorConfig" #editfull style="height: 440px;" class="ueditor"
+									 [(ngModel)]="editContent" (ngModelChange)="editContentChange()"></ueditor>
+						</div>
+					</div>
+					<div *ngFor="let d of answerAry;let i = index" class="exercise-editor-group exercise-editor-group-an" >
+						<div *ngIf="d.type == 7||d.type == 6" class="add-answer">
+							<button (click)="addAnswer(i)" tabindex='-1' class="btn-exercise" [nzType]="'default'" nz-button
+									[nzType]="'danger'">
+								<span>添加答案</span>
+							</button>
+						</div>
+						<div class="exercise-editor-group-title">
+							答案<span class="margin-left-5">:</span>
+						</div>
+						<!--选择题-->
+						<div class="exercise-editor-group-content border">
+							<div *ngIf="(d.type==6||d.type==7)&&answerAry.length>1" (click)="removeAnswer(d)"
+								 class="delete-answer">
+								<span><i class="iconfont icon-label-close"></i></span>
+							</div>
+							<answer-card [config]="d"></answer-card>
+						</div>
+					</div>
+					<div class="exercise-editor-group exercise-editor-group-analysis">
+						<div class="exercise-editor-group-title">
+							答案解析<span class="margin-left-5">:</span>
+						</div>
+						<div class="exercise-editor-group-content exercise-editor-group-content-ueditor">
+							<ueditor [config]="ueditorConfig" #editAnalysi style="height: 440px;" class="ueditor"
+									 [(ngModel)]="editAnalysis"></ueditor>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class="footer-content">
+			<button (click)="goLibrary()"  tabindex='-1' class="close" [nzType]="'default'" nz-button
+					 [nzType]="'danger'">
+				<span>取消</span>
+			</button>
+			<button (click)="addQuestion()" tabindex='-1' nz-button
+					[nzType]="'danger'">
+				<span>发布</span>
+			</button>
+		</div>
+		<label class="isAddOther" nz-checkbox [(ngModel)]="isAddOther">
+			<span>新建另一题</span>
+		</label>
+	</div>
+</div>

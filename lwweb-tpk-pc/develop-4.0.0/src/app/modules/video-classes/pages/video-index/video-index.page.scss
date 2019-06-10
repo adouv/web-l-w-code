@@ -1,0 +1,415 @@
+@import "../../../../../styles/variable";
+
+:host {
+	width: 100%;
+}
+
+.video-index ::ng-deep {
+	.ant-tabs-ink-bar {
+		display: none !important;
+	}
+
+}
+
+.video-index {
+	width: 100%;
+	height: calc(100vh - #{computer(68px)}); // padding: 0 computer(20px) computer(10px) computer(20px);
+	background: #fff;
+	overflow: auto;
+
+	.ant-tabs-ink-bar {
+		display: none !important;
+	}
+
+	.nolesson {
+		width: 100%;
+		height: 100%;
+		position: relative;
+
+		.kDefaultElm{
+			min-height: 100px;
+			line-height: 100px;
+		}
+		.center {
+			// position: absolute;
+			// top: 40%;
+			// left: 50%;
+			// transform: translate(-50%, -50%);
+			text-align: center;
+
+			img {
+				width: 240px;
+				height: 11.25rem;
+				margin-bottom: 10px;
+			}
+
+			.nolesson_name {
+				font-size: computer(14px);
+				color: #999999 !important;
+			}
+		}
+	}
+
+	.spin-loading {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		z-index: 999999;
+		background: #fff;
+	}
+
+	nz-layout {
+		height: auto !important;
+		margin-bottom: 20px;
+
+		nz-header,
+		nz-content {
+			padding: 0;
+			margin: 0 computer(20px);
+		}
+
+		nz-header {
+			background: #fff;
+			height: computer(50px);
+			line-height: computer(50px);
+			border-bottom: 1px solid $color_border;
+			margin-bottom: 20px;
+
+			h3 {
+				position: relative;
+				font-size: 16px;
+				font-weight: bold;
+				text-indent: 1em;
+				color: #333;
+
+				i {
+					display: block;
+					width: 2px;
+					height: 20px;
+					background: #00a0e9;
+					position: absolute;
+					left: 0;
+					top: 15px
+				}
+			}
+
+			>div {
+				font-size: computer(14px);
+
+				a {
+					color: #00a0e9 !important;
+				}
+			}
+
+			.scale-btn {
+				margin-right: 23px;
+			}
+		}
+
+		nz-content {
+
+			/*评课活动*/
+			.video-commentary-activity {
+				border: 1px solid #ddd;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+
+				>div {
+					height: computer(240px);
+				}
+
+				.video-commentary-activity-left {
+					position: relative;
+					width: computer(427px);
+					height: computer(240px);
+					font-size: computer(16px);
+					color: #fff;
+					overflow: hidden;
+					cursor: pointer;
+					border-radius: 0 !important;
+					background-size: cover !important;
+					>img {
+						width: computer(427px);
+						height: computer(240px);
+						transition: all 100ms;
+					}
+
+					.video-commentary-activity-info {
+						width: 100%;
+						position: absolute;
+						// top: computer(80px);
+						left: 0;
+						.video-commentary-activity-info-content {
+							display: flex;
+							flex-direction: column;
+							justify-content: center;
+							align-items: center;
+							font-family: MicrosoftYaHei,sans-serif;
+							font-weight: normal;
+							font-stretch: normal;
+							letter-spacing: 0px;
+							color: #ffffff;
+							width: 100%;
+							.video-commentary-activity-info-contentp-header {
+								font-size: 36px;
+								margin: computer(5px) computer(10px) computer(15px);
+								max-width: computer(407px);
+								height: computer(55px);
+								text-overflow: ellipsis;
+								overflow: hidden;
+								white-space: nowrap;
+							}
+							.video-commentary-activity-info-contentp-body {
+								display: flex;
+								flex-direction: row;
+								justify-content: center;
+								align-items: center;
+								width: 100%;
+								padding: 0 computer(20px);
+								.pingkehuodong:before {
+									content: "\e6ce";
+									font-size: computer(50px);
+									margin-left: computer(10px);
+								  }
+								  ul {
+									  width: 99%;
+									//   margin-left: computer(10px);
+									  li {
+										max-width: 100%;
+										text-overflow: ellipsis;
+										overflow: hidden;
+										white-space: nowrap;
+										margin-left: computer(10px);
+										margin-right: computer(10px);
+									  }
+								  }
+							}
+						}
+					}
+
+					.video-commentary-activity-footer {
+						font-size: computer(18px);
+						height: computer(50px);
+						line-height: computer(50px);
+						text-align: center;
+						width: 100%;
+						position: absolute;
+						bottom: 0;
+						left: 0;
+						background-color: rgba(0, 0, 0, 0.4);
+					}
+				}
+
+				.video-commentary-activity-left:hover {
+					>img {
+						margin-top: -6%;
+						margin-left: -10%;
+						width: 120%;
+						height: 120%;
+					}
+				}
+
+				.video-commentary-activity-center {
+					flex: 2;
+					background: #eee;
+
+					ul {
+						li {
+							height: computer(48px);
+							line-height: computer(48px);
+							font-size: computer(14px);
+							cursor: pointer;
+							display: flex;
+							flex-direction: row;
+							color: #333;
+
+							>div {
+								display: flex;
+								align-items: center;
+
+								i {
+									display: block;
+									width: computer(10px);
+									height: computer(10px);
+									border-radius: 50px;
+									margin-left: computer(10px);
+									margin-right: computer(10px);
+
+									&.lv {
+										background-color: #28ca8f;
+									}
+
+									&.huang {
+										background-color: #febd60;
+									}
+
+									&.hui {
+										background-color: #999999;
+									}
+								}
+
+								>div {
+									height: computer(48px);
+									overflow: hidden;
+									text-overflow: ellipsis;
+									white-space: nowrap;
+								}
+
+								img {
+									margin-left: computer(5px);
+									height: computer(20px);
+								}
+							}
+
+							>div:nth-child(2) {
+								flex: 1;
+								position: relative;
+							}
+
+							>div:nth-child(3) {
+								display: flex;
+								flex: 1;
+								align-items: center;
+								justify-content: center;
+								text-align: center;
+
+								>div {
+									max-width: computer(60px);
+									margin: 0 auto;
+								}
+							}
+
+							>div:last-child {
+								padding-right: computer(10px);
+							}
+						}
+
+						li:hover,
+						li.current {
+							background: #fff;
+							color: #00a0e9;
+							border-right: 2px solid #00a0e9;
+						}
+
+						li:after {
+							clear: both;
+						}
+					}
+				}
+			}
+
+			.video-commentary-activity-right {
+				height: 50px;
+				line-height: 50px;
+				text-align: right;
+				font-size: computer(14px);
+
+				a {
+					color: #00a0e9;
+				}
+			}
+
+			/*课堂直播*/
+			.video-live-classroom {
+				display: inline-block;
+				width: 100%;
+			}
+			/*课堂回放*/
+			.video-classroom-playback {
+				// display: inline-block;
+
+				// height: 700px;
+				.unicast-list {
+					display: inline-block;
+					width: 100%;
+					height: calc(100% - #{computer(70px)});
+					box-sizing: border-box;
+					text-align: center;
+
+					.unicast-list-content {
+						height: calc(100% - #{computer(50px)});
+						text-align: center;
+						padding: computer(20px) 0 0;
+					}
+				}
+			}
+		}
+	}
+
+	.setting {
+		box-sizing: border-box;
+		border-radius: 50px;
+		position: fixed;
+		bottom: 40px;
+		right: 20px;
+		width: 40px;
+		height: 40px;
+		line-height: 40px;
+		text-align: center;
+		font-size: 25px;
+		cursor: pointer;
+		color: #fff;
+		background: -webkit-gradient(linear, 0 20%, 100% 80%, from(#feb55b), to(#ff8256));
+		background: -webkit-linear-gradient(left, #feb55b, #ff8256);
+		transition: width .5s;
+		-moz-transition: width .5s;
+		-webkit-transition: width .5s;
+		-o-transition: width .5s;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+		i {
+			display: block;
+			width: 22px;
+			height: 22px;
+			background: url(../../../../../assets/images/3_03111.png) no-repeat;
+		}
+
+		p {
+			width: 90px !important;
+			height: 30px;
+			line-height: 30px !important;
+			display: none;
+			font-size: 14px;
+			margin-left: 10px;
+		}
+	}
+
+	.setting:hover {
+		width: 140px;
+
+		p {
+			display: block;
+		}
+	}
+}
+
+@media screen and (max-width: 1400px) {
+	.video-commentary-activity-center {
+		ul {
+			li {
+				>div:nth-child(2) {
+					>div {
+						max-width: computer(200px);
+					}
+				}
+			}
+		}
+	}
+}
+
+@media screen and (max-width: 1200px) {
+	.video-commentary-activity-center {
+		ul {
+			li {
+				>div:nth-child(2) {
+					>div {
+						max-width: computer(150px);
+					}
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,27 @@
+<div class="dialog-wrapper">
+    <div class="dialog-header">{{title}}</div>
+    <div class="dialog-content">
+        <div class="select_header overflow_box">
+            <div class="head_wrapper">
+                <span>{{selectItemTitle}}：</span>
+                <span ng-repeat="data in itemList" ng-if="item.selected.ids.indexOf(data[idField])>-1">{{data[nameField]}}<i class="iconfont icon-remove" ng-click="item.remove(data[idField])"></i></span>
+            </div>
+        </div>
+        <div style="border-top: 1px solid #dae4ee;margin: 0 20px"></div>
+        <div class="item_list overflow_box">
+            <ul>
+                <li ng-repeat="data in itemList" class="item_li">
+                    <label>
+                        <input class="checkbox_class zIndex_10" ng-checked="item.selected.ids.indexOf(data[idField])>-1" type="checkbox" ng-click="item.checked($event,data[idField])">
+                        <div class="item_bg"></div>
+                        <span class="zIndex_10">{{data[nameField]}}</span>
+                    </label>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="dialog-footer">
+        <button class="btn_bd" ng-click="$parent.closeThisDialog()">取消</button>
+        <button class="btn_bg" ng-click="item.sure()">确定</button>
+    </div>
+</div>

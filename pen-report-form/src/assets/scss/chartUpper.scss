@@ -1,0 +1,36 @@
+.upper {
+    position: absolute;
+}
+
+.upper-left {
+    width: 22px;
+    height: 22px;
+    top: 0;
+    left: 0;
+    background: url("../../assets/images/upper-left-corner.png") no-repeat center
+      center;
+  }
+   .upper-right {
+    width: 22px;
+    height: 22px;
+    top: 0;
+    right: 0;
+    background: url("../../assets/images/upper-right-corner.png") no-repeat center
+      center;
+  }
+  .bottom-left {
+    width: 22px;
+    height: 22px;
+    bottom: 0;
+    left: 0;
+    background: url("../../assets/images/bottom-left-corner.png") no-repeat center
+      center;
+  }
+  .bottom-right {
+    width: 22px;
+    height: 22px;
+    bottom: 0;
+    right: 0;
+    background: url("../../assets/images/bottom-right-corner.png") no-repeat
+      center center;
+  }

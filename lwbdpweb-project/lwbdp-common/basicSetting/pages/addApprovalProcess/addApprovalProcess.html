@@ -1,0 +1,121 @@
+<form class="w5c-form" w5c-form novalidate w5c-form-validate name="addApprovalForm">
+<div class="addApproval">
+    <div class="crumbs">
+        <a href="JavaScript:void(0)" class="crumbs_tit" ng-click="addApprovalProcess.goJump(crumb.url)" ng-repeat="crumb in addApprovalProcess.crumbList">{{crumb.name}} &gt;</a>
+        <span>添加审批流程配置</span>
+    </div>
+    <div class="addApproval_form">
+        <div class="form_info">
+            <div class="lf_name">审批流程名称：</div>
+            <div class="rg_con">
+                <input type="text" class="input_class w400" auto-focus="!addApprovalProcess.flowConfigData.name" ng-model="addApprovalProcess.flowConfigData.name"
+                        name="name" required placeholder="20个字以内,必填">
+            </div>
+        </div>
+        <div class="form_info special_content">
+            <div class="lf_name">对应的侧边栏显示名称：</div>
+            <div class="rg_con">
+                <input type="text" class="input_class w400" auto-focus="!addApprovalProcess.flowConfigData.alias" ng-model="addApprovalProcess.flowConfigData.alias"
+                       name="name" required placeholder="6个字以内,必填">
+                <i class="iconfont icon-prompt child_name" ng-mouseover="addApprovalProcess.showDetials = true" ng-mouseleave="addApprovalProcess.showDetials = false"></i>
+                <div class="show_child_name" ng-if="addApprovalProcess.showDetials"></div>
+            </div>
+        </div>
+        <div class="form_info">
+            <div class="lf_name">系统工作流：</div>
+            <div class="rg_con">
+                <select class="select_class w400" ng-model="addApprovalProcess.flowConfigData.processDefinitionId"
+                ng-change="addApprovalProcess.showConfirm()" name="processDefinition" required>
+                    <option value="">请选择</option>
+                    <option ng-repeat="option in addApprovalProcess.systemWorkflow" value="{{option.id}}">{{option.name}}</option>
+                </select>
+            </div>
+        </div>
+        <div class="form_info">
+            <div class="lf_name">节点操作用户园区分布：</div>
+            <div class="rg_con" style="min-width:990px;">
+                <span class="cola2a useobj">总计{{addApprovalProcess.selectedGarden.length||0}}个</span>
+                <div ng-show="addApprovalProcess.selectedGarden.length>0" class="objSearch">
+                    <span class="btn_bd fr" ng-click="addApprovalProcess.filterGarden()">查询</span>
+                    <input type="text" class="input_class fr" ng-model="addApprovalProcess.show_key" placeholder="回车键提交查询"  />
+                </div>
+                <div class="approval_dataList overflow_box" ng-show="addApprovalProcess.selectedGarden.length>0">
+                    <i class="flow_name" ng-repeat="garden in addApprovalProcess.selectedGarden" ng-show="!addApprovalProcess.show_key||garden.indexOf(addApprovalProcess.show_key)>-1"> 
+                        <em class="flow_align">{{garden.gardenName}}</em>
+                    </i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="flow_chart">
+        <p class="flowChart_title">流程节点参与用户配置：
+            <span>（每个节点都必须进行配置后才能提交，单击某个节点进行配置）</span>
+            <span class="configed"></span>
+            <span>已配置</span>
+            <span class="notconfiged"></span>
+            <span>未配置</span>
+            <span class="iconfont icon-done done_btn"></span>
+            <span>已通过</span>
+            <span class="isnotpass iconfont icon-warn undone_btn"></span>
+            <span>未通过</span>
+        </p>  
+        <div class="form_info">
+            <div class="lf_name">流程阶段配置：</div>
+            <div class="rg_con">
+                <span class="btn_bd configure" ng-class="{'bg_hight':addApprovalProcess.stageConfigFlag}" ng-click="addApprovalProcess.clickProcessStage()">配置</span>
+                <span class="on_check" ng-class="{'check':!addApprovalProcess.stageConfigFlag}" ng-click="addApprovalProcess.stageConfigFlag=!addApprovalProcess.stageConfigFlag"></span>
+                <span class="on_checkdesc">不配置</span>                
+            </div>
+        </div>
+        <div class="form_info on_choose">
+            <div class="lf_name" style="margin-top:0;">流程任务消息通知方式：</div>
+            <div class="rg_con">
+                <span class="on_check checkdefault"></span>
+                <span class="on_checkdesc">系统消息</span>     
+                <i ng-repeat="notice in addApprovalProcess.notification" ng-click="addApprovalProcess.messageNotificationMode(notice)">
+                     <span class="on_check" ng-class="{'check':notice.flag}"></span>
+                     <span class="on_checkdesc">{{notice.name}}</span>
+                </i>            
+            </div>
+        </div>  
+
+         <approval-flowchart ng-if="addApprovalProcess.flowChartColorData" flow-chart-click="addApprovalProcess.clickFlowChart($flowNode)" flow-chart-data="addApprovalProcess.flowChartColorData"></approval-flowchart>
+    </div>
+    <div class="form_info">
+        <div class="lf_name">有效性：</div>
+        <div class="rg_con">
+            <div class="valid">
+                <change-status isvalid="addApprovalProcess.flowConfigData.status"></change-status>
+            </div>
+        </div>
+    </div>
+    <div class="btn_box">
+        <span class="btn_bd" onclick="history.go(-1);">取消</span>
+        <span class="btn_bg" w5c-form-submit="addApprovalProcess.saveData()">确定</span>
+    </div>
+    <dialog ng-if="addApprovalProcess.confirm" modal close="addApprovalProcess.confirm=false">
+        <div dialog-content>
+            <div class="confirm">
+                <p class="title">提示
+                    <span class="iconfont icon-close del_btn" ng-click="addApprovalProcess.changeWorkflow(false)"></span>
+                </p>
+                <p class="msg">流程切换后，当前流程各节点已配置的参与用户信息将丢失，是否继续？</p>
+                <div class="btn_box">
+                    <span class="btn_bd"  ng-click="addApprovalProcess.changeWorkflow(true)">是</span>
+                    <span class="btn_bg" ng-click="addApprovalProcess.changeWorkflow(false)">否</span>
+                </div>
+            </div>
+        </div>
+    </dialog>
+</div>
+    <!-- 流程图阶段配置 -->
+    <div class="process_mask" ng-if="addApprovalProcess.flowChartStageData">
+        <div class="process_mask_middle">
+            <approval-flowchart ng-if="addApprovalProcess.flowChartStageData" flow-chart-click="addApprovalProcess.clickStageConfig($flowNode)" flow-chart-data="addApprovalProcess.flowChartStageData"></approval-flowchart>
+        </div>
+        <!--ng-style="processStageConfig.stageCloseBtn"  替换为相对布局样式-->
+        <span class="close_btn" ng-click="addApprovalProcess.closeStageConfig()">x</span>
+    </div>
+</form>

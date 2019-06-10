@@ -1,0 +1,146 @@
+.activity-container .nav-form{width: 500px;float: left}
+.activity-container .nav-form input{width: 190px}
+.activity-container input.form-control{float: left;padding-right: 35px;}
+.activity-container .clear{ clear: both;}
+.activity-container .row.media{margin:0 -15px 0 -15px;}
+.activity-container .row.media .nav-form select{display: inline;width: 170px;}
+.activity-container .nav-form{width: 100%;}
+.activity-container .nav-form input{width: 190px}
+.activity-container input.form-control{float: left;padding-right: 35px;}
+.activity-container .btn-group:last-child {float: right;border-radius: 5px;overflow: hidden}
+.activity-container .btn-group:last-child .btn{padding-left:30px;padding-right: 30px}
+.activity-container table{border-bottom: 1px solid #ddd;border-top:1px solid #aaa;}
+.activity-container table tr td {text-align: center;font-size: 14px;}
+.activity-container table thead td{font-size: 16px;}
+.activity-container table td i.fa{color: #999;cursor: pointer;font-size: 22px;}
+.activity-container table td i.fa:hover{color: #00ba8b;}
+
+.activity-container section.row:first-child {border: none;}
+.activity-container .container-fluid .row .garden-select {top: 14px;}
+.activity-container .row.manage_add {margin-left:-60px;}
+.activity-container .lwPage {margin-bottom:40px !important;}
+.activity-container section.row blockquote.border-color {border-left: none;padding: 20px 0 20px 40% ;width: 100%;text-align: left;border-bottom: 1px solid rgb(0,186,139);margin-bottom: 20px;margin-top: 0;}
+.activity-container .row.border-color.edit {border: none;}
+.activity-container .row.border-color.guanli {border: none;position: relative;}
+.activity-container .ser.form-group {margin-bottom:-14px;margin-left:8px;position: relative;}
+.activity-container .list-del {margin-top: 49px;height: 30px;padding-left: 15px;margin-bottom: 13px;}
+.activity-container .serch {display: block;width: 19px;height: 23px;background: url("../images/searh_03.png") no-repeat;position: absolute;right: 10px;top: 5px;}
+.activity-container .btn.tpk-btn-0 {width: 79px;height: 28px;margin-left: 15px;margin-top:4px;border: 1px solid #cccccc;line-height: 28px;text-align: center;color: #cccccc;background: none;padding: 0;}
+.activity-container .btn.tpk-btn.fr {width: 85px;height: 33px;line-height: 17px;font-size: 14px;margin-left: 10px;}
+.activity-container .list-del-rg {float: right;}
+.activity-container .list-del-rg .auto {width: 148px;font-size: 16px;height: 30px;background: none;line-height: 26px;border:1px solid rgb(0,186,139);border-radius: 3px;
+.activity-container   color: rgb(0,186,139);}
+.activity-container .table tbody tr td .va-middle {margin-top:6px;}
+.activity-container .fa.fa-pencil-square-o.fa-lg {position: relative;top: 2px;}
+.activity-container .table tr td {min-width: 100px;}
+.activity-container .table tbody tr td:nth-child(4) {text-align: center;}
+.activity-container .table tbody tr .text-over {width: 380px;display: inline-block;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;}
+.activity-container .table tbody tr .text-over.activity-name {width: 150px;}
+.activity-container .row .table tr td:last-child {width: 90px;}
+.activity-container .row .table tbody td:last-child i {display: none;}
+.activity-container .row .table tbody tr:hover i{display: inline-block;}
+.activity-container .time-logo {overflow: hidden;position: relative;}
+.activity-container .time-logo .timer {display: inline-block;position: absolute;width: 27px;height: 27px;background: url('../images/timer.png');top: 6px;left: 397px;}
+.activity-container .con_name .ml-2 {margin-left: -2px;}
+.activity-container .inp.form-control.ml-2 {width: 138px;}
+.activity-container .inp.form-control.ml-2~span {float: left;padding-top:10px;padding-left:10px;}
+.activity-container .fl.mat7 {margin-left: 20px;margin-top: 7px}
+.activity-container .con_name .time-logo .video-time {margin-left: 0}
+.activity-container .inp.form-control.ml-2 {margin-left:3px;}
+
+/*
+点击直播管理的添加
+*/
+.activity-container .row.border-none.bd {border-bottom: none;}
+.activity-container .content_main {font-size: 16px;width: 750px;margin: 0 auto;}
+.activity-container .manage_add {height: 30px;line-height: 30px;font-size: 16px;padding-left:21px;margin-top: 20px;margin-bottom:15px;}
+.activity-container .manage_add .manage {color: rgb(0,186,139);cursor: pointer;}
+.activity-container .con_left {width: 155px;float: left;text-align: right;margin-top: 7px;padding-right: 5px;font-family: "Microsoft YaHei", "Simsun", "arial", "sans-serif";font-size: 16px;}
+.activity-container .con_name {margin-bottom: 20px;}
+.activity-container .con_name .inp {width: 428px;height: 38px;display: inline-block;float:none;padding-left: 10px;outline: none;margin-left:5px;border: 1px solid rgb(200,200,200);border-radius: 3px;}
+.activity-container .inp.see-range {margin-left:3px;}
+.activity-container .con_name .inp option {height: 20px;border-radius: 3px;}
+.activity-container .live_page {display: inline-block;margin-left: 6px;}
+.activity-container .live_page .live_name_hd .ll {float: left;}
+.activity-container .live_page .live_name_hd .rr {float: left;font-size: 14px;margin-left: 5px;margin-top: -3px;color: rgb(148,148,148);}
+.activity-container .live_page .live_name_hd .rr p {margin: 0;}
+.activity-container .con_name .con_left.live {float: left;padding-right: 12px;padding-top: 3px;}
+.activity-container .inblk.va-middle.effect {margin-left: 8px;margin-top:5px;}
+.activity-container .live_page .live_name_hd .btn {background: rgb(0,186,139);color: #FFFFFF;width: 80px;height: 30px;font-size: 16px;line-height: 16px;}
+.activity-container .con_name .live_video {width: 428px;height: 148px;overflow: hidden;position: relative;border: 1px solid #cccccc;margin-top: 10px}
+.activity-container .con_name .live_video img {width: 100%;height: 100%;}
+.activity-container .con_name .live_video .cover {display: block;width: 65px;position: absolute;left:50%;top: 50%;margin-top: -24px;margin-left:-32px;height: 48px;background: url("../images/cover.png") no-repeat;}
+.activity-container .upload_go {display: inline-block;margin-left:6px;}
+.activity-container .upload_go .bdr {float: left;width: 117px;height: 38px;cursor: pointer;line-height: 38px;text-align: center;border: 1px solid rgb(200, 200, 200);}
+.activity-container .con_name .mat7 .radioClass {border-color: #ccc;}
+.activity-container .upload_go .bd-color {border-color: rgb(0,186,139);color: rgb(0,186,139);}
+.activity-container .upload_go .bd-black {border-color: rgb(0,186,139);}
+.activity-container .upload_go .add_link {float: left;margin-left: 20px;margin-top: 4px;width: 31px;height: 30px;background: url("../images/add_01.png") no-repeat;}
+.activity-container .upload_go .jian_link {background: url("../images/jian.png") no-repeat;}
+.activity-container .con_left.vdo {float: left;margin-top: 7px;}
+.activity-container .upload_go .upload_con .inp {outline: none;width: 341px;height: 38px;border: 1px solid rgb(200, 200, 200);}
+.activity-container .upload_go .upload_con {margin-top:58px;}
+.activity-container .upload_go .upload_con .btn {width: 81px;height: 30px;color: #FFFFFF;margin-bottom:3px;margin-top: 2px;font-size: 16px;line-height: 16px;background: rgb(0,186,139);}
+.activity-container .upload_go .actv_vido {width: 342px;height: 158px;border: 1px solid rgb(200, 200, 200);margin-top: 20px;position: relative;}
+.activity-container .upload_go .actv_vido .vid_logo {width: 51px;position: absolute;height: 50px;display: block;left: 50%;top: 50%;margin-left: -25px;margin-top:-25px;background: url("../images/vido.png") no-repeat;}
+.activity-container .upload_go .suport {width: 344px;font-size: 14px;margin: 0;color: rgb(100,100,100);}
+.activity-container .texta.cont{width: 428px;padding: 10px;float: left;resize: none;border-color: #cccccc;height: 148px;margin-left: 5px;border-radius: 3px;}
+.activity-container .sure_back {width: 263px;margin: 20px auto;padding-bottom: 20px;}
+.activity-container .sure_back button {padding: 8px 30px;}
+.activity-container .btn.btn-default.btn-lg.tpk-btn-o {margin-left:50px;}
+.activity-container .echoImg.live_video.mt {margin-top:3px;}
+.activity-container .sure_back.video-area {padding-bottom: 20px;}
+.activity-container .camera-ed p {padding-left:10px;}
+.activity-container .video-list .upLoud {width: 81px;height: 30px;background: rgb(0,182,139);color: #FFFFFF;border: none;border-radius: 4px;}
+.activity-container .con_name .no-limit {display: inline-block;font-weight: 100;margin-top:4px;margin-left:8px;}
+.activity-container section .list-del .tpk-btn-o {border: 1px solid rgb(200, 200, 200);color: #cccccc;}
+/*
+园区点播和直播活动查看
+*/
+.activity-container .look_main {width: 850px;margin: 0 auto;}
+.activity-container .bunch h2 {border-left: 5px solid rgb(0, 189, 132);font-size: 20px;padding-left: 16px;margin-bottom:20px;}
+.activity-container .live_list {margin: 20px 0;font-size: 16px;}
+.activity-container .live_list .list_name {width: 137px;float: left;text-align: right;}
+.activity-container .live_list .detil {float: left;width: 740px;padding-left:28px;}
+.activity-container .live_list .live_page {width: 344px;height: 159px;margin-left: 28px;position: relative;border: 1px solid rgb(200,200,200);}
+.activity-container .live_list .live_page img {width: 100%;height: 100%;}
+.activity-container .live_list .live_page .cover {display: block;width: 65px;position: absolute;left:50%;top: 50%;margin-top: -24px;margin-left:-32px;height: 48px;background: url("../images/cover.png") no-repeat;}
+.activity-container .upload_con .btn.mt {margin-left:15px;}
+/*园区点播和直播活动编辑*/
+
+.activity-container .view_can {display: inline-block;padding-left: 7px;height: 20px;}
+.activity-container .con_left.live.rang {padding-top:0;margin-top:0;}
+.activity-container .row.border-color.edit.ng-scope {position: relative;}
+.activity-container .view_can.fl p {width: 585px;}
+.activity-container .live-area {display: inline-block;margin-top:7px;margin-left: 5px;}
+.activity-container .con_name .live-time {margin-left:5px;}
+.activity-container .con_name .con_left.mt_0 {margin-bottom:0;}
+.activity-container .con_name .mt_0 {margin-top:0;}
+.activity-container .con_name .public_name {width: 600px;margin-left:155px;padding-left: 10px;}
+/*上传视频页面*/
+
+.activity-container .content_main .con_name .upload_con .btn.select {width: 80px;height: 30px;color: #FFFFFF;margin-top:3px;margin-left:4px;background: rgb(0,186,139);}
+.activity-container .content_main .con_name .video_list  {float: left;width: 342px;}
+.activity-container .content_main .con_name .video_list p {margin-bottom: 0;margin-top:10px;}
+.activity-container .content_main .con_name .video_list p span:last-child {margin-left: 5px;color: rgb(0,186,139);}
+.activity-container .con_name.btm_0 p {margin-bottom:0;}
+/*进度条*/
+.activity-container .upload_progress {margin-top:23px;height: 26px;position: relative;width: 342px;background: rgb(246,246,246);border-radius: 15px;}
+.activity-container .upload_progress .progress_left {height: 26px;transition: all 1.5s linear;-webkit-transition: all 1.5s linear;-moz-transition: all 1.5s linear;text-align: left;display: inline-block;background: rgb(0,186,139);border-radius: 15px;}
+.activity-container .upload_progress span {display: inline-block;position: absolute;right: -45px;text-align: left;top: 0;transition: all 1.5s linear;-webkit-transition: all 1.5s linear;-moz-transition: all 1.5s linear;}
+/*点击直播活动添加，直播摄像头地址*/
+
+.modal-body.modal-upload-main {padding-top: 20px;text-align: center;}
+.modal-body.modal-upload-main .win-title {font-size: 16px;margin-bottom:10px;}
+.activity-container .win-tab.pull-left.area .win-content{width: 255px;height: 240px;margin-left: 20px;overflow: scroll;border: 1px solid #ccc;}
+.activity-container .win-tab.pull-right.list {text-align: center;}
+.activity-container .win-tab.pull-right.list .area-list {width: 255px;height: 240px;margin-right:20px;overflow: auto;border: 1px solid #cccccc;}
+.activity-container .camera-ed.checked-camera {margin: 30px;font-size: 16px;}
+.activity-container .gardenNames {position: relative;left: 5px}
+/*园区公开*/
+.activity-container #modal-title {font-size: 17px;font-weight: 700;}
+.activity-container .search-group.search-range {position: relative;}
+.activity-container .search-group.search-range .icon {background: none;border: none;position: absolute;top: 6px;right: 15px;}
+.activity-container .peak-name {height: 160px;padding-left:10px;text-align: left;}
+.activity-container .area-list .win-content p {margin: 10px 40px;}
+.activity-container .area-list .win-content .selectName {margin-left: 5px;margin-top: 4px;font-size: 13px}

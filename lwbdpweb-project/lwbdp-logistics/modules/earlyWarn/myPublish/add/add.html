@@ -1,0 +1,126 @@
+<div class="warn-class myPublish-add">
+    <div class="header">
+        <span ng-click="myPublishAdd.cancel('receive')">预警预报 &gt;</span>
+        <span class="second-warning" ng-click="myPublishAdd.cancel(myPublishAdd.$stateParams.sideBarCode)"><em ng-if="myPublishAdd.$stateParams.sideBarCode == 'send'">我的</em><em ng-if="myPublishAdd.$stateParams.sideBarCode == 'all'">全部</em>发布 &gt;</span>
+        <span class="first-warning" class="color_999">发布预警预报</span>
+    </div>
+    <div class="title">
+        发布预警预报通知
+    </div>
+    <form class="w5c-form" novalidate name="add">
+    <!--有内容-->
+    <div class="show_info">
+        <div class="list">
+            <div class="text_left">名称：</div>
+            <div class="text_right">
+                <input type="text" name="title" class="input_class" ng-model="myPublishAdd.notice.title" maxlength="50" required>
+            </div>
+        </div>
+        <div class="list">
+            <div class="text_left">类别：</div>
+            <div class="text_right">
+                <select-options name="type" id="type" class="select_class" ng-model="myPublishAdd.notice.type"
+                        repeat-items="type in myPublishAdd.warningTypeList" item-key="id"
+                        change="myPublishAdd.setTypeName(myPublishAdd.notice.type)" required>
+                    {{type.name}}
+                </select-options>
+            </div>
+        </div>
+        <div class="list">
+            <div class="text_left">紧急程度：</div>
+            <div class="text_right">
+                <select-options name="urgencyLevel" id="urgencyLevel" class="select_class" ng-model="myPublishAdd.notice.urgencyLevel"
+                        change="myPublishAdd.setUrgencyLevelName(myPublishAdd.notice.urgencyLevel)"
+                        repeat-items="urgencyLevel in myPublishAdd.noticeUrgencyLevelList" item-key="itemValue"  required>
+                    {{urgencyLevel.itemName}}
+                </select-options>
+            </div>
+        </div>
+        <div class="list">
+            <div class="text_left">通知内容：</div>
+            <div class="text_right"></div>
+        </div>
+        <div class="content">
+            <neditor-area id="editor" class="content_area" ng-model="myPublishAdd.notice.content" height="510" width="1000" required></neditor-area>
+            <!--<textarea name="content" class="content_area" ng-model="myPublishAdd.notice.content" maxlength="15000" required></textarea>-->
+        </div>
+        <div class="list">
+            <div class="text_right">
+                <bdp-upload-file
+                        required='true'
+                        attachment-list="myPublishAdd.notice.attachmentList"
+                        title="通知附件"
+                        remark-file=""
+                        type="0"
+                        size="{{5*1024*1024}}"
+                        format="jpg,png,gif,doc,docx,xls,xlsx,ppt,pptx,pdf"
+                        message="只允许上传jpg、png、gif格式图片和doc、docx、xls、xlsx、ppt、pptx、和pdf格式的文档，单个文件大小不超过5M；">
+                </bdp-upload-file>
+            </div>
+        </div>
+        <!--本通知需要您做以下回复-->
+        <div class="edit">
+            <div class="title_second"></div>
+            <div class="list">
+                <div class="text_left">收件人：</div>
+                <div class="text_right">
+                    <button class="btn_bd" ng-click="myPublishAdd.selectPersonDialog()">选择</button>
+                </div>
+                <div class="text_left">
+                    <input type="text" name="titleSelect" class="input_class select_input" ng-model="myPublishAdd.accountIds" required>
+                    <span class="red_color">此项不能为空</span>
+                </div>
+                <div class="text_right">
+                    <div class="echo_content">
+                        <span ng-repeat="person in myPublishAdd.selectedPersons">{{person.displayName}};</span>
+                    </div>
+                    <span ng-if="myPublishAdd.selectedPersons && myPublishAdd.selectedPersons.length == 0" class="red_color">请选择通知人员</span>
+                </div>
+            </div>
+            <div class="list">
+                <div class="text_left">是否需要收件人回复：</div>
+                <div class="text_right">
+                    <select-options name="isNeedReply" id="isNeedReply" class="select_class select_w100" ng-model="myPublishAdd.notice.isNeedReply"
+                                    repeat-items="data in myPublishAdd.isNeedReplies" item-key="value"
+                                    required>
+                        {{data.name}}
+                    </select-options>
+                </div>
+            </div>
+            <div class="list" ng-show="myPublishAdd.notice && myPublishAdd.notice.isNeedReply=='true'">
+                <div class="text_left">通知回复要求：</div>
+                <div class="text_right ver-top">
+                    <textarea name="" id="" cols="30" rows="10" class="textarea_class" ng-model="myPublishAdd.notice.replyRequirement"  maxlength="500" placeholder="500个汉字以内，非必填"></textarea>
+                </div>
+            </div>
+            <div class="list">
+                <div class="text_left">接受人通知方式选择：</div>
+                <div class="text_right">
+                    <div class="check_list">
+                        <div class="checkbox_list">
+                            <input  type="checkbox" name="noticeMethod" class="checkbox_class" id="checked" ng-checked="true" disabled/>
+                            <label for="checked">系统消息</label>
+                        </div>
+                        <div class="checkbox_list">
+                            <input  type="checkbox" name="noticeMethod" class="checkbox_class" id="checked2" ng-click="myPublishAdd.getNoticeMethod('sms',$event)" ng-checked="myPublishAdd.notice.noticeMethod.indexOf('sms')>-1"/>
+                            <label for="checked2">短信</label>
+                        </div>
+                        <div class="checkbox_list">
+                            <input  type="checkbox" name="noticeMethod" class="checkbox_class" id="checked3" ng-click="myPublishAdd.getNoticeMethod('wechat',$event)" ng-checked="myPublishAdd.notice.noticeMethod.indexOf('wechat')>-1"/>
+                            <label for="checked3">微信</label>
+                        </div>
+                        <div class="checkbox_list">
+                            <input  type="checkbox" name="noticeMethod" class="checkbox_class" id="checked4" ng-click="myPublishAdd.getNoticeMethod('email',$event)" ng-checked="myPublishAdd.notice.noticeMethod.indexOf('email')>-1"/>
+                            <label for="checked4">邮件</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="btn_box">
+                <button class="btn_bd" ng-click="myPublishAdd.cancel('send')">取消</button>
+                <button class="btn_bg" form-submit-valid="myPublishAdd.publish()">发布</button>
+            </div>
+        </div>
+    </div>
+    </form>
+</div>

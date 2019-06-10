@@ -1,0 +1,434 @@
+<!-- 审批流程设置 -->
+<div class="setApprover setApproverHgh">
+    <div style="padding: 0 20px;">
+        <!--搜索框-->
+        <div class="content_textBar" style="margin-top: 10px">
+            <input type="text" class="input_class" maxlength="50" placeholder="回车键提交查询"  ng-model="setApprover.keywords" ng-keydown="setApprover.goSearch($event)">
+            <span class="iconfont icon-search" ng-if="setApprover.keywords.length === 0"></span>
+            <span class="iconfont icon-error" ng-if="setApprover.keywords.length > 0" ng-click="setApprover.keywords = '' "></span>
+        </div>
+        <div class="basic_btn">
+            <div class="fl tab_process">
+                <span ng-click="setApprover.setCurrentTab('process')" ng-class="{'cur':setApprover.currentTab=='process'}">审批流程视图</span>
+                <span ng-click="setApprover.setCurrentTab('object')" ng-class="{'cur':setApprover.currentTab=='object'}">使用对象视图</span>
+            </div>
+            <!--按钮 -->
+            <div class="fr tab_btn" ng-if="setApprover.currentTab=='process'">
+                <span class="btn_bd btn_process" ng-click="setApprover.defaultProcess()">默认加载流程管理</span>
+                <input type="button" ng-disabled="!setApprover.selectedItem.length>0" value="删除" class="btn_bd" ng-class="{true:'disabled'}[!setApprover.selectedItem.length>0]" ng-click="setApprover.delItem('multi')">
+                <span class="btn_bg" ng-click="setApprover.goAddApproval()">添加</span>
+            </div>
+        </div>
+    </div>
+    <!--线-->
+    <div class="line_pad" style='padding-top: 0;'>
+        <div class="line_strip"></div>
+    </div>
+    <!--表格-->
+    <div class="table_absolute overflow_box" style="top:53px">
+        <!--审批流程视图-->
+        <div class="table_box" ng-if="setApprover.currentTab=='process'">
+            <table class="listTable basicTab">
+                <thead>
+                <tr>
+                    <th>
+                        <input type="checkbox" id="approve1" class="checkbox_class" ng-checked="setApprover.checkedAll" ng-click="setApprover.checkAll($event)"
+                        />
+                        <label for="approve1">序号</label>
+                    </th>
+                    <th>名称</th>
+                    <th>系统工作流</th>
+                    <th>使用园区数量</th>
+                    <th>最近更新人</th>
+                    <th>最近更新时间</th>
+                    <th>有效性</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="item in setApprover.dataList">
+                    <td>
+                        <input type="checkbox" id="approve2" class="checkbox_class" ng-checked="item.checked" ng-click="setApprover.checkItem($event,item.id)"
+                        />
+                        <label for="approve2">{{$index+1}}</label>
+                    </td>
+                    <td>{{item.name}}</td>
+                    <td>{{item.processDefinitionName}}</td>
+                    <td class="change_layer" ng-click="setApprover.showDialog('number',item)">{{item.counts}}</td>
+                    <td class="change_layer" ng-click="setApprover.showDialog('log',item)">{{item.lastUpdatorName}}</td>
+                    <td>{{item.lastUpdateTime | date:'yyyy/MM/dd HH:mm'}}</td>
+                    <td>
+                        <div class="on_btn" ng-click="setApprover.changeStatus($index,item)" ng-class="{cur:item.status}">
+                            <div class="white_btn"></div>
+                        </div>
+                    </td>
+                    <td>
+                        <span class="iconfont icon-look" title="查看" ng-click="setApprover.goLookApproval(item.id)"></span>
+                        <span class="iconfont icon-edit" title="编辑" ng-click="setApprover.goAddApproval(item.id)"></span>
+                        <span class="iconfont icon-del" title="删除" ng-click="setApprover.delItem('single',$index)"></span>
+                    </td>
+                </tr>
+                <tr ng-repeat="item in setApprover.dataList">
+                    <td>
+                        <input type="checkbox" id="approve2" class="checkbox_class" ng-checked="item.checked" ng-click="setApprover.checkItem($event,item.id)"
+                        />
+                        <label for="approve2">{{$index+1}}</label>
+                    </td>
+                    <td>{{item.name}}</td>
+                    <td>{{item.processDefinitionName}}</td>
+                    <td class="change_layer" ng-click="setApprover.showDialog('number',item)">{{item.counts}}</td>
+                    <td class="change_layer" ng-click="setApprover.showDialog('log',item)">{{item.lastUpdatorName}}</td>
+                    <td>{{item.lastUpdateTime | date:'yyyy/MM/dd HH:mm'}}</td>
+                    <td>
+                        <div class="on_btn" ng-click="setApprover.changeStatus($index,item)" ng-class="{cur:item.status}">
+                            <div class="white_btn"></div>
+                        </div>
+                    </td>
+                    <td>
+                        <span class="iconfont icon-look" title="查看" ng-click="setApprover.goLookApproval(item.id)"></span>
+                        <span class="iconfont icon-edit" title="编辑" ng-click="setApprover.goAddApproval(item.id)"></span>
+                        <span class="iconfont icon-del" title="删除" ng-click="setApprover.delItem('single',$index)"></span>
+                    </td>
+                </tr>
+                <tr ng-repeat="item in setApprover.dataList">
+                    <td>
+                        <input type="checkbox" id="approve2" class="checkbox_class" ng-checked="item.checked" ng-click="setApprover.checkItem($event,item.id)"
+                        />
+                        <label for="approve2">{{$index+1}}</label>
+                    </td>
+                    <td>{{item.name}}</td>
+                    <td>{{item.processDefinitionName}}</td>
+                    <td class="change_layer" ng-click="setApprover.showDialog('number',item)">{{item.counts}}</td>
+                    <td class="change_layer" ng-click="setApprover.showDialog('log',item)">{{item.lastUpdatorName}}</td>
+                    <td>{{item.lastUpdateTime | date:'yyyy/MM/dd HH:mm'}}</td>
+                    <td>
+                        <div class="on_btn" ng-click="setApprover.changeStatus($index,item)" ng-class="{cur:item.status}">
+                            <div class="white_btn"></div>
+                        </div>
+                    </td>
+                    <td>
+                        <span class="iconfont icon-look" title="查看" ng-click="setApprover.goLookApproval(item.id)"></span>
+                        <span class="iconfont icon-edit" title="编辑" ng-click="setApprover.goAddApproval(item.id)"></span>
+                        <span class="iconfont icon-del" title="删除" ng-click="setApprover.delItem('single',$index)"></span>
+                    </td>
+                </tr>
+                <tr ng-repeat="item in setApprover.dataList">
+                    <td>
+                        <input type="checkbox" id="approve2" class="checkbox_class" ng-checked="item.checked" ng-click="setApprover.checkItem($event,item.id)"
+                        />
+                        <label for="approve2">{{$index+1}}</label>
+                    </td>
+                    <td>{{item.name}}</td>
+                    <td>{{item.processDefinitionName}}</td>
+                    <td class="change_layer" ng-click="setApprover.showDialog('number',item)">{{item.counts}}</td>
+                    <td class="change_layer" ng-click="setApprover.showDialog('log',item)">{{item.lastUpdatorName}}</td>
+                    <td>{{item.lastUpdateTime | date:'yyyy/MM/dd HH:mm'}}</td>
+                    <td>
+                        <div class="on_btn" ng-click="setApprover.changeStatus($index,item)" ng-class="{cur:item.status}">
+                            <div class="white_btn"></div>
+                        </div>
+                    </td>
+                    <td>
+                        <span class="iconfont icon-look" title="查看" ng-click="setApprover.goLookApproval(item.id)"></span>
+                        <span class="iconfont icon-edit" title="编辑" ng-click="setApprover.goAddApproval(item.id)"></span>
+                        <span class="iconfont icon-del" title="删除" ng-click="setApprover.delItem('single',$index)"></span>
+                    </td>
+                </tr>
+                <tr ng-repeat="item in setApprover.dataList">
+                    <td>
+                        <input type="checkbox" id="approve2" class="checkbox_class" ng-checked="item.checked" ng-click="setApprover.checkItem($event,item.id)"
+                        />
+                        <label for="approve2">{{$index+1}}</label>
+                    </td>
+                    <td>{{item.name}}</td>
+                    <td>{{item.processDefinitionName}}</td>
+                    <td class="change_layer" ng-click="setApprover.showDialog('number',item)">{{item.counts}}</td>
+                    <td class="change_layer" ng-click="setApprover.showDialog('log',item)">{{item.lastUpdatorName}}</td>
+                    <td>{{item.lastUpdateTime | date:'yyyy/MM/dd HH:mm'}}</td>
+                    <td>
+                        <div class="on_btn" ng-click="setApprover.changeStatus($index,item)" ng-class="{cur:item.status}">
+                            <div class="white_btn"></div>
+                        </div>
+                    </td>
+                    <td>
+                        <span class="iconfont icon-look" title="查看" ng-click="setApprover.goLookApproval(item.id)"></span>
+                        <span class="iconfont icon-edit" title="编辑" ng-click="setApprover.goAddApproval(item.id)"></span>
+                        <span class="iconfont icon-del" title="删除" ng-click="setApprover.delItem('single',$index)"></span>
+                    </td>
+                </tr>
+                <tr ng-repeat="item in setApprover.dataList">
+                    <td>
+                        <input type="checkbox" id="approve2" class="checkbox_class" ng-checked="item.checked" ng-click="setApprover.checkItem($event,item.id)"
+                        />
+                        <label for="approve2">{{$index+1}}</label>
+                    </td>
+                    <td>{{item.name}}</td>
+                    <td>{{item.processDefinitionName}}</td>
+                    <td class="change_layer" ng-click="setApprover.showDialog('number',item)">{{item.counts}}</td>
+                    <td class="change_layer" ng-click="setApprover.showDialog('log',item)">{{item.lastUpdatorName}}</td>
+                    <td>{{item.lastUpdateTime | date:'yyyy/MM/dd HH:mm'}}</td>
+                    <td>
+                        <div class="on_btn" ng-click="setApprover.changeStatus($index,item)" ng-class="{cur:item.status}">
+                            <div class="white_btn"></div>
+                        </div>
+                    </td>
+                    <td>
+                        <span class="iconfont icon-look" title="查看" ng-click="setApprover.goLookApproval(item.id)"></span>
+                        <span class="iconfont icon-edit" title="编辑" ng-click="setApprover.goAddApproval(item.id)"></span>
+                        <span class="iconfont icon-del" title="删除" ng-click="setApprover.delItem('single',$index)"></span>
+                    </td>
+                </tr>
+                <tr ng-repeat="item in setApprover.dataList">
+                    <td>
+                        <input type="checkbox" id="approve2" class="checkbox_class" ng-checked="item.checked" ng-click="setApprover.checkItem($event,item.id)"
+                        />
+                        <label for="approve2">{{$index+1}}</label>
+                    </td>
+                    <td>{{item.name}}</td>
+                    <td>{{item.processDefinitionName}}</td>
+                    <td class="change_layer" ng-click="setApprover.showDialog('number',item)">{{item.counts}}</td>
+                    <td class="change_layer" ng-click="setApprover.showDialog('log',item)">{{item.lastUpdatorName}}</td>
+                    <td>{{item.lastUpdateTime | date:'yyyy/MM/dd HH:mm'}}</td>
+                    <td>
+                        <div class="on_btn" ng-click="setApprover.changeStatus($index,item)" ng-class="{cur:item.status}">
+                            <div class="white_btn"></div>
+                        </div>
+                    </td>
+                    <td>
+                        <span class="iconfont icon-look" title="查看" ng-click="setApprover.goLookApproval(item.id)"></span>
+                        <span class="iconfont icon-edit" title="编辑" ng-click="setApprover.goAddApproval(item.id)"></span>
+                        <span class="iconfont icon-del" title="删除" ng-click="setApprover.delItem('single',$index)"></span>
+                    </td>
+                </tr>
+                <tr ng-repeat="item in setApprover.dataList">
+                    <td>
+                        <input type="checkbox" id="approve2" class="checkbox_class" ng-checked="item.checked" ng-click="setApprover.checkItem($event,item.id)"
+                        />
+                        <label for="approve2">{{$index+1}}</label>
+                    </td>
+                    <td>{{item.name}}</td>
+                    <td>{{item.processDefinitionName}}</td>
+                    <td class="change_layer" ng-click="setApprover.showDialog('number',item)">{{item.counts}}</td>
+                    <td class="change_layer" ng-click="setApprover.showDialog('log',item)">{{item.lastUpdatorName}}</td>
+                    <td>{{item.lastUpdateTime | date:'yyyy/MM/dd HH:mm'}}</td>
+                    <td>
+                        <div class="on_btn" ng-click="setApprover.changeStatus($index,item)" ng-class="{cur:item.status}">
+                            <div class="white_btn"></div>
+                        </div>
+                    </td>
+                    <td>
+                        <span class="iconfont icon-look" title="查看" ng-click="setApprover.goLookApproval(item.id)"></span>
+                        <span class="iconfont icon-edit" title="编辑" ng-click="setApprover.goAddApproval(item.id)"></span>
+                        <span class="iconfont icon-del" title="删除" ng-click="setApprover.delItem('single',$index)"></span>
+                    </td>
+                </tr>
+                <tr ng-repeat="item in setApprover.dataList">
+                    <td>
+                        <input type="checkbox" id="approve2" class="checkbox_class" ng-checked="item.checked" ng-click="setApprover.checkItem($event,item.id)"
+                        />
+                        <label for="approve2">{{$index+1}}</label>
+                    </td>
+                    <td>{{item.name}}</td>
+                    <td>{{item.processDefinitionName}}</td>
+                    <td class="change_layer" ng-click="setApprover.showDialog('number',item)">{{item.counts}}</td>
+                    <td class="change_layer" ng-click="setApprover.showDialog('log',item)">{{item.lastUpdatorName}}</td>
+                    <td>{{item.lastUpdateTime | date:'yyyy/MM/dd HH:mm'}}</td>
+                    <td>
+                        <div class="on_btn" ng-click="setApprover.changeStatus($index,item)" ng-class="{cur:item.status}">
+                            <div class="white_btn"></div>
+                        </div>
+                    </td>
+                    <td>
+                        <span class="iconfont icon-look" title="查看" ng-click="setApprover.goLookApproval(item.id)"></span>
+                        <span class="iconfont icon-edit" title="编辑" ng-click="setApprover.goAddApproval(item.id)"></span>
+                        <span class="iconfont icon-del" title="删除" ng-click="setApprover.delItem('single',$index)"></span>
+                    </td>
+                </tr>
+                <tr ng-repeat="item in setApprover.dataList">
+                    <td>
+                        <input type="checkbox" id="approve2" class="checkbox_class" ng-checked="item.checked" ng-click="setApprover.checkItem($event,item.id)"
+                        />
+                        <label for="approve2">{{$index+1}}</label>
+                    </td>
+                    <td>{{item.name}}</td>
+                    <td>{{item.processDefinitionName}}</td>
+                    <td class="change_layer" ng-click="setApprover.showDialog('number',item)">{{item.counts}}</td>
+                    <td class="change_layer" ng-click="setApprover.showDialog('log',item)">{{item.lastUpdatorName}}</td>
+                    <td>{{item.lastUpdateTime | date:'yyyy/MM/dd HH:mm'}}</td>
+                    <td>
+                        <div class="on_btn" ng-click="setApprover.changeStatus($index,item)" ng-class="{cur:item.status}">
+                            <div class="white_btn"></div>
+                        </div>
+                    </td>
+                    <td>
+                        <span class="iconfont icon-look" title="查看" ng-click="setApprover.goLookApproval(item.id)"></span>
+                        <span class="iconfont icon-edit" title="编辑" ng-click="setApprover.goAddApproval(item.id)"></span>
+                        <span class="iconfont icon-del" title="删除" ng-click="setApprover.delItem('single',$index)"></span>
+                    </td>
+                </tr>
+                <tr ng-repeat="item in setApprover.dataList">
+                    <td>
+                        <input type="checkbox" id="approve2" class="checkbox_class" ng-checked="item.checked" ng-click="setApprover.checkItem($event,item.id)"
+                        />
+                        <label for="approve2">{{$index+1}}</label>
+                    </td>
+                    <td>{{item.name}}</td>
+                    <td>{{item.processDefinitionName}}</td>
+                    <td class="change_layer" ng-click="setApprover.showDialog('number',item)">{{item.counts}}</td>
+                    <td class="change_layer" ng-click="setApprover.showDialog('log',item)">{{item.lastUpdatorName}}</td>
+                    <td>{{item.lastUpdateTime | date:'yyyy/MM/dd HH:mm'}}</td>
+                    <td>
+                        <div class="on_btn" ng-click="setApprover.changeStatus($index,item)" ng-class="{cur:item.status}">
+                            <div class="white_btn"></div>
+                        </div>
+                    </td>
+                    <td>
+                        <span class="iconfont icon-look" title="查看" ng-click="setApprover.goLookApproval(item.id)"></span>
+                        <span class="iconfont icon-edit" title="编辑" ng-click="setApprover.goAddApproval(item.id)"></span>
+                        <span class="iconfont icon-del" title="删除" ng-click="setApprover.delItem('single',$index)"></span>
+                    </td>
+                </tr>
+                <tr ng-repeat="item in setApprover.dataList">
+                    <td>
+                        <input type="checkbox" id="approve2" class="checkbox_class" ng-checked="item.checked" ng-click="setApprover.checkItem($event,item.id)"
+                        />
+                        <label for="approve2">{{$index+1}}</label>
+                    </td>
+                    <td>{{item.name}}</td>
+                    <td>{{item.processDefinitionName}}</td>
+                    <td class="change_layer" ng-click="setApprover.showDialog('number',item)">{{item.counts}}</td>
+                    <td class="change_layer" ng-click="setApprover.showDialog('log',item)">{{item.lastUpdatorName}}</td>
+                    <td>{{item.lastUpdateTime | date:'yyyy/MM/dd HH:mm'}}</td>
+                    <td>
+                        <div class="on_btn" ng-click="setApprover.changeStatus($index,item)" ng-class="{cur:item.status}">
+                            <div class="white_btn"></div>
+                        </div>
+                    </td>
+                    <td>
+                        <span class="iconfont icon-look" title="查看" ng-click="setApprover.goLookApproval(item.id)"></span>
+                        <span class="iconfont icon-edit" title="编辑" ng-click="setApprover.goAddApproval(item.id)"></span>
+                        <span class="iconfont icon-del" title="删除" ng-click="setApprover.delItem('single',$index)"></span>
+                    </td>
+                </tr>
+                <tr ng-repeat="item in setApprover.dataList">
+                    <td>
+                        <input type="checkbox" id="approve2" class="checkbox_class" ng-checked="item.checked" ng-click="setApprover.checkItem($event,item.id)"
+                        />
+                        <label for="approve2">{{$index+1}}</label>
+                    </td>
+                    <td>{{item.name}}</td>
+                    <td>{{item.processDefinitionName}}</td>
+                    <td class="change_layer" ng-click="setApprover.showDialog('number',item)">{{item.counts}}</td>
+                    <td class="change_layer" ng-click="setApprover.showDialog('log',item)">{{item.lastUpdatorName}}</td>
+                    <td>{{item.lastUpdateTime | date:'yyyy/MM/dd HH:mm'}}</td>
+                    <td>
+                        <div class="on_btn" ng-click="setApprover.changeStatus($index,item)" ng-class="{cur:item.status}">
+                            <div class="white_btn"></div>
+                        </div>
+                    </td>
+                    <td>
+                        <span class="iconfont icon-look" title="查看" ng-click="setApprover.goLookApproval(item.id)"></span>
+                        <span class="iconfont icon-edit" title="编辑" ng-click="setApprover.goAddApproval(item.id)"></span>
+                        <span class="iconfont icon-del" title="删除" ng-click="setApprover.delItem('single',$index)"></span>
+                    </td>
+                </tr>
+                <tr ng-repeat="item in setApprover.dataList">
+                    <td>
+                        <input type="checkbox" id="approve2" class="checkbox_class" ng-checked="item.checked" ng-click="setApprover.checkItem($event,item.id)"
+                        />
+                        <label for="approve2">{{$index+1}}</label>
+                    </td>
+                    <td>{{item.name}}</td>
+                    <td>{{item.processDefinitionName}}</td>
+                    <td class="change_layer" ng-click="setApprover.showDialog('number',item)">{{item.counts}}</td>
+                    <td class="change_layer" ng-click="setApprover.showDialog('log',item)">{{item.lastUpdatorName}}</td>
+                    <td>{{item.lastUpdateTime | date:'yyyy/MM/dd HH:mm'}}</td>
+                    <td>
+                        <div class="on_btn" ng-click="setApprover.changeStatus($index,item)" ng-class="{cur:item.status}">
+                            <div class="white_btn"></div>
+                        </div>
+                    </td>
+                    <td>
+                        <span class="iconfont icon-look" title="查看" ng-click="setApprover.goLookApproval(item.id)"></span>
+                        <span class="iconfont icon-edit" title="编辑" ng-click="setApprover.goAddApproval(item.id)"></span>
+                        <span class="iconfont icon-del" title="删除" ng-click="setApprover.delItem('single',$index)"></span>
+                    </td>
+                </tr>
+                <tr ng-repeat="item in setApprover.dataList">
+                    <td>
+                        <input type="checkbox" id="approve2" class="checkbox_class" ng-checked="item.checked" ng-click="setApprover.checkItem($event,item.id)"
+                        />
+                        <label for="approve2">{{$index+1}}</label>
+                    </td>
+                    <td>{{item.name}}</td>
+                    <td>{{item.processDefinitionName}}</td>
+                    <td class="change_layer" ng-click="setApprover.showDialog('number',item)">{{item.counts}}</td>
+                    <td class="change_layer" ng-click="setApprover.showDialog('log',item)">{{item.lastUpdatorName}}</td>
+                    <td>{{item.lastUpdateTime | date:'yyyy/MM/dd HH:mm'}}</td>
+                    <td>
+                        <div class="on_btn" ng-click="setApprover.changeStatus($index,item)" ng-class="{cur:item.status}">
+                            <div class="white_btn"></div>
+                        </div>
+                    </td>
+                    <td>
+                        <span class="iconfont icon-look" title="查看" ng-click="setApprover.goLookApproval(item.id)"></span>
+                        <span class="iconfont icon-edit" title="编辑" ng-click="setApprover.goAddApproval(item.id)"></span>
+                        <span class="iconfont icon-del" title="删除" ng-click="setApprover.delItem('single',$index)"></span>
+                    </td>
+                </tr>
+
+
+                </tbody>
+            </table>
+            <div class="nodata_box" ng-show="setApprover.dataList.length<1">
+                <div class="nodata">
+                    <span></span>
+                    <p>暂无数据</p>
+                </div>
+            </div>
+            <div ng-show="setApprover.dataList.length>0">
+                <pagination conf="setApprover.paginationConfProcess"></pagination>
+            </div>
+        </div>
+        <!--使用对象视图-->
+        <div class="table_box" ng-if="setApprover.currentTab=='object'">
+            <table class="listTable basicTab">
+                <thead>
+                <tr>
+                    <th>序号</th>
+                    <th>使用对象名称</th>
+                    <th>审批流程名称</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="item in setApprover.dataList">
+                    <td>{{$index+1}}</td>
+                    <td>{{item.gardenName}}</td>
+                    <td>{{item.processConfigNames}}</td>
+                </tr>
+                </tbody>
+            </table>
+            <div class="nodata_box" ng-show="setApprover.dataList.length<1">
+                <div class="nodata">
+                    <span></span>
+                    <p>暂无数据</p>
+                </div>
+            </div>
+            <div ng-show="setApprover.dataList.length>0">
+                <pagination conf="setApprover.paginationConfObject"></pagination>
+            </div>
+        </div>
+    </div>
+    <!-- 点击使用对象弹窗 -->
+    <dialog ng-if="setApprover.change_number">
+        <div dialog-content>
+            <change-number close-click="setApprover.closeDialog('number')" data="setApprover.selectedItem"></change-number>
+        </div>
+    </dialog>
+    <!-- 点击最近更新人弹窗 -->
+    <dialog ng-if="setApprover.change_log" modal>
+        <div dialog-content>
+            <update-log close-click="setApprover.closeDialog('log')" data="setApprover.selectedItem" type="approver"></update-log>
+        </div>
+    </dialog>
+</div>

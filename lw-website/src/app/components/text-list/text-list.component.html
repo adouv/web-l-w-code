@@ -1,0 +1,16 @@
+<div class="image-text">
+	<ul class="list">
+		<li class="list-li">
+			<p class="title">张三</p>
+			<p class="content">
+				站内撒站内撒站内撒站内撒站内撒站内撒站内撒站内撒站内撒站内撒站内撒站内撒站内撒站内撒站内撒站内撒站内撒站内撒站内撒站内撒站内撒站内撒站内撒站内撒站内撒站内撒站内撒站内撒站内撒站内撒站内撒站内撒站内撒站内撒站内撒站内撒站内撒站内撒站内撒站内撒站内撒站内撒站内撒站内撒站内撒站内撒站内撒站内撒站内撒站内撒站内撒站内撒站内撒站内撒站内撒站内撒站内撒站内撒站内撒站内撒站内撒站内撒站内撒站内撒站内撒站内撒站内撒站内撒站内撒站内撒站内撒站内撒站内撒站内撒站内撒站内撒站内撒站内撒站内撒站内撒站内撒站内撒站内撒站内撒站内撒
+			</p>
+			<p class="date">2018-07-26</p>
+		</li>
+	</ul>
+	<div class="pagination" *ngIf="page.total > 10">
+		<nz-pagination [nzPageIndex]="1" [nzTotal]="page.total"
+					   (nzPageIndexChange)="initPage($event)"
+					   [nzPageSize]="page.size"></nz-pagination>
+	</div>
+</div>

@@ -1,0 +1,13 @@
+<div class="bdp_list_search w5c-form flowDialog-list">
+    <div class="dialog-header">
+        {{currentFlowName}}
+        <preview-fullscreen></preview-fullscreen>  
+        <span class="iconfont icon-close del_btn dialog-close" ng-click="closeThisDialog()"></span>
+    </div>
+    <ul class="flowDialog-ul overflow_box_small preview-chart">
+        <approval-flowchart  flow-chart-data="flowChartData" flow-chart-hover="true"></approval-flowchart>
+    </ul>
+    <div class="dialog-btn">
+        <div class="btn_bg" ng-click="closeThisDialog()">确认</div>
+    </div>
+</div>

@@ -1,0 +1,118 @@
+<div class="go-back-box table_red_boad">
+    <a href="javascript:void(0);" name="usertask00"></a>
+    <a href="javascript:void(0);" name="usertask03-redo"></a>
+    <div class="content-list">
+        <span class="content-list-left">项目申报单位：</span>
+        <span class="content-list-right">{{purchaseDetail.apply.projectGarden}}</span>
+    </div>
+    <div class="content-list">
+        <span class="content-list-left">项目名称：</span>
+        <span class="content-list-right">{{purchaseDetail.apply.projectName}}</span>
+    </div>
+    <div class="content-list">
+        <span class="content-list-left">项目目录：</span>
+        <span class="content-list-right">{{purchaseDetail.apply.catalogName}}</span>
+    </div>
+    <div class="content-list">
+        <span class="content-list-left">项目申报年份：</span>
+        <span class="content-list-right">{{purchaseDetail.apply.applyYear}}</span>
+    </div>
+    <div class="content-list">
+        <span class="content-list-left">项目类别：</span>
+        <span class="content-list-right">{{purchaseDetail.apply.categoryName}}</span>
+    </div>
+    <div class="content-list">
+        <span class="content-list-left">项目内容：</span>
+        <span class="content-list-right">{{purchaseDetail.apply.content}}</span>
+    </div>
+    <div class="content-list">
+        <span class="content-list-left">申报理由：</span>
+        <span class="content-list-right">{{purchaseDetail.apply.reason}}</span>
+    </div>
+    <div class="content-list">
+        <span class="content-list-left">备注：</span>
+        <span class="content-list-right">{{purchaseDetail.apply.remarks}}</span>
+    </div>
+    <div class="go-back-box">
+        <a href="javascript:void(0);" name="usertask57-redosame"></a>
+        <div class="table_box">
+            <div class="margin_bot20" style="font-weight: bold">项目申报人提交的项目设备采购清单</div>
+            <table class="listTable">
+                <thead>
+                <tr>
+                    <th width="50">序号</th>
+                    <th width="300">设备名称</th>
+                    <th width="200">规格型号</th>
+                    <th width="80">现有数量</th>
+                    <th width="80">采购数量</th>
+                    <th width="80">审批数量</th>
+                    <th width="80">采购单价（元）</th>
+                    <th width="125">最高限单价（元）</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="data in purchaseDetail.apply.orderList">
+                    <td>{{$index+1}}</td>
+                    <td>{{data.itemName}}</td>
+                    <td>{{data.specifications}}</td>
+                    <td>{{data.nowNum}}</td>
+                    <td>{{data.buyNum}}</td>
+                    <td ng-if="data.auditNum">{{data.auditNum}}</td>
+                    <td ng-if="!data.auditNum"><span class="gray_color">待审定</span></td>
+                    <td>{{data.price}}</td>
+                    <td ng-if="data.maxPrice">{{data.maxPrice}}</td>
+                    <td ng-if="!data.maxPrice"><span class="gray_color">待审定</span></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="table_box" ng-if="purchaseDetail.apply.uploadList[0]">
+            <div class="margin_bot20" style="font-weight: bold">项目采购人提交的项目设备采购清单</div>
+            <table class="listTable">
+                <thead>
+                <tr>
+                    <th width="50">序号</th>
+                    <th width="280">设备名称</th>
+                    <th width="200">规格型号</th>
+                    <th width="80">采购数量</th>
+                    <th width="125">最高限单价（元）</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="data in purchaseDetail.apply.uploadList">
+                    <td>{{$index+1}}</td>
+                    <td>{{data.itemName}}</td>
+                    <td>{{data.specifications}}</td>
+                    <td>{{data.buyNum}}</td>
+                    <td>{{data.maxPrice}}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div id="usertask57-redosame">
+            <a class="go-back" ng-click="purchaseDetail.goBackAudit('usertask57-redosame')">返回审批操作 ＞＞</a>
+        </div>
+    </div>
+    <div class="content-list">
+        <span class="content-list-left">校内项目优先级：</span>
+        <span class="content-list-right">{{purchaseDetail.apply.priorityName}}</span>
+    </div>
+    <div class="content-list">
+        <span class="content-list-left">项目联系人：</span>
+        <span class="content-list-right">{{purchaseDetail.apply.creatorName}}</span>
+    </div>
+    <div class="content-list">
+        <span class="content-list-left">联系人电话：</span>
+        <span class="content-list-right">{{purchaseDetail.apply.cellphone}}</span>
+    </div>
+    <div class="btn_box">
+        <button class="btn_bd" ng-click="purchaseDetail.goEdit()">以此为模板重新申报</button>
+    </div>
+    <!-- usertask57-redosame-->
+    <div id="usertask00">
+        <div id="usertask03-redo">
+            <a class="go-back" ng-click="purchaseDetail.goBackAudit(['usertask00','usertask03-redo'])">返回审批操作 ＞＞</a>
+        </div>
+    </div>
+</div>
+

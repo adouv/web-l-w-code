@@ -1,0 +1,93 @@
+<div ng-click="connect.clickClient()">
+    <!--左侧导航-->
+    <ul class="left_nav">
+        <li class="user_img" ng-click="connect.showPersonalInfo($event)">
+            <span class="img">
+                <img ng-src="{{connect.filePath+connect.userImg}}">
+            </span>
+        </li>
+        <li ui-sref="connect.look" ng-class="{'actived':connect.currentTab=='look'}">
+            <span class="connectIconfont icon-client_look" ng-class="{'icon-lookSelected':connect.currentTab=='look'}"></span>
+            <p>看</p>
+        </li>
+        <li ui-sref="connect.link" ng-class="{'actived':connect.currentTab=='link'}">
+            <span class="connectIconfont icon-link" ng-class="{'icon-linkSelected':connect.currentTab=='link'}"></span>
+            <p>模块</p>
+        </li>
+        <li ui-sref="connect.colleague" ng-class="{'actived':connect.currentTab=='colleague'}">
+            <span class="connectIconfont icon-colleague" ng-class="{'icon-colleagueSelected':connect.currentTab=='colleague'}"></span>
+            <p>组织</p>
+        </li>
+        <li class="bottom">
+            <span class="connectIconfont icon-meau" ng-click="connect.showExit($event)"></span>
+            <div class="show-exit" ng-if="connect.isShowExit">
+                <span class="triangle"></span>
+                <p class="exit" ng-click="connect.closeClient()">
+                    <span class="connectIconfont icon-exit"></span>退出
+                </p>
+                <p class="switch" ng-click="connect.swicthNumber()">
+                    <span class="connectIconfont icon-client_switch"></span>切换账号
+                </p>
+            </div>
+        </li>
+    </ul>
+    <!--右侧内容-->
+    <div class="middle_nav" ng-click="connect.isShowExit = false" ui-view></div>
+
+    <!--用户信息-->
+    <div class='mask-userInfo mask-bdp' ng-show='connect.isShowUser' ng-click='connect.closeInfoDialog("userInfo",$event)'></div>
+    <div class="client_userInfo" ng-click="connect.stopPropagation($event)" ng-show="connect.user && connect.isShowUser">
+        <div class="user_head">
+            <div>
+                <img ng-src="{{connect.filePath+connect.user.imgUrl}}" ng-show="connect.user.imgUrl">
+                <p class="name">{{connect.user.displayName}}</p>
+                <p class="position">{{connect.user.position}}</p>
+            </div>
+        </div>
+        <div class="more_detail overflow_box_sml">
+            <p>
+                <span class="name">办公室外线电话</span>
+                <span class="name_detail">{{connect.user.telephone}}</span>
+            </p>
+            <p>
+                <span class="name">办公室内线电话</span>
+                <span class="name_detail">{{connect.user.interPhone}}</span>
+            </p>
+            <p>
+                <span class="name">手机</span>
+                <span class="name_detail">{{connect.user.cellphone}}</span>
+            </p>
+            <p>
+                <span class="name">电子邮箱</span>
+                <span class="name_detail">{{connect.user.email}}</span>
+            </p>
+            <p>
+                <span class="name">微信</span>
+                <span class="name_detail">{{connect.user.wechat}}</span>
+            </p>
+            <p>
+                <span class="name">QQ</span>
+                <span class="name_detail">{{connect.user.qq}}</span>
+            </p>
+            <p ng-if='connect.user.signatureImgUrl'>
+                <span class="name">个人签名</span>
+                <span class="name_detail autographPic">
+                    <img class='upload_img cur-def' ng-src="{{connect.filePath+connect.user.signatureImgUrl}}">
+                </span>
+            </p>
+            <p>
+                <span class="name">部门</span>
+                <span class="name_detail name_department">
+                    <em ng-repeat="department in connect.user.departments track by $index" ng-click="connect.toDepartment(department.id)">{{department.departmentTreeName}}</em>
+                </span>
+            </p>
+            <p ng-if='!connect.user.signatureImgUrl'>
+                <span class="name">个人签名</span>
+            </p>
+        </div>
+        <span class="btn_blue edit" ng-click="connect.editUserInfo()">编辑</span>
+    </div>
+    <!--编辑用户信息-->
+    <user-edit ng-if="connect.showEdit"></user-edit>
+    <pwd-edit ng-if="connect.showPwd"></pwd-edit>
+</div>

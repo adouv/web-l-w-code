@@ -1,0 +1,111 @@
+<div class="exercise-class-box">
+	<div class="exercise-class-box-content">
+		<div class="catalogue-box tree-header mar-top-10px">
+			<outline-tree *ngIf="selectParams" [selectParams]="selectParams" (change)="onChange($event)"></outline-tree>
+		</div>
+		<div class="question-box">
+			<nz-tabset [nzTabBarExtraTemplate]="extraTemplate" (nzSelectChange)="tabChange($event)"
+					   [(nzSelectedIndex)]="currentTab">
+				<ng-template #extraTemplate>
+					<button nz-button class="nz-button" [nzType]="'danger'" (click)="goLibrary()"
+							[disabled]="!outlineParams">校本题库
+					</button>
+				</ng-template>
+				<nz-tab *ngFor="let tab of tabList">
+					<ng-template #nzTabHeading>{{tab.name}}</ng-template>
+					<!--題型-->
+					<div class="type-box">
+						<span class="type-title">题型：</span>
+						<div>
+						<span class="type-item" *ngFor="let type of questionTypeList"
+							  [ngClass]="{'active':type?.active}"
+							  (click)="getExerciseListByType(type)">{{type?.name}}</span>
+						</div>
+					</div>
+					<!--全选-->
+					<div class="check-box" *ngIf="tab.designStatus === 0">
+						<div>
+							<label nz-checkbox [(ngModel)]="allChecked"
+								   [nzDisabled]="!exerciseList || exerciseList.length === 0"
+								   (ngModelChange)="checkedAllExercise($event)"></label>
+							<span class="all-check">全选</span>
+							<span class="col-blue">（已选 {{selectExerciseIds.length}} 题）</span>
+						</div>
+						<button nz-button class="nz-button" [nzType]="'default'" (click)="setDesignCode()"
+								[disabled]="selectExerciseIds.length <= 0">设置题目设计类型
+						</button>
+					</div>
+					<!--题目-->
+					<div class="question-list-box" *ngIf="exerciseList && exerciseList.length > 0">
+						<div class="question-item-box" *ngFor="let item of exerciseList;let i = index">
+							<label nz-checkbox *ngIf="tab.designStatus === 0" [(ngModel)]="item.checked"
+								   (ngModelChange)="checkedExercise(item,$event)"></label>
+							<div class="question-item-content-box">
+								<div class="title-box">
+									<span>{{i+1}}. </span>
+									<div class="inner-box" [dynamicHtml]="item.exercise?.content.contentHtml"></div>
+								</div>
+								<div class="detail-box">
+									<div class="question-type-box">
+									<span class="pointer" *ngIf="tab.designStatus === 0"
+										  (click)="setDesignCode(item)">设置题目设计类型</span>
+										<span *ngIf="tab.designStatus === 1 && item.design" [ngStyle]="{'border':'1px solid ' + item.design?.fontTone,
+											'color':item.design?.fontTone, 'background':item.design?.backgroundTone}">
+											{{item.design?.name}}
+									</span>
+									</div>
+									<div class="buttons-group">
+										<div class="button-group">
+											<i class="iconfont icon-del"></i>
+											<span (click)="delExercise(item.id)">移出课堂</span>
+										</div>
+										<div class="button-group" (click)="showAnswer(item.exercise?.content)">
+											<i class="iconfont icon-answer"></i>
+											<span>习题解析</span>
+										</div>
+									</div>
+								</div>
+								<div class="answer-box" *ngIf="item.exercise.content?.showAnswer">
+									<div>
+										<div class="font-bold">[ 正确答案 ]</div>
+										<div [dynamicHtml]="item.exercise.content?.answer"></div>
+									</div>
+									<div class="mar-top-30px">
+										<div class="font-bold">[ 答案解析 ]</div>
+										<div [dynamicHtml]="item.exercise.content?.analysis"></div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<elliptical-page *ngIf="!outlineParams" title="请选择章节进行备课" imgName="no-exercises.png"></elliptical-page>
+					<elliptical-page
+						*ngIf="outlineParams && exerciseType=='' && tab.designStatus === 0 && (!exerciseList || exerciseList.length === 0)"
+						title="暂无未分类习题"
+						imgName="no-exercises.png"></elliptical-page>
+					<elliptical-page
+						*ngIf="outlineParams && exerciseType=='' && tab.designStatus === 1 && (!exerciseList || exerciseList.length === 0)"
+						title="暂无已分类习题"
+						imgName="no-exercises.png"></elliptical-page>
+					<elliptical-page
+						*ngIf="outlineParams && exerciseType &&(!exerciseList ||exerciseList.length === 0)"
+						title="暂无对应习题"
+						imgName="no-exercises.png"></elliptical-page>
+
+				</nz-tab>
+			</nz-tabset>
+		</div>
+	</div>
+	<div class="footer">
+		<button [routerLink]="['/resource/home/0']"  [nzType]="'default'" nz-button >
+			<span>返回</span>
+		</button>
+	</div>
+</div>
+
+<ng-template #designCodeTep>
+	题目所属设计类型：
+	<nz-select [(ngModel)]="questionDesignCode" style="width: 120px" [nzPlaceHolder]="questionDesignList[0].name">
+		<nz-option *ngFor="let tag of questionDesignList" [nzLabel]="tag.name" [nzValue]="tag.code"></nz-option>
+	</nz-select>
+</ng-template>

@@ -1,0 +1,302 @@
+<div class="canteen_order canteen_add warn-class">
+    <div class="header">
+        <span class="second-warning" ng-click="canteenOrderInput.toCancel()">食堂管理 &gt;</span>
+        <span class="second-warning" ng-click="canteenOrderInput.toCancel()">大宗食品采购 &gt;</span>
+        <span class="color_999 first-warning">{{canteenOrderInput.model.id?'编辑':'添加'}}月采购单</span>
+    </div>
+    <p class="canteen_add_title">{{canteenOrderInput.model.id?'编辑':'添加'}}月采购单</p>
+    <ul class="canteen_add_form">
+        <div class="pad_20">
+            <li class="canteen_li clearfix">
+                <span class="pact_tit">采购单位：</span>
+                <input type="text" class="input_class pact_form" placeholder="单选，必填" ng-class="{'error_red':canteenOrderInput.validGardenName}" readonly ng-model="canteenOrderInput.model.gardenName" ng-click="canteenOrderInput.chooseGarden()" />
+            </li>
+            <li class="canteen_li clearfix">
+                <span class="pact_tit">上报月份：</span>
+                <span class="pact_span">
+                    <input id="dataTime" type="text" class="input_class"
+                           ng-class="{'error_red':canteenOrderInput.validReportTime}" lw-laydate='yyyy-MM'
+                           lay-config="canteenOrderInput.dateConfig" readonly
+                           ng-model="canteenOrderInput.model.reportTime"
+                           placeholder="必填"/>
+                    <em class="iconfont icon-llreservecalendar dateIcon"></em>
+            </span>
+            </li>
+        </div>
+        <div class="order_add" ng-class="{'border_red':canteenOrderInput.notPurchaseOrder}">
+            <form class="w5c-form" novalidate name="addPurchaseOrder">
+                <li class="canteen_li clearfix">
+                    <span class="pact_tit">采购种类：</span>
+                    <select-options class="select_class pact_form_select" ng-model="canteenOrderInput.tempPurchaseOrder.category" required
+                            repeat-items="item in canteenOrderInput.purchaseCategories" item-key="id">
+                        {{item.name}}
+                    </select-options>
+
+                </li>
+                <li class="canteen_li clearfix">
+                    <span class="pact_tit">供应商：</span>
+                    <input type="text" class="input_class pact_form_input" placeholder="必填，单选" name="supplier" required ng-model="canteenOrderInput.tempPurchaseOrder.supplierName" readonly ng-click="canteenOrderInput.selectSupplier(canteenOrderInput.tempPurchaseOrder)">
+                </li>
+                <li class="canteen_li clearfix">
+                    <span class="pact_tit">采购金额（元）：</span>
+                    <input type="text" class="input_class pact_form_input" ng-class="{'error':canteenOrderInput.tempPurchaseOrder.validAmount}" maxlength="15" placeholder="必填" name="amount" required ng-model="canteenOrderInput.tempPurchaseOrder.amount">
+                </li>
+                <li class="canteen_li clearfix">
+                    <span class="pact_tit ver-top">采购内容：</span>
+                    <div class="pact_text color_999">
+                        <span class="margin_bot20">鼠标移到序号单元格可添加或删除行。</span>
+                        <div class="overflow_box pact_table">
+                            <div class="table_box">
+                                <table class="listTable">
+                                    <thead>
+                                        <tr>
+                                            <th width="80">序号</th>
+                                            <th width="215">名称</th>
+                                            <th width="70">单位</th>
+                                            <th width="100">数量</th>
+                                            <th width="260">备注</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="tdInputWidth">
+                                        <tr ng-repeat="item in canteenOrderInput.tempPurchaseOrder.purchaseOrderItems">
+                                            <td class="text_td">
+                                                {{$index+1}}
+                                                <span class="add_minus">
+                                                    <i class="iconfont icon-minus"
+                                                       ng-click="canteenOrderInput.tempPurchaseOrder.purchaseOrderItems.splice($index,1)"
+                                                       ng-show="canteenOrderInput.tempPurchaseOrder.purchaseOrderItems.length>1"></i>
+                                                    <i class="iconfont icon-plus"
+                                                       ng-click="canteenOrderInput.tempPurchaseOrder.purchaseOrderItems.splice($index+1,0,{})"></i>
+                                                </span>
+                                            </td>
+                                            <td>
+                                                <input type="text" class="input_class" placeholder="{{item.namePlaceHolder}}" required maxlength="50" name="purchaseOrder{{$index}}name" ng-model="canteenOrderInput.tempPurchaseOrder.purchaseOrderItems[$index].name" ng-blur="item.namePlaceHolder=''" ng-focus="canteenOrderInput.showPlaceHolder($index,'namePlaceHolder','50个汉字以内，必填')"
+                                                />
+                                            </td>
+                                            <td>
+                                                <input type="text" class="input_class input_w60" placeholder="{{item.unitPlaceHolder}}" required maxlength="5" name="purchaseOrder{{$index}}unit" ng-model="canteenOrderInput.tempPurchaseOrder.purchaseOrderItems[$index].unit" ng-blur="item.unitPlaceHolder=''"
+                                                    ng-focus="canteenOrderInput.showPlaceHolder($index,'unitPlaceHolder','5个汉字以内，必填')" />
+                                            </td>
+                                            <td>
+                                                <input type="text" class="input_class input_w80" maxlength="10" placeholder="{{item.numberPlaceHolder}}" required name="purchaseOrder{{$index}}number" ng-keyup="canteenOrderInput.restrictNumber(canteenOrderInput.tempPurchaseOrder.purchaseOrderItems[$index])"
+                                                    ng-model="canteenOrderInput.tempPurchaseOrder.purchaseOrderItems[$index].number" ng-blur="item.numberPlaceHolder=''" ng-focus="canteenOrderInput.showPlaceHolder($index,'numberPlaceHolder','10个正整数，必填')" />
+                                            </td>
+                                            <td>
+                                                <textarea name="" id="" cols="30" rows="10" class="textarea_class pact_form_area overflow_box" placeholder="{{item.remarkPlaceHolder}}" maxlength="1000" maxlength="1000" name="purchaseOrder{{$index}}remark" ng-class="{'auto':canteenOrderInput.tempPurchaseOrder.purchaseOrderItems[$index].remark}"
+                                                    ng-model="canteenOrderInput.tempPurchaseOrder.purchaseOrderItems[$index].remark" ng-blur="item.remarkPlaceHolder=''" ng-focus="canteenOrderInput.showPlaceHolder($index,'remarkPlaceHolder','1000个汉字以内，非必填')">
+
+                                            </textarea>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="canteen_li clearfix">
+                    <span class="pact_tit fl mart5">对应的采购凭证单据：</span>
+                    <div class="fl upload_botton upload_margin_top" ng-class="{'error':canteenOrderInput.tempPurchaseOrder.validAttachments}">
+                        <bdp-upload-file required='true' attachment-list="canteenOrderInput.tempPurchaseOrder.attachments" title="采购凭证单据" remark-file="" type="0" size="{{5*1024*1024}}" format="jpg,png,gif" message="只允许上传jpg、png、gif格式图片,单个文件大小不超过5M；">
+                        </bdp-upload-file>
+                        <span ng-show="canteenOrderInput.tempPurchaseOrder.validAttachments" class="red_color">采购凭证单据</span>
+                    </div>
+                </li>
+                <li class="canteen_li clearfix">
+                    <span class="pact_tit ver-top">针对此次供货服务对供货商的评价：</span>
+                    <div class="pact_text">
+                        <div class="check_list">
+                            <div class="checkbox_list" ng-repeat="satisfied in canteenOrderInput.satisfiedLeveles">
+                                <input type="radio" class="radio_class" id="satisfied{{satisfied.itemValue}}" name="degree" ng-model="canteenOrderInput.tempPurchaseOrder.appraise" value="{{satisfied.itemValue}}" />
+                                <label for="satisfied{{satisfied.itemValue}}">{{satisfied.itemName}}</label>
+                            </div>
+                        </div>
+                        <textarea name="appraiseContent" cols="30" rows="10" class="textarea_class text_700" maxlength="500" name="appraiseContent" ng-model="canteenOrderInput.tempPurchaseOrder.appraiseContent"></textarea>
+                    </div>
+                </li>
+                <div class="canteen_add_button button_box">
+                    <span class="btn_bd" ng-click="canteenOrderInput.initTempPurchaseOrder()">重置</span>
+                    <span class="btn_bg" form-submit-valid="canteenOrderInput.generatePurchaseOrder();canteenOrderInput.fileClick()" ng-click="canteenOrderInput.fileClick()">生成采购单</span>
+                </div>
+            </form>
+        </div>
+    </ul>
+    <div class="configed_box" ng-if="canteenOrderInput.model.purchaseOrderVoList.length>0">
+        <div class="configed">
+            <div class="configed_title">已配置的采购单</div>
+        </div>
+        <ul class="canteen_add_form" ng-repeat="purchaseOrder in canteenOrderInput.model.purchaseOrderVoList">
+            <div class="order_add" ng-show="!purchaseOrder.showEdit">
+                <li class="canteen_li clearfix">
+                    <span class="pact_tit">采购种类：</span>
+                    <div class="pact_text">{{canteenOrderInput.purchaseCategoryMap[purchaseOrder.category]}}</div>
+                </li>
+                <li class="canteen_li clearfix">
+                    <span class="pact_tit">供应商：</span>
+                    <div class="pact_text">{{purchaseOrder.supplierName}}</div>
+                </li>
+                <li class="canteen_li clearfix">
+                    <span class="pact_tit">采购金额（元）：</span>
+                    <div class="pact_text">{{purchaseOrder.amount}}</div>
+                </li>
+                <li class="canteen_li clearfix">
+                    <span class="pact_tit ver-top">采购内容：</span>
+                    <div class="pact_text color_999">
+                        <div class="overflow_box pact_table">
+                            <div class="table_box">
+                                <table class="listTable">
+                                    <thead>
+                                        <tr>
+                                            <th width="80">序号</th>
+                                            <th width="215">名称</th>
+                                            <th width="70">单位</th>
+                                            <th width="100">数量</th>
+                                            <th width="260">备注</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="item in purchaseOrder.purchaseOrderItems">
+                                            <td>
+                                                <span>{{$index+1}}</span>
+                                            </td>
+                                            <td>
+                                                <span>{{item.name}}</span>
+                                            </td>
+                                            <td>{{item.unit}}</td>
+                                            <td>{{item.number}}</td>
+                                            <td>
+                                                <span>{{item.remark}}</span>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="canteen_li clearfix">
+                    <span class="pact_tit fl mart5">对应的采购凭证单据：</span>
+                    <div class="pact_text">
+                        <pic-view ng-repeat="x in purchaseOrder.attachments track by $index" file-name="x.name" file-path="x.url"></pic-view>
+                    </div>
+                </li>
+                <li class="canteen_li clearfix">
+                    <span class="pact_tit ver-top">针对此次供货服务对供货商的评价：</span>
+                    <div class="pact_text">
+                        <div class="check_list">
+                            {{canteenOrderInput.satisfiedLeveleMap[purchaseOrder.appraise]}}
+                        </div>
+                        <div class="pact_text">{{purchaseOrder.appraiseContent}}</div>
+                    </div>
+                </li>
+                <div class="configed_btn">
+                    <span class="iconfont icon-editPen" ng-click="purchaseOrder.showEdit=true;canteenOrderInput.editCount=canteenOrderInput.editCount+1; "></span>
+                    <!--<span class="iconfont icon-del" ng-click="canteenOrderInput.model.purchaseOrderVoList.splice($index,1)"></span>-->
+                    <span class="iconfont icon-del" ng-click="canteenOrderInput.deleteOrder($index)"></span>
+                </div>
+            </div>
+            <div class="order_add" ng-show="purchaseOrder.showEdit">
+                <form class="w5c-form" novalidate name="editPurchaseOrder">
+                    <li class="canteen_li clearfix">
+                        <span class="pact_tit">采购种类：</span>
+                        <select-options class="select_class pact_form_select" ng-model="canteenOrderInput.model.purchaseOrderVoList[$index].category" required
+                                repeat-items="item in canteenOrderInput.purchaseCategories" item-key="id">
+                            {{item.name}}
+                        </select-options>
+                    </li>
+                    <li class="canteen_li clearfix">
+                        <span class="pact_tit">供应商：</span>
+                        <input type="text" class="input_class pact_form_input" placeholder="必填，单选" required ng-model="canteenOrderInput.model.purchaseOrderVoList[$index].supplierName" readonly ng-click="canteenOrderInput.selectSupplier(purchaseOrder)">
+                    </li>
+                    <li class="canteen_li clearfix">
+                        <span class="pact_tit">采购金额（元）：</span>
+                        <input type="text" class="input_class pact_form_input" ng-class="{'error':purchaseOrder.validAmount}" maxlength="15" placeholder="必填" required ng-model="canteenOrderInput.model.purchaseOrderVoList[$index].amount">
+                    </li>
+                    <li class="canteen_li clearfix">
+                        <span class="pact_tit ver-top">采购内容：</span>
+                        <div class="pact_text color_999">
+                            <div class="overflow_box pact_table">
+                                <div class="table_box">
+                                    <table class="listTable">
+                                        <thead>
+                                            <tr>
+                                                <th width="80">序号</th>
+                                                <th width="215">名称</th>
+                                                <th width="70">单位</th>
+                                                <th width="100">数量</th>
+                                                <th width="260">备注</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <tr ng-repeat="item in canteenOrderInput.model.purchaseOrderVoList[$index].purchaseOrderItems">
+                                                    <td class="text_td">
+                                                        {{$index+1}}
+                                                        <span class="add_minus">
+                                                    <i class="iconfont icon-minus"
+                                                       ng-click="canteenOrderInput.model.purchaseOrderVoList[$index].purchaseOrderItems.splice($index,1)"
+                                                       ng-show="canteenOrderInput.model.purchaseOrderVoList[$index].purchaseOrderItems.length>1"></i>
+                                                    <i class="iconfont icon-plus"
+                                                       ng-click="canteenOrderInput.model.purchaseOrderVoList[$index].purchaseOrderItems.splice($index+1,0,{})"></i>
+                                                </span>
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" class="input_class" placeholder="50个汉字以内，必填" required maxlength="50" ng-model="item.name" />
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" class="input_class input_w60" placeholder="5个汉字以内，必填" required maxlength="5" ng-model="item.unit" />
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" class="input_class input_w80" maxlength="10" placeholder="10个正整数，必填" required ng-keyup="canteenOrderInput.restrictNumber(item)" ng-model="item.number" />
+                                                    </td>
+                                                    <td>
+                                                        <textarea name="" cols="30" rows="10" class="textarea_class pact_form_area" maxlength="1000" placeholder="1000个汉字以内，非必填" ng-model="item.remark"></textarea>
+                                                    </td>
+                                                </tr>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="canteen_li clearfix">
+                        <span class="pact_tit fl mart5">对应的采购凭证单据：</span>
+                        <div class="fl upload_botton">
+                            <bdp-upload-file attachment-list="canteenOrderInput.model.purchaseOrderVoList[$index].attachments" title="采购凭证单据" remark-file="" type="0" size="{{5*1024*1024}}" format="jpg,png,gif">
+                            </bdp-upload-file>
+                            <div class="float-massage">
+                                只允许上传jpg、png、gif格式图片,单个文件大小不超过5M；
+                            </div>
+                            <span ng-if="purchaseOrder.validAttachments" class="red_color">请添加采购凭证单据</span>
+                        </div>
+                    </li>
+
+                    <li class="canteen_li clearfix">
+                        <span class="pact_tit ver-top">针对此次供货服务对供货商的评价：</span>
+                        <div class="pact_text">
+                            <div class="check_list">
+                                <div class="checkbox_list" ng-repeat="satisfied in canteenOrderInput.satisfiedLeveles">
+                                    <input type="radio" class="radio_class" id="satisfied{{satisfied.itemValue}}{{$index}}" name="degree" ng-model="canteenOrderInput.model.purchaseOrderVoList[$index].appraise" value="{{satisfied.itemValue}}" />
+                                    <label for="satisfied{{satisfied.itemValue}}{{$index}}">{{satisfied.itemName}}</label>
+                                </div>
+                            </div>
+                            <textarea name="appraiseContent" cols="30" rows="10" class="textarea_class text_700" maxlength="500" ng-model="canteenOrderInput.model.purchaseOrderVoList[$index].appraiseContent"></textarea>
+                        </div>
+                    </li>
+                    <div class="canteen_add_button button_box">
+                        <span class="btn_bd" ng-click="canteenOrderInput.cancelEdit($index)">取消</span>
+                        <span class="btn_bg" form-submit-valid="canteenOrderInput.completeEdit($index)">完成编辑</span>
+                    </div>
+                </form>
+            </div>
+
+        </ul>
+
+    </div>
+
+    <div class="order_btn">
+        <span class="btn_bd" ng-click="canteenOrderInput.toCancel()">取消</span>
+        <span class="btn_bg" ng-click="canteenOrderInput.submit()">确定</span>
+    </div>
+</div>

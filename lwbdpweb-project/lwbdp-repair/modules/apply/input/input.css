@@ -1,0 +1,164 @@
+.repair .repairDraft {
+    padding: 20px;
+    margin: 0 auto;
+    width: 100%;
+    /*width: 1200px;*/
+}
+
+.repair .w750 {
+    width: 750px;
+}
+
+.repair .repair_bread_nav {
+    color: #999;
+}
+
+.repair .repair_bread_nav .jump_href {
+    color: #333;
+}
+
+.repair .repair_bread_nav .jump_href i {
+    margin-left: 3px;
+    color: #999;
+}
+
+.repair .repair_bread_nav .jump_href:hover {
+    color: #0096ff;
+}
+
+.repair .draft_title .draft_detail {
+    padding: 15px 0 6px;
+    text-align: center;
+    font-size: 16px;
+}
+
+.repair .draft_title .draft_date {
+    padding: 6px 0 0px;
+    text-align: center;
+    color: #999;
+    border-top: 1px solid #dae4ee;
+}
+
+.repair .reDraft_content {
+    width: 870px;
+    margin: 20px auto;
+}
+
+.repair .f_size12 {
+    font-size: 14px;
+    color: #999;
+    padding-bottom: 8px;
+    margin-left: 43px;
+}
+
+.repair .reDraft_list {
+    /*padding-bottom: 15px;*/
+    padding: 8px 0;
+    font-size: 0;
+    /*overflow: hidden;*/
+}
+
+.repair .reDraft_list span.gray {
+    color: #999999;
+}
+
+.repair .reDraft_list span {
+    font-size: 14px;
+}
+
+.repair .reDraft_list span.gray {
+    color: #999;
+}
+
+.repair .switch_fos16 {
+    font-size: 16px !important;
+}
+
+.repair .reDraft_list span.iconfont {
+    font-size: 20px;
+    color: #786cec;
+    margin-left: 15px;
+    cursor: pointer;
+}
+
+.repair .w140 {
+    display: inline-block;
+    margin-right: 10px;
+    width: 140px;
+    text-align: right;
+}
+
+.repair .word_center {
+    display: inline-block;
+    vertical-align: middle;
+    position: relative;
+    font-size: 14px;
+}
+
+.repair .select_class.disabled:disabled,
+.repair .input_class.disabled:disabled {
+    background: #fff;
+    border: 0;
+    opacity: 1;
+}
+
+.repair .lookApproveCon {
+    position: relative;
+    overflow: hidden;
+    width: 69%;
+}
+
+.repair .no_setting {
+    vertical-align: middle;
+}
+
+.repair .draft_from {
+    overflow: hidden;
+}
+
+.repair .draft_input {
+    vertical-align: middle;
+    width: 600px;
+    height: 30px;
+    border: 1px solid #dbe3ee;
+    padding: 0 10px;
+    line-height: 30px;
+    font-size: 14px;
+}
+
+.repair .draft_input.disabled {
+    background: #fff;
+    border: 0;
+    opacity: 1;
+}
+
+.repair .draft_input.h100 {
+    height: 100px !important;
+}
+
+.repair .declare {
+    font-size: 14px;
+    color: #999;
+    line-height: 21px;
+    width: 580px;
+    margin-top: 10px;
+}
+
+.repair .reDraft_btn {
+    padding: 30px 0;
+    text-align: center;
+}
+
+.repair .reDraft_btn span {
+    display: inline-block;
+    margin: 0 10px;
+}
+
+.repair .lookApproveInfo {
+    color: #0096ff;
+    cursor: pointer;
+}
+
+.repair .detail_draft_list .reDraft_list{
+    overflow: hidden;
+}

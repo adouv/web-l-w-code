@@ -1,0 +1,90 @@
+@import "../../../../../styles/variable";
+.red {
+    border: 1px solid red !important;
+}
+
+.inputnum ::ng-deep {
+    padding: 0 !important;
+    display: inherit;
+    height: computer(16px) !important;
+    border: 0;
+    input {
+        text-align: center;
+        padding: 0;
+        font-size: computer(14px);
+        height: computer(16px) !important;
+    }
+    .ant-input-number-handler-wrap {
+        display: none;
+    }
+}
+
+.dialog-evaluate {
+    // height: computer(498px);
+    .evaluate-table {
+        border-right: 1px solid $color_border;
+        border-bottom: 1px solid $color_border;
+        width: 100%;
+		margin-bottom: computer(40px);
+        .td-title {
+            width: computer(200px);
+        }
+        .td-50 {
+            width: computer(80px);
+        }
+    }
+    .evaluate-child-table {
+        width: 100%;
+        .td-title {
+            width: computer(200px);
+        }
+        .td-50 {
+            width: computer(80px);
+        }
+    }
+    .evaluate-table td {
+        border-left: 1px solid $color_border;
+        border-top: 1px solid $color_border;
+        text-align: center;
+        padding: 10px;
+        &:focus{
+            border-color: $color-border !important;
+            box-shadow: none;
+        }
+    }
+	.error{
+		border: 1px solid #ff272e !important;
+		box-shadow: 0 0 6px #f8b9b7;
+	}
+    .no-padding {
+        padding: 0 !important;
+    }
+    .no-line {
+        border-top: 0 !important;
+    }
+    .no-left-line {
+        border-left: 0 !important;
+    }
+    .text-left {
+        text-align: left !important;
+    }
+    .td-textarea{
+        resize:none;
+        width: 100%;
+        min-height: computer(60px);
+        outline: none;
+        border: none;
+    }
+    .td-input,
+    .inputnum,
+    .inputnum input {
+        text-align: center;
+        height: computer(16px) !important;
+        border: 0;
+        outline-style: none;
+        width: 100%;
+    }
+    .td-input.inputAuto{
+        width: auto;
+    }
+}

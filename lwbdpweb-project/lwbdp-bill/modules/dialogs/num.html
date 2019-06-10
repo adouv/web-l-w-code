@@ -1,0 +1,50 @@
+<link rel="stylesheet" href="modules/dialogs/style/detail.css">
+<div class="doalogdetail">
+    <div class="page">
+        <p class="pagetit font_MY">
+            资金文号详情
+            <span class="close" ng-click="close()"></span>
+        </p>
+        <div class="infobox">
+            <div>
+                <span class="info_name">资金文号名称：</span>
+                <span class="info_content">{{data.name}}</span>
+            </div>
+            <div>
+                <span class="info_name">所属园区：</span>
+                <span class="info_content">{{data.gardenName}}</span>
+            </div>
+            <div>
+                <span class="info_name">文号总资金额：</span>
+                <span class="info_content">{{data.totalAmount}}</span>
+            </div>
+            <div>
+                <span class="info_name">资金来源：</span>
+                <span class="info_content">{{data.capitalSourceTypeName}}</span>
+            </div>
+            <div>
+                <span class="info_name">批复日期：</span>
+                <span class="info_content">{{data.replyDate?(data.replyDate | date:'yyyy/MM/dd'):'无'}}</span>
+            </div>
+            <div>
+                <span class="info_name">收回日期：</span>
+                <span class="info_content">{{data.recoveryDate?(data.recoveryDate | date:'yyyy/MM/dd'):'无'}}</span>
+            </div>
+            <div>
+                <span class="info_name">用途备注：</span>
+                <span class="info_content">{{data.description?data.description:'无'}}</span>
+            </div>
+            <div class="posr">
+                <span class="info_name posa">最近更新人：</span>
+                <span class="info_content">{{data.lastUpdateUserName?data.lastUpdateUserName:'无'}}</span>
+            </div>
+            <div>
+                <span class="info_name">更新时间：</span>
+                <span class="info_content">{{data.lastUpdateTime?(data.lastUpdateTime| date:'yyyy/MM/dd HH:mm:ss'):'无'}}</span>
+            </div>
+        </div>
+    </div>
+    <div class="btnbox">
+        <span class="setbtn sureBtn" ng-click="close()">返回</span>
+    </div>
+</div>

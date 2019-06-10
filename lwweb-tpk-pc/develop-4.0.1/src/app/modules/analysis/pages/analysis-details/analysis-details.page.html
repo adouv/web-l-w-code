@@ -1,0 +1,41 @@
+<div class="analysis-details">
+	<div class="app-adress">
+		<nz-breadcrumb [nzSeparator]="'>'">
+			<nz-breadcrumb-item>
+				<a (click)="goHome()">析</a>
+			</nz-breadcrumb-item>
+			<nz-breadcrumb-item (click)="goList()">
+				备课资源列表
+			</nz-breadcrumb-item>
+			<nz-breadcrumb-item>
+				资源包详情
+			</nz-breadcrumb-item>
+		</nz-breadcrumb>
+	</div>
+	<div class="analysis-title-group">
+		<div class="title">{{detailsData?.teacherName}}（{{detailsData?.subjectName}}）{{detailsData?.gradeName}}{{detailsData?.className}}
+			周{{detailsData?.weekText}} 第{{detailsData?.period}}节 {{detailsData?.lessonTitle?detailsData?.lessonTitle:'未配置课节名称'}}</div>
+		<div class="datetime">{{detailsData?.date?.split('-').join('/')}}
+			{{detailsData?.lessonStartTime?.substring(0,detailsData.lessonStartTime.lastIndexOf(':'))}}~{{detailsData?.lessonEndTime?.substring(0,detailsData.lessonStartTime.lastIndexOf(':'))}}</div>
+	</div>
+	<div class="analysis-content-group auto-scroll">
+		<div table-center *ngIf="courseMaterials?.length>0">
+			<div *ngFor="let item of courseMaterials;let i = index" class="analysis-content-group-items">
+				<div class="item handle" (dblclick)="openImg(item)">
+					<!-- <img class="main_courseware none" src="assets/images/main_courseware.png"/> -->
+					<img class="filetype_icon" src="{{item.name|filetype}}" />
+					<div class="file_name" title="{{item.name}}">{{item.name}}</div>
+					<div [ngStyle]="{'background':item.backgroundTone}" class="tag">
+						{{item.courseMaterialDesignName}}
+					</div>
+					<!-- <span class="iconfont icon-download" (click)="download(item);"></span> -->
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="footer">
+		<button (click)="goList()" tabindex='-1' class="close" [nzType]="'default'" nz-button [nzType]="'danger'">
+			<span>返回</span>
+		</button>
+	</div>
+</div>

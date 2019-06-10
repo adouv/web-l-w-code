@@ -1,0 +1,72 @@
+<div class="infoTemplate">
+    <div class="nav-top">基本信息采集模板管理</div>
+    <div class="nav-select-button">
+        <div class="nav-select">
+            <span>所属模块</span>
+            <select class="select_class" ng-model="baseInfoTemplate.module" ng-change="baseInfoTemplate.getTitles(baseInfoTemplate.module)"
+                    ng-options="item as item.itemName for item in baseInfoTemplate.modules">
+            </select>
+        </div>
+        <div class="nav-button">
+            <!--<span class="btn_bd">返回</span>-->
+            <span class="btn_bg" ng-click="baseInfoTemplate.goAdd()">添加</span>
+            <span class="btn_bd" ng-click="baseInfoTemplate.batchManage()">批量管理</span>
+        </div>
+    </div>
+    <div class="content">
+        <div class="content-title">当前模板所有项及显示顺序管理</div>
+        <div class="content-table-box">
+            <table class="content-table">
+                <tr>
+                    <th ng-repeat="title in baseInfoTemplate.titles">
+                        <span class="iconfont icon-leftArrow content-table-left-arrow" ng-click="baseInfoTemplate.toLeft(baseInfoTemplate.titles,$index)"></span>
+                        {{$index+1}}
+                        <span class="iconfont icon-rightArrow content-table-right-arrow" ng-click="baseInfoTemplate.toRight(baseInfoTemplate.titles,$index)"></span>
+                    </th>
+                </tr>
+                <tr>
+                    <td ng-repeat="title in baseInfoTemplate.titles">
+                        {{title.name}}
+                        <span class="iconfont icon-editPen content-table-left-edit" ng-click="baseInfoTemplate.goEdit(title.id,title.name)"></span>
+                    </td>
+                </tr>
+            </table>
+            <div class="nodata_box" ng-show="baseInfoTemplate.titles.length<1">
+                <div class="nodata">
+                    <p>当前模板暂无内容</p>
+                </div>
+            </div>
+        </div>
+        <div class="content-title">信息模板不可见项管理</div>
+        <div class="content-no-see">
+            <div class="content-left">
+                <div class="content-no-see-title">可见项</div>
+                <div class="content-no-see-search">
+                    <input type="text" class="input_class content-no-see-input" ng-model="baseInfoTemplate.showKeywords" ng-keyup="baseInfoTemplate.search(baseInfoTemplate.visibleTitles,baseInfoTemplate.showKeywords)">
+                    <span class="iconfont icon-search content-no-see-icon" ng-click="baseInfoTemplate.search(baseInfoTemplate.visibleTitles,baseInfoTemplate.showKeywords)"></span>
+                </div>
+                <div class="content-no-see-text">
+                    <div class="content-no-see-text-list" ng-repeat="title in baseInfoTemplate.visibleTitles" ng-show="!title.hidden" ng-click="baseInfoTemplate.toInvisible(title,$index)">{{title.name}}</div>
+                    <!--<div class="content-no-see-text-list">实发工资</div>
+                    <div class="content-no-see-text-list">实发工资</div>-->
+                </div>
+            </div>
+            <div class="content-center">
+                <div class="content-center-right" ng-click="baseInfoTemplate.toInvisible()">&gt;&gt;</div>
+                <div ng-click="baseInfoTemplate.toVisible()">&lt;&lt;</div>
+            </div>
+            <div class="content-right">
+                <div class="content-no-see-title">不可见项</div>
+                <div class="content-no-see-search">
+                    <input type="text" class="input_class content-no-see-input" ng-model="baseInfoTemplate.hiddenKeywords" ng-keyup="baseInfoTemplate.search(baseInfoTemplate.invisibleTitles,baseInfoTemplate.hiddenKeywords)">
+                    <span class="iconfont icon-search content-no-see-icon" ng-click="baseInfoTemplate.search(baseInfoTemplate.invisibleTitles,baseInfoTemplate.hiddenKeywords)"></span>
+                </div>
+                <div class="content-no-see-text">
+                    <div class="content-no-see-text-list"  ng-repeat="title in baseInfoTemplate.invisibleTitles" ng-show="!title.hidden" ng-click="baseInfoTemplate.toVisible(title,$index)">{{title.name}}</div>
+                    <!--<div class="content-no-see-text-list">实发工资</div>
+                    <div class="content-no-see-text-list">实发工资</div>-->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

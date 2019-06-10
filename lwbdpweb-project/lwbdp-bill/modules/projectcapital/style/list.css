@@ -1,0 +1,316 @@
+.projectcapital{
+	/*overflow: hidden;*/
+	height: 100%;
+    min-width: 1200px;
+    /*position: relative;*/
+}
+.projectcapital .list_content select{
+    /*float: left;*/
+    width: 15%;
+    height: 30px;
+    border: 1px solid #dbe3ee;
+    font-size: 14px;
+    margin-right: 10px;
+    padding: 0 10px;
+}
+.projectcapital .list_content .selectPro{float: left}
+.projectcapital .list_content .form_top_line{
+    background-image: url('../../../images/form_top_line.png');
+    height: 5px;
+}
+.projectcapital .list_content .selectgarden_posa{
+    margin-top: 0;
+}
+.projectcapital .list_content .selectgarden_posa .fl{
+    margin-top: 0;
+    cursor: pointer;
+}
+.projectcapital .list_content .form-control{
+    border: 1px solid #dbe3ee;
+    height: 30px;
+    border-radius: 0;
+}
+.projectcapital .list_content .btn{
+    margin: 0;
+}
+.projectcapital .header .name{
+ 	background:none;
+    text-indent: 4px;
+    font-size: 24px;
+    margin-right: 40px;
+}
+.projectcapital .header img{
+	width:22px;
+	margin-bottom:6px;
+}
+.projectcapital .project_nav{
+    height: 60px;line-height: 60px;background: #e7f2ff;
+    border-bottom: 1px solid #91abca;width: 100%;
+}
+.projectcapital .project_nav ul{width: 84.3%;margin: 0 auto;}
+.projectcapital .form-control{
+	width:100%;
+}
+.projectcapital .project_nav ul a:hover{
+    text-decoration: none !important;
+}
+.projectcapital .search_condotion>div:first-child{
+    padding: 20px 2.5% 20px 0;
+    height: 72px;
+}
+.projectcapital .search_condotion .input-group{
+    width:23%;
+    margin-bottom: 7px;
+    float: left;
+}
+.projectcapital .selectgarden_posa{width: 15%;margin-right: 10px;position: relative;}
+.projectcapital .selectgarden_posa .selectbox .select_condition .searchBtn{top:3px;}
+.projectcapital .search_condotion .btn{
+    border-color: #0096ff;
+    color:#0096ff;
+    padding: 4px 20px;
+    border-radius: 3px;
+    margin-left: 10px;
+}
+.projectcapital .search_condotion .btn:hover {
+    border-style: solid;
+    border-width: 1px;
+    border-color: #0096ff;
+    border-radius: 3px;
+    background-color: #ffffff;
+    box-shadow: 0px 2px 4px 0px rgba(0, 127, 255, 0.5);
+    height: 30px;
+}
+.projectcapital .search_condotion .btn:focus{
+    background-color: transparent;
+}
+.projectcapital .search_condotion h3{
+    position: relative;
+}
+.projectcapital .search_condotion h3 .btn{
+	margin-top: -8px;
+    position: absolute;
+    right: 0;
+    top: 20px;
+}
+.projectcapital .search_condotion .btn.cur{
+    background-color: #0096ff;
+    color: #fff;
+    position: absolute;
+    right: 25px;
+}
+.projectcapital .search_condotion p{
+    line-height: 40px;height: 40px;font-size: 14px;
+    margin: 5px 0;
+}
+.projectcapital .main_b_left  p{
+    margin: 0;
+    background-color: #f2f2f2;
+    padding-left: 10px;
+    color: #333333;
+    font-weight: normal;
+}
+.projectcapital .search_condotion p .blue{color:#4c7db6;}
+.projectcapital .selected_obj{    
+    max-height: 182px;
+    overflow: auto;}
+.projectcapital .selected_obj::-webkit-scrollbar-track {
+    border-radius: 10px;
+    background-color: #ffffff;
+}
+
+.projectcapital .selected_obj::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+    background-color: #ffffff;
+}
+
+.projectcapital .selected_obj::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.projectcapital .selected_obj li{
+    display:inline-block;padding:0 10px;background:#dbe3ee ;border:1px solid #e5e5e5;
+    height: 35px;line-height: 35px;margin-right: 17px;margin-bottom: 10px;
+    border-radius: 0;color:#333;font-size: 12px;}
+.projectcapital .selected_obj li span{
+    display: inline-block;width: 43px;height: 35px;line-height: 35px; cursor: pointer;
+    background: url('../../../images/img_delete.png') right center no-repeat; vertical-align: middle;
+    background-size: 18px 18px;
+    margin-top: -3px;
+    opacity: 0.5;
+}
+.projectcapital .search_condotion .posa.form-group{
+    position: absolute;  left: 1%;  top: 10px;  font-size: 16px;z-index: 2;
+}
+.projectcapital .search_condotion .posa option{
+    line-height: 30px;
+}
+.projectcapital .search_condotion .posa .form-control{width: 135px;font-weight:normal;}
+.projectcapital .main .mian_style{  width: 240px;  height: 99px;  border-bottom: 1px solid #e3e3e3;  padding-left: 26px;  padding-top: 21px;  }
+.projectcapital .main .mian_style h3{  font-size: 14px;  height: 14px;  line-height: 14px;  font-weight: 700;  color: #888888;  }
+.projectcapital .main .main_money li{ /*height: 41px;*/  position: relative;  line-height: 41px;  border-bottom: 1px dashed #e3e3e3;  font-size: 14px;  color: #333;  font-weight:600;  cursor: pointer;  }
+.projectcapital .main .main_money li li{  border: 0;  font-size: 12px;  }
+.projectcapital .main .main_money li.cur{  color: #4c7db6;  background: #e7f2ff;  }
+.projectcapital .main .main_money li img{  float: right;  margin: 11px 24px  0 0 ;  display: none;  }
+.projectcapital .main_b_left .white:before{  color: #fff;  }
+.projectcapital .main_b_left .white:after{  color: #fff;  }
+/*项目支出类型点击后的效果*/
+.projectcapital .up_down_click{ /*background:#f6f6f6;*/  }
+/*点击后变背景图，此类是箭头向上的背景图*/
+.projectcapital .list .search_condotion .downBlue{  background:url(/images/order_down1.png);  }
+/*点击后变背景图，此类是箭头向下的背景图*/
+.projectcapital .list .search_condotion .upBlue{  background:url(/images/order_up1.png);  }
+.projectcapital.main .upbox .up_down_clickfr{  text-decoration: underline;  color: #333;  }
+.projectcapital .main .upbox .posr.purple{color: #786cec}
+.projectcapital .main .upbox .posr.purple em{color: #786cec}
+.projectcapital .main .main_money li .main_show{  display: inline-block;  }
+.projectcapital .main .manage{  width:122px ;  height: 30px;  display: flex;  justify-content: center;  border:1px solid #fff;  border-radius: 5px;  background: #4c7db6;  color: #fff;  }
+.projectcapital .main .import{  display: flex;  justify-content: center;  width: 110px;  height: 28px;  line-height: 28px;  border:1px solid red;  border-radius: 5px;  color: red;  background: #fff;  }
+.projectcapital .main_bottom{  display: flex;  border-top:1px solid #dbe3ee;  }
+.projectcapital .main .table tr{  border:none;  cursor: pointer;  }
+.projectcapital .main .table tr:hover{background-color: #dbe3ee}
+.projectcapital .main .table thead tr:hover{background-color: #f8f8f8}
+.projectcapital .main .table tr th,.main .table tr td{vertical-align: middle;border: 1px solid #dbe3ee}
+.projectcapital .main .table tr th:nth-of-type(2){width: 105px}
+.projectcapital .main .table thead{  background: #f8f8f8;  }
+.projectcapital .main .table td, .main .table th{  text-align: center;  }
+.projectcapital .main tbody:nth-child(odd){  background-color: #f8f8f8;}
+.projectcapital .main .table td:nth-of-type(1),.main .table th:nth-of-type(1){  width: 7%;  border-left: 0 !important;  }
+.projectcapital .main .table td:nth-of-type(2),.main .table th:nth-of-type(2){  width: 9.5%; }
+.projectcapital .main .table td:nth-of-type(3),.main .table th:nth-of-type(3){  width: 11%;  }
+.projectcapital .main .table td:nth-of-type(4),.main .table th:nth-of-type(4){  width: 11.5%;  }
+.projectcapital .main .table td:nth-of-type(5),.main .table th:nth-of-type(5){  width: 7.3%;  }
+.projectcapital .main .table td:nth-of-type(6),.main .table th:nth-of-type(6){  width: 13.5%;  }
+.projectcapital .main .table td:nth-of-type(7),.main .table th:nth-of-type(7){  width: 11.5%;  }
+.projectcapital .main .table td:nth-of-type(8),.main .table th:nth-of-type(8){  width: 10%;  }
+.projectcapital .main .table td:nth-of-type(9),.main .table th:nth-of-type(9){  width: 9.4%;  }
+.projectcapital .main .table td:nth-of-type(10),.main .table th:nth-of-type(10){  width: 9.3%;  border-right: 0 !important;  }
+.projectcapital .main .table td img{  display: none;  cursor: pointer;  }
+.projectcapital .main .table tr:hover img{  display: inline-block;  }
+.projectcapital .main .table td span{  opacity: 0;  cursor: pointer;  }
+.projectcapital .main .table tr:hover span{  opacity: 1;  }
+.projectcapital .main_t_r{  padding: 46px 5px  0 0;  }
+.projectcapital .main_main h3 img.cap_export{padding-bottom: 2px;}
+.projectcapital .main_t_r button{  float:left;  margin: 40px 10px  0 0;  }
+.projectcapital .main_main{ max-height:2944px;  overflow: hidden;  padding-left: 20px;  }
+.projectcapital .main_main_orders{position: relative}
+.projectcapital .main_main_orders .form-group{overflow: hidden;line-height: 30px;}
+.projectcapital .main_main_orders .form-group span:nth-of-type(1){margin-right: 10px}
+.projectcapital .main_main_orders .main_main_orderTitle{  text-align: center;  padding: 30px 0 0 0;  color: #999999;  }
+.projectcapital .main_main_orders .main_main_orderTitle span{  color: #0096ff;  }
+.projectcapital .main .main_bottom .main_main p{  float: left;  height: 1px;  background: #e3e3e3;  margin-left: 35px;  margin-top: 315px;  width: 100%;  }
+.projectcapital .main_main h3{  padding: 20px 0px;  text-align: center;  font-size: 16px; /*font-weight: 700;*/ /*margin-left:3%;*/  }
+.projectcapital .main_main h3 span{  color: #888888;  font-size:13px ;  cursor:pointer;  margin-left: 10px;  font-weight: normal;  }
+.projectcapital .table{
+ width:100%;
+ table-layout:fixed;
+     border: 1px solid #dbe3ee;
+     border-left:none ;
+     border-right: none;
+}
+.projectcapital .table tr{
+ box-sizing: border-box;
+}
+.projectcapital .main_main h3 img{
+	padding-bottom: 20px;
+}
+.projectcapital .main_footer p{
+	text-align: center;
+	color: #333;
+	font-size: 14px;
+	height: 50px;
+	line-height: 50px;
+	font-weight: 700;
+}
+.projectcapital .main_main h3>img:nth-of-type(1),.main_main h3 img:nth-of-type(2){
+	padding-bottom: 20px;
+}
+.projectcapital .headerCountIcon{
+    display: inline-block;
+    width: 12px;
+    height: 15px;
+    background-image: url('../images/add.png');
+    background-repeat:no-repeat;
+}
+
+.projectcapital .up_down{
+    border-bottom: 1px solid #e3e3e3;
+    height: inherit;
+}
+.projectcapital .up_down .tit{
+    color:#333333;margin-bottom: 5px;
+}
+.projectcapital .up_down .tit .clearIcon{
+	padding-right: 10px;
+	cursor: pointer;
+    display: none;
+}
+.projectcapital .up_down .upbox{
+    overflow: hidden;
+}
+.projectcapital .up_down .upbox div{
+    float: left;font-size: 14px;cursor: pointer;  width: calc((100% - 0px)/2);
+     line-height: 45px;
+    height: 45px;border-radius: 23px;
+    text-align: center;
+
+}
+.projectcapital .up_down .upbox div em{color:#999999}
+.projectcapital .upbox div .glyphicon{position: absolute;font-size:10px;cursor: pointer;
+    font-weight: normal;color: #8a8b8b;top:inherit;}
+.projectcapital .upbox div .glyphicon-chevron-up{
+    top:2px;
+    left:17px;
+}
+.projectcapital .upbox div .glyphicon-chevron-down{
+    bottom:2px;
+    left:17px;
+}
+.projectcapital .upbox span.fr{color:#888;margin-top:15px; cursor: pointer;font-size: 11px;}
+.projectcapital .main_b_left{
+    min-width: 170px;
+	width: 170px;
+	border-right:1px solid #dbe3ee;
+    border-left:1px solid #dbe3ee;
+}
+.projectcapital .search_condotion .pageBoxnum{
+	width: 100%;line-height: 40px;height: 90px;
+	font-size: 14px;font-weight: 600;text-align: center;
+}
+
+/*1.1*/
+.projectcapital .table>tbody+tbody{border: none;}
+.projectcapital .main .table tr .blue_down{color:#786cec;}
+.projectcapital .main .table tr .caret{border-left: 9px dashed;vertical-align: inherit;  border-top: 5px solid transparent;  border-bottom: 5px solid transparent;}
+.projectcapital .main .table tr .cur .caret{border-top: 9px dashed;vertical-align: inherit;  border-right: 5px solid transparent;  border-left: 5px solid transparent;border-bottom: 0}
+.projectcapital .main .table tr.detail_tr{display: none; color:#888888;}
+.projectcapital .operate_th{position: relative;}
+.projectcapital .prompt{width: 14px;height: 14px;background: url('../../../images/prompt.png') no-repeat;position: absolute;bottom:20px;right: 6px;cursor: pointer;}
+.projectcapital .operate_prompt{box-shadow: 0px 5px 16px #ccc;width: 390px;border: 1px solid #eaeaea;position: absolute;top: 100%;right: 0;background: #fff;color:#888888;
+padding:18px 16px;font-size:12px;text-align: left;}
+/* ztree css */
+.projectcapital .ztree{position: relative;padding: 0;}
+.projectcapital .ztree *{font-size: 14px}
+.projectcapital .ztree li{margin: 0;}
+.projectcapital .ztree li ul{padding: 0;}
+.projectcapital .ztree li a.curSelectedNode{background: none;height: 40px;border:0;opacity: 1}
+.projectcapital .ztree li a{width: 100%;height: 40px;font-weight: normal;padding-left: 25px}
+.projectcapital .ztree li span.button.chk{display: none;width:18px;height:18px;cursor: pointer;position: absolute;right: 10px;}
+.projectcapital .ztree li span.button.chk.checkbox_false_full{display: none;opacity: 0}
+.projectcapital .ztree li span.button.chk.checkbox_false_full_focus{display: none;opacity: 0}
+.projectcapital .ztree li span.button.chk.checkbox_false_part{display: none;opacity: 0}
+.projectcapital .ztree li span.button.chk.checkbox_false_part_focus{display: none;opacity: 0}
+.projectcapital .ztree li span.button.chk.checkbox_true_part{display: none;opacity: 0}
+.projectcapital .ztree li span.button.chk.checkbox_true_part_focus{display: none;opacity: 0}
+.projectcapital .ztree li span.button.chk.checkbox_true_full{display:inline;background: url("../../../images/img_delete.png") no-repeat center;background-size: 18px 18px;opacity: 0.5;position: absolute;top:10px;}
+.projectcapital .ztree li span.button.chk.checkbox_true_full_focus{background: url("../../../images/img_delete.png") no-repeat center;background-size: 18px 18px;opacity: 1;position: absolute;top:10px;}
+.projectcapital .ztree li span.button.chk.checkbox_true_full + a{width:100%;height:40px;background: #dbe3ee}
+.projectcapital .ztree li span.button.chk.checkbox_true_full_focus + a{width:100%;height:40px;background: #dbe3ee}
+.projectcapital .ztree li span.button.noline_open, .projectcapital .ztree li span.button.noline_close{position: absolute;top:20px;left: 10px;}
+.projectcapital .noline_docu{display: none !important;}
+.projectcapital .ztree li ul a{padding:0 0 0 25px;}
+.projectcapital .ztree li ul a span{font-size: 12px;  max-width: 77%;  display: inline-block;  text-overflow: ellipsis;  white-space: nowrap;  overflow: hidden;}
+.projectcapital .ztree li span.button.noline_close:before{  content: "\e824";  font-family:"iconfont" !important;  font-size:12px;  font-style:normal;  -webkit-font-smoothing: antialiased;  -moz-osx-font-smoothing: grayscale;  }
+.projectcapital .ztree li span.button.noline_open:before{  content: "\e821";  font-family:"iconfont" !important;  font-size:16px;  font-style:normal;  -webkit-font-smoothing: antialiased;  -moz-osx-font-smoothing: grayscale;  }

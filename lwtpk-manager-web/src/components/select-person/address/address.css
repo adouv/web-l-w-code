@@ -1,0 +1,18 @@
+.lw-select-person .address-list{padding: 10px 20px;}
+.lw-select-person .checkbox-class+span{vertical-align: middle;width: 100%;margin-left: -25px;padding-left: 25px;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;display: inline-block;}
+.lw-select-person .checkbox-class+span:hover{color: #0097ff}
+.lw-select-person .checkbox-class[type=checkbox]:checked {background: url(../images/check_box_choice.png) no-repeat;border: 0;}
+.lw-select-person .checkbox-class[type=checkbox]:checked+span{color: #0096FF;}
+.lw-select-person .checkbox-class[type=checkbox] {width: 16px;height: 16px;outline: 0;-webkit-appearance: none;cursor: pointer;filter: alpha(opacity=50);background: url(../images/check_box_default.png) no-repeat;vertical-align: middle;}
+.lw-select-person .address-wrap{margin: 10px 20px;height: 30px;}
+
+.lw-select-person .multiple-select{position: relative;width: 180px;display: inline-block;z-index: 999;margin-right: 6px;background: url("../images/drop_down.png") no-repeat 100%;}
+.lw-select-person .multiple-select .multiple-wrap{max-height:340px;overflow: hidden;position: absolute;top:32px;left: 0;width: 99%;right: 0;margin: auto;box-shadow: 0px 3px 10px #ccc;background: #fff;}
+.lw-select-person .multiple-select .drop-down-wrap{max-height:300px;overflow:auto;}
+.lw-select-person .multiple-select .drop-down-wrap label{width: 100%;height: 100%;cursor: pointer}
+.lw-select-person .multiple-select .drop-down-wrap li{line-height: 30px;padding: 0 8px;height: 30px;width: 100%;text-overflow: ellipsis;overflow: hidden;white-space: nowrap}
+.lw-select-person .multiple-select .echo-wrap{border: 1px solid #dbe3ee;width: 100%;line-height: 28px;height:30px;box-sizing:border-box;padding: 0 8px;font-size: 14px;text-overflow: ellipsis;white-space: nowrap;overflow: hidden;cursor: pointer;padding-right: 28px;}
+.lw-select-person .multiple-select .sure-wrap{text-align: center;margin: 10px 0 5px 0;height: 30px;}
+.lw-select-person .multiple-select .sure-wrap a{color: rgba(120,108,234,.5);border-radius: 50%;margin:0 5px;font-size: 20px;cursor: default;text-decoration: none;}
+.lw-select-person .multiple-select .sure-wrap a.active{color: rgba(120,108,234,1);cursor: pointer}
+.lw-select-person .address-title{line-height: 30px;float: left;font-size: 14px;}

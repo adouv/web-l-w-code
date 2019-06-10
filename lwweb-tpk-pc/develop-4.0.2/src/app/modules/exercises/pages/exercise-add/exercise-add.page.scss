@@ -1,0 +1,217 @@
+@import "../../../../../styles/variable";
+.ant-layout-sider::ng-deep {
+    display: none;
+}
+
+.exercise-add::ng-deep {
+    //padding: 0 computer(20px);
+    //height: 100%;
+    position: fixed;
+    top: computer(100px);
+    left: 0;
+    z-index: 9;
+    background: #fff;
+    right: 0;
+    bottom: 0;
+    .auto-scroll {
+        padding: 0 computer(20px);
+        height: calc(100% - #{computer(52px)});
+    }
+    //height: calc(100% - #{computer(70px)});
+    .ant-checkbox-wrapper {
+        font-size: computer(14px);
+        color: $color_font-deep;
+    }
+    .edui-default .edui-editor {
+        ///* border: 1px solid #d4d4d4; */
+        border-radius: 0 !important;
+        border-radius: 4px;
+    }
+    .input-err {
+        border: 1px solid red !important;
+        box-shadow: 0 0 10px red;
+    }
+    .span-err {
+        color: red;
+        font-size: computer(14px);
+        margin-left: computer(10px);
+    }
+    .exercise-editor-group-content-ueditor {
+        border: 1px solid #d4d4d4;
+        border-radius: 4px;
+        overflow: hidden;
+    }
+    .ant-checkbox-wrapper+.ant-checkbox-wrapper {
+        margin-left: 0;
+        margin-bottom: computer(5px);
+    }
+    .bg-gray {
+        width: computer(140px);
+    }
+    .header-title {
+        height: computer(50px);
+        line-height: computer(50px);
+        text-align: center;
+        color: $color_font-deep;
+        border-bottom: 1px solid $color_border;
+        font-size: computer(16px);
+        margin-bottom: computer(20px);
+    }
+    .exercise-add-content {
+        //height: calc(100% - #{computer(120px)});
+        width: 100%;
+        margin: 0 auto computer(80px);
+        .exercise-add-container {
+            max-width: computer(914px);
+            width: 62%;
+            margin: 0 auto;
+        }
+        .exercise-add-type {
+            width: 100%;
+            .exercises-header-select {
+                width: computer(140px);
+                margin-left: computer(-183px);
+            }
+        }
+        .exercise-add-select {
+            margin-top: computer(10px);
+            height: auto;
+            .btn-exercise {
+                width: computer(120px);
+            }
+            .select-content-title-content {
+                margin-left: computer(-183px);
+                float: left;
+            }
+            .select-content-title {
+                width: computer(44px);
+                margin-left: computer(10px);
+                line-height: computer(30px);
+                font-size: computer(14px);
+                color: $color_font-light;
+                text-align: right;
+                float: right;
+            }
+            .select-content {
+                width: 100%;
+                line-height: computer(30px);
+                font-size: computer(14px);
+                color: $color_font-light;
+                .select-contents {
+                    display: inline-block;
+                    .no-content-msg {
+                        color: $color_font-light;
+                        font-size: computer(14px);
+                        margin-left: computer(10px);
+                    }
+                }
+                .select-tag {
+                    padding: 0 computer(10px) 0 computer(20px);
+                    margin-bottom: computer(5px);
+                    font-size: computer(14px);
+                    border-radius: computer(15px);
+                    height: computer(30px);
+                    line-height: computer(30px);
+                    text-align: center;
+                    background-color: $color_border;
+                    color: $color_font-deep;
+                    margin-right: computer(10px);
+                    cursor: default;
+                    //float: left;
+                    display: inline-block;
+                    .icon-span {
+                        cursor: pointer;
+                        font-size: computer(12px) !important;
+                        margin-left: computer(10px);
+                        &:hover {
+                            color: $color_main;
+                        }
+                        .iconfont:before {
+                            font-size: computer(12px) !important;
+                        }
+                    }
+                }
+            }
+        }
+        .exercise-editor {
+            .exercise-editor-group-title {
+                width: computer(140px);
+                margin-left: computer(-150px);
+                text-align: right;
+                line-height: computer(30px);
+                font-size: computer(14px);
+                color: $color_font-light;
+                float: left;
+            }
+            .exercise-editor-group-content {
+                width: 100%;
+            }
+            .border {
+                border: 1px solid $color_main;
+                padding: computer(20px) computer(20px) computer(10px) 0;
+                position: relative;
+                .delete-answer {
+                    position: absolute;
+                    right: computer(20px);
+                    top: computer(20px);
+                    cursor: pointer;
+                    width: computer(40px);
+                    height: computer(40px);
+                    text-align: right;
+                    z-index: 999;
+                    color: $color_font-light;
+                    &:hover {
+                        color: $color_main;
+                    }
+                }
+            }
+            .line-height {
+                line-height: computer(30px);
+                margin-left: computer(10px);
+            }
+            .add-answer {
+                margin-bottom: computer(10px);
+            }
+            .exercise-editor-group {
+                margin-top: computer(20px);
+            }
+        }
+    }
+    .exercise-editor-group-an {
+        max-width: computer(910px);
+    }
+    .exercise-editor-group-stem {
+        margin-bottom: computer(30px) !important;
+    }
+    .exercise-editor-group-analysis {
+        margin-top: computer(30px) !important;
+    }
+    .margin-left-5 {
+        margin-left: computer(5px);
+    }
+    .margin-left-10 {
+        margin-left: computer(10px) !important;
+    }
+    .footer {
+        text-align: center;
+        border-top: 1px solid $color_border;
+        padding: computer(10px) 0;
+        position: relative;
+        line-height: computer(30px);
+        .footer-content {
+            margin: 0 auto;
+            width: auto;
+            display: inline-block;
+            line-height: computer(30px);
+        }
+        .close {
+            margin-right: computer(20px);
+        }
+        .isAddOther {
+            margin-left: computer(20px);
+            position: absolute;
+            font-size: computer(14px);
+            color: $color_font-deep;
+        }
+    }
+}

@@ -1,0 +1,50 @@
+<div class="bdp_list_search">
+    <div class="dialog-header">
+        本功能模块默认加载审批流程配置
+        <span class="iconfont icon-close del_btn dialog-close" ng-click="closeThisDialog()"></span>
+    </div>
+
+    <div class="dialog-content">
+        <p>当前已配置的默认加载审批流程</p>
+        <p class="color_999 mar_top_10">（下部每个流程前的序号表示该模块默认加载时该审批流程在侧边栏从上到下的显示顺序；拖动选项卡可改变审批流程顺序）</p>
+        <div class="max_height4">
+            <!--
+            ng-drag : 表示该元素能够被拖动
+            ng-drag-data : 表示拖动元素时跟着被拖走的数据
+            ng-drop : 表示该元素内可放置被拖动的元素
+            ng-drop-success : 放置在ngd-drop所在元素里后触发，一般写事件.($index : 表示拖动的数据所落的元素的下标,$data : 被拖动的数据对象)
+            -->
+            <span ng-drop="true" ng-drop-success="defaultProcess.dropComplete($index,$data,$event)" ng-repeat="data in defaultProcess.configProcess">
+                <em class="box_index_block" ng-drag="true" ng-drag-data="data">
+                    <i class="box_index">{{ $index }}</i>
+                    <i class="box_text">{{data.name}}</i>
+                    <i class="box_icon iconfont icon-error" ng-click="defaultProcess.deleteProcess(data)"></i>
+                </em>
+            </span>
+        </div>
+
+        <div class="addConfig">
+            <div class="addConfig_search bor_bottom">
+                <h4 class="fos14 fl">可选的审批流程配置</h4>
+                <div class="content_textBar fr">
+                    <input type="text" class="input_class" maxlength="50" placeholder="回车键提交查询"  ng-model="defaultProcess.keyWord" ng-change="defaultProcess.goSearch($event)">
+                    <span class="iconfont icon-search" ng-show="defaultProcess.keyWord.length === 0"></span>
+                    <span class="iconfont icon-error" ng-show="defaultProcess.keyWord.length > 0" ng-click="defaultProcess.keyWord = '' "></span>
+                </div>
+            </div>
+        </div>
+        <div class='flows-wrapper'>
+            <span ng-repeat="data in defaultProcess.showProcess">
+                <em class="box_block" ng-if="data.isSearch">
+                    {{data.name}}；
+                    <em class="box_float" ng-click="defaultProcess.setDefault(data)">设为默认</em>
+                </em>
+            </span>
+        </div>
+    </div>
+
+    <div class="dialog-btn">
+        <div class="btn_bd" ng-click="closeThisDialog()">取消</div>
+        <div class="btn_bg" ng-click="defaultProcess.clickSure(closeThisDialog)">确定</div>
+    </div>
+</div>

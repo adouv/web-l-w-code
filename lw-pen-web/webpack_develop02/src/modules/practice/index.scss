@@ -1,0 +1,221 @@
+
+@import "../../assets/scss/index.scss";
+.practice-content {
+  -webkit-app-region: drag;
+  width: computer(800px);
+  height: computer(600px);
+  margin: 0 auto;
+  box-shadow: 0px 8px 12px 0px rgba(7, 0, 2, 0.3);
+  border-radius: 6px;
+  border: solid 1px #dddddd;
+  position: relative;
+  background-color: #fff;
+  overflow: hidden;
+  .close {
+    cursor: pointer;
+    border: 0;
+    background: transparent;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 10;
+    font-weight: 700;
+    line-height: 1;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    color: rgba(0, 0, 0, 0.43);
+    outline: 0;
+  }
+
+  .close-x {
+    display: block;
+    font-style: normal;
+    vertical-align: baseline;
+    text-align: center;
+    text-transform: none;
+    text-rendering: auto;
+    width: 36px;
+    height: 36px;
+    line-height: 36px;
+  }
+  .iconfont:before{
+    font-size: 14px;
+  }
+  .praction-title {
+    text-align: center;
+    height: computer(36px);
+    border-bottom: 1px solid #dddddd;
+    font-size: computer(16px);
+    line-height: computer(36px);
+    color: #333333;
+  }
+
+  .search {
+    height: computer(55px);
+    padding-top: computer(10px);
+    margin: 0 auto;
+    ul {
+      width: 100%;
+    }
+    ul,
+    li {
+      display: -webkit-box;
+
+      .a-select {
+        width: computer(120px);
+        margin-left: computer(18px);
+        height: computer(30px);
+        color: #333333;
+        .ant-select-selection{
+          border: 1px solid #dddddd;
+        }
+        .ant-select-selection--single {
+          border-radius: 0px !important;
+          height: 30px;
+        }
+      }
+      .ant-select-open .ant-select-selection{
+        border: 1px solid #ff7d55 !important;
+      }
+      .ant-select-focused .ant-select-selection--single{
+        border:1px solid #ff7d55;
+      }
+      button {
+        margin-right: 10px;
+      }
+    }
+  }
+
+  .input-search {
+    margin: 0 computer(60px) 0 computer(5px);
+  }
+  .table-list {
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      text-align: left;
+      cursor: default;
+
+      td {
+        padding: computer(18px) 0;
+        line-height: 1;
+      }
+
+      th {
+        height: computer(60px);
+      }
+
+      th {
+        color: $color_font-deep;
+        font-weight: 500;
+      }
+
+      td {
+        color: $color_font-deep;
+      }
+
+      tr th:first-child,
+      tr td:first-child,
+      tr th:last-child,
+      tr td:last-child {
+        text-align: center;
+      }
+
+      tr td {
+        img {
+          margin-right: 5px;
+        }
+
+        span {
+          @include line-ell(185px);
+        }
+      }
+
+      .percent {
+        display: inline-block;
+        width: computer(40px);
+        text-align: right;
+      }
+
+      tbody {
+        display: block;
+        height: 447px;
+        overflow-y: scroll;
+        @include scroll-bar(8px);
+        overflow-x: hidden;
+      }
+      .startTd{
+        opacity:0;
+      }
+
+      thead,
+      tbody tr {
+        display: table;
+        width: 100%;
+        table-layout: fixed;
+      }
+
+      thead {
+        width: calc(100% - 1em);
+      }
+
+      tbody tr td:first-child {
+        width: computer(82px);
+      }
+
+      .td-2 {
+        width: computer(255px);
+      }
+
+      .td-3 {
+        width: computer(162px);
+        letter-spacing: 1px;
+      }
+
+      .td-4 {
+        width: computer(97px);
+      }
+
+      .td-5 {
+        width: computer(82px);
+      }
+
+      tbody tr td:last-child {
+        width: computer(120px);
+      }
+
+      tbody tr:hover {
+        background-color: #fcece7;
+        cursor: pointer;
+
+        td {
+          border-color: transparent;
+        }
+        .startTd{
+          opacity: 1;
+        }
+      }
+      tbody tr.noHover:hover {
+        background-color: #fff;
+        cursor: default;
+      }
+      .noHover {
+        height: computer(74px);
+        line-height: computer(74px);
+      }
+    }
+  }
+}
+
+
+
+.actived {
+  background: red;
+}
+
+.ant-input{
+  height: computer(30px);
+}
+.ant-calendar-date-panel{
+  -webkit-app-region: no-drag;
+}

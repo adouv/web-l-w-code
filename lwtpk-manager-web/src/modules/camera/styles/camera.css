@@ -1,0 +1,207 @@
+.content .nav-form {
+    width: 500px;
+    float: left
+}
+
+.content .nav-form input {
+    width: 190px
+}
+
+.content .nav-form .sear {
+    width: 190px;
+    margin-left: 10px
+}
+
+.content .nav-form button {
+    margin-left: 10px
+}
+
+.content input.form-control {
+    float: left;
+    padding-right: 35px;
+}
+
+.content i.glyphicon {
+    line-height: 34px;
+    font-size: 14px;
+    cursor: pointer
+}
+
+.content .io-boder {
+    border: 1px solid #ccc;
+    height: 34px;
+    width: 202px;
+    border-radius: 5px;
+    overflow: hidden;
+    float: left
+}
+
+.content .io-boder a {
+    width: 100px;
+    color: #555;
+    display: block;
+    font-size: 16px;
+    float: left;
+    text-align: center;
+    line-height: 34px;
+    text-decoration: none;
+    border-radius: 0;
+    padding: 0;
+    border: 0;
+}
+
+.content .io-boder a:first-child {
+    border-right: 1px solid #aaa
+}
+
+.content .input-border {
+    width: 220px;
+    float: left;
+    border-radius: 5px;
+    overflow: hidden;
+    margin-right: 50px;
+    position: relative
+}
+
+.content .btn-group:last-child {
+    float: right;
+    border-radius: 5px;
+    overflow: hidden
+}
+
+.content .btn-group .btn {
+    padding: 7px 13px
+}
+
+.content .table {
+    border-bottom: 1px solid #ccc;
+    border-top: 1px solid #ccc
+}
+
+.camera-container table.table tr > td {
+    line-height: inherit;
+    font-size: 16px
+}
+
+section.template-row {
+    border-bottom: 1px solid #969696
+}
+
+.camera-container .row .pull-right {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.row .pull-right a.btn {
+    padding: 5px 46px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.row .pull-right a.font-color {
+    font-size: 15px;
+    text-align: center;
+    display: block;
+    margin-top: 5px;
+}
+
+.row.fu {
+    padding: 0 2%;
+}
+
+.camera-container .win-tab {
+    width: 20%;
+    height: 560px;
+    border: 1px solid #e3e3e3;
+    display: inline-block;
+    margin: 20px 2%;
+    border-radius: 4px;
+    overflow: hidden
+}
+
+.camera-container .win-tab .win-title {
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 45px;
+    background: #F6F6F6;
+    padding: 0 20px;
+    border-bottom: 1px solid #e3e3e3;
+    text-align: center
+}
+
+.camera-container .win-tab .win-content {
+    padding: 10px;
+    height: 512px;
+    overflow: auto;
+}
+
+.camera-container .win-tab .win-content .form-group {
+    position: relative
+}
+
+.camera-container .win-tab .win-content .form-group i.glyphicon {
+    padding: 0 10px;
+    position: absolute;
+    right: 0
+}
+
+.camera-container .win-tab .win-content ul.assign {
+    padding: 3px 15px;
+    margin-top: 38px;
+}
+
+.camera-container .win-tab .win-content ul.assign li {
+    padding: 6px 10px;
+    cursor: default;
+}
+
+.camera-container .win-tab .win-content ul.assign li i.glyphicon {
+    float: right;
+    top: 5px;
+    cursor: pointer
+}
+
+.camera-container .win-tab .win-content ul.assign li.cur, .win-tab .win-content ul.assign li:hover {
+    background: #f6f6f6;
+    color: #00ba8b;
+}
+
+.camera-container .win-tab .win-title .btn {
+    margin-top: 8px;
+}
+
+.camera-container .win-tab .form-button .btn {
+    margin: 10% auto;
+    width: 100px;
+    display: block;
+}
+
+/*.row:last-child .btn{padding-left:40px;padding-right:40px;}*/
+.camera-container .row.footer {
+    width: 38%;
+    margin: 0 auto;
+}
+
+.camera-container .win-tab .win-content ul.assign li {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+table tr td {
+    text-align: center
+}
+
+section.row blockquote {
+    border: none;
+    margin: 20px auto;
+}
+
+div.garden-select {
+    top: 14px;
+}
+
+.content {
+    /*padding-bottom: 20px;*/
+}

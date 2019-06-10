@@ -1,0 +1,66 @@
+<!-- Generated template for the CourseTimeTableComponent component -->
+<div class="classsheet auto-scroll" [ngClass]="{'classsheetOne':tabType==1}">
+	<ul class="head" #head>
+		<li class="boundary">
+			<div class="boundaryline"></div>
+			<span class="weekfont">星期</span>
+			<span class="classfont">节次</span>
+		</li>
+		<li class="monday">星期一</li>
+		<li class="monday">星期二</li>
+		<li class="monday">星期三</li>
+		<li class="monday">星期四</li>
+		<li class="monday">星期五</li>
+		<li class="monday">星期六</li>
+		<li class="monday">星期日</li>
+	</ul>
+
+	<div class="class_body auto-scroll" #classbody>
+		<div *ngFor="let bigItem of bigItems;let j = index" class="row_wraper">
+			<div *ngFor="let item of bigItem.slice(0,1)" class="jieci">
+				<div>
+					<div class="number">{{j+1|numberToUpperCase}}</div>
+					<div class="time">{{item.name}}</div>
+				</div>
+			</div>
+
+
+			<div class="class_item" *ngFor="let item of bigItem.slice(1,8);let i = index" [ngClass]="{'cursor-default': item.name=='','disabled':dialog&&item.name!=''&&!item.enableSync}"
+			    [ngStyle]="getStyle(i+1+8*j)" [ngClass]="getClass(i,j)" (click)="goPrepareLesson(i+1+8*j);">
+				<div class="class_name" *ngIf="tabType==0" title="{{item.data&&item.data.lessonTitle?item.data.lessonTitle:item.name}}">
+					<span *ngIf="tabType==0">{{item.data&&item.data.lessonTitle?item.data.lessonTitle:item.name}}</span>
+				</div>
+
+				<div class="class_name" *ngIf="tabType==1" [ngStyle]="{'':''}">
+					<span>{{item.name}}</span>
+					<span>({{item.data&&item.data.teacherName?item.data.teacherName:item.name}})</span>
+				</div>
+
+				<img *ngIf="item.name!=''&&item.name!=null&&item.data.status" class="top-left-img" src="assets/images/select.png">
+
+				<div title="{{item.data&&item.data.lessonTitle?item.data.lessonTitle:item.name}}" class="beike" *ngIf="!dialog && item.name && tabType==0">
+					<img *ngIf="!item.data.isPast && item.data.prepareStatus!=2" src="assets/images/beike.png" />
+					<img *ngIf="item.data.isPast || item.data.prepareStatus==2" src="assets/images/beike-info.png" />
+				</div>
+
+				<div  class="beike" [ngClass]="{'baibian':item.state==1||item.state==0}"  *ngIf="!dialog && item.name  && tabType==1">
+					<img *ngIf="item.data.prepareStatus==2" src="assets/images/beike-info.png" />
+					<div *ngIf="item.data.prepareStatus==0||item.data.prepareStatus==1" style="background:none;height:62px;line-height:62px;word-break:break-all;overflow: visible !important;font-size:14px;color:#000;">
+						该课节未发布备课资源
+					</div>
+				</div>
+
+				<!-- <div class="ad-tip" *ngIf="tabType==1&&(item.state==0||item.state==1)">
+					该课节未发布备课资源
+					<div class="arrow"></div>
+				</div> -->
+				<div class="ad-tip" *ngIf="tabType==1&&item.state==2">
+					{{item.data&&item.data.lessonTitle?item.data.lessonTitle:item.name}}
+					<div class="arrow"></div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+</div>
+<div style="clear: both;"></div>

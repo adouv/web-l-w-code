@@ -1,0 +1,38 @@
+.modal-title {font-size: 16px;}
+.modal-body .form-group{position: relative}
+.modal-body .search-group{width: 100%;}
+.modal-body .tpk-btn{padding-left: 20px;padding-right: 20px}
+.modal-body button.icon {border: 0;outline: 0;background: rgba(255,255,255,0);position: absolute;right: 0;top:0;padding: 6px 12px}
+.modal-body .list-header .form-group{border-bottom: 1px solid #ccc;width: 100%}
+.modal-body .form-group #checkAll {margin-right: 5px;}
+.modal-body .form-group label.checkbox {line-height: 28px}
+.modal-body .form-inline .checkboxClass {margin-top:6px;}
+.modal-body .subject-list .form-inline{line-height: 28px;margin-left: 8px;}
+.modal-body .subject-list .form-inline input.checkboxClass{margin-right: 10px}
+.schedule-container .gardenList{margin: 0;padding:0 1%;}
+.schedule-container .gardenList li{ line-height: 30px;height: 30px;width: 48%;display: inline-block;}
+.schedule-container .list-header{height:150px;overflow: auto;}
+.modal-footer{text-align: center;}
+.modal-footer p{text-align: left;font-size: 16px;}
+.modal-footer .tpk-btn-o{margin-left: 30px;}
+.schedule-container .errorsList li{ line-height: 30px;height: 30px;width: 33%;display: inline-block;}
+.red{color: red;}
+.schedule-container .commend {color:rgb(172,172,172);margin-left: 5px;padding-top: 2px}
+.schedule-container .modal-header.border-none {border: none;padding-bottom: 0}
+.schedule-container .new {background: #FFFFFF;color: rgb(0,186,139);margin-right: 30px}
+.schedule-container .btn.btn-default.tpk-btn {width: 137px;height: 40px;
+    margin-bottom:40px;margin-top: 30px}
+.schedule-container .active .status {
+    width: 120px;
+    }
+.schedule-container .text-over {width: 178px;overflow: hidden;white-space: nowrap;text-overflow: ellipsis}
+.schedule-container .modal-dialog {width: 60%}
+.modal-open .modal{
+    overflow-y:hidden;
+}
+.modal-header{
+    border-bottom: none;
+}
+.body-update .btn-list{
+    width: 150px;
+}

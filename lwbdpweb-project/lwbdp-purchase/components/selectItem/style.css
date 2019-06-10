@@ -1,0 +1,82 @@
+.ngdialog.lw-bdp .dialog-header{
+    line-height: 40px;
+    text-align: center;
+    border-radius: 5px 5px 0 0;
+    border-bottom: 1px solid #ebebeb;
+    position: relative;
+}
+.ngdialog.lw-bdp .dialog-footer{
+    text-align: center;
+    height: 70px;
+    padding: 20px;
+}
+.ngdialog.lw-bdp .select-item.ngdialog-content{
+    width: 800px;
+    height: 600px;
+}
+
+.ngdialog.lw-bdp .ngdialog-content .dialog-wrapper{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.ngdialog.lw-bdp .dialog-content{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+}
+
+.ngdialog.lw-bdp .head_wrapper{
+    padding: 15px 0;
+}
+.ngdialog.lw-bdp .dialog-content .select_header{
+    max-height: 104px;
+    padding: 0 20px;
+}
+.ngdialog.lw-bdp .dialog-content .select_header span:first-child{
+    background-color: #fff;
+    padding: 4.5px 0;
+}
+.ngdialog.lw-bdp .dialog-content .select_header span{
+    background-color: #dae4ec;
+    padding: 4.5px 10px;
+    margin: 5px;
+    display: inline-block;
+}
+.ngdialog.lw-bdp .dialog-content .select_header span>i{
+    cursor: pointer;
+    color:#a8a8ee;
+    margin-left: 5px;
+}
+.ngdialog.lw-bdp .dialog-content .select_header span:hover i{
+    color:#7f75eb;
+}
+.ngdialog.lw-bdp .dialog-content .item_list{
+    flex: 1;
+}
+.ngdialog.lw-bdp .dialog-content .item_list ul{
+    margin: 0 20px;
+}
+.ngdialog.lw-bdp .dialog-content .item_list .item_li{
+    display: inline-block;
+    padding: 0 10px;
+    position: relative;
+    margin: 5px;
+    line-height: 30px;
+}
+.ngdialog.lw-bdp .dialog-content .item_list .item_li .item_bg{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top:0;
+    left: 0;
+}
+.ngdialog.lw-bdp .dialog-content .item_list .zIndex_10{
+    position: relative;
+    z-index: 10;
+}
+.ngdialog.lw-bdp .dialog-content .item_list .item_li .checkbox_class:checked + .item_bg{
+    background-color: #dae4ec;
+}

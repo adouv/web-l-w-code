@@ -1,0 +1,64 @@
+<div class="courseware-header">
+    <!-- 上传 -->
+    <div class="upload-box">
+        <div class="progress" flex='cross:center'>
+            <span class="mar8">单节课空间使用情况</span>
+            <processBar [progress]="courseSpace.usedSpace"></processBar>
+            <div class="font-style">
+                <span>{{courseSpace.usedSpace}}</span>M/100M
+            </div>
+        </div>
+        <div class="" flex='cross:center'>
+            <!-- 最小化 -->
+            <div class="minimize-box" flex='cross:center'>
+                <div class="min_btn" *ngIf="isDownload" (click)='openDownLoadDialog()'>
+                    <div class='download' flex='cross:center main:center'>
+                        <span class="iconfont icon-download upload-btn"></span>
+                        <div class="name">
+                            下载列表
+                            <span *ngIf="downloadList.length > 0">({{downloadList.length}})</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="min_btn" *ngIf="isUploader" (click)='openUploadDialog()'>
+                    <div class='upload' flex='cross:center main:center'>
+                        <span class="iconfont icon-upload upload-btn"></span>
+                        <span class="name">上传列表</span>
+                    </div>
+                </div>
+                <div *ngIf="showUploadBtn&&options.design!='exercise'" class="tip">
+                    <div class="tip_mark">
+                        <div class="iconfont icon-prompt question_mark inl-bl-mid"></div>
+                        <div class="tip_name inl-bl-mid ">上传须知</div>
+                        <div *ngIf="options.design=='teaching_plan'" class="tip_content">
+                            <p>1、支持常见的Office、PDF格式的文档、图片的上传；单个文件大小不支持超过50M；</p>
+                            <p>2、此处上传文件可能为公共文件，所有上传文件均实名制管理和监测，用户对自己上传的文件和造成的影响负所有责任。</p>
+                        </div>
+                        <div *ngIf="options.design !='teaching_plan'" class="tip_content">
+                            <p>1、支持常见的office格式和多媒体的文本、图像、视频、音频格式文件的上传；单个文件大小不支持超过50M；</p>
+                            <p>2、此处上传文件可能为公共文件，所有上传文件均实名制管理和监测，用户对自己上传的文件和造成的影响负所有责任。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button *ngIf="showUploadBtn&&options.design!='exercise'" nz-button [nzType]="'danger'" (click)="openFileSelector()">上传</button>
+            <button *ngIf="options.design=='exercise'" (click)="goLibrary()" nz-button class="ant-btn-danger ant-btn">校本题库</button>
+            <span class="verification-span" *ngIf="options.design=='teaching_plan'&&showUploadBtn&&verification.uploadListStatus">必填项</span>
+        </div>
+    </div>
+    <input [accept]="options.design=='teaching_plan'?accept.join(','):''" class="upload_input" type="file" ng2FileSelect [uploader]="uploader" (change)="fileSelectorCallBack($event)" multiple
+        #selectFileView/>
+</div>
+
+<!-- 上传弹窗头部模板 -->
+<ng-template #uploadDialogTitle>
+        <span>文件上传</span>
+        <span class="iconfont icon-minimize minimize-btn" (click)="uploadMinimize()"></span>
+    </ng-template>
+    
+    
+<!-- 下载弹窗头部模板 -->
+<ng-template #downloadTitle>
+    <span>文件下载</span>
+    <span class="iconfont icon-minimize minimize-btn" (click)="downloadMinimize()"></span>
+</ng-template>

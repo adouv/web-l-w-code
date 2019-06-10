@@ -1,0 +1,20 @@
+<div class="select-person">
+    <div class="garden-content-middle garden-persons" style="width: 170px">
+        <div class="content-bar">
+            <input class="garden-input" type="text" placeholder="搜索" ng-model="person.keywords">
+            <span class="garden-delete iconfont icon-delete" ng-show="person.keywords" ng-click="person.removeKeywords()"></span>
+            <span class="garden-search iconfont icon-search" ng-show="!person.keywords"></span>
+            <div class="garden-seachResult" ng-show="person.keywords">{{person.searchSelectedIds.length||0}}条结果</div>
+        </div>
+        <div class="garden-list" ng-class="{'high':person.keywords}">
+            <ul>
+                <li ng-repeat="data in person.personList"
+                    ng-show="person.filterPerson(data,department)" ng-if="person.selectedIds.indexOf(data.id)>-1">
+                    <label>
+                        <span>{{data.name}}</span>
+                    </label>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

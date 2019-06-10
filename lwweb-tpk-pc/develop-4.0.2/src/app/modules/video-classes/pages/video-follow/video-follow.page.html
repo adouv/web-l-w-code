@@ -1,0 +1,37 @@
+<div class="video-fllow">
+    <div flex-box="0" class="video-fllow-main auto-scroll">
+        <div *ngFor="let item of followList.data">
+            <select-group class="select-group" titles="{{item.name}}" [styleType]="'line'" [model]="item.defaultId" [data]="item.classList" (selectEvent)="changeClass($event,item)"></select-group>
+            <!--课表-->
+            <div class="attentionSource">
+                <ul table-center>
+                    <li *ngFor="let s of item.defaultList" (click)="selectAttention(item,s);" [ngClass]="{'check':s.hasAttention,'teacher':s.teacher}" nzTitle="prompt text" nzPlacement="top">
+                        <p>{{s.subjectName}}</p>
+                        <p>{{s.teacherName}}</p>
+                        <div class="ad-tip" *ngIf="s.teacher">
+                            所授课学科/班级不可取消关注！
+                            <div class="arrow"></div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="tip">
+            <div class="tip_mark">
+                <div class="iconfont icon-prompt question_mark inl-bl-mid"></div>
+                <div class="tip_name inl-bl-mid ">关注说明</div>
+                <div class="tip_content">
+                    <p>上部展示的是您当前有权限看到的所有标签，若您想关注的标签不在上面列表，请联系学校管理员。设置后，系统只会给您展示您关注标签的评课入口，您随时可以通过页面的“关注设置”修改标签。</p>
+                </div>
+            </div>
+        </div>
+        <button nz-button [nzType]="'primary'" (click)="allBtnSubmit();" nzGhost [disabled]="hideButton" class="mar-rig-20px">
+			<span>一键关注</span>
+		</button>
+        <button nz-button [nzType]="'primary'" (click)="btnSubmit();" [disabled]="hideButton">
+			<span>确认</span>
+		</button>
+    </div>
+</div>

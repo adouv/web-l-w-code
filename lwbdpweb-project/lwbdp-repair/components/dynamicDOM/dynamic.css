@@ -1,0 +1,408 @@
+.dynaactionform {
+    padding: 20px 20px 0;
+}
+
+
+/*清除默认checkbox样式*/
+
+.dynaactionform .checkbox_class {
+    width: 16px;
+    height: 16px;
+    -webkit-appearance: none;
+    cursor: pointer;
+    filter: alpha(opacity=50);
+    background: url(./image/check_box_default.png) no-repeat;
+    vertical-align: middle;
+}
+
+.dynaactionform .checkbox_list {
+    color: #333;
+    font-size: 14px;
+    float: left;
+    margin-right: 12px;
+}
+
+.dynaactionform .checkbox_class:checked {
+    background: url(./image/check_box_choice.png) no-repeat;
+    border: 0;
+}
+
+
+/*清除默认select样式*/
+
+.dynaactionform .select_class {
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    font-size: 14px;
+    width: 160px;
+    height: 30px;
+    color: #333;
+    padding: 0 30px 0 4px;
+    margin: 0;
+    background: url("./image/drop_down.png") no-repeat 100%;
+    background-size: 29px 29px;
+    border: 1px solid #dbe3ee;
+    box-sizing: border-box;
+    margin: 0 10px 0 0;
+    vertical-align: middle;
+}
+
+.dynaactionform .select_class option {
+    width: 100%;
+}
+
+.dynaactionform .radio_class {
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    width: 16px;
+    height: 16px;
+    margin: 0;
+    background: url("./image/radio_box_default.png") no-repeat 100%;
+    background-size: 16px 16px;
+    box-sizing: border-box;
+    margin: 0 10px 0 0;
+    vertical-align: middle;
+    display: inline-block;
+}
+
+.dynaactionform .radio_class:checked {
+    background-image: url("./image/radio_box_choice.png");
+}
+
+.dynaactionform .textarea_class {
+    border: 1px solid #dbe3ee;
+    padding: 3px;
+}
+
+.dynaactionform .textarea_class:focus {
+    border-color: #0096ff;
+}
+
+.dynaactionform .input_class {
+    width: 160px;
+    height: 30px;
+    padding-left: 10px;
+    line-height: 30px;
+    border: 1px solid #dbe3ee;
+    box-sizing: border-box;
+    margin: 0 10px 0 0;
+    padding: 0 10px;
+    vertical-align: middle;
+}
+
+.dynaactionform .input_class,
+.dynaactionform .textarea_class {
+    font-size: 14px;
+    padding: 10px;
+    color: #0096ff;
+    text-shadow: 0px 0px 0px #333333;
+    -webkit-text-fill-color: transparent;
+}
+
+.dynaactionform input::-webkit-input-placeholder,
+.dynaactionform textarea::-webkit-input-placeholder {
+    text-shadow: none;
+    -webkit-text-fill-color: initial;
+}
+
+.dynaactionform .input_class:focus {
+    border-color: #0096ff;
+}
+
+.dynaactionform .btn_bd {
+    display: inline-block;
+    padding: 0 15px;
+    height: 30px;
+    line-height: 30px;
+    border: 1px solid #0096ff;
+    color: #0096ff;
+    font-size: 14px;
+    border-radius: 3px;
+    cursor: pointer;
+    vertical-align: middle;
+    min-width: 70px;
+    text-align: center;
+}
+
+.dynaactionform .btn_bd:hover {
+    border-style: solid;
+    border-width: 1px;
+    border-color: #0096ff;
+    border-radius: 3px;
+    background-color: #ffffff;
+    box-shadow: 0px 2px 4px 0px rgba(0, 127, 255, 0.5);
+    height: 30px;
+}
+
+.dynaactionform .btn_margin {
+    margin-left: 14px;
+}
+
+.dynaactionform .btn_box {
+    text-align: center;
+    padding: 30px 0;
+    width: 100%;
+}
+
+.dynaactionform .btn_bg {
+    margin-left: 10px;
+    display: inline-block;
+    padding: 0 15px;
+    height: 30px;
+    line-height: 30px;
+    background-color: #0096ff;
+    border: 1px solid #0096ff;
+    color: #fff;
+    font-size: 14px;
+    border-radius: 3px;
+    cursor: pointer;
+    vertical-align: middle;
+    min-width: 70px;
+    text-align: center;
+}
+
+.dynaactionform .btn_bg:hover {
+    border-style: solid;
+    border-width: 1px;
+    border-color: #0096ff;
+    border-radius: 3px;
+    background-color: #0096ff;
+    box-shadow: 0px 2px 4px 0px rgba(0, 127, 255, 0.5);
+    height: 30px;
+}
+
+
+/*placeholder样式*/
+
+.dynaactionform input::-webkit-input-placeholder,
+.dynaactionform textarea::-webkit-input-placeholder {
+    color: #999;
+    font-size: 14px;
+}
+
+.dynaactionform input::-moz-placeholder,
+.dynaactionform textarea::-moz-placeholder {
+    color: #999;
+    font-size: 14px;
+}
+
+.dynaactionform input::-ms-placeholder,
+.dynaactionform textarea::-ms-placeholder {
+    color: #999;
+    font-size: 14px;
+}
+
+
+/* 列表 */
+
+.dynaactionform .reDraft_list {
+    /*padding-bottom: 15px;*/
+    padding: 8px 0;
+    font-size: 0;
+    overflow: hidden;
+}
+
+.dynaactionform .reDraft_list span {
+    font-size: 14px;
+}
+
+.dynaactionform .switch_fos16 {
+    font-size: 16px !important;
+}
+
+.dynaactionform .reDraft_list span.iconfont {
+    font-size: 20px;
+    color: #786cec;
+    margin-left: 15px;
+    cursor: pointer;
+}
+
+.dynaactionform .w140 {
+    display: inline-block;
+    margin-right: 10px;
+    width: 140px;
+    text-align: right;
+}
+
+.dynaactionform .word_center {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.dynaactionform .draft_from {
+    overflow: hidden;
+}
+
+.dynaactionform .draft_input {
+    vertical-align: middle;
+    width: 600px;
+    height: 30px;
+    border: 1px solid #dbe3ee;
+    padding: 0 10px;
+    line-height: 30px;
+    font-size: 14px;
+}
+
+.dynaactionform .draft_input.h100 {
+    height: 100px !important;
+}
+
+.dynaactionform .declare {
+    font-size: 14px;
+    color: #999;
+    line-height: 21px;
+    width: 580px;
+    margin-top: 10px;
+}
+
+.dynaactionform .reDraft_btn {
+    padding: 30px 0;
+    text-align: center;
+}
+
+.dynaactionform .reDraft_btn span {
+    display: inline-block;
+    margin: 0 10px;
+}
+
+.dynaactionform .disposal_content {
+    margin-left: 14%;
+}
+
+.dynaactionform .w200 {
+    width: 200px;
+    margin-right: 10px;
+    text-align: right;
+}
+
+.dynaactionform .w850 {
+    width: 80%;
+    line-height: 24px;
+}
+
+.dynaactionform .w120 {
+    width: 120px;
+    margin-right: 10px;
+    text-align: right;
+}
+
+.dynaactionform .w250 {
+    width: 250px;
+    margin-right: 10px;
+    text-align: right;
+}
+
+.dynaactionform .disposal_content {
+    margin-left: 14%;
+}
+
+.dynaactionform .check_list {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.dynaactionform .yellow_color {
+    color: #ffb900 !important;
+}
+
+.dynaactionform .red_color {
+    color: #ff272e !important;
+}
+
+.dynaactionform .green_color {
+    color: #00bb8b !important;
+}
+
+.dynaactionform .col999 {
+    color: #999 !important;
+}
+
+.dynaactionform .width200 {
+    width: 200px !important;
+}
+
+
+/* 上传图片 */
+
+.dynaactionform .upload_img_box {
+    margin: 0 0 12px 210px;
+}
+
+.dynaactionform .initial_img {
+    display: inline-block;
+    width: 140px;
+    height: 140px;
+    margin-right: 30px;
+    position: relative;
+}
+
+.dynaactionform .initial_img.add {
+    background: url('./image/upload.png') no-repeat;
+    border: none;
+}
+
+.dynaactionform .initial_img:hover .uploaded_del {
+    opacity: 0.5;
+}
+
+.uploaded_del {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    background: url('./image/img_delete.png') no-repeat;
+    cursor: pointer;
+    opacity: 0;
+}
+
+.dynaactionform .initial_img:hover .uploaded_del:hover {
+    opacity: 1;
+}
+
+.dynaactionform .initial_img.uploading {
+    background: url('./image/default_picture.png') no-repeat;
+    position: relative;
+    border: none;
+}
+
+.dynaactionform .initial_img.uploading p {
+    width: 120px;
+    margin: 0 auto;
+    position: absolute;
+    left: 10px;
+}
+
+.dynaactionform .initial_img.uploading .percent {
+    top: 50px;
+    font-size: 20px;
+}
+
+.dynaactionform .initial_img.uploading .percent .stop {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    right: 0px;
+    background: url('./image/img_delete.png') no-repeat;
+    cursor: pointer;
+    opacity: 0.5;
+}
+
+.dynaactionform .initial_img.uploading .percent .stop:hover {
+    opacity: 1;
+}
+
+.dynaactionform .initial_img.uploading .procress {
+    top: 80px;
+    height: 10px;
+    background: #f2f2f2;
+}
+
+.dynaactionform .initial_img.uploading .procress .bg_purple {
+    width: 20%;
+    position: absolute;
+    height: 100%;
+    background: #786cec;
+}

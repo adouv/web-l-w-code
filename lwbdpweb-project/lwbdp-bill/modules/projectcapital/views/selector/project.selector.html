@@ -1,0 +1,42 @@
+<div class="modal-header" id="modal-title">
+    <h3 class="modal-title">项目选择</h3>
+</div>
+<div class="modal-body" id="modal-body">
+    <section class="clear">
+        <div class="form-group search-group fl">
+          园区选择：
+          <select name="gardenId" ng-options="item.id as item.name for item in gardenList"
+                  ng-model="gardenId">
+                  <option value="">请选择</option>
+          </select>
+          项目大类：
+            <select name="projectTypeId" required ng-options="item.id as item.name for item in projectTypeList"
+                    ng-model="projectTypeId" ng-change="changeProjectType(projectTypeId)">
+              <option value="">请选择</option>
+            </select>
+          项目/工程类别：
+            <select name="projectItemTypeId" required ng-options="item.id as item.name for item in projectItemTypeList"
+                          ng-model="projectItemTypeId">
+              <option value="">请选择</option>
+            </select>
+            <input type="text" class="search form-control" placeholder="请输入项目名称..." ng-model="keywords">
+            <button class="icon" ng-click="searchProject()"><i class="glyphicon glyphicon-search"></i></button>
+        </div>
+    </section>
+    已选中项目：
+    <section class="list-header clear">
+        <span ng-if="selectedProject">{{selectedProject.name}}({{selectedProject.gardenName}})</span>
+    </section>
+    项目列表
+    <section class="clear" style="height: 100px">
+      <ul>
+        <li ng-repeat="project in projectList">
+          <input type="radio" id="{{project.id}}" name="project"><label for="{{project.id}}" ng-click="changeSelectedProject(project)">{{project.name}}({{project.gardenName}})</label>
+        </li>
+      </ul>
+    </section>
+</div>
+<div class="modal-footer" id="modal-footer">
+    <button class="btn btn-primary" type="button" ng-click="ok()">确 定</button>
+    <button class="btn btn-warning" type="button" ng-click="cancle()">取 消</button>
+</div>

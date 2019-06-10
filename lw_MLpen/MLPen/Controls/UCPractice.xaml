@@ -1,0 +1,123 @@
+﻿<UserControl x:Class="MLPen.Controls.UCPractice"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:MLPen.Controls"
+             xmlns:ui="clr-namespace:MLPen.ModernUI.Windows.UI;assembly=MLPen.ModernUI"
+             xmlns:converters="clr-namespace:MLPen.Converters"
+             mc:Ignorable="d"
+             d:DesignHeight="670" d:DesignWidth="1366">
+    <UserControl.Resources>
+        <converters:BoolToVisibleConverter x:Key="b2v"/>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="60"/>
+        </Grid.RowDefinitions>
+        <Border BorderThickness="0,0,0,1" BorderBrush="{StaticResource BorderBrush}">
+            <Grid Width="1000" HorizontalAlignment="Left">
+                <ItemsControl x:Name="IClasses">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" Margin="0,0,0,-1"/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <RadioButton GroupName="classes" Content="{Binding FullName}" IsChecked="{Binding IsChecked}" Width="125" Style="{DynamicResource RadioNavbar}" Checked="ClassesChange"/>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </Grid>
+        </Border>
+        <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+            <Button x:Name="btnClassMore" Content="更多" Foreground="{StaticResource PrimaryBrush}" HorizontalAlignment="Right" Style="{StaticResource MSButtonLink}" Width="40" Click="ShowClassesMore" Margin="0,0,20,0"/>
+            <Button Content="历史练习回看" x:Name="selectHistory" MinWidth="120" VerticalAlignment="Center"></Button>
+            <Button Content="练习卷管理" x:Name="btnPaper" Style="{StaticResource MSButtonPrimary}" Margin="20,0,0,0" MinWidth="120" VerticalAlignment="Center"></Button>
+            <!--<Button Content="单题统计" x:Name="btnSingleStatistics" Style="{StaticResource MSButtonPrimary}" Margin="20,0,0,0" MinWidth="120" VerticalAlignment="Center"></Button>
+            <Button Content="多题统计" x:Name="btnAllStatistics" Style="{StaticResource MSButtonPrimary}" Margin="20,0,0,0" MinWidth="120" VerticalAlignment="Center"></Button>-->
+            <Popup x:Name="popup" PlacementTarget="{Binding ElementName=btnClassMore}" StaysOpen="False" AllowsTransparency="True" HorizontalOffset="-90" VerticalOffset="-10">
+                <Border CornerRadius="4" Background="{StaticResource WhiteBrush}" Padding="6" BorderBrush="{StaticResource BorderBrush}" BorderThickness="1" Margin="10">
+                    <Border.Effect>
+                        <DropShadowEffect BlurRadius="10" ShadowDepth="0" Opacity="0.4"/>
+                    </Border.Effect>
+                    <ListBox MaxHeight="300" FontSize="16" x:Name="ClassesListView" SelectionChanged="ClassesListViewChange">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding FullName}" TextTrimming="CharacterEllipsis" Width="130" />
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </Border>
+            </Popup>
+        </StackPanel>
+        <Grid Margin="0,14,0,0" Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <StackPanel Grid.ColumnSpan="1" VerticalAlignment="Bottom">
+                <TextBlock Text="{Binding HeaderText}" Foreground="{DynamicResource GrayBrush}" FontSize="14"/>
+                <UniformGrid Columns="3" Rows="1" Margin="0,15,0,0" VerticalAlignment="Bottom">
+                    <TextBlock Text="参加练习学生选择" Foreground="{StaticResource BlackBrush}" FontSize="16" VerticalAlignment="Bottom" FontWeight="Bold"/>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Bottom">
+                        <TextBlock Text="当前有"  Foreground="{DynamicResource GrayBrush}" FontSize="14" VerticalAlignment="Center"/>
+                        <TextBlock Text="30" Foreground="{DynamicResource PrimaryBrush}" FontWeight="Bold" VerticalAlignment="Center" FontSize="14" x:Name="txtOnlineCount"/>
+                        <TextBlock Text="个学生的马良笔在线" HorizontalAlignment="Right" Foreground="{DynamicResource GrayBrush}" FontSize="14" VerticalAlignment="Center"/>
+                    </StackPanel>
+                    <Button Content="分组练习" HorizontalAlignment="Right" Style="{DynamicResource MSButtonLink}" VerticalAlignment="Bottom" FontSize="16" Margin="0,0,25,0"></Button>
+                </UniformGrid>
+            </StackPanel>
+            <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+                <ItemsControl x:Name="ICUser">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel Orientation="Horizontal"/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <ui:FaceView Content="{Binding Name}" Width="90" FaceSource="{Binding Face}" HorizontalAlignment="Center" VerticalAlignment="Center" IsSelected="{Binding IsSelected,Mode=TwoWay}" IsEnabled="{Binding IsOnline}" Margin="0,20,0,0" Tag="{Binding StudentId}" SelectedChanged="FaceSelectedChange"/>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </ScrollViewer>
+            <StackPanel Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" x:Name="EmptyView">
+                <Image Source="/MLPen;component/Assets/Images/ic-practice-empty.png" Stretch="None"></Image>
+                <TextBlock Text="该班级学生尚未进行马良笔设备开户，请联系管理员完成开户后再使用。" TextWrapping="Wrap" FontSize="14" TextAlignment="Center" Foreground="{DynamicResource GrayBrush}" Margin="0,5,0,0"/>
+            </StackPanel>
+            <Grid Grid.Column="1" Grid.RowSpan="2" Width="255" x:Name="LayoutRight">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="56"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Border Padding="20,0,0,0">
+                    <TextBlock Text="练习卷选择：" Foreground="{StaticResource BlackBrush}" FontSize="18" FontWeight="Bold" VerticalAlignment="Bottom"/>
+                </Border>
+                <Border Grid.Row="1" BorderBrush="{DynamicResource BorderBrush}" BorderThickness="1,0,0,0" Margin="0,20">
+                    <Grid>
+                        <StackPanel Width="150" VerticalAlignment="Center" HorizontalAlignment="Center" Visibility="{Binding IsPractice,Converter={StaticResource b2v},ConverterParameter=False}" Margin="0,-35,0,0">
+                            <Image Source="/MLPen;component/Assets/Images/ic-practice-empty.png" Stretch="None"></Image>
+                            <TextBlock Text="请选择练习卷" TextWrapping="Wrap" FontSize="14" TextAlignment="Center" Foreground="{DynamicResource GrayBrush}" Margin="0,5,0,0"/>
+                        </StackPanel>
+                        <StackPanel Width="150" VerticalAlignment="Center" HorizontalAlignment="Center" Visibility="{Binding IsPractice,Converter={StaticResource b2v}}" Margin="0,-35,0,0">
+                            <Image Source="/MLPen;component/Assets/Images/ic-practice.png" Stretch="None"></Image>
+                            <TextBlock Text="{Binding PracticeTitle}" TextWrapping="Wrap" FontSize="14" TextAlignment="Center"/>
+                        </StackPanel>
+                        <Button x:Name="btnSelectPaper" Content="选择" VerticalAlignment="Bottom" Style="{StaticResource MSButton}" Grid.Row="2" HorizontalAlignment="Center" Width="120"/>
+                    </Grid>
+                </Border>
+            </Grid>
+        </Grid>
+        <Border BorderBrush="{DynamicResource BorderBrush}" BorderThickness="0,1,0,0" Grid.Row="2">
+            <Button x:Name="btnPractice" Content="开始练习" VerticalAlignment="Center" Style="{StaticResource MSButtonPrimary}" Grid.Row="2" HorizontalAlignment="Center" MinWidth="120" IsEnabled="False" ToolTip="请先选择要参加反馈练习的学生" />
+        </Border>
+    </Grid>
+</UserControl>

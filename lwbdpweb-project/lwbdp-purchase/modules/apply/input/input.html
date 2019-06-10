@@ -1,0 +1,194 @@
+<div class="purchaseDraft" style="padding: 15px 4%;" ng-click="purchaseInput.promptInfoHidden()">
+    <form class="w5c-form" novalidate name="Form">
+        <div class="bread_nav">
+            <a class="curr jump_href" href="javascript:void(0);" ng-click="purchaseInput.goJump(crumb.url)" ng-repeat="crumb in purchaseInput.crumbList">{{crumb.name}}></a>
+            <span class="current">添加项目</span>
+        </div>
+        <h3 class="draft_title">添加项目</h3>
+        <!--项目基本信息-->
+        <div class="project_info">
+            <p class="project_info_tit">项目基本信息
+                <span class="prompt_tit">整体说明：所申报项目必须真实、准确，具有可行性。</span>
+            </p>
+            <div class="purDraft_content">
+                <div class="purDraft_list">
+                    <span class="w120">项目申报单位：</span>
+                    <span class="txt_center">{{purchaseInput.apply.gardenName}}</span>&nbsp;&nbsp;
+                    <span class="iconfont icon-switch" ng-click="purchaseInput.chooseGarden()" ng-if="purchaseInput.visibleGardens.length>1"></span>
+                </div>
+                <div class="purDraft_list">
+                    <span class="w120">项目目录：</span>
+                    <div class="purDraft_list_info">
+                        <input type="text" class="input_class pro_input curr" ng-model="purchaseInput.apply.catalogName" placeholder="点击选择，必选" readonly="readonly" ng-click="purchaseInput.getProjectCatalog()" name="catalogName" required/>
+                        <span class="iconfont icon-prompt promptBtn" ng-click="purchaseInput.getPromptInfo('promptInfo')"></span>
+                        <div class="prompt_info" ng-if="purchaseInput.promptInfo">此目录使用的是计财财务的目录分类，您根据所属项目内容和目录分类的含义自行归类即可。项目内容和目录分类在大类上要一致。</div>
+                    </div>
+                </div>
+                <div class="purDraft_list">
+                    <span class="w120">项目申报年份：</span>
+                    <div class="purDraft_list_info">
+                        <input type="text" class="input_class pro_input curr" placeholder="项目年份，必选" readonly="readonly" lw-laydate='YYYY' id="applyYear" ng-model="purchaseInput.apply.applyYear" required name="applyYear" />
+                    </div>
+                </div>
+                <div class="purDraft_list">
+                    <span class="w120">项目类别：</span>
+                    <div class="purDraft_list_info">
+                        <input type="text" class="input_class pro_input curr" ng-click="purchaseInput.getProjectType()" placeholder="点击选择，必选" ng-model="purchaseInput.apply.categoryName" readonly="readonly" required name="categoryName" />
+                    </div>
+                </div>
+                <div class="purDraft_list clearfix">
+                    <span class="w120 fl mat4">项目名称：</span>
+                    <div class="purDraft_list_info fl">
+                        <div class="input-name">
+                            <input type="text" class="input_class pro_input" placeholder="100字以内，必填" ng-model="purchaseInput.apply.name" required name="name" maxlength="100" ng-blur="purchaseInput.verifyProjectName(purchaseInput.apply.name)" />
+                            <span class="right_format" ng-show="purchaseInput.verifyName">该名称系统已存在！</span>
+                            <span class="iconfont icon-warn promptIcon" ng-if='purchaseInput.showErrName' ng-click="purchaseInput.getPromptInfo('verifyName')"></span>
+                        </div>
+                        <p class="declarea">*形如XXXXXX设备采购，包含建筑物功能室名称，不含学校名称，例如：教学楼网络设备采购、资源教室多媒体设备采购。一项目一报，杜绝打包申报。</p>
+                    </div>
+                </div>
+                <div class="purDraft_list clearfix">
+                    <span class="w120 fl mat4">项目内容：</span>
+                    <div class="purDraft_list_info fl">
+                        <textarea class="textarea_class pro_input hg100" placeholder="1000汉字以内，必填" ng-model="purchaseInput.apply.content" required maxlength="1000" name="content"></textarea>
+                        <p class="declarea">*将所报项目作简要说明，比如项目的设备类型、功能点等，项目内容与项目名称相符。</p>
+                    </div>
+                </div>
+                <div class="purDraft_list clearfix">
+                    <span class="w120 fl mat4">申报理由：</span>
+                    <div class="purDraft_list_info fl">
+                        <textarea class="textarea_class pro_input hg100" placeholder="1000汉字以内，必填" ng-model="purchaseInput.apply.reason" required maxlength="1000" name="reason"></textarea>
+                        <p class="declarea">*对申报项目的现状进行简要描述，阐述项目执行的必要性。</p>
+                    </div>
+                </div>
+                <div class="purDraft_list clearfix">
+                    <span class="w120 fl mat4">备注：</span>
+                    <div class="purDraft_list_info fl">
+                        <textarea class="textarea_class pro_input hg100" placeholder="1000汉字以内，非必填" maxlength="1000" ng-model="purchaseInput.apply.remarks"></textarea>
+                        <p class="declarea">*如有特殊情况，请在备注中说明。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--项目设备采购清单-->
+        <div class="project_info">
+            <import-file url="purchaseInput.importUrl" size="{{5*1024*1024}}" callback-success="purchaseInput.uploadAttestFileSuccess($importData,$importFile)" class="project_info_tit">
+                <p> 项目设备采购清单
+                    <span class="download_file fr" ng-click="purchaseInput.downloadTemplate()">下载模板文件</span>
+                </p>
+            </import-file>
+            <div class="info_table">
+                <table>
+                    <thead>
+                        <th width="100">序号</th>
+                        <th width="220">设备名称</th>
+                        <th width="160">品牌</th>
+                        <th width="180">规格型号</th>
+                        <th width="90">单位</th>
+                        <th width="120">现有数量</th>
+                        <th width="120">采购数量</th>
+                        <th width="110">参考单价(元)</th>
+                        <th width="120">总价(元)</th>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="detail in purchaseInput.apply.projectPurchaseItemList track by $index">
+                            <td class="plus_td">
+                                <span>{{detail.num =  $index+1}}</span>
+                                <span class="add_minus">
+                                    <!--$index!=0 -->
+                                    <i class="iconfont icon-minus" ng-show="purchaseInput.apply.projectPurchaseItemList.length>1" ng-click="purchaseInput.removeLine($index)"></i>
+                                    <i class="iconfont icon-plus" ng-click="purchaseInput.deviceAddLine(purchaseInput.apply.projectPurchaseItemList,$index)"></i>
+                                </span>
+                            </td>
+                            <td>
+                                <input type="text" class="input_class" ng-model="detail.itemName" placeholder="{{detail.devicePlaceHolder}}" maxlength="50" name="itemName{{$index}}" required ng-blur="detail.devicePlaceHolder=''" ng-focus="purchaseInput.showPlaceHolder($index,'devicePlaceHolder','50个汉字以内，必填')"
+                                />
+                            </td>
+                            <td>
+                                <input type="text" class="input_class" ng-model="detail.brand" placeholder="{{detail.brandPlaceHolder}}" name="brand{{$index}}" required ng-blur="detail.brandPlaceHolder=''" ng-focus="purchaseInput.showPlaceHolder($index,'brandPlaceHolder','10个汉字以内，必填')"
+                                    maxlength="10" />
+                            </td>
+                            <td>
+                                <textarea class="textarea_class" ng-model="detail.specifications" placeholder="{{detail.sizePlaceHolder}}" maxlength="1000" ng-class="{'auto':detail.specifications}" ng-blur="detail.sizePlaceHolder=''" ng-focus="purchaseInput.showPlaceHolder($index,'sizePlaceHolder','1000个汉字以内，非必填')"></textarea>
+                            </td>
+                            <td>
+                                <input type="text" ng-model="detail.unit" class="input_class" placeholder="{{detail.unitPlaceHolder}}" name="unit{{$index}}" required ng-blur="detail.unitPlaceHolder=''" ng-focus="purchaseInput.showPlaceHolder($index,'unitPlaceHolder','必填')" maxlength="10"
+                                />
+                            </td>
+                            <td>
+                                <input type="text" class="input_class" ng-model="detail.nowNum" placeholder="{{detail.nowNumberPlaceHolder}}" name="nowNum{{$index}}" required ng-blur="detail.nowNumberPlaceHolder=''" ng-focus="purchaseInput.showPlaceHolder($index,'nowNumberPlaceHolder','必填')"
+                                    ng-change="purchaseInput.existingNum(detail.nowNum,$index,'nowNum')" maxlength="6" />
+                            </td>
+                            <td>
+                                <input type="text" class="input_class" ng-model="detail.buyNum" placeholder="{{detail.buyNumPlaceHolder}}" ng-change="purchaseInput.existingNum(detail.buyNum,$index,'buyNum')" name="buyNum{{$index}}" required ng-blur="detail.buyNumPlaceHolder=''" ng-focus="purchaseInput.showPlaceHolder($index,'buyNumPlaceHolder','必填')"
+                                    maxlength="6" />
+                            </td>
+                            <td>
+                                <input type="text" class="input_class" ng-model="detail.price" placeholder="{{detail.pricePlaceHolder}}" name="price{{$index}}" ng-blur="detail.pricePlaceHolder=''" ng-focus="purchaseInput.showPlaceHolder($index,'pricePlaceHolder','非必填')" ng-change="purchaseInput.verifyPrice(detail.price,$index,'price')"
+                                    maxlength="15" />
+                            </td>
+                            <td>{{(detail.totalPrices) |number}}</td>
+                        </tr>
+                        <tr>
+                            <td colspan="8" style="text-align:right">合计</td>
+                            <td>{{purchaseInput.apply.totalPricesSum|number}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="project_info">
+            <div class="purDraft_content">
+                <div class="purDraft_list clearfix">
+                    <span class="w120 fl mat4">校内项目优先级：</span>
+                    <div class="purDraft_list_info fl">
+                        <select-options ng-model="purchaseInput.apply.priority" repeat-items="data in purchaseInput.priority" item-key="id" required name="priority">
+                            {{data.name}}
+                        </select-options>
+                        <p class="declarea">*请根据您学校在本年度的所有申报项目进行综合设置。</p>
+                    </div>
+                </div>
+                <div class="purDraft_list">
+                    <span class="w120">项目联系人：</span>
+                    <span class="txt_center">{{purchaseInput.displayName}}</span>
+                </div>
+                <div class="purDraft_list">
+                    <span class="w120">联系人电话：</span>
+                    <div class="purDraft_list_info">
+                        <span class="txt_center" ng-if="purchaseInput.phone">{{purchaseInput.apply.cellphone}}</span>
+                        <div class="input-phone" ng-if="!purchaseInput.phone">
+                            <input type="text" class="input_class w180" placeholder="必填" ng-model="purchaseInput.apply.cellphone" required name="phone" ng-blur="purchaseInput.checkPhone(purchaseInput.apply.cellphone,'validNum')" ng-change="purchaseInput.clearPhone(purchaseInput.apply.cellphone)"/>
+                            <span class="right_format" ng-show="purchaseInput.verifyPhone">请输入正确的手机号</span>
+                            <span class="iconfont icon-warn promptIcon" ng-if='purchaseInput.validNum' ng-click="purchaseInput.getPromptInfo('verifyPhone')"></span>
+                        </div>
+                        <span class="iconfont icon-edit" ng-click="purchaseInput.editPhone()" ng-show="purchaseInput.phone"></span>
+                    </div>
+                </div>
+                <div class="purDraft_list">
+                    <span class="w120">下一步操作名称：</span>
+                    <span class="txt_center">{{purchaseInput.nextAuditTaskInfo[0].taskName}}</span>
+                </div>
+                <div class="purDraft_list">
+                    <span class="w120" style="margin-top: -30px;">下一步操作人：</span>
+                    <div class="purDraft_list_info">
+                        <select-options class="sele400" ng-model="purchaseInput.apply.nextOperator" repeat-items="data in purchaseInput.nextAuditTaskInfo[0].nextAuditorQoList" item-key="accountId" required>
+                            {{data.displayName}} <span>（{{data.gardenName}}）</span>
+                        </select-options>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="pusDraft_btn" ng-if="!purchaseInput.$stateParams.id || !purchaseInput.isEdit">
+            <button class="btn_bg" form-submit-valid="purchaseInput.saveProject(0,true)">提交并继续申报</button>
+            <button class="btn_bd" form-submit-valid="purchaseInput.saveProject(0)"><em>提交并返回</em></button>
+            <button class="btn_bd" form-submit-valid="purchaseInput.saveData(-1,false)"><em>保存草稿</em></button>
+            <button class="btn_bd" ng-click="purchaseInput.goBack()">取消</button>
+        </div>
+
+        <div class="pusDraft_btn" ng-if="purchaseInput.$stateParams.id && purchaseInput.isEdit">
+            <button class="btn_bg" form-submit-valid="purchaseInput.saveProject(0)"><em>提交申报</em></button>
+            <button class="btn_bd" form-submit-valid="purchaseInput.saveData(-1,true)"><em>继续保存草稿</em></button>
+            <button class="btn_bd" ng-click="purchaseInput.goBack()">取消</button>
+        </div>
+    </form>
+</div>

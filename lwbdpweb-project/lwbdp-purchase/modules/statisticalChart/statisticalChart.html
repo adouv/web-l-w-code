@@ -1,0 +1,97 @@
+<div class="main_in" ng-click="statisticalChart.showDirections($event,false)">
+    <div class="purchaseStatisticalChart">
+
+        <div class="search_box clearfix">
+            <div>
+                <a href="javascript:void(0)" class="more_search" ng-click="purchaseStatisticalChart.getMoreSearch('purchase')">条件搜索 ></a>
+            </div>
+            <div class="search_result" ng-if="purchaseStatisticalChart.isShowCancel">搜索条件：
+                <span ng-if="purchaseStatisticalChart.condition.applyYearStart&&purchaseStatisticalChart.condition.applyYearEnd">
+                项目申报年份（{{purchaseStatisticalChart.condition.applyYearStart}}~{{purchaseStatisticalChart.condition.applyYearEnd}}）
+            </span>
+                <span ng-if="purchaseStatisticalChart.condition.gardenList.length>0">
+                项目申报单位（<span ng-repeat="garden in purchaseStatisticalChart.condition.gardenList">{{garden.name}}；</span>）
+            </span>
+                <span ng-if="purchaseStatisticalChart.condition.categoryListName">项目所属类别（{{purchaseStatisticalChart.condition.categoryListName}}）</span>
+                <span ng-if="purchaseStatisticalChart.condition.stageName">项目所属阶段（{{purchaseStatisticalChart.condition.stageName}}）</span>
+                <span ng-if="purchaseStatisticalChart.condition.statusName">项目所处状态（{{purchaseStatisticalChart.condition.statusName}}）</span>
+                <span ng-if="purchaseStatisticalChart.condition.applyAccount">项目申报人（{{purchaseStatisticalChart.condition.applyAccount}}）</span>
+                <span ng-if="purchaseStatisticalChart.condition.applyYearStart&&purchaseStatisticalChart.condition.createTimeEnd">
+                项目提交时间段（{{purchaseStatisticalChart.condition.createTimeStart}}~{{purchaseStatisticalChart.condition.createTimeEnd}}）
+            </span>
+                <span ng-if="purchaseStatisticalChart.condition.taskTimeStart&&purchaseStatisticalChart.condition.taskTimeEnd">
+                任务生成时间段（{{purchaseStatisticalChart.condition.taskTimeStart}}~{{purchaseStatisticalChart.condition.taskTimeEnd}}）
+            </span>
+                <span ng-if="purchaseStatisticalChart.isShowCancel" class="iconfont icon-error" ng-click="purchaseStatisticalChart.deleteCondition()"></span>
+            </div>
+        </div>
+        <p class="count">总计 <span>{{purchaseStatisticalChart.totalNum}}</span> 条
+            <span class="fr btn_bd" onclick="history.go(-1)">返回</span>
+        </p>
+        <div id="mychart" style="width:1030px;height:550px;">
+        </div>
+        <p class="gray">*点击数字下方的圆点查看详细列表</p>
+        <p class="choose">
+            参统学校(机关) <span class="iconfont icon-setting" ng-class="{'opacity':purchaseStatisticalChart.isMyApply}"
+                           ng-click="purchaseStatisticalChart.chooseGarden()"></span>
+            <input type="checkbox" class="checkbox_class" ng-model="purchaseStatisticalChart.isMyApply" ng-disabled="purchaseStatisticalChart.searchGardenIds.length>0"
+                   ng-click="purchaseStatisticalChart.getChart()">只统计由我发起的项目
+        </p>
+        <p class="showback" ng-class="{'opacity':purchaseStatisticalChart.isMyApply || purchaseStatisticalChart.searchGardenIds.length>0}"><span
+                ng-repeat="garden in purchaseStatisticalChart.selectedGarden">{{garden.name||garden.gardenName}};</span></p>
+
+
+        <!-- 点击图表展示的弹窗 -->
+        <dialog class="purchase_chart" ng-if="purchaseStatisticalChart.showDialog" modal close="!purchaseStatisticalChart.showDialog">
+            <div dialog-content>
+                <div class="statisticalChart_dialog">
+                    <h2>
+                        <em class="purple_color">{{purchaseStatisticalChart.DialogTitle}}</em>阶段项目统计
+                        <span class="iconfont icon-close" ng-click="purchaseStatisticalChart.closeDialog()"></span>
+                    </h2>
+                    <p class="count">总计 <span>{{purchaseStatisticalChart.paginationConf.totalItems}}</span> 条
+                        <button class="btn_bd fr" ng-click="purchaseStatisticalChart.export()">导出</button>
+                    </p>
+                    <div class="table_list overflow_box_sml">
+                        <table>
+                            <tr>
+                                <th>序号</th>
+                                <th>项目类别</th>
+                                <th>项目名称</th>
+                                <th>项目单位</th>
+                                <th>校内优先级</th>
+                                <th>申报人</th>
+                                <th>添加时间</th>
+                            </tr>
+                            <tr ng-repeat="data in purchaseStatisticalChart.applyList track by $index">
+                                <td>{{$index+1}}</td>
+                                <td>{{data.categoryName}}</td>
+                                <td>{{data.projectName}}</td>
+                                <td>{{data.projectGarden}}</td>
+                                <td>{{data.priorityName}}</td>
+                                <td>{{data.applyAccount}}</td>
+                                <td>{{data.createTime| date:'yyyy/MM/dd HH:mm'}}</td>
+                            </tr>
+                        </table>
+                        <div class="nodata_box" ng-show="purchaseStatisticalChart.applyList.length<1">
+                            <div class="nodata" ng-if="purchaseStatisticalChart.hasSearch">
+                                <span></span>
+                                <p>暂无数据</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div ng-show="purchaseStatisticalChart.applyList.length>0">
+                        <pagination conf="purchaseStatisticalChart.paginationConf"></pagination>
+                    </div>
+                </div>
+            </div>
+        </dialog>
+
+        <!-- 修缮类型的弹窗 -->
+        <dialog ng-if="purchaseStatisticalChart.type" modal>
+            <div dialog-content>
+                <repair-type show="purchaseStatisticalChart.type" list="purchaseStatisticalChart.list" chart="purchaseStatisticalChart.getChart()"></repair-type>
+            </div>
+        </dialog>
+    </div>
+</div>

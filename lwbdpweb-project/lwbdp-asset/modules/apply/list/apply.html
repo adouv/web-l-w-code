@@ -1,0 +1,145 @@
+<div class="main_in">
+    <!--搜索区域-->
+    <div class="search_box clearfix">
+        <div>
+            <div class="content_textBar">
+                <input type="text" class="input_class" maxlength="50" placeholder="回车键提交查询"  ng-model="assetApply.condition.keywords" ng-keydown="assetApply.goSearch($event)">
+                <span class="iconfont icon-search" ng-if="assetApply.condition.keywords.length === 0" ></span>
+                <span class="iconfont icon-error" ng-if="assetApply.condition.keywords.length > 0"  ng-click="assetApply.cleanKeywords()"></span>
+            </div>
+            <a href="javascript:void(0)" class="more_search" ng-click="assetApply.getMoreSearch()">更多条件查询 ></a>
+        </div>
+        <div class="search_result" ng-if="assetApply.isShowCancel">搜索条件：
+            <span ng-if="assetApply.condition.applyYearStart && assetApply.condition.applyYearEnd">
+                项目申报年份（{{assetApply.condition.applyYearStart}}~{{assetApply.condition.applyYearEnd}}）
+            </span>
+            <span ng-if="assetApply.condition.gardenList && assetApply.condition.gardenList.length > 0">
+                项目申报单位（<span ng-repeat="garden in assetApply.condition.gardenList">{{garden.name}}；</span>）
+            </span>
+            <span ng-if="assetApply.condition.categoryListName">项目所属类别（{{assetApply.condition.categoryListName}}）</span>
+            <span ng-if="assetApply.condition.kindName">项目配标类别（{{assetApply.condition.kindName}}）</span>
+            <span ng-if="assetApply.condition.stageName">项目所属阶段（{{assetApply.condition.stageName}}）</span>
+            <span ng-if="assetApply.condition.statusName">项目所处状态（{{assetApply.condition.statusName}}）</span>
+            <span ng-if="assetApply.condition.applyAccount">项目申报人（{{assetApply.condition.applyAccount}}）</span>
+            <span ng-if="assetApply.condition.createTimeStart && assetApply.condition.createTimeEnd">
+                项目提交时间段（{{assetApply.condition.createTimeStart}}~{{assetApply.condition.createTimeEnd}}）
+            </span>
+            <span ng-if="assetApply.condition.taskTimeStart&&assetApply.condition.taskTimeEnd">
+                任务生成时间段（{{assetApply.condition.taskTimeStart}}~{{assetApply.condition.taskTimeEnd}}）
+            </span>
+            <span ng-if="assetApply.isShowCancel" class="iconfont icon-error" ng-click="assetApply.deleteCondition()"></span>
+        </div>
+    </div>
+    <!--总计-->
+    <div class="total_num allswitch">
+        <div class="tot_left fl">
+            <span>总计 <em class="num">{{assetApply.pageConfig.totalItems||0}}</em> 条</span>
+        </div>
+        <div class="fr ">
+            <span ng-if="assetApply.isApply" has-permission="asset:processConfig:create" class="btn_bd" ui-sref="asset.draft({processConfigId:assetApply.processConfigId,sidebarId:assetApply.sidebar.id||sidebar.id})">草稿箱</span>
+            <span ng-if="assetApply.isApply" has-permission="asset:processConfig:create" class="btn_bg " ui-sref="asset.append({processConfigId:assetApply.processConfigId,sidebarId:assetApply.sidebar.id||sidebar.id})"
+                style="margin-right:10px;">添加</span>
+        </div>
+    </div>
+    <!-- 表格 -->
+    <div class="line_pad" auto-width=".table_absolute" watch-change="assetApply.pageList">
+        <div class="line_strip"></div>
+        <div class="table_box">
+            <table class="listTable">
+                <thead id="theadTh">
+                <tr>
+                    <th width="5%">
+                        序号
+                    </th>
+                    <th width="14%">名称</th>
+                    <th width="20%">资产大类</th>
+                    <th width="9%">是否电子类</th>
+                    <!--创建时间--草稿、全单位申请-->
+                    <th width="8%">处置形式</th>
+                    <th width="13%">任务生成时间</th>
+                    <th width="15%">项目阶段</th>
+                    <th width="8%">项目状态</th>
+                    <th width="8%">任务状态</th>
+                </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+    <div class="table_absolute overflow_box" id="tableAbsolute">
+        <div class="table_box">
+            <table class="listTable">
+                <tbody>
+                    <tr table-width ng-repeat="data in assetApply.pageList track by $index " ng-click="assetApply.goDetail(data.projectStatus,data.taskStatus,data.projectId)">
+                        <!--  1 1 序号-->
+                        <td ui-sref="asset.draft">
+                            {{ $index+1}}
+                        </td>
+                        <!--  2 1 任务名称-->
+
+                        <td ng-bind="data.projectName"></td>
+
+                        <!--  3 1 资产大类-->
+
+                        <td ng-bind="data.assetTypeName "></td>
+
+                        <!--  4 1 是否为电子类-->
+
+                        <td>{{data.isElectronic?'是':'否'}}</td>
+
+                        <!--  5 1 处置形式-->
+
+                        <td ng-bind="data.categoryName"></td>
+
+                        <!--  6 1 生成时间-->
+                        <!--创建时间--草稿、全单位申请-->
+                        <td>{{ data.taskTime| date:'yyyy-MM-dd HH:mm'}}</td>
+
+                        <!--  7 0 项目阶段-->
+                        <td>{{ data.currTaskStageName }}</td>
+
+                        <!--  8 0 项目状态-->
+                        <td>
+                            <span class="green_color" ng-if="data.projectStatus	=== 0 && data.taskStatus=== 0">{{ data.projectStatusName }}</span>
+                            <span class="col999" ng-if="data.projectStatus === 1 && data.taskStatus=== 1">{{ data.projectStatusName }}</span>
+                            <span class="yellow_color" ng-if="data.projectStatus === 2&& data.taskStatus=== 1">{{ data.projectStatusName }}</span>
+                            <span ng-if="data.projectStatus	=== 0 && data.taskStatus=== 1">{{ data.projectStatusName }}</span>
+                        </td>
+
+                        <!--  9 0任务状态-->
+                        <td>
+                            <span class="green_color" ng-if="data.projectStatus	=== 0 && data.taskStatus=== 0">{{ data.taskStatusName }}（{{data.taskCount}}th）</span>
+                            <span class="col999" ng-if="data.projectStatus === 1 && data.taskStatus === 1">{{ data.taskStatusName }}</span>
+                            <span class="yellow_color" ng-if="data.projectStatus === 2 && data.taskStatus === 1">{{ data.taskStatusName }}</span>
+                            <span ng-if="data.projectStatus	=== 0 && data.taskStatus=== 1">{{ data.taskStatusName }}</span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <!-- 分页 -->
+            <pagination ng-show="assetApply.pageList.length>0" conf="assetApply.pageConfig"></pagination>
+        </div>
+
+        <!--暂无数据-->
+        <div class="nodata_box" ng-show="assetApply.pageList.length<1">
+            <div class="nodata" ng-show="assetApply.pageList.length===0 && !(assetApply.keywords && assetApply.keywords !=='')">
+                <span></span>
+                <p>暂无数据</p>
+            </div>
+            <div class="nodata_search" ng-show="assetApply.keywords && assetApply.keywords !== ''">
+                <span></span>
+                <p>搜索无结果</p>
+            </div>
+        </div> 
+        <!-- 选择园区 -->
+        <!--<div class="select_depart" ng-if="!assetApply.isApply">-->
+            <!--<p class="select_depart_list">-->
+                <!--<span class="fos16">参统学校（机关)：</span>-->
+                <!--<span ng-if="assetApply.visibleGardens.length>1" ng-click="assetApply.chooseGarden()" class="iconfont icon-setting setting_icon"></span>-->
+            <!--</p>-->
+            <!--<p class="select_depart_list2">-->
+                <!--<span ng-repeat="garden in assetApply.gardenList">{{garden.name||garden.gardenName}}；</span>-->
+            <!--</p>-->
+        <!--</div>-->
+    </div>
+    <instructions module-code="asset"></instructions>
+</div>

@@ -1,0 +1,146 @@
+<div class="course_space">
+	<p-growl id="normal" styleClass="tpk-ui-growl" life='5000'></p-growl>
+	<p-growl *ngIf="growlMsg" id="addError" styleClass="tpk-ui-growl" [sticky]="true"></p-growl>
+	<p-confirmDialog class='tpk-ui-confirmdialog tpk-ui-confirmdialog-sure' width='400' height='200'
+					 key="confirmDialogKey" acceptLabel='确定' rejectLabel='取消'>
+	</p-confirmDialog>
+
+	<!--<nz-modal class="ant-confirmdialog" [nzWrapClassName]="'vertical-center-modal'" [nzVisible]="isPublish"-->
+	<!--[nzTitle]="title" [nzContent]="modalContent" (nzOnCancel)="handleCancel($event)" [nzMaskClosable]='false'-->
+	<!--(nzOnOk)="handleOk($event)" [nzWidth]="350">-->
+	<!--<ng-template #modalContent>-->
+	<!--<p>{{comfirmContent}}</p>-->
+	<!--</ng-template>-->
+	<!--</nz-modal>-->
+
+	<p-dialog class="tpk-ui-confirmdialog" [contentStyle]="{'width':'50rem','height':'34rem'}" header="添加习题"
+			  [draggable]="false"
+			  [(visible)]="addDisplay" modal="modal" (onHide)="cancelAddExercise()"
+			  [responsive]="true">
+		<div class="upload-dialog exercise-upload-dialog">
+			<h3>上传习题</h3>
+			<div class="upload-wrapper">
+				<div class="default-input wid560" title='{{exerciseFileName}}' style="margin-right: 20px">
+					{{exerciseFileName}}
+				</div>
+				<button pButton [flowSelectFile]="flowUploader" [flowValidFile]="exerciseValidFile"
+						(fileSuccess)="exerciseFileSuccess($event)" (filesAdded)="exerciseFilesAdded($event)"
+						class="ui-button-secondary default-button cover-bg-btn" label="浏览文件"
+						icon="i iconfont icon-ex-analysis"></button>
+			</div>
+			<label class="upload-module" *ngIf="exerciseModules&&exerciseModules.length>0">
+				<p-checkbox binary="true" [(ngModel)]="flowChecked"></p-checkbox>
+				上传到新的习题模块</label>
+			<br>
+			<div class="upload-desc">
+				说明：系统只支持上传doc格式的习题文件；必须按照标准格式要求制作的习题文件才能成功上传。不清楚习题文件格式要求，请 <span style='color: #00a0e9;cursor: pointer;'
+																				 (click)="downloadTemplate()">点击此处</span>下载查看。
+			</div>
+		</div>
+		<p-footer>
+			<button type="button" pButton icon="fa-check" (click)="cancelAddExercise()" label="取消"></button>
+			<button type="button" pButton icon="fa-close" (click)="sureAddExercise()" label="确定"></button>
+		</p-footer>
+	</p-dialog>
+	<div class="page-courseware overflow_box" #courseware>
+		<div class="main">
+			<div class="banner" *ngIf="isShowBanner" #banner>
+				<img src="assets/images/banner.png"/>
+				<div class="banner_name">让您随时随处可备课，轻轻松松到教室一键上课！</div>
+				<div class="icon iconfont icon-guanbi banner_close" (click)="isShowBanner = false"></div>
+			</div>
+			<div class="main_box auto-scroll" #mainBox
+				 [ngStyle]="{overflow: lessonMethod == LESSON_METHOD.EXERCISE ? 'auto':'hidden'}">
+				<div class="class_name">{{classAllName}}</div>
+				<course-class-table class="tabs" [items]="lessonStages" [currItem]="currStageCode"
+									(selected)="classSelected($event)">
+				</course-class-table>
+				<!--<p-dropdown [style]="{'width':'6.25rem','margin-top':'-.25rem'}" [options]="selectLessonItems"-->
+							<!--[(ngModel)]="lessonMethod" [resetFilterOnHide]="true"-->
+							<!--class="tpk-ui-select lesson-method"></p-dropdown>-->
+				<div *ngIf="lessonMethod==LESSON_METHOD.COURSEWARE"
+					 [ngStyle]="{'padding-top':courseMaterial.publishStatus ? '20px' : '0', 'border-top':courseMaterial.publishStatus ? '1px solid rgba(0, 0, 0, 0.2)' : '0' }"
+					 class='clond_space_box'>
+					<file-course-uploader style="height: 0" (onFileItemSuccess)="onUploadSuccess($event)"
+								   (onFileItemDelete)="deleteUploadFile($event)"
+								   [optionsExtend]="uploaderOptions" [existFileNames]="materialFileNames"
+								   [courseSpace]="courseSpace" [displayStageName]="uploaderDisplayStageName"
+								   *ngIf="!courseMaterial.publishStatus">
+					</file-course-uploader>
+
+					<div #clondSpace class='clond_space'>
+						<course-space [lessonStage]="currStageCode" [publishStatus]="courseMaterial.publishStatus"
+									  [courseMaterials]="courseMaterials" [courseSpace]="courseSpace"
+									  (onRefreshMaterialItem)="refreshMaterialsInfo()"
+									  (onSetMainCourse)="setMainCourseWare($event)">
+						</course-space>
+
+					</div>
+				</div>
+				<div *ngIf="lessonMethod==LESSON_METHOD.EXERCISE" class="exercise-wrapper" #exWrapper>
+					<div class="exercise-header">
+						<button class="first-title" pButton label="已有习题" icon="i iconfont icon-ex-wran"
+								iconPos="right"></button>
+						<div class="tip_content">
+							<span class='horn'></span>
+							鼠标移到某大题或小题的题干部分即可对该大题或小题进行编辑删除和设置操作。
+						</div>
+						<button pButton style="display: none" *ngIf="!courseMaterial.publishStatus"
+								class="ui-button-secondary" label="答题设置"
+								icon="i iconfont icon-ex-setting"></button>
+						<button pButton style="display: none" *ngIf="!courseMaterial.publishStatus"
+								class="ui-button-secondary" label="答题分析"
+								icon="i iconfont icon-ex-analysis"></button>
+						<button pButton class="cover-bg-btn w80" *ngIf="!courseMaterial.publishStatus" label="添加习题"
+								icon="i iconfont icon-ex-add"
+								(click)="showAddExercise()"></button>
+					</div>
+					<div class="exercise-container" style="min-height:calc(100% - 57px);">
+						<div class="no-exercise" *ngIf='exerciseModules&&exerciseModules.length < 1'>
+							<div class="no-exercise-in">
+								<img src='assets/images/no-exercise.png' alt="">
+								<p>目前还没有任何习题</p>
+							</div>
+						</div>
+						<p-tabView *ngIf='exerciseModules&&exerciseModules.length>0' [controlClose]="true"
+								   (onChange)="tabExercise($event)" (onClose)="onExerciseModuleClose($event)">
+							<p-tabPanel *ngFor="let module of exerciseModules;let i = index"
+										header="习题模块{{i+1|numberToUpperCase}}"
+										[selected]="i==currentModuleIndex" [closable]="!courseMaterial.publishStatus">
+								<exercise-module *ngIf="i==currentModuleIndex" [exerciseList]="exerciseList"
+												 [publishStatus]="!courseMaterial.publishStatus"></exercise-module>
+							</p-tabPanel>
+						</p-tabView>
+					</div>
+					<!-- 删除选项卡模块弹窗 -->
+					<p-confirmDialog class='tpk-ui-confirmdialog tpk-confirmdialog-reverse' width='400' height='200'
+									 key="confirmDialogDel" acceptLabel='是' rejectLabel='否'>
+					</p-confirmDialog>
+				</div>
+			</div>
+		</div>
+		<div class="bottom_btn" #button>
+			<div class="bottom_btn_in">
+				<div class="back" (click)="back()">返回</div>
+				<div class="upload_btn">
+					<img src="assets/images/btn_bg.png"/>
+					<div class="btn_name" (click)="publish()" *ngIf="!courseMaterial.publishStatus">发布备课</div>
+					<div class="btn_name" (click)="cancel()" *ngIf="courseMaterial.publishStatus">取消发布</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- 删除习题弹窗 -->
+<p-confirmDialog class='tpk-ui-confirmdialog' acceptLabel='是' rejectLabel='否' closeOnEscape='false' width='400'
+				 height='200' key="confirmDialogKey2" #cd>
+</p-confirmDialog>
+
+<!-- 预览弹窗 -->
+<div class="download_box" [hidden]="hideExerciseLoading">
+	<div class="download_box_in">
+		<div class='fos24'>&nbsp;&nbsp;&nbsp;加载中...</div>
+		<div class='progress_box' [innerHTML]="loadingHtml()"></div>
+	</div>
+</div>

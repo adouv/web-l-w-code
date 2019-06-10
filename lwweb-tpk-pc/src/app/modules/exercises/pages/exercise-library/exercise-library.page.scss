@@ -1,0 +1,312 @@
+@import "../../../../../styles/variable";
+.exercise-library {
+    position: absolute;
+    top: computer(100px);
+    left: 0;
+    z-index: 9;
+    background: #fff;
+    right: 0;
+    bottom: 0;
+    padding: 0 computer(20px);
+}
+
+.spin-loading-div {
+    text-align: center;
+    margin-top: computer(40px);
+}
+
+.exercise-wrapper {
+    height: 100%;
+}
+
+.exercise-library-box {
+    flex: 1;
+    height: calc(100% - #{computer(100px)});
+}
+
+.exercise-header {
+    font-size: computer(16px);
+    line-height: computer(36px);
+    text-align: center;
+    color: $color_font-deep;
+}
+
+:host {
+    padding: 0 computer(20px);
+}
+
+.tree-container {
+    width: computer(380px);
+    min-width: computer(380px);
+    overflow: hidden;
+}
+
+.exercise-list {
+    width: calc(100% - #{computer(380px)});
+}
+
+.exercise-library::ng-deep {
+    nz-tabset {
+        height: calc(100% - #{computer(38px)}) !important;
+    }
+    .ant-tabs-nav-container {
+        height: computer(50px);
+    }
+    .ant-tabs-nav-wrap .ant-tabs-nav-scroll .ant-tabs-nav .ant-tabs-tab {
+        font-size: computer(16px);
+        padding: computer(13px) computer(20px);
+    }
+    .ant-tree-title {
+        font-size: computer(14px);
+    }
+    .angular-tree-component>tree-node-collection>.ng-star-inserted>tree-node>.ant-tree-node {
+        border: solid 1px #eeeeee;
+    }
+    .ant-tree {
+        span.ant-tree-switcher {
+            &.ant-tree-switcher_open:after {
+                font-family: 'iconfont';
+                content: "\E61F" !important;
+            }
+            &.ant-tree-switcher_close:after {
+                font-family: 'iconfont';
+                content: "\E61F" !important;
+            }
+        }
+    }
+    .ant-radio-wrapper {
+        font-size: computer(14px) !important;
+        color: #333;
+        display: inline-flex;
+        align-items: center;
+        margin-right: computer(20px);
+        .ant-radio {
+            margin-right: computer(10px);
+        }
+    }
+    nz-input {
+        margin-right: computer(10px);
+    }
+    nz-input.ant-input-affix-wrapper {
+        width: computer(240px);
+        margin-right: computer(15px);
+        input.ant-input {
+            height: computer(30px);
+            border: solid 1px #eeeeee
+        }
+    }
+    .ant-checkbox-wrapper {
+        width: 100%;
+    }
+    .ant-checkbox+.ell-box {
+        width: 100% !important;
+    }
+    .checked-box .ant-checkbox,
+    .check-box .ant-checkbox-inner {
+        opacity: 0;
+        width: 0;
+        float: left;
+    }
+    .ant-checkbox-disabled+span {
+        color: #000;
+        cursor: not-allowed;
+    }
+    .ant-collapse-item {
+        width: computer(380px);
+        min-width: computer(380px);
+    }
+    .dynamic-html p {
+        color: $color_font-deep !important;
+        text-indent: initial !important;
+        word-break: break-all;
+        span,
+        u>span {
+            word-break: break-word;
+        }
+    }
+}
+
+.tree-header {
+    nz-select {
+        width: computer(120px);
+        margin-left: computer(1px);
+        margin-right: computer(2px);
+        margin-bottom: computer(20px);
+    }
+}
+
+.list-container {
+    padding-left: computer(20px);
+    height: 100%;
+    .list-header {
+        width: 100%;
+    }
+    .search-wrapper {
+         ::-webkit-input-placeholder {
+            color: #999;
+        }
+        label {
+            margin-left: computer(20px);
+            font-size: computer(14px);
+            color: #333;
+        }
+    }
+    .tag-wrapper {
+        margin-top: computer(8px);
+        font-size: computer(14px);
+        display: flex;
+        flex-wrap: wrap;
+        min-height: 41px;
+        &>span {
+            line-height: computer(30px);
+            display: inline-block;
+            vertical-align: top;
+        }
+        ul {
+            list-style: none;
+            display: inline-block;
+            flex: 1;
+        }
+        li {
+            cursor: default;
+            display: inline-block;
+            background-color: #eee;
+            border-radius: computer(15px);
+            padding-left: computer(15px);
+            line-height: computer(30px);
+            margin: 0 computer(10px) computer(10px) 0;
+            color: #333;
+            i {
+                cursor: pointer;
+                padding: 0 computer(8px);
+                &:before {
+                    font-size: computer(14px);
+                }
+                &:hover {
+                    color: #226cfb;
+                }
+            }
+        }
+    }
+    .type-wrapper {
+        font-size: computer(14px);
+        display: flex;
+        span {
+            display: inline-block;
+            vertical-align: top;
+            line-height: computer(30px);
+        }
+        ul {
+            list-style: none;
+            display: inline-block;
+            flex: 1;
+        }
+        li {
+            cursor: pointer;
+            display: inline-block;
+            font-size: computer(14px);
+            line-height: computer(30px);
+            border-radius: computer(15px);
+            padding: 0 computer(15px);
+            margin: 0 computer(10px) 0 0;
+            color: $color_font-center;
+            &:hover {
+                color: #226cfb;
+            }
+            &.active {
+                cursor: default;
+                color: #fff;
+                background-color: #226cfb;
+            }
+        }
+        button {
+            float: right;
+        }
+    }
+    .list-content {
+        //height: 400px;
+        height: 100%;
+        margin-top: computer(10px);
+        padding-bottom: computer(10px);
+        li {
+            min-height: computer(126px);
+            padding-bottom: computer(10px);
+            label {
+                padding-top: computer(20px);
+                width: computer(36px);
+            }
+            .item-exercise {
+                flex: 1;
+                position: relative;
+                .html-wrapper {
+                    padding: 10px 20px;
+                    min-height: 30px;
+                    font-size: computer(14px);
+                    border: 1px solid #eee;
+                    display: flex;
+                    .html-top {
+                        vertical-align: top;
+                        color: $color_font-deep;
+                    }
+                    div {
+                        display: inline-block;
+                    }
+                }
+                .operate-wrapper {
+                    width: 100%;
+                    height: computer(40px);
+                    justify-content: flex-end;
+                    padding: 0 20px;
+                    border: 1px solid #eee;
+                    border-top: 0;
+                }
+                .exercises-detail {
+                    border: 1px solid #eee;
+                    border-top: 0;
+                    padding: 10px 20px;
+                    background-color: #f8f8f8;
+                    font-size: 14px;
+                    .font-bold {
+                        margin-bottom: 6px;
+                    }
+                }
+            }
+            .button-group {
+                color: $color_main;
+                font-size: computer(14px);
+                line-height: computer(40px);
+                cursor: pointer;
+                margin-left: computer(40px);
+                span:first-child {
+                    margin-right: computer(10px);
+                }
+            }
+        }
+    }
+    .pagination-box {
+        padding: 0 0 20px;
+        text-align: center;
+    }
+}
+
+.gray {
+    color: #999;
+}
+
+footer {
+    height: computer(50px);
+    border-top: 1px solid #eeeeee;
+}
+
+.exercise-right-btn {
+    position: absolute;
+    right: 20px;
+    top: #{computer(40px)};
+    height: 50px;
+    z-index: 999;
+    .selected-topic {
+        font-size: 14px;
+        color: $color_main;
+        margin-right: computer(20px);
+    }
+}

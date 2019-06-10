@@ -1,0 +1,262 @@
+@import "../../../../../styles/variable.scss";
+@import "../../../../../styles/mixin";
+@import "../../../../../styles/subjectBg.scss";
+@import "../../../../../styles/common.scss";
+:host {
+    width: 100%;
+}
+
+.classroom-unicast::ng-deep {
+    height: calc(100% - #{computer(50px)});
+    box-sizing: border-box;
+    position: relative;
+    .header-breadcrumb {
+        position: absolute;
+        top: computer(7px);
+        left: computer(20px);
+        z-index: 200;
+    }
+    .line {
+        width: calc(100% - #{computer(40px)});
+        border-bottom: 1px solid #eee;
+        position: absolute;
+        top: computer(49px);
+        left: computer(20px);
+    }
+    .ant-tabs-bar {
+        width: 87%;
+        // margin: 0 auto;
+        margin-left: computer(100px);
+        border-bottom: none;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        flex-wrap: nowrap;
+        margin-bottom: 0px !important;
+        .ant-tabs-tab-prev,
+        .ant-tabs-tab-next {
+            color: #226cfb,
+        }
+        .ant-tabs-tab-prev-icon:before,
+        .ant-tabs-tab-next-icon:before {
+            font-size: computer(20px);
+        }
+        .ant-tabs-tab-btn-disabled {
+            display: none;
+        }
+    }
+    .unicast-list {
+        //border: 1px solid #f00;
+        margin-top: 20px;
+        display: inline-block;
+        width: 100% !important;
+        height: calc(100% - #{computer(15px)});
+        box-sizing: border-box;
+        .unicast-list-wrap {
+            width: 1306px;
+            margin: 0 auto;
+            .unicast-tips {
+                margin-top: computer(5px);
+                color: #999999;
+                font-size: computer(14px);
+                span:nth-child(2) {
+                    color: #226cfb;
+                }
+            }
+        }
+        .unicast-list-content-all-condition {
+            height: calc(100% - #{computer(105px)});
+            //height: calc(100vh - #{computer(297.5984px)});
+        }
+        .unicast-list-content-part-condition {
+            height: calc(100% - #{computer(68px)});
+            //height: calc(100vh - #{computer(260px)});
+        }
+        .unicast-list-content {
+            text-align: center;
+            padding: computer(20px) 0 0 0;
+            .unicast-list-scroll {
+                height: calc(100% - #{computer(10px)}) !important;
+                overflow-y: auto !important;
+                overflow-x: hidden !important;
+            }
+            .lesson {
+                width: 1306px;
+                margin: 0 auto;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                .lesson-box {
+                    // width: computer(261.2px);
+                    // height: computer(155px);
+                    width: computer(186.57px);
+                    height: computer(120px);
+                    border-radius: computer(6px) !important;
+                    cursor: pointer;
+                    .lesson-detail {
+                        width: computer(160px);
+                        height: computer(100px);
+                        margin: 0 auto;
+                        cursor: pointer;
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+                        align-items: center;
+                        font-weight: normal;
+                        font-stretch: normal;
+                        letter-spacing: 0px;
+                        color: #ffffff;
+                        font-family: 'MicrosoftYaHei', Sans-serif;
+                        border-radius: computer(6px);
+                        .lesson-detail-subjectname {
+                            font-size: computer(18px);
+                            display: flex;
+                            flex-direction: row;
+                            justify-content: center;
+                            align-items: center;
+                            margin-top: computer(5px);
+                            padding: 0 10px;
+                            >span {
+                                overflow: hidden;
+                                text-overflow: ellipsis;
+                                white-space: nowrap;
+                                &.s1 {
+                                    max-width: computer(60px);
+                                }
+                                &.s2 {
+                                    max-width: computer(150px) !important;
+                                    margin: 0 auto;
+                                }
+                                &.s3 {
+                                    display: flex;
+                                    justify-content: center;
+                                    align-items: center;
+                                    >span {
+                                        margin: 0;
+                                        padding: 0;
+                                        display: inline-block;
+                                        max-width: computer(60px);
+                                        font-size: computer(12px);
+                                        overflow: hidden;
+                                        text-overflow: ellipsis;
+                                        white-space: nowrap;
+                                    }
+                                }
+                            }
+                            .xiazai:before {
+                                content: "\e695";
+                                font-size: computer(21px);
+                            }
+                        }
+                        .lesson-detail-teachername {
+                            display: flex;
+                            flex-direction: row;
+                            // justify-content: center;
+                            align-items: center;
+                            width: 100%;
+                            // margin: computer(10px) 0;
+                            .video_start {
+                                margin-left: computer(10px);
+                            }
+                            .video_start:before {
+                                content: "\e661";
+                                font-size: computer(25px);
+                            }
+                            .lesson-detail-teachername-info {
+                                font-size: computer(14px) !important;
+                                margin-left: computer(5px);
+                                max-width: computer(50px);
+                                text-overflow: ellipsis;
+                                white-space: nowrap;
+                                overflow: hidden;
+                            }
+                            .lesson-detail-teachername-class {
+                                font-size: computer(14px) !important;
+                                margin-left: computer(5px);
+                                max-width: computer(70px);
+                                text-overflow: ellipsis;
+                                white-space: nowrap;
+                                overflow: hidden;
+                            }
+                        }
+                        .lesson-detail-data {
+                            width: 100%;
+                            min-width: computer(180px);
+                            display: flex;
+                            flex-direction: row;
+                            flex-wrap: nowrap;
+                            justify-content: space-between;
+                            padding: 0 computer(10px);
+                            .lesson-detail-data-left {
+                                overflow: hidden;
+                                max-width: computer(90px);
+                                text-overflow: ellipsis;
+                                white-space: nowrap;
+                                font-size: computer(14px);
+                            }
+                            .lesson-detail-data-right {
+                                overflow: hidden;
+                                max-width: computer(150px);
+                                text-overflow: ellipsis;
+                                white-space: nowrap;
+                                font-size: computer(12px);
+                                display: flex;
+                                flex-direction: row;
+                                justify-content: center;
+                                align-items: center;
+                                margin: 0 auto;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .isScroll {
+            width: computer(1350px) !important;
+            height: computer(50px) !important;
+            margin: 0 auto;
+        }
+        .clear {
+            clear: both;
+        }
+        .paginaction {
+            padding: computer(20px) 0;
+            width: 100%;
+            text-align: center;
+        }
+    }
+    .footer {
+        width: calc(100% - #{computer(40px)});
+        margin-left: computer(20px);
+        border-top: 1px solid $color_border;
+        // position: absolute;
+        position: static !important;
+        background-color: #fff;
+        // bottom: 0;
+        height: computer(50px);
+        line-height: computer(50px);
+        text-align: center;
+    }
+}
+
+.loading {
+    position: absolute;
+    //left: calc(50% - #{computer(30px)});
+    top: 15%;
+    width: calc(100% - #{computer(20px)});
+    .ant-spin-spinning {
+        margin-top: 0;
+    }
+}
+
+.click-show-more {
+    font-size: computer(16px);
+    margin: computer(10px) 0;
+    text-align: center;
+    color: $color_font-light;
+    cursor: default;
+    clear: both;
+    &.pointer {
+        cursor: pointer;
+    }
+}

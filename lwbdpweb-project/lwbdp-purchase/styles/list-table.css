@@ -1,0 +1,233 @@
+.purchase .main_in {
+    min-width: 1050px;
+    position: relative;
+    position: absolute;
+    width: 100%;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: column;
+}
+
+
+/* 搜索 */
+
+.purchase .search_box {
+    margin-top: 20px;
+    padding: 0 20px;
+}
+
+.purchase .more_search {
+    color: #0096ff;
+    margin-left: 10px;
+    display: inline-block;
+    padding: 5px 0;
+}
+.purchase .more_search:focus{
+    outline: none;
+}
+
+.purchase .search_result {
+    padding: 6px 0;
+    border-bottom: 1px solid #dbe3ee;
+    line-height: 24px;
+}
+
+.purchase .search_result>span{
+    margin-right: 10px
+}
+
+.purchase .search_result .icon-error{
+    color: rgba(120, 108, 236, .5);
+    cursor: pointer;
+    vertical-align: middle;
+}
+
+
+/*总计*/
+
+.purchase .totalize {
+    margin: 16px 0 0;
+    padding: 0 20px;
+    line-height: 30px;
+}
+
+.purchase .total_info {
+    display: inline-block;
+    vertical-align: middle;
+    color: #999999;
+}
+
+.purchase .totalize .fr span {
+    float: left;
+}
+
+
+/*表格*/
+
+.purchase .line_strip {
+    height: 4px;
+    background-image: linear-gradient(-180deg, rgb(120, 108, 236) 50%, rgb(0, 150, 255) 50%);
+    background-image: -webkit-linear-gradient(left, #786cec 20%, #3c76f6 20%, #008aff 20%, #0096ff 20%, #017eff 20%);
+    background-size: 100% 4px;
+    background-position: top right;
+    background-repeat: no-repeat;
+    width: 100%;
+}
+
+.purchase .line_pad {
+    padding: 14px 20px 0;
+    position: relative;
+    z-index: 2;
+}
+
+.purchase .total_num{
+    margin-top: 16px;
+    height: 35px;
+    line-height: 33px;
+    padding: 0 30px 0 20px;
+    margin-bottom: 16px;
+}
+
+.purchase .table_absolute {
+    padding: 0 20px 80px 20px;
+}
+
+.purchase .table_box {
+    width: 100%;
+    position: relative;
+}
+
+.purchase .table_box .listTable {
+    width: 100%;
+}
+
+.purchase .table_box .listTable thead th {
+    background: #f8f8f8;
+    height: 40px;
+    padding: 5px 10px;
+    font-size: 14px;
+    color: #333;
+    font-weight: bold;
+    border: 1px solid #dbe3ee;
+    border-top: 0;
+    text-align: center;
+}
+.purchase .table_box .listTable thead th label{
+    font-weight: bold;
+}
+.purchase .table_box .listTable thead th:first-child {
+    border-left: 0;
+}
+
+.purchase .table_box .listTable thead th:last-child {
+    border-right: 0;
+}
+
+.purchase .table_box .listTable tr td {
+    font-size: 14px;
+    color: #333333;
+    padding: 5px 10px;
+    height: 50px;
+    border: 1px solid #dbe3ee;
+    max-width: 100px;
+    text-align: center;
+    line-height: 22px;
+    word-break: break-all;
+}
+
+.purchase .table_box .listTable tr td:first-child {
+    border-left: 0;
+}
+
+.purchase .table_box .listTable tr td:last-child {
+    border-right: 0;
+}
+
+.purchase .table_box .listTable tbody tr:hover {
+    background-color: #dbe3ee !important;
+}
+
+.purchase .table_box .listTable tr:nth-child(2n) {
+    background-color: #f8f8f8;
+}
+
+.purchase .gather_btn {
+    position: relative;
+}
+
+.purchase .gather_num {
+    position: absolute;
+    right: -8px;
+    top: -8px;
+    height: 20px;
+    min-width: 20px;
+    padding: 0 2px;
+    border-radius: 50px;
+    background: #ff2830;
+    color: #fff;
+    font-size: 8px;
+    text-align: center;
+    line-height: 20px;
+}
+
+/*.purchase .thWid80 {*/
+    /*width: 75px;*/
+/*}*/
+
+.purchase .btn_bd.btn_bd_detele {
+    cursor: not-allowed;
+    opacity: 0.2;
+}
+
+.purchase .btn_bd.btn_bd_detele.opacity {
+    cursor: pointer;
+    opacity: 1;
+}
+
+.purchase .draft_tit{
+    height: 40px;
+    line-height: 40px;
+    font-size: 16px;
+    text-align: center;
+    border-bottom: 1px solid #dbe3ee;
+}
+
+/* 选择园区 */
+
+.purchase .select_depart {
+    padding: 20px 0;
+}
+
+.purchase .select_depart_list .setting_icon {
+    font-size: 20px;
+    color: #786cec;
+    padding: 0 8px 0 0px;
+    cursor: pointer;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.purchase .select_depart_list span {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.purchase .select_depart_list .fos16 {
+    font-size: 16px;
+}
+.purchase .select_depart_list2.disabled{
+    opacity: .2;
+}
+.purchase .select_depart_list2 {
+    margin-top: 7px;
+    font-size: 14px;
+    margin-left: 138px;
+}
+
+.purchase .hour{
+    font-size: 8px;
+}
+
+

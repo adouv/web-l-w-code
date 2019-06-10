@@ -1,0 +1,56 @@
+<div class="purchase_list_search">
+    <div class="dialog-header">
+        更多条件组合搜索
+        <span class="iconfont icon-close del_btn dialog-close" ng-click="closeThisDialog()"></span>
+    </div>
+    <div class="dialog-list">
+        <span class="dialog_name">项目申报年份</span>
+        <input type="text" id="startYear" lw-laydate class="dialog_input_middle" ng-model="purchaseDialog.condition.startYear"> -
+        <input type="text" id="endYear" lw-laydate class="dialog_input_middle" ng-model="purchaseDialog.condition.endYear">
+    </div>
+    <div class="dialog-list">
+        <span class="dialog_name">项目申报单位</span>
+        <div class="dialog_input" ng-click="purchaseDialog.chooseGarden()"></div>
+    </div>
+    <div class="dialog-list">
+        <span class="dialog_name">项目所属类别</span>
+        <div class="dialog_input" ng-click="purchaseDialog.getBelongType()">{{purchaseDialog.condition.belongType || ''}}</div>
+    </div>
+    <div class="dialog-list">
+        <span class="dialog_name">项目标配类别</span>
+        <div class="dialog_input"></div>
+    </div>
+    <div class="dialog-list">
+        <span class="dialog_name">项目所处阶段</span>
+        <div class="dialog_input"></div>
+    </div>
+    <div class="dialog-list">
+        <span class="dialog_name">项目所处状态</span>
+        <div class="dialog_input"></div>
+    </div>
+    <div class="dialog-list">
+        <span class="dialog_name">项目申报人</span>
+        <div class="dialog_input"></div>
+    </div>
+    <div class="dialog-list">
+        <span class="dialog_name">项目提交时间段</span>
+        <input type="text" id="submitStartTime" lw-laydate class="dialog_input_middle" ng-model="purchaseDialog.condition.submitStartTime"> -
+        <input type="text" id="submitEndTime" lw-laydate class="dialog_input_middle" ng-model="purchaseDialog.condition.submitEndTime">
+    </div>
+    <div class="dialog-list">
+        <span class="dialog_name">任务生成时间段</span>
+        <input type="text" id="taskStartTime" lw-laydate class="dialog_input_middle" ng-model="purchaseDialog.condition.taskStartTime"> -
+        <input type="text" id="taskEndTime" lw-laydate class="dialog_input_middle" ng-model="purchaseDialog.condition.taskEndTime">
+    </div>
+    <div class="dialog-btn">
+        <div class="btn_bd" ng-click="closeThisDialog()">取消</div>
+        <div class="btn_bg" ng-click="purchaseDialog.clickSure()">确定</div>
+    </div>
+</div>
+
+<!-- 所属类型的弹窗 -->
+<dialog ng-if="purchaseDialog.type" modal>
+    <div dialog-content>
+        <belong-type show="purchaseDialog.type" list="purchaseDialog.list"></belong-type>
+    </div>
+</dialog>

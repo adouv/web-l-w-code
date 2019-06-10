@@ -1,0 +1,47 @@
+<div class="evaluation">
+	<div class="evaluation-content">
+		<div class="header" flex="main:justify">
+			<div class="upload-details">
+				<span>上传{{_type==0?'教学评价':'教学反思'}}：</span>
+				<div class="upload_div">
+					<button class="upload_input_btn" nz-button [nzType]="'danger'">
+						<input type="file" class='upload_input' #fileUploadEle value='上传' ng2FileSelect
+							   [uploader]="fileUploader" (change)="selectedFileOnChanged($event)"/>
+						<span>上传</span>
+					</button>
+					<p class="error_tip" *ngIf="wordFile.isOverMaxSize">文件过大</p>
+					<p class="error_tip" *ngIf="wordFile.isNotAllowedExt">文件格式错误</p>
+				</div>
+
+			</div>
+			<div class="download-btn">
+				<button (click)="downTemplate()" nz-button [nzType]="'default'">
+					<span>下载模版</span>
+				</button>
+			</div>
+		</div>
+		<div class="upload-content">
+			<div class="upload-file-details" flex="main:center cross:center">
+				<div class="file-details" *ngIf="wordFile.filename">
+					<div class="file-name">{{wordFile.filename}}<i (click)="deleteUploadFile()" class="iconfont icon-guanbi"></i></div>
+					<!--<nz-progress *ngIf="wordFile.progress!=100" [ngModel]="wordFile.progress"></nz-progress>-->
+				</div>
+			</div>
+			<div class="upload-explain">
+				<ul>
+					<li>说明：</li>
+					<li>1、系统只支持doc格式的文件,且文件大小不能超过1M;</li>
+					<li>2、重新上传文件可替换之前上传的文件;</li>
+					<li>3、必须按照标准格式的文件才能成功上传并成功显示。</li>
+					<li>4、请仔细核对文件是否为所传文件，一旦提交成功，则不能再次提交，请谨慎操作!</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="customize-footer">
+		<button [ngClass]="{'btn-disable':!wordFile.isComplete}" (click)="submitFile()" nz-button
+				[nzType]="'danger'">
+			<span>确认提交</span>
+		</button>
+	</div>
+</div>

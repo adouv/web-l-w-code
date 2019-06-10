@@ -1,0 +1,42 @@
+<div style="width: 100%;">
+    <div class="head" style="width: 100%;">
+        <header class="header_box">
+            <div class="header_content"></div>
+            <div class="header_user" ng-class='{"right-205":isShowBanner && !hidebar}'>
+                <div class="task-li">
+                    <span class='cur-def'>模块所有待办任务</span>
+                    <span class="red" ng-click="todoTaskDialog()">{{totalItems}}</span>
+                </div>
+                <div class="task-li" ng-hide="isShowBanner && !hidebar">
+                    <span class="iconfont icon-switch" ng-click='switchFlowDialog()'></span>
+                    <span class='cur-def'>当前加载审批流程 :</span>
+                    <span class='flow_number' ng-click='currentShowPopup()'>{{currentFlowCount}}</span>
+                </div>
+            </div>
+        </header>
+        <ul class="top_nav" ng-show="isShowBanner && !hidebar">
+            <li>基建项目管理</li>
+            <li ng-click="goModule('repair')" ng-class="{'cur':currentTab=='repair'}">修缮项目管理</li>
+            <li ng-click="goModule('purchase')" ng-class="{'cur':currentTab=='purchase'}">设备采购项目管理</li>
+            <li ng-click="goModule('asset')" ng-class="{'cur':currentTab=='asset'}">资产管理</li>
+            <li ng-click="goModule('bill')" ng-class="{'cur':currentTab=='bill' || noSidebar}">项目财务管理</li>
+            <li ng-click="goModule('logistics')" ng-class="{'cur':currentTab=='logistics'}">后勤运维管理</li>
+        </ul>
+        <div class="task-li current-load" ng-show="isShowBanner && !hidebar">
+            <span class="iconfont icon-switch" ng-click='switchFlowDialog()'></span>
+            <span>当前加载审批流程 :</span>
+            <span class='flow_number' ng-click='currentShowPopup()'>{{currentFlowCount}}</span>
+        </div>
+    </div>
+    <div class="contentWrapper w5c-auto" ng-class="{'hidden_top_nav':hidebar || !isShowBanner}">
+        <div class="wrapFlex sidebar-wrap">
+            <div class="sidebar" id="sidebarWrapper" ng-if="!noSidebar" ng-class="{'show_icon little-bar':isClass}" ng-hide="hidebar">
+                <div class="menuList" ng-click="menu()">
+                    <span class="iconfont icon-menuUnfold" ng-class="{'rotate':isClass}" ng-click="isClass=!isClass"></span>
+                </div>
+                <div class="sidebarList"></div>
+            </div>
+            <div class="main_content w5c-auto" id="main_content" ng-transclude=""></div>
+        </div>
+    </div>
+</div>

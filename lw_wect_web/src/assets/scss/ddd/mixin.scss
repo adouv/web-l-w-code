@@ -1,0 +1,113 @@
+
+// 单行省略号
+@mixin line-ell($width) {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	display: inline-block;
+	vertical-align: middle;
+	max-width: $width;
+}
+
+// 多行省略号
+@mixin block-ell($number) {
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: $number;
+	display: -moz-box;
+	-moz-line-clamp: $number !important;
+	-moz-box-orient: vertical;
+	overflow: hidden;
+}
+
+// 滚动条
+@mixin scroll-bar($width:10px) {
+	&::-webkit-scrollbar-track {
+		border-radius: 10px;
+		background-color: #ffffff;
+	}
+	&::-webkit-scrollbar {
+		width: $width;
+		height: 10px;
+		background-color: #ffffff;
+	}
+	&::-webkit-scrollbar-thumb {
+		border-radius: 10px;
+		background-color: rgba(0, 0, 0, 0.2);
+	}
+}
+
+// 按照设计图比例100%还原,在不同分辨率下设置html的font-size
+@mixin html-css($device-width) {
+	html {
+		$x: $device-width / $refer-width;
+		font-size: $html-font-size * $x
+	}
+}
+
+@mixin computer-html-font-size() {
+	$first-width: nth($device-width, 1);
+	@media screen and (max-width: $first-width) {
+		@include html-css($first-width);
+	}
+
+	@for $i from 1 to length($device-width) {
+		$min-width: nth($device-width, $i);
+		$max-width: nth($device-width, $i + 1);
+		@media screen and (max-width: $max-width) and (min-width: $min-width) {
+			@include html-css($max-width);
+		}
+	}
+
+	$last-width: nth($device-width, length($device-width));
+	@media screen and (min-width: $last-width) {
+		@include html-css($last-width);
+	}
+}
+
+// margin,padding
+$types: (mar:margin, pad:padding);
+$directions: (top:top, bot:bottom, lef:left, rig:right);
+$sizes: (10px, 20px, 30px, 40px);
+@mixin distance() {
+	@each $type, $type-value in $types {
+		@each $dir, $dir-value in $directions {
+			@each $size in $sizes {
+				.#{$type}-#{$dir}-#{$size} {
+					#{$type-value}-#{$dir-value}: computer($size);
+				}
+			}
+		}
+	}
+}
+
+// 字体
+@mixin font-size() {
+	@each $size in $font-sizes {
+		.font#{$size} {
+			font-size: computer($size);
+		}
+	}
+}
+
+@mixin unselecText {
+	-moz-user-select: -moz-none;
+	-khtml-user-select: none;
+	-webkit-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+// 已提交状态颜色
+$submitStatus: rgb(2, 197, 131);
+// 未提交状态颜色
+$noSubmitStatus: rgb(153, 153, 153);
+
+// 状态球
+@mixin status-ball {
+  content: " ";
+  display: block;
+  width: computer(10px);
+  height: computer(10px);
+  position: absolute;
+  border-radius: 50%;
+}

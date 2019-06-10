@@ -1,0 +1,134 @@
+.bdp .header_box {
+    width: 100%;
+    height: 88px;
+    background: url("../../assets/img/bar_bg.png") no-repeat;
+    background-size: 100% 100%;
+    position: relative;
+}
+
+.bdp .header_box .header_content {
+    width: 402px;
+    height: 100%;
+    background: url("../../assets/img/bar_logo.png") no-repeat 20px center;
+}
+
+.bdp .header_box .header_user {
+    position: absolute;
+    right: 20px;
+    top: calc((100% - 28px)/2);
+    color: white;
+    cursor: pointer;
+    padding-bottom: 10px;
+}
+
+.bdp .header_box .header_user .header_icon {
+    margin-right: 5px;
+    background-image: url("../../assets/img/toux.png");
+    width: 20px;
+    height: 20px;
+}
+
+.bdp .header_box .header_user>span {
+    vertical-align: middle;
+    height: 100%;
+    display: inline-block;
+}
+
+.bdp .header_box .header_user:hover .header_logout {
+    display: inline-block;
+}
+
+.bdp .header_box .header_user .header_logout {
+    display: none;
+    width: 110px;
+    height: 90px;
+    position: absolute;
+    right: -10px;
+    top: 30px;
+    font-size: 14px;
+    text-align: center;
+    background-color: #fff;
+    color: #333333;
+    padding: 0 10px;
+    z-index: 1;
+    border: 1px solid #dbe3ee;
+    box-shadow: 0px 5px 16px #ccc;
+}
+
+.bdp .header_box .header_user .header_logout span {
+    display: inline-block;
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    border-bottom: 1px solid #dbe3ee;
+}
+
+.bdp .header_box .header_user .header_logout span:hover {
+    color: #0096FF;
+}
+
+.bdp .header_box .header_user .header_logout span:last-child {
+    border-bottom: 1px solid transparent;
+}
+
+.bdp .top_nav {
+    padding-left: 40px;
+    width: 100%;
+    height: 50px;
+    border-bottom: 1px solid #dbe3ee;
+}
+
+.bdp .top_nav li {
+    padding: 0 10px;
+    margin: 0 10px;
+    line-height: 50px;
+    display: inline-block;
+    cursor: pointer;
+    font-size: 16px;
+    color: #666666;
+}
+
+.bdp .top_nav li.cur {
+    background-image: linear-gradient(-180deg, rgb(120, 108, 236) 50%, rgb(0, 150, 255) 50%);
+    background-image: -o-linear-gradient(-180deg, rgb(120, 108, 236) 50%, rgb(0, 150, 255) 50%);
+    background-image: -moz-linear-gradient(-180deg, rgb(120, 108, 236) 50%, rgb(0, 150, 255) 50%);
+    background-image: -webkit-linear-gradient(-180deg, rgb(120, 108, 236) 50%, rgb(0, 150, 255) 50%);
+    background-size: 100% 4px;
+    background-position: bottom right;
+    background-repeat: no-repeat;
+    color: #0096ff;
+}
+
+.bdp .top_nav li:hover {
+    background-image: linear-gradient(-180deg, rgb(120, 108, 236) 50%, rgb(0, 150, 255) 50%);
+    background-image: -o-linear-gradient(-180deg, rgb(120, 108, 236) 50%, rgb(0, 150, 255) 50%);
+    background-image: -moz-linear-gradient(-180deg, rgb(120, 108, 236) 50%, rgb(0, 150, 255) 50%);
+    background-image: -webkit-linear-gradient(-180deg, rgb(120, 108, 236) 50%, rgb(0, 150, 255) 50%);
+    background-size: 100% 4px;
+    background-position: bottom right;
+    background-repeat: no-repeat;
+}
+
+.bdp .contentWrapper {
+    position: absolute;
+    left: 0;
+    top: 138px;
+    right: 0px;
+    bottom: 0;
+    overflow: auto;
+}
+
+.bdp .hidden_top_nav {
+    top: 88px;
+}
+
+.bdp .wrapFlex {
+    height: 100%;
+}
+.bdp .main_content{
+    width:100%;
+    margin: 0 auto;
+}
+.bdp .contentWrapper.detail-wrap {
+    top:88px;
+}

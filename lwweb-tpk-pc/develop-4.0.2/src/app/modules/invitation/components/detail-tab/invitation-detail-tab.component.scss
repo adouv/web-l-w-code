@@ -1,0 +1,20 @@
+@import "../../../../../styles/variable";
+
+.content-wrapper {
+	width: 100%;
+	height: computer(186px);
+	margin-top: computer(20px);
+	margin-bottom: computer(16px);
+	> div {
+		font-size: 14px;
+		color: #333;
+		line-height: computer(30px);
+		label {
+			width: computer(70px);
+			display: inline-block;
+			color: #666;
+			text-align: right;
+		}
+	}
+}
+

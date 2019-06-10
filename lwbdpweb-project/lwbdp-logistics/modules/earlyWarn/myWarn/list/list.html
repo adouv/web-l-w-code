@@ -1,0 +1,205 @@
+<div class="main_in my-warn">
+    <!-- 搜索 -->
+    <div class="search_box clearfix">
+        <div>
+            <div class="content_textBar">
+                <input type="text" class="input_class" placeholder="回车键提交查询"  ng-model="myWarnList.condition.keywords"
+                       ng-keydown="myWarnList.goSearch($event)">
+                <span class="iconfont icon-search" ng-if="myWarnList.condition.keywords.length === 0"></span>
+                <span class="iconfont icon-error " ng-if="myWarnList.condition.keywords.length > 0"
+                      ng-click="myWarnList.clearKeywords()"></span>
+            </div>
+            <a href="javascript:void(0)" class="more_search" ng-click="myWarnList.getMoreSearch()" >更多条件查询 ></a>
+        </div>
+        <div class="search_result" ng-if="myWarnList.condition.gardenName || myWarnList.condition.type ||
+        myWarnList.condition.urgencyLevel || myWarnList.condition.dealStatus || myWarnList.condition.publishStatus || myWarnList.condition.accountName || (myWarnList.condition.startTime && myWarnList.condition.endTime)">搜索条件：
+            <span ng-if="myWarnList.condition.gardenName">发送单位（{{myWarnList.condition.gardenName}}）;</span>
+            <span ng-if="myWarnList.condition.type">类别（{{myWarnList.condition.typeName}}）；</span>
+            <span ng-if="myWarnList.condition.urgencyLevel">紧急程度（{{myWarnList.condition.urgencyLevelName}}）;</span>
+            <span ng-if="myWarnList.condition.dealStatus">处理状态（{{myWarnList.condition.dealStatusName}}）;</span>
+            <span ng-if="myWarnList.condition.publishStatus">发送状态（{{myWarnList.condition.publishStatusName}}）;</span>
+            <span ng-if="myWarnList.condition.accountName">发送人（{{myWarnList.condition.accountName}}）;</span>
+            <span ng-if="myWarnList.condition.startTime && myWarnList.condition.endTime">
+                发送时间（{{myWarnList.condition.startTime}}~{{myWarnList.condition.endTime}}）;
+            </span>
+            <span ng-if="myWarnList.isShowCancel" class="iconfont icon-error"
+                  ng-click="myWarnList.deleteCondition()"></span>
+        </div>
+    </div>
+    <!-- 总计 -->
+    <div class="totalize clearfix">
+        <div class="count" ng-if="myWarnList.condition.sideBarCode=='receive'">
+            <span class="total_info">总计<em class="blue_color">{{myWarnList.paginationConf.totalItems}}</em>条，等待您去处理的通知<em class="yellow_color">{{myWarnList.paginationConf.undoCounts}}</em>条，已处理的通知<em class="green_color">{{myWarnList.paginationConf.doneCounts}}</em>条。</span>
+        </div>
+        <div class="count" ng-if="myWarnList.condition.sideBarCode!='receive'">
+            <span class="total_info">总计<em class="blue_color">{{myWarnList.paginationConf.totalItems}}</em>条</span>
+            <span class="btn_bg fr" ng-if="myWarnList.condition.sideBarCode=='send'" has-permission="logistics:warn:create" ng-click="myWarnList.publishNotice()">发布</span>
+            <span class="btn_bg fr" ng-if="myWarnList.condition.sideBarCode=='all'" ng-click="myWarnList.toChartList()">图表统计</span>
+        </div>
+    </div>
+    <!-- 表格 -->
+    <div class="line_pad" auto-width=".table_absolute" watch-change="myWarnList.pageList">
+        <div class="line_strip"></div>
+        <div class="table_box">
+            <table class="listTable table-hover">
+                <thead id="theadTh">
+                <tr ng-if="myWarnList.condition.sideBarCode=='receive'">
+                    <th width="5%">序号</th>
+                    <th width="28%">名称</th>
+                    <th width="10%">紧急程度</th>
+                    <th width="10%">类别</th>
+                    <th width="20%">发送单位</th>
+                    <th width="16%">发送时间</th>
+                    <th width="11%">处理状态</th>
+                </tr>
+                <tr ng-if="myWarnList.condition.sideBarCode=='send'">
+                    <th width="5%">序号</th>
+                    <th width="30%">名称</th>
+                    <th width="10%">紧急程度</th>
+                    <th width="14%">类别</th>
+                    <th width="16%">发送时间</th>
+                    <th width="15%">发送状态</th>
+                    <th width="10%">操作</th>
+                </tr>
+                <tr ng-if="myWarnList.condition.sideBarCode=='all'">
+                    <th width="5%">序号</th>
+                    <th width="20%">名称</th>
+                    <th width="10%">紧急程度</th>
+                    <th width="8%">类型</th>
+                    <th width="11%">发送人</th>
+                    <th width="22%">发布单位</th>
+                    <th width="14%">发送时间</th>
+                    <th width="10%">发送状态</th>
+                </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+    <div class="table_absolute overflow_box">
+        <div class="table_box">
+            <table class="listTable table-hover">
+                <!--<thead>
+                <tr ng-if="myWarnList.condition.sideBarCode=='receive'">
+                    <th width="50">序号</th>
+                    <th width="270">名称</th>
+                    <th width="70">类别</th>
+                    <th width="100">紧急程度</th>
+                    <th width="270">发送单位</th>
+                    <th width="150">发送时间</th>
+                    <th width="100">处理状态</th>
+                </tr>
+                <tr ng-if="myWarnList.condition.sideBarCode=='send'">
+                    <th width="50">序号</th>
+                    <th width="270">名称</th>
+                    <th width="70">类别</th>
+                    <th width="100">紧急程度</th>
+                    <th width="150">发送时间</th>
+                    <th width="150">发送状态</th>
+                    <th width="100">操作</th>
+                </tr>
+                <tr ng-if="myWarnList.condition.sideBarCode=='all'">
+                    <th width="50">序号</th>
+                    <th width="270">名称</th>
+                    <th width="70">类型</th>
+                    <th width="100">紧急程度</th>
+                    <th width="150">发送人</th>
+                    <th width="270">发布单位</th>
+                    <th width="150">发送时间</th>
+                    <th width="100">发送状态</th>
+                </tr>
+                </thead>-->
+                <tbody>
+                <!-- 我的预警 -->
+                <tr table-width ng-if="myWarnList.condition.sideBarCode=='receive'" ng-repeat="data in myWarnList.pageList track by $index"
+                    ui-sref="logistics.warn.mineDetail({id:data.id,sideBarCode:myWarnList.condition.sideBarCode})"  ng-class="{'text-bold':!data.readFlag}">
+                    <td>
+                        {{$index+1}}
+                        <!--<input type="checkbox" class="checkbox_class" id="check{{data.id}}">-->
+                        <!--<label for="check{{data.id}}">{{$index+1}}</label>-->
+                    </td>
+                    <td><em ng-if="data.publishStatus ==2 ">【已撤回】</em>{{data.title}}</td>
+                    <td>
+                        {{data.urgencyLevelName}}
+                    </td>
+                    <td>{{data.typeName}}</td>
+                    <td>{{data.gardenName}}</td>
+                    <td>{{data.addDate}}</td>
+                    <td>
+                        <span ng-if="!data.dealStatus" class="green_color">待处理</span>
+                        <span ng-if="data.dealStatus">已处理</span>
+                    </td>
+
+                </tr>
+                <!-- 我的发布 -->
+                <tr table-width ng-if="myWarnList.condition.sideBarCode=='send'" ng-repeat="data in myWarnList.pageList track by $index"
+                    ui-sref="logistics.warn.publishDetail({id:data.id,sideBarCode:myWarnList.condition.sideBarCode})">
+                    <td>
+                        <!--<input type="checkbox" class="checkbox_class" id="check1{{data.id}}">-->
+                        <!--<label for="check1{{data.id}}">{{$index+1}}</label>-->
+                        {{$index+1}}
+                    </td>
+                    <td>{{data.title}}</td>
+                    <td>{{data.typeName}}</td>
+                    <td>
+                        {{data.urgencyLevelName}}
+                    </td>
+                    <td>{{data.addDate}}</td>
+                    <td>{{data.publishStatus == 1?"已发布":"撤回"}}</td>
+                    <td>
+                        <span ng-if="data.publishStatus == 1" class="iconfont icon-chehui" has-permission="logistics:warn:delete" ng-click="myWarnList.recallNotice(data.id,$event)"></span>
+                        <!--<span ng-if="data.publishStatus == 2" class="iconfont icon-editPen" ng-click="myWarnList.toEditNotice(data.id,$event)"></span>-->
+                        <span ng-if="data.publishStatus == 2" class="iconfont icon-del" has-permission="logistics:warn:delete" ng-click="myWarnList.deleteNotice(data.id,$event)"></span>
+                    </td>
+                </tr>
+                <!-- 全单位发布 -->
+                <tr table-width ng-if="myWarnList.condition.sideBarCode=='all'" ng-repeat="data in myWarnList.pageList track by $index"
+                    ui-sref="logistics.warn.publishDetail({id:data.id,sideBarCode:myWarnList.condition.sideBarCode})">
+                    <td>
+                        {{$index+1}}
+                        <!--<input type="checkbox" class="checkbox_class" id="check2{{data.id}}">-->
+                        <!--<label for="check2{{data.id}}">{{$index+1}}</label>-->
+                    </td>
+                    <td>{{data.title}}</td>
+                    <td>{{data.typeName}}</td>
+                    <td>
+                        {{data.urgencyLevelName}}
+                    </td>
+                    <td>{{data.displayName}}</td>
+                    <td>{{data.gardenName}}</td>
+                    <td>{{data.addDate}}</td>
+                    <td>{{data.publishStatus == 1?"已发布":"撤回"}}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <!-- 分页 -->
+        <pagination conf="myWarnList.paginationConf" ng-show="myWarnList.pageList.length>0"></pagination>
+
+        <!-- 暂无数据、暂无搜索结果-->
+        <div class="nodata_box" ng-show="myWarnList.pageList.length<1">
+            <div class="nodata"
+                 ng-show="myWarnList.isDefaultSearch">
+                <span></span>
+                <p>暂无数据</p>
+            </div>
+            <div class="nodata_search" ng-show="!myWarnList.isDefaultSearch">
+                <span></span>
+                <p>搜索无结果</p>
+            </div>
+        </div>
+
+
+        <!-- 选择园区 -->
+        <div class="select_depart" ng-if="myWarnList.condition.sideBarCode=='all'">
+            <p class="select_depart_list">
+                <span class="fos16">参统学校（机关)：</span>
+                <span ng-if="myWarnList.visibleGardens.length>1" ng-click="myWarnList.chooseGarden()" class="iconfont icon-setting setting_icon"
+                      ng-class="{'disabled':myWarnList.onlyMine}"></span>
+                <input type="checkbox" class="checkbox_class" ng-model="myWarnList.onlyMine" ng-click="myWarnList.getMyProject(myWarnList.onlyMine)" id="gad1">
+                <label for="gad1" class="word_center">只统计由我发起的预警预报</label>
+            </p>
+            <p class="select_depart_list2" ng-class="{'disabled':myWarnList.onlyMine}"><span ng-repeat="garden in myWarnList.gardenList">{{garden.name||garden.gardenName}}；</span></p>
+        </div>
+    </div>
+    <instructions module-code="logistics"></instructions>
+</div>

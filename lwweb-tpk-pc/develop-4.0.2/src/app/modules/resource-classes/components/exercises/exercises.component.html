@@ -1,0 +1,56 @@
+<div class="exercises-component" flex="dir:top box:justify">
+	<div class="header">
+		<div flex="dir:right box:first">
+			<div>
+				<nz-select *ngIf="qualitys.length!=0" class="exercises-header-select bg-gray radius" (nzOpenChange)="qualityChange()" [(ngModel)]="qualityChecked"
+				 [nzPlaceHolder]="qualitys.length>0?qualitys[0].title:'暂无选项'">
+					<nz-option *ngFor="let quality of qualitys" [nzLabel]="quality.title" [nzValue]="quality">
+					</nz-option>
+				</nz-select>
+			</div>
+			<div class="exercises-header-type" flex="">
+				<span class="title" flex-box="0">题型</span>:
+				<!--<span (click)="checkType('')"  class="title-type title-type-active">全部</span>-->
+				<div flex-box="1">
+					<div class="title-tags">
+						<span *ngFor="let type of typelist" (click)="checkType(type.code)" [ngClass]="{'title-type-active': type.status}" class="title-type">{{type.name}}</span>
+					</div>
+				</div>
+
+			</div>
+		</div>
+		<div class="content-header">
+			<label class="label-checkbox" nz-checkbox [(ngModel)]="checkedAll" [nzDisabled]="exercisesData.length<=0" (ngModelChange)="checkedAllChange($event)">
+			</label>
+			<span class="label-checkbox-title">全选</span>
+			<span class="select-exercises">( 已 选 {{detailsData.length}} 题 )</span>
+		</div>
+	</div>
+
+	<div class="content auto-scroll">
+		<div class="exercise-container">
+			<div class="scroll-margin-right">
+				<exercises-card (showDetails)="showExerciseDetails($event)" [index]="i" *ngFor="let d of exercisesData; let i = index" [config]="exercisesCardConfig"
+				 [data]="d" (statusChange)="statusChange($event)"></exercises-card>
+				<!--<p *ngIf="record.list.length !== 0" class="click-show-more" [ngClass]="{'pointer':record.total > record.page.size}"-->
+				<!--(click)="changeRecordList($event,record)">{{record.total >-->
+				<!--record.page.size?'点击加载更多':'已加载全部'}}</p>-->
+				<!--缺省页-->
+				<elliptical-page *ngIf="record.list.length === 0 && record.loaded" [title]="ellipticalTitle" imgName="no-exercises.png"></elliptical-page>
+				<div flex="main:center cross:center" style="height: 100%" *ngIf="!record.loaded">
+					<nz-spin [nzSize]="'large'"></nz-spin>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="footer">
+		<button (click)="doExercises(0)" [ngClass]="{'btn-disable':detailsData.length==0}" tabindex='-1' class="close" [nzType]="'default'"
+		 nz-button [nzType]="'danger'">
+			<span>讲题</span>
+		</button>
+		<button (click)="doExercises(1)" [ngClass]="{'btn-disable':detailsData.length==0}" tabindex='-1' nz-button [nzType]="'danger'">
+			<span>做题</span>
+		</button>
+	</div>
+</div>
+<exercises-details *ngIf="showDetails" [type]="detailsType" [data]="detailsData" (btnClick)="btnClick($event)"></exercises-details>

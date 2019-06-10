@@ -1,0 +1,160 @@
+<section class="row border-color">
+    <blockquote class="border-color">{{grades[gradeIndex].name}}{{classInfo.name}}课表管理</blockquote>
+    <div class="garden-select">
+        <select class="form-control select-control" ng-change="toggleGarden()" ng-model="gardenId" ng-options="garden.id as garden.name for garden in gardens">
+        </select>
+    </div>
+</section>
+<section class="row" style="margin:20px -15px;">
+    <div class="nav-form">
+        <div class="form-group">
+            <select class="form-control select-control courseSelect" ng-model="gradeIndex" ng-change="getClass()">
+                <option ng-value="$index" ng-repeat="grade in grades">{{grade.name}}</option>
+            </select>
+            <select class="form-control select-control courseSelect addWidth" ng-disabled="!classes[0]" ng-model="classId" ng-change="getSchedule()" ng-options="class.id as class.name for class in classes">
+                <option value="">请选择班级/专业</option>
+            </select>
+
+            <button class="btn tpk-btn" id="lw-search" ng-click="getSchedules()">搜 索</button>
+        </div>
+    </div>
+    <div class="btn-group">
+        <a class="btn tpk-btn-o" href="javascript:void(0);" ng-click="import()">导 入</a>
+        <a class="btn tpk-btn" href="javascript:void(0);" ng-click="export()">导 出</a>
+        <a class="btn tpk-btn-o" href="javascript:void(0);" ng-click="courseSync()">课表同步</a>
+    </div>
+</section>
+<section class="row">
+    <table class="table table-bordered" style="max-width: 100%" ng-if="grades.length">
+        <thead>
+            <tr class="active">
+                <td>年级</td>
+                <td>班级</td>
+                <td class="rotate-line">
+                    <span>节次</span>
+                    <div style="border-bottom:1px solid #ccc;"></div>
+                    <span>星期</span>
+                </td>
+                <td ng-if="!timeschedules[0]" style="width: 78%"></td>
+                <td ng-repeat="data in timeschedules" ng-if="timeschedules[0]">{{data.name}}</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td rowspan="7">
+                    {{grades[gradeIndex].name}}
+                </td>
+                <td rowspan="7">
+                    <div class="course-edit" ng-if="classInfo" ng-dblclick="classCfg()">
+                        <p class="camera_no" ng-if="classInfo.cameraId"></p>
+                        <p>{{classInfo.name}}</p>
+                    </div>
+                </td>
+                <td>周一</td>
+                <td rowspan="7" ng-if="!timeschedules[0]">
+                    <div class="scheduleDefault">
+                        <p class="scheduleDefaultLg">尚未配置作息时间信息</p>
+                    </div>
+                </td>
+                <td ng-repeat="data in timeschedules">
+                    <div class="course-edit" ng-if="courseschedules['1'][$index].period==$index+1 && courseschedules['1'][$index].teacherIds" ng-dblclick="courseCfg(1,$index)">
+                        <p class="camera_no camera_course" ng-if="courseschedules['1'][$index].hasCamera"></p>
+                        <p ng-if="courseschedules['1'][$index].lessonStatus">自习</p>
+                        <p ng-if="!courseschedules['1'][$index].lessonStatus">{{courseschedules['1'][$index].subjectName}}{{courseschedules['1'][$index].lessonStatus}}</p>
+                        <div ng-if="!courseschedules['1'][$index].lessonStatus" ng-show="courseschedules['1'][$index].teacherNames" title="{{courseschedules['1'][$index].teacherNames}}"><span class="in-bk">（</span>
+                            <div class="text-over in-bk">{{courseschedules['1'][$index].teacherNames}}</div><span class="in-bk">）</span>
+                        </div>
+                    </div>
+                    <div class="course-add" ng-if="courseschedules['1'][$index].period!=$index+1 || !courseschedules['1'][$index].teacherIds" ng-click="courseCfg(1,$index)"></div>
+                </td>
+            </tr>
+            <tr>
+                <td>周二</td>
+                <td ng-repeat="data in timeschedules">
+                    <div class="course-edit" ng-if="courseschedules['2'][$index].period==$index+1 && courseschedules['2'][$index].teacherIds" ng-dblclick="courseCfg(2,$index)">
+                        <p class="camera_no camera_course" ng-if="courseschedules['2'][$index].hasCamera"></p>
+                        <p ng-if="courseschedules['2'][$index].lessonStatus">自习</p>
+                        <p ng-if="!courseschedules['2'][$index].lessonStatus">{{courseschedules['2'][$index].subjectName}}{{courseschedules['2'][$index].lessonStatus}}</p>
+                        <div ng-if="!courseschedules['2'][$index].lessonStatus" ng-show="courseschedules['2'][$index].teacherNames" title="{{courseschedules['2'][$index].teacherNames}}"><span class="in-bk">（</span>
+                            <div class="text-over in-bk">{{courseschedules['2'][$index].teacherNames}}</div><span class="in-bk">）</span>
+                        </div>
+                    </div>
+                    <div class="course-add" ng-if="courseschedules['2'][$index].period!=$index+1  || !courseschedules['2'][$index].teacherIds" ng-click="courseCfg(2,$index)"></div>
+                </td>
+            </tr>
+            <tr>
+                <td>周三</td>
+                <td ng-repeat="data in timeschedules">
+                    <div class="course-edit" ng-if="courseschedules['3'][$index].period==$index+1 && courseschedules['3'][$index].teacherIds" ng-dblclick="courseCfg(3,$index)">
+                        <p class="camera_no camera_course" ng-if="courseschedules['3'][$index].hasCamera"></p>
+                        <p ng-if="courseschedules['3'][$index].lessonStatus">自习</p>
+                        <p ng-if="!courseschedules['3'][$index].lessonStatus">{{courseschedules['3'][$index].subjectName}}{{courseschedules['3'][$index].lessonStatus}}</p>
+                        <div ng-if="!courseschedules['3'][$index].lessonStatus" ng-show="courseschedules['3'][$index].teacherNames" title="{{courseschedules['3'][$index].teacherNames}}"><span class="in-bk">（</span>
+                            <div class="text-over in-bk">{{courseschedules['3'][$index].teacherNames}}</div><span class="in-bk">）</span>
+                        </div>
+                    </div>
+                    <div class="course-add" ng-if="courseschedules['3'][$index].period!=$index+1  || !courseschedules['3'][$index].teacherIds" ng-click="courseCfg(3,$index)"></div>
+                </td>
+            </tr>
+            <tr>
+                <td>周四</td>
+                <td ng-repeat="data in timeschedules">
+                    <div class="course-edit" ng-if="courseschedules['4'][$index].period==$index+1 && courseschedules['4'][$index].teacherIds" ng-dblclick="courseCfg(4,$index)">
+                        <p class="camera_no camera_course" ng-if="courseschedules['4'][$index].hasCamera"></p>
+                        <p ng-if="courseschedules['4'][$index].lessonStatus">自习</p>
+                        <p ng-if="!courseschedules['4'][$index].lessonStatus">{{courseschedules['4'][$index].subjectName}}{{courseschedules['4'][$index].lessonStatus}}</p>
+                        <div ng-if="!courseschedules['4'][$index].lessonStatus" ng-show="courseschedules['4'][$index].teacherNames" title="{{courseschedules['4'][$index].teacherNames}}"><span class="in-bk">（</span>
+                            <div class="text-over in-bk">{{courseschedules['4'][$index].teacherNames}}</div><span class="in-bk">）</span>
+                        </div>
+                    </div>
+                    <div class="course-add" ng-if="courseschedules['4'][$index].period!=$index+1  || !courseschedules['4'][$index].teacherIds" ng-click="courseCfg(4,$index)"></div>
+                </td>
+            </tr>
+            <tr>
+                <td>周五</td>
+                <td ng-repeat="data in timeschedules">
+                    <div class="course-edit" ng-if="courseschedules['5'][$index].period==$index+1 && courseschedules['5'][$index].teacherIds" ng-dblclick="courseCfg(5,$index)">
+                        <p class="camera_no camera_course" ng-if="courseschedules['5'][$index].hasCamera"></p>
+                        <p ng-if="courseschedules['5'][$index].lessonStatus">自习</p>
+                        <p ng-if="!courseschedules['5'][$index].lessonStatus">{{courseschedules['5'][$index].subjectName}}{{courseschedules['5'][$index].lessonStatus}}</p>
+                        <div ng-if="!courseschedules['5'][$index].lessonStatus" ng-show="courseschedules['5'][$index].teacherNames" title="{{courseschedules['5'][$index].teacherNames}}"><span class="in-bk">（</span>
+                            <div class="text-over in-bk">{{courseschedules['5'][$index].teacherNames}}</div><span class="in-bk">）</span>
+                        </div>
+                    </div>
+                    <div class="course-add" ng-if="courseschedules['5'][$index].period!=$index+1  || !courseschedules['5'][$index].teacherIds" ng-click="courseCfg(5,$index)"></div>
+                </td>
+            </tr>
+            <tr>
+                <td>周六</td>
+                <td ng-repeat="data in timeschedules">
+                    <div class="course-edit" ng-if="courseschedules['6'][$index].period==$index+1 && courseschedules['6'][$index].teacherIds" ng-dblclick="courseCfg(6,$index)">
+                        <p class="camera_no camera_course" ng-if="courseschedules['6'][$index].hasCamera"></p>
+                        <p ng-if="courseschedules['6'][$index].lessonStatus">自习</p>
+                        <p ng-if="!courseschedules['6'][$index].lessonStatus">{{courseschedules['6'][$index].subjectName}}{{courseschedules['6'][$index].lessonStatus}}</p>
+                        <div ng-if="!courseschedules['6'][$index].lessonStatus" ng-show="courseschedules['6'][$index].teacherNames" title="{{courseschedules['6'][$index].teacherNames}}"><span class="in-bk">（</span>
+                            <div class="text-over in-bk">{{courseschedules['6'][$index].teacherNames}}</div><span class="in-bk">）</span>
+                        </div>
+                    </div>
+                    <div class="course-add" ng-if="courseschedules['6'][$index].period!=$index+1  || !courseschedules['6'][$index].teacherIds" ng-click="courseCfg(6,$index)"></div>
+                </td>
+            </tr>
+            <tr>
+                <td>周日</td>
+                <td ng-repeat="data in timeschedules">
+                    <div class="course-edit" ng-if="courseschedules['7'][$index].period==$index+1 && courseschedules['7'][$index].teacherIds" ng-dblclick="courseCfg(7,$index)">
+                        <p class="camera_no camera_course" ng-if="courseschedules['7'][$index].hasCamera"></p>
+                        <p ng-if="courseschedules['7'][$index].lessonStatus">自习</p>
+                        <p ng-if="!courseschedules['7'][$index].lessonStatus">{{courseschedules['7'][$index].subjectName}}{{courseschedules['7'][$index].lessonStatus}}</p>
+                        <div ng-if="!courseschedules['7'][$index].lessonStatus" ng-show="courseschedules['7'][$index].teacherNames" title="{{courseschedules['7'][$index].teacherNames}}"><span class="in-bk">（</span>
+                            <div class="text-over in-bk">{{courseschedules['7'][$index].teacherNames}}</div><span class="in-bk">）</span>
+                        </div>
+                    </div>
+                    <div class="course-add" ng-if="courseschedules['7'][$index].period!=$index+1 || !courseschedules['7'][$index].teacherIds" ng-click="courseCfg(7,$index)"></div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="default" ng-if="!grades.length">
+        <p class="defaultLg">尚未配置教学组织结构信息</p>
+    </div>
+</section>

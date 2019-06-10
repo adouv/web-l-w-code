@@ -1,0 +1,100 @@
+.dispose_static{width:100%;height:100%; padding: 0 20px;}
+.dispose_static .gray{color:#999999;font-size: 12px;margin:15px 0;}
+.dispose_static .icon-setting{color:rgb(120,108,236);cursor: pointer;}
+.dispose_static .showback{font-size:14px;}
+.dispose_static p{margin-bottom: 10px;}
+.dispose_static .choose{font-size: 16px;}
+.dispose_static .choose .checkbox_class{margin:0 2px 0 5px;}
+.dispose_static .directions{line-height:30px;margin-top: 20px;}
+.dispose_static_dialog{width:1160px;height:600px;}
+.dispose_static_dialog h2{
+        position: relative;
+    height: 36px;
+    line-height: 36px;
+    text-align: center;
+    font-size: 16px;font-weight: normal;
+    border-bottom: 1px solid #f8f8f8;
+}
+.opacity{
+    opacity: .3;
+    cursor: default !important;
+}
+.dispose_static_dialog h2 span{    color: #999999;
+    position: absolute;
+    top: 0px;
+    cursor: pointer;
+    right: 20px}
+.dispose_static_dialog .count,.dispose_static .count{line-height: 35px;color:#999999;}
+.dispose_static_dialog .count{padding-left: 20px;}
+.dispose_static_dialog .count span,.dispose_static .count span{color:#39bdfb;}
+ .dispose_static_dialog .table_list{width: 100%;padding: 0px 20px;height: 465px;overflow: auto;}
+ .dispose_static_dialog table{width:100%;text-align: center;border-collapse: collapse;}
+  .dispose_static_dialog table tr:nth-of-type(odd){background: #f8f8f8;}
+.dispose_static_dialog table th{height:39px; text-align: center;border: 1px solid #dae4ee;}
+.dispose_static_dialog table td{padding:15px 10px;border: 1px solid #dae4ee;}
+.dispose_static_dialog table td:nth-child(1),
+.dispose_static_dialog table th:nth-child(1){ width:4%;border-left:none; }
+.dispose_static_dialog table td:nth-child(2){ width:29%;}
+.dispose_static_dialog table td:nth-child(3){ width:21%;}
+.dispose_static_dialog table td:nth-child(4){ width:7%;}
+.dispose_static_dialog table td:nth-child(5){ width:8%;}
+.dispose_static_dialog table td:nth-child(6){ width:12%;}
+.dispose_static_dialog table td:nth-child(7),
+.dispose_static_dialog table th:nth-child(7){border-right: none;}
+.dispose_static .list_box{
+    position: relative;margin-top: 20px;
+    cursor: pointer;
+}
+.dispose_static .list_box .name{
+    border: 1px solid #ebebeb;
+    width: 180px;
+    line-height: 28px;
+    height: 30px;
+    box-sizing: border-box;
+    padding: 0 28px 0 8px;
+    font-size: 14px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    background: url("../../images/drop_down.png") no-repeat 100%;
+}
+.dispose_static .list_items{position: absolute;top:30px;width:180px;background: #ffffff;z-index: 2;height:340px;box-shadow: 0px 3px 10px #ccc;}
+.dispose_static .list_items .list_item{height:300px;overflow: auto;}
+.dispose_static .list_items .btns{width:100%;height:40px;position: absolute;bottom: 0;text-align: center;line-height: 40px;}
+.dispose_static .list_items .btns a{
+    color: rgba(120,108,234,.5);
+    border-radius: 50%;
+    margin: 0 5px;
+    font-size: 20px;
+    cursor: pointer;}
+.dispose_static .list_items .btns a.active{color: rgba(120,108,234,1);}
+.dispose_static .list_items .list_item li{    line-height: 30px;
+    /*padding: 0px 8px;*/
+    width: 100%;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;}
+   .dispose_static .list_items .list_item li:hover{
+            background: #dbe3ee;
+            cursor: pointer;
+    }
+.dispose_static .list_item li .checkbox_class{vertical-align: top;margin-top: 6px;}
+.dispose_static .list_item li label{
+    padding: 0px 8px;
+    width: 100%;
+}
+.dispose_static .list_item li span.showname{display: inline-block;width:139px;text-overflow:ellipsis;white-space: normal;line-height: 22px; cursor: pointer;}
+.dispose_static .list_item .checkbox_class[type=checkbox]:checked+span{color:#0096ff;}
+.dispose_static .list_item::-webkit-scrollbar{
+    width: 8px;
+    background-color: #ffffff;
+}
+
+.dispose_static .list_item::-webkit-scrollbar-thumb{
+    border-radius: 2px;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+.dispose_static .list_item::-webkit-scrollbar-track{
+    border-radius: 2px;
+    background-color: #ffffff;
+}

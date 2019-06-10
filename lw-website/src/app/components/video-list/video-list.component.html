@@ -1,0 +1,21 @@
+<div class="video-list">
+	<ul class="video-list-ul" flex>
+		<li class="video-list-li">
+			<div class="image">
+				<img src="./assets/images/video_bg.png" alt="视频">
+				<div class="play-btn" flex="cross:center main:center">
+					<img src="./assets/images/play.png" alt="视频">
+				</div>
+			</div>
+			<div class="content" flex="main:justify cross:center">
+				<p class="title">牛栏山一中实验学校音乐组</p>
+				<p class="date">2018/06/22</p>
+			</div>
+		</li>
+	</ul>
+	<div class="pagination" >
+		<nz-pagination [nzPageIndex]="1" [nzTotal]="page.total"
+					   (nzPageIndexChange)="initPage($event)"
+					   [nzPageSize]="page.size"></nz-pagination>
+	</div>
+</div>

@@ -1,0 +1,26 @@
+<div class="sign-class-panel">
+  <lw-win-close></lw-win-close>
+
+  <div class="loginBg"></div>
+
+  <div class="login-forms">
+    <div class="login-form nodrag-area">
+      <div class="input-container">
+        <div class="input-panel">
+          <span class="c-title">班级</span>
+          <div class="c-name ">
+            <a-select :style="{width: '260px',height:'40px'}" v-model="singleValue" @change="handleChange">
+              <a-select-option :key="item.id" v-for="item in classList" :value="item.id">{{item.pname}}{{item.name}}
+                ({{item.countStudent? item.countStudent: 0}}人)</a-select-option>
+            </a-select>
+            
+          </div>
+        </div>
+      </div>
+
+      <div class="login-footer">
+        <div class="sure cursor nodrag-area" @click="subBtn()">确定</div>
+      </div>
+    </div>
+  </div>
+</div>

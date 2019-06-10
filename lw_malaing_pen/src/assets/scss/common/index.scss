@@ -1,0 +1,24 @@
+.ant-modal-content .ant-modal-footer {
+  display: flex;
+  justify-content: center;
+  button {
+    color: #226cfb;
+    border-radius: 6px;
+    border: solid 1px #226cfb;
+    width: 100px;
+    height: 35px;
+  }
+}
+.ant-btn-primary {
+  background-image: linear-gradient(90deg, #3e7ef9 0%, #226cfb 100%),
+    linear-gradient(#34383f, #34383f) !important;
+  background-blend-mode: normal, normal !important;
+  color: white !important;
+  border-radius: 6px !important;
+  border: solid 1px #226cfb !important;
+}
+// .ant-modal-wrap .ant-modal-content .ant-modal-body{
+// #modal-add-exercise
+.ant-modal-wrap .ant-modal-body {
+  padding: 9px 20px 0 20px !important;
+}

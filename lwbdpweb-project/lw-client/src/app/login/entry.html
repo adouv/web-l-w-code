@@ -1,0 +1,31 @@
+<div class='client_login'>
+    <span class="clientIconfont icon-client_close" ng-if="entry.isClient"></span>
+    <div class="login-garden">
+        <p class="title">请选择您要进入的园区</p>
+            <div class="garden-list overflow_box">
+                <div class="garden-item" ng-repeat="garden in entry.accountMsg.gardens" ng-click="entry.enterGarden(garden)">
+                    <div class="login-garden-title">{{garden.gardenName}}<span class="clientIconfont icon-authentication"></span></div>
+                    <div class="login-garden-name">
+                        <img ng-src="entry.filePath+entry.accountMsg.imgUrl" ng-if="accountMsg.imgUrl"> 
+                        <span  ng-if="!accountMsg.imgUrl" class="default_head"></span>
+                        <span class="name">{{entry.accountMsg.accountName}}</span>
+                    </div>
+                    <div class="login-garden-content ell"><span ng-repeat="name in garden.roleNames">{{name}}；</span></div>
+                    <div class="login-garden-row">
+                        <span class="icon-rightarrowIcon clientIconfont"></span>
+                    </div>
+                </div>
+                <!--<div class="garden-item" ng-click="entry.enterGarden(garden)">
+                    <div class="login-garden-title">北京市顺义区教育委员会 <span class="clientIconfont icon-authentication"></span></div>
+                    <div class="login-garden-name"><img src="../app/login/image/login_logo.png" alt=""> <span class="name">何代华</span></div>
+                    <div class="login-garden-content ell">角色名称;角色名称;角色名称;角色名称;角色名称;角色名称;角色名称;</div>
+                    <span class="icon-rightarrowIcon clientIconfont"></span>
+                </div>
+                <div class="garden-item" ng-click="entry.enterGarden(garden)">
+                    <div class="login-garden-title">北京市顺义区教育委员会 <span class="clientIconfont icon-authentication"></span></div>
+                    <div class="login-garden-name"><img src="../app/login/image/login_logo.png" alt=""> <span class="name">何代华</span></div>
+                    <div class="login-garden-content ell">角色名称;角色名称;角色名称;角色名称;角色名称;角色名称;角色名称;</div>
+                </div>-->
+            </div>
+    </div>
+</div>

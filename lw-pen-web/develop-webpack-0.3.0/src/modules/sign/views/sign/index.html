@@ -1,0 +1,28 @@
+
+<div class="sign-panel drag-area">
+  <lw-win-close></lw-win-close>
+  <div class="loginBg"></div>
+  <div class="login-forms">
+    <div class="login-form">
+      <div class="input-container">
+        <div class="input-panel">
+          <i class="icon iconfont icon-pc-user"></i>
+          <div class="input-border">
+            <input type="text" placeholder="请输入用户名" v-model="params.username" @keyup.enter="loginClick()">
+          </div>
+        </div>
+        <div class="input-panel">
+          <i class="icon iconfont icon-pc-password"></i>
+          <div class="input-border">
+            <input type="password" placeholder="请输入密码" v-model="params.password" @keyup.enter="loginClick()">
+          </div>
+        </div>
+      </div>
+      <div class="login-footer">
+        <div class="sure" @click="loginClick">登录</div>
+        <div class="lin" @click="userSelect">临时用户</div>
+      </div>
+    </div>
+  </div>
+</div>
+

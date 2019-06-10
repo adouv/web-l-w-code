@@ -1,0 +1,54 @@
+<div id="select-project" class="select-shadow" ng-controller="selectProjectCtrl">
+<div class="selectbox">
+    <!--项目-->
+    <div class="select-title" ng-if="income">
+        该笔收入对应的项目
+        <span class="select-close billiconfont icon-close" type="select-project" close-select></span>
+    </div>
+    <div class="select-title" ng-if="payout">
+        该笔支出对应的项目
+        <span class="select-close billiconfont icon-close" type="select-project" close-select></span>
+    </div>
+        <div class="select_condition form-group">
+            <select ng-model="condition.gardenId"  class="form-control" style="width: 18%;">
+                <option value="">请选择建设单位</option>
+                <option ng-repeat="data in gardens" value="{{data.gardenId}}">{{data.gardenName}}</option>
+            </select>
+            <select ng-model="condition.projectTypeId" class="form-control" style="width: 22%;" ng-change="setProject.getNextType()">
+                <option value="">选择项目大类</option>
+                <option ng-repeat="data in projectTypeList" value="{{data.itemValue}}">{{data.itemName}}</option>
+            </select>
+            <select ng-model="condition.projectItemTypeId" class="form-control" style="width: 26%;">
+                <option value="">选择项目/工程类别</option>
+                <option ng-repeat="data in projectItemTypeList" value="{{data.id}}">{{data.name}}</option>
+            </select>
+            <span style="display: inline-block;width: 29%;position: relative;">
+            <input type="text" class="form-control" placeholder="请输入项目名称关键字" ng-model="condition.keywords"
+                   ng-keyup="setProject.keyUp($event)" maxlength="50">
+            <span class="searchBtn setbtn cancelBtn" ng-click="setProject.searchProject()" id="searchProject">查询</span>
+        </span>
+        </div>
+        <div class="selected single">
+            已选中项目: <span ng-if="returnProject.id">{{returnProject.name}} <i ng-click="setProject.delAll()"></i></span>
+        </div>
+        <div class="resultbox">
+            <div class="hasresult" ng-if="result_project&&result_project.length>0">
+                <ul>
+                    <li ng-repeat="data in result_project">
+                        <input class="radioClass" name ="choose" ng-checked="data.checked" type="radio" id="pro{{$index}}" ng-click="setProject.singleChoose(data)">
+                        <label for="pro{{$index}}" title="{{data.name}}">{{data.name}}</label>
+                    </li>
+                </ul>
+            </div>
+            <div class="noresult" ng-if="result_project&&result_project.length==0 && !isFirstp">
+                未找到和您关键词匹配的结果!
+            </div>
+            <div class="nochoose" ng-if="result_project&&result_project.length==0 && isFirstp">
+                {{selectedCapitalNumber.id?'未找到与资金文号相匹配的数据结果!':'您暂无可选项目!'}}
+            </div>
+        </div>
+        <div class="returnbox">
+            <span class="setbtn sureBtn" type="select-project" close-select ng-click="setProject.setProject()">确定</span>
+        </div>
+</div>
+</div>

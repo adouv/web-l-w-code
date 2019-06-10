@@ -1,0 +1,32 @@
+<div class="link_search">
+    <div class="search_box">
+        <span class="connectIconfont icon-back" ng-click="link.changeView(link.type,'goBack')"></span>
+        <span ng-if="link.type=='garden'">查找新园区</span>
+        <span ng-if="link.type=='module'">查找新模块</span>
+        <span ng-if="link.type=='scene'">查找新场景</span>
+    </div>
+    <div class="search_input">
+        <div class="search_input_icon">
+            <input type="text" class="input_class" ng-model="link.keywords" ng-change="link.search()">
+            <span class="connectIconfont icon-close-circle"  ng-click="link.cleanAll()" ng-show="link.keywords && link.keywords!==''"></span>
+            <span class="connectIconfont icon-client_search"  ng-show="!link.keywords || link.keywords===''"></span>
+        </div>
+    </div>
+    <div class="seacch_result overflow_box_sml">
+        <div class="result_list">
+            <dl ng-repeat="item in link.searchData">
+                <dt>
+                    <img ng-src="{{link.filePath+item.ico}}" alt="">
+                </dt>
+                <dd>
+                    <p class="name">{{item.name}}</p>
+                    <p class="garden">{{item.gardenName}}{{item.categoryId}}</p>
+                    <span class="link_btn" ng-click="link.setUpConnection(item.id,$index)"> <span class="connectIconfont icon-link2"></span> 连接</span>
+                </dd>
+            </dl>
+        </div>
+        <div class="search_no_result" ng-show="link.keywords && link.keywords!=='' && link.searchData && link.searchData.length<1">
+            搜索无结果
+        </div>
+    </div>
+</div>

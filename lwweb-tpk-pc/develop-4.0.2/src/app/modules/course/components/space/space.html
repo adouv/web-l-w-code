@@ -1,0 +1,28 @@
+<div class="yunspace">
+    <div class="filespace">
+        <div class="set_area">
+            <div class="progress_name">单节课空间使用情况：</div>
+            <!-- <progress-bar class="progress" [progress]="courseSpace.usedRatio"></progress-bar> -->
+            <div class="progress_text">{{courseSpace.usedSpace}}/{{courseSpace.totalSpace}}M</div>
+            <!--<div class="config_space">配置容量</div>-->
+            <div class="holder"></div>
+        </div>
+        <div class="items overflow_box_black">
+            <div class="item handle" *ngFor="let item of courseMaterials;let i = index"
+                 [ngStyle]="getBorder(i)" (dblclick)="doubleClickItem(item)">
+                <img class="main_courseware none" src="assets/images/main_courseware.png"/>
+                <img class="filetype_icon" src="{{item.name|filetype}}"/>
+                <div class="file_name" title="{{item.name}}">{{item.name}}</div>
+                <span class="iconfont icon-xiazai download-btn" (click)="download(item)"></span>
+                <span class="iconfont icon-del close-btn" (click)="delete(item)" *ngIf="!publishStatus"></span>
+            </div>
+        </div>
+    </div>
+</div>
+<p-confirmDialog class='tpk-ui-confirmdialog tpk-ui-confirmdialog-sure' width='400' height='200' key="confirmDialogDelImg"  acceptLabel='确定' rejectLabel='取消'>
+</p-confirmDialog>
+
+<div class="preview_box" *ngIf="isPreviewDialog">
+	<image-dialog [data]='imgData' (closeDialog)="closeDialog($event)"></image-dialog>
+</div>
+

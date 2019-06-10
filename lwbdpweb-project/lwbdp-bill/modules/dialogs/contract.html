@@ -1,0 +1,92 @@
+<link rel="stylesheet" href="modules/dialogs/style/detail.css">
+<div class="doalogdetail">
+    <div class="page">
+        <p class="pagetit font_MY">
+            项目合同详情
+            <span class="close" ng-click="close()"></span>
+        </p>
+        <div class="infobox">
+            <div>
+                <span class="info_name">项目大类：</span>
+                <span class="info_content">{{contract.contractQueryVo.projectTypeName?contract.contractQueryVo.projectTypeName:'无'}}</span>
+            </div>
+            <div>
+                <span class="info_name">项目/工程类别：</span>
+                <span class="info_content">{{contract.contractQueryVo.projectItemTypeName?contract.contractQueryVo.projectItemTypeName:'无'}}</span>
+            </div>
+            <div>
+                <span class="info_name">项目名称：</span>
+                <span class="info_content">{{contract.contractQueryVo.projectName?contract.contractQueryVo.projectName:'无'}}</span>
+            </div>
+            <div>
+                <span class="info_name">合同编号：</span>
+                <span class="info_content">{{contract.contractQueryVo.contractNo?contract.contractQueryVo.contractNo:'无'}}</span>
+            </div>
+            <div>
+                <span class="info_name">合同名称：</span>
+                <span class="info_content">{{contract.contractQueryVo.contractName?contract.contractQueryVo.contractName:'无'}}</span>
+            </div>
+            <div>
+                <span class="info_name">合同金额：</span>
+                <span class="info_content">{{contract.contractQueryVo.contractAmount?contract.contractQueryVo.contractAmount+'万元':'无'}}</span>
+            </div>
+            <div>
+                <span class="info_name">承建单位：</span>
+                <span class="info_content">{{contract.contractQueryVo.buildUnitName?contract.contractQueryVo.buildUnitName:'无'}}</span>
+            </div>
+            <div>
+                <span class="info_name">上报决算价：</span>
+                <span class="info_content">{{contract.contractQueryVo.reportFinalPrice?contract.contractQueryVo.reportFinalPrice+'万元':"无"}}</span>
+            </div>
+            <div>
+                <span class="info_name">评审决算价：</span>
+                <span class="info_content">{{contract.contractQueryVo.reportFinalPrice?contract.contractQueryVo.reportFinalPrice+'万元':"无"}}</span>
+            </div>
+            <div>
+                <span class="info_name">签订日期：</span>
+                <span class="info_content">{{contract.contractQueryVo.signDate | date:'yyyy-MM-dd HH:mm' }}</span>
+            </div>
+            <div class="posr">
+                <span class="info_name posa">最近更新人：</span>
+                <span class="info_content">{{contract.contractQueryVo.lastUpdateUserName?contract.contractQueryVo.lastUpdateUserName:'无'}}</span>
+                <!--<a class="getrecord" href="javascript:void(0);"> 查看更新记录>></a>-->
+            </div>
+            <div>
+                <span class="info_name">更新时间：</span>
+                <span class="info_content">{{contract.contractQueryVo.lastUpdateTime | date:'yyyy-MM-dd HH:mm'}}</span>
+            </div>
+            <div>
+                <span class="info_name">点击量：</span>
+                <span class="info_content">{{contract.contractQueryVo.clickVolume?contract.contractQueryVo.clickVolume:'0'}}</span>
+            </div>
+        </div>
+        <div class="tableContent">
+            <table class="formTable">
+                <tr class="first">
+                    <th style="width: 95px;">
+                        序号
+                    </th>
+                    <th style="width: 9%;">记账类型</th>
+                    <th>类型</th>
+                    <th>发生金额(万元)</th>
+                    <th>支出对象</th>
+                    <th>合同金额(万元)</th>
+                    <th>支出时间</th>
+                </tr>
+                <!--字段多了-->
+                <tr ng-repeat="item in contract.capitalListQoList" ng-dblclick="info(item)">
+                    <td>{{$index+1}}</td>
+                    <td>{{item.projectCapitalTypeName}}</td>
+                    <td title="{{item.type}}">{{item.type}}</td>
+                    <td>{{item.amount}}</td>
+                    <td title="{{item.payeeName}}">{{item.payeeName}}</td>
+                    <td>{{item.contractAmount}}</td>
+                    <td>{{item.payeeDate | date:'yyyy-MM-dd'}}</td>
+                </tr>
+            </table>
+        </div>
+        <div class="btnbox">
+            <span class="setbtn sureBtn" ng-click="close()">返回</span>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,215 @@
+@import "../../../styles/variable";
+
+header {
+	position: relative;
+    height: 6.25rem;
+    // display: flex;
+    background-color: #ffffff;
+    z-index: 999;
+    margin: 0 200px;	
+	&>div {
+		width: 100%;
+        height: 100%;
+		.logo {
+			width: 300px;
+			cursor: pointer;
+			margin-right: 29px;
+			float: left;
+			margin-top: 20px;
+		}
+		
+		nav {
+			position: relative;
+			float: left;
+			margin-top: 30px;
+		}
+		.slide-body {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+		.slide-prev,.slide-next {
+			width: px2rem(50px);
+			height: px2rem(38px);
+			line-height: px2rem(38px); 	 	
+			text-align: center;
+			font-size: px2rem(32px);
+		}
+		ul {
+			position: relative;
+            margin: 0;
+            display: flex;
+			flex-wrap: wrap;
+			justify-content: space-around;
+            height: px2rem(38px);
+			// margin-right: px2rem(30px);
+			&>li {
+				position: relative;
+				// overflow: hidden;
+				// float: left;
+				min-width: 93px;
+				display: inline-block;
+				padding: 0 10px;
+				font-family: MicrosoftYaHei;
+				font-size: 1.125rem;
+				font-weight: normal;
+				font-stretch: normal;
+				color: #666666;
+				&>a {
+					color: #666;
+					display: inline-block;
+					width: 100%;
+					height: 100%;
+					text-align: center;
+					line-height: px2rem(38px);
+					&:hover{
+						color:#7552f8;						
+					}
+				}
+				&.active {
+					background: url("../../../assets/images/nav_active.png") no-repeat center;
+					background-size: 100% 100%;
+				}
+				&.active>a {
+					color: #fff;
+				}
+				&:hover .second-nav {
+					display: block;
+				}
+			}
+			.moreMenuBox{
+				li{
+					a{
+						display: inline-block;
+						width: 100%;
+						height: 100%;
+					}
+				}
+			}
+			.moreMenuBox li:hover {
+				background-color: #7453f7!important;
+			}
+		// 下拉框
+		.moreMenuBox li {
+			font-size: 18px!important;
+		}
+		
+	
+	
+			
+			.ant-dropdown-menu-item > a, .ant-dropdown-menu-submenu-title > a {
+				color: rgba(0, 0, 0, 0.65);
+				display: block;
+				padding: 0; 
+				margin: 0; 
+				transition: all .3s;
+			}
+			.ant-dropdown-menu-item:hover, .ant-dropdown-menu-submenu-title:hover {
+				background-color: #7453f7;
+				color: white;
+			}
+		}
+	}
+}
+.ant-tabs-nav .ant-tabs-nav-animated{
+	border-bottom: none;
+}
+.ng-tns-c4-0 {
+    height: 50px;
+    text-align: center;
+    line-height: 22px;
+}
+.look {
+	min-width: 131px !important;
+    min-height: 40px !important;
+    width: 131px !important;
+	height: 40px !important;
+	border-radius: 40px;
+	background-image: linear-gradient(90deg, #ffa500 0%, #ff6500 100%),
+		linear-gradient(#7552f8, #7552f8);
+	font-size: 16px;
+	color: #ffffff;
+	text-align: center;
+	line-height: 40px;
+	cursor: pointer;
+	position: absolute;
+    right: -170px;;
+	top: 30px;	
+	visibility: hidden;
+}
+
+
+::ng-deep .other{
+	li a{
+		display: inline-block;
+		width: 100%;
+		height: 100%;
+	}
+	li:hover {
+		background-color: #7453f7!important;
+	}
+	li a:hover  {
+		color: #fff!important;
+	}
+	.ant-dropdown-menu-item-selected{
+		background-color: #7453f7!important;
+	}
+	.ant-dropdown-menu-item-selected > a {
+		background-color: #7453f7!important;
+		color: #fff !important;
+	}
+}
+
+::ng-deep .ant-dropdown-menu-item{
+	padding: 0;
+	margin: 0;
+	clear: both;
+	font-size: 14px;
+	font-weight: normal;
+	color: rgba(0, 0, 0, 0.65);
+	white-space: nowrap;
+	cursor: pointer;
+	transition: all .3s;
+	line-height: 22px;
+	font-size: 18px !important;
+	font-family: MicrosoftYaHei;
+	color: #666666;
+	height: 50px;
+	width: 138px;
+	text-align: center;
+	line-height: 50px;
+	margin-bottom: 5px;
+}
+::ng-deep .ant-dropdown-menu-item>a{
+	padding: 0;
+	margin: 0;
+}
+::ng-deep .moreMenuBox{
+	li a{
+		display: inline-block;
+		width: 100%;
+		height: 100%;
+	}
+	li {
+		background-color: #ffffff;
+	}
+	li a {
+		background-color: #ffffff;
+		color: rgba(0, 0, 0, 0.65);
+	}
+	li:hover {
+		background-color: #7453f7!important;
+	}
+	li a:hover  {
+		color: #fff!important;
+		background-color: #7453f7!important;
+	}
+	
+	.ant-dropdown-menu-item-selected{
+		background-color: #ffffff;
+	}
+	.ant-dropdown-menu-item-selected > a {
+		background-color: #ffffff;
+		color: rgba(0, 0, 0, 0.65);
+	}
+}

@@ -1,0 +1,264 @@
+<section class="video-home" flex="dir:right box:first">
+    <!-- 右侧 -->
+    <section class="statistical pad-lef-20px pad-rig-20px" flex="dir:top">
+        <h1 class="font16px">听评课统计</h1>
+        <nz-tabset [nzShowPagination]="false" (nzSelectedIndexChange)="changeRecordList($event,true)">
+            <nz-tab *ngFor="let record of records">
+                <ng-template #nzTabHeading>
+                    <button nz-button [nzType]="'primary'">
+						<span class="count-number">{{record.tabType != 'average'?record.total:average}}</span>
+						<span class="count-text" *ngIf="record.tabType != 'average'">{{record.tabType === 'all'?'总':'周'}}{{recordTypeChecked === 0?'评课':'听课'}}次数</span>
+						<span class="count-text" *ngIf="record.tabType == 'average'">听课平均分</span>
+					</button>
+                </ng-template>
+                <div style="height: 100%;" *ngIf="record.tabType != 'average'">
+                    <div class="select-box">
+                        <nz-select style="width: 120px;" class="radius bg-gray" [(ngModel)]="recordTypeChecked" [nzPlaceHolder]="recordTypes[0].label" (nzOpenChange)="changeRecordList($event)">
+                            <nz-option *ngFor="let type of recordTypes" [nzLabel]="type.label" [nzValue]="type.value">
+                            </nz-option>
+                        </nz-select>
+                        <nz-select style="width: 120px;" [(ngModel)]="recordWeekChecked" *ngIf="record.tabType === 'week' && weeks.length > 0" [nzPlaceHolder]="'第' + (weeks[0].weekNo) +'周'" class="radius bg-gray" (nzOpenChange)="changeRecordList($event)">
+                            <nz-option *ngFor="let week of weeks" [nzLabel]="'第' + (week.weekNo) +'周'" [nzValue]="week.weekNo">
+                            </nz-option>
+                        </nz-select>
+                    </div>
+                    <div class="table-box auto-scroll" *ngIf="record.total > 0">
+                        <table>
+                            <colgroup>
+                                <col width="50">
+                                <col width="75">
+                                <col width="215">
+                            </colgroup>
+                            <thead>
+                                <tr>
+                                    <th>学科</th>
+                                    <th>{{recordTypeChecked === 0?'评课':'授课'}}教师</th>
+                                    <th>班级/上课时间/节次</th>
+                                </tr>
+                            </thead>
+                        </table>
+                        <div class="table">
+                            <table>
+                                <colgroup>
+                                    <col width="50">
+                                    <col width="75">
+                                    <col width="215">
+                                </colgroup>
+                                <tbody>
+                                    <tr *ngFor="let item of record.list">
+                                        <td>{{item.subjectName}}</td>
+                                        <td><span class="name">{{item.teacherName}}</span></td>
+                                        <td>{{item.gradeName}}{{item.className}} / {{item.giveLessonTime | date:'yyyy/MM/dd'}} / 第{{item.period}}节
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <p class="click-show-more" [ngClass]="{'pointer':record.total > record.page.size}" (click)="changeRecordList($event,false,record)">{{record.total > record.page.size?'点击加载更多':'已加载全部'}}
+                            </p>
+                        </div>
+                    </div>
+                    <!--缺省页-->
+                    <elliptical-page *ngIf="record.list.length === 0 && record.loaded" title="该时段暂无教师评课"></elliptical-page>
+                    <div flex="main:center cross:center" style="height: 100%" *ngIf="!record.loaded">
+                        <nz-spin [nzSize]="'large'"></nz-spin>
+                    </div>
+                </div>
+                <div style="height: 100%;" *ngIf="record.tabType == 'average'">
+                    <div class="table-box auto-scroll" *ngIf="record.total > 0">
+                        <table>
+                            <colgroup>
+                                <col width="50">
+                                <col width="75">
+                                <col width="215">
+                            </colgroup>
+                            <thead>
+                                <tr>
+                                    <th>总分</th>
+                                    <th>平均分</th>
+                                    <th>班级/上课时间/节次</th>
+                                </tr>
+                            </thead>
+                        </table>
+                        <div class="table">
+                            <table>
+                                <colgroup>
+                                    <col width="50">
+                                    <col width="75">
+                                    <col width="215">
+                                </colgroup>
+                                <tbody>
+                                    <tr class="tr-hover" (click)="goVideoStatistics(item)" *ngFor="let item of record.list; let i = index;">
+                                        <td>{{item.totalScore}}</td>
+                                        <td><span class="name">{{item.avgScore	}}</span></td>
+                                        <td>{{item.gradeName}}{{item.className}} / {{item.giveLessonTime | date:'yyyy/MM/dd'}} / 第{{item.period}}节
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <p class="click-show-more" [ngClass]="{'pointer':record.total > record.page.size}" (click)="changeRecordList($event, false,record)">{{record.total > record.page.size?'点击加载更多':'已加载全部'}}
+                            </p>
+                        </div>
+                    </div>
+                    <!--缺省页-->
+                    <elliptical-page *ngIf="record.list.length === 0 && record.loaded" title="暂无老师对您评价"></elliptical-page>
+                    <div flex="main:center cross:center" style="height: 100%" *ngIf="!record.loaded">
+                        <nz-spin [nzSize]="'large'"></nz-spin>
+                    </div>
+                </div>
+            </nz-tab>
+        </nz-tabset>
+    </section>
+    <!--左侧-->
+    <div class="pad-lef-20px">
+        <section class="video-list">
+            <nz-tabset [nzShowPagination]="false" (nzSelectChange)="changeTab($event)">
+                <nz-tab *ngFor="let rank of ranks;let i = index">
+                    <ng-template #nzTabHeading>
+                        <span *ngIf="rank.tabType === 'all'">总点击榜</span>
+                        <span *ngIf="rank.tabType === 'week'">周点击榜</span>
+                        <span *ngIf="rank.tabType === 'average'">评课排行榜</span>
+                    </ng-template>
+                    <div *ngIf="rank.tabType != 'average'" class="rank-box">
+                        <nz-select style="width: 120px;" class="mar-bot-10px radius bg-gray" [(ngModel)]="rankWeekChecked" [nzPlaceHolder]="'第' + (weeks[0].weekNo) +'周'" (nzOpenChange)="changeRankList(i, rank)" *ngIf="rank.tabType === 'week' && weeks.length > 0">
+                            <nz-option *ngFor="let week of weeks" [nzLabel]="'第' + (week.weekNo) +'周'" [nzValue]="week.weekNo">
+                            </nz-option>
+                        </nz-select>
+                        <div #videoContainer class="video-distance-box">
+                            <div class="video-box" *ngIf="rank.total > 0" table-center>
+                                <div class="inl-bl-mid video-item" *ngFor="let item of rank.list;let i = index" (click)="goDetail(item)" [ngClass]="{'permission': item.hasPermission,'opacity':!item.hasPermission}">
+                                    <div class="img-box">
+                                        <img src="{{item.subjectCode | courseImg}} " alt="">
+                                    </div>
+                                    <p class="teacher-name">{{item.teacherName}}（{{item.subjectName}}）</p>
+                                    <p class="class-name" flex="main:justify cross:center">
+                                        <span>{{item.gradeName}}{{item.className}}</span>
+                                        <span><em class="iconfont icon-Look_icon inl-bl-mid"></em>
+										{{item.clicks>10000?((item.clicks/10000).toFixed(2) + '万'):item.clicks}}次
+									</span>
+                                    </p>
+                                    <span *ngIf="rank.page.index === 1" class="ranking red" [ngClass]="{'blue':i > 2 && i < 100}">{{i + 1}}</span>
+                                    <span *ngIf="rank.page.index === 2 && i < 100 - rank.page.size" class="ranking blue">{{i + 1 + rank.page.size}}</span>
+                                </div>
+                            </div>
+
+                            <elliptical-page *ngIf="rank.list.length === 0 && rank.loaded" title="该时段暂无课程录制" [imgName]="'no-course.png'"></elliptical-page>
+                            <div flex="main:center cross:center" style="height: 100%" *ngIf="!rank.loaded">
+                                <nz-spin [nzSize]="'large'"></nz-spin>
+                            </div>
+
+                            <nz-pagination *ngIf="rank.list && rank.list.length>0" [(nzPageIndex)]="rank.page.index" [nzTotal]="rank.total" (nzPageIndexClickChange)="changeRankList($event,rank)" [nzPageSize]="rank.page.size"></nz-pagination>
+                        </div>
+                    </div>
+                    <div *ngIf="rank.tabType == 'average'" [ngClass]="{'rank-box-average': loadStatisticsList}" class="rank-box">
+                        <div *ngIf="!loadStatisticsList" class="ranking-list">
+                            <div flex="main:left">
+                                <nz-select style="width: 120px;" class="mar-bot-10px radius bg-gray" (nzOpenChange)="subjectChange()" [(ngModel)]="subjectsChecked" [nzPlaceHolder]="subjects.length>0?subjects[0].name:'暂无学科'">
+                                    <nz-option *ngFor="let subject of subjects" [nzLabel]="subject.name" [nzValue]="subject.id">
+                                    </nz-option>
+                                </nz-select>
+                                <div class="input-group">
+                                    <input (keypress)='searchRanking($event)' type="text" [(ngModel)]="teacherName" />
+                                    <span (click)="getStatisticsRankingList()" class="ant-input-suffix">
+										<i class="iconfont icon-search2"></i>
+									</span>
+                                </div>
+                            </div>
+                            <div #videoContainer class="video-distance-box">
+                                <div class="video-box" *ngIf="rank.total > 0" table-center>
+                                    <div class="inl-bl-mid video-item" [ngClass]="{'permission': !item.hasPermission,'opacity':item.hasPermission}" *ngFor="let item of rank.list;let i = index" (click)="goStatisticsDetail(item)">
+                                        <div class="img-box">
+                                            <img src="{{item.subjectCode | courseImg}} " alt="">
+                                        </div>
+                                        <div class="footer-group" flex="main:justify">
+                                            <p class="teacher-name" title="{{item.teacherName}}（{{item.subjectName}}）">
+                                                {{item.teacherName}}（{{item.subjectName}}）</p>
+                                            <p class="class-score" [ngClass]="{'class-score-1-3': i<=2, 'class-score-4': i>2}">
+                                                {{item.avgScore}}<span class="score">分</span></p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <elliptical-page *ngIf="rank.list.length === 0 && rank.loaded" [title]="averageDefault.title" [imgName]="averageDefault.img"></elliptical-page>
+                                <div flex="main:center cross:center" style="height: 100%" *ngIf="!rank.loaded">
+                                    <nz-spin [nzSize]="'large'"></nz-spin>
+                                </div>
+
+                                <nz-pagination *ngIf="rank.list && rank.list.length>0" [(nzPageIndex)]="rank.page.index" [nzTotal]="rank.total" (nzPageIndexClickChange)="changeRankList($event,rank)" [nzPageSize]="rank.page.size"></nz-pagination>
+                            </div>
+                        </div>
+                        <div *ngIf="loadStatisticsList" class="statistics-list">
+                            <div class="statistics-list-content" [ngClass]="{'overflow-hidden':!statisticsDetail.loaded}">
+                                <div class="statistics-list-title">
+                                    {{statisticsDetail.teacherName}}（{{statisticsDetail.subjectName}}）听课记录
+                                </div>
+                                <div class="table-box" *ngIf="statisticsDetail.total > 0">
+                                    <table class="table-box-header">
+                                        <colgroup>
+                                            <col width="8%">
+                                            <col width="8%">
+                                            <col width="12%">
+                                            <col width="24%">
+                                            <col width="24%">
+                                            <col width="24%">
+                                        </colgroup>
+                                        <thead>
+                                            <tr>
+                                                <th>序号</th>
+                                                <th>总分</th>
+                                                <th>平均分</th>
+                                                <th>班级</th>
+                                                <th>上课时间</th>
+                                                <th>节次</th>
+                                            </tr>
+                                        </thead>
+                                    </table>
+                                    <div class="table">
+                                        <table>
+                                            <colgroup>
+                                                <col width="8%">
+                                                <col width="8%">
+                                                <col width="12%">
+                                                <col width="24%">
+                                                <col width="24%">
+                                                <col width="24%">
+                                            </colgroup>
+                                            <tbody>
+                                                <tr class="tr-hover" (click)="goVideoStatistics(item)" *ngFor="let item of statisticsDetail.list; let i = index;">
+                                                    <td>{{i+1}}</td>
+                                                    <td>{{item.totalScore}}</td>
+                                                    <td><span class="name">{{item.avgScore	}}</span></td>
+                                                    <td>{{item.gradeName}}{{item.className}}
+                                                    </td>
+                                                    <td>{{item.giveLessonTime | date:'yyyy/MM/dd'}}
+                                                    </td>
+                                                    <td>
+                                                        第{{item.period}}节
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <p class="click-show-more" [ngClass]="{'pointer':statisticsDetail.total > statisticsDetail.page.size}" (click)="changeRecordDetailList($event, false, statisticsDetail)">
+                                            {{statisticsDetail.total > statisticsDetail.page.size?'点击加载更多':'已加载全部'}}
+                                        </p>
+                                    </div>
+                                </div>
+                                <!--缺省页-->
+                                <elliptical-page *ngIf="statisticsDetail.list.length === 0 && statisticsDetail.loaded" title="暂无听课评课活动"></elliptical-page>
+                                <!--<elliptical-page *ngIf="statisticsDetail.list.length === 0 && statisticsDetail.loaded" title="暂无听课评课活动"></elliptical-page>-->
+                                <div flex="main:center cross:center" style="height: 100%" *ngIf="!statisticsDetail.loaded">
+                                    <nz-spin [nzSize]="'large'"></nz-spin>
+                                </div>
+                            </div>
+                            <div class="statistics-list-footer">
+                                <button (click)="cancelRankingList()" nz-button [nzType]="'primary'" nzGhost>
+									<span>返回</span>
+								</button>
+                            </div>
+                        </div>
+                    </div>
+                </nz-tab>
+            </nz-tabset>
+        </section>
+    </div>
+
+
+</section>

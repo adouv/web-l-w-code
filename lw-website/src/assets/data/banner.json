@@ -1,0 +1,38 @@
+[{
+		"id": 0,
+		"urlList": ["assets/images/banner1.jpg", "assets/images/banner2.jpg", "assets/images/banner3.jpg"]
+	},
+	{
+		"id": 2,
+		"urlList": ["assets/images/xyzx1.jpg", "assets/images/xyzx2.jpg", "assets/images/xyzx3.jpg"]
+
+	},
+	{
+		"id": 3,
+		"urlList": ["assets/images/3-1.jpg", "assets/images/3-2.jpg", "assets/images/3-3.jpg"]
+	},
+	{
+		"id": 4,
+		"urlList": ["assets/images/zi1.png", "assets/images/zi2.jpg", "assets/images/zi3.png"]
+	},
+	{
+		"id": 5,
+		"urlList": ["assets/images/5-1.jpg", "assets/images/5-2.jpg", "assets/images/5-3.jpg"]
+	},
+	{
+		"id": 6,
+		"urlList": ["assets/images/6-1.jpg", "assets/images/6-2.jpg", "assets/images/6-3.jpg"]
+	},
+	{
+		"id": 7,
+		"urlList": ["assets/images/7-1.jpg", "assets/images/7-2.jpg", "assets/images/7-3.jpg"]
+	},
+	{
+		"id": 8,
+		"urlList": ["assets/images/8-1.jpg", "assets/images/8-2.jpg", "assets/images/8-3.jpg"]
+	},
+	{
+		"id": 9,
+		"urlList": ["assets/images/9-1.jpg", "assets/images/9-2.jpg", "assets/images/9-3.jpg"]
+	}
+]

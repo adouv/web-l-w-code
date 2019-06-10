@@ -1,0 +1,64 @@
+.purchase .declare{
+
+}
+.purchase .declare-content{
+    width: 1020px;
+    margin: 0 auto;
+}
+.purchase .declare-time{
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+.purchase .declare-time-left{
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 40px;
+}
+.purchase .declare-time-right{
+    display: inline-block;
+    vertical-align: middle;
+    position: relative;
+}
+.purchase .declare .area-class{
+    width: 1020px;
+    margin: 0 auto;
+    border: 1px solid #dbe3ee;
+    padding: 20px 50px;
+    font-family:"\5B8B\4F53";
+    font-size: 18px;
+}
+.purchase .declare .area-title{
+    font-size: 18px;
+}
+.purchase .declare .area-list{
+    margin: 30px 0 20px 0 ;
+}
+.purchase .declare .area-list-title{
+    display: inline-block;
+    border-left: 5px solid #786ceb;
+    padding-left: 10px;
+    margin-bottom: 20px;
+}
+.purchase .declare .blue_color{
+    display: inline-block;
+    border-bottom: 1px solid transparent;
+}
+.purchase .declare .blue_color:hover{
+    border-bottom: 1px solid #0096FF;
+    cursor: pointer;
+}
+.purchase .declare .area-list-title~div{
+    padding-left: 15px;
+}
+.purchase .declare .declare-btn{
+    margin-top: 40px;
+    text-align: center;
+}
+.purchase .declare .disabled_date{
+    cursor: pointer;
+}
+.purchase .declare .disabled_date:disabled{
+    border: 1px solid #dbe3ee;
+    opacity:.5;
+    cursor: not-allowed;
+}

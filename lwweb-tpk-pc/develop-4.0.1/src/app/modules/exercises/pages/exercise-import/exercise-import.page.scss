@@ -1,0 +1,131 @@
+@import "../../../../../styles/variable";
+
+.exercise-add::ng-deep{
+	padding: 0 computer(20px);
+	height: 100%;
+	.header-title{
+		height: computer(50px);
+		line-height: computer(50px);
+		text-align: center;
+		color:$color_font-deep;
+		border-bottom: 1px solid $color_border;
+		font-size: computer(16px);
+		margin-bottom: computer(20px);
+	}
+	.exercise-add-content{
+		height: calc(100% - #{computer(120px)});
+		overflow-x: hidden;
+		.exercise-add-type{
+			padding:0 computer(40px);
+			.exercises-header-select{
+				width: computer(140px);
+			}
+		}
+		.exercise-add-select{
+			margin-left: computer(40px);
+			margin-top: computer(10px);
+			height: auto;
+			.btn-exercise{
+				width: computer(100px);
+			}
+			.select-content{
+				padding-left: computer(20px);
+				//height: computer(30px);
+				line-height: computer(30px);
+				font-size: computer(14px);
+				color:$color_font-light;
+				.select-content-title{
+					float: left;
+					width: computer(38px);
+					text-align: right;
+				}
+				.select-contents{
+					display: inline-block;
+					.no-content-msg{
+						color: $color_font-light;
+						font-size: computer(14px);
+						margin-left: computer(10px);
+					}
+				}
+				.select-tag{
+					padding: 0 computer(10px) 0 computer(20px);
+					margin-bottom: computer(5px);
+					font-size: computer(14px);
+					border-radius: computer(15px);
+					height: computer(30px);
+					line-height: computer(30px);
+					text-align: center;
+					background-color: $color_border ;
+					color: $color_font-deep;
+					margin-left: computer(10px);
+					cursor: pointer;
+					//float: left;
+					display: inline-block;
+					.icon-span{
+						font-size: computer(14px);
+						margin-left: computer(10px);
+						.iconfont:before{
+							font-size: computer(15px);
+						}
+					}
+				}
+			}
+		}
+		.exercise-editor{
+			padding:computer(10px) computer(40px);
+			.beforeDrop{
+				width: computer(500px);
+				height: computer(160px);
+				border: 1px dashed #fea67b;
+				box-sizing: border-box;
+				margin: computer(20px) auto;
+				background-color: #f8f8f8;
+				text-align: center;
+				.icon-span{
+					height: computer(100px);
+					line-height: computer(100px);
+					display: block;
+				}
+				.icon-exercises::before{
+					font-size: computer(50px);
+					color:#fe8156;
+				}
+				.beforeDrop-title{
+					line-height: computer(20px);
+					font-size: computer(14px);
+					color:$color_font-deep;
+				}
+				.beforeDrop-msg{
+					line-height: computer(30px);
+					font-size: computer(14px);
+					color:$color_font-light;
+				}
+			}
+			.upload-content{
+				width: computer(500px);
+				min-height: computer(160px);
+				margin: computer(20px) auto;
+			}
+			.dropping{
+				//border: 2px dashed #fea67b !important;
+				opacity: 0.5;
+				//cursor: move;
+			}
+			.upload-msg{
+				color:$color_font-light;
+				font-size: computer(14px);
+				.down-template{
+					color:$color_main;
+				}
+			}
+		}
+	}
+	.footer{
+		text-align: center;
+		border-top: 1px solid $color_border;
+		padding: computer(10px) 0;
+		.close{
+			margin-right: computer(20px);
+		}
+	}
+}

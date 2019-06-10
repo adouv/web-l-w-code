@@ -1,0 +1,141 @@
+<div class="userEdit_dialog">
+
+</div>
+<div class="edit_user" ng-click="connect.clearMsg()">
+    <div class="header_box_top">
+        <div class="statusBtns">
+            <span ng-click="connect.cancelEdit()" style="float: right">
+                <i class="clientIconfont icon-client_close"></i>
+            </span>
+            <span>
+                <i class="clientIconfont second"></i>
+            </span>
+            <span>
+                <i class="clientIconfont third"></i>
+            </span>
+        </div>
+    </div>
+    <div class="user_img_box">
+        <p>
+            <span class="name">姓名</span>
+            <span class="name_detail">
+                <!-- 设置默认获取焦点 -->
+                <!--<set-focus></set-focus>-->
+                {{connect.userInfo.displayName}}
+            </span>
+        </p>
+        <p>
+            <span class="name">职务</span>
+            <span class="name_detail">
+                {{connect.userInfo.position}}
+            </span>
+        </p>
+        <div class="user_head" ng-click="connect.showEditImg($event)">
+            <img ng-src="{{connect.filePath+connect.userInfo.imgUrl}}" alt="">
+            <span class="connectIconfont icon-camera"></span>
+        </div>
+    </div>
+    <div class="editHeadImg" ng-show="connect.editUserImg" ng-click="connect.stopPropagation($event)">
+        <span class="top">
+            <em></em>
+        </span>
+        <image-crop data-height="220" data-width="220" data-shape="square" data-step="imageCropStep" ng-if="connect.selectedImg" src="connect.selectedImg" data-result="connect.result" data-result-blob="resultBlob" crop="initCrop" padding="0" max-size="220"></image-crop>
+        <div class="edit_btns">
+            <span class="upload">上传</span>
+            <span class="cancel" ng-click="connect.cancelCutImg()">取消</span>
+            <input type="file" accept="image/*" id="imgFile" select-image name="connect.selectedImgName" imgurl="connect.selectedImg">
+            <span class="save" ng-click="connect.saveUserImg()">保存</span>
+        </div>
+    </div>
+    <div class="more_detail_box overflow_box_sml" style="max-height: 320px;">
+        <p>
+            <span class="name">办公室外线电话</span>
+            <span class="name_detail">
+                <input type="text" class="input_class" id="telephone" ng-model="connect.userInfo.telephone" ng-blur="connect.checkPhone(connect.userInfo.telephone,'errorOuterNum')">
+                <span class="connectIconfont icon-warn prompt_icon" ng-if="connect.errorOuterNum" ng-click="connect.verify('errorOuter')"></span>
+            <span class="right_format" ng-show="connect.errorOuter">不符合数据格式要求</span>
+            </span>
+        </p>
+        <p>
+            <span class="name">办公室内线电话</span>
+            <span class="name_detail">
+                <input type="text" class="input_class" ng-model="connect.userInfo.interPhone" ng-blur="connect.checkPhone(connect.userInfo.interPhone,'errorInterNum')">
+                <span class="connectIconfont icon-warn prompt_icon" ng-if="connect.errorInterNum" ng-click="connect.verify('errorInter')"></span>
+            <span class="right_format" ng-show="connect.errorInter">不符合数据格式要求</span>
+            </span>
+        </p>
+        <p>
+            <span class="name">手机</span>
+            <span class="name_detail">
+                <input type="text" class="input_class" ng-model="connect.userInfo.cellphone" maxlength="20" ng-blur="connect.checkCellPhone(connect.userInfo.cellphone)">
+                <span class="connectIconfont icon-warn prompt_icon" ng-if="connect.errorCellNum" ng-click="connect.verify('errorCell')"></span>
+            <span class="right_format" ng-show="connect.errorCell">不符合数据格式要求</span>
+            </span>
+        </p>
+        <p>
+            <span class="name">电子邮箱</span>
+            <span class="name_detail">
+                <input type="text" class="input_class" ng-model="connect.userInfo.email" ng-blur="connect.checkEmail(connect.userInfo.email)">
+                <span class="connectIconfont icon-warn prompt_icon" ng-if="connect.errorEmailNum" ng-click="connect.verify('errorEmail')"></span>
+            <span class="right_format" ng-show="connect.errorEmail">不符合数据格式要求</span>
+            </span>
+        </p>
+        <p>
+            <span class="name">微信</span>
+            <span class="name_detail">
+                <input type="text" class="input_class" ng-model="connect.userInfo.wechat" maxlength="20" ng-blur="connect.checkWeChat(connect.userInfo.wechat)">
+                <span class="connectIconfont icon-warn prompt_icon" ng-if="connect.errorWeChatNum" ng-click="connect.verify('errorWeChat')"></span>
+            <span class="right_format" ng-show="connect.errorWeChat">不符合数据格式要求</span>
+            </span>
+        </p>
+        <p>
+            <span class="name">QQ</span>
+            <span class="name_detail">
+                <input type="text" class="input_class" ng-model="connect.userInfo.qq" maxlength="20" ng-blur="connect.checkQQ(connect.userInfo.qq)">
+                <span class="connectIconfont icon-warn prompt_icon" ng-if="connect.errorQQNum" ng-click="connect.verify('errorQQ')"></span>
+            <span class="right_format" ng-show="connect.errorQQ">不符合数据格式要求</span>
+            </span>
+        </p>
+        <!--个性签名-->
+        <p class='selfdom_name'>
+            <span class="name">个人签名</span>
+            <!-- &lt;!&ndash; 显示默认签名 &ndash;&gt; -->
+            <span class="name_detail autographPic autograph-null" ng-if='!connect.userInfo.signatureImgUrl' ng-click='connect.enterPassword($event)'>
+            </span>
+            <!-- &lt;!&ndash;签名后 &ndash;&gt; -->
+            <span class="name_detail autographPic" ng-if='connect.userInfo.signatureImgUrl' ng-click='connect.enterPassword($event)'>
+                <span class="mask_black">
+                    <span class='connectIconfont icon-camera'></span>
+            <span class='connectIconfont icon-close-circle close_circle' id='delAutograph'></span>
+            </span>
+            <img ng-src="{{connect.filePath+connect.userInfo.signatureImgUrl}}" class='upload_img' alt="">
+            </span>
+        </p>
+        <p>
+            <span class="name">部门</span>
+            <span class="name_detail name_department">
+                <em ng-repeat="department in connect.userInfo.departments track by $index">{{department.departmentTreeName}}</em>
+            </span>
+        </p>
+    </div>
+    <div class="btn_box">
+        <span class="btn_white" ng-click="connect.cancelEdit()">取消</span>
+        <span class="btn_blue" ng-click="connect.updateUserInfo()">保存</span>
+    </div>
+    <!-- 输入密码 -->
+    <div class='mask-bdp mask-password' ng-if="connect.retypePassword" ng-click='connect.closeInfoDialog("password",$event)'></div>
+    <div class="enterPassword" ng-if="connect.retypePassword">
+        <p>为确保安全，请您输入账号密码</p>
+        <input type="password" style="display:none">
+        <input type="password" class='input_class' autocomplete="new-password" ng-model='connect.confirmPassword' />
+        <div class="btn_box" style='left: 0;'>
+            <span class="btn_white" ng-click="connect.cancelHandle()">取消</span>
+            <span class="btn_blue" ng-click="connect.confirmHandle()">确定</span>
+        </div>
+    </div>
+    <div class='mask-bdp mask-autograph' ng-if='connect.isShowNeedToKnow || connect.isShowUpload'></div>
+    <!-- 用户需知会话 -->
+    <autograph-dialog is-show='connect.isShowNeedToKnow' is-show-upload='connect.isShowUpload'></autograph-dialog>
+    <!-- 上传个性签名会话 -->
+    <autograph-upload is-show-upload='connect.isShowUpload' attachment='connect.attachment' uploaded-url='connect.userInfo.signatureImgUrl'></autograph-upload>
+</div>

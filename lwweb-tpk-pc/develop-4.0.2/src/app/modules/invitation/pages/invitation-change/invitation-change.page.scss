@@ -1,0 +1,150 @@
+@import "../../../../../styles/variable";
+@import "../../../../../styles/mixin";
+:host {
+    display: block;
+    padding: 0 computer(20px);
+}
+
+@mixin base-css {
+    color: $color_font-deep;
+    font-size: computer(16px);
+}
+
+h1 {
+    line-height: computer(40px);
+    text-align: center;
+    @include base-css;
+}
+
+h2 {
+    @include base-css;
+    line-height: computer(50px);
+    border-bottom: 1px solid $color_border;
+    span {
+        border-left: 2px solid $color_main;
+        padding-left: computer(10px);
+    }
+}
+
+.invitation-add-box {
+    flex: 1;
+    display: flex;
+    overflow: auto;
+    @include scroll-bar();
+    height: calc(100vh - #{computer(300px)});
+}
+
+.invitation-video-box {
+    width: computer(760px);
+    flex: 1;
+    margin-right: computer(20px);
+    .select-class-box {
+        margin: computer(10px) 0;
+        font-size: computer(14px);
+        color: $color_font-light;
+        div {
+            float: left;
+        }
+        label {
+            float: right;
+            span {
+                font-size: computer(14px);
+            }
+        }
+    }
+}
+
+.invitation-info-box::ng-deep {
+    width: computer(522px);
+    flex: 1;
+    .mar-bottom-10px {
+        margin-bottom: computer(10px) !important;
+    }
+    .mar-bottom-30px {
+        margin-bottom: computer(30px) !important;
+    }
+    .invitation-item-box {
+        display: flex;
+        align-items: center;
+        font-size: computer(14px);
+        color: $color_font-center;
+        margin-bottom: computer(20px);
+        .title {
+            line-height: computer(30px);
+        }
+        .check-scale-title {
+            margin-left: computer(10px);
+            line-height: computer(30px);
+            color: $color_font-deep;
+            font-size: computer(14px);
+            cursor: pointer;
+            .iconfont:hover {
+                opacity: 1 !important;
+            }
+            .iconfont {
+                margin-left: computer(10px);
+                opacity: 0.5;
+            }
+            .iconfont:before {
+                font-size: computer(14px);
+            }
+        }
+        & nz-select {
+            min-width: computer(120px);
+        }
+        &>div:nth-of-type(1) {
+            width: computer(85px);
+            padding-right: computer(5px);
+            text-align: right;
+            flex-shrink: 0;
+        }
+        &.textarea-box {
+            align-items: flex-start;
+        }
+    }
+    .errorInput {
+        .ant-input {
+            border-color: red !important;
+        }
+    }
+    .invitation-item-box.appraiser-box {
+        margin-bottom: computer(2px);
+        align-items: baseline;
+    }
+}
+
+.error {
+    margin-left: computer(20px);
+    color: red;
+}
+
+.invitation-info-box::ng-deep {
+    .ant-input {
+        font-size: computer(14px);
+    }
+    .ant-select-selection--multiple,
+    .ant-input {
+        border-radius: 0 !important;
+    }
+    textarea.ant-input {
+        resize: none;
+        font-size: computer(14px);
+        height: computer(90px);
+        @include scroll-bar();
+    }
+    .ant-calendar-range-picker-input {
+        font-size: computer(14px);
+        &::placeholder {
+            color: $color_font-deep !important;
+        }
+    }
+}
+
+.btn-box {
+    position: relative;
+    bottom: 0;
+    line-height: computer(50px);
+    border-top: 1px solid #eeeeee;
+    text-align: center;
+    background-color: #ffffff;
+}

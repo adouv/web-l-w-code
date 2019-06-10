@@ -1,0 +1,84 @@
+<div class="subjective-problem-content">
+  <div class="subjective-problem">
+    <a-layout>
+      <a-layout-content>
+        <div class="inner-box">
+          <div class="answer-cont-lit">
+            <span>{{currentIndex+1}}</span>/{{questionBagList.length}}. {{questionTypeName}}
+          </div>
+          <div class="answer-cont auto-scroll">
+            <div class="dynamic-html" v-html="questionContentHtml"></div>
+          </div>
+        </div>
+      </a-layout-content>
+      <a-layout-footer>
+        <div class="footer" flex="main:center cross:center">
+          <div class="bottom-ul">
+            <ul flex="dir:left box:justify;main:center">
+              <li @click="goFirstQuestion" :class="{disabled:currentIndex==0}">第一题</li>
+              <li @click="prevQuestion" flex="main:center cross:center" :class="{disabled:currentIndex==0}"><i class="iconfont icon-pc-last"></i>上一题</li>
+              <li @click="nextQuestion" flex="main:center cross:center" :class="{disabled:currentIndex==(questionBagList.length - 1)}"><i
+                  class="iconfont icon-pc-next"></i>下一题</li>
+              <li @click="goLastQuestion" :class="{disabled:currentIndex==(this.questionBagList.length - 1)}">最后一题</li>
+            </ul>
+          </div>
+
+          <div class="lw-tpk-pc footer-right nodrag-area">
+            <a-button type="default" @click="quiteExercise">退出做题</a-button>
+          </div>
+        </div>
+      </a-layout-footer>
+    </a-layout>
+  </div>
+  <div class="subjective-bottom" v-if="isShowPreview" ref="answer-box">
+    <div class="status-bar clearfix">
+      <div class="submit clearfix status-text">
+        <span>已提交</span>
+        <span>:</span>
+        <span>{{$store.state.student.submitCount}}</span>
+      </div>
+      <div class="no-submit status-text">
+        <span>未提交</span>
+        <span>:</span>
+        <span>{{$store.state.student.noSubmitCount}}</span>
+      </div>
+      <div class="doing status-text">
+        <span>其中{{$store.state.student.operationCount}}人正在操作</span>
+
+      </div>
+      <span class="icon iconfont icon-pc-label-close close-x cursor" @click="closeAnswer"></span>
+    </div>
+    <div class="students-list">
+      <ul>
+        <li v-for="data in $store.state.student.studentList" :class="{'is-submit':data.type==1,'is-out':!data.show}">
+          <span class="student-img">
+            <img :src="data.imgUrl">
+          </span>
+          <img src="../../assets/images/shuxie.svg" class="shuxie" v-if="data.status===1" />
+          <span class="student-name">{{data.studentName}}</span>
+        </li>
+      </ul>
+    </div>
+    <a-layout-footer>
+      <div class="lw-tpk-pc nodrag-area">
+        <!-- :disabled="!hasAnalysis" -->
+        <a-button type="danger" @click="openResult" class="mar-r-20px">结果统览</a-button>
+        <a-button type="danger" @click="openNoteList">笔记统览</a-button>
+      </div>
+    </a-layout-footer>
+
+  </div>
+
+  <!--倒计时 -->
+  <div v-if="isShowCountTip" class="count-container">
+    {{countTipText}}
+  </div>
+
+  <audio ref="audioStart" @pause="onPause(0)" @play="onPlay(0)" src="/static/mp3/lw-start.mp3"></audio>
+  <audio ref="audioEnd" @pause="onPause(1)" @play="onPlay(1)" src="/static/mp3/lw-end.mp3"></audio>
+
+  <!-- <div class="student-note-list" v-if="showStudentNoteList">
+    <lw-note-list @onLwClose="btnCloseLwNoteList"></lw-note-list>
+  </div> -->
+  
+</div>

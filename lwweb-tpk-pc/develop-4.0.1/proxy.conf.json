@@ -1,0 +1,23 @@
+{
+    "/lw-authz-server": {
+        "target": "http://tpktest.laiweitec.com:96",
+        "secure": false
+    },
+    "/lw-garden-server": {
+        "target": "http://tpktest.laiweitec.com:96",
+        "secure": false
+    },
+    "/lw-fileserver": {
+        "target": "http://tpktest.laiweitec.com:96",
+        "secure": false
+    },
+    "/lwtpk-web": {
+        "target": "http://tpktest.laiweitec.com:62",
+        "secure": false
+    },
+    "/lw-stream-cms": {
+        "target": "http://tpktest.laiweitec.com:8081",
+        "secure": false
+    }
+
+}

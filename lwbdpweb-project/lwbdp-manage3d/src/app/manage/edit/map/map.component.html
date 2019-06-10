@@ -1,0 +1,22 @@
+<div class="map-wrapper">
+  <h2 class='explain-title'>
+    园区地图坐标点位置及园区占地边界和所辖学区配置
+  </h2>
+  <p class='explain-text'>
+    （下图操作中锚点定位表示该园区所在的地理位置，使用其他多边形工具即可圈定园区边界和所辖学区范围，鼠标双击即可结束区域划定）
+  </p>
+  <baidu-map [options]="opts" (loaded)="loadMap($event)">
+    <marker  [point]="marker.point" [options]="marker.options" (clicked)="showWindow($event)"></marker>
+    <!-- <control type="navigation" [options]="controlOpts"></control>
+    <control type="overviewmap" [options]="overviewmapOpts"></control>
+    <control type="scale" [options]="scaleOpts"></control>
+    <control type="maptype" [options]="mapTypeOpts"></control> -->
+  </baidu-map>
+  <!-- 弹出框 -->
+  <p-dialog header="当前圈定区域属性配置" [(visible)]="isShowSet" modal="modal" width="600" height="400" [responsive]="true">
+    <p></p>
+        <p-footer>
+            <button type="button" pButton icon="fa-check" (click)="isShowSet=false" label="Yes">确定</button>
+        </p-footer>
+</p-dialog>
+</div>

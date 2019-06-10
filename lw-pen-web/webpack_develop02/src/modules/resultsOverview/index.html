@@ -1,0 +1,107 @@
+<div class="resultsOverview">
+  <div class="pie-result">
+    <a-layout>
+      <a-layout-content>
+        <template v-if="!hasAnalysis">
+          <div class="inner-box" flex="main:center cross:center">
+            <div class="noneImg"><img src="../../assets/images/no-write-answer.png"><p>题目有点挑战，学生正在思考</p></div>
+          </div>
+        </template>
+        <template v-else>
+          <div class="inner-box" flex="dir:left">
+            <div class="pie-left">
+              <template v-if="autoGrade">
+                <lw-pie-chart v-if="load" :chartData="chartData" @changeData="getChangeData"></lw-pie-chart>
+              </template>
+              <template v-else>
+                <template v-if="!isShowAnswer">
+                  <lw-line-chart v-if="load" :chartData="chartData" @changeData="getChangeData" @right="getRightAnswer" :selfJudgmentModel="selfJudgmentModel"></lw-line-chart>
+                </template>
+                <template v-else>
+                  <div v-if="isShowAnswer" style="height: calc(100% - 78px);">
+                    <lw-answer-chart v-if="load" :chartData="chartData" :questionInfo="questionInfo"></lw-answer-chart>
+                  </div>
+                </template>
+              </template>
+
+
+            </div>
+            <div class="pie-right">
+
+              <div class="ant-table-bordered">
+                <div class="left-head nodrag-area" flex="main:justify">
+                  <div flex="">
+                    <h4>{{!clickAnswer?'全班组':clickAnswer+'的选项组'}},共计{{tableDataList.length}}人。</h4><span class="cursor"
+                      @click="allTables" v-if="clickAnswer">查看全部</span>
+                  </div>
+                  <div>
+                    <a-checkbox v-model="checked" class="mar-r-10px"></a-checkbox>显示学生信息
+                  </div>
+                </div>
+                <div class="ant-table auto-scroll nodrag-area">
+                  <table>
+                    <thead class="ant-table-thead">
+                      <tr>
+                        <th width="8%" class="grey-font">序号</th>
+                        <th v-if="checked" width="15%">姓名</th>
+                        <th v-if="checked" width="15%">学号</th>
+                        <th v-if="checked" width="15%">性别</th>
+                        <th :style="{width:checked ? '15%' : '30%'}" v-if="autoGrade">选项</th>
+                        <th :style="{width:checked ? '15%' : '30%'}" v-if="selfJudgmentModel == 0">得分</th>
+                        <th :style="{width:checked ? '15%' : '30%'}" v-if="selfJudgmentModel == 1">对错</th>
+                        <th :style="{width:checked ? '15%' : '30%'}">答题耗时</th>
+                        <th :style="{width:checked ? '15%' : '30%'}" v-if="chartData.classAvgTime != 0">组平均用时</th>
+
+                      </tr>
+                    </thead>
+                    <tbody class="ant-table-tbody">
+                      <tr v-for="(data,index) in tableDataList">
+                        <td class="grey-font">{{(index+1)}}</td>
+                        <td v-if="checked">{{data.name}}</td>
+                        <td v-if="checked">{{data.number}}</td>
+                        <td v-if="checked">{{data.gender==0?'男':'女'}}</td>
+                        <td v-if="autoGrade">{{data.answer?data.answer:'未答题'}}</td>
+                        <td v-if="selfJudgmentModel == 0">{{data.score?data.score:0}}</td>
+                        <td v-if="selfJudgmentModel == 1">{{data.isRight?'对':'错'}}</td>
+                        <td>{{data.useTime?data.useTime:0|formatSeconds}}</td>
+                        <td v-if="chartData.classAvgTime != 0">{{data.avgTime?data.avgTime:0|formatSeconds}}</td>
+
+                      </tr>
+
+                    </tbody>
+                  </table>
+                  <div v-if="!isLoadComplete" style="margin-top: 40px;text-align: center;">
+                    <a-spin size="large" />
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </template>
+
+      </a-layout-content>
+      <a-layout-footer>
+        <div class="footer" flex="main:center cross:center">
+          <div class="lw-tpk-pc nodrag-area titleBtn">
+            <a-button type="danger" @click="showQuestionContent" class="mar-r-20px">显示题干</a-button>
+            <a-button type="default" @click="rightAnswer" class="close" v-if="hasAnalysis && !autoGrade && answer && (analysis || answer) && !isShowAnswer">正确答案</a-button>
+          </div>
+          <div class="bottom-ul nodrag-area">
+            <ul flex="dir:left box:justify;main:center">
+              <li class="mar-r-20px">{{(currentIndex+1)}}/{{questionBagList.length}}</li>
+              <li @click="prevQuestion" :class="{disabled:currentIndex==0}" flex="main:center cross:center" class="marg-r-35px"><i
+                  class="iconfont icon-pc-last"></i>上一题</li>
+              <li @click="nextQuestion" :class="{disabled:currentIndex==(questionBagList.length - 1)}" flex="main:center cross:center"><i
+                  class="iconfont icon-pc-next"></i>下一题</li>
+            </ul>
+          </div>
+          <div class="lw-tpk-pc footer-right nodrag-area">
+            <a-button type="danger" @click="openBiji" class="mar-r-20px">笔记统览</a-button>
+            <a-button type="default" @click="closeBtn" class="close">关闭</a-button>
+          </div>
+        </div>
+      </a-layout-footer>
+    </a-layout>
+  </div>
+</div>

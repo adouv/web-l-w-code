@@ -1,0 +1,151 @@
+<form class="w5c-form class-config" w5c-form novalidate w5c-form-validate name="courseCfg">
+    <div class="modal-header" style="padding-top:40px;">
+        <div class="text-main">
+            <h4 class="modal-title kebiao" id="modal-title" style="padding-left: 15px">配置课节信息</h4>
+        </div>
+    </div>
+    <div class="modal-body" id="modal-body">
+        <div class="text-main">
+            <!--课程-->
+            <section class="form-group clearfix">
+                <label class="fl coursename">课&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;程：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                <select class="form-control course fl" style="width:60%;" name="subjectName" ng-disabled="subjectNameFlag" ng-change="getSubjectName()" ng-model="data.subjectCode" ng-options="subject.id as subject.name for subject in subjects">
+                    <option value="">请选择学科</option>
+                </select>
+                <label style="margin-left:5%;margin-top:5px;cursor:pointer;">
+                        <input class="checkboxClass" type="checkbox" name="isSelfStudyCourses" ng-model="subjectNameFlag" ng-click="selfStudyCourses($event)">&nbsp;自习类课程
+                </label>
+            </section>
+            <!--授课教室-->
+            <section class="form-group clearfix">
+                <label class="coursename" style="display: inline-block">授课教师：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                <input type="text" class="form-control course" name="teacherNamesStr" ng-disabled="subjectNameFlag" ng-model="data.teacherNamesStr" ng-click="showTeacher()" style="display: inline-block;width:78%;">
+                <div class="teacher-box fr" ng-show="teacherBar">
+                    <header class="h5" style="text-align: center">
+                        授课教师选择
+                        <input type="text" class="form-control pull-right" placeholder="请输入关键字……" ng-model="teacherName">
+                    </header>
+                    <div class="row" style="margin:0;padding:0;left:0;top:43px;height:211px;">
+                        <ul>
+                            <li ng-repeat="teacher in teachers" ng-show="searchRs(teacher.name)" style="line-height:29px;cursor:pointer;">
+                                <label style="cursor: pointer;"><input class="checkboxClass" type="checkbox" name="teacher" ng-disabled="!teacher.status" ng-checked="data.teacherIds.indexOf(teacher.id)>-1" ng-click="selectTeacher($event,teacher)">{{teacher.name}}</label>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="footer">
+                        <div class="navbar-inner navbar-content-center page" style="height:58px;line-height:58px;">
+                            <button class="btn btn-md tpk-btn sure" ng-click="sureTeacher()">确 定</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!--是否录像-->
+            <section class="form-group clearfix">
+                <label class="fl coursename">是否录像：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                <label style="margin-left:5px;">
+                    <input type="radio" name="camera" ng-disabled="subjectNameFlag" class="radioClass course-radio" ng-value="true" ng-model="data.isRecord"/>
+                    <span class="camera-sel">是</span>
+                </label>
+                <label style="margin-left:20px;" ng-disabled="subjectNameFlag">
+                    <input type="radio" name="camera" ng-disabled="subjectNameFlag" class="radioClass course-radio" ng-value="false" ng-model="data.isRecord"/>
+                    <span class="camera-sel">否</span>
+                </label>
+                <span class="prompt-page">设置当前课节是否录像</span>
+            </section>
+            <!--选择上课教室-->
+            <section class="form-group clearfix">
+                <label class="fl coursename">选择上课教室：</label>
+                <input type="text" class="form-control course" name="coursename" readonly ng-disabled="isClassroomFlag" ng-click="showClassroom()" ng-model="classData.classroomName" style="display: inline-block;width:60% !important;">
+                <label style="margin-left:2%;margin-top:5px;cursor:pointer;">
+                        <input class="checkboxClass" type="checkbox" name="isClassroomFlag" ng-model="isClassroomFlag" ng-click="ClassroomCfg($event)">&nbsp;同班级行政教室
+                </label>
+                <div class="teacher-box class-box fr" ng-show="classroomBar" style="height:230px !important;">
+                    <header class="h5" style="text-align: center;">
+                        班级行政教室选择
+                        <input type="text" class="form-control pull-right" placeholder="请输入关键字……" ng-model="classroomName">
+                    </header>
+                    <div class="row" style="margin:0;padding:0;left:0;top:43px;height:125px;">
+                        <ul>
+                            <li ng-repeat="classroom in classrooms" ng-show="searchCs(classroom.name)" style="line-height:29px;cursor: pointer;">
+                                <label style="cursor: pointer;">
+                                        <input class="radioClass" type="checkbox" name="classroom" ng-checked="classData.classroomId===classroom.id" ng-click="selectClassroom($event,classroom)">{{classroom.name}}
+                                </label>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="footer">
+                        <div class="navbar-inner navbar-content-center page" style="height:58px;line-height:58px;">
+                            <button class="btn btn-md tpk-btn sure" ng-click="sureClassroom()">确 定</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!--选择摄像头-->
+            <section class="form-group clearfix">
+                <label class="fl coursename">选择摄像头：&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                <label style="margin-top:5px;cursor:pointer;">
+                    <input type="checkbox" class="checkboxClass" ng-model="isUseClassCfg" ng-click="userClassCfg($event)">&nbsp;同班级摄像头
+                </label>
+            </section>
+        </div>
+
+        <div class="line-body"></div>
+        <!--选择摄像头-->
+        <div class="text-main">
+            <section class="form-group class-content" style="margin-left:29px;height:392px">
+                <div class="row">
+                    <h5 style="display:inline-block;width:33%">对应的功能区：</h5>
+                    <h5 style="display:inline-block;">对应的摄像头：</h5>
+                </div>
+                <div class="pull-left">
+                    <div style="position: relative">
+                        <area-ztree></area-ztree>
+                    </div>
+                </div>
+                <div class="pull-right" style="position: relative">
+                    <div class="checked-camera">
+                        <p>已选摄像头</p>
+                        <ul id="ullist">
+                            <li ng-repeat="data in courseSelectedCameras" class="cur liList">
+                                <div>
+                                    <span ng-if="data.cameraType == 0 && data.cameraLocation == 1">【前】</span>
+                                    <span ng-if="data.cameraType == 0 && data.cameraLocation == 2">【后】</span>
+                                    <span ng-if="data.cameraType == 1 && data.cameraLocation">【电脑画面】</span>
+                                    <span ng-if="!data.isDefault" style="max-width: 185px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap" title="{{data.name}}">{{data.name}}</span>
+                                    <span ng-if="data.isDefault && data.cameraType !== 1 || !data.cameraLocation" class="mainVoiceTextHid" title="{{data.name}}">{{data.name}}</span>
+                                    <span ng-if="data.isDefault && data.cameraType == 1 && data.cameraLocation" class="mainVoiceTextHid" style="width:80px" title="{{data.name}}">{{data.name}}</span>
+                                    <span ng-if="data.isDefault">(主音频摄像头)</span>
+                                </div>
+                                <span ng-click="del($index,data)" class=" delt delhide">×</span>
+                                <span ng-click="selectMainVoice($index,data)" class="mainVoice mainVoiceHide"></span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="form-group clearfix" style="padding-top:5px;position: relative">
+                        <select ng-model="selectCameraType" ng-change="changeCameraList()">
+                                <option ng-repeat="type in cameraTypes" ng-value="type.id">{{type.value}}</option>
+                        </select>
+                        <input class="form-control" type="text" style="width: 40%;display: inline-block;height: 25px;margin-left: 15px" ng-model="searchName" placeholder="搜索">
+                        <i class="glyphicon glyphicon-search" id="searchCamera"></i>
+                    </div>
+                    <div class="column-1">
+                        <ul id="column">
+                            <li ng-repeat="data in cameras" ng-class="{'cur':selectedCameraIds.indexOf(data.id)>-1}" ng-show="searchCamera(data.name)" title="{{data.url}}">
+                                <div ng-click="selectedCamera($index,data)" style="display: inline-block">
+                                    <span ng-if="data.cameraType == 0 && data.cameraLocation == 1">【前】</span>
+                                    <span ng-if="data.cameraType == 0 && data.cameraLocation == 2">【后】</span>
+                                    <span ng-if="data.cameraType == 1 && data.cameraLocation">【电脑画面】</span> {{data.name}}
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+    </div>
+    <div class="modal-footer techername-foot">
+        <button class="btn tpk-btn sure" type="button" w5c-form-submit="ok()" style="margin-right:60px;">确 定</button>
+        <button class="btn tpk-btn-o sure" type="button" ng-click="cancel()">取 消</button>
+    </div>
+</form>

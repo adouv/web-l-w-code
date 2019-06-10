@@ -1,0 +1,68 @@
+.bdp .auto-box-form{
+    padding: 0 20px;
+}
+.bdp .list-item .list-item-left{
+    width: 100px;
+    text-align: right;
+    display: inline-block;
+}
+.bdp .list-item .list-item-right{
+    width: calc(100% - 110px);
+    display: inline-block;
+    position: relative;
+}
+.bdp .list-item{
+    margin-bottom: 20px;
+}
+.bdp .list-item .input_class{
+    width: 400px;
+}
+.bdp .download-temp{
+    cursor: pointer;
+    color: #0096ff;
+}
+.bdp .list-item .list-item-right .icon_shutdown{
+    color: #999999;
+    opacity:.5;
+    cursor: pointer;
+    font-size: 22px;
+}
+.bdp .list-item .list-item-right .icon_shutdown:hover{
+    color: #786ceb;
+    opacity: .8;
+}
+.bdp .list-item .list-item-right .upload-msg{
+    position: absolute;
+    left: 90px;
+    top:0;
+}
+.bdp .list-item .mar-left10{
+    margin-left: 20px;
+    display: inline-block;
+}
+.bdp .list-item .ver-top{
+    vertical-align: top;
+}
+.bdp .warn-err-box{
+    position: relative;
+    width: calc(100% - 110px);
+    display: inline-block;
+}
+.bdp .warn-err{
+    position: absolute;
+    top: 3px;
+    right: 60px;
+    font-size: 18px;
+    color: #ff272e;
+}
+.bdp .warn-err-box .right_format {
+    position: absolute;
+    right: 60px;
+    top: 35px;
+    padding: 5px 20px;
+    background: rgba(236, 66, 63, 0.9);
+    color: #fff;
+    font-family: 'microsoft yahei', PingFangSC-Light, 'helvetica neue', 'hiragino sans gb', arial, 'microsoft yahei ui', simsun, sans-serif;
+    z-index: 9;
+    white-space: nowrap;
+}

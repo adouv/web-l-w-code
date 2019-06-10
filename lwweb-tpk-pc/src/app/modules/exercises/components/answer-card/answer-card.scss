@@ -1,0 +1,75 @@
+@import "../../../../../styles/variable";
+
+.answer-card::ng-deep {
+	.exercise-editor-group-answer-ueditor {
+		padding-right: computer(60px);
+	}
+	.exercise-editor-group-answer {
+		font-size: computer(14px);
+		width: 100%;
+		position: relative;
+		margin: 0 auto computer(10px);
+		.exercise-editor-group-answer-container {
+
+		}
+		.exercise-editor-group-answer-title {
+			color: $color_font-deep;
+			//position: absolute;
+			display: inline-block;
+			width: computer(80px);
+			line-height: computer(30px);
+			text-align: right;
+		}
+	}
+	.answer-input-group {
+		float: left;
+		margin-bottom: computer(10px);
+		//margin-right: computer(40px);
+		.answer-input-group-title {
+			width: computer(39px);
+			text-align: right;
+			display: inline-block;
+			font-size: computer(14px);
+			color: $color_font-light;
+			line-height: computer(30px);
+			margin-right: computer(10px);
+		}
+	}
+	.answer-input-group-add {
+		height: computer(30px);
+		width: computer(40px);
+		margin-left: computer(10px);
+		float: right;
+		cursor: pointer;
+		.iconfont:before {
+			font-size: computer(30px);
+			color: $color_main;
+		}
+	}
+	.answer-input-group-add-last-child {
+		width: auto;
+	}
+	.line-height {
+		//line-height: computer(30px) !important;
+		margin-left: computer(10px);
+	}
+	.answer-input {
+		outline-style: none;
+		border: 1px solid $color_border;
+		padding: 0 computer(10px);
+		height: computer(30px);
+		line-height: computer(30px);
+		width: computer(140px);
+		color: $color_font-deep;
+	}
+	.input-err {
+		border: 1px solid red;
+	}
+	.exercise-editor-group-content-ueditor {
+		//height: 212px;
+	}
+	.ant-radio-wrapper{
+		font-size: computer(14px) !important;
+		color: $color_font-deep;
+	}
+}

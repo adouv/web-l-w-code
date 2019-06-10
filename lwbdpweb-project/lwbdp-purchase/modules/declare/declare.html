@@ -1,0 +1,53 @@
+<div class="declare">
+    <div class="order_detail">
+        <div class="crumb_list">
+            <a href="JavaScript:void(0)" class="jump_href" ng-click="purchaseDeclare.goJump(crumb.url)" ng-repeat="crumb in purchaseDeclare.crumbList">{{crumb.name}} &gt;</a>
+            <span class="gray_color">项目申报统计报告</span>
+        </div>
+        <header class="header">
+            <h1>项目申报情况统计</h1>
+            <h2 class="gray_color"></h2>
+        </header>
+        <div class="declare-content">
+            <div class="declare-time">
+                <div class="declare-time-left">
+                    统计项目申报年份： <span class="color_999">系统所有项目申报年份</span>
+                </div>
+                <div class="declare-time-right">
+                    <input type="checkbox" class="checkbox_class" ng-checked="purchaseDeclare.allYear" ng-model="purchaseDeclare.allYear" ng-click="purchaseDeclare.resetYear()">
+                    自定义项目申报年份：
+                    <input type="text" class="input_date_border disabled_date" ng-model="purchaseDeclare.year" id="taskTimeStart" lw-laydate='YYYY'
+                           readonly="readonly" ng-disabled="!purchaseDeclare.allYear">
+                    <label class="iconfont icon-llreservecalendar data-icon"></label>
+                </div>
+            </div>
+            <div name="" id="" cols="30" rows="10" class="area-class">
+                <div class="area-title">截止到{{ purchaseDeclare.statisticsTime |date: 'yyyy年MM月dd日HH时mm分'}}，本次共统计项目总计<span class="blue_color" ng-click="purchaseDeclare.declareDialog()">{{purchaseDeclare.numbers.libraryTotal}}个</span>，具体情况如下：</div>
+                <div class="area-list">
+                    <span class="area-list-title">保运转类<em class="blue_color" ng-click="purchaseDeclare.declareDialog(0)">{{purchaseDeclare.numbers.workTotal}}个</em>。</span>
+                    <div>依据“中小学办学条件标准”，经过初审、复审及班子会研究，同意<em class="blue_color" ng-click="purchaseDeclare.declareDialog(0,null,1)">{{purchaseDeclare.numbers.workAgreeTotal}}个</em>，不同意<em
+                            class="blue_color" ng-click="purchaseDeclare.declareDialog(0,null,0)">{{purchaseDeclare.numbers.workDisAgreeTotal}}个</em>。
+                    </div>
+                </div>
+                <div class="area-list">
+                    <span class="area-list-title">发展类<em class="blue_color" ng-click="purchaseDeclare.declareDialog(1)">{{purchaseDeclare.numbers.developTotal}}个</em>。</span>
+                    <div>
+                        <div>1、经过初审、复审及班子会研究，拟同意的<em class="blue_color" ng-click="purchaseDeclare.declareDialog(1,null,1)">{{purchaseDeclare.numbers.developAgreeTotal}}个</em>。</div>
+                        <div>2、需要领导调研决策的<em class="blue_color" ng-click="purchaseDeclare.declareDialog(1,null,1,'need_leader')">{{purchaseDeclare.numbers.need_leader_total}}个</em>。</div>
+                        <div>3、需要业务科室参与调研的<em class="blue_color" ng-click="purchaseDeclare.declareDialog(1,null,0,'need_department')">{{purchaseDeclare.numbers.need_department_total}}个</em>。</div>
+                        <div>4、拟不同意的<em class="blue_color" ng-click="purchaseDeclare.declareDialog(1,null,0)">{{purchaseDeclare.numbers.developDisAgreeTotal}}个</em>。</div>
+                        <div>5、其中统计口径错误的<em class="blue_color" ng-click="purchaseDeclare.declareDialog(1,null,0,'apply_error')">{{purchaseDeclare.numbers.apply_error_total}}个</em>。</div>
+
+                    </div>
+                </div>
+                <div class="area-list">
+                    <span class="area-list-title">其中子类项目数量统计情况</span>
+                    <div ng-repeat="childProject in purchaseDeclare.numbers.childProjectCount" >{{childProject.categoryName}}共填报<em class="blue_color" ng-click="purchaseDeclare.declareDialog(null,childProject.category)">{{childProject.count}}个</em>；</div>
+                </div>
+            </div>
+        </div>
+        <div class="declare-btn">
+            <button class="btn_bg" onclick="history.go(-1);" >返回</button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,31 @@
+<section class="row border-color">
+    <blockquote class="border-color">园区教室管理</blockquote>
+    <div class="garden-select">
+        <select class="form-control select-control" ng-change="toggleGarden()" ng-model="gardenId" ng-options="garden.id as garden.name for garden in gardens">
+        </select>
+    </div>
+</section>
+<section class="row" style="margin:20px -15px;">
+    <div class="content-box">
+        <div class="action-box">
+            <input type="text" class="form-control fl search" ng-keyup="getList()" ng-model="keywords" placeholder="关键字查询">
+            <button class="btn tpk-btn fr" ng-click="add()"> + 添加</button>
+        </div>
+        <div class="list auto-scroll" id="scollHeight">
+            <ul>
+                <li ng-repeat="data in classRoomList">
+                    <div class="fl" style="width:60%">
+                            
+                        {{data.action === 'list' ? data.name : ''}}
+                        <input type="text" ng-show="data.action !== 'list'" class="form-control" 
+                        ng-model="data.name"    ng-class="{'err':inputErr,'addInput':data.action=='add'}" ng-blur="inputBlur(data)" maxlength="20"/>
+                    </div>
+                    <div class="tpk-icon-border fr" ng-if="data.action === 'list'">
+                        <i class="tpk-ico tpk-edit" ng-click="goEdit(data)"></i>
+                        <i class="tpk-ico tpk-delete" ng-click="delete(data.id,data.macAddress)"></i>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</section>

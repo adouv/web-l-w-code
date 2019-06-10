@@ -1,0 +1,185 @@
+<div class="classroom-unicast">
+    <header class="header-breadcrumb">
+        <nz-breadcrumb [nzSeparator]="'>'">
+            <nz-breadcrumb-item>
+                <a routerLink="/video/index">评</a>
+            </nz-breadcrumb-item>
+            <nz-breadcrumb-item>
+                评课活动列表
+            </nz-breadcrumb-item>
+        </nz-breadcrumb>
+    </header>
+    <div class="header-buttom">
+        <button *permission="'commentTemplate:list|commentTemplate:create|commentTemplate:update|commentTemplate:delete'" class="scale-btn" (click)="goInvitationScale()" nz-button [nzType]="'primary'" nzGhost>
+			<span>量表管理</span>
+		</button>
+        <button nz-button [nzType]="'primary'" (click)="goInvitationAdd()">
+			<span>新建活动</span>
+		</button>
+    </div>
+    <div class="line"></div>
+
+    <nz-tabset flex-box="0" (nzSelectedIndexChange)="changeClass($event)" *ngIf="!promise && selectIndex==0" class="personAssign">
+        <nz-tab>
+            <ng-template #nzTabHeading>
+                个人任务
+            </ng-template>
+            <div class="unicast-list" flex="dir:top">
+                <div flex-box="0">
+                    <div class="header" flex-box="0">
+                        <span (click)="checkType(0)" class="span-btn" [ngClass]="{'active':index==0}">我收到的评课</span>
+                        <span (click)="checkType(1)" class="span-btn" [ngClass]="{'active':index==1}">评价我的课</span>
+                        <span (click)="checkType(2)" class="span-btn" [ngClass]="{'active':index==2}">我发起的评课</span>
+                    </div>
+                    <div class="selectGroup" flex-box="1">
+                        <ul>
+                            <li>筛选：</li>
+                            <li>
+                                <div *ngFor="let item of statusList;let i=index">
+                                    <label nz-checkbox [(ngModel)]="item.check" (ngModelChange)="statusCheck($event,i,item);">
+										<span>{{item.text}}</span>
+									</label>
+                                </div>
+                            </li>
+                            <li>
+                                <div *ngFor="let item of stagesList;let i=index">
+                                    <label nz-checkbox [(ngModel)]="item.check" (ngModelChange)="stagesCheck($event,i,item);">
+										<span>{{item.text}}</span>
+										
+										<!-- <i class="fa fa-circle" style="margin-right:10px;" [ngClass]="{'lv': item.id == 1,'huang':item.id == 0,'hui':item.id == 2 }"></i> -->
+									
+									</label>
+                                </div>
+                            </li>
+                            <li>
+                                <div *ngFor="let item of typesList;let i=index">
+                                    <label nz-checkbox [(ngModel)]="item.check" (ngModelChange)="typesCheck($event,i,item);">
+										<span>{{item.text}}</span>
+									</label>
+                                </div>
+                            </li>
+                        </ul>
+                        <div>
+                            <input-search [tpkPlaceholder]="'关键字查询'" [(tpkModel)]="keyword" class="input-search" (onSearch)="onSearch($event)"></input-search>
+                        </div>
+                    </div>
+                </div>
+                <div flex="main:center cross:center" *ngIf="activityList.length==0">
+                    <elliptical-page *ngIf="isloadComplete&&activityList.length==0" imgName="no-invitation.png" title="暂无评课活动"></elliptical-page>
+                    <div *ngIf="!isloadComplete" class="loading" flex="main:center cross:center">
+                        <nz-spin [nzSize]="'large'"></nz-spin>
+                    </div>
+                </div>
+                <div class="unicast-list-content" flex="dir:top" *ngIf="activityList.length > 0">
+                    <div (scroll)="handleScroll($event)" flex-box="1" class="unicast-list-scroll auto-scroll">
+                        <div #outBox table-center [ngStyle]="{'overflow': 'hidden'}">
+                            <video-card-one style="float: left;" *ngFor="let video of activityList" [typeIndex]="index" [video]="video"></video-card-one>
+                            <div *ngIf="!isScroll" class="isScroll" flex="main:center cross:center">
+                                <nz-spin [nzSize]="'large'"></nz-spin>
+                            </div>
+                        </div>
+                        <div class="clear"></div>
+
+
+                        <!-- <p class="click-show-more" [ngClass]="{'pointer':rank.total > rank.page.size}" (click)="loadMore($event)">
+							{{rank.total > rank.page.size?'点击加载更多':'已加载全部'}}
+						</p> -->
+
+                    </div>
+                </div>
+
+                <!-- <div class="clear paginaction" *ngIf="unicastList.length>0">
+							<nz-pagination (nzPageIndexClickChange)="changePage($event)" [nzPageIndex]="pageIndex" [nzPageSize]="pageSize" [nzTotal]="totalCount"></nz-pagination>
+						</div> -->
+
+            </div>
+        </nz-tab>
+    </nz-tabset>
+
+
+
+
+
+
+
+
+    <nz-tabset [nzSelectedIndex]="selectIndex" flex-box="0" (nzSelectedIndexChange)="changeClass($event)" *ngIf="promise">
+        <nz-tab>
+            <ng-template #nzTabHeading>
+                个人任务
+            </ng-template>
+            <div class="unicast-list" flex="dir:top">
+                <div flex-box="0">
+                    <div class="header" flex-box="0">
+                        <span (click)="checkType(0)" class="span-btn" [ngClass]="{'active':index==0}">我收到的评课</span>
+                        <span (click)="checkType(1)" class="span-btn" [ngClass]="{'active':index==1}">评价我的课</span>
+                        <span (click)="checkType(2)" class="span-btn" [ngClass]="{'active':index==2}">我发起的评课</span>
+                    </div>
+                    <div class="selectGroup" flex-box="1">
+                        <ul>
+                            <li>筛选：</li>
+                            <li>
+                                <div *ngFor="let item of statusList;let i=index">
+                                    <label nz-checkbox [(ngModel)]="item.check" (ngModelChange)="statusCheck($event,i,item);">
+										<span>{{item.text}}</span>
+									</label>
+                                </div>
+                            </li>
+                            <li>
+                                <div *ngFor="let item of stagesList;let i=index">
+                                    <label nz-checkbox [(ngModel)]="item.check" (ngModelChange)="stagesCheck($event,i,item);">
+										<span>{{item.text}}</span>
+										<!-- <i class="fa fa-circle" style="margin-right:10px;" [ngClass]="{'lv': item.id == 1,'huang':item.id == 0,'hui':item.id == 2 }"></i> -->
+									</label>
+                                </div>
+                            </li>
+                            <li>
+                                <div *ngFor="let item of typesList;let i=index">
+                                    <label nz-checkbox [(ngModel)]="item.check" (ngModelChange)="typesCheck($event,i,item);">
+										<span>{{item.text}}</span>
+									</label>
+                                </div>
+                            </li>
+                        </ul>
+                        <div>
+                            <input-search [tpkPlaceholder]="'关键字查询'" [(tpkModel)]="keyword" class="input-search" (onSearch)="onSearch($event)"></input-search>
+                        </div>
+                    </div>
+                </div>
+                <div flex="main:center cross:center" *ngIf="activityList.length==0">
+                    <elliptical-page *ngIf="isloadComplete&&activityList.length==0" imgName="no-invitation.png" title="暂无评课活动"></elliptical-page>
+                    <div *ngIf="!isloadComplete" class="loading" flex="main:center cross:center">
+                        <nz-spin [nzSize]="'large'"></nz-spin>
+                    </div>
+                </div>
+                <div class="unicast-list-content" flex="dir:top" *ngIf="activityList.length > 0">
+                    <div flex-box="1" (scroll)="handleScroll($event)" class="unicast-list-scroll auto-scroll">
+                        <div #inBox table-center [ngStyle]="{'overflow': 'hidden'}">
+                            <video-card-one style="float: left;" *ngFor="let video of activityList" [typeIndex]="index" (click)="routerGo(video)" [video]="video"></video-card-one>
+                            <div *ngIf="!isScroll" class="isScroll" flex="main:center cross:center">
+                                <nz-spin [nzSize]="'large'"></nz-spin>
+                            </div>
+                        </div>
+                        <div class="clear"></div>
+                        <!-- <p class="click-show-more" [ngClass]="{'pointer':rank.total > rank.page.size}" (click)="loadMore($event)">
+							{{rank.total > rank.page.size?'点击加载更多':'已加载全部'}}
+						</p> -->
+                    </div>
+                </div>
+                <!-- <div class="clear paginaction" *ngIf="unicastList.length>0">
+						<nz-pagination (nzPageIndexClickChange)="changePage($event)" [nzPageIndex]="pageIndex" [nzPageSize]="pageSize" [nzTotal]="totalCount"></nz-pagination>
+					</div> -->
+
+            </div>
+        </nz-tab>
+        <nz-tab>
+            <ng-template #nzTabHeading>全校任务</ng-template>
+            <video-task [selectIndex]="selectIndex"></video-task>
+        </nz-tab>
+    </nz-tabset>
+
+
+</div>
+<div class="footer">
+    <button nz-button [nzType]="'primary'" (click)="goVideoBack()" nzGhost>返回</button>
+</div>

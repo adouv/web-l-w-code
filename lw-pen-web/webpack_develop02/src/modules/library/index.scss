@@ -1,0 +1,254 @@
+@import "../../assets/scss/index.scss";
+
+.exercise-library {
+	-webkit-app-region: no-drag;
+  position: absolute;
+  left: 0;
+  z-index: 9;
+  background: #fff;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+  height: 100%;
+}
+.lw-tpk-pc{
+	height: calc(100% - #{computer(10px)});
+}
+.spin-loading-div{
+	text-align: center;
+	margin-top: computer(40px);
+}
+.exercise-wrapper {
+	height: 100%;
+	display: flex;
+}
+
+.exercise-library-box {
+	flex: 1;
+  height: calc(100% - #{computer(50px)});
+  padding: 0 computer(20px);
+}
+
+.exercise-header {
+	font-size: computer(16px);
+	line-height: computer(36px);
+	text-align: center;
+  color: $color_font-deep;
+  padding-top: computer(20px);
+}
+
+:host {
+	padding: 0 computer(20px);
+}
+
+.tree-container {
+	width: computer(380px);
+	min-width: computer(380px);
+	overflow: hidden;
+	height: 100%;
+}
+
+.tree-left-container {
+  width: 20%;
+  min-width: computer(380px);
+  float: left;
+  height: 100%;
+}
+
+.exercise-list {
+	width: calc(100% - #{computer(380px)});
+	height: calc(100% - #{computer(20px)});
+}
+
+.exercise-library {
+	.a-tabs{
+		height: calc(100% - #{computer(90px)}) !important;
+		.ant-tabs-content{
+			height:calc(100% - #{computer(20px)});
+		}
+	}
+	.ant-tabs-nav-container {
+		height: computer(50px);
+	}
+	.ant-tabs-nav-wrap .ant-tabs-nav-scroll .ant-tabs-nav .ant-tabs-tab {
+		font-size: computer(16px);
+		padding: computer(13px) computer(20px);
+	}
+	.ant-tree-title {
+		font-size: computer(14px);
+	}
+	.angular-tree-component > tree-node-collection > .ng-star-inserted > tree-node > .ant-tree-node {
+		border: solid 1px #eeeeee;
+  }
+  .ant-tabs-bar .ant-tabs-tab{
+    font-weight:bold;
+  }
+	.ant-tree {
+		span.ant-tree-switcher {
+			&.ant-tree-switcher_open:after {
+				font-family: 'iconfont';
+				content: "\E61F" !important;
+			}
+			&.ant-tree-switcher_close:after {
+				font-family: 'iconfont';
+				content: "\E61F" !important;
+			}
+		}
+	}
+	.ant-radio-wrapper {
+		font-size: computer(14px) !important;
+		color: #333;
+		display: inline-flex;
+		align-items: center;
+		margin-left: computer(20px);
+
+	}
+	nz-input {
+		margin-right: computer(10px);
+	}
+	nz-input.ant-input-affix-wrapper {
+		width: computer(240px);
+		margin-right: computer(15px);
+		input.ant-input {
+			height: computer(30px);
+			border: solid 1px #eeeeee
+		}
+	}
+	.ant-checkbox-wrapper {
+		width: 100%;
+	}
+	.ant-checkbox + .ell-box {
+		width: 100% !important;
+	}
+	.checked-box .ant-checkbox, .check-box .ant-checkbox-inner {
+		opacity: 0;
+		width: 0;
+		float: left;
+	}
+	.ant-checkbox-disabled + span {
+		color: #000;
+		cursor: not-allowed;
+	}
+	.ant-collapse-item {
+		width: computer(380px);
+		min-width: computer(380px);
+	}
+	.dynamic-html p {
+		color: $color_font-deep !important;
+		text-indent: initial !important;
+		word-break: break-all;
+		span, u > span {
+			word-break: break-word;
+		}
+	}
+}
+
+.tree-header {
+	.a-select {
+		width: computer(120px);
+		margin-left: computer(1px);
+		margin-right: computer(2px);
+		margin-bottom: computer(20px);
+  }
+  .n-radius > div{
+    border-radius: computer(30px);
+  }
+  .ant-select.bg0gray > div{
+    border-color: #eeeeee;
+    background-color: #eeeeee;
+  }
+  .ant-select.radius > div .ng-star-inserted{
+    margin:0;
+  }
+}
+
+
+.gray {
+	color: #999;
+}
+.ant-layout-footer{
+	background: #fff;
+	padding: none;
+}
+.footer {
+	height: computer(50px);
+  background-color: #fff;
+  z-index: 999;
+  .lw-tpk-pc {
+    text-align: center;
+		line-height: 50px;
+		height: 50px;
+		border-top:1px solid #eeeeee;
+		width: 100%;
+    button {
+      margin: 0 computer(10px);
+    }
+  }
+}
+
+.exercise-right-btn {
+	position: absolute;
+	right: 20px;
+  	height: 50px;
+  	line-height: 50px;
+	z-index: 999;
+	.selected-topic {
+		font-size: 14px;
+		color: #ff8863;
+	}
+}
+.ant-layout-footer{
+  padding: 0;
+}
+
+.scroll-box{
+	height:calc(100% - 80px)
+}
+
+.knowledge-box {
+	height: 100%;
+}
+
+.collaspe-box {
+	height: calc(100% - #{computer(100px)});
+	overflow: hidden;
+}
+
+.collaspe-scroll {
+	width: calc(100% + 17px);
+	overflow-x: hidden;
+	height: 100%;
+}
+
+.tree-header {
+	.a-select {
+		width: computer(120px);
+		margin-left: computer(1px);
+		margin-right: computer(2px);
+		margin-bottom: computer(20px);
+	}
+}
+
+.check-model {
+	margin-bottom: computer(20px);
+	.check-box {
+		width: computer(120px);
+		height: computer(30px);
+		background-color: #00a0e9;
+		border-radius: 15px;
+		display: inline-block;
+		font-size: computer(14px);
+		text-align: center;
+		color: #fff;
+		line-height: computer(30px);
+		&:hover {
+			opacity: 0.5;
+		}
+	}
+	span {
+		margin-left: computer(10px);
+		display: inline-block;
+		line-height: computer(30px);
+		font-size: computer(14px);
+	}
+}

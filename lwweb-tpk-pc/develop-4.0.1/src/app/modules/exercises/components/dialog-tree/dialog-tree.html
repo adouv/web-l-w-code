@@ -1,0 +1,36 @@
+<div class="lw-tpk-tree">
+	<div *ngFor="let t of data">
+		<div *ngIf="t.children!=null&&t.children.length>0">
+			<div class="tree-title margin-bottom-10">
+				<label class="label-checkbox margin-right-10"
+					   [nzDisabled]="checkAry.length>=maxLength&&!t.isSelect" nz-checkbox
+					   [(ngModel)]="!!t.isSelect"
+					   (ngModelChange)="checkedAllChange($event, t)">
+				</label>
+				<span (click)="childClick(t)" class="tree-title-icon margin-right-10">
+					<i class="iconfont" [ngClass]="{'icon-sanjiaoyou':!t.isOpen,'icon-sanjiaoxia':t.isOpen}"></i>
+				</span>
+				<span (click)="childisOpenChange($event, t, true)"
+					  [ngClass]="{'btn-disabled':checkAry.length>=maxLength&&!t.isSelect}">
+					<span>{{t.name}}</span>
+				</span>
+			</div>
+			<div class="tree-childs" [hidden]="!t.isOpen" *ngIf="t.children!=null&&t.children.length>0">
+				<div *ngFor="let child of t.children">
+					<tpk-tree [data]="[child]" [checkAry]="checkAry"
+							  (checkClick)="checkClick.emit($event)" [openStatus]="openStatus" [openList]="openList"></tpk-tree>
+				</div>
+			</div>
+		</div>
+		<div *ngIf="t.children==null||t.children.length==''">
+			<div class="tree-child margin-bottom-10">
+				<label class="label-checkbox margin-right-10" [nzDisabled]="checkAry.length>=maxLength&&!t.isSelect"
+					   nz-checkbox [(ngModel)]="!!t.isSelect"
+					   (ngModelChange)="checkedAllChange($event, t)">
+				</label>
+				<span [ngClass]="{'btn-disabled':checkAry.length>=maxLength&&!t.isSelect}"
+					  (click)="childisOpenChange($event, t, false)">{{t.name}}</span>
+			</div>
+		</div>
+	</div>
+</div>

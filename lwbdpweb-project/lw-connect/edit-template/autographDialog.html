@@ -1,0 +1,30 @@
+<div class="edit_user autograph-dialog" ng-if="isShow">
+    <div class="header_box_top">
+        <div class="statusBtns">
+            <span ng-click="closeDialog()">
+                <i class="clientIconfont icon-client_close"></i>
+            </span>
+            <span>
+                <i class="clientIconfont second"></i>
+            </span>
+            <span>
+                <i class="clientIconfont third"></i>
+            </span>
+        </div>
+    </div>
+    <h2 class="autograph-dialog-title">{{dialogContent.title}}</h2>
+    <div class="autograph-dialog-text">
+        <p ng-repeat="data in dialogContent.text">
+            {{data}}
+        </p>
+    </div>
+    <div>
+        <label>
+            <input type="checkbox" class="checkbox_class" ng-model="isCheck">同意以上《用户须知》
+        </label>
+    </div>
+    <div class="btn_box">
+        <span class="btn_white" ng-click="closeDialog()">取消</span>
+        <span class="btn_blue" ng-click="isCheck && confirmHandle()" ng-class='{disable:!isCheck}'>确定</span>
+    </div>
+</div>

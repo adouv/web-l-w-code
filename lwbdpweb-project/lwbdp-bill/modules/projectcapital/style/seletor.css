@@ -1,0 +1,85 @@
+.capnumInput .modal-header{
+    padding: 0;
+}
+.capnumInput .modal-title{
+    text-align: center;
+    height: 40px;
+    line-height: 40px;
+    font-size: 16px;
+    padding: 0 ;
+}
+.capnumInput .shownum{
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+.capnumInput .money{
+    padding: 20px 0;
+}
+.capnumInput .money .green{
+    color:#00bb8b ;
+}
+.capnumInput .numchoose{
+    font-weight: normal;
+}
+.capnumInput .numchoose span{
+    font-size: 16px;
+    width: 50%;
+    display: inline-block;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+.capnumInput .numchoose input{
+    width: 50%;
+    display: inline-block;
+    border-radius: 0;
+    border: 1px solid #dbe3ee;
+    margin-right: 10px;
+}
+.capnumInput .numchoose em{color: #ff272e}
+.capnumInput .setbtn{
+    display: inline-block;
+    padding: 6px 27px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    user-select: none;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    font-family: "Microsoft YaHei", "Simsun", "arial", "sans-serif";
+
+}
+.capnumInput .modal-footer{
+    position: absolute;
+    width: 100%;
+    bottom: 20px;
+    text-align: center;
+    border: none;
+}
+.capnumInput .setbtn:hover {
+    border-style: solid;
+    border-width: 1px;
+    border-color: #0096ff;
+    border-radius: 3px;
+    box-shadow: 0 2px 4px 0 #0096ff;
+}
+.capnumInput .setbtn:focus{
+    background-color: transparent;
+}
+.capnumInput .cancelBtn{
+    color: #0096ff;
+    background-color: #fff;
+    border-color: #0096ff;
+}
+.capnumInput .sureBtn{
+    color: #fff;
+    background-color: #0096ff;
+    border-color: #0096ff;
+    margin-left: 20px;
+}

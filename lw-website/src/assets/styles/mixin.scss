@@ -1,0 +1,17 @@
+@mixin clearfix {
+    &:after {
+        clear: both;
+        content: '.';
+        display: block;
+        height: 0;
+        line-height: 0;
+        overflow: hidden;
+    }
+    *height: 1%;
+}
+
+@mixin ell() {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}

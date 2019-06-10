@@ -1,0 +1,25 @@
+<div *ngIf="persons.length > 0" style="height: 100%">
+	<unfinished-evaluation [persons]="persons" [activeAccountId]="accountId" [canClick]="'true'"
+						   (change)="onChange($event)"></unfinished-evaluation>
+	<div class="header-wrapper">
+		<ul>
+			<li [ngClass]="{'active':tabType===0}" (click)="tabType=0">客观评价</li>
+			<li [ngClass]="{'active':tabType===1}" (click)="tabType=1">主观评价</li>
+			<li [ngClass]="{'active':tabType===2}" (click)="tabType=2">{{type?'诊断结果':'改进建议'}}</li>
+		</ul>
+	</div>
+	<div class="auto-scroll chart-scroll-box">
+		<div [hidden]="tabType!==0">
+			<objective-evaluation *ngIf="accountId" [data]="data" [account]="accountId"></objective-evaluation>
+		</div>
+		<div class="subjective" [hidden]="tabType!==1">
+			<subjective-evaluation *ngIf="accountId" [data]="data" [account]="accountId"
+								   [banReply]="true"></subjective-evaluation>
+		</div>
+		<div [hidden]="tabType!==2" class="result-box">
+			<evaluation-results *ngIf="accountId" [data]="data" [account]="accountId"></evaluation-results>
+		</div>
+	</div>
+</div>
+
+<div class="no-result" *ngIf="!persons || persons.length < 1">暂无老师完成教学评价</div>

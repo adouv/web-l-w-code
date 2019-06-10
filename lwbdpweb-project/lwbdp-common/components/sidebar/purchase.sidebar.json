@@ -1,0 +1,47 @@
+[
+  {
+    "id":"all-5",
+    "name":"全部项目",
+    "url":"/purchase/all",
+    "icon":"",
+    "hasPage":true,
+    "pId":"0",
+    "permission":"purchase:processConfig:all"
+  },
+  {
+    "id":"setting-5",
+    "name":"基础设置",
+    "url":"",
+    "icon":"",
+    "hasPage":false,
+    "pId":"0",
+    "permission":"purchase:basicSetting:dictionary || purchase:basicSetting:process || purchase:basicSetting:minLifecycle"
+  },
+  {
+    "id":"setting-18",
+    "name":"模块字典",
+    "url":"/purchase/settings/dictionary",
+    "icon":"&#xe623;",
+    "hasPage":true,
+    "pId":"setting-5",
+    "permission":"purchase:basicSetting:dictionary"
+  },
+  {
+    "id":"setting-19",
+    "name":"审批流程",
+    "url":"/purchase/settings/process",
+    "icon":"&#xe624;",
+    "hasPage":true,
+    "pId":"setting-5",
+    "permission":"purchase:basicSetting:process"
+  },
+  {
+    "id":"setting-21",
+    "name":"最低年限",
+    "url":"/purchase/settings/time",
+    "icon":"&#xe625;",
+    "hasPage":true,
+    "pId":"setting-5",
+    "permission":"purchase:basicSetting:minLifecycle"
+  }
+]

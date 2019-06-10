@@ -1,0 +1,47 @@
+<div class="lw-note-list">
+  <div class="note-result">
+    <a-layout>
+      <a-layout-content>
+        <div class="student-list" id="list">
+          <div class="inner-box" id="inner-box-a" v-for="(item,index) in studentList" :key="index">
+            <div class="bg"></div>
+            <div class="content">
+              <div class="name">{{item.name}}{{item.noteCount}}</div>
+              <div class="content-text">
+                <div class="note-box" :id="`inner-box-b${item.number}`">
+                  <lw-note-draw ref="lwNote" :penId="item.number" :questionId="questionId" :exerciseRecordId="exerciseRecordId"></lw-note-draw>
+                </div>
+                <!-- <div class="inner-control">
+                    <i class="icon iconfont icon-pc-amplification" @click="btnMax(index)"></i>
+                    <i class="icon iconfont icon-pc-shrink" @click="btnMin(index)"></i>
+                  </div> -->
+              </div>
+            </div>
+            <div style="clear:both;"></div>
+          </div>
+        </div>
+      </a-layout-content>
+      <a-layout-footer>
+        <div class="footer" flex="main:center cross:center">
+          <div class="lw-tpk-pc nodrag-area titleBtn">
+            <a-button type="danger" class="mar-r-20px">显示题干</a-button>
+          </div>
+          <div class="bottom-ul nodrag-area">
+            <ul flex="dir:left box:justify;main:center">
+              <li class="mar-r-20px">{{params.pageSize}}/{{studentList.xRecordCount}}</li>
+              <li :class="{disabled:params.offset===1}" @click="btnPrev" flex="main:center cross:center" class="marg-r-35px">
+                <i class="iconfont icon-pc-last"></i>上一屏
+              </li>
+              <li @click="btnNext" flex="main:center cross:center">
+                <i class="iconfont icon-pc-next"></i>下一屏
+              </li>
+            </ul>
+          </div>
+          <div class="lw-tpk-pc footer-right nodrag-area">
+            <a-button type="default" @click="closeBtn" class="close">关闭</a-button>
+          </div>
+        </div>
+      </a-layout-footer>
+    </a-layout>
+  </div>
+</div>

@@ -1,0 +1,44 @@
+<div class="addApproval">
+    <!--面包屑导航-->
+    <div class="crumbs">
+        <a href="JavaScript:void(0)" class="crumbs_tit" ng-click="lookApprovalProcess.goJump(crumb.url)" ng-repeat="crumb in lookApprovalProcess.crumbList">{{crumb.name}} &gt;</a>
+        <span>查看审批流程配置</span>
+    </div>
+    <div class="addApproval_form">
+        <div class="form_info_p">
+            <span class="lf_name">审批流程名称：</span>
+            <span class="rg_con"> {{lookApprovalProcess.workflowConfig.name}}</span>
+        </div>
+        <div class="form_info_p">
+            <span class="lf_name">对应的侧边栏显示名称：</span>
+            <span class="rg_con"> {{lookApprovalProcess.workflowConfig.alias}}</span>
+        </div>
+        <div class="form_info_p">
+            <span class="lf_name">系统工作流：</span>
+            <span class="rg_con"> <em>{{lookApprovalProcess.workflowConfig.processDefinitionName}}</em></span>
+        </div>
+        <div class="form_info">
+            <div class="lf_name">使用对象：</div>
+            <div class="rg_con" style="min-width:990px;">
+                <span class="cola2a marl10" style="margin-top:7px;color: #000!important;">总计{{lookApprovalProcess.showGardens.length}}个</span>
+                <span class="btn_bd fr" ng-click="lookApprovalProcess.filterGarden()">查询</span>
+                <input type="text" class="input_class fr" ng-model="lookApprovalProcess.keyWord" placeholder="回车键提交查询"  />
+                <div class="clear"></div>
+                <div class="approval_dataList overflow_box" ng-show="lookApprovalProcess.showGardens.length>0">
+                    <i class="flow_name" ng-repeat="item in lookApprovalProcess.showGardens"> 
+                        <em class="flow_align">{{item.gardenName}}</em>
+                    </i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 流程图 -->
+    <div class="flow_chart">
+        <p class="flowChart_title">流程节点参与用户配置：
+        </p>
+        <approval-flowchart ng-if="lookApprovalProcess.flowChartColorData" flow-chart-click="lookApprovalProcess.clickFlowNode($flowNode)" flow-chart-data="lookApprovalProcess.flowChartColorData" flow-chart-hover="true"></approval-flowchart>
+    </div>
+    <div class="btn_box">
+        <span class="btn_bg" ng-click="lookApprovalProcess.clickHandle()">返回</span>
+    </div>
+</div>

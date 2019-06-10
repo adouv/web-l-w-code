@@ -1,0 +1,197 @@
+@import "../../../../../styles/variable";
+@import "../../../../../styles/common.scss";
+:host {
+    width: 100%;
+}
+
+.classroom-unicast::ng-deep {
+    position: relative;
+    height: 100%;
+    overflow-x: hidden;
+    .ant-tabs-bar {
+        margin-bottom: 16px !important;
+    }
+    .ant-tabs-nav-scroll {
+        text-align: center;
+    }
+    .tabPromise {
+        .ant-tabs-nav-container {
+            display: none;
+        }
+    }
+    i.fa {
+        font-size: 12px;
+        &.lv {
+            color: #28ca8f;
+        }
+        &.huang {
+            color: #febd60;
+        }
+        &.hui {
+            color: #999999;
+        }
+    }
+    .header-breadcrumb {
+        position: absolute;
+        top: computer(7px);
+        left: computer(20px);
+        z-index: 200;
+    }
+    .header-buttom {
+        position: absolute;
+        top: computer(8px);
+        right: 0;
+        z-index: 200;
+        >button {
+            margin-right: 10px;
+        }
+    }
+    .line {
+        width: calc(100% - #{computer(40px)});
+        border-bottom: 1px solid #eee;
+        position: absolute;
+        top: computer(50px);
+        left: computer(20px);
+    }
+    .ant-tabs-bar {
+        width: 70%;
+        margin: 0 auto;
+        border-bottom: none;
+    }
+    .loading {
+        margin-top: computer(80px);
+    }
+    .unicast-list {
+        display: inline-block;
+        width: 100%;
+        height: calc(100% - #{computer(15px)});
+        box-sizing: border-box;
+        >div {
+            margin-top: computer(5px);
+            .header {
+                width: computer(1326px);
+                height: computer(30px);
+                line-height: computer(30px);
+                font-weight: bold;
+                margin: 0 auto;
+                .span-btn {
+                    margin-right: computer(20px);
+                    font-size: computer(16px);
+                    color: #666;
+                    cursor: pointer;
+                    &.active {
+                        color: $color_main;
+                    }
+                }
+            }
+            .selectGroup {
+                width: computer(1326px);
+                margin: computer(10px) auto auto auto;
+                height: computer(20px);
+                line-height: computer(20px);
+                >ul,
+                >div {
+                    height: computer(20px);
+                    line-height: computer(20px);
+                }
+                >ul {
+                    display: flex;
+                    float: left;
+                    li {
+                        display: flex;
+                        font-size: computer(14px);
+                        border-right: 1px solid #ddd;
+                        margin-right: computer(20px);
+                        padding-right: computer(13px);
+                        div {
+                            label {
+                                >span {
+                                    padding: 0 0 0 computer(5px) !important;
+                                    font-size: computer(14px);
+                                    color: #333;
+                                }
+                                span:last-child {
+                                    margin-right: computer(20px);
+                                }
+                            }
+                            i {
+                                margin-left: computer(5px);
+                            }
+                        }
+                    }
+                    li:first-child {
+                        color: #999;
+                        margin: 0;
+                        padding: 0;
+                    }
+                    li:first-child,
+                    li:last-child {
+                        border: none;
+                    }
+                }
+                >div {
+                    float: right;
+                }
+            }
+            .selectGroup:after {
+                clear: both;
+                content: " ";
+            }
+        }
+        .unicast-list-content {
+            height: calc(100% - #{computer(60px)});
+            text-align: center;
+            padding: computer(20px) 0 0;
+            .unicast-list-scroll {
+                .unicast-list-scroll-item {
+                    width: computer(1326px);
+                    margin: 0 auto;
+                    display: flex !important;
+                    flex-direction: row !important;
+                    flex-wrap: wrap !important;
+                }
+            }
+            .isScroll {
+                width: 100%;
+                height: computer(50px);
+                margin-top: -22px;
+            }
+        }
+        .clear {
+            clear: both;
+        }
+        .paginaction {
+            padding: computer(20px) 0;
+            width: 100%;
+            text-align: center;
+        }
+    }
+    .click-show-more {
+        font-size: computer(15px);
+        color: #999;
+    }
+    .ant-tabs-content {
+        margin-bottom: computer(50px);
+    }
+    .personAssign {
+        .ant-tabs-nav-container {
+            visibility: hidden;
+            .ant-tabs-ink-bar {
+                background: #eeeeee !important;
+                bottom: -2px;
+            }
+        }
+    }
+}
+
+.footer {
+    width: calc(100% - #{computer(40px)});
+    border-top: 1px solid $color_border;
+    position: absolute;
+    background-color: #fff;
+    bottom: 0;
+    height: computer(50px);
+    line-height: computer(50px);
+    text-align: center;
+    margin: 0 computer(20px) 0 computer(20px);
+}

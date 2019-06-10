@@ -1,0 +1,9 @@
+<div class="garden-district">
+    <div *ngFor="let sd of selectData" class="region-group">
+        <div title="{{sd.gardenTypeName}}" class="title">{{sd.gardenTypeName}}</div>
+        <div title="{{sl.name}}" (click)="selectGarden(sl)" [ngClass]="{'garden-active':selectGardenData?.id==sl?.id}" *ngFor="let sl of sd.list" class="region-content">{{sl.name}}</div>
+    </div>
+    <div *ngIf="selectData.length==0" class="no-result" flex="main:center cross:center">
+        <span class="no-result-msg">暂无对应园区，请重新查询</span>
+    </div>
+</div>

@@ -1,0 +1,55 @@
+@import "../../../styles/variable";
+@import "../../../styles/mixin";
+
+.image-text {
+
+}
+
+.list-li {
+	width: px2rem(920px);
+	height: px2rem(240px);
+	border-bottom: 1px solid #ddd;
+	transition: all 100ms;
+	.img-box{
+		min-width: px2rem(240px);
+		max-width: px2rem(240px);
+		height: 180px;
+		overflow: hidden;
+	}
+	img {
+		width: 100%;
+		height: 100%;
+		transition: all 1s;
+	}
+	.info {
+		margin-left: px2rem(44px);
+		.name {
+			font-size: px2rem(24px);
+			color: #333;
+		}
+		.content {
+			@include block-ell(2);
+			font-size: px2rem(16px);
+			margin: px2rem(16px) 0 px2rem(36px);
+			color: #666;
+			max-height: px2rem(46px);
+			word-break: break-all;
+		}
+		.date {
+			font-size: px2rem(14px);
+			color: #999;
+		}
+	}
+	&:hover {
+		cursor: pointer;
+		img {
+			transform: scale(1.2);
+		}
+		.info .name {
+			color: #ffa500 ;
+		}
+	}
+}
+
+
+

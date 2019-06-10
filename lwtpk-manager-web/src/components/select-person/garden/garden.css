@@ -1,0 +1,10 @@
+.lw-select-person #selectPersonTree::-webkit-scrollbar-track {border-radius: 2px;background-color: #ffffff;}
+.lw-select-person #selectPersonTree::-webkit-scrollbar {width: 8px;height: 8px;background-color: #ffffff;}
+.lw-select-person #selectPersonTree::-webkit-scrollbar-thumb {border-radius: 2px;background-color: rgba(0, 0, 0, 0.2);}
+.lw-select-person .ztree li span.button.switch {  font-family: "iconfont" !important;  font-size: 12px;  font-style: normal;  -webkit-font-smoothing: antialiased;  -moz-osx-font-smoothing: grayscale;  background: none;  vertical-align: baseline;  width: 12px;  height: 12px;  margin-right: 5px;  }
+.lw-select-person .ztree li span.button.noline_close:before {  content: "\e822";  }
+.lw-select-person .ztree li span.button.noline_open:before {  content: "\e821";  }
+.lw-select-person .ztree li a:hover{text-decoration: none}
+.lw-select-person .ztree li{line-height: 30px}
+.lw-select-person .garden-check{display: none}
+.lw-select-person .garden-check:checked + span{color:#00ba8b;}

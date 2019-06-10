@@ -1,0 +1,51 @@
+<div class="question-item-box">
+    <label nz-checkbox *ngIf="designStatus === 0&&isShowRemove" [(ngModel)]="item.checked" (ngModelChange)="checkedExercise(item,$event)"></label>
+    <div class="question-item-content-box">
+        <div class="title-box">
+            <span>{{index+1}}. </span>
+            <div class="inner-box" [dynamicHtml]="item?.exercise?.content?.contentHtml"></div>
+        </div>
+        <div class="detail-box">
+            <div class="question-type-box">
+                <span class="pointer" *ngIf="designStatus === 0 && isShowRemove" (click)="setDesignCode(true,item)">设置题目设计类型</span>
+                <span class="tag" *ngIf="designStatus === 1 && item?.design" [ngStyle]="{'border':'1px solid ' + item?.design?.fontTone,
+                        'color':item?.design?.fontTone, 'background':item?.design?.backgroundTone}">
+                    {{item?.design?.name}}
+                </span>
+            </div>
+            <div class="buttons-group">
+                <div class="button-group" *ngIf="isShowRemove">
+                    <i class="iconfont icon-del"></i>
+                    <span (click)="delExercise(item.exerciseId)">移出课堂</span>
+                </div>
+                <div class="button-group" (click)="showAnswer(item?.exercise?.content)">
+                    <i class="iconfont icon-answer"></i>
+                    <span>答案</span>
+                </div>
+            </div>
+        </div>
+        <div class="answer-box" *ngIf="item?.exercise?.content?.showAnswer">
+            <div>
+                <div class="font-bold">[ 正确答案 ]</div>
+                <div class="dmy-wrapper" [dynamicHtml]="item?.exercise.content?.answer"></div>
+            </div>
+            <div class="mar-top-30px">
+                <div class="font-bold">[ 答案解析 ]</div>
+                <div class="dmy-wrapper" [dynamicHtml]="item?.exercise.content?.analysis"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ng-template #designCodeTep>
+    <div class="designCodeTep-content">
+        题目所属设计类型：
+        <nz-select [(ngModel)]="questionDesignCode" style="width: 120px" [nzPlaceHolder]="questionDesignList[0].name">
+            <nz-option *ngFor="let tag of questionDesignList" [nzLabel]="tag.name" [nzValue]="tag.code"></nz-option>
+        </nz-select>
+    </div>
+    <div class="footer">
+        <button nz-button [nzType]="'primary'" nzGhost (click)="goBack()">取消</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <button nz-button [nzType]="'primary'" (click)="sureClick()">确定</button>
+    </div>
+</ng-template>

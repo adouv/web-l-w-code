@@ -1,0 +1,30 @@
+@import "../../../../../styles/variable";
+@import "../../../../../styles/mixin";
+
+:host {
+	display: inline-flex;
+	flex-direction: column;
+	width: 100%;
+	height: 100%;
+}
+
+.tree-header {
+	nz-select {
+		width: computer(120px);
+		margin-left: computer(1px);
+		margin-right: computer(2px);
+		margin-bottom: computer(20px);
+	}
+}
+
+.scroll-box {
+	flex: 1;
+	overflow-x: hidden;
+	overflow-y: auto;
+	&::-webkit-scrollbar {
+		width: 1px;
+	}
+	&::-webkit-scrollbar-thumb {
+		background-color: rgba(0, 0, 0, 0);
+	}
+}

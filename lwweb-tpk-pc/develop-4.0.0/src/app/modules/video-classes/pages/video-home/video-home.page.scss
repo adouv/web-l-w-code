@@ -1,0 +1,348 @@
+@import "../../../../../styles/variable";
+@import "../../../../../styles/mixin";
+
+.video-home::ng-deep {
+	color: $color_font-deep;
+	height: 100%;
+	.ant-tabs-tab {
+		color: $color_font-center;
+	}
+	.ant-tabs-tab-active {
+		color: $color_main;
+	}
+}
+
+.video-list {
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	.video-box {
+		margin: 0 auto;
+		overflow: hidden;
+		font-size: 0;
+		width: 100%;
+	}
+	.video-item {
+		padding: computer(10px);
+		position: relative;
+		cursor: pointer;
+		&.opacity {
+			cursor: not-allowed;
+			opacity: .5;
+		}
+		&.permission {
+			&:hover img {
+				margin-top: -6%;
+				margin-left: -10%;
+				width: 120%;
+				height: 120%;
+			}
+		}
+		.img-box {
+			width: computer(240px);
+			height: computer(135px);
+			overflow: hidden;
+		}
+		img {
+			width: 100%;
+			height: 100%;
+			transition: all 100ms;
+		}
+		.teacher-name {
+			font-size: computer(14px);
+			color: $color_font-deep;
+		}
+		.class-name {
+			font-size: computer(12px);
+			color: $color_font-light;
+			line-height: normal;
+		}
+		.class-score {
+			font-size: computer(24px);
+			line-height: normal;
+			.score {
+				font-size: computer(14px);
+			}
+		}
+		.class-score-1-3 {
+			background: linear-gradient(90deg, #febb5c 0%, #ff7d55 100%), linear-gradient(#34383f, #34383f);
+			-webkit-background-clip: text;
+			color: transparent;
+		}
+		.class-score-4 {
+			background: linear-gradient(90deg, #00d3ec 0%, #00a0e9 100%), linear-gradient(#34383f, #34383f);
+			-webkit-background-clip: text;
+			color: transparent;
+		}
+		.footer-group {
+			margin-top: computer(10px);
+			align-items: center;
+			width: computer(240px);
+			overflow: hidden;
+			height: computer(34px);
+			line-height: computer(34px);
+			.teacher-name {
+				text-overflow: ellipsis;
+				overflow: hidden;
+				white-space: nowrap;
+			}
+		}
+		.ranking {
+			display: inline-block;
+			font-size: computer(14px);
+			color: #ffffff;
+			text-align: center;
+			width: computer(32px);
+			height: computer(32px);
+			line-height: computer(32px);
+			background-blend-mode: normal, normal;
+			border-radius: 50%;
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
+		.red {
+			background-image: linear-gradient(0deg, #ff7d55 0%, #febb5c 100%), linear-gradient(#ffffff, #ffffff);
+		}
+		.blue {
+			background-image: linear-gradient(0deg, #00a0e9 0%, #00d3ec 100%), linear-gradient(#ffffff, #ffffff);
+		}
+	}
+	.ant-input-suffix {
+		height: 100%;
+		width: 30px;
+		cursor: pointer;
+		position: absolute;
+		color: $color_font-light;
+		top: 50%;
+		right: 0;
+		margin-top: -15px;
+	}
+}
+
+.video-list ::ng-deep {
+	nz-tab-body {
+		overflow: auto;
+		@include scroll-bar();
+	}
+	.ant-tabs-bar {
+		text-align: center;
+	}
+	.ant-pagination {
+		text-align: center;
+		margin: computer(30px) 0;
+	}
+}
+
+.ranking-list {
+	.input-group {
+		width: computer(240px);
+		height: computer(30px);
+		border: 0;
+		padding-left: computer(5px);
+		margin-left: computer(10px);
+		position: relative;
+		input {
+			border: 1px solid $color_border;
+			outline: 0;
+			width: 100%;
+			height: computer(28px);
+			list-style: none;
+			padding-right: 30px;
+			padding-left: 11px;
+			&:focus {
+				outline: none;
+				border: 1px solid #00a0e9;
+				-webkit-box-shadow: 0 0 10px #9ecaed;
+				box-shadow: 0 0 10px #9ecaed;
+			}
+			&:hover{
+				border:1px solid #00a0e9;
+			}
+		}
+		.anticon-search {
+			font-size: 16px;
+			top: 50%;
+			color: $color_font-light;
+		}
+	}
+}
+
+.rank-box-average {
+	height: 100%;
+	position: relative;
+	overflow: hidden;
+	.overflow-hidden {
+		overflow: hidden !important;
+	}
+	.statistics-list-title {
+		padding-bottom: computer(15px);
+		text-align: center;
+		font-size: computer(14px);
+		font-weight: bold;
+	}
+	.statistics-list {
+		//margin: 0 computer(20px);
+		height: 100%;
+		.statistics-list-content {
+			height: calc(100% - #{computer(50px)});
+			padding: 0 0 0 computer(20px);
+			//overflow: auto;
+		}
+		.table-box {
+			height: calc(100% - #{computer(42px)});
+			.table {
+				@include scroll-bar();
+				height: calc(100% - #{computer(50px)});
+				overflow: auto;
+			}
+		}
+		table {
+			//width: 100%;
+			border-collapse: collapse;
+			width: calc(100vw - #{computer(600px)});
+			td, th {
+				padding: computer(10px) computer(5px) computer(10px) computer(10px);
+				border: 1px solid $color_border;
+				font-size: computer(14px);
+				color: $color_font-center;
+				text-align: left;
+				word-break: break-all;
+			}
+			th {
+				color: $color_font-light;
+			}
+		}
+		.click-show-more {
+			font-size: computer(14px);
+			margin: computer(10px) 0;
+			text-align: center;
+			color: $color_font-light;
+			cursor: default;
+			&.pointer {
+				cursor: pointer;
+			}
+		}
+		.statistics-list-footer {
+			width: 100%;
+			position: absolute;
+			bottom: 0;
+			text-align: center;
+			height: computer(50px);
+			line-height: computer(60px);
+			border-top: 1px solid $color_border;
+		}
+	}
+}
+
+.statistical {
+	min-width: computer(390px);
+	max-width: computer(390px);
+	flex-shrink: 1;
+	flex-grow: 0;
+	color: $color_font-center;
+	h1 {
+		text-align: center;
+		border-bottom: 1px solid $color_border;
+		line-height: computer(54px);
+		font-weight: bold;
+		color: $color_font-center;
+	}
+	.select-box {
+		padding: computer(10px);
+		display: flex;
+		justify-content: space-between;
+	}
+	.count-number {
+		font-size: computer(24px);
+		margin-bottom: computer(10px);
+		display: block;
+	}
+	.count-text {
+		font-size: computer(16px);
+	}
+
+	table {
+		border-collapse: collapse;
+		td, th {
+			padding: computer(10px) computer(5px) computer(10px) computer(10px);
+			border: 1px solid $color_border;
+			font-size: computer(14px);
+			color: $color_font-center;
+			text-align: left;
+		}
+		th {
+			color: $color_font-light;
+		}
+	}
+	.click-show-more {
+		font-size: computer(14px);
+		margin: computer(10px) 0;
+		text-align: center;
+		color: $color_font-light;
+		cursor: default;
+		&.pointer {
+			cursor: pointer;
+		}
+	}
+}
+
+.statistical::ng-deep {
+	.table-box {
+		height: 100%;
+		.table {
+			@include scroll-bar();
+			height: calc(100% - #{computer(50px)});
+			overflow: auto;
+		}
+	}
+	.ant-tabs-bar {
+		border: 0;
+		margin-bottom: 0;
+		.ant-tabs-tab {
+			width: auto;
+		}
+		.ant-tabs-ink-bar {
+			display: none !important;
+		}
+		.ant-tabs-tab-active button {
+			width: computer(110px);
+			height: computer(110px);
+			border-radius: 50%;
+			border: none;
+			background-blend-mode: normal, normal;
+			background-image: linear-gradient(180deg, #febb5c 0%, #ff7d55 100%), linear-gradient(#34383f, #34383f);
+			color: #ffffff;
+			&:hover, &:focus {
+				background-image: linear-gradient(180deg, #ffcc83 0%, #fe997b 100%), linear-gradient(#34383f, #34383f);
+			}
+			&.ant-btn-clicked:after {
+				border-color: #f04134;
+			}
+		}
+	}
+}
+
+.statistical::ng-deep {
+	.round-btn {
+		width: computer(100px);
+		height: computer(100px);
+		padding: 0;
+	}
+	.ant-tabs-tab {
+		padding-left: 0 !important;
+		padding-right: 0 !important;
+		margin-right: computer(15px) !important;
+	}
+	.ant-tabs-bar {
+		height: computer(142px);
+	}
+}
+
+.tr-hover {
+	cursor: pointer;
+}
+
+.tr-hover:hover {
+	background: $color_border;
+}

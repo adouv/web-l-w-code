@@ -1,0 +1,285 @@
+<div class="row manage_add">
+  <span class="manage" ng-click="goList()">园区{{activityType}}活动管理--></span>
+  <span class="add">园区{{activityType}}活动编辑</span>
+</div>
+<section class="row border-color edit">
+  <blockquote class="border-color">园区{{activityType}}活动编辑</blockquote>
+</section>
+
+<div class="content_main">
+  <div class="con_name clearfix">
+    <p class="con_left">名称 :</p>
+    <input type="text" value="{{activity.name}}" ng-model="activity.name" class="inp form-control">
+    <input style="display: none;" value="{{type}}" id="typeId">
+  </div>
+  <div class="con_name clearfix">
+    <p class="con_left">嘉宾 :</p>
+    <input type="text" value="{{activity.guests}}" ng-model="activity.guests" class="inp form-control">
+  </div>
+  <div class="con_name clearfix">
+    <p class="con_left">类型 :</p>
+    <select class="inp form-control select-control " id="activity" ng-model="type" disabled="disabled">
+      <option value="1">直播</option>
+      <option value="2">点播</option>
+    </select>
+  </div>
+
+
+  <!--点播活动页面-->
+  <div class="chooseshow" ng-show="type=='2'" id="activity_unicast">
+    <div class="con_name">
+      <p class="con_left live" style="padding-right: 6px">点播活动封面 :</p>
+
+      <div class="live_page" flow-init="{singleFile:true,query:{folder:'unicastCover'}}"
+           flow-files-submitted="$flow.upload()"
+           flow-file-added="edit.vildImg($file)"
+           flow-file-success="edit.uploadCoverSuccess($message,$flow,$file)">
+        <div class="live_name_hd clearfix">
+          <div class="ll">
+            <button class="btn tpk-btn-o" flow-btn>&nbsp; 上传 &nbsp;</button>
+          </div>
+          <div class="rr">
+            <p ng-show="!vildSize">图片最大不超过2M；</p>
+
+            <p ng-show="!vildExt">最佳分辨率为750像素x340像素</p>
+          </div>
+        </div>
+        <div class="" ng-if="!vildExt || !vildSize" style="font-size: 14px;">
+          <span class="w5c-error" ng-show="!vildExt">只能上传 png、gif、jpg、jpeg格式的图片</span>
+          <br>
+          <span class="w5c-error" ng-show="!vildSize">图片大小不能超过2M ！</span>
+        </div>
+        <div class='process' ng-show="$flow.files[0] && !processCoverFlag" style="margin: 0.35rem 0;">
+          <div class="process_shadow"
+               ng-style="{width:($flow.files[0].progress()*100+'%')}">{{$flow.files[0].progress()|flowPercentage}}
+          </div>
+        </div>
+        <input type="hidden"
+               name="coverUrl"
+               ng-model="data.coverUrl">
+
+        <div class="live_video">
+          <img ng-if="activity.coverUrl" src="{{filePath+activity.coverUrl}}" alt="">
+          <i class="cover" ng-if="activity.coverUrl==null"></i>
+        </div>
+      </div>
+    </div>
+
+    <div class="con_name">
+      <p class="con_left vdo">已有视频集 :</p>
+
+      <div class="upload_go clearfix">
+        <div class="video_list">
+          <p ng-repeat="video in activity.videoList" ng-model="video.id">
+            {{video.videoName?video.videoName:video.videoUrl}}<a class="fr" style="cursor: pointer" ng-if="video.videoName != null || video.videoUrl != null" ng-click="deleteVideo($index)">删除</a></p>
+        </div>
+        <div class="upload_con fr" style="margin-top: 10px;margin-left:7px;">
+          <button class="btn" ng-click="upload()" style="width: 91px">上传视频</button>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="con_name clearfix">
+      <p class="con_left live">内容介绍 :</p>
+      <textarea class="texta cont form-control" cols="30" rows="10" maxlength="200"
+                ng-model="activity.content">{{activity.content}}</textarea>
+    </div>
+    <div class="con_name"style="margin-bottom:10px;">
+      <p class="con_left">可见范围 :</p>
+      <select class="inp see-range" ng-model="activity.publicScope"  ng-change="clean()">
+        <option value="0">完全公开</option>
+        <option value="1">园区公开</option>
+        <option value="2">指定用户公开</option>
+      </select>
+      <button class="btn btn-default btn-sm tpk-btn-o " ng-if="activity.publicScope==1" ng-click="goAreaOrAccount()" >请选择</button>
+      <button class="btn btn-default btn-sm tpk-btn-o " ng-if="activity.publicScope==2" activity-garden-select="" >请选择</button>
+    </div>
+    <div class="con_name clearfix"style="margin-bottom:10px;">
+      <div class="public_name"> <span ng-repeat="public in activity.publicList">{{public.name}};</span></div>
+    </div>
+    <div class="con_name">
+      <p class="con_left">有效性 :</p>
+
+      <div class="inblk va-middle effect">
+        <input id="chekck1" type="checkbox" class="cbx hidden" ng-model="activity.status" ng-checked="!!activity.status">
+        <label for="chekck1" class="lbl"></label>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--直播活动页面-->
+<div class="chooseshow content_main" ng-show="type=='1'" id="activity_live">
+  <div class="con_name">
+    <p class="con_left live" style="padding-right: 6px">直播活动封面 :</p>
+
+    <div class="live_page" flow-init="{singleFile:true,query:{folder:'liveCover'}}"
+         flow-files-submitted="$flow.upload()"
+         flow-file-added="edit.vildImg($file)"
+         flow-file-success="edit.uploadCoverSuccess($message,$flow,$file)">
+      <div class="live_name_hd clearfix">
+        <div class="ll">
+          <button class="btn tpk-btn-o" flow-btn>&nbsp; 上传 &nbsp;</button>
+        </div>
+        <div class="rr">
+          <p ng-show="!vildSize">图片最大不超过2M；</p>
+
+          <p ng-show="!vildExt">最佳分辨率为750像素x340像素</p>
+        </div>
+
+      </div>
+      <div class="" ng-if="!vildExt || !vildSize" style="font-size: 14px;">
+        <span class="w5c-error" ng-show="!vildExt">只能上传 png、gif、jpg、jpeg格式的图片</span>
+        <br>
+        <span class="w5c-error" ng-show="!vildSize">图片大小不能超过2M ！</span>
+      </div>
+      <div class='process' ng-show="$flow.files[0] && !processCoverFlag" style="margin: 0.35rem 0;">
+        <div class="process_shadow"
+             ng-style="{width:($flow.files[0].progress()*100+'%')}">{{$flow.files[0].progress()|flowPercentage}}
+        </div>
+      </div>
+      <input type="hidden"
+             name="coverUrl"
+             ng-model="data.coverUrl">
+
+      <div class="live_video echoImg">
+        <img ng-if="activity.coverUrl" src="{{filePath+activity.coverUrl}}" alt="">
+        <i class="cover" ng-if="activity.coverUrl==null"></i>
+      </div>
+    </div>
+
+    <div class="con_name clearfix" style="margin-top: 15px">
+      <p class="con_left">直播摄像头地址：</p>
+      <input type="text" ng-click="goAreaCamera()" ng-model="activity.cameraUrl" class="inp form-control">
+    </div>
+
+
+    <div ng-show="activity.isStope=='1'">
+      <div class=" btm_0">
+        <div class="con_name">
+          <p class="con_left live rang">直播时间 :</p>
+
+          <span class="live-time">{{activity.startTime | date:'yyyy/MM/dd HH:mm:ss'}}~{{activity.endTime | date:'yyyy/MM/dd HH:mm:ss'}}</span>
+        </div>
+
+
+        <!--<div class="con_name clearfix">-->
+          <!--<p class="con_left ml-2">直播观看人数上限：</p>-->
+          <!--<input type="text" class="inp form-control ml-2"-->
+                 <!--ng-model="activity.limitCount"-->
+                 <!--ng-disabled="nolimit">&nbsp;-->
+          <!--<span>人</span>-->
+          <!--<label class="fl mat7">-->
+            <!--<input type="checkbox" class="radioClass"-->
+                   <!--ng-model="nolimit"-->
+
+                   <!--ng-checked="nolimit" ng-click=""><span class="no-limit">不限</span>-->
+          <!--</label>-->
+        <!--</div>-->
+
+
+        <div class="con_name clearfix">
+          <p class="con_left ml-2">直播观看人数上限：</p>
+
+          <!--<div class="ceiling" style="margin-left: 0">-->
+
+          <input type="text" class="inp form-control ml-2"
+                 ng-model="activity.limitCount"
+                 ng-disabled="nolimit">&nbsp;
+          <span>人</span>
+          <label class="fl mat7">
+            <input type="checkbox" class="radioClass"
+                   ng-model="nolimit"
+                   ng-checked="nolimit" ng-click=""><span class="no-limit">不限</span>
+          </label>
+          <!--</div>-->
+        </div>
+
+      </div>
+    </div>
+    <div ng-show="activity.isStope=='0'">
+
+      <div class="con_name clearfix">
+        <p class="con_left">直播开始时间：</p>
+
+        <div class="time-logo">
+          <input lw-laydate='yyyy-MM-dd HH:mm:ss' type="text" value="{{activity.startTime | date:'yyyy/MM/dd HH:mm:ss'}}" ng-model="activity.startTime"
+                 class="inp form-control" id="id1" ng-model="activity.startTime" max-date="{{model.max}}" min-date="{{now}}" ng-click="getNow()">
+          <i class="timer"></i>
+        </div>
+
+      </div>
+      <div class="con_name clearfix">
+        <p class="con_left">直播结束时间： </p>
+
+        <div class="time-logo">
+          <input lw-laydate='yyyy-MM-dd HH:mm:ss' type="text" value="{{activity.endTime | date:'yyyy/MM/dd HH:mm:ss'}}" ng-model="activity.endTime"
+                 class="inp form-control" id="id2" ng-model="activity.startTime" max-date="{{model.max}}" min-date="{{activity.startTime}}">
+          <i class="timer"></i>
+        </div>
+      </div>
+      <div class="con_name clearfix">
+        <p class="con_left ml-2">直播观看人数上限：</p>
+
+        <!--<div class="ceiling" style="margin-left: 0">-->
+
+        <input type="text" class="inp form-control ml-2"
+               ng-model="activity.limitCount"
+               ng-disabled="nolimit">&nbsp;
+        <span>人</span>
+        <label class="fl mat7">
+          <input type="checkbox" class="radioClass"
+                 ng-model="nolimit"
+                 ng-checked="nolimit" ng-click=""><span class="no-limit">不限</span>
+        </label>
+        <!--</div>-->
+      </div>
+
+    </div>
+    <div class="con_name clearfix">
+      <p class="con_left live">内容介绍 :</p>
+      <textarea class="texta cont form-control" cols="30" rows="10" maxlength="200"
+                ng-model="activity.content">{{activity.content}}</textarea>
+    </div>
+    <div class="con_name"style="margin-bottom:10px;">
+      <p class="con_left">可见范围 :</p>
+
+      <select class="inp see-range select-control" ng-model="activity.publicScope" ng-change="clean()">
+        <option value="0">完全公开</option>
+        <option value="1">园区公开</option>
+        <option value="2">指定用户公开</option>
+      </select>
+
+      <!--<div ng-if="activity.publicScope==1">-->
+        <!--<button>园区</button>-->
+      <!--</div>-->
+      <button class="btn btn-default btn-sm tpk-btn-o " ng-if="activity.publicScope==1" ng-click="goAreaOrAccount()" >请选择</button>
+      <button class="btn btn-default btn-sm tpk-btn-o " ng-if="activity.publicScope==2" activity-garden-select="" >请选择</button>
+
+      <!--<select class="inp see-range" ng-model="activity.publicScope" activity-garden-select=""-->
+              <!--ng-change="goAreaOrAccount()">-->
+
+        <!--<option value="0">完全公开</option>-->
+        <!--<option value="1">园区公开</option>-->
+        <!--<option value="2">指定用户公开</option>-->
+      <!--</select>-->
+    </div>
+    <div class="con_name clearfix"style="margin-bottom:10px;">
+      <div class="public_name"> <span ng-repeat="public in activity.publicList" activity-garden-select="">{{public.name}};</span></div>
+    </div>
+    <div class="con_name">
+      <p class="con_left">有效性 :</p>
+
+      <div class="inblk va-middle effect">
+        <input id="chekck2" type="checkbox" class="cbx hidden" ng-model="activity.status" ng-checked="!!activity.status">
+        <label for="chekck2" class="lbl"></label>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="sure_back clearfix">
+  <button class="btn btn-lg tpk-btn" ng-click="updateActivity()">确 定</button>
+  <button class="btn btn-default btn-lg tpk-btn-o" ng-click="goList()">返 回</button>
+</div>
+

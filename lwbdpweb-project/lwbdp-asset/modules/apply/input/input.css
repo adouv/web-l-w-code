@@ -1,0 +1,1022 @@
+.asset .bread_nav {
+    position: relative;
+    padding: 12px 0 5px;
+}
+
+.asset .bread_nav i {
+    color: #999999;
+}
+
+.asset .bread_nav span:hover {
+    color: #0096ff;
+}
+
+.asset .bread_nav span.oneClick {
+    color: #333 !important;
+}
+
+.asset .bread_nav span.current {
+    color: #999999 !important;
+}
+
+.asset .add_applation .line_strip {
+    width: 100%;
+    height: 4px;
+    background-image: url(../../../images/form_top_line.png);
+    background-size: 100% 4px;
+    background-position: top right;
+    background-repeat: no-repeat;
+}
+
+.asset .add_applation h2,
+.add_applation h3 {
+    font-weight: normal;
+}
+
+.asset .add_applation h2 {
+    font-size: 16px;
+    height: 55px;
+    border-bottom: 1px solid #dbe3ee;
+    line-height: 30px;
+    position: relative;
+    text-align: center;
+}
+
+.asset .add_applation h2 .num {
+    position: absolute;
+    width: 160px;
+    height: 20px;
+    top: 42px;
+    background: #ffffff;
+    left: 50%;
+    margin-left: -80px;
+    line-height: 2px;
+}
+
+.asset .add_applation h2 .num i {
+    color: #ffffff;
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    text-align: center;
+    background: #786cec;
+    display: inline-block;
+    border-radius: 10px;
+    font-size: 12px;
+}
+
+.asset .add_applation h2 .num.second i:first-child {
+    background: #dbe3ee;
+    position: absolute;
+    left: 0;
+}
+
+.asset .add_applation h3 {
+    margin-top: 30px;
+    font-size: 14px;
+}
+
+.asset .add_applation h3 .select_class {
+    width: 400px;
+}
+
+.asset .add_applation .info {
+    color: #999999;
+    margin: 10px 0 17px 0;
+    font-size: 12px;
+}
+
+.asset .add_applation .table_div.first {
+    font-family: "SimSun" !important;
+}
+
+.asset .add_applation .table_div {
+    position: relative;
+}
+
+.asset .add_applation .table_div .help {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    box-shadow: 0px 1px 10px -4px #000000;
+    height: 99.9%;
+    width: 200px;
+    background: #ffffff;
+}
+
+.asset .add_applation .table_div .help .title {
+    text-align: center;
+    height: 40px;
+    line-height: 40px;
+    font-size: 16px;
+    border-top: none;
+    font-weight: 700;
+    border-bottom: 1px solid #dbe3ee;
+    margin: 0;
+    background-color: #f8f8f8;
+}
+
+.asset .add_applation .table_div .help .mg_bt {
+    margin-bottom: 30px;
+}
+
+.asset .add_applation .table_div .help p {
+    padding: 0 10px;
+    margin-top: 10px;
+    line-height: 25px;
+}
+
+.asset .add_applation .form_table {
+    width: 100%;
+    overflow: auto;
+    text-align: center;
+    border-collapse: collapse;
+    margin-top: -1px;
+}
+
+.asset .add_applation .form_table .iconfont {
+    color: #786cec;
+    /*font-size: 14px;*/
+    cursor: pointer;
+    margin: 0px 5px;
+}
+
+.asset .add_applation .block {
+    display: block !important;
+}
+
+.asset .add_applation table td {
+    position: relative;
+}
+
+.asset .add_applation .table_div .td_wrapper {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+
+.asset .add_applation .table_div .error {
+    border: 1px solid #ff272e !important;
+}
+
+.asset .add_applation .valid_item {
+    width: 120px;
+    margin-left: -25px;
+    text-align: right;
+}
+
+.asset .add_applation .form_table .icon-plus {
+    /*margin-left: 15px;*/
+}
+
+.asset .add_applation .form_table .input_class,
+.asset .add_applation .form_table .textarea_class {
+    float: none;
+    border: none;
+}
+
+.JCYhover:hover {
+    padding: 3px 12px;
+    /* background-color: #04B5AF; */
+    color: skyblue !important;
+    -webkit-text-fill-color: skyblue;
+    border-radius: 3px;
+    box-shadow: 0 1px 1px #ddd;
+    cursor: pointer;
+    border: 0px;
+    border-bottom-style: none;
+    border-top-style: none;
+    border-left-style: none;
+    border-right-style: none;
+}
+
+.asset .add_applation .form_table td,
+.add_applation .form_table th {
+    border: 1px solid #999;
+}
+
+.asset .add_applation .form_table td .input_class.error+div {
+    border: 1px solid #ff272e !important;
+    height: 50px;
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+}
+
+.asset .add_applation input.none.error+.bor_wrapper {
+    border: 1px solid #ff272e !important;
+}
+
+.asset .add_applation .bor_wrapper {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.asset .add_applation .form_table th {
+    text-align: center;
+    height: 40px;
+    font-size: 16px;
+    border-top: none;
+    overflow: hidden;
+    background-color: #f8f8f8;
+    position: relative;
+}
+
+.asset .add_applation .form_table th .img_info {
+    color: #999999;
+    font-weight: normal;
+    font-size: 12px;
+}
+
+.asset .add_applation .form_table th .help_span {
+    position: absolute;
+    right: 20px;
+    font-weight: normal;
+    font-family: 'microsoft yahei';
+    font-size: 14px;
+}
+
+.asset .add_applation .form_table th .help_span i {
+    color: #786cec;
+    font-weight: 700;
+    cursor: pointer;
+    padding-left: 5px;
+    vertical-align: middle;
+}
+
+.asset .add_applation .form_table td {
+    height: 40px;
+}
+
+.asset .add_applation .form_table .first td {
+    width: 40%;
+    text-align: left;
+    padding-left: 10px;
+    position: relative;
+}
+
+.asset .add_applation .form_table .first td .input_class {
+    /*width: 360px;*/
+    width: 100%;
+}
+
+.asset .add_applation .form_table tr.second {
+    height: 50px;
+}
+
+.asset .add_applation .form_table tr.second td:first-of-type {
+    width: 100px;
+}
+
+.asset .add_applation .form_table .input_class.bord {
+    border: 1px solid #dbe3ee;
+}
+
+.asset .add_applation .form_table td.text_left {
+    text-align: left;
+    padding-left: 10px;
+}
+
+.asset .add_applation .form_table td.text_left .select_class,
+.asset .add_applation .form_table td.text_left .input_class {
+    width: 400px;
+}
+
+.asset .add_applation .form_table .third {
+    height: 60px;
+}
+
+.asset .add_applation .form_table .third .input_class,
+.asset .add_applation .form_table .third .textarea_class {
+    width: 100%;
+    margin: 0 !important;
+    text-align: center;
+    /*padding: 0 !important;*/
+    /*background: pink;*/
+}
+
+
+.asset .add_applation .form_table .third .input_class select {
+    background: transparent;
+    border: none;
+    outline: none;
+}
+
+.asset .add_applation .form_table .third .textarea_class {
+    overflow: hidden;
+    height: 30px;
+}
+
+.asset .add_applation .form_table .third .textarea_class.auto {
+    height: 80px;
+    text-align: left;
+    overflow-y: auto;
+    overflow-x: hidden;
+    border: 0;
+    position: relative;
+}
+
+.asset .add_applation .form_table .third .textarea_class.error {
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.asset .add_applation .form_table .third .textarea_class:focus {
+    height: 80px;
+    border: 0 !important;
+    text-align: left;
+    position: relative;
+}
+
+.asset .add_applation .form_table .third .th {
+    height: 50px;
+}
+
+
+/*.asset .add_applation .form_table .third td:first-child {
+    width: 60px;
+}*/
+
+.asset .add_applation .form_table .third .select_class {
+    margin: 0px !important;
+    width: 100%;
+}
+
+.asset .add_applation .form_table .third tr td {
+    /*overflow: hidden;*/
+    position: relative;
+    padding: 5px 10px;
+}
+
+.asset .add_applation .form_table .third tr:hover .add_minus {
+    display: block;
+}
+
+.asset .add_applation .form_table .third tr td:nth-child(1) {
+    width: 7%;
+    min-width: 60px;
+}
+
+.asset .add_applation .form_table .third tr td:nth-child(2) {
+    width: 13%;
+}
+
+.asset .add_applation .form_table .third tr td:nth-child(3) {
+    width: 13%;
+}
+
+.asset .add_applation .form_table .third tr td:nth-child(4) {
+    width: 6%;
+}
+
+.asset .add_applation .form_table .third tr td:nth-child(5) {
+    width: 7%;
+}
+
+.asset .add_applation .form_table .third tr td:nth-child(6) {
+    width: 5%;
+}
+
+.asset .add_applation .form_table .third tr td:nth-child(7) {
+    width: 13%;
+}
+
+.asset .add_applation .form_table .third tr td:nth-child(8) {
+    width: 5%;
+}
+
+.asset .add_applation .form_table .third tr td:nth-child(9) {
+    width: 7%;
+}
+
+.asset .add_applation .form_table .third tr td:nth-child(10) {
+    width: 8%;
+}
+
+.asset .add_applation .form_table .third tr td:nth-child(11) {
+    width: 8%;
+}
+
+.asset .add_applation .form_table .third tr td:nth-child(12) {
+    width: 8%;
+}
+
+.asset .add_applation .form_table .third tr .add_minus {
+    position: absolute;
+    width: 100%;
+    /*height: 100%;*/
+    top: 50%;
+    left: 0;
+    margin-top: -11px;
+    background: #ffffff;
+    display: none;
+}
+
+.asset .add_applation .form_table .third tr .add_minus .iconfont {
+    color: #ffffff;
+    background: #786cec;
+    padding: 3px;
+    font-size: 16px;
+}
+
+.asset .add_applation {
+    width: 100%;
+    padding: 0 4%;
+    position: relative;
+    min-width: 1200px;
+}
+
+.asset .add_applation .show_box td {
+    height: 180px;
+    position: relative;
+}
+
+.asset .add_applation .show_box p {
+    text-align: left;
+    padding-left: 10px;
+}
+
+.asset .add_applation .show_box .result {
+    top: 36px;
+    padding: 0 20px 0 20px;
+    width: 100%;
+    text-align: center;
+}
+
+.asset .add_applation .show_box .result .pass,
+.asset .add_applation .show_box .result .notpass {
+    display: block;
+    font-size: 24px;
+    margin-top: 35px;
+}
+
+.asset .add_applation .show_box .result .waitpass {
+    display: block;
+    font-size: 24px;
+    margin: 35px 0;
+    color: #dbe3ee;
+}
+
+.asset .add_applation .show_box .result .note {}
+
+.asset .add_applation .show_box .dept {
+    margin-top: 20px;
+}
+
+.asset .add_applation .show_box .sign {
+    margin: 10px
+}
+
+.asset .add_applation .show_box .date {
+    float: right;
+    margin-right: 10px;
+    margin-top: -30px;
+}
+
+.asset .add_applation .show_box .seal {
+    margin-bottom: 10px;
+}
+
+.asset .add_applation .second_step .purple_p {
+    padding-left: 8px;
+    margin-left: -10px;
+    font-size: 16px;
+    height: 24px;
+    line-height: 24px;
+    margin-top: 25px;
+    background-image: linear-gradient(-180deg, #786cec 100%, #ffffff 0%);
+    background-image: -o-linear-gradient(-180deg, #786cec 100%, #ffffff 0%);
+    background-image: -moz-linear-gradient(-180deg, #786cec 100%, #ffffff 0%);
+    background-image: -webkit-linear-gradient(-180deg, #786cec 100%, #ffffff 0%);
+    background-size: 4px 100%;
+    background-position: left top;
+    background-repeat: no-repeat;
+}
+
+.asset .add_applation .second_step .purple_p .btn_bd {
+    margin: 0 5px 0 14px;
+}
+
+.asset .add_applation .second_step .purple_p.mgt_15 {
+    margin-bottom: 15px;
+}
+
+.asset .add_applation .second_step .count {
+    line-height: 35px;
+}
+
+.asset .add_applation .second_step .count .red {
+    color: #ff272e;
+}
+
+.asset .add_applation .second_step .count .green {
+    color: #00bb8b;
+}
+
+.asset .add_applation .second_step .form_table td {
+    min-height: 166px;
+    padding: 10px 0 5px;
+}
+
+.asset .add_applation .second_step .form_table td:nth-child(1) {
+    width: 19%;
+}
+
+.asset .add_applation .second_step .form_table td:nth-child(2) {
+    width: 55%;
+}
+
+.asset .add_applation .second_step .form_table td:nth-child(3) {
+    width: 15%;
+}
+
+.asset .add_applation .second_step .form_table .add_img_td {
+    text-align: left;
+    padding-left: 10px;
+}
+
+.asset .add_applation .second_step .form_table .pic_view {
+    display: inline-block;
+}
+
+.asset .add_applation .second_step .form_table .deal_box {
+    width: 100px;
+}
+
+.asset .add_applation .second_step .add_img_box {
+    padding: 30px 0;
+    text-align: left;
+}
+
+.asset .add_applation .second_step .add_relation {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    background: url(../../../images/append.png) no-repeat;
+    cursor: pointer;
+}
+
+.asset .add_applation .second_step .img_box {
+    display: inline-block;
+    width: 140px;
+    height: 165px;
+    margin-top: 0;
+    margin-right: 40px;
+    position: relative;
+    margin-bottom: 10px;
+    vertical-align: top;
+}
+
+.asset .add_applation .second_step .img_box.hg {
+    height: 180px;
+}
+
+.asset .add_applation .second_step .img_box:hover .uploaded_del {
+    opacity: 0.5;
+}
+
+.asset .add_applation .second_step .uploaded_del {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    right: 0px;
+    background: url(../../../images/img_delete.png) no-repeat;
+    cursor: pointer;
+    opacity: 0;
+}
+
+.asset .add_applation .second_step .img_box:hover .uploaded_del:hover {
+    opacity: 1;
+}
+
+.asset .add_applation .second_step .img_box.uploading {
+    background: url(../../../images/default_picture.png) no-repeat;
+    position: relative;
+    padding-top: 0;
+    overflow: hidden;
+}
+
+.asset .add_applation .second_step .img_box.uploaded {
+    background-image: none;
+    position: relative;
+    padding-top: 0;
+    overflow: hidden;
+}
+
+.asset .add_applation .img_box .fileSuccess {
+    position: absolute;
+    width: 136px;
+    display: block;
+}
+
+.asset .add_applation .img_box .fileSuccess.bigHeight {
+    height: 140px;
+    top: 70px;
+    transform: translateY(-50%);
+}
+
+.asset .add_applation .img_box .fileSuccess.smallHeight {
+    height: 136px;
+}
+
+.asset .add_applation .second_step .img_box.uploading p {
+    width: 120px;
+    margin: 0 auto;
+    position: absolute;
+    left: 10px;
+}
+
+.asset .add_applation .second_step .img_box.uploading .percent {
+    top: 50px;
+    font-size: 20px;
+}
+
+.asset .add_applation .second_step .img_box.uploading .percent .stop {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    right: 0px;
+    background: url(../../../images/img_delete.png) no-repeat;
+    cursor: pointer;
+    opacity: 0.5;
+}
+
+.file-type {
+    width: 100%;
+    height: 100%;
+}
+
+.file-type.file-doc {
+    background: #fff url("../../../images/doc.png") no-repeat top;
+}
+
+.file-type.file-xls {
+    background: #fff url("../../../images/xls.png") no-repeat top;
+}
+
+.file-type.file-docx {
+    background: #fff url("../../../images/docx.png") no-repeat top;
+}
+
+.file-type.file-xlsx {
+    background: #fff url("../../../images/xlsx.png") no-repeat top;
+}
+
+.file-type.file-pdf {
+    background: #fff url("../../../images/pdf.png") no-repeat top;
+}
+
+.file-name {
+    bottom: -10px;
+    height: 30px;
+    width: 100%;
+}
+
+.asset .add_applation .second_step .img_box.uploading .percent .stop.top {
+    top: -45px;
+    display: none;
+}
+
+.asset .add_applation .second_step .img_box.uploading:hover .percent .stop.top {
+    display: block;
+}
+
+.asset .add_applation .second_step .img_box.uploading .percent .stop:hover {
+    opacity: 1;
+}
+
+.asset .add_applation .second_step .img_box.uploading .procress {
+    top: 80px;
+    height: 10px;
+    background: #f2f2f2;
+}
+
+.asset .add_applation .second_step .img_box.uploading .procress .bg_purple {
+    width: 20%;
+    position: absolute;
+    height: 100%;
+    background: #786cec;
+    -webkit-transition: all .4s linear;
+    -moz-transition: all .4s linear;
+    -ms-transition: all .4s linear;
+    -o-transition: all .4s linear;
+    transition: all .4s linear;
+}
+
+.asset .add_applation .second_step .img_box.add {
+    background: url(../../../images/upload.png) no-repeat;
+    border: none;
+    cursor: pointer;
+    height: 140px !important;
+    margin-bottom: 3px;
+}
+
+.second_step .material_box {
+    margin-top: 15px;
+}
+
+.second_step .material_box .left .input_class {
+    width: 380px;
+    height: 30px;
+    vertical-align: top;
+    float: none;
+}
+
+.second_step .material_box .left p {
+    margin-bottom: 10px;
+}
+
+.second_step .material_box .left .textarea_class {
+    width: 380px;
+    height: 155px;
+    border: 1px solid #dbe3ee;
+    vertical-align: top;
+}
+
+.second_step .material_box .left .name {
+    display: inline-block;
+    width: 62px;
+    text-align: right;
+    margin-right: 5px;
+    margin-top: 5px;
+}
+
+.second_step .material_box .right .name {
+    display: inline-block;
+    width: 62px;
+    text-align: right;
+    margin: 5px 5px 0 15px;
+    vertical-align: top;
+}
+
+.second_step .material_box .right .name_right {
+    display: inline-block;
+}
+
+.second_step .material_box .right .add_img_box {
+    width: 615px;
+    padding: 20px 0;
+}
+
+.second_step .material_box .finish_box {
+    clear: both;
+    width: 100%;
+    text-align: center;
+    padding-bottom: 20px;
+}
+
+.second_step .material_box>div {
+    float: left;
+}
+
+.asset .add_applation .next {
+    margin-top: 20px;
+}
+
+.asset .add_applation .next .select_class {
+    margin-left: 10px;
+}
+
+.ui-popup .label_box {
+    margin-left: 20px;
+}
+
+.ui-popup .label_box label {
+    width: 80%;
+    line-height: 20px;
+    vertical-align: top;
+    cursor: pointer;
+}
+
+.ui-popup .choose_dialog .label_box {
+    display: inline-block;
+    margin-bottom: 20px !important;
+}
+
+.ui-popup .choose_kind {
+    width: 600px;
+    height: 400px;
+}
+
+.ui-popup .choose_reason {
+    width: 800px;
+    height: 400px;
+}
+
+.ui-popup .choose_box {
+    padding-top: 25px;
+    height: 300px;
+}
+
+.ui-popup .title {
+    position: relative;
+    height: 36px;
+    line-height: 36px;
+    text-align: center;
+    font-size: 16px;
+    border-bottom: 1px solid #dbe3ee;
+}
+
+.ui-popup .title span {
+    color: #999999;
+    position: absolute;
+    top: 0px;
+    right: 20px;
+    cursor: pointer;
+    padding: 0 5px;
+}
+
+.ui-popup .title span:hover {
+    color: #786cec;
+}
+
+.ui-popup .btn_box {
+    text-align: center;
+    position: absolute;
+    padding: 20px 0;
+    left: 0;
+    right: 0;
+    background: #ffffff;
+}
+
+.ui-popup .btn_box2 {
+    text-align: center;
+    position: absolute;
+    bottom: -100px;
+    padding: 20px 0;
+    left: 0;
+    right: 0;
+    background: #ffffff;
+}
+
+.ui-popup .choose_kind .label_box {
+    width: 180px;
+}
+
+.ui-popup .choose_reason .label_box {
+    width: 380px;
+}
+
+.ui-popup .choose_suit {
+    width: 1160px;
+    height: 600px;
+    overflow: auto;
+}
+
+.ui-popup .choose_suit table {
+    width: 100%;
+    overflow: auto;
+    text-align: center;
+    border-collapse: collapse;
+}
+
+.ui-popup .choose_suit .suit_table {
+    padding: 20px 20px 30px 20px;
+    height: 490px;
+}
+
+.ui-popup .choose_suit table tr th {
+    background: #f8f8f8;
+    border: 1px solid #dbe3ee;
+    padding: 5px 10px;
+    text-align: center;
+}
+
+.ui-popup .choose_suit table tr td {
+    text-align: center;
+    border: 1px solid #dbe3ee;
+    padding: 5px 10px;
+}
+
+.ui-popup .choose_suit table tr td:nth-child(1) {
+    width: 5%;
+}
+
+.ui-popup .choose_suit table tr td:nth-child(2) {
+    width: 15%;
+}
+
+.ui-popup .choose_suit table tr td:nth-child(3) {
+    width: 12%;
+}
+
+.ui-popup .choose_suit table tr td:nth-child(4) {
+    width: 6%;
+}
+
+.ui-popup .choose_suit table tr td:nth-child(5) {
+    width: 7%;
+}
+
+.ui-popup .choose_suit table tr td:nth-child(6) {
+    width: 5%;
+}
+
+.ui-popup .choose_suit table tr td:nth-child(7) {
+    width: 15%;
+}
+
+.ui-popup .choose_suit table tr td:nth-child(8) {
+    width: 4%;
+}
+
+.ui-popup .choose_suit table tr td:nth-child(9) {
+    width: 7%;
+}
+
+.ui-popup .choose_suit table tr td:nth-child(10) {
+    width: 8%;
+}
+
+.ui-popup .choose_suit table tr td:nth-child(11) {
+    width: 6%;
+}
+
+.ui-popup .choose_suit table tr td:nth-child(12) {
+    width: 6%;
+}
+
+.asset .add_applation .form_table .third input[type="number"] {
+    /*width: 50px;*/
+    text-align: center;
+    margin-right: 0 !important;
+}
+
+.material_box .right .finish_box {
+    margin-left: 76px;
+    text-align: left;
+}
+
+.asset .add_applation .teacli {
+    text-align: center;
+}
+
+.pubTable input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+}
+
+.asset .pubTable .nameLeft {
+    position: relative;
+    z-index: 2;
+    font-size: 14px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.asset .notpass {
+    display: block;
+    font-size: 24px;
+    margin-top: -10px;
+    text-align: center;
+}
+
+.asset .result {
+    width: 100%;
+    font-family: "SimSun" !important;
+}
+
+.asset .waitpass {
+    display: block;
+    font-size: 24px;
+    color: #dbe3ee;
+    margin-top: -10px;
+    text-align: center;
+}
+
+
+/* 校验input 父级框变红 */
+
+.asset .pubTable td input.error,
+.pubTable td textarea.error {
+    box-shadow: none;
+    border: 1px solid #ff272e !important;
+}
+
+
+/*.bd_col99{*/
+
+
+/*border: 1px solid #dbe3ee;*/
+
+
+/*}*/
+
+
+/*.asset .picView.img_box{*/
+
+
+/*height: 165px !important;*/
+
+
+/*}*/

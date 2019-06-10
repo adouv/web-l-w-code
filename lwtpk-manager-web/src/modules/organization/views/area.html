@@ -1,0 +1,62 @@
+<section class="row border-color">
+    <blockquote class="border-color">园区教学组织结构管理</blockquote>
+    <div class="garden-select">
+  <select class="form-control select-control" ng-change="toggleGarden()"
+          ng-model="gardenId"
+          ng-options="garden.id as garden.name for garden in gardens">
+  </select>
+</div>
+</section>
+<!--<section class="row template-row">
+    <div class="pull-right"
+         flow-init="{target:'',singleFile:true}"
+         flow-files-submitted="$flow.upload()"
+         flow-file-success="input.uploadSuccess($message,$flow)">
+        <a class="btn tpk-btn" href="javascript:void(0);" flow-btn>导 入</a>
+        <a class="font-color font-hv-color" href="javascript:void(0);">导入模版下载</a>
+    </div>
+</section>-->
+<div uib-alert ng-if="alertShow" class="alert alert-success" close="alertClose()">操作成功!</div>
+<section class="row fu">
+    <div class="win-tab">
+        <div class="win-title">教学组织结构</div>
+        <div class="win-content">
+            <organization-tree-init></organization-tree-init>
+        </div>
+    </div>
+    <div class="win-tab">
+        <div class="win-title">
+            对应用户
+            <!--has-permission="organization:account"  ng-disabled="!isAssign"-->
+            <button class="btn btn-default btn-sm tpk-btn-o fr" href="javascript:void(0);"  garden-select="" multi="true"> 分配用户</button>
+        </div>
+        <div class="win-content">
+            <ul class="assign">
+                <li ng-repeat="teacher in teachers">
+                    {{teacher.teacherName}}
+                    <i class="glyphicon glyphicon-remove text-right" ng-click="deleteTeacher(teacher.teacherId,$index)"></i>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="win-tab">
+        <div class="win-title">
+            对应学科
+            <!--has-permission="organization:subject" ng-disabled="!isAssign"-->
+            <button class="btn btn-default btn-sm tpk-btn-o fr"  ng-click="subjectAssign()" >分配学科</button>
+        </div>
+        <div class="win-content">
+            <ul class="assign">
+                <li ng-repeat="subject in subjects">
+                    {{subject.name}}
+                    <i class="glyphicon glyphicon-remove text-right" ng-click="deleteSubject(subject.id,$index)"></i>
+                </li>
+            </ul>
+        </div>
+    </div>
+</section>
+<!--
+<section class="row footer">
+    <a class="btn btn-success btn-lg tpk-btn fl" href="javascript:void(0);">确 定</a>
+    <a class="btn btn-default btn-lg tpk-btn-o fr" href="javascript:void(0);">取 消</a>
+</section>-->

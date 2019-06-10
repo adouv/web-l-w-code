@@ -1,0 +1,21 @@
+
+.approvalProcess_confilt .title{text-align: center;border-bottom: 1px solid #ebebeb;}
+.approvalProcess_confilt .title span{position: absolute;right:15px;}
+.approvalProcess_confilt .title,.approvalProcess_confilt .info{
+    height:37px;line-height: 37px;padding:0 10px;
+}
+.approvalProcess_confilt .info{color:#999999;margin-top: 10px;}
+.approvalProcess_confilt .confilt_contnet{
+    height:390px;padding:0 10px;
+}
+.approvalProcess_confilt .ngdialog-close{display: none;}
+.approvalProcess_confilt .confilt_contnet{height:424px;}
+.approvalProcess_confilt table{border-collapse: collapse;text-align: center;width:100%;}
+.approvalProcess_confilt table th{background: #f8f8f8;border:1px solid #ebebeb;color:#333333;text-align: center;line-height: 40px;}
+.approvalProcess_confilt table td{border:1px solid #ebebeb;color:#999999;padding :10px; }
+.approvalProcess_confilt table td span.red{color:#ff4244;}
+.approvalProcess_confilt table td:nth-child(1){width:15%;} 
+.approvalProcess_confilt table td:nth-child(2){width:18%;} 
+.approvalProcess_confilt .btn_box{position: absolute;}
+.approvalProcess_confilt table tr.first td,.approvalProcess_confilt table tr.first span{color:#333333;}
+.approvalProcess_confilt table tr.first span.red{color:#ff4244;}

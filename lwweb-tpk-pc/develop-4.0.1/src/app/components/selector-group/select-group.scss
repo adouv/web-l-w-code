@@ -1,0 +1,199 @@
+@import "../../../styles/variable";
+@import "../../../styles/mixin";
+
+.selectGroup {
+	position: relative;
+	width: 100%;
+	height: computer(37px);
+
+	.extend {
+		border: 1px solid $color_border;
+		height: auto !important;
+		margin-top: -1px;
+		margin-left: -1px;
+		position: absolute;
+		z-index: 100 !important;
+	}
+
+	
+
+	.selectorLine {
+		position: absolute;
+		top: 0;
+		left: 0;
+		padding: 0 10px 5px 0;
+		z-index: 99;
+		background: #fff;
+		font-size: computer(14px);
+		padding-right: computer(59px);
+		height: computer(37px);
+		overflow: hidden;
+		//position: relative;
+		clear: both;
+		margin-bottom: computer(5px);
+
+		.selectorkey {
+			color: $color_font-light;
+			float: left;
+			width: computer(64px);
+			padding: computer(5px) 0;
+		}
+
+		.selectorValues {
+			padding-left: computer(64px);
+			width: 100%;
+			min-height: computer(37px);
+			user-select: none;
+			box-sizing: border-box;
+			line-height: computer(30px);
+
+			ul {
+				display: inline-block;
+
+				.selectorValue:hover {
+					color: $color_main;
+				}
+
+				.selectorValue {
+					padding: 0 computer(20px);
+					display: inline-block;
+					width: auto;
+					color: $color_font-center;
+					cursor: pointer;
+					margin-bottom: computer(10px);
+					//margin-bottom: 4px;
+				}
+
+				.active {
+					background: $color_main;
+					color: #fff !important;
+					border-radius: computer(30px);
+				}
+			}
+		}
+
+		.moreValue {
+			position: absolute;
+			top: computer(5px);
+			cursor: pointer;
+			right: computer(10px);
+			width: auto;
+			user-select: none;
+			color: $color_font-light;
+
+			i {
+				color: $color_main;
+			}
+		}
+	}
+}
+
+.selectGroupLine {
+	position: relative;
+	width: 99%;
+	height: computer(37px);
+	margin-top: 1px;
+	margin-left: 1px;
+	.extend {
+		border: 1px solid $color_border;
+		height: auto !important;
+		position: absolute;
+		z-index: 100 !important;
+		margin-left: -1px;
+		margin-top: -1px;
+	}
+
+	.selectorLine {
+		// position: absolute;
+		// top: 0;
+		// left: 0;
+		// padding: 0;
+		// z-index: 99;
+		padding-right: computer(59px);
+		background: #fff;
+		font-size: computer(14px);
+		height: computer(37px);
+		overflow: hidden;
+		clear: both;
+		margin-bottom: computer(5px);
+		$width: 83px;
+		.selectorkey {
+			font-size: computer(14px);
+			font-weight: bold;
+			color: #333;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+			float: left;
+			width: auto !important;
+			max-width: computer($width) !important;
+			padding: computer(5px) 0;
+		}
+
+		.selectorValues {
+			float: left !important;
+			padding-left: computer(10px);
+			min-height: computer(37px);
+			user-select: none;
+			box-sizing: border-box;
+			line-height: computer(30px);
+
+			ul {
+				display: inline-block;
+
+				li {
+					margin-bottom: 5px;
+
+					i {
+						display: none;
+					}
+				}
+
+				.selectorValue:hover {
+					color: $color_main;
+				}
+
+				.selectorValue {
+					padding: 0 computer(20px);
+					display: inline-block;
+					width: auto;
+					color: $color_font-center;
+					cursor: pointer;
+					margin-bottom: computer(4px);
+				}
+
+				.active {
+					background: none;
+					color: $color_main !important;
+					border-radius: 0;
+					position: relative;
+
+					i {
+						display: block;
+						position: absolute;
+						bottom: 0px;
+						left: 0px;
+						width: 100%;
+						height: 2px;
+						background: $color_main;
+					}
+				}
+			}
+		}
+
+		.moreValue {
+			position: absolute;
+			top: computer(3px);
+			cursor: pointer;
+			right: computer(10px);
+			width: auto;
+			user-select: none;
+			color: #999;
+			font-size: 14px !important;
+
+			i {
+				color: $color_main;
+			}
+		}
+	}
+}

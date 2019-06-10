@@ -1,0 +1,87 @@
+@import "../../../../../styles/variable";
+
+.resource-manager {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	padding: 0 computer(20px);
+	.title {
+		padding: computer(20px) 0 computer(10px);
+		font-size: computer(14px);
+		color: $color_font-deep;
+		text-align: center;
+	}
+	.upload-box {
+		text-align: right;
+		margin-bottom: computer(20px);
+		.file-input {
+			width: 0;
+			height: 0;
+			display: none;
+		}
+		.file-btn {
+			cursor: pointer;
+			font-size: computer(14px);
+		}
+		.label-btn {
+			position: relative;
+			vertical-align: middle;
+		}
+		label {
+			display: inline-block;
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			top: 0;
+			left: 0;
+			bottom: 0;
+			right: 0;
+			line-height: computer(30px);
+		}
+		.prompt-box {
+			position: relative;
+			display: inline-block;
+			margin-right: computer(20px);
+			&:hover {
+				.tip_content {
+					display: block;
+				}
+			}
+		}
+		.question_mark, .tip_name {
+			color: $color_main;
+			cursor: pointer;
+			font-size: computer(12px);
+			&:before{
+				font-size: computer(16px);
+			}
+		}
+		.tip_content {
+			text-align: left;
+			position: absolute;
+			background: #fff;
+			top: 22px;
+			right: 75px;
+			width: computer(253px);
+			padding: computer(10px);
+			font-size: computer(12px);
+			border-radius: 3px;
+			box-shadow: 0 8px 12px 0 rgba(7, 0, 2, 0.3);
+			border: solid 1px #ebebeb;
+			line-height: 21px;
+			z-index: 9;
+			color: $color_font-light;
+			display: none;
+		}
+	}
+
+	.footer-btn {
+		padding: computer(10px) 0;
+		border-top: 1px solid $color_border;
+		display: inline-block;
+		width: 100%;
+		text-align: center;
+	}
+}
+

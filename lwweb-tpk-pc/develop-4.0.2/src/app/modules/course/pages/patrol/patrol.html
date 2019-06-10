@@ -1,0 +1,38 @@
+<div class="yunhome overflow_box">
+	<div class="filter fadeIn" *ngIf="hasYear">
+		<nz-select class="year radius bg-gray" style="width:80px;height:30px;" [(ngModel)]="selectedYear" (ngModelChange)="getPatrolSemesterList($event)">
+			<nz-option *ngFor="let p of years" [nzValue]="p.value" [nzLabel]="p.label"></nz-option>
+		</nz-select>
+		<nz-select class="school_year radius bg-gray" style="width:100px;height:30px;" [(ngModel)]="selectedSemester"
+		    (ngModelChange)="getPatrolWeekList($event)">
+			<nz-option *ngFor="let p of semesters" [nzValue]="p.value" [nzLabel]="p.label"></nz-option>
+		</nz-select>
+		<nz-select class="week radius bg-gray" style="width:90px;height:30px;" [(ngModel)]="selectedWeek" (ngModelChange)="getPatrolGradeList($event)">
+			<nz-option *ngFor="let p of weeks" [nzValue]="p.value" [nzLabel]="p.label"></nz-option>
+		</nz-select>
+		<nz-select class="week radius bg-gray" style="width:80px;height:30px;" [(ngModel)]="selectNewGrade" (ngModelChange)="getPatrolSubjectList($event)">
+			<nz-option *ngFor="let p of newGrade" [nzValue]="p.value" [nzLabel]="p.label"></nz-option>
+		</nz-select>
+		<nz-select class="week radius bg-gray" style="width:150px;height:30px;" [(ngModel)]="selectSubject" (ngModelChange)="subjectSelect($event)">
+			<nz-option *ngFor="let p of subject" [nzValue]="p.value" [nzLabel]="p.label"></nz-option>
+		</nz-select>
+		<div class="holder"></div>
+		<div class="greenkuai"></div>
+		<div class="beikename">已发布</div>
+		<div class="blackkuai"></div>
+		<div class="beikename">未发布</div>
+	</div>
+	<course-class-table class="tabs animated fadeIn" [items]="classes" [currItem]="selectedClass" (selected)="getPatrolLessons($event)"></course-class-table>
+	<course-time-table class="sheet animated fadeIn" [tabType]="1" [items]="lessons" *ngIf="hasLesson" (prepareLesson)="startPrepareLesson($event)"></course-time-table>
+
+	<div class="nolesson animated fadeIn" *ngIf="!hasLesson||!hasYear">
+		<div class="center" *ngIf="!hasLesson && hasYear">
+			<img src="./assets/images/no-classHour.png" />
+			<div class="nolesson_name">当前时间段暂无巡课安排</div>
+		</div>
+		<div class="center" *ngIf="!hasYear">
+			<img src="./assets/images/no-schedule.png" />
+			<div class="nolesson_name">目前暂无您的上课课表</div>
+		</div>
+	</div>
+</div>

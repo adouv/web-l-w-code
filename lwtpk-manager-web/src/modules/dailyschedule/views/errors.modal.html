@@ -1,0 +1,45 @@
+
+<div class="modal-header border-none">
+    <!--<button type="button" class="close" ng-click="cancel()">-->
+        <span class="Close fr" ng-click="cancel()">×</span><span class="sr-only">Close</span>
+    <!--</button>-->
+    <p class="modal-title fl font" id="modal-title">作息时间作用对象冲突提示</p>
+    <span class="fl commend">说明：下面的红色部分表示新项目与旧项目的冲突对象</span>
+</div>
+<div class="modal-body" id="modal-body" ng-init="keywords=''" style="height: 400px;">
+    <section class="list-header form-inline clear" style="height: 400px;">
+        <!--<h5>系统检测到以下作用对象已存在有效作息时间表：</h5>-->
+        <!-- <ul class="errorsList">
+             <li ng-repeat="garden in gardens">{{garden.name}}</li>
+         </ul>-->
+        <!--<ul class="errorsList">
+            <li ng-repeat="conflict in conflicts">{{conflict.organizationName}}</li>
+        </ul>-->
+        <table class="table">
+            <thead>
+                <tr class="active">
+                    <td class="status">记录状态</td>
+                    <td>名称</td>
+                    <td>作用对象</td>
+                    <td style="width:34%;">作用时间段</td>
+                </tr>
+            </thead>
+            <tr ng-repeat="conflict in conflicts" ng-class="$index>0?'bg-color-gary':''">
+                <td class="status" ng-if="$index==0">本次新加项</td>
+                <td class="status" ng-if="$index>0">系统原有项</td>
+                <td>{{conflict.timeTableName}}</td>
+                <td>
+                    <div class="text-over">
+                        <span ng-repeat="organization in conflict.list" ng-class="organization.status||conflictIds.indexOf(organization.id)>=0?'red':''">{{organization.name}};</span>
+                    </div>
+
+                </td>
+                <td>{{conflict.startTime|date:'yyyy/MM/dd'}}~{{conflict.endTime|date:'yyyy/MM/dd'}}</td>
+            </tr>
+        </table>
+    </section>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-default tpk-btn new" type="button" ng-click="setCurrValid()">采用新的</button>
+    <button class="btn btn-default tpk-btn" type="button" ng-click="notSaveConflict()">保留旧的</button>
+</div>

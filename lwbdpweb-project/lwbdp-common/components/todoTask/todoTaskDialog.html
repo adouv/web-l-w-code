@@ -1,0 +1,73 @@
+<div class="bdp_list_search w5c-form flowDialog-list todo-task">
+    <div class="dialog-header">
+        模块所有待办任务
+        <span class="iconfont icon-close del_btn dialog-close" ng-click="closeThisDialog()"></span>
+    </div>
+    <!--总计-->
+    <div class="total_num allswitch">
+        <div class="tot_left fl">
+            <span>总计 <em class="num">{{todoTaskList.pageConfig.totalItems||0}}</em> 条</span>
+        </div>
+        <div class="fr ">
+            <div class="search_box clearfix">
+                <div>
+                    <div class="content_textBar">
+                        <input type="text" class="input_class" maxlength="50" placeholder="关键字搜索" ng-model="todoTaskList.searchKeyword" ng-keydown="todoTaskList.goSearch($event)">
+                        <span class="iconfont icon-search" ng-if="todoTaskList.searchKeyword.length === 0"></span>
+                        <span class="iconfont icon-error" ng-if="todoTaskList.searchKeyword.length > 0" ng-click="todoTaskList.cleanKeywords()"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+     <!-- 表格 -->
+    <div class="line_pad" auto-width=".table_absolute" >
+        <div class="table_box">
+            <table class="listTable">
+                <thead id="theadTh">
+                <tr>
+                    <th width="6%">序号</th>
+                    <th width="58%">名称</th>
+                    <th width="17%">任务类型</th>
+                    <th width="19%">添加时间</th>
+                </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+    <div class="table_absolute overflow_box poab_top137 flowDialog-ul overflow_box_small todo-task-list" id="tableAbsolute">
+        <div class="table_box">
+            <table class="listTable">
+                <tbody>
+                    <tr table-width ng-repeat="data in todoTaskList.todoTaskList track by $index" ng-click="todoTaskList.goPage(data,closeThisDialog)">
+                        <td class="task-idx">
+                            {{ $index+1 }}
+                        </td>
+                        <td class="task-name">
+                            {{ data.projectName }}
+                        </td>
+                        <td class="task-type">
+                            {{ data.taskStatusName }}
+                        </td>
+                        <td class="task-time"> 
+                            {{ data.createTime | date:'yyyy-MM-dd HH:mm' }}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <!--暂无数据-->
+        <div class="nodata_box" ng-show="todoTaskList.todoTaskList.length<1">
+            <div class="nodata" ng-show="!todoTaskList.isSearch">
+                <span></span>
+                <p>暂无数据</p>
+            </div>
+            <div class="nodata_search" ng-show="todoTaskList.isSearch">
+                <span></span>
+                <p>搜索无结果</p>
+            </div>
+        </div>
+    </div>
+      <!-- 分页 -->
+      <pagination ng-show="todoTaskList.todoTaskList.length>0" conf="todoTaskList.pageConfig"></pagination>
+</div>

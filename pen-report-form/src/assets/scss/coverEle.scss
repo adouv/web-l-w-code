@@ -1,0 +1,137 @@
+#content-box {
+  .el-radio-group{
+    .el-radio {
+      color: #226cfb !important;
+      .el-radio__input{
+        .el-radio__inner{
+          width: 20px !important;
+          height: 20px !important;
+          border: 2px solid #226cfb !important;
+          background-color: rgba(255,255,255,0) !important;
+          &::after{
+            width: 10px !important;
+            height: 10px !important;
+            background-color: #226cfb !important;
+          }
+        }
+      }
+    }
+  }
+  }
+  
+  // 弹框
+  .explanationDialogVisible {
+    .el-dialog {
+      width: 1000px;
+      height: 600px;
+      margin-top: 10vh;
+    }
+    .el-dialog__header{
+      border-bottom: 1px solid #dddddd;
+    }
+    .el-dialog__footer {
+      border-top: 1px solid #dddddd;
+      padding: 10px;
+    } 
+    .el-dialog--center .el-dialog__body {
+      height: 430px;
+      padding: 25px 0 30px 25px;
+    }
+    .dialog-scroll::-webkit-scrollbar {
+      /*滚动条整体样式*/
+      width: 10px; /*高宽分别对应横竖滚动条的尺寸*/
+      height: 1px;
+    }
+    .dialog-scroll::-webkit-scrollbar-thumb {
+      /*滚动条里面小方块*/
+      border-radius: 10px;
+      -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+      background: #ddd;
+    }
+    .dialog-scroll::-webkit-scrollbar-track {
+      /*滚动条里面轨道*/
+      -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+      border-radius: 10px;
+      background: #fff;
+    }
+    .el-button {
+      color: #226cfb;
+      border: 1px solid #226cfb;
+      padding: 10px 35px;
+    }
+    .el-button--primary {
+      color: #fff;
+      background-color: #226cfb;
+      border-color: #226cfb;
+    }
+  }
+
+  .line-table{
+    // 滚动条
+	.line-scroll::-webkit-scrollbar-track {
+        border-radius: 10px;
+        background: rgba(225,225,225,0);
+	}
+	.line-scroll::-webkit-scrollbar {
+		width: 10px;
+		height: 15px;
+	}
+	.line-scroll::-webkit-scrollbar-thumb {
+		border-radius: 10px;
+		-webkit-box-shadow:  inset 0 0 5px rgba(34, 108, 251, 0.5) !important;
+				// background: rgb(0, 36, 106);
+				background: rgba(34, 108, 251, 0.5);
+	}
+
+  }
+  // 多选框
+  .photoImg {
+    .el-checkbox__input.is-checked .el-checkbox__inner {
+      background-color: #226cfb;
+      border-color: #226cfb;
+    }
+    .el-checkbox__inner {
+      width: 22px;
+      height: 22px;
+      border: 1px solid #226cfb;
+      background-color: rgba(225,225,225,0);
+      border-radius: 5px;
+      &::after {
+        width: 6px;
+        height: 13px;
+        left: 7px
+      }
+    }
+    .el-checkbox__input.is-checked+.el-checkbox__label {
+      color: #226cfb;
+    }
+    .el-checkbox__label {
+      font-size: 16px;
+      color: #226cfb;
+    }
+  }
+
+  // tab切换
+  .exercise-wrap-body {
+    .el-tabs--card>.el-tabs__header {
+      border: none;
+    }
+    .el-tabs--card>.el-tabs__header .el-tabs__item {
+      width: 142px;
+      height: 36px;
+      line-height: 36px;
+      font-size: 16px;
+      border: 1px solid #ddd;
+    }
+    .el-tabs__item.is-active {
+      color: #fff;
+      background: #226cfb
+  }
+  .el-tabs__item:hover {
+    color: #226cfb;
+    cursor: pointer;
+}
+.el-tabs__item.is-active {
+  color: #fff;
+}
+  }

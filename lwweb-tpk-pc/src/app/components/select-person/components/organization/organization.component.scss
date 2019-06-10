@@ -1,0 +1,73 @@
+@import "../../../../../styles/variable";
+.organization::ng-deep{
+    height: 100%;
+    width: 100%;
+    .input-search{
+        padding:computer(10px);
+    }
+    .input-group-search{
+        width: 100% !important;
+        padding-left: 0 !important;
+    }
+    .organization-content{
+        // padding:0 computer(10px);
+        height: calc(100% - #{computer(50px)});
+        overflow: auto;
+    }
+    .ant-tree-checkbox{
+        float: right;
+    }
+    .no-result{
+        color:$color_font-light;
+        .no-result-msg{
+            margin-top: computer(-48px);
+            color:$color_font-light;
+        }
+    }
+    .tree-person-card{
+        height: computer(30px);
+        padding:computer(8px) computer(10px);
+        // background:rgba(0, 160, 233, 0.1);
+        display: inline-block;
+        width: 100%;
+        height: auto;
+        cursor: pointer;
+        &:hover{
+            background:rgba(0, 160, 233, 0.1);
+        }
+        .person-message{
+            width:calc(100% - #{computer(30px)});
+            float: left;
+            .person-message-name,.person-message-msg{
+                font-size: computer(14px);
+                // height: computer(14px);
+                width: 100%;
+                overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+            }
+            .person-message-name{
+                color:$color_font-deep;
+            }
+            .person-message-msg{
+                color:$color_font-light;
+				font-size: computer(12px);
+            }
+        }
+        .check-box-img{
+            width: computer(20px);
+            margin-left: computer(10px);
+            float: left;
+            line-height: computer(40px);
+        }
+    }
+    .icon-checkbox_default:before{
+		color: #cccccc;
+		font-size: computer(16px);
+    }
+    .icon-checkbox_check:before{
+        color:$color_main;
+		font-size: computer(16px);
+    }
+    
+}

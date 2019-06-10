@@ -1,0 +1,195 @@
+
+@import "../../assets/scss/index.scss";
+.resultsOverview{
+  -webkit-app-region:no-drag;
+  position: absolute;
+  left: 0;
+  z-index: 9;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+  height: 100%;
+  .pie-result{
+    background: url("../../assets/images/bg.png");
+    background-size: 100% 100%;
+    height: 100%;
+    font-size: 18px;
+    color: #333333;
+    .ant-layout{
+      background: none;
+      height: 100%;
+    }
+    .ant-layout-content {
+      margin: computer(21px) computer(21px) 0 computer(19px);
+      height: 100%;
+    }
+    .question-area{
+      border: 1px solid #dddddd;
+      height: calc(100% - #{computer(69px)});
+      padding: computer(19px);
+    }
+    .mar-top{
+      margin-top: computer(38px) !important;
+    }
+    .inner-box {
+      background-color: #ffffff; 
+      height: calc(100% - #{computer(69px)});
+      overflow: hidden;
+      padding: computer(19px);
+      .noneImg {
+        text-align: center;
+        p {
+          color: #ff7d55;
+          opacity: 0.5;
+          font-size: 18px;
+        }
+      }
+      .pie-left{
+        width: 50%;
+        margin-right: 19px;
+        .left-head {
+          border-bottom: 1px solid #dddddd;
+          padding-top:10px;
+          
+        }
+        h4{
+          font-weight: 600;
+          margin-bottom:16px;
+          font-size: computer(20px);
+        }
+        .router-link {
+          float: right;
+          font-weight: bold;
+          font-size: 16px;
+          color: #ff7d55;
+        }
+        .echart-title{
+          padding-top: computer(15px);
+        }
+        .margin-left{
+          margin-left: computer(25px);
+        }
+        .pie-show {
+          margin:computer(10px) auto computer(20px);
+          height: calc(100% - 30px);
+          #mychars{
+            margin: 0 auto;
+          }
+        }
+        .echars-foot {
+          width:80%;
+          margin:0 auto;
+          overflow: hidden;
+        }
+        .foot-item {
+          float: left;
+          width:50%;
+          margin-bottom: 10px;
+        }
+      }
+      
+      .pie-right{
+        width: 50%;
+        margin-left: 19px;
+        .ant-checkbox-checked .ant-checkbox-inner, .ant-checkbox-indeterminate .ant-checkbox-inner{
+          background-color: #ff7d55 !important;
+          border-color: #ff7d55 !important;
+        }
+        .ant-table-bordered{
+          height: calc(100% - #{computer(69px)});
+        }
+        .ant-table-bordered .ant-table-thead > tr > th, .ant-table-bordered .ant-table-tbody > tr > td {
+          border-right: 1px solid #dddddd;
+        }
+        .ant-checkbox-wrapper:hover .ant-checkbox-inner,
+        .ant-checkbox:hover .ant-checkbox-inner,
+        .ant-checkbox-input:focus + .ant-checkbox-inner {
+          border-color: #ff7d55;
+        }
+        .ant-table-tbody > tr > td {
+          border-bottom: 1px solid #dddddd;
+        }
+        ::selection {
+          background: #ff7d55;
+        }
+        .left-head {
+          padding-top:10px;
+          
+          span{
+            color:#ff7d55;
+          }
+          h4{
+            font-size: computer(20px);
+            margin-bottom:16px;
+          }
+        }
+        .ant-table{
+          height: calc(100% - #{computer(69px)});
+          table{
+            border-top: 1px solid #dddddd;
+            border-left: 1px solid #dddddd;
+            border-radius: 0;
+            font-size: computer(18px);
+          }
+          .grey-font {
+            color:#999999 !important;
+          }
+          .ant-table-thead > tr > th{
+            background: none;
+          }
+          .ant-table-thead > tr > th, .ant-table-tbody > tr > td{
+            height: 43px;
+            line-height: 43px;
+            text-align: center;
+            padding: 0;
+            color: #333333;
+          }
+        }
+      }
+    }
+  
+    .ant-layout-footer{
+      padding: 0;
+      width: 100%;
+      position: fixed;
+      bottom: 0;
+    }
+    .footer{
+      width: 100%;
+      background: #3b5253;
+      height: computer(67px);
+      color: #ff7d55;
+      line-height: computer(67px);
+      .titleBtn{
+        position: absolute;
+        left: 19px;
+
+      }
+      .bottom-ul{
+        li{
+          cursor: pointer;
+        }
+        i {
+          margin-right: 6px;
+        }
+        .disabled{
+          opacity: 0.5;
+          cursor: default;
+        }
+      }
+      .marg-r-35px{
+        margin-right: computer(35px);
+      }
+      .footer-right {
+        position: absolute;
+        right: 40px;
+        
+      }
+      .close {
+        background: none !important;
+      }
+    }
+  }
+
+}
+

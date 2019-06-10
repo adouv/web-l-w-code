@@ -1,0 +1,22 @@
+<!--<div class="evaluate">
+    <button *ngIf="isUnicast" class="left-btn" (click)="goStatistics()" nz-button [nzType]="'danger'">
+    <span>统计详情</span>
+    </button>
+    <button *ngIf="!isSelf&&isValidate" (click)="alertEvaluationDialog()" nz-button [nzType]="'danger'">
+    <span>教学评价</span>
+     <button *ngIf="isSelf&&isUnicast" (click)="showRelection()" nz-button [nzType]="'primary'">
+		<span>教学反思</span>
+	</button> 
+</div>-->
+
+<button (click)="showRelection()" class="round-btn btn-zan-default btn-zan" nz-button [nzType]="'primary'">
+    <span>快速</span>
+    <span>评课</span>
+</button>
+
+<ng-template #tplFooter>
+    <div class="ant-modal-title">{{modalTitle}}</div>
+    <button (click)="evaluationCancel()" class="ant-modal-close">
+		<span class="ant-modal-close-x"></span>
+	</button>
+</ng-template>

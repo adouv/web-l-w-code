@@ -1,0 +1,70 @@
+<link rel="stylesheet" href="modules/dialogs/style/detail.css">
+<div class="doalogdetail">
+    <div class="page">
+        <p class="pagetit font_MY">
+            项目详情
+            <span class="close" ng-click="close()"></span>
+        </p>
+        <div class="infobox">
+            <div>
+                <span class="info_name">项目大类：</span>
+                <span class="info_content">{{project.projectTypeName?project.projectTypeName:'无'}}</span>
+            </div>
+            <div>
+                <span class="info_name">项目/工程类别：</span>
+                <span class="info_content">{{project.projectItemTypeName?project.projectItemTypeName:'无'}}</span>
+            </div>
+            <div>
+                <span class="info_name">项目名称：</span>
+                <span class="info_content">{{project.name?project.name:'无'}}</span>
+            </div>
+            <div>
+                <span class="info_name">建设单位：</span>
+                <span class="info_content">{{project.constructUnitName?project.constructUnitName:'无'}}</span>
+            </div>
+            <div>
+                <span class="info_name">项目负责人：</span>
+                <span class="info_content">{{project.projectManagerName?project.constructUnitName:'无'}}</span>
+            </div>
+            <div class="special">
+                <span class="info_name">项目批文投资总额：</span>
+                <div class="info_content flowBox">
+                    <span ng-if="!project.amount">&nbsp; 无</span>
+                    <div class="count" ng-if="project.amount">
+                        {{project.amount}}万元
+                    </div>
+                    <div class="detail" ng-if="project.amount">
+                        <p>其中</p>
+                        <ul>
+                            <li ng-repeat="item in project.capitalSourceList ">
+                                {{item.capitalSourceTypeName}}:{{item.amount}}万元
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <span class="info_name">建设规模/建设面积（平方米）</span>
+                <span class="info_content">{{project.constructionArea?project.constructionArea:'无'}}</span>
+            </div>
+            <div>
+                <span class="info_name">项目介绍：</span>
+                <span class="info_content">{{project.description?project.description:'无'}}</span>
+            </div>
+            <div class="posr">
+                <span class="info_name">最近更新人：</span>
+                <span class="info_content">{{project.lastUpdateUserName?project.lastUpdateUserName:'无'}}</span>
+
+                <!--<a class="getrecord" href="javascript:void(0);"> 查看更新记录>></a>-->
+
+            </div>
+            <div>
+                <span class="info_name">更新时间：</span>
+                <span class="info_content">{{project.lastUpdateTime | date:'yyyy/MM/dd HH:mm'}}</span>
+            </div>
+        </div>
+        <div class="btnbox">
+            <span class="setbtn sureBtn" ng-click="close()">返回</span>
+        </div>
+    </div>
+</div>

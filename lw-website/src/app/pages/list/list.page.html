@@ -1,0 +1,104 @@
+<div id="list">
+    <app-tooltip class="tooltip"></app-tooltip>
+    <!-- 	<div class="title">
+		{{ defaultColumn.name }}
+	</div> -->
+    <top-banner [type]="type"></top-banner>
+    <div class="list">
+        <div class="side-bar">
+            <div class="sidebar">
+                <ul>
+                    <li class="sidebar-li" *ngFor="let item of childColumnsList">
+                        <div *ngIf="item.childColumns.length>0" class="first-menu" (click)="columnClick(item);" [ngClass]="{'active': item.id==sub}">
+                            <span class="title" [ngClass]="{'mr10': item.childColumns.length > 0}">{{item.name}}</span>
+                            <span class="iconfont icon-arrow-top arrow" [ngClass]="{'icon-arrow-r': item.isSubMenu}"></span>
+                        </div>
+                        <div *ngIf="item.childColumns.length==0" class="first-menu" [ngClass]="{'active': item.id==sub}" (click)="columnClick(item);">
+                            <span class="title">
+								{{item.name}}
+							</span>
+                        </div>
+                        <ul class="sub-menu" *ngIf="item.isSubMenu">
+                            <li class="sub-menu-li" *ngFor="let subTit of item.childColumns" [ngClass]="{'active':subTit.id==subs}" (click)="columnClick(item,subTit);">
+                                <span class="title">
+									{{subTit.name}}
+								</span>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <div class="side_pic">
+                    <img [src]=imgUrl alt="">
+                </div>
+            </div>
+        </div>
+        <div class="right list-right" style="text-align: center;">
+            <nz-spin [nzSpinning]="isSpinning" [nzDelay]="2000">
+                <div *ngIf="articleList.length <= 0" class="null container">
+                    <img src="assets/images/null.png" alt="">
+                    <p>暂无数据</p>
+                </div>
+                <div class="container" *ngIf="articleList.length>0">
+                    <ul class="wrap" id="main">
+                        <li class="box img_block" *ngFor="let item of articleList.slice(from,to);let i= index;" (click)="onDetailClicked(item)">
+                            <em class="serialNumber">{{i+1}}</em>
+                            <div class="pic">
+                                <div [ngStyle]="{'margin':'0 20px'}">
+                                    <p *ngIf="item.articleType && item.articleType=='register'" class="register-header" [ngClass]="{'bg-start': item.tipValue === 'start','bg-rest': item.tipValue === 'rest','bg-over': item.tipValue === 'over','bg-dayOver': item.tipValue === 'dayOver'}">
+                                        <span *ngIf="item.tipValue !== 'dayOver'">{{ item.tipTitle }}</span>
+                                        <span *ngIf="item.tipValue === 'dayOver'">{{ item.tipTitle.split('（')[0] }}</span>
+                                        <span *ngIf="item.tipValue === 'dayOver'">{{ '（' + item.tipTitle.split('（')[1] }}</span>
+                                    </p>
+
+                                    <h5 class="title">
+                                        {{item.title}}
+                                    </h5>
+                                </div>
+
+                                <div *ngIf="item.articleType && item.articleType=='picture'" [ngStyle]="{'background':'url('+ apiUrl + item.cover +') no-repeat center center','width':'360px','height':'230px','backgroundSize':'cover'}"></div>
+                                <!-- <img src="{{apiUrl}}{{item.cover}}" *ngIf="item.articleType && item.articleType=='picture'" w360 h230 /> -->
+
+                                <!-- <img src="{{apiUrl}}{{item.cover}}" *ngIf="item.articleType && item.articleType=='video'" /> -->
+
+                                <div *ngIf="item.articleType && item.articleType=='video'" [ngStyle]="{'background':'url('+ apiUrl + item.cover +') no-repeat center center','width':'360px','height':'230px','backgroundSize':'cover'}"></div>
+                                <img src="assets/images/play.png" class="btn-paly" *ngIf="item.articleType && item.articleType=='video'" />
+
+                                <div class="txt" *ngIf="item.articleType && item.articleType=='richText'">
+                                    <p>
+                                        {{contentHtmlFilter(item.contentText)}}
+                                    </p>
+                                </div>
+
+                                <div class="txt" *ngIf="item.articleType && item.articleType=='register'">
+                                    <p>
+                                        {{contentHtmlFilter(item.contentText)}}
+                                        <!-- [innerHTML]="item.registerGuide.guideContent | html" -->
+                                        <!-- item.registerGuide.guideContent -->
+                                    </p>
+                                </div>
+
+                                <div class="des" *ngIf="item.articleType && (item.articleType=='richText' || item.articleType=='picture' || item.articleType=='video')">
+                                    <p class="author">作者：<span class="auth">{{item.author}}</span></p>
+                                    <p class="timer">{{item.publishTime | date: 'y-MM-dd'}}</p>
+                                </div>
+                                <div class="des" *ngIf="item.articleType && (item.articleType=='register')">
+                                    <p class="author">作者：<span class="auth auth1">{{item.author}}</span></p>
+                                    <p class="timer">报名时间：{{item.registerGuide.registerBeginTime | date:'y-MM-dd'}}至{{item.registerGuide.registerEndTime | date:'y-MM-dd'}}</p>
+                                </div>
+                            </div>
+                        </li>
+                        <div style="clear:both"></div>
+                    </ul>
+                    <div style="clear:both"></div>
+                </div>
+                <div style="clear:both"></div>
+                <div *ngIf="total>pageSize">
+                    <nz-pagination [nzPageSize]="pageSize" [nzPageIndex]="pageIndex" [nzTotal]="total" (nzPageIndexChange)="onPageChange($event)"></nz-pagination>
+                </div>
+            </nz-spin>
+        </div>
+        <div style="clear:both"></div>
+    </div>
+    <div style="clear:both"></div>
+</div>
+<div style="clear:both"></div>

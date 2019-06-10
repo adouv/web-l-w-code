@@ -1,0 +1,55 @@
+<div class="resource-info">
+	<nz-breadcrumb [nzSeparator]="'>'">
+		<nz-breadcrumb-item>
+			<span [routerLink]="['/resource/home/-1']">讲</span>
+		</nz-breadcrumb-item>
+		<nz-breadcrumb-item>
+			<span [routerLink]="['/resource/home/-1']">讲课列表</span>
+		</nz-breadcrumb-item>
+		<nz-breadcrumb-item>
+			讲课详情
+		</nz-breadcrumb-item>
+	</nz-breadcrumb>
+
+	<p class="title">
+		{{courseTitle}}
+	</p>
+
+	<nz-tabset class="outab-wrapper" [nzSelectedIndex]="selectedIndex" [nzTabBarExtraTemplate]="tabBarExtraContent">
+		<nz-tab *ngFor="let tab of tabList; let i = index">
+			<ng-template #nzTabHeading>
+				{{tab.title}}
+			</ng-template>
+
+			<ndc-dynamic [ndcDynamicComponent]="tab?.component" [ndcDynamicInputs]="tabInputs[i]"></ndc-dynamic>
+		</nz-tab>
+		<ng-template #tabBarExtraContent>
+			<!--<button nz-button class="ant-btn-danger" *ngIf="minute==0 && second==0" (click)="startRecord()">录制</button>-->
+			<!--<button nz-button class="ant-btn-danger" *ngIf="minute>0 || second>0">时长 {{minute}}:{{second}}</button>-->
+			<!--<button nz-button class="ant-btn-danger" (click)="pauseRecord()">暂停</button>-->
+			<!--<button nz-button class="ant-btn-danger" (click)="stopRecord()">保存</button>-->
+
+			<nz-dropdown [nzPlacement]="'bottomLeft'"  *ngIf="this.enableRecord || this.videoId">
+				<button nz-button nz-dropdown (click)="startRecord()" nzType="danger" (mousedown)="$event.preventDefault()">
+					<span *ngIf="recordTime==0">录制</span>
+					<span *ngIf="recordTime>0 " class="time-long">时长 {{recordTime | date:'mm:ss'}}</span>
+				</button>
+				<ul nz-menu *ngIf="this.videoId">
+					<li nz-menu-item *ngIf="this.videoId && !this.enableRecord">
+						<a target="_blank" rel="noopener noreferrer" (click)="pauseRecord()">暂停</a>
+					</li>
+					<li nz-menu-item *ngIf="this.videoId && this.enableRecord">
+						<a target="_blank" rel="noopener noreferrer" (click)="startRecord()">开始</a>
+					</li>
+					<li nz-menu-item>
+						<a target="_blank" rel="noopener noreferrer" (click)="stopRecord()">保存</a>
+					</li>
+				</ul>
+			</nz-dropdown>
+			
+
+		</ng-template>
+
+	</nz-tabset>
+
+</div>

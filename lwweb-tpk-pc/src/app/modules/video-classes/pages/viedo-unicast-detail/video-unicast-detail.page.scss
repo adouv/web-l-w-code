@@ -1,0 +1,90 @@
+@import "../../../../../styles/variable";
+.video-container {
+    height: calc(100% - #{computer(55px)});
+    width: 100%;
+    padding: 0 0 computer(10px) computer(20px);
+    background: #fff;
+    .app-adress {
+        position: relative;
+        height: computer(40px);
+        width: 100%;
+        nz-breadcrumb {
+            height: computer(40px);
+            line-height: computer(40px);
+            position: absolute;
+            left: 0;
+            top: 0;
+            z-index: 999;
+        }
+        .title {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            text-align: center;
+            font-size: computer(16px);
+            text-align: center;
+            line-height: computer(40px);
+            z-index: 998;
+            color: $color_font-deep;
+        }
+    }
+    .file-wrapper {
+        margin-left: computer(40px);
+        // dynamic-tabs{
+        // 	height: 100% ;
+        // }
+    }
+    .video-content {
+        height: calc(100% - #{computer(40px)});
+    }
+}
+
+.left-container {
+    width: 100%;
+    //margin: 0 computer(50px)  computer(50px);
+    .video-wrapper {
+        //height: 100%;
+        margin-bottom: computer(11px);
+        div {
+            height: 100%;
+            background-color: #46444c;
+        }
+    }
+    .auto-scroll-box {
+        height: calc(100% - #{computer(70px)});
+        width: calc(100% + #{computer(10px)});
+        margin: computer(20px) 0;
+        .auto-scroll {
+            height: 100%;
+        }
+    }
+    .scroll-wrapper {
+        width: 100%;
+        .video-scroll {
+            width: 100%;
+        }
+    }
+}
+
+.tabs-content {
+    height: calc(100% - #{computer(50px)});
+    //height: 100%;
+}
+
+.footer {
+    padding: computer(20px) 0;
+    box-sizing: border-box;
+    //border-top: 1px solid $color_border;
+}
+
+.footers {
+    width: calc(100% - #{computer(40px)});
+    border-top: 1px solid $color_border;
+    position: absolute;
+    background-color: #fff;
+    bottom: 0;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+}

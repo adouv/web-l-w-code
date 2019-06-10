@@ -1,0 +1,77 @@
+<link rel="stylesheet" href="modules/dialogs/style/detail.css">
+<div class="doalogdetail">
+    <div class="page">
+        <p class="pagetit font_MY">
+            项目财务详情
+            <span class="close" ng-click="close()"></span>
+        </p>
+        <div class="infobox">
+            <div>
+                <span class="info_name">项目大类：</span>
+                <span class="info_content">{{data.projectTypeName}}</span>
+            </div>
+            <div>
+                <span class="info_name">项目/工程类别：</span>
+                <span class="info_content">{{data.projectItemTypeName}}</span>
+            </div>
+            <div>
+                <span class="info_name">项目名称：</span>
+                <span class="info_content">{{data.projectName}}</span>
+            </div>
+            <div class="more_line">
+                <div>
+                    <p class="info_name">资金文号及金额：</p>
+                </div>
+                <div>
+                    <div class="info_content">
+                        <p ng-repeat="item in data.capitalDistributionVoList">{{item.capitalNumberName}}({{item.amount}})</p>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <span class="info_name">合同金额：</span>
+                <span class="info_content">{{data.contractAmount}}</span>
+            </div>
+            <div>
+                <span class="info_name">本次安排支出资金总额：</span>
+                <span class="info_content">{{totalAmount}}万元</span>
+            </div>
+            <div ng-if="showPayoutInfo">
+                <span class="info_name">支出费用名称：</span>
+                <span class="info_content">{{data.expenseTypeItemName}}</span>
+            </div>
+            <div ng-if="showPayoutInfo">
+                <span class="info_name">支出费用类别：</span>
+                <span class="info_content">{{data.expenseTypeName}}</span>
+            </div>
+            <div ng-if="showPayoutInfo">
+                <span class="info_name">支付对象：</span>
+                <span class="info_content">{{data.payeeName}}</span>
+            </div>
+            <div ng-if="showPayoutInfo">
+                <span class="info_name">支付日期：</span>
+                <span class="info_content">{{data.capitalChangeDate?(data.capitalChangeDate| date:'yyyy/MM/dd'):'无'}}</span>
+            </div>
+            <div class="more_line">
+                <span class="info_name">备注：</span>
+                <span class="info_content">{{data.description?data.description:'无'}}</span>
+            </div>
+            <div class="posr">
+                <span class="info_name posa">最近更新人：</span>
+                <span class="info_content">{{data.operatorName?data.operatorName:'无'}}</span>
+                <!--<a class="getrecord" href="javascript:void(0);"> 查看更新记录>></a>-->
+            </div>
+            <div>
+                <span class="info_name">更新时间：</span>
+                <span class="info_content">{{data.createTime?(data.createTime | date:'yyyy/MM/dd HH:mm:ss'):'无'}}</span>
+            </div>
+            <div>
+                <span class="info_name">点击量：</span>
+                <span class="info_content">{{data.clickVolume?data.clickVolume:'0'}}</span>
+            </div>
+            <div class="btnbox">
+                <span class="setbtn sureBtn" ng-click="close()">返回</span>
+            </div>
+        </div>
+    </div>
+</div>

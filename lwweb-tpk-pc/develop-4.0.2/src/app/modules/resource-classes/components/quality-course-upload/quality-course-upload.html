@@ -1,0 +1,36 @@
+<div class="quality-course-upload">
+	<div class="line-box">
+		<div class="left-box">相关知识点：</div>
+		<nz-select style="width: 100%" [ngClass]="{'error':errOutlineIds}" (nzOpenChange)="errOutlineIds = false"
+				   [(ngModel)]="outlineIds" [nzSize]="'default'" [nzMode]="'tags'" [nzPlaceHolder]="''">
+			<nz-option *ngFor="let option of knowledgeOptions" [nzLabel]="option?.title" [nzValue]="option.id">
+			</nz-option>
+		</nz-select>
+	</div>
+	<div class="line-box files-box">
+		<div class="left-box">已选精品课：</div>
+		<div class="auto-scroll">
+			<div *ngFor="let file of files; let i=index">
+				<div class="file-name">{{file.name}}
+					<span class="iconfont icon-icon_shutdown" (click)="delFile(i)"></span>
+				</div>
+			</div>
+			<!--进度-->
+			<div *ngFor="let queue of uploader.queue">
+				<div class="file-name">
+					{{queue._file.name}}
+				</div>
+				<div class="progress">
+					<span class='progress_plan' [ngStyle]="{'width': queue.progress+'%'}"></span>
+				</div>
+				<span class="number">{{queue.progress}}%</span>
+				<span class="iconfont icon-icon_shutdown" (click)="cancelUpload(queue)"></span>
+			</div>
+		</div>
+	</div>
+
+	<div class="btn-box">
+		<button nz-button [nzType]="'danger'" (click)="addCourse()" [disabled]="!unfinishbtn">确认提交
+		</button>
+	</div>
+</div>

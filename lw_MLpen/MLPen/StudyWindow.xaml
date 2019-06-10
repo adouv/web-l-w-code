@@ -1,0 +1,44 @@
+﻿<Window x:Class="MLPen.StudyWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MLPen"
+        xmlns:ui="clr-namespace:MLPen.ModernUI.Windows.UI;assembly=MLPen.ModernUI"
+        xmlns:uc="clr-namespace:MLPen.Controls"
+        xmlns:converters="clr-namespace:MLPen.Converters"
+        mc:Ignorable="d"
+        Style="{StaticResource WindowStyle}"
+        Title="课堂实时反馈练习" Height="550" Width="868" ResizeMode="NoResize" WindowState="Maximized" WindowStyle="None" Topmost="False">
+    <Window.Resources>
+        <converters:BoolToVisibleConverter x:Key="boolToVisible"/>
+    </Window.Resources>
+    <Grid Background="{StaticResource WhiteBrush}" >
+        <uc:UCChorme x:Name="Chrome" RenderTransformOrigin="0,0" Margin="40"/>
+        <Grid VerticalAlignment="Bottom" Margin="40,0,40,10">
+            <StackPanel HorizontalAlignment="Left" Orientation="Horizontal">
+                <ui:IconButton Content="&#xe6a8;" Foreground="{DynamicResource PrimaryBrush}" FontSize="29" Margin="0,0,20,0" Click="ScalePanel" Tag="up"/>
+                <ui:IconButton Content="&#xe6ab;" Foreground="{DynamicResource PrimaryBrush}" FontSize="29" Margin="0,0,20,0" Click="ScalePanel" Tag="down"/>
+                <ui:IconButton Content="&#xe6d3;" Foreground="{DynamicResource PrimaryBrush}" FontSize="40" Padding="4,-2" Click="ScalePanel" Tag="reset"/>
+            </StackPanel>
+            <StackPanel VerticalAlignment="Center" Orientation="Horizontal" Margin="0,0,20,0" HorizontalAlignment="Center" Visibility="{Binding IsShowStep,Converter={StaticResource boolToVisible}}">
+                <TextBlock Text="{Binding StepText}" Foreground="{StaticResource BlackBrush}"/>
+                <Button  Content="进入下一阶段答题" Style="{StaticResource MSButtonLink}" Visibility="{Binding IsShowNextStepButton, Converter={StaticResource boolToVisible}}" Click="NextStepClick" />
+            </StackPanel>
+            <StackPanel HorizontalAlignment="Right" Orientation="Horizontal" x:Name="vPager">
+                <ui:IconButton x:Name="btnFirst" Content="&#xe6ce;" Foreground="{DynamicResource PrimaryBrush}" FontSize="29" Margin="0,0,20,0" Tag="first" Click="PageClick"/>
+                <ui:IconButton x:Name="btnPrev" Content="&#xe6a9;" Foreground="{DynamicResource PrimaryBrush}" FontSize="29" Margin="0,0,20,0" Tag="prev" Click="PageClick"/>
+                <ui:IconButton x:Name="btnNext" Content="&#xe6aa;" Foreground="{DynamicResource PrimaryBrush}" FontSize="29" Margin="0,0,20,0" Tag="next" Click="PageClick"/>
+                <ui:IconButton x:Name="btnLast" Content="&#xe6cd;" Foreground="{DynamicResource PrimaryBrush}" FontSize="29" Tag="last" Click="PageClick"/>
+            </StackPanel>
+            <StackPanel HorizontalAlignment="Right" Orientation="Horizontal" x:Name="vPagingInfo" VerticalAlignment="Center">
+                <TextBlock Text="{Binding PagingInfo}" FontSize="14" Foreground="{StaticResource PrimaryBrush}"/>
+            </StackPanel>
+        </Grid>
+        <uc:UCTool x:Name="ucTool" HorizontalAlignment="Right" VerticalAlignment="Bottom"  Margin="0,0,25,80"/>
+        <uc:UCStudyResult x:Name="ucStudyResult" VerticalAlignment="Bottom" Margin="0,0,0,80" />
+        <uc:UCAnswerPanel x:Name="ucAnswerPanel" Visibility="Collapsed" />
+        <uc:UCCountdown x:Name="ucCountdown"/>
+        <ui:MSLoading x:Name="Loading" IsOpen="False" CornerRadius="0,0,6,6" />
+    </Grid>
+</Window>

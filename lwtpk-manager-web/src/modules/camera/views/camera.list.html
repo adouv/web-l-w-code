@@ -1,0 +1,50 @@
+<section class="row" style="border-color:#00ba8b;">
+    <blockquote class="border-color">摄像头详细信息查看</blockquote>
+</section>
+<section class="row" style="margin:20px -15px;">
+    <div class="nav-form">
+        <input type="text" class="form-control" ng-model="keywords" placeholder="请选择功能区" ng-click="selectedArea()">
+        <input type="text" class="form-control sear" ng-model="condition.keywords" placeholder="请输入关键字">
+        <button class="btn tpk-btn" id="lw-search" >搜 索</button>
+    </div>
+    <div class="btn-group">
+        <a class="btn btn-default tpk-btn-o" href="javascript:void(0);" ng-click="goArea()">功能分区视角</a>
+        <a class="btn btn-default tpk-btn" href="javascript:void(0);" ng-click="cameraSync()">同步摄像头信息</a>
+    </div>
+</section>
+<section class="row">
+    <table class="table">
+        <thead>
+        <tr class="active">
+            <td>序号</td>
+            <td>摄像头名称</td>
+            <td>所属功能分区</td>
+            <td>IP地址</td>
+            <td>推流频道</td>
+            <td>用户名/密码</td>
+            <td>最近更新人</td>
+            <td>添加时间</td>
+            <!--<td>有效性</td>-->
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="data in datas">
+            <td>{{$index+1}}</td>
+            <td>{{data.cameraName}}</td>
+            <td><span ng-repeat="area in data.list">{{area.areaName}}；</span></td>
+            <td>{{data.cameraIp}}</td>
+            <td>{{data.channel}}</td>
+            <td>{{data.admin+'/'+data.password}}</td>
+            <td>{{data.lastUpdateAccountName}}</td>
+            <td>{{data.createTime|date:'yyyy/MM/dd HH:mm:ss'}}</td>
+            <!--<td>
+                <div class="inblk va-middle">
+                    <input type="checkbox" id="checked" class="cbx hidden">
+                    <label for="checked" class="lbl"></label>
+                </div>
+            </td>-->
+        </tr>
+        </tbody>
+    </table>
+</section>
+<lw-page url="/camera/page" garden-id="{{gardenId}}" view="{{view}}"></lw-page>

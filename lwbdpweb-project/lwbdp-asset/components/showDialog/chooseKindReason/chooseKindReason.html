@@ -1,0 +1,19 @@
+<div class="choose_dialog" ng-class="{true: 'choose_kind', false: 'choose_reason'}[showtitle=='kind']">
+    <p class="title">
+        {{showtitle=='kind'?'请选择资产大类':'申请原因选择'}}<span class="iconfont icon-close" ng-click="cancel()"></span>
+    </p>
+    <div class="choose_box overflow_box_sml">
+        <div class="label_box" ng-repeat="data in list track by $index">
+            <input type="checkbox" id="kind{{$index}}" class="checkbox_class" ng-click="clickCheckbox($event,data.id)" ng-checked="echoIds.indexOf(data.id)>-1">
+            <label for="kind{{$index}}">{{data.name}}</label>
+        </div>
+        <!--<label ng-repeat="data in list track by $index" for="kind{{$index}}">
+            <input type="checkbox" id="kind{{$index}}" class="checkbox_class"
+                ng-click="checkboxClick($event,data)"  ng-checked="data.checked">{{data.name}}
+        </label>-->
+    </div>
+    <div class="btn_box">
+        <span class="btn_bd" ng-click="cancel()">取消</span>
+        <span class="btn_bg" ng-click="sure()">确定</span>
+    </div>
+</div>

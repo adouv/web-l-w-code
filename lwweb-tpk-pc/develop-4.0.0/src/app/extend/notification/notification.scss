@@ -1,0 +1,53 @@
+@import "../../../styles/variable";
+.tpk-notification{
+	padding: 16px;
+	border-radius: 4px;
+	-webkit-box-shadow: 0 2px 8px rgba(0,0,0,.2);
+	box-shadow: 0 2px 8px rgba(0,0,0,.2);
+	background: #fff;
+	line-height: 1.5;
+	position: relative;
+	margin-bottom: 10px;
+	width: 300px;
+	overflow: hidden;
+	box-sizing: content-box;
+	.tpk-notification-content{
+		color:#666;
+	}
+	.tpk-notification-header{
+		display: inline-block;
+		width: 100%;
+		position: relative;
+	}
+	.tpk-notification-title{
+		float: left;
+		color: rgba(0,0,0,.85);
+		font-size: 14px;
+	}
+	.tpk-notification-close{
+		position: absolute;
+		right: 0;
+		cursor: pointer;
+	}
+	.tpk-icon{
+		padding: 0 10px;
+	}
+	.tpk-icon:before{
+		font-size: 40px;
+	}
+	.icon-success{
+		color:green;
+	}
+	.icon-cancelIcon{
+		color: red;
+	}
+	.tpk-notification-close:before{
+		content: "\e633";
+		display: block;
+		font-family: "anticon" !important;
+		float: right;
+		text-align: right;
+		width: 40px;
+		height: 30px;
+	}
+}

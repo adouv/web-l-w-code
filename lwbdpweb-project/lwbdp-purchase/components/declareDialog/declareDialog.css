@@ -1,0 +1,53 @@
+/*1024X600弹窗*/
+.bdp .bdp.layer_fixed_w1024 .ngdialog-content{
+    position: fixed;
+    width: 1024px;
+    height: 600px;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    z-index: 999;
+    -webkit-box-shadow: 0 0 12px 0 rgba( 7, 0, 2, 0.3);
+    box-shadow: 0 0 12px 0 rgba( 7, 0, 2, 0.3);
+    background: #fff;
+}
+.bdp.layer_fixed_w1024 .ngdialog-overlay{
+    display: none;
+}
+.bdp.layer_fixed_w1024 .ngdialog-close{
+    display: none;
+}
+.bdp.layer_fixed_w1024 .dialog-count{
+    padding: 0 10px;
+    margin-bottom: 20px;
+}
+.bdp.layer_fixed_w1024 .table_absolute{
+    padding: 0 10px;
+    height: 100%;
+}
+.bdp.layer_fixed_w1024 .bdp_list_search .dialog-list{
+    width: 100%;
+    height: 440px;
+    overflow: auto;
+}
+.bdp.layer_fixed_w1024 .bdp_list_search .dialog-list::-webkit-scrollbar-track {
+    border-radius: 10px;
+    background-color: #ffffff;
+}
+
+.bdp.layer_fixed_w1024 .bdp_list_search .dialog-list::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+    background-color: #ffffff;
+}
+
+.bdp.layer_fixed_w1024 .bdp_list_search .dialog-list::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+.bdp.layer_fixed_w1024 .bdp_list_search .btn_bd{
+    margin-top: -4px;
+    margin-right: 10px;
+}

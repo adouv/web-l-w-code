@@ -1,0 +1,124 @@
+@import "../../../../../styles/variable";
+
+.container::ng-deep{
+	padding-bottom: 0 !important;
+	.ant-tabs-tabpane{
+		overflow: hidden !important;
+	}
+}
+.exercises-component::ng-deep{
+	width: 100%;
+	height: 100%;
+	.btn-disable{
+		cursor: not-allowed;
+		opacity: 0.5;
+	}
+	.header{
+		// position: fixed;
+		width: calc(100% - 200px);
+		background: #fff;
+		// z-index: 10;
+		// right: computer(20px);
+		.exercises-header-select{
+			width: computer(200px);
+		}
+		.exercises-header-type{
+			font-size: computer(14px);
+			height: auto;
+			line-height: computer(30px);
+			color:$color_font-light;
+			.title{
+				color:$color_font-light;
+				display: inline-block;
+				margin-right: computer(9px);
+			}
+			.title-tags{
+				display: inline-block;
+			}
+			.title-type{
+				//width: computer(60px);
+				padding: 0 computer(20px);
+				text-align: center;
+				display: inline-block;
+				border-radius: computer(15px);
+				cursor: pointer;
+				margin-bottom: computer(5px);
+				margin-left: computer(5px);
+				color: $color_font-deep;
+				&:hover{
+					color:$color_main;
+				}
+			}
+			.title-type-active{
+				line-height: computer(30px);
+				background-color: $color_main;
+				color: #fff;
+				&:hover{
+					color:#fff;
+				}
+			}
+		}
+	}
+	.content{
+		// margin-top: computer(80px);
+		font-size: computer(14px);
+		// height: calc(100% - #{computer(90px)});
+		width: calc(100% + #{computer(20px)});
+		.exercise-container{
+			// height: calc(100% - #{computer(20px)});
+			height: 100%;
+			padding-bottom: computer(70px);
+			width: calc(100% - #{computer(20px)});
+			.scroll-margin-right{
+				padding-bottom: computer(40px);
+			}
+		}
+		.select-exercises{
+			color:$color_main;
+			margin-left: computer(20px);
+		}
+	}
+	.label-checkbox{
+		margin-right: computer(15px);
+	}
+	.label-checkbox-title{
+		padding: 0;
+	}
+	.content-footer{
+		.exercises-tag{
+
+		}
+	}
+	.click-show-more {
+		font-size: computer(14px);
+		margin: computer(10px) 0;
+		text-align: center;
+		color: $color_font-light;
+		cursor: default;
+		&.pointer {
+			cursor: pointer;
+		}
+	}
+	.content-header{
+		font-size: computer(14px);
+		height: computer(30px);
+		line-height: computer(30px);
+		.select-exercises{
+			color:$color_main;
+			margin-left: computer(20px);
+		}
+	}
+	.footer{
+		// position: fixed;
+		// bottom: 0;
+		width: 100%;
+		text-align: center;
+		background-color: #fff;
+		padding: computer(10px) 0;
+		right: computer(20px);
+		border-top:1px solid $color_border;
+		.close{
+			margin-right: computer(20px);
+		}
+	}
+}

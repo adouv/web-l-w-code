@@ -1,0 +1,133 @@
+@import "../../../../../styles/variable";
+@import "../../../../../styles/mixin";
+.video-statistics ::ng-deep {
+    height: 100%;
+    padding: 0 computer(20px) computer(10px) computer(20px);
+    background: #fff;
+    width: 100%;
+    .container-statistics {
+        height: calc(100% - #{computer(30px)});
+        overflow: hidden;
+        width: 100%;
+    }
+    .left-container-content {
+        height:calc(100% - #{computer(51px)});
+        overflow: auto;
+        width: 100%;
+        margin-right: computer(20px);
+    }
+    .left-container {
+        font-size: computer(16px);
+        color: $color_font-deep;
+        height: 100%;
+        float: left;
+        width: computer(365px);
+        margin-right: computer(40px);
+        header {
+            border-bottom: 1px solid $color_border;
+            width: computer(365px);
+            height: computer(51px);
+            line-height: computer(50px);
+            //margin-right: computer(40px);
+            .class-desc {
+                float: left;
+            }
+            .video-btns {
+                float: right;
+            }
+        }
+        .left-container-content {
+            height: calc(100% - #{computer(51px)});
+            overflow-y: auto;
+            float: left;
+            width: computer(365px);
+        }
+        .video-details {
+            padding-top: computer(5px);
+            box-sizing: border-box;
+            .video-detail-group span {
+                box-sizing: border-box;
+                display: inline-block;
+                padding: computer(10px) 0;
+            }
+        }
+        .video-statistics-chart {
+            margin-top: 25px;
+            padding-top: computer(40px);
+            .circle-max {
+                position: relative;
+                width: computer(280px);
+                height: computer(280px);
+                border: 1px dashed $color_main;
+                background-color: #E4F6FD;
+                border-radius: computer(280px);
+                margin-left: 10px;
+                .click-bright,
+                .leave-word,
+                .click-likes {
+                    position: absolute;
+                    span {
+                        display: block;
+                    }
+                    .count-number {
+                        font-size: computer(24px);
+                    }
+                    .count-text {
+                        font-size: computer(16px);
+                    }
+                }
+                .click-bright {
+                    left: 15%;
+                    top: computer(-48px);
+                }
+                .leave-word {
+                    bottom: computer(-28px);
+                    left: 0;
+                }
+                .click-likes {
+                    top: 50%;
+                    margin-top: computer(-48px);
+                    right: computer(-48px);
+                }
+            }
+            .circle-min {
+                width: computer(192px);
+                height: computer(192px);
+                border: 1px dashed $color_main;
+                background-color: #CEEDFC;
+                border-radius: computer(192px);
+                margin: computer(44px) auto;
+            }
+        }
+    }
+    .round-btn {
+        cursor: default;
+    }
+    .leave-word:hover,
+    .leave-word:focus,
+    .click-likes:hover,
+    .click-likes:focus {
+        background-image: linear-gradient(180deg, #febb5c 0%, #ff7d55 100%) !important;
+    }
+    .click-bright:hover,
+    .click-bright:focus {
+        background-image: linear-gradient(180deg, #00d3ec 0%, #226cfb 100%), linear-gradient(#34383f, #34383f) !important;
+    }
+    .app-adress {
+        height: computer(40px);
+        line-height: computer(40px);
+        font-size: computer(14px);
+    }
+    dynamic-tabs {
+        height: 100%;
+    }
+    .ant-btn-clicked:after {
+        border: 0 !important;
+        border-color: #fff !important;
+    }
+    .right-container-tab {
+        width:calc(100% - #{computer(405px)});
+        float: right;
+        height: 100%;
+    }
+}

@@ -1,0 +1,214 @@
+<div class="canteen_order canteen_add warn-class">
+    <div class="header">
+        <span class="second-warning" ui-sref="logistics.canteen.order({sidebarId:'order'})">食堂管理 &gt;</span>
+        <span class="second-warning" ui-sref="logistics.canteen.order({sidebarId:'order'})">大宗食品采购 &gt;</span>
+        <span class="color_999 first-warning">月采购单详情</span>
+    </div>
+    <div class="canteen_info_tit">
+        <h3>{{canteenOrderDetail.model.gardenName}}{{canteenOrderDetail.model.reportTime | date:'yyyy年MM月'}}食堂月采购单</h3>
+        <p>{{canteenOrderDetail.model.creatorName}} &nbsp; {{canteenOrderDetail.model.createTime | date:'yyyy/MM/dd HH:mm'}}</p>
+    </div>
+    <ul class="canteen_add_form">
+        <div class="pad_20">
+            <li class="canteen_li clearfix">
+                <span class="pact_tit">采购单位：</span>
+                <div class="pact_text">{{canteenOrderDetail.model.gardenName}}</div>
+            </li>
+            <li class="canteen_li clearfix">
+                <span class="pact_tit">上报月份：</span>
+                <div class="pact_text">{{canteenOrderDetail.model.reportTime | date:'yyyy年MM月'}}</div>
+            </li>
+            <li class="canteen_li clearfix">
+                <span class="pact_tit">采购总金额：</span>
+                <div class="pact_text">{{canteenOrderDetail.model.totalAmount}}</div>
+            </li>
+        </div>
+        <div class="order_add" ng-repeat="purchaseOrder in canteenOrderDetail.model.purchaseOrderVoList">
+            <li class="canteen_li clearfix">
+                <span class="pact_tit">采购种类：</span>
+                <div class="pact_text">{{purchaseOrder.categoryName}}</div>
+            </li>
+            <li class="canteen_li clearfix">
+                <span class="pact_tit">供应商：</span>
+                <div class="pact_text">{{purchaseOrder.supplierName}}</div>
+            </li>
+            <li class="canteen_li clearfix">
+                <span class="pact_tit">采购金额（元）：</span>
+                <div class="pact_text">{{purchaseOrder.amount}}</div>
+            </li>
+            <li class="canteen_li clearfix">
+                <span class="pact_tit ver-top">采购内容：</span>
+                <div class="pact_text color_999">
+                    <span class="margin_bot20">鼠标移到序号单元格可添加或删除行。</span>
+                    <div class="overflow_box pact_table">
+                        <div class="table_box">
+                            <table class="listTable">
+                                <thead>
+                                <tr>
+                                    <th width="80">序号</th>
+                                    <th width="215">名称</th>
+                                    <th width="70">单位</th>
+                                    <th width="100">数量</th>
+                                    <th width="260">备注</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="item in purchaseOrder.purchaseOrderItems">
+                                        <td>
+                                            <span>{{$index+1}}</span>
+                                        </td>
+                                        <td>
+                                            <span>{{item.name}}</span>
+                                        </td>
+                                        <td>{{item.unit}}</td>
+                                        <td>{{item.number}}</td>
+                                        <td>
+                                            <div class="pact_text">{{item.remark}}</div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li class="canteen_li clearfix">
+                <span class="pact_tit fl mart5">对应的采购凭证单据：</span>
+                <!--<div class="fl upload_botton">
+                    &lt;!&ndash; <span class="btn_bd">上传</span>&ndash;&gt;
+                    &lt;!&ndash;<button class="btn_bd">上传</button>&ndash;&gt;
+                    <div flow-init flow-files-submitted="supplierContractInput.uploadSubmit($flow)"
+                         flow-file-success="supplierContractInput.uploadSuccess($message)"
+                         flow-file-added="supplierContractInput.validFile($file)">
+                        <span class="btn_bd flow-btn" flow-btn>上传</span>
+                    </div>
+                    <div ng-repeat="file in supplierContractInput.contract.attachments">
+                        <div class="batch_name">
+                            <p>{{file.name}}</p>
+                        </div>
+                    </div>
+                    <span class="upload_prompt">只允许上传jpg、png、gif格式的图片，大小不超过5M；</span>
+                </div>-->
+                <pic-view ng-repeat="x in purchaseOrder.attachments track by $index" file-name="x.name" file-path="x.url"></pic-view>
+
+            </li>
+            <!--<li class="canteen_li clearfix">-->
+                <!--<span class="pact_tit fl">&nbsp;</span>-->
+                <!--<div class="fl upload_pics">-->
+                    <!--<div class="upload_pics_list" ng-repeat="attachment in purchaseOrder.attachments">-->
+                        <!--<img ng-src="{{canteenOrderDetail.filePath+attachment.url}}" alt="">-->
+                        <!--<br><span class="upload_pics_liName">{{attachment.name}}</span>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</li>-->
+            <li class="canteen_li clearfix">
+                <span class="pact_tit ver-top">针对此次供货服务对供货商的评价：</span>
+                <div class="pact_text">
+                    <div class="check_list">
+                        {{purchaseOrder.appraiseName}}
+                    </div>
+                    <!--<textarea name="" id="" cols="30" rows="10" class="textarea_class text_700"></textarea>-->
+                    <div class="pact_text">{{purchaseOrder.appraiseContent}}</div>
+                </div>
+            </li>
+            <!--<div class="canteen_add_button button_box">
+                <span class="btn_bd">重置</span>
+                <span class="btn_bg">生成采购单</span>
+            </div>-->
+        </div>
+    </ul>
+    <!--<div class="configed_box">
+        <div class="configed">
+            <div class="configed_title">已配置的采购单</div>
+        </div>
+        <ul class="canteen_add_form">
+            <div class="order_add">
+                <li class="canteen_li clearfix">
+                    <span class="pact_tit">采购种类：</span>
+                    <div class="pact_text">回显</div>
+                </li>
+                <li class="canteen_li clearfix">
+                    <span class="pact_tit">供应商：</span>
+                    <div class="pact_text">回显</div>
+                </li>
+                <li class="canteen_li clearfix">
+                    <span class="pact_tit">采购金额（元）：</span>
+                    <div class="pact_text">回显</div>
+                </li>
+                <li class="canteen_li clearfix">
+                    <span class="pact_tit ver-top">采购内容：</span>
+                    <div class="pact_text color_999">
+                        <div class="overflow_box pact_table">
+                            <div class="table_box">
+                                <table class="listTable">
+                                    <thead>
+                                    <tr>
+                                        <th width="80">序号</th>
+                                        <th width="215">名称</th>
+                                        <th width="70">单位</th>
+                                        <th width="100">数量</th>
+                                        <th width="260">备注</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td>
+                                            <span>回显</span>
+                                        </td>
+                                        <td>
+                                            <span>回显</span>
+                                        </td>
+                                        <td>n</td>
+                                        <td>n</td>
+                                        <td>
+                                            <span>回显</span>
+                                        </td>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="canteen_li clearfix">
+                    <span class="pact_tit fl mart5">对应的采购凭证单据：</span>
+                    <div class="fl upload_botton">
+                        &lt;!&ndash; <span class="btn_bd">上传</span>&ndash;&gt;
+                        &lt;!&ndash;<button class="btn_bd">上传</button>&ndash;&gt;
+                        <div flow-init flow-files-submitted="supplierContractInput.uploadSubmit($flow)"
+                             flow-file-success="supplierContractInput.uploadSuccess($message)"
+                             flow-file-added="supplierContractInput.validFile($file)">
+                            <span class="btn_bd flow-btn" flow-btn>上传</span>
+                        </div>
+                        <div ng-repeat="file in supplierContractInput.contract.attachments">
+                            <div class="batch_name">
+                                <p>{{file.name}}</p>
+                            </div>
+                        </div>
+                        <span class="upload_prompt">只允许上传jpg、png、gif格式的图片，大小不超过5M；</span>
+                    </div>
+                </li>
+                <li class="canteen_li clearfix">
+                    <span class="pact_tit fl">&nbsp;</span>
+                    <div class="fl upload_pics">
+                        <div class="upload_pics_list">
+                            <img src="../../../../images/upload.png" alt="">
+                            <br><span class="upload_pics_liName">文件名称.png</span>
+                        </div>
+                    </div>
+                </li>
+                <li class="canteen_li clearfix">
+                    <span class="pact_tit ver-top">针对此次供货服务对供货商的评价：</span>
+                    <div class="pact_text">
+                        <div class="check_list">
+                            回显
+                        </div>
+                        <div class="pact_text">回显</div>
+                    </div>
+                </li>
+            </div>
+        </ul>
+    </div>-->
+    <div class="order_btn">
+        <span class="btn_bg" ui-sref="logistics.canteen.order({sidebarId:'order'})">返回</span>
+    </div>
+</div>

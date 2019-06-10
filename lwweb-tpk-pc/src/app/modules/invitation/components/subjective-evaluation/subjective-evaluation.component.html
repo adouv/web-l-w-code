@@ -1,0 +1,56 @@
+<div *ngIf="subjectList.length > 0">
+    <div *ngIf="!edit">
+        <div class="subjective-evaluation-item" *ngFor="let sub of subjectList;let i = index">
+            <p>{{i+1}}、{{sub.name}}</p>
+            <div class="evaluation-answer-box" flex>
+                <img src="../../../../../assets/images/user-icon.png" alt="" class="icon-box">
+                <div class="text-box" flex-box="1">
+                    <div class="user-info-box">
+                        <span>{{sub.appraiserName}}</span>
+                        <span class="light-gray-text">{{sub.createTime | date:'yyyy/MM/dd HH:mm'}}</span>
+                    </div>
+                    <div class="word-break">
+                        {{sub.content}}
+                    </div>
+                    <div *ngIf="sub.replyList">
+                        <div class="answered-box word-break" *ngFor="let rep of sub?.replyList">
+                            <div class="light-gray-text answered-user-box">
+                                {{rep.creatorName}} 回复于{{rep.createTime | date:'yyyy/MM/dd HH:mm'}}
+                            </div>
+                            {{rep.content}}
+                        </div>
+                        <div *ngIf="!banReply && sub.replyList.length > 0 &&
+						sub.replyList[sub.replyList.length - 1]?.creatorId !== sub?.appraiserId">
+                            <label for="answer" class="answer-btn col-blue" (click)="sub.isReply = !sub.isReply;sub.replyContent = '';">
+								{{sub.isReply?'取消回复':'回复'}}
+							</label>
+                            <div *ngIf="sub.isReply">
+                                <textarea name="" id="answer" class="textarea-class" [(ngModel)]="sub.replyContent" [maxlength]="200" (keyup)="emitModel(sub.replyContent)"></textarea>
+                                <div>
+                                    <span class="light-gray-text">{{sub.replyContent?.length}}/200</span>
+                                    <button class="submit-btn" [disabled]="sub.replyContent?.length < 1 || !btnDebunce" btnDebunce (debounceClick)="submitReply(sub)" [waitTime]="1500">提交
+									</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="subjective-evaluation-box" *ngIf="edit">
+        <div class="subjective-evaluation-item" *ngFor="let sub of subjectList;let i = index">
+            <p>{{i+1}}、{{sub.name}}</p>
+            <textarea class="textarea-class" [(ngModel)]="sub.content" [ngClass]="{'error':sub.isRequire}" (click)="sub.isRequire=false" maxlength="200" (keyup)="emitModel(sub.content)"></textarea>
+        </div>
+        <div class="footer">
+            <button nz-button nzType="primary" class="btn-disable" *ngIf="!allowSubmit || !btnDebunce">提交</button>
+            <button nz-button nzType="primary" btnDebunce (debounceClick)="submitCommentMsg($event)" [waitTime]="1000" *ngIf="allowSubmit && btnDebunce">提交</button>
+        </div>
+    </div>
+</div>
+
+<div class="no-result" *ngIf="(!subjectList || subjectList.length < 1) && isCurrentAccount">
+    {{isOutTime?'当前评课活动已结束，无法继续评课':'暂无老师完成教学评价'}}
+</div>
+<div class="no-result" *ngIf="(!subjectList || subjectList.length < 1) && !isCurrentAccount">所选用户未对该项内容进行评价</div>

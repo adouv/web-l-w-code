@@ -1,0 +1,47 @@
+.detail-title-container {
+    width: 919px;
+    min-height: 81px;
+    border-bottom: 1px solid #cccccc;
+    box-sizing: border-box;
+    .click-btn {
+        margin: 0 auto 16px;
+        width: 224px;
+        height: 40px;
+        line-height: 40px;
+        text-align: center;
+        font-size: 20px;
+        background-color: #7552f8;
+        border-radius: 20px;
+        color: #ffffff;
+        cursor: pointer;
+    }
+    h2 {
+        margin-bottom: 0;
+        text-align: center;
+        line-height: 1;
+        font-size: 24px;
+        color: #333333;
+    }
+    div {
+        height: 55px;
+        line-height: 55px;
+        font-size: 14px;
+        color: #999999;
+        .author {
+            float: left;
+            margin-left: 340px;
+        }
+        .timer {
+            float: right;
+            margin-right: 200px;
+        }
+        &:after {
+            content: '';
+            display: block;
+            height: 0;
+            overflow: hidden;
+            clear: both;
+        }
+    }
+    
+}

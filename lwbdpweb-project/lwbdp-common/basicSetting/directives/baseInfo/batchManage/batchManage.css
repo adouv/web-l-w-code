@@ -1,0 +1,53 @@
+.batchManage .header{
+    height: 35px;
+    line-height: 35px;
+    text-align: center;
+    position: relative;
+    border-bottom: 1px solid #ebebeb;
+}
+.batchManage .header .del_btn{
+    position: absolute;
+    right: 10px;
+    top:0px;
+}
+.batchManage .content{
+    padding: 20px;
+    width: 70%;
+    margin: 0 auto;
+}
+.batchManage .content-text{
+    margin-bottom: 30px;
+}
+.batchManage .footer{
+    position: absolute;
+    bottom: 20px;
+    text-align: center;
+    width: 100%;
+}
+.batchManage .content-text-a:hover {
+    color: #0096ff;
+}
+.batchManage .content-text-a{
+    color: #0096ff;
+    cursor: pointer;
+}
+.batchManage .content-upload-text{
+    margin-top: 10px;
+}
+.batchManage .content-upload .icon_shutdown {
+    color: #999999;
+    opacity: .5;
+    cursor: pointer;
+    font-size: 22px;
+}
+.batchManage .content-upload .icon_shutdown:hover{
+    color: #786ceb;
+}
+.batchManage .warn-red{
+    margin-left: -20px;
+}
+.batchManage .btn_bg:disabled {
+    opacity: .2;
+    box-shadow: none !important;
+    cursor: not-allowed !important;
+}

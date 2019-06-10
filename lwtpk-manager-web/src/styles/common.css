@@ -1,0 +1,139 @@
+.border-color{border-color: #00ba8b;}
+.border-hv-color:hover{border-color: #00ba8b;}
+.font-color{color:#00ba8b;}
+.font-hv-color:hover{color:#00ba8b;}
+.bg-color{background: #00ba8b;}
+.bg-hv-color:hover{background: #00ba8b;}
+a.font-color:focus{color: #ff8580;}
+.tpk-btn{background: #00ba8b;color:#fff;border:1px solid #00ba8b;}
+.btn.tpk-btn:hover{background: #34a185;color:#fff;}
+.tpk-btn:focus{background: #00ba8b;border:1px solid #00ba8b;color:#fff;}
+.tpk-btn:active{background: #018160;color:#fff;}
+.tpk-btn-o{border:1px solid #00ba8b;color:#00ba8b;background:#fff}
+.btn.tpk-btn-o:hover{background: #00ba8b;color:#fff;border-color:#00ba8b;}
+.tpk-btn-o:focus{background: none;border:1px solid #00ba8b;color: #00ba8b}
+.tpk-btn-o:active{background: #00ba8b}
+.tpk-btn-delete{border:1px solid #ccc;color:#aaa;background: #fff;}
+.tpk-btn-delete:hover{background: #ccc}
+
+/*模态框*/
+.modal.fade .modal-dialog{margin:10% auto;}
+
+.fl{float: left}
+.fr{float: right}
+.clear{overflow: hidden;}
+
+div.garden-select{
+    width: 180px;
+    position: absolute;
+    right: 0px;
+    top: 9px;
+}
+
+body{min-width: 1024px;font: 12px/20px 'Microsoft YaHei';}
+
+select.form-control:focus,input.form-control:focus{
+    border-color: #00ba8b;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgb(163, 250, 228);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgb(163, 250, 228);
+}
+/*select.form-control:focus,input.form-control:focus ~ i.glyphicon{color: #00ba8b}*/
+
+section.row:first-child {border-bottom-style: solid;border-bottom-width: 1px;position: relative}
+section.row blockquote{width: 300px;margin: 15px auto;padding: 0px 10px;font-weight: bold;font-size: 16px;}
+section.row.border-color blockquote {
+  border: none;
+  margin-bottom:20px;
+  margin-top:20px;
+}
+.mediaInput .breadnav.bgnone {
+  background: none;
+  margin-top:20px;
+  margin-left: -60px;
+}
+.mediaInput section.row.border-color.inputTit blockquote {
+  font-weight: 700;
+  border-bottom:1px solid rgb(0,186,139);
+  padding: 20px 0;
+  width: 100%;
+  text-align: center;
+}
+.mediaInput p.breadnav span {
+  color: rgb(0,186,139);
+}
+div.garden-select {
+  top: 14px;
+}
+
+table{border-bottom: 1px solid #ddd;border-top: 1px solid #aaa;}
+table.table>thead>tr.active{height: 50px;}
+table.table>thead>tr>td{padding: 13px 8px;}
+table.table>tbody>tr{height: 45px;}
+table.table>tbody>tr>td{vertical-align:middle;padding: 6px 8px;}
+
+/*删改查按钮*/
+.tpk-ico{width: 32px;height: 32px;display: inline-block;cursor: pointer}
+.tpk-icon-border{width: 120px;height: 32px;}
+.tpk-edit{background: url("../images/tpk_edit_o.png") no-repeat top center;}
+.tpk-edit:hover{background: url("../images/tpk_edit.png") no-repeat;}
+.tpk-detail{background: url("../images/tpk_detail_o.png") no-repeat top center;}
+.tpk-detail:hover{background: url("../images/tpk_detail.png") no-repeat;}
+.tpk-delete{background: url("../images/tpk_delete_o.png") no-repeat top center;}
+.tpk-delete:hover{background: url("../images/tpk_delete.png") no-repeat;}
+.btn-add{padding-left: 18px;padding-right: 18px;}
+
+/*删除提示成功弹窗*/
+.msg-remove {
+    width: 302px;
+    height: 150px;
+    border: 1px solid rgb(205,207,211);
+    /*display: none;*/
+    background: #FFFFFF;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    z-index: 9999;
+    display: block;
+    margin-left:-150px;
+    margin-top:-75px;
+}
+.msg-remove .disapper {
+    display: block;
+    position: absolute;
+    cursor: pointer;
+    width: 13px;
+    height: 13px;
+    background: url("../images/cha.png") no-repeat;
+    top: 12px;
+    right: 12px;
+}
+.msg-remove .log {
+    display: block;
+    position: absolute;
+    width: 60px;
+    height: 46px;
+    background: url("../images/success_logo2.png") no-repeat;
+    left: 50%;
+    margin-left: -30px;
+    top: 30px;
+}
+.msg-remove.succeed .i_log {
+    background: url("../images/del_logo2.png") no-repeat;
+}
+.msg-remove p {
+    text-align: center;
+    font-size: 16px;
+    margin-top:100px;
+    color: rgb(0,186,139);
+    font-family: "Microsoft YaHei", "Simsun", "arial", "sans-serif";
+}
+.msg-remove.succeed p {
+  color: black;
+}
+
+.container-fluid,.schedule-container,.normal-container{
+    padding-right: 50px;
+    padding-left: 50px;
+    overflow: auto;
+    height: 100%;
+}

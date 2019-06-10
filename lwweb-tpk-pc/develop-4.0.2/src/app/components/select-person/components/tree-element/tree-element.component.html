@@ -1,0 +1,17 @@
+<div flex="dir:left box:justify"  (click)="showChildren()" class="tree-element" [ngStyle]="{'padding-left':!data.isLeaf?((index)*20-10)+'px':((index)*20)+'px'}" >
+    <!-- <i class="iconfont icon-sanjiaoxia"></i> -->
+    <div>
+        <i *ngIf="!data.isLeaf" class="btn-tree-shang anticon " [ngClass]="{'anticon-caret-right':!data.status,'anticon-caret-down':!!data.status}"></i>
+    </div>
+        <!-- <i class="btn-tree-shang anticon anticon-caret-right"></i> -->
+    <div>
+        <div class="text-tree">{{data.name}}</div>
+    </div>
+    <!-- <label (click)="checkData()" class="tree-checkbox" nz-checkbox [(ngModel)]="data.checked"></label> -->
+    <div id="checkbox_id_{{data.id}}" (click)="checkData()" class="tree-checkbox" >
+            <i class="iconfont" [ngClass]="{'icon-checkbox_check':data.checked,'icon-checkbox_default':!data.checked}"></i>
+    </div>
+</div>
+<div [hidden]="!data.status"  *ngIf="data.children&&data.children.length>0" class="child-{{index}}">
+        <tree-element [data]="d" [index]="index" *ngFor="let d of data.children"></tree-element>
+</div>

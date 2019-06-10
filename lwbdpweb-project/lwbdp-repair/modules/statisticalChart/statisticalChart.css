@@ -1,0 +1,247 @@
+.repair_chart .statisticalChart {
+    width: 100%;
+    height: 100%;
+    padding: 0 20px;
+}
+
+.repair_chart .statisticalChart .gray {
+    color: #999999;
+    font-size: 12px;
+    margin: 15px 0;
+}
+
+.repair_chart .statisticalChart .icon-setting {
+    color: rgb(120, 108, 236);
+    cursor: pointer;
+}
+
+.repair_chart .statisticalChart .showback {
+    font-size: 14px;
+}
+
+.repair_chart .statisticalChart p {
+    margin-bottom: 10px;
+}
+
+.repair_chart .statisticalChart .choose {
+    font-size: 16px;
+}
+
+.repair_chart .statisticalChart .choose .checkbox_class {
+    margin: 0 2px 0 5px;
+}
+
+.repair_chart .statisticalChart .directions {
+    line-height: 30px;
+    margin-top: 20px;
+}
+
+.repair_chart .statisticalChart .list_box {
+    position: relative;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+.repair_chart .statisticalChart .list_box .name {
+    border: 1px solid #ebebeb;
+    width: 180px;
+    line-height: 28px;
+    height: 30px;
+    box-sizing: border-box;
+    padding: 0 28px 0 8px;
+    font-size: 14px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    background: url("../../images/drop_down.png") no-repeat 100%;
+}
+
+.repair_chart .statisticalChart .list_items {
+    position: absolute;
+    top: 30px;
+    width: 180px;
+    background: #ffffff;
+    z-index: 2;
+    height: 340px;
+    box-shadow: 0px 3px 10px #ccc;
+}
+
+.repair_chart .statisticalChart .list_items .list_item {
+    height: 300px;
+    overflow: auto;
+}
+
+.repair_chart .statisticalChart .list_items .btns {
+    width: 100%;
+    height: 40px;
+    position: absolute;
+    bottom: 0;
+    text-align: center;
+    line-height: 40px;
+}
+
+.repair_chart .statisticalChart .list_items .btns a {
+    color: rgba(120, 108, 234, .5);
+    border-radius: 50%;
+    margin: 0 5px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.repair_chart .statisticalChart .list_items .btns a.active {
+    color: rgba(120, 108, 234, 1);
+}
+
+.repair_chart .statisticalChart .list_items .list_item li {
+    line-height: 30px;
+    /*padding: 0px 8px;*/
+    width: 100%;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.repair_chart .statisticalChart .list_items .list_item li:hover {
+    background: #dbe3ee;
+    cursor: pointer;
+}
+
+.repair_chart .statisticalChart .list_item li .checkbox_class {
+    vertical-align: top;
+    margin-top: 6px;
+}
+
+.repair_chart .statisticalChart .list_item li label {
+    padding: 0px 8px;
+    width: 100%;
+}
+
+.repair_chart .statisticalChart .list_item li span.showname {
+    display: inline-block;
+    width: 139px;
+    text-overflow: ellipsis;
+    white-space: normal;
+    line-height: 22px;
+    cursor: pointer;
+}
+
+.repair_chart .statisticalChart .list_item .checkbox_class[type=checkbox]:checked + span {
+    color: #0096ff;
+}
+
+.repair_chart .statisticalChart .list_item::-webkit-scrollbar {
+    width: 8px;
+    background-color: #ffffff;
+}
+
+.repair_chart .statisticalChart .list_item::-webkit-scrollbar-thumb {
+    border-radius: 2px;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.repair_chart .statisticalChart .list_item::-webkit-scrollbar-track {
+    border-radius: 2px;
+    background-color: #ffffff;
+}
+
+
+/*弹窗*/
+.repair_chart_dialog .statisticalChart_dialog {
+    width: 1160px;
+    height: 600px;
+}
+
+.repair_chart_dialog .statisticalChart_dialog h2 {
+    position: relative;
+    height: 36px;
+    line-height: 36px;
+    text-align: center;
+    font-size: 16px;
+    font-weight: normal;
+    border-bottom: 1px solid #f8f8f8;
+}
+
+.repair_chart_dialog .opacity {
+    opacity: .3;
+    cursor: default !important;
+}
+
+.repair_chart_dialog .repair_chart_dialog .statisticalChart_dialog h2 span {
+    color: #999999;
+    position: absolute;
+    top: 0px;
+    cursor: pointer;
+    right: 20px
+}
+
+.repair_chart_dialog .statisticalChart_dialog .count, .repair_chart .statisticalChart .count {
+    line-height: 35px;
+    color: #999999;
+}
+
+.repair_chart_dialog .statisticalChart_dialog .count {
+    padding-left: 20px;
+}
+
+.repair_chart_dialog .statisticalChart_dialog .count span, .repair_chart .statisticalChart .count span {
+    color: #39bdfb;
+}
+
+.repair_chart_dialog .statisticalChart_dialog .table_list {
+    width: 100%;
+    padding: 0px 20px;
+    height: 435px;
+    overflow: auto;
+}
+
+.repair_chart_dialog .statisticalChart_dialog table {
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
+}
+
+.repair_chart_dialog .statisticalChart_dialog table tr:nth-of-type(odd) {
+    background: #f8f8f8;
+}
+
+.repair_chart_dialog .statisticalChart_dialog table th {
+    height: 39px;
+    text-align: center;
+    border: 1px solid #dae4ee;
+}
+
+.repair_chart_dialog .statisticalChart_dialog table td {
+    padding: 15px 10px;
+    border: 1px solid #dae4ee;
+}
+
+.repair_chart_dialog .statisticalChart_dialog table td:nth-child(1),
+.repair_chart_dialog .statisticalChart_dialog table th:nth-child(1) {
+    width: 4%;
+    border-left: none;
+}
+
+.repair_chart_dialog .statisticalChart_dialog table td:nth-child(2) {
+    width: 29%;
+}
+
+.repair_chart_dialog .statisticalChart_dialog table td:nth-child(3) {
+    width: 21%;
+}
+
+.repair_chart_dialog .statisticalChart_dialog table td:nth-child(4) {
+    width: 7%;
+}
+
+.repair_chart_dialog .statisticalChart_dialog table td:nth-child(5) {
+    width: 8%;
+}
+
+.repair_chart_dialog .statisticalChart_dialog table td:nth-child(6) {
+    width: 12%;
+}
+
+.repair_chart_dialog .statisticalChart_dialog table td:nth-child(7),
+.repair_chart_dialog .statisticalChart_dialog table th:nth-child(7) {
+    border-right: none;
+}

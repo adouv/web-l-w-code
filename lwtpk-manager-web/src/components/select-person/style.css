@@ -1,0 +1,368 @@
+@-webkit-keyframes ngdialog-fadeout {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes ngdialog-fadeout {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+@-webkit-keyframes ngdialog-fadein {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes ngdialog-fadein {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.lw-select-person.ngdialog *,
+.lw-select-person.ngdialog *:before,
+.lw-select-person.ngdialog *:after {
+    box-sizing: inherit;
+}
+.lw-select-person label{
+    font-weight: normal !important;
+}
+.lw-select-person.ngdialog {
+    box-sizing: border-box;
+    position: fixed;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+    z-index: 10000;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+.lw-select-person.ngdialog.ngdialog-disabled-animation,
+.lw-select-person.ngdialog.ngdialog-disabled-animation .ngdialog-overlay,
+.lw-select-person.ngdialog.ngdialog-disabled-animation .ngdialog-content {
+    -webkit-animation: none!important;
+    animation: none!important;
+}
+
+.lw-select-person .ngdialog-overlay {
+    position: fixed;
+    background: rgba(0, 0, 0, 0);
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    -webkit-backface-visibility: hidden;
+    -webkit-animation: ngdialog-fadein 0.5s;
+    animation: ngdialog-fadein 0.5s;
+}
+
+.lw-select-person.ngdialog-no-overlay {
+    pointer-events: none;
+}
+
+.lw-select-person.ngdialog.ngdialog-closing .ngdialog-overlay {
+    -webkit-backface-visibility: hidden;
+    -webkit-animation: ngdialog-fadeout 0.5s;
+    animation: ngdialog-fadeout 0.5s;
+}
+
+.lw-select-person.ngdialog-content {
+    background: white;
+    -webkit-backface-visibility: hidden;
+    -webkit-animation: ngdialog-fadein 0.5s;
+    animation: ngdialog-fadein 0.5s;
+    pointer-events: all;
+}
+
+.lw-select-person.ngdialog.ngdialog-closing .ngdialog-content {
+    -webkit-backface-visibility: hidden;
+    -webkit-animation: ngdialog-fadeout 0.5s;
+    animation: ngdialog-fadeout 0.5s;
+}
+
+.lw-select-person.ngdialog-close:before {
+    font-family: 'Helvetica', Arial, sans-serif;
+    content: '\00D7';
+    cursor: pointer;
+}
+
+html.ngdialog-open,
+body.ngdialog-open {
+    overflow: hidden;
+}
+@-webkit-keyframes ngdialog-flyin {
+    0% {
+        opacity: 0;
+        -webkit-transform: translateY(-40px);
+        transform: translateY(-40px);
+    }
+
+    100% {
+        opacity: 1;
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+    }
+}
+
+@keyframes ngdialog-flyin {
+    0% {
+        opacity: 0;
+        -webkit-transform: translateY(-40px);
+        transform: translateY(-40px);
+    }
+
+    100% {
+        opacity: 1;
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+    }
+}
+
+@-webkit-keyframes ngdialog-flyout {
+    0% {
+        opacity: 1;
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+    }
+
+    100% {
+        opacity: 0;
+        -webkit-transform: translateY(-40px);
+        transform: translateY(-40px);
+    }
+}
+
+@keyframes ngdialog-flyout {
+    0% {
+        opacity: 1;
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+    }
+
+    100% {
+        opacity: 0;
+        -webkit-transform: translateY(-40px);
+        transform: translateY(-40px);
+    }
+}
+
+.ngdialog.lw-select-person.ngdialog-closing .ngdialog-content {
+    -webkit-animation: ngdialog-flyout .5s;
+    animation: ngdialog-flyout .5s;
+}
+
+.ngdialog.lw-select-person {
+    padding-bottom: 160px;
+    padding-top: 160px;
+}
+
+.ngdialog.lw-select-person .ngdialog-content {
+    -webkit-animation: ngdialog-flyin .5s;
+    animation: ngdialog-flyin .5s;
+    background: #fff;
+    border-radius: 5px;
+    color: #444;
+    font-family: 'Helvetica',sans-serif;
+    font-size: 1.1em;
+    line-height: 1.5em;
+    margin: 0 auto;
+    max-width: 100%;
+    position: relative;
+    width: 900px;
+    height: 600px;
+    box-shadow: 0px 5px 16px #aaa;
+}
+
+.ngdialog.lw-select-person .ngdialog-close {
+    border-radius: 5px;
+    cursor: pointer;
+    position: absolute;
+    right: 0;
+    top: 0;
+    border:0;
+    outline:0;
+    background-color: #fff;
+}
+
+.ngdialog.lw-select-person .ngdialog-close:before {
+    background: transparent;
+    border-radius: 3px;
+    color: #bbb;
+    content: '\D7';
+    font-size: 30px;
+    font-weight: 400;
+    height: 40px;
+    line-height: 40px;
+    margin-right: 20px;
+}
+
+.ngdialog.lw-select-person .ngdialog-close:hover:before,
+.ngdialog.lw-select-person .ngdialog-close:active:before {
+    color: #777;
+}
+
+.ngdialog.lw-select-person .ngdialog-message {
+    margin-bottom: .5em;
+}
+
+.ngdialog.lw-select-person .ngdialog-input {
+    margin-bottom: 1em;
+}
+
+.ngdialog.lw-select-person .ngdialog-input textarea,
+.ngdialog.lw-select-person .ngdialog-input input[type="text"],
+.ngdialog.lw-select-person .ngdialog-input input[type="password"],
+.ngdialog.lw-select-person .ngdialog-input input[type="email"],
+.ngdialog.lw-select-person .ngdialog-input input[type="url"] {
+    background: #fff;
+    border: 0;
+    border-radius: 3px;
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    margin: 0 0 .25em;
+    min-height: 2.5em;
+    padding: .25em .67em;
+    width: 100%;
+}
+
+.ngdialog.lw-select-person .ngdialog-input textarea:focus,
+.ngdialog.lw-select-person .ngdialog-input input[type="text"]:focus,
+.ngdialog.lw-select-person .ngdialog-input input[type="password"]:focus,
+.ngdialog.lw-select-person .ngdialog-input input[type="email"]:focus,
+.ngdialog.lw-select-person .ngdialog-input input[type="url"]:focus {
+    box-shadow: inset 0 0 0 2px #8dbdf1;
+    outline: none;
+}
+
+.ngdialog.lw-select-person .ngdialog-buttons {
+    *zoom: 1;
+}
+
+.ngdialog.lw-select-person .ngdialog-buttons:after {
+    content: '';
+    display: table;
+    clear: both;
+}
+
+.ngdialog.lw-select-person .ngdialog-button {
+    border: 0;
+    border-radius: 3px;
+    cursor: pointer;
+    float: right;
+    font-family: inherit;
+    font-size: .8em;
+    letter-spacing: .1em;
+    line-height: 1em;
+    margin: 0 0 0 .5em;
+    padding: .75em 2em;
+    text-transform: uppercase;
+}
+
+.ngdialog.lw-select-person .ngdialog-button:focus {
+    -webkit-animation: ngdialog-pulse 1.1s infinite;
+    animation: ngdialog-pulse 1.1s infinite;
+    outline: none;
+}
+
+@media (max-width: 568px) {
+    .ngdialog.lw-select-person .ngdialog-button:focus {
+        -webkit-animation: none;
+        animation: none;
+    }
+}
+
+.ngdialog.lw-select-person .ngdialog-button.ngdialog-button-primary {
+    background: #3288e6;
+    color: #fff;
+}
+
+.ngdialog.lw-select-person .ngdialog-button.ngdialog-button-secondary {
+    background: #e0e0e0;
+    color: #777;
+}
+
+.lw-select-person.ngdialog::-webkit-scrollbar-track{
+    border-radius: 2px;
+    background-color: #ffffff;
+}
+
+.lw-select-person.ngdialog::-webkit-scrollbar{
+    width: 10px;
+    height: 10px;
+    background-color: #ffffff;
+}
+
+.lw-select-person.ngdialog::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.lw-select-person .garden-auto::-webkit-scrollbar-track,.lw-select-person .garden-list::-webkit-scrollbar-track {
+    border-radius: 10px;
+    background-color: #ffffff;
+}
+
+.lw-select-person .garden-auto::-webkit-scrollbar,.lw-select-person .garden-list::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+    background-color: #ffffff;
+}
+
+.lw-select-person .garden-auto::-webkit-scrollbar-thumb,.lw-select-person .garden-list::-webkit-scrollbar-thumb {
+    border-radius: 2px;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+.lw-select-person .ztree .node_name{font-size: 14px;}
+.lw-select-person .ztree .node_name:hover{color: #00ba8b}
+.lw-select-person .ztree li a.curSelectedNode{background-color: transparent;border: 1px solid transparent;  border-left: 0; border-right: 0;}
+.lw-select-person .garden-header{line-height: 40px;width: 100%;border-bottom: 1px solid #ebebeb}
+.lw-select-person .garden-header h5{margin: 0;text-align: center;line-height: 40px;}
+.lw-select-person .select-wrap{display: flex;width: 560px;height: 435px;}
+.lw-select-person .garden-content{width: 100%;box-sizing: border-box;padding: 10px 20px 0 20px;display: flex;}
+.lw-select-person .garden-content .garden-content-left{width:180px;border: 1px solid #dbe3ee;margin-right: 10px;overflow: auto;box-sizing: content-box}
+.lw-select-person .garden-content .garden-content-middle{width:180px;border: 1px solid #dbe3ee;padding: 10px 0 10px 10px;position: relative;box-sizing: border-box}
+.lw-select-person .garden-content .garden-content-change{width: 50px;height: 470px;display: flex;flex-direction: column;justify-content: center}
+.lw-select-person .garden-content .garden-content-right{width: 120px;border: 1px solid #dbe3ee;padding: 10px 0 10px 10px}
+.lw-select-person .content-bar{  position: relative;margin-right: 10px;}
+.lw-select-person .garden-content-middle .content-bar .garden-select{appearance: none;-moz-appearance: none;-webkit-appearance: none;font-size: 14px;width: 160px;height: 30px;color: #333;padding: 0 2% 0 3%;background: url(./images/drop_down.png) no-repeat 99%;background-size: 29px 29px;border: 1px solid #dbe3ee;box-sizing: border-box;margin: 0 10px 0 0;vertical-align: middle;outline: 0}
+.lw-select-person .content-bar .garden-input{font-size: 14px;width: 100%;height: 30px;color: #333;padding: 0 8px;border: 1px solid #dbe3ee;box-sizing: border-box;vertical-align: middle;outline: 0}
+.lw-select-person .content-bar .garden-input:focus,.lw-select-person .garden-content-middle .content-bar .garden-input:focus{border-color: #0096ff}
+.lw-select-person .garden-content-middle .content-bar .garden-input::-moz-placeholder{color:#999;}
+.lw-select-person .content-bar .garden-delete,.lw-select-person .content-bar .garden-search{position: absolute;  right: 10px;  top: 5px;cursor: pointer;color: rgba(120, 108, 236,.5)}
+.lw-select-person .content-bar .garden-delete:hover,.lw-select-person .content-bar .garden-search:hover{color: rgba(120, 108, 236,1)}
+.lw-select-person .content-bar .garden-seachResult{color: #999999;line-height: 20px;text-align: center;font-size: 13px}
+.lw-select-person .garden-list{overflow: auto;width: 100%;height: 383px;margin-top: 10px;}
+.lw-select-person .garden-list.high{height: 373px;margin-top:0;}
+.lw-select-person .garden-list ul{width: 100%;list-style: none;padding:0;}
+.lw-select-person .garden-list ul>li{line-height: 30px;cursor: pointer;white-space: nowrap;font-size: 14px;}
+.lw-select-person .garden-list ul>li:hover{color: #00ba8b}
+.lw-select-person .garden-change{color:#999999;cursor:pointer;width: 30px;height: 30px;border-radius: 3px;border: 1px solid #dbe3ee;text-align: center;line-height: 26px;margin: 10px 10px 0 10px}
+.lw-select-person .garden-change:hover{color: #00ba8b;border: 1px solid #00ba8b;}
+
+.lw-select-person .garden-footer{position: absolute;bottom: 0;width: 100%;height: 50px;left:0;text-align: center}
+.lw-select-person .garden-footer .garden-btn{padding: 0 20px;}
+.lw-select-person .garden-footer .cancel{margin:0 10px;}
+.lw-select-person .garden-footer .sure{margin:0 10px;background-color: #00ba8b;color:#fff;}
+.lw-select-person .garden-btn{width:auto;font-size: 14px;height: 30px;color: #00ba8b;padding: 0 15px;border: 1px solid #00ba8b;margin: 0 10px 0 0;vertical-align: middle;outline: 0;background-color: #fff;border-radius:3px;cursor: pointer}

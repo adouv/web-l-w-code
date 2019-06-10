@@ -1,0 +1,97 @@
+<div class="exercise-library " flex="dir:top">
+  <div class="exercise-library-box">
+    <h1 class="exercise-header">校本题库</h1>
+    <div class="exercise-right-btn" flex="cross:center">
+      <span class="selected-topic">已选{{outParams.checkedExerciseIds.length}}题</span>
+
+    </div>
+    <div class="lw-tpk-pc">
+      <a-tabs @change="tabChange($event)" class="nodrag-area a-tabs" defaultActiveKey="initSelectParams.tabIndex">
+        <a-tab-pane tab="章节" key="0">
+          <div class="exercise-wrapper" flex="">
+            <div class="tree-container">
+              <!-- <app-outline-tree *ngIf="initSelectParams && tabIndex==0" [selectedNodes]="outlineParams"
+                        [selectParams]="initSelectParams" [optionDisable]="false"
+                        (change)="outlineChange($event)"
+                        [clickId]="outlineExerciseIds.length>0?outlineExerciseIds[0]:''"></app-outline-tree> -->
+              <div class="tree-left-container">
+                <div class="tree-header">
+                  <a-select class="n-radius bg-gray a-select" v-model="defaultSelectValue.grade" :disabled="selectParams.gradeCode ? false : true"
+                    @change="changeGrade($event)" defaultValue="暂无年级">
+                    <a-select-option :key="grade.gradeCode" v-for="grade in gradeList">{{grade.name}}</a-select-option>
+                  </a-select>
+
+                  <a-select class="n-radius bg-gray a-select" v-model="defaultSelectValue.subject" :disabled="selectParams.subjectCode ? false : true"
+                    defaultVlaue="暂无学科" @change="changeSubject($event)">
+                    <a-select-option :key="subject.id" v-for="subject in subjectList">{{subject.name}}</a-select-option>
+                  </a-select>
+                  <a-select class="n-radius bg-gray a-select" v-model="defaultSelectValue.semester" :disabled="selectParams.semesterCode ? false : true"
+                    defaultValue="暂无学期" @change="changeEdition($event)">
+                    <a-select-option :key="semester.id" v-for="semester in editionList">{{semester.name}}</a-select-option>
+                  </a-select>
+                </div>
+                <div class="scroll-box auto-scroll" >
+                  <!-- 这里是Loding 根据业务逻辑判断 -->
+                  <div v-if="!initSelectParams.isLoadComplete" style="margin-top: 40px;text-align: center;">
+                    <a-spin size="large" :spinning="outlineNodes.length == 0"/>
+                  </div>
+                  <lw-collapse-tree :data="outlineNodes"  @selectNodes="getSelectNodes"></lw-collapse-tree>
+                  <lw-elliptical-page title="暂无相应课程安排，请联系管理员" v-if="outlineNodes.length <= 0"></lw-elliptical-page>
+                </div>
+              </div>
+            </div>
+            <div class="exercise-list">
+                <lw-library-template :initSelectParams="initSelectParams" :selectParams="selectParams" @outParams="getOutParams" :selectMode="selectMode"></lw-library-template>
+              <!-- <ng-container *ngTemplateOutlet="exerciseList"></ng-container> -->
+            </div>
+          </div>
+        </a-tab-pane>
+        <a-tab-pane tab="知识点" key="1">
+          <div class="exercise-wrapper" flex="">
+            <div class="tree-container">
+              <div class="knowledge-box">
+                <div class="tree-header">
+                  <a-select class="n-radius bg-gray a-select" v-model="defaultSelectValue.grade" :disabled="selectParams.gradeCode ? false : true"
+                    @change="changeGrade($event)" defaultValue="暂无年级">
+                    <a-select-option :key="grade.gradeCode" v-for="grade in gradeList">{{grade.name}}</a-select-option>
+                  </a-select>
+
+                  <a-select class="n-radius bg-gray a-select" v-model="defaultSelectValue.subject" :disabled="selectParams.subjectCode ? false : true"
+                    defaultVlaue="暂无学科" @change="changeSubject($event)">
+                    <a-select-option :key="subject.id" v-for="subject in subjectList">{{subject.name}}</a-select-option>
+                  </a-select>
+                </div>
+                <div class="check-model">
+                  <a-button  class="check-box" @click="toggleModel()">{{!selectParams.single?'切换单选':'切换多选'}}
+                  </a-button>
+                  <span v-if="!selectParams.single">最多可选4个知识点</span>
+                </div>
+                <div class="scroll-box auto-scroll">
+                  <!-- 这里是Loding 根据业务逻辑判断 -->
+                  <div v-if="!initSelectParams.isLoadComplete" style="margin-top: 40px;text-align: center;">
+                    <a-spin size="large" />
+                  </div>
+
+                  <lw-collapse-tree :data="outlineNodes"   @selectNodes="getSelectNodes"></lw-collapse-tree>
+                  <lw-elliptical-page title="暂无相应课程安排，请联系管理员" v-if="initSelectParams.isLoadComplete&&outlineNodes.length <= 0"></lw-elliptical-page>
+                </div>
+              </div>
+            </div>
+            <div flex-box="1" class="exercise-list">
+              <!-- <ng-container *ngTemplateOutlet="exerciseList"></ng-container> -->
+              <lw-library-template :initSelectParams="initSelectParams" :selectParams="selectParams" @outParams="getOutParams" :selectMode="selectMode"></lw-library-template>
+
+            </div>
+          </div>
+        </a-tab-pane>
+      </a-tabs>
+    </div>
+  </div>
+  <a-layout-footer flex="main:center cross:center" class="footer">
+    <div class="lw-tpk-pc nodrag-area">
+      <a-button @click="back()">返回</a-button>
+      <a-button @click="checkedAllExercise(false)" :disabled="outParams.checkedExerciseIds.length==0">存为习题包</a-button>
+      <a-button type="danger" @click="checkedAllExercise(true)" :disabled="outParams.checkedExerciseIds.length==0">进入习题包</a-button>
+    </div>
+  </a-layout-footer>
+</div>

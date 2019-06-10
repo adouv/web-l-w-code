@@ -1,0 +1,49 @@
+<div class="quality-course-edit">
+	<div class="line-box" *ngIf="qualityCourseItem && qualityCourseItem.source === 0">
+		<div class="left-box">课节：</div>
+		<div>{{qualityCourseItem.gradeName}}{{qualityCourseItem.className}}／周{{qualityCourseItem.week |
+			numberToUpperCase}}
+			第{{qualityCourseItem.period}}节
+		</div>
+	</div>
+
+	<div class="line-box" *ngIf="addQualityCourse">
+		<div class="left-box">课节：</div>
+		<div>{{addQualityCourse.gradeName}}{{addQualityCourse.className}}／周{{addQualityCourse.week |
+			numberToUpperCase}}
+			第{{addQualityCourse.period}}节
+		</div>
+	</div>
+	<div class="line-box">
+		<div class="left-box">知识点：</div>
+		<div>
+			<nz-select style="width: 100%;" [(ngModel)]="outlineIds" [nzSize]="'default'" [nzMode]="'tags'"
+					   [ngClass]="{'error': validModel.errOutlineId && outlineIds.length==0}" [nzPlaceHolder]="''"
+					   (nzOpenChange)="validModel.errOutlineId = false">
+				<nz-option
+					*ngFor="let option of knowledgeOptions"
+					[nzLabel]="option?.title"
+					[nzValue]="option?.id">
+				</nz-option>
+			</nz-select>
+		</div>
+	</div>
+	<div class="line-box">
+		<div class="left-box">标题：</div>
+		<div *ngIf="qualityCourseItem">
+			<input class="ant-input" [(ngModel)]="newName" maxlength="30"
+				   [ngClass]="{'error': validModel.name&&!newName || validModel.name&&!newName.trim()}"
+				   placeholder="{{qualityCourseItem.name}}" (blur)="validModel.name=false">
+		</div>
+		<div *ngIf="addQualityCourse">
+			<input class="ant-input" [(ngModel)]="newName" maxlength="30"
+				   [ngClass]="{'error': validModel.name&&!newName || validModel.name&&!newName.trim()}"
+				   placeholder="{{addQualityCourse.name}}" (blur)="validModel.name=false">
+		</div>
+	</div>
+
+	<div class="btn-box">
+		<button nz-button [nzType]="'default'" (click)="handleCancel()">取消</button>
+		<button nz-button [nzType]="'danger'" (click)="updateQualityCourse()">确定</button>
+	</div>
+</div>

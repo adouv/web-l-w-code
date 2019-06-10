@@ -1,0 +1,35 @@
+<div class="knowledge-box">
+	<div class="tree-header">
+		<nz-select class="mar-bot-10px radius bg-gray" [nzDisabled]="optionDisable"
+				   (nzOpenChange)="changeGrade($event, selectParams.gradeCode)"
+				   [(ngModel)]="selectParams.gradeCode"
+				   [nzPlaceHolder]="'暂无年级'">
+			<nz-option *ngFor="let grade of gradeList" [nzLabel]="grade.name"
+					   [nzValue]="grade.gradeCode">
+			</nz-option>
+		</nz-select>
+		<nz-select class="mar-bot-10px radius bg-gray" [nzDisabled]="optionDisable"
+				   (nzOpenChange)="changeSubject($event, selectParams.subjectCode)"
+				   [(ngModel)]="selectParams.subjectCode"
+				   [nzPlaceHolder]="'暂无学科'">
+			<nz-option *ngFor="let subject of subjectList" [nzLabel]="subject.name"
+					   [nzValue]="subject.id">
+			</nz-option>
+		</nz-select>
+	</div>
+	<div class="check-model">
+		<button nz-button class="check-box" (click)="toggleModel()">{{!selectParams.single?'切换单选':'切换多选'}}
+		</button>
+		<span *ngIf="!selectParams.single">最多可选4个知识点</span>
+	</div>
+	<div class="collaspe-box">
+		<div class="collaspe-scroll auto-scroll animated fadeIn">
+			<collapse-tree *ngIf="knowledgeList && knowledgeList.length>0" [data]="knowledgeList" [single]="!selectParams.single" type="knowledge_tree"></collapse-tree>
+		</div>
+	</div>
+	<div *ngIf="!isLoadComplete" style="margin-top: 40px;text-align: center;">
+			<nz-spin  [nzSize]="'large'" class="spin-loading" [nzSpinning]="knowledgeList.length == 0"></nz-spin>
+	</div>
+	<elliptical-page *ngIf="isloadComplete&&!knowledgeList || knowledgeList.length <= 0" imgName="no-classHour.png"
+					 title="暂无相应课程安排，请联系管理员"></elliptical-page>
+</div>

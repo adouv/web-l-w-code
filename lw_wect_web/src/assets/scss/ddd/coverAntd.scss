@@ -1,0 +1,5 @@
+
+.auto-scroll-6 {
+  overflow: auto;
+  @include scroll-bar(6px);
+}

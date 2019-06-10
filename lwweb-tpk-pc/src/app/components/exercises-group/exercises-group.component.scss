@@ -1,0 +1,105 @@
+@import "../../../styles/variable";
+
+.question-item-box {
+	display: flex;
+    margin-bottom: computer(20px);
+	font-family: MicrosoftYaHei, sans-serif;
+	& label {
+		margin-top: computer(20px);
+		margin-right: computer(20px);
+		width: auto;
+	}
+	& .question-item-content-box {
+		background-color: #ffffff;
+		border: solid 1px $color_border;
+		flex: 1;
+		color: $color_font-deep;
+		width: 100%;
+		overflow: hidden;
+	}
+	.tag{
+		font-size: computer(14px);
+	}
+}
+
+.title-box {
+	padding: computer(20px);
+	border-bottom: 1px solid #eeeeee;
+	display: flex;
+	width: 100%;
+	.inner-box {
+		width: 100%;
+		word-wrap: break-word;
+		font-size: computer(14px);
+	}
+}
+
+.detail-box {
+	display: flex;
+	.question-type-box {
+		margin-top: computer(10px);
+		background-image: linear-gradient(#ffffff, #ffffff), linear-gradient(#ffffff, #ffffff);
+		background-blend-mode: normal, normal;
+		flex: 1;
+		span {
+			display: inline-block;
+			background-color: #eeeeee;
+			border-radius: 5px;
+			border: 1px solid #dddddd;
+			color: #999999;
+			padding: 0 5px;
+			margin-left: computer(20px);
+			margin-bottom: computer(10px);
+			font-size: computer(14px);
+		}
+	}
+
+	.buttons-group {
+		display: flex;
+	}
+	.button-group {
+		color: $color_main;
+		font-size: computer(14px);
+		line-height: computer(40px);
+		cursor: pointer;
+		&:first-child {
+			margin-right: computer(40px);
+		}
+		&:last-child {
+			margin-right: computer(20px);
+		}
+		.iconfont {
+			font-size: computer(20px);
+			margin-right: computer(10px);
+		}
+		.iconfont, span {
+			vertical-align: middle;
+		}
+	}
+}
+
+.answer-box {
+	background-color: #f8f8f8;
+	border: solid 1px #eeeeee;
+	padding: computer(20px);
+	font-size: 14px;
+	font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: 0;
+	color: #333333;
+	.dmy-wrapper ::ng-deep{
+		p{
+			word-break: break-all;
+		}
+	}
+}
+.designCodeTep-content{
+	padding: computer(20px);
+}
+.footer{
+	height: computer(50px);
+	line-height: computer(50px);
+	text-align: right;
+	padding-right: computer(20px);
+	border-top:1px solid $color_border;
+}

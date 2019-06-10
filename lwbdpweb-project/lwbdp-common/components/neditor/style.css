@@ -1,0 +1,5 @@
+.neditor .error + .edui-editor{
+    border: 1px solid #ff272e !important;
+    box-sizing: content-box;
+    width: auto !important;
+}

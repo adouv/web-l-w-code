@@ -1,0 +1,31 @@
+<div class="uploadfile-box">
+    <!-- 文件列表 -->
+    <div class="uploadfile-list auto-scroll">
+        <div class="progressitem" *ngFor="let item of uploadList;let i = index">
+            <div flex="cross:center">
+                <img class="filetype" src="{{item.name | filetype}}" />
+                <div class="fileinfo">
+                    <div class="filename">{{item.name}}</div>
+                    <div class="progress" *ngIf="item.state==0">
+                        <processBar class="progressbar" [progress]="item.progress"></processBar>
+                        <div class="progresstext">{{item.progress}}%</div>
+                    </div>
+                    <div class="success" *ngIf="item.state==1">
+                        <i class="iconfont icon-success"></i> {{_title+item.msg}}
+                    </div>
+                    <div class="failed" *ngIf="item.state==2">
+                        {{_title + item.msg + "!" + item.errorMsg || ''}}
+                    </div>
+                </div>
+            </div>
+            <div class="caozuo">
+                <div class="cancel" (click)="delete(i, item.state==2)" *ngIf="item.state != 0">删除</div>
+                <div class="cancel" *ngIf="item.state == 0" (click)="cancel(i)">取消</div>
+            </div>
+        </div>
+    </div>
+    <div class="uploadfile-btn">
+        <button nz-button [nzType]="'primary'" class="btn-disable" *ngIf="!uploadFileView.unfinishedBtn">完成</button>
+        <button nz-button [nzType]="'primary'" *ngIf="uploadFileView.unfinishedBtn" (click)="finished()">完成</button>
+    </div>
+</div>

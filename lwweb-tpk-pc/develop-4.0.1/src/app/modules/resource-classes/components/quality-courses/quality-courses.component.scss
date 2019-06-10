@@ -1,0 +1,101 @@
+@import "../../../../../styles/variable";
+@import "../../../../../styles/mixin";
+
+::ng-deep quality-courses {
+	//display: inline-block;
+	overflow: auto;
+	height: 100%;
+	@include scroll-bar();
+}
+
+.best-course-card-padding {
+	display: inline-block;
+	width: computer(260px);
+	padding: 0 computer(10px);
+	margin-bottom: computer(20px);
+}
+
+.best-course-card {
+	.img-box {
+		height: computer(135px);
+		overflow: hidden;
+		cursor: pointer;
+		position: relative;
+		img {
+			width: 100%;
+		}
+		&:hover {
+			img {
+				transform: scale(1.2);
+				transition: 1s all;
+			}
+			.operate {
+				opacity: 1;
+			}
+		}
+	}
+	.title {
+		width: 100%;
+		cursor: default;
+		font-size: computer(14px);
+		line-height: computer(14px);
+		color: $color_font-deep;
+		padding: computer(10px) 0;
+		font-family: 'MicrosoftYaHei';
+		@include line-ell(calc(100% - 5px));
+	}
+	.description {
+		cursor: default;
+		font-size: 12px;
+		line-height: 12px;
+		color: $color_font-light;
+	}
+	.opacity {
+		opacity: 0;
+	}
+	.mark {
+		width: 45px;
+		height: 45px;
+		display: inline-block;
+		position: absolute;
+		left: 0;
+		top: 0;
+		background: url("../../../../../assets/images/show.png") no-repeat;
+	}
+
+	.operate {
+		opacity: 0;
+		width: computer(240px);
+		height: computer(30px);
+		background-color: rgba(83, 79, 88, 0.8);
+		position: absolute;
+		bottom: 0;
+		color: #ffffff;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		cursor: default;
+		.iconfont {
+			display: inline-block;
+			vertical-align: middle;
+			margin-left: computer(20px);
+			cursor: pointer;
+		}
+		.set-main-video {
+			margin-right: computer(20px);
+			cursor: pointer;
+		}
+	}
+}
+
+
+.footer {
+	width: 85%;
+	text-align: center;
+	border-top: 1px solid $color_border;
+	padding: computer(10px) 0;
+	line-height: computer(30px);
+	background-color: #fff;
+	position: fixed;
+	bottom: 0px;
+}

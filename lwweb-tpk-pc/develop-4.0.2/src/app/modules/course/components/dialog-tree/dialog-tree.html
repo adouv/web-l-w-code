@@ -1,0 +1,40 @@
+<div class="lw-tpk-tree">
+	<div *ngFor="let t of data">
+		<div *ngIf="t.children!=null&&t.children.length>0">
+			<div  flex="" class="tree-title margin-bottom-10">
+				<div  flex-box="0">
+						<label *ngIf="t.canPrepare" class="label-checkbox margin-right-10"
+						[nzDisabled]="maxLength!=-1&&checkAry.length>=maxLength&&!t.isSelect" nz-checkbox
+						[(ngModel)]="!!t.isSelect"
+						(ngModelChange)="checkedAllChange($event, t)">
+						</label>
+						<span (click)="childClick(t)" class="tree-title-icon margin-right-10">
+							<i class="iconfont" [ngClass]="{'icon-sanjiaoyou':!t.isOpen,'icon-sanjiaoxia':t.isOpen}"></i>
+						</span>
+				</div>
+				<div class="span-title" flex-box="1">
+						<span class="span-title" (click)="childisOpenChange($event, t, true)"
+						[ngClass]="{'btn-disabled':maxLength!=-1&&checkAry.length>=maxLength&&!t.isSelect}">
+							<span title="{{t.name}}" class="span-title">{{t.name}}</span>
+						</span>
+				</div>
+			</div>
+			<div class="tree-childs" [hidden]="!t.isOpen" *ngIf="t.children!=null&&t.children.length>0">
+				<div *ngFor="let child of t.children">
+					<tpk-course-tree [data]="[child]" [checkAry]="checkAry"
+							  (checkClick)="checkClick.emit($event)" [openStatus]="openStatus" [openList]="openList"></tpk-course-tree>
+				</div>
+			</div>
+		</div>
+		<div *ngIf="t.children==null||t.children.length==''">
+			<div class="tree-child margin-bottom-10">
+				<label *ngIf="t.canPrepare"  class="label-checkbox margin-right-10" [nzDisabled]="maxLength!=-1&&checkAry.length>=maxLength&&!t.isSelect"
+					   nz-checkbox [(ngModel)]="!!t.isSelect"
+					   (ngModelChange)="checkedAllChange($event, t)">
+				</label>
+				<span title="{{t.name}}" class="span-title" [ngClass]="{'btn-disabled':maxLength!=-1&&checkAry.length>=maxLength&&!t.isSelect}"
+					  (click)="childisOpenChange($event, t, false)">{{t.name}}</span>
+			</div>
+		</div>
+	</div>
+</div>

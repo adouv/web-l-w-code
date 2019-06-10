@@ -1,0 +1,27 @@
+<div [ngClass]="{'selectGroupLine':styleType=='line','selectGroup':styleType!='line'}">
+	<div class="selectorLine" [ngClass]="{'extend':!moreStatus}" #defaultHeight (mouseleave)="mouseleave()">
+		<div class="selectorkey" *ngIf="styleType!='line'">
+			{{_titles}}：
+		</div>
+		<div class="selectorkey" *ngIf="styleType=='line'">
+			{{_titles}}
+		</div>
+		<div class="selectorValues" [ngStyle]="getTitle(_titles)" #selectValues>
+			<ul *ngIf="styleType!='line' && !myClass">
+				<li class="selectorValue" [ngClass]="{'active':model==''}" (click)="selectValue('',-1)">全部</li>
+				<li class="selectorValue" [ngClass]="{'active':model== d.id }" (click)="selectValue(d,i)" *ngFor="let d of data;let i = index">{{d.name}}</li>
+			</ul>
+			<ul *ngIf="styleType=='line' && !myClass">
+				<li class="selectorValue" [ngClass]="{'active':model== d.id }" (click)="selectValue(d,i)" *ngFor="let d of data;let i = index">{{d.name}}<i></i></li>
+			</ul>
+			<ul *ngIf="styleType!='line' && myClass" [ngStyle]="{'margin-left':'-15px'}">
+					<li class="selectorValue" [ngClass]="{'active':!model}" (click)="selectValue('',-1)">全部</li>
+					<li class="selectorValue" [ngClass]="{'active':model== d.active }" (click)="selectValue(d,i)" *ngFor="let d of data;let i = index">{{d.name}}</li>
+				</ul>
+		</div>
+		<div class="moreValue" (mouseenter)="mouseenter()" *ngIf="showMoreButton">
+			更多
+			<i class="anticon anticon-caret-down" [ngClass]="{'anticon-caret-down':moreStatus,'anticon-caret-up':!moreStatus}"></i>
+		</div>
+	</div>
+</div>

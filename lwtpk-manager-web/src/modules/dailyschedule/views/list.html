@@ -1,0 +1,80 @@
+<section class="row border-color no-row">
+    <blockquote class="border-color">园区作息时间表管理</blockquote>
+    <div class="garden-select">
+        <select class="form-control select-control select-origination"  ng-change="toggleGarden()" ng-model="gardenId" ng-options="garden.id as garden.name for garden in gardens">
+        </select>
+    </div>
+</section>
+<section class="row media no-row">
+    <div class="nav-form">
+        <select class="form-control select-control select-origination"
+                ng-model="condition.organizationId"
+                ng-options="grade.id as grade.name for grade in grades">>
+            <option value="">请选择教学组织结构</option>
+        </select>
+        <div class="form-group" style="display: inline-block;margin-left:8px;">
+            <input type="text" class="form-control select-origination" ng-model="condition.keywords" placeholder="请输入作息时间名称">
+            <button class="btn tpk-btn" id="lw-search" style="margin-left: 10px;">确 定</button>
+        </div>
+        <!--has-permission="timeTable:create"-->
+        <button class="btn tpk-btn btn-add fr" ng-click="toAdd()" > + 新 建</button>
+        <button class="btn tpk-btn btn-add fr" ng-click="timeVacation()" style="margin-right:10px;">放假管理</button>
+    </div>
+    <p>
+        <!--<button class="btn tpk-btn-o" ng-click="deleteAll()"> 删 除</button>-->
+      <!--<button class="btn tpk-btn-delete" ng-click="deleteAll()"> 删 除 </button>-->
+        <input type="button" class="delte-btn" ng-click="deleteAll()" value="删 除">
+
+    </p>
+</section>
+<section class="">
+    <table class="table">
+        <thead>
+        <tr class="active">
+            <td>
+                <input type="checkbox" class="checkboxClass" ng-click="checkAll($event)" ng-checked="checkAllBox">序号
+            </td>
+            <td>名称</td>
+            <td>作用对象</td>
+            <td>作用时间段</td>
+            <td>更新人</td>
+            <td>更新时间</td>
+            <td>有效性</td>
+            <td>操作</td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="data in datas">
+            <td>
+                <input type="checkbox" class="checkboxClass" ng-click="check($event,data.id)" ng-checked="data.checked">{{$index+1}}
+            </td>
+            <td>
+              <div class="text-over" title="{{data.name}}">{{data.name}}</div>
+            </td>
+            <td>
+              <div class="text-over" title="{{data.organizationPojoList|foreach:'name':'；'}}">{{data.organizationPojoList|foreach:'name':'；'}}</div>
+            </td>
+            <td>{{data.startTime|date:'yyyy/MM/dd'}}~{{data.endTime|date:'yyyy/MM/dd'}}</td>
+            <td>{{data.lastUpdatorName}}</td>
+            <td>{{data.lastUpdateTime|date:'yyyy/MM/dd HH:mm:ss'}}</td>
+            <td>
+                <div class="inblk va-middle">
+                    <input type="checkbox" id="{{data.id+'_checked'}}" class="cbx hidden"
+                           ng-checked="data.status" ng-model="data.status"
+                           ng-click="changeStatus($event,data.id,$index)">
+                    <label for="{{data.id+'_checked'}}" class="lbl"></label>
+                </div>
+            </td>
+            <td>
+                <div class="tpk-icon-border">
+                    <!--has-permission="timeTable:update" has-permission="timeTable:delete" has-permission="timeTable:list"-->
+                    <i class='tpk-ico tpk-edit' ng-click="timeTableModule.toEdit(data.id)" ></i>
+                    <i class="tpk-ico tpk-delete" ng-click="delete(data.id)" ></i>
+                    <i class="tpk-ico tpk-detail" ng-click="timeTableModule.toDetail(data.id)" ></i>
+                </div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</section>
+<lw-page url="/timeTable/tables" garden-id="{{gardenId}}" ></lw-page>

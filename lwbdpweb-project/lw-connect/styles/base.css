@@ -1,0 +1,615 @@
+/*.client_wrapper{
+    width:100%;
+    height:100%;
+    position: relative;
+    background: #ffffff;
+}*/
+
+.client_wrapper .left_nav,
+.client_wrapper .middle_nav {
+    display: inline-block;
+}
+
+.client_wrapper .left_nav {
+    display: inline-block;
+    width: 50px;
+    height: 100%;
+    background-color: #eee !important;
+    text-align: center;
+    position: absolute;
+    border-right: 1px solid #dbe3ee;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    box-shadow: -12px 29px 0px 0px rgb(27, 39, 54);
+    /*border-radius: 10px 0px 0 0px;*/
+}
+
+.client_wrapper .left_nav .user_img {
+    cursor: pointer;
+    width: 50px;
+    height: 40px;
+    margin-top: 10px;
+}
+
+.client_wrapper .left_nav .user_img .img {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.client_wrapper .left_nav .user_img .img img {
+    width: 100%;
+}
+
+.client_wrapper .left_nav .user_img .img img[src=''] {
+    opacity: 0;
+}
+
+.client_wrapper .left_nav li {
+    margin-top: 28px;
+}
+
+.client_wrapper .left_nav .connectIconfont {
+    color: #767d87;
+    font-size: 24px;
+}
+
+.client_wrapper .left_nav li {
+    color: #767d87;
+    cursor: pointer;
+}
+
+.client_wrapper .left_nav li:hover span,
+.client_wrapper .left_nav li:hover {
+    color: rgba(51, 51, 51, 1);
+}
+
+.client_wrapper .left_nav li.bottom {
+    width: 100%;
+    position: absolute;
+    bottom: 30px;
+}
+
+
+/*.client_wrapper .left_nav .icon-lookSelected:hover,*/
+
+
+/*.client_wrapper .left_nav .icon-linkSelected:hover,*/
+
+
+/*.client_wrapper .left_nav .icon-colleagueSelected:hover,*/
+
+
+/*.client_wrapper .left_nav .icon-wisdomSelected:hover {*/
+
+
+/*color: transparent !important;*/
+
+
+/*}*/
+
+.client_wrapper .left_nav li.actived p {
+    color: #226cfb;
+}
+
+.client_wrapper .left_nav .icon-lookSelected,
+.client_wrapper .left_nav .icon-linkSelected,
+.client_wrapper .left_nav .icon-colleagueSelected,
+.client_wrapper .left_nav .icon-wisdomSelected {
+    color: #226cfb !important;
+}
+
+.client_wrapper .middle_nav {
+    width: 100%;
+    height: 100%;
+    background: #f8f8f8;
+    position: absolute;
+    top: 0px;
+    z-index: 1;
+}
+
+.client_wrapper .middle_nav .middle_list {
+    position: absolute;
+    top: 0;
+    left: 50px;
+    width: 250px;
+    height: 100%;
+    border-right: 1px solid #dbe3ee;
+    z-index: 2;
+}
+
+.client_wrapper .right_contcent {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    padding-left: 300px;
+    overflow: hidden;
+}
+
+.client_wrapper .right_contcent>div {
+    background: #ffffff;
+}
+
+
+/*第二栏搜索*/
+
+.connect_search {
+    height: 50px;
+    padding: 10px 10px;
+    border-bottom: 1px solid #dbe3ee;
+}
+
+.connect_search .input_group {
+    width: 230px;
+    height: 30px;
+    position: relative;
+    background: #eeeeee;
+}
+
+.connect_search p .connectIconfont {
+    position: absolute;
+    top: 6px;
+    right: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    color: #999999;
+}
+
+.connect_search p .icon-close-circle {
+    color: #226cfb;
+    text-align: center;
+}
+
+.connect_search p .input_class {
+    border: none;
+    background: none;
+    /*padding : 10px 35px 10px 10px;*/
+    width: 230px;
+    height: 30px;
+}
+
+.connect_search p .input_class:focus {
+    background: #ffffff;
+    border: 1px solid #226cfb;
+}
+
+.client_wrapper .client_userInfo {
+    position: absolute;
+    top: 35px;
+    left: 50px;
+    width: 320px;
+    height: 418px;
+    z-index: 6;
+    background: #ffffff;
+    text-align: center;
+    border-radius: 6px;
+    box-shadow: 0px 8px 12px 0px rgba(7, 0, 2, 0.3);
+}
+
+.client_wrapper .client_userInfo .user_head {
+    width: 100%;
+    height: 120px;
+    padding: 0 20px;
+    margin-bottom: 10px;
+    text-align: left;
+    box-sizing: border-box;
+}
+
+.client_wrapper .client_userInfo .user_head>div {
+    padding: 40px 0 40px 90px;
+    border-bottom: 1px solid #ebebeb;
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.client_wrapper .client_userInfo .user_head span,
+.client_wrapper .client_userInfo .user_head img {
+    position: absolute;
+    left: 0;
+    top: 20px;
+    width: 80px;
+    height: 80px;
+    border-radius: 40px;
+    overflow: hidden;
+}
+
+.client_wrapper .client_userInfo .user_head span {
+    background: url('../image/user_big.png') no-repeat;
+}
+
+.client_wrapper .client_userInfo .user_head .name {
+    font-size: 20px;
+}
+
+.client_wrapper .client_userInfo .user_head .change-pwd {
+    position: absolute;
+    top: 40px;
+    right: 0px;
+    font-size: 14px;
+    color: #226cfb;
+    background: url('../image/pwd.png') no-repeat 0 3px;
+    padding-left: 20px;
+    cursor: pointer;
+}
+
+.client_wrapper .client_userInfo .more_detail p {
+    position: relative;
+    padding-left: 112px;
+}
+
+.client_wrapper .client_userInfo .more_detail .name {
+    width: 100px;
+    text-align: right;
+    color: #999999;
+    margin-right: 20px;
+    position: absolute;
+    top: 7px;
+    left: 0;
+}
+
+.client_wrapper .client_userInfo .more_detail .name_detail {
+    display: inline-block;
+    width: 100%;
+    text-align: left;
+    line-height: 34px;
+    min-height: 34px;
+}
+
+.client_wrapper .client_userInfo .more_detail .name_detail.name_department {
+    line-height: 22px;
+    padding-top: 5px;
+}
+
+.client_wrapper .client_userInfo .name_department em {
+    display: inline-block;
+}
+
+.client_wrapper .client_userInfo .name_department em:hover {
+    color: #226cfb;
+    cursor: pointer;
+}
+
+.client_wrapper .client_userInfo .edit {
+    width: 120px;
+    margin: 20px auto;
+}
+
+.client_wrapper .client_userInfo .more_detail {
+    height: 218px;
+    padding: 0 20px;
+}
+
+.edit_user {
+    width: 500px;
+    height: 500px;
+    border-radius: 6px;
+    box-shadow: 0px 8px 12px 0px rgba(7, 0, 2, 0.3);
+    position: absolute;
+    z-index: 6;
+    top: 50%;
+    margin-top: -250px;
+    left: 50%;
+    margin-left: -250px;
+    border: 1px solid #dae4ee;
+    background: #f8f8f8;
+    padding: 24px 20px 0 20px;
+}
+
+.edit_user .header_box .statusBtns:hover i {
+    color: #1b2737 !important;
+}
+
+.client .header_box span.second {
+    left: 32px;
+}
+
+.client .header_box span.third {
+    left: 54px;
+}
+
+.edit_user .user_img_box {
+    height: 100px;
+    padding: 20px 0;
+    border-bottom: 1px solid #ebebeb;
+    position: relative;
+}
+
+.edit_user .more_detail_box {
+    margin-left: -20px;
+    margin-right: -20px;
+    padding: 0 20px;
+}
+
+.edit_user .user_img_box p,
+.edit_user .more_detail_box p {
+    position: relative;
+    padding-left: 112px;
+}
+
+.edit_user .user_img_box p span.name,
+.edit_user .more_detail_box p span.name {
+    text-align: right;
+    color: #999999;
+    margin-right: 20px;
+    position: absolute;
+    top: 7px;
+    left: 0;
+    width: 100px;
+}
+
+.edit_user .user_head {
+    position: absolute;
+    top: 10px;
+    right: 0px;
+    width: 80px;
+    height: 80px;
+    border-radius: 40px;
+    line-height: 80px;
+    text-align: center;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.edit_user .user_head img {
+    width: 100%;
+}
+
+.edit_user .user_head span.img_bg {
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    background: url('../image/user_big.png') no-repeat;
+}
+
+.edit_user .user_img_box p span.name_detail,
+.edit_user .more_detail_box p span.name_detail {
+    display: inline-block;
+    text-align: left;
+    line-height: 34px;
+    min-height: 34px;
+    position: relative;
+}
+
+.edit_user .more_detail_box p span.name_detail.name_department {
+    line-height: 1.5em !important;
+}
+
+.edit_user .user_img_box .prompt_icon,
+.edit_user .more_detail_box .prompt_icon {
+    position: absolute;
+    right: 20px;
+    top: 0;
+    color: #ff272e;
+    cursor: pointer;
+}
+
+.edit_user .more_detail_box .right_format {
+    position: absolute;
+    top: -28px;
+    right: 10px;
+    padding: 0 20px;
+    margin-right: 10px;
+    background: rgba(236, 66, 63, 0.9);
+    color: #fff;
+    font-family: 'microsoft yahei', PingFangSC-Light, 'helvetica neue', 'hiragino sans gb', arial, 'microsoft yahei ui', simsun, sans-serif;
+    z-index: 9;
+    white-space: nowrap;
+}
+
+.edit_user .user_head .connectIconfont {
+    color: #ffffff;
+    font-size: 30px;
+    position: absolute;
+    /*top: 2px;
+    left : 25px;*/
+    top: 0px;
+    left: 0px;
+    bottom: 0px;
+    right: 0px;
+    background: rgba(0, 0, 0, 0.4);
+}
+
+.edit_user .more_detail_box {
+    padding-top: 10px;
+}
+
+.edit_user .input_class {
+    height: 24px;
+}
+
+.edit_user .more_detail_box .input_class {
+    width: 270px;
+}
+
+.edit_user .btn_box {
+    position: absolute;
+    bottom: 0;
+    padding: 20px 0;
+}
+
+.edit_user .editHeadImg {
+    width: 240px;
+    height: 290px;
+    position: absolute;
+    top: 123px;
+    right: -60px;
+    border-radius: 6px;
+    border: 1px solid #dbe3ee;
+    box-shadow: 0px 8px 12px 0px rgba(7, 0, 2, 0.3);
+    background: #ffffff;
+    z-index: 1;
+}
+
+.edit_user .editHeadImg .image_cropper {
+    width: 220px;
+    height: 240px;
+    margin: 10px 10px 5px 10px;
+}
+
+.edit_user .editHeadImg .edit_btns {
+    position: relative;
+    height: 20px;
+}
+
+.edit_user .editHeadImg input {
+    width: 48px;
+    height: 20px;
+    overflow: hidden;
+    position: absolute;
+    left: 10px;
+    opacity: 0;
+    cursor: pointer;
+    font-size: 0;
+}
+
+.edit_user .editHeadImg .edit_btns span {
+    position: absolute;
+    width: 48px;
+    height: 20px;
+    border: 1px solid #dae4ee;
+    border-radius: 3px;
+    text-align: center;
+    line-height: 20px;
+    cursor: pointer;
+}
+
+.edit_user .editHeadImg .edit_btns .upload {
+    left: 10px;
+}
+
+.edit_user .editHeadImg .edit_btns .cancel {
+    right: 68px;
+}
+
+.edit_user .editHeadImg .edit_btns .save {
+    right: 10px;
+}
+
+.edit_user .editHeadImg .top {
+    display: block;
+    width: 0;
+    height: 0;
+    border-width: 0px 6px 10px;
+    border-style: solid;
+    border-color: transparent transparent #dae4ee;
+    position: absolute;
+    top: -11px;
+    left: 50%;
+    margin-left: -6px;
+}
+
+.edit_user .editHeadImg .top em {
+    width: 0;
+    height: 0;
+    border-width: 0 6px 10px;
+    border-style: solid;
+    border-color: transparent transparent #ffffff;
+    position: absolute;
+    top: 2px;
+    left: -6px;
+}
+
+.userEdit_dialog {
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    position: absolute;
+}
+
+.pwdEdit_dialog {
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    position: absolute;
+}
+
+.input_class.input_name {
+    cursor: not-allowed;
+}
+
+
+/* 个性签名 */
+
+.client_wrapper .autographPic {
+    width: 121px;
+    height: 60px;
+    overflow: hidden;
+    position: relative;
+}
+
+.client_wrapper .autographPic img {
+    cursor: pointer;
+}
+
+.client_wrapper .autographPic .upload_img {
+    height: 60px;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%);
+}
+
+.client_wrapper .selfdom_name {
+    margin-top: 5px;
+}
+
+.client_wrapper .mask_black {
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, .4);
+    position: absolute;
+    z-index: 2;
+    text-align: center;
+    cursor: pointer;
+}
+
+.client_wrapper .mask_black:hover .close_circle {
+    display: block;
+}
+
+.client_wrapper .mask_black .icon-camera {
+    line-height: 60px;
+    color: #ffffff;
+    font-size: 30px;
+}
+
+.client_wrapper .mask_black .close_circle {
+    font-size: 16px;
+    color: #ccc;
+    padding: 5px;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    line-height: 16px;
+    display: none;
+}
+
+.client_wrapper .mask_black .close_circle:hover {
+    color: #fff;
+}
+
+.client_wrapper .enterPassword {
+    position: absolute;
+    width: 400px;
+    height: 200px;
+    left: 50%;
+    top: 100px;
+    margin-left: -200px;
+    background: #fff;
+    box-shadow: 0px 8px 12px 0px rgba(7, 0, 2, 0.3);
+    padding: 40px 30px;
+    border-radius: 5px;
+    z-index: 5;
+}
+
+.client_wrapper .enterPassword input {
+    margin-top: 14px;
+    width: 100%;
+    height: 30px;
+}

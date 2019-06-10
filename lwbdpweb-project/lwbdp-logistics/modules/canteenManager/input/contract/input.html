@@ -1,0 +1,80 @@
+<div class="canteen_add warn-class">
+    <div class="header">
+        <span class="second-warning" ng-click="canteenContractInput.goBack('order')">食堂管理 &gt;</span>
+        <span class="second-warning" ng-click="canteenContractInput.goBack('order')">大宗食品采购 &gt;</span>
+        <span class="color_999 first-warning"><em ng-if="!canteenContractInput.$stateParams.id">添加</em><em ng-if="canteenContractInput.$stateParams.id">编辑</em>供应商合同</span>
+    </div>
+    <form class="w5c-form" novalidate name="addContract">
+        <p class="canteen_add_title"><em ng-if="!canteenContractInput.$stateParams.id">添加</em><em ng-if="canteenContractInput.$stateParams.id">编辑</em>供应商合同</p>
+    <ul class="canteen_add_form">
+        <li class="canteen_li clearfix">
+            <span class="pact_tit">合同名称：</span>
+            <input type="text" class="input_class pact_form" name="name" placeholder="50个汉字以内，必填" ng-model="canteenContractInput.contract.name" required maxlength="50" ng-blur="canteenContractInput.validateContractNameExists()"/>
+        </li>
+        <li class="canteen_li clearfix">
+            <span class="pact_tit">合同甲方：</span>
+            <input type="text" class="input_class pact_form" placeholder="单选，必填" name="garden" readonly ng-model="canteenContractInput.gardenName" ng-click="canteenContractInput.chooseGarden()" required/>
+            <span class="canteen_infos_content"></span>
+        </li>
+        <li class="canteen_li clearfix">
+            <span class="pact_tit">合同乙方：</span>
+            <select-options name="secondParty" id="type" class="select_class" ng-model="canteenContractInput.contract.secondParty"
+                    repeat-items="unit in canteenContractInput.FoodSupplyUnitList" item-key="id"  required>
+                {{unit.name}}
+            </select-options>
+            <!--<input type="text" class="input_class pact_form" placeholder="可多选，非必填" ng-model="canteenContractInput.contract.secondParty"/>-->
+            <span class="canteen_infos_content"></span>
+        </li>
+        <li class="canteen_li clearfix">
+            <span class="pact_tit fl mart5">有效期限：</span>
+            <div class="pact_date fl">
+                <span class="pact_span">
+                    <input id="validityStart" name="validityStart" type="text" readonly class="input_class" lw-laydate='YYYY-MM-DD hh:mm' placeholder="开始时间" ng-class="{'error_red':canteenContractInput.validStartTime&&!canteenContractInput.contract.validityStart}" ng-model="canteenContractInput.contract.validityStart"
+                           max-date="canteenContractInput.contract.validityEnd"/>
+                    <em class="iconfont icon-llreservecalendar dateIcon"></em>
+                </span>
+                <span class="line_bot">—</span>
+                <span class="pact_span">
+                    <input id="validityEnd" name="validityEnd" type="text" readonly class="input_class" lw-laydate='YYYY-MM-DD hh:mm' placeholder="结束时间" ng-class="{'error_red':canteenContractInput.validEndTime&&!canteenContractInput.contract.validityEnd}" ng-model="canteenContractInput.contract.validityEnd"
+                           min-date="canteenContractInput.contract.validityStart"/>
+                    <em class="iconfont icon-llreservecalendar dateIcon"></em>
+                </span>
+            </div>
+            <span class="canteen_infos_content"></span>
+        </li>
+        <li class="canteen_li clearfix">
+            <span class="pact_tit">合同金额：</span>
+            <select-options class="select_class" name="selectAmount" change="canteenContractInput.changeAmountTypeValue()" ng-model="canteenContractInput.selectedAmountType"
+                repeat-items="data in canteenContractInput.amountTypes" item-key="value"
+            >
+                {{data.name}}
+            </select-options>
+            <input type="text" name="amount"  ng-show="canteenContractInput.selectedAmountType == 1" class="input_class pact_form" placeholder="" ng-model="canteenContractInput.contract.amount" maxlength="15" ng-change="canteenContractInput.clearNoNum(canteenContractInput.contract.amount)" required/>
+            <span class="canteen_infos_content"></span>
+        </li>
+        <li class="canteen_li clearfix">
+            <span class="pact_tit fl">合同规定的采购内容：</span>
+            <textarea type="text" class="textarea_class pact_textArea fl" placeholder="1000个汉字以内，非必填" ng-model="canteenContractInput.contract.content" maxlength="1000"></textarea>
+            <span class="canteen_infos_content"></span>
+        </li>
+        <li class="canteen_li clearfix">
+            <div class="fl upload_botton">
+                <bdp-upload-file
+                        required='true'
+                        attachment-list="canteenContractInput.contract.attachments"
+                        title="合同原件扫描件或照片"
+                        remark-file=""
+                        type="0"
+                        size="{{5*1024*1024}}"
+                        format="jpg,png,gif"
+                        message="只允许上传jpg、png、gif格式的图片，大小不超过5M；">
+                </bdp-upload-file>
+            </div>
+        </li>
+    </ul>
+    <div class="canteen_add_button">
+        <span class="btn_bd" ng-click="canteenContractInput.goBack('order')">取消</span>
+        <span class="btn_bg" form-submit-valid="canteenContractInput.saveContract('order')">确定</span>
+    </div>
+    </form>
+</div>      

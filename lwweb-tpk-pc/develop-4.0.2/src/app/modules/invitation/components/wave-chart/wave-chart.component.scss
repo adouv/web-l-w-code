@@ -1,0 +1,49 @@
+@import "../../../../../styles/variable";
+.wave-chart{
+	width: computer(124px);
+	display: inline-block;
+	height: auto;
+	position: relative;
+	.evaluate-wave{
+		position: relative;
+		width: computer(124px);
+		height: computer(48px);
+		background-color: #e1f4fc;
+		overflow: hidden;
+		img{
+			width: 100%;
+			position: absolute;
+			top:0;
+			z-index: 99;
+		}
+		.fill-color{
+			width: 50%;
+			height: 100%;
+			max-width: calc(100% - #{computer(24px)});
+			position: absolute;
+			top:0;
+			left: computer(11px);
+			//right: computer(10px);
+			z-index: 98;
+			background-color: $color_main;
+		}
+	}
+	.wave-chart-title{
+		font-size: computer(14px);
+		color:$color_main;
+		width: 100%;
+		margin-top: computer(10px);
+		text-align: center;
+	}
+	.wave-chart-message{
+		color:$color_font-light;
+		font-size: computer(14px);
+		text-align: center;
+		width: 100%;
+		.wave-chart-message-span{
+			color:$color_main;
+			font-size: computer(18px);
+			margin-top: computer(10px);
+		}
+	}
+}

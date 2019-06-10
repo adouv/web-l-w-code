@@ -1,0 +1,40 @@
+<div class="add-student">
+  <button aria-label="Close" class="close ng-star-inserted nodrag-area" @click="close()">
+    <span class="icon iconfont icon-pc-label-close close-x"></span>
+  </button>
+  <div class="title">请选择人员</div>
+  <div class="select-person-component">
+    <div flex="dir:top">
+        <div :hidden="gardenLength==1" class="header" flex="dir:left box:mean">
+            <div class="search-group mar-r-20px" flex="">
+                <div flex-box="0" class="mar-r-10px">行政区域</div>
+                <!-- <nz-cascader nzPlaceHolder="请选择" flex-box="1" nzChangeOnSelect [nzOptions]="addressPositions" [ngModel]="values" (ngModelChange)="selectAddress($event)">
+                </nz-cascader> -->
+            </div>
+            <div class="search-group" flex="">
+                <div flex-box="0" class="mar-r-10px">学校类型</div>
+                <!-- <nz-select nzAllowClear (ngModelChange)="selectDataChange($event)" flex-box="1" [(ngModel)]="seletedData" [nzSize]="'default'" nzMode="multiple" nzPlaceHolder="请选择">
+                    <nz-option *ngFor="let option of selectData" [nzLabel]="option.label" [nzValue]="option.value"></nz-option>
+                </nz-select> -->
+            </div>
+        </div>
+        <div class="content" flex="dir:left box:mean">
+            <div :hidden="gardenLength==1" class="content-group auto-scroll-6 mar-r-20px">
+                <!-- <garden-district [gardenId]="gardenId"></garden-district> -->
+            </div>
+            <div class="content-group mar-r-20px">
+                <!-- <lw-organization :treeData="treeData" @checkedKeys="getCheckedKeys"></lw-organization> -->
+                <lw-tree :treeData="treeData" @checkedKeys="getCheckedKeys"></lw-tree>
+            </div>
+            <div class="content-group">
+                <lw-selected-person  ></lw-selected-person>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <a-button @click="close()" type="primary" class="mar-r-20px nodrag-area" ghost>取消</a-button>
+        <a-button @click="saveClick()" type="primary" class="nodrag-area"  >确定</a-button>
+    </div>
+  </div>
+</div>

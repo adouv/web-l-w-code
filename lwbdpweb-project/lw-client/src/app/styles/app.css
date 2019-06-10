@@ -1,0 +1,262 @@
+body {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(#226cfb 50%, #fff 50%);
+    overflow: hidden;
+}
+
+.client_wrap.padding {
+    padding: 10px 10px 15px 10px;
+}
+
+.win7_wrap.client_wrap {
+    padding: 0;
+}
+
+.hide_fullscreen {
+    display: none !important;
+}
+
+
+/*.cli_min_width{
+    min-width: 1020px;
+    min-height: 700px;
+    width:100%;
+    height:100%; 
+    background: url('../login/image/client_bg.png') no-repeat;
+    background-size: 100% 100%;
+    position: relative;
+}*/
+
+.client_wrap body {
+    background: rgba(0, 0, 0, 0);
+}
+
+.client_wrap body .client_width {
+    /*margin: 10px;*/
+    width: auto;
+    height: auto;
+}
+
+.client_wrap body .client_login {
+    position: relative;
+}
+
+.win7_wrap .client {
+    border-radius: 0;
+    box-shadow: none;
+    padding: 0;
+    border: 2px solid #eee;
+    box-sizing: content-box;
+}
+
+.client {
+    width: 1000px;
+    height: 600px;
+    /*min-width: 1000px;*/
+    /*min-height:600px;*/
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    overflow: hidden;
+    border-radius: 6px;
+    box-shadow: 0px 8px 12px 0px rgba( 7, 0, 2, 0.3);
+}
+
+.win7_wrap .header_box_top {
+    border-radius: 0;
+}
+
+.header_box_top {
+    height: 30px;
+    line-height: 30px;
+    background: #f2f2f2;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    border-bottom: 1px solid #dae4ee;
+    z-index: 3;
+    text-align: center;
+    font-size: 14px;
+    border-radius: 6px 6px 0 0;
+    -webkit-user-select: none;
+    user-select: none;
+    -webkit-app-region: drag;
+}
+
+.header_box_top .statusBtns {
+    position: absolute;
+    right: 10px;
+    height: 100%;
+}
+
+.header_box_top .statusBtns span {
+    display: inline-block;
+    padding: 0 3px;
+}
+
+.header_box_top .statusBtns i {
+    display: inline-block;
+    font-size: 16px;
+    line-height: 16px;
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+    text-align: center;
+    color: #999999;
+    -webkit-app-region: no-drag;
+    vertical-align: middle;
+}
+
+.header_box_top_top .statusBtns .clientIconfont {
+    font-size: 12px;
+}
+
+.client .header_box_top i.icon-cli-back {
+    left: 78px;
+}
+
+.client .header_box_top .is_connect .normalscreen,
+.client .header_box_top .not_connect .fullscreen {
+    display: none;
+}
+
+.client_wrapper {
+    width: 100%;
+    position: relative;
+    background: #ffffff;
+    margin-top: 30px;
+    height: calc(100% - 30px);
+}
+
+.client_wrapper dt {
+    font-weight: normal;
+}
+
+.client_wrapper .addApproval {
+    overflow: inherit;
+}
+
+
+/* header-banner */
+
+.client_width .head {
+    /*margin-top: 24px;*/
+}
+
+.client_width .header_box {
+    width: 100%;
+    height: 88px;
+    background: url("../../assets/img/bar_bg.png") no-repeat;
+    background-size: 100% 100%;
+    position: relative;
+}
+
+.client_width .header_box .header_content {
+    width: 402px;
+    height: 100%;
+    background: url("../../assets/img/bar_logo.png") no-repeat 20px center;
+}
+
+.client_width .header_box .header_user {
+    position: absolute;
+    right: 20px;
+    top: calc((100% - 28px)/2);
+    color: white;
+    cursor: pointer;
+    padding-bottom: 10px;
+}
+
+.client_width .header_box .header_user .header_icon {
+    margin-right: 5px;
+    background-image: url("../../assets/img/toux.png");
+    width: 20px;
+    height: 20px;
+}
+
+.client_width .header_box .header_user>span {
+    vertical-align: middle;
+    height: 100%;
+    display: inline-block;
+}
+
+.client_width .header_box .header_user:hover .header_logout {
+    display: inline-block;
+}
+
+.client_width .header_box .header_user .header_logout {
+    display: none;
+    width: 110px;
+    height: 90px;
+    position: absolute;
+    right: -10px;
+    top: 30px;
+    font-size: 14px;
+    text-align: center;
+    background-color: #fff;
+    color: #333333;
+    padding: 0 10px;
+    z-index: 1;
+    border: 1px solid #dbe3ee;
+    box-shadow: 0px 5px 16px #ccc;
+}
+
+.client_width .header_box .header_user .header_logout span {
+    display: inline-block;
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    border-bottom: 1px solid #dbe3ee;
+}
+
+.client_width .header_box .header_user .header_logout span:hover {
+    color: #0096FF;
+}
+
+.client_width .header_box .header_user .header_logout span:last-child {
+    border-bottom: 1px solid transparent;
+}
+
+.client_width .top_nav {
+    padding-left: 40px;
+    padding-right: 125px;
+    width: 100%;
+    height: 50px;
+    border-bottom: 1px solid #dbe3ee;
+}
+
+.client_width .top_nav li {
+    padding: 0 10px;
+    margin: 0 10px;
+    line-height: 50px;
+    display: inline-block;
+    cursor: pointer;
+    font-size: 16px;
+    color: #666666;
+}
+
+.client_width .top_nav li.cur {
+    background-image: linear-gradient(-180deg, rgb(120, 108, 236) 50%, rgb(0, 150, 255) 50%);
+    background-image: -o-linear-gradient(-180deg, rgb(120, 108, 236) 50%, rgb(0, 150, 255) 50%);
+    background-image: -moz-linear-gradient(-180deg, rgb(120, 108, 236) 50%, rgb(0, 150, 255) 50%);
+    background-image: -webkit-linear-gradient(-180deg, rgb(120, 108, 236) 50%, rgb(0, 150, 255) 50%);
+    background-size: 100% 4px;
+    background-position: bottom right;
+    background-repeat: no-repeat;
+    color: #0096ff;
+}
+
+.client_width .top_nav li:hover {
+    background-image: linear-gradient(-180deg, rgb(120, 108, 236) 50%, rgb(0, 150, 255) 50%);
+    background-image: -o-linear-gradient(-180deg, rgb(120, 108, 236) 50%, rgb(0, 150, 255) 50%);
+    background-image: -moz-linear-gradient(-180deg, rgb(120, 108, 236) 50%, rgb(0, 150, 255) 50%);
+    background-image: -webkit-linear-gradient(-180deg, rgb(120, 108, 236) 50%, rgb(0, 150, 255) 50%);
+    background-size: 100% 4px;
+    background-position: bottom right;
+    background-repeat: no-repeat;
+}

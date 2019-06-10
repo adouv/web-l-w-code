@@ -1,0 +1,48 @@
+@import "../../../../../styles/variable";
+@import "../../../../../styles/mixin";
+
+.title-wrapper {
+	height: computer(50px);
+	box-shadow: 0 1px 0 0 #eeeeee;
+	line-height: computer(50px);
+	.left-title {
+		display: inline-block;
+		font-size: computer(16px);
+		color: #999999;
+		padding-right: 20px;
+	}
+	.title {
+		max-width: 1235px;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	}
+	.right-title {
+		font-size: computer(12px);
+		.iconfont.icon-Look_icon {
+			font-size: computer(18px);
+			position: relative;
+			top: computer(2px);
+		}
+		div {
+			margin: 0 computer(10px);
+		}
+		&::ng-deep {
+			.ant-radio-wrapper {
+				margin-right: computer(40px);
+			}
+			label {
+				@include line-ell(110px);
+			}
+			span.ant-radio + *{
+				padding-left: computer(3px);
+			}
+		}
+	}
+	button {
+		margin-right: computer(20px);
+	}
+	nz-select {
+		width: computer(120px);
+	}
+}

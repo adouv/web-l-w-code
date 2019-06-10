@@ -1,0 +1,106 @@
+@import "../../../styles/variable";
+.font-size-12 {
+    font-size: computer(12px);
+    color: $color_font-light;
+}
+
+.uploadfile-box {
+    .uploadfile-list {
+        height: computer(282px);
+        padding: computer(20px) computer(20px) 0;
+    }
+    .uploadfile-list::ng-deep {
+        .progressitem:nth-child(1) {
+            margin-top: 0;
+        }
+    }
+    .ant-btn {
+        font-size: computer(14px);
+    }
+    .uploadfile-btn {
+        height: computer(70px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        .ant-btn-danger {
+            &.ant-btn-clicked:after {
+                border-color: transparent !important;
+            }
+        }
+    }
+    //.ant-btn-danger.disabled {
+    //	opacity: .5;
+    //	cursor: not-allowed;
+    //}
+    .progressitem {
+        width: 100%;
+        height: computer(71px);
+        border: 1px solid $color_border;
+        display: flex;
+        justify-content: space-between;
+        padding: computer(10px);
+        margin-top: -1px;
+        &:hover .caozuo {
+            visibility: visible;
+        }
+        .filetype {
+            height: computer(40px);
+            margin-right: 8px;
+        }
+        .fileinfo {
+            display: flex;
+            flex-direction: column;
+            .filename {
+                font-size: computer(14px);
+                color: $color_font-deep;
+                display: inline-block;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                width: computer(320px);
+            }
+            .progress {
+                display: flex;
+                align-items: center;
+                .progresstext {
+                    @extend .font-size-12;
+                }
+            }
+            .success {
+                display: flex;
+                align-items: center;
+                @extend .font-size-12;
+                .icon-success {
+                    display: inline-block;
+                    color: #18C396;
+                    font-size: 12px;
+                    margin-right: 5px;
+                }
+            }
+            .failed {
+                font-size: computer(12px);
+                color: #ff272e;
+            }
+            .cancel {
+                @extend .font-size-12;
+            }
+        }
+        .caozuo {
+            width: computer(40px);
+            font-size: computer(14px);
+            color: #226cfb;
+            visibility: hidden;
+            line-height: computer(50px);
+            .delete,
+            .cancel {
+                cursor: pointer;
+            }
+        }
+    }
+}
+
+::ng-deep {
+    .ant-modal-wrap .ant-modal-title {
+        font-size: computer(16px);
+    }
+}

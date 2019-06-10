@@ -1,0 +1,47 @@
+.tooltip-wrap1 {
+    .tip {
+        margin-top: 40px;
+        font-size: 18px;
+    }
+    .tip1 {
+        color: #fa9c43;
+    }
+    .tip2 {
+        color: #7552f8;
+    }
+    .tip3 {
+        color: #f66666;
+    }
+}
+.tooltip-wrap2 {
+    .tip {
+        margin-top: 30px;
+        font-size: 20px;
+    }
+    .tip1 span{
+        padding: 10px 60px 10px 61px;
+        background-color: #fa9c43;
+        color: #ffffff;
+    }
+    .tip2 {
+        .now {
+            display: inline-block;
+            padding: 9px 51px 11px 52px;
+            line-height: 1;
+            background-color: #7552f8;
+            border-radius: 40px;
+        }
+        .over {
+            padding: 9px 74px 10px;
+            background-color: #7552f8;
+	        opacity: 0.8;
+        }
+        
+    }
+    .tip3 span{
+        padding: 10px 58px;
+        color: #ffffff;
+        background-color: #f66666;
+	    opacity: 0.8;
+    }
+}

@@ -1,0 +1,66 @@
+<div class="bdp_list_search w5c-form">
+    <div class="dialog-header">
+        更多条件组合搜索
+        <span class="iconfont icon-close del_btn dialog-close" ng-click="closeThisDialog()"></span>
+    </div>
+    <div class="dialog-list">
+        <span class="dialog_name">项目申报单位</span>
+        <input type="text" class="dialog_input" ng-click="repairSearch.chooseGarden()" ng-model="repairSearch.condition.gardenListName" placeholder="可多选，非必填">
+    </div>
+    <div class="dialog-list">
+        <span class="dialog_name">项目所属类别</span>
+        <input type="text" class="dialog_input" ng-click="repairSearch.getProjectType()" ng-model="repairSearch.condition.categoryListName" placeholder="可多选，非必填">
+    </div>
+    <div class="dialog-list" ng-if="!repairSearch.isAllunits">
+        <span class="dialog_name">项目所处阶段</span>
+        <input type="text" class="dialog_input" ng-click="repairSearch.getProjectStage()" ng-model="repairSearch.condition.stageName" placeholder="可多选，非必填">
+    </div>
+    <div class="dialog-list">
+        <span class="dialog_name">项目所处状态</span>
+        <input type="text" class="dialog_input" ng-click="repairSearch.getProjectStatus()" ng-model="repairSearch.condition.statusName" placeholder="可多选，非必填">
+    </div>
+    <div class="dialog-list">
+        <span class="dialog_name">项目申报人</span>
+        <input type="text"  maxlength="10" class="dialog_input dialog_applyAccount"  ng-model="repairSearch.condition.applyAccount" placeholder="10个汉字以内，非必填">
+    </div>
+    <div class="dialog-list">
+        <span class="dialog_name">项目提交时间段</span>
+        <div class="dialog_date">
+            <input type="text" id="createTimeStart" ng-class="{'error':repairSearch.validCreateTimeStart&&!repairSearch.condition.createTimeStart}" lw-laydate='YYYY-MM-DD hh:mm' max-date="repairSearch.condition.createTimeEnd" readonly="readonly" class="dialog_input_middle" ng-model="repairSearch.condition.createTimeStart" placeholder="开始时间">
+            <span class="iconfont icon-llreservecalendar dialog_date_icon"></span>
+        </div>
+        <span class="dialog_line">一</span>
+        <div class="dialog_date">
+            <input type="text" id="createTimeEnd" lw-laydate='YYYY-MM-DD hh:mm' ng-class="{'error':repairSearch.validCreateTimeEnd&&!repairSearch.condition.createTimeEnd}" readonly="readonly" class="dialog_input_middle" ng-model="repairSearch.condition.createTimeEnd" placeholder="结束时间" min-date="repairSearch.condition.createTimeStart">
+            <div class="iconfont icon-llreservecalendar dialog_date_icon"></div>
+        </div>
+    </div>
+    <div class="dialog-list" ng-if="!isLibrary&&!repairSearch.isAllunits">
+        <span class="dialog_name">任务生成时间段</span>
+        <div class="dialog_date">
+            <input type="text" id="taskTimeStart" lw-laydate='YYYY-MM-DD hh:mm' readonly="readonly" ng-class="{'error':repairSearch.validTaskTimeStart&&!repairSearch.condition.taskTimeStart}" max-date="repairSearch.condition.taskTimeEnd" class="dialog_input_middle" ng-model="repairSearch.condition.taskTimeStart" placeholder="开始时间">
+            <div class="iconfont icon-llreservecalendar dialog_date_icon"></div>
+        </div>
+        <span class="dialog_line">一</span>
+        <div class="dialog_date">
+            <input type="text" id="taskTimeEnd" lw-laydate='YYYY-MM-DD hh:mm' readonly="readonly" ng-class="{'error':repairSearch.validTaskTimeEnd&&!repairSearch.condition.taskTimeEnd}" class="dialog_input_middle" ng-model="repairSearch.condition.taskTimeEnd" placeholder="结束时间" min-date="repairSearch.condition.taskTimeStart">
+            <div class="iconfont icon-llreservecalendar dialog_date_icon"></div>
+        </div>
+    </div>
+    <div class="dialog-list" ng-if="isLibrary">
+        <span class="dialog_name">{{isLibrary}}完成时间段</span>
+        <div class="dialog_date">
+            <input type="text" id="stageTimeStart" lw-laydate='YYYY-MM-DD hh:mm' readonly="readonly" ng-class="{'error':repairSearch.validStageCompleteStart&&!repairSearch.condition.stageCompleteStart}" max-date="repairSearch.condition.stageCompleteEnd" class="dialog_input_middle" ng-model="repairSearch.condition.stageCompleteStart" placeholder="开始时间">
+            <div class="iconfont icon-llreservecalendar dialog_date_icon"></div>
+        </div>
+        <span class="dialog_line">一</span>
+        <div class="dialog_date">
+            <input type="text" id="stageTimeEnd" lw-laydate='YYYY-MM-DD hh:mm' readonly="readonly" ng-class="{'error':repairSearch.validStageCompleteEnd&&!repairSearch.condition.stageCompleteEnd}" class="dialog_input_middle" ng-model="repairSearch.condition.stageCompleteEnd" placeholder="结束时间" min-date="repairSearch.condition.stageCompleteStart">
+            <div class="iconfont icon-llreservecalendar dialog_date_icon"></div>
+        </div>
+    </div>
+    <div class="dialog-btn">
+        <div class="btn_bd" ng-click="closeThisDialog()">取消</div>
+        <div class="btn_bg" ng-click="repairSearch.clickSure()">确定</div>
+    </div>
+</div>

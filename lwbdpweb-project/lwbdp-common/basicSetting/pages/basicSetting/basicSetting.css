@@ -1,0 +1,530 @@
+.basic_nav {
+    width: 100%;
+    height: 50px;
+    border-bottom: 1px solid #dae4ee;
+}
+
+.basic_tit {
+    padding: 0 15px;
+    line-height: 50px;
+    display: inline-block;
+    cursor: pointer;
+    font-size: 16px;
+    color: #666666;
+}
+
+.basic_tit.cur {
+    background-image: linear-gradient(-180deg, #786cec 50%, #0096ff 50%);
+    background-image: -o-linear-gradient(-180deg, #786cec 50%, #0096ff 50%);
+    background-image: -moz-linear-gradient(-180deg, #786cec 50%, #0096ff 50%);
+    background-image: -webkit-linear-gradient(-180deg, #786cec 50%, #0096ff 50%);
+    background-size: 100% 4px;
+    background-position: bottom right;
+    background-repeat: no-repeat;
+}
+
+.exit_form {
+    padding: 10px 10px 0 10px;
+    box-sizing: border-box;
+}
+
+.exit_form .add_input {
+    height: 35px;
+    margin-bottom: 13px;
+    position: relative;
+}
+
+.exit_form .input_class {
+    width: 88%;
+    /*margin: 0 0 10px 0;*/
+}
+
+.basic_btn {
+    padding: 10px 0 0;
+    overflow: hidden;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #dbe3ee
+}
+
+.basicTab .change_layer {
+    cursor: pointer;
+}
+
+.basicTab .change_layer:hover{
+    color: #786cec !important;
+}
+
+.basicTab tr:hover .change_layer {
+    color: #786cec;
+}
+
+.w100 {
+    width: 100% !important;
+}
+
+.change_form {
+    margin: 10px 10px 0;
+    height: 35px;
+}
+
+.change_number {
+    padding: 0 10px;
+}
+
+.fos14 {
+    font-size: 14px;
+    line-height: 40px;
+}
+
+.col999 {
+    color: #999999 !important;
+}
+
+.bgdbe {
+    padding: 0 10px;
+    background: #dbe3ee !important;
+    margin: 0 10px 10px 0;
+    display: inline-block;
+    height: 33px;
+    line-height: 33px;
+}
+
+.addApproval {
+    padding: 0 4%;
+    min-width: 1200px;
+    overflow: auto;
+    min-height: 600px;
+}
+
+.addApproval::-webkit-scrollbar-track {
+    border-radius: 10px;
+    background-color: #ffffff;
+}
+
+.addApproval::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+    background-color: #ffffff;
+}
+
+.addApproval::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.addApproval .crumbs{
+    position: relative;
+    padding: 12px 0 10px;
+    color: #999;
+    font-weight: normal;
+}
+
+.addApproval .crumbs_tit {
+    font-weight: normal;
+    color: #333;
+}
+.addApproval .crumbs_tit:hover{
+    color: #0097ff;
+}
+
+.addApproval_form {
+    font-size: 0;
+}
+
+.addApproval_form .w85 {
+    font-size: 14px;
+    width: 70px;
+    display: inline-block;
+    margin-right: 10px;
+    vertical-align: middle;
+    text-align: right;
+}
+
+.addApproval .form_info {
+    width: 100%;
+    padding: 10px 0;
+    overflow: hidden;
+    position: relative;
+    min-height:40px;
+}
+.addApproval .form_info .lf_name{
+    width:172px;margin-top: 5px;color:#333333;font-size: 14px;position: absolute;left:0;
+    text-align: right;vertical-align: top;}
+.addApproval .form_info .rg_con{padding-left: 180px;width:100%;}
+.addApproval .form_info_p{height: 40px;line-height: 40px;font-size: 14px;}
+.addApproval .form_info_p .lf_name{display: inline-block;width:172px;text-align: right;}
+.cola2a {
+    color: #a2a2a2 !important;
+    font-size: 12px;
+    vertical-align: middle;
+    display: inline-block;
+}
+.addApproval .form_info .rg_con .input_class{margin-right: 10px;}
+.addApproval .form_info .rg_con .w400{width:400px;}
+.addApproval .form_info .rg_con input:focus{border-color: #0096ff;}
+.addApproval .form_info .rg_con em{font-size: 14px;}
+.approval_dataList {
+    border: 1px solid #dbe3ee;
+    padding-bottom: 10px;
+    max-height: 172px;
+    width: 100%;
+    min-width: 990px;
+    overflow-y: auto;
+    margin-top: 10px;
+}
+
+.form_info .valid {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.form_info .marl10 {
+    margin-left: 10px;
+}
+
+.form_info .valid .on_btn {
+    left: 0;
+}
+
+.flow_name {
+    display: inline-block;
+    background: #dbe3ee;
+    padding: 0 10px;
+    height: 30px;
+    line-height: 30px;
+    font-size: 14px;
+    margin: 10px 0px 0px 10px;
+}
+
+.flow_name .flow_align,
+.flow_name .delBtn {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.flow_name .delBtn {
+    width: 20px;
+    height: 20px;
+    background: url(../../images/img_delete.png) no-repeat center;
+    opacity: .5;
+    margin-left: 5px;
+}
+
+/*.flow_name:hover {
+    cursor: pointer; 
+}*/
+
+.flow_name:hover .delBtn {
+    opacity: 1;
+}
+
+.approval_data {
+    overflow: hidden;
+    margin-bottom: 6px;
+}
+
+.form_info .form_datail {
+    line-height: 14px;
+    font-size: 14px;
+    float: left;
+    width: 90%;
+    margin-top: 4px;
+}
+
+.flowChart_title span {
+    color: #999;
+    font-size: 13px;
+}
+.flowChart_title .configed{
+        border: 2px solid #00bb8b;
+        width: 16px;
+        height: 16px;
+        margin-left: 15px;
+        margin-top: -2px;
+        display: inline-block;
+        vertical-align: middle;
+        box-sizing: border-box;
+}
+.flowChart_title .notconfiged{
+        border: 2px solid #999999;
+        margin-top: -2px;
+        width: 16px;
+        height: 16px;
+        margin-left: 15px;
+        display: inline-block;
+        vertical-align: middle;
+        box-sizing: border-box;
+}
+.done_btn,
+.undone_btn {
+    font-size: 20px !important;
+    margin: 0 0px 0 15px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.done_btn {
+    color: #00bb8b !important;
+}
+.undone_btn {
+    color: #ff272e !important;
+}
+.ui-dialog .confirm{width:400px;height:200px;}
+.ui-dialog .confirm .title{height:35px;line-height: 35px;border-bottom:1px solid #dbe3ee;}
+.ui-dialog .confirm .msg{padding:20px;}
+.addApproval .flow_box{width:520px;margin-left: 200px;}
+.approval_chartedit{width: 900px;height:735px;overflow: hidden;}
+
+.approval_chartedit .select-person-content{margin-left: -18px;}
+.approval_chartedit .title{line-height: 40px;text-align: center; border-bottom: 1px solid #f8f8f8;position: relative;font-size: 16px;}
+.approval_chartedit .title span{color: #999999;position: absolute;top: 0px;right: 20px;}
+.approval_chartedit .config_con{padding:0 20px;}
+.approval_chartedit .config_con p{margin-top:10px;font-size: 14px;}
+.approval_chartedit .config_con p.no_mar{margin-top: 3px;}
+.approval_chartedit .config_con p .gray{margin-top: 5px;}
+.approval_chartedit .config_con p .left{
+    display: inline-block;text-align: right;vertical-align: middle;width: 130px;
+}
+.approval_chartedit .w600.input_class{width: 60px;}
+.approval_chartedit .config_con .select_class{width: 200px;}
+.approval_chartedit .config_con .gray{color:#999999;}
+.approval_chartedit .config_con p.gray{color:#999999;margin: 5px 0; padding: 0 0 5px; border-bottom: 1px solid #dbe3ee;}
+.approval_chartedit .config_con .square{width:16px;height:16px;display: inline-block;vertical-align: middle;
+box-sizing:border-box;margin:0px 2px 0 7px;}
+.approval_chartedit .config_con .current{background: #ffffff;border: 2px solid #786cec;}
+.approval_chartedit .config_con .consult{background: #786cec;}
+.approval_chartedit .config_con .nouse{background: #ffffff;border: 2px solid #999999;}
+.approval_chartedit .disabled,.btn_bd:disabled{opacity: 0.2;}
+.approval_chartedit .disabled,.btn_bd:disabled{box-shadow: none !important;background:none;cursor: not-allowed !important;}
+.approval_chartedit .reference_flow{width:100%;height:435px;max-height: 435px;}
+.approval_chartedit .config_inner_condition{  margin: 20px auto;  border-bottom: 1px solid #DBE3EE;  padding: 10px 23%;}
+/*按项目条件自动分派用户*/
+.approval_chartedit .conditionUserList{  display: flex;  align-items: center;  text-align: center; }
+.approval_chartedit .conditionUserList .square_box{  width: 200px;  height: 200px;  overflow: auto;  border: 1px solid #DBE3EE;  }
+.approval_chartedit .conditionUserList .square_box_big{  width: 230px;  height: 200px;  overflow: auto;  border: 1px solid #DBE3EE;  }
+.approval_chartedit .conditionUserList .conditionUserList_text{  width: 80px;  }
+.approval_chartedit .conditionUserList .margin_bot20{  margin-bottom: 20px;  }
+.approval_chartedit .conditionUserList .conditionUserList_search{position: relative;overflow: hidden}
+.approval_chartedit .conditionUserList .conditionUserList_search .input_class{margin: 10px 0 10px 10px;  float: left;  width: 170px;}
+.approval_chartedit .conditionUserList .conditionUserList_search .icon-error{position: absolute;right: 55px;top:15px;color:#786ceb;cursor: pointer;opacity: .5}
+.approval_chartedit .conditionUserList .conditionUserList_search .icon-error:hover{opacity: 1}
+.approval_chartedit .conditionUserList .conditionUserList_search .icon-search{position: absolute;right: 55px;top:15px;color:#999999;cursor: pointer}
+.approval_chartedit .conditionUserList .conditionUserList_search .add_icon{position: absolute;right: 15px;top:15px;color:#786ceb;font-size: 20px;font-weight: bold;cursor: pointer}
+.approval_chartedit .conditionUserList .conditionUserList_ul{text-align: left}
+.approval_chartedit .conditionUserList .conditionUserList_ul li{padding: 5px 0 5px 10px;position: relative;cursor: pointer}
+.approval_chartedit .conditionUserList .conditionUserList_ul li:hover{background-color: #DBE3EE}
+.approval_chartedit .conditionUserList .conditionUserList_ul li:hover span{display: inline-block;opacity: .5}
+.approval_chartedit .conditionUserList .conditionUserList_ul li span{position: absolute;right:15px;top:6px;display: none;color:#786ceb}
+.approval_chartedit .conditionUserList .conditionUserList_ul li span:hover{opacity: 1}
+.approval_chartedit .conditionUserList .square_box::-webkit-scrollbar-track,
+.approval_chartedit .conditionUserList .square_box_big::-webkit-scrollbar-track
+{  border-radius: 10px;  background-color: #ffffff;  }
+.approval_chartedit .conditionUserList .square_box::-webkit-scrollbar,
+.approval_chartedit .conditionUserList .square_box_big::-webkit-scrollbar
+{  width: 10px;  height: 10px;  background-color: #ffffff;  }
+.approval_chartedit .conditionUserList .square_box::-webkit-scrollbar-thumb,
+.approval_chartedit .conditionUserList .square_box_big::-webkit-scrollbar-thumb
+{  border-radius: 10px;  background-color: rgba(0, 0, 0, 0.2);  }
+/*已配置的关系*/
+.approval_chartedit .config_relation_tit{margin: 10px 0}
+.approval_chartedit .config_relation_list li{position: relative;  padding: 5px 20px 5px 20px;  overflow: auto;cursor: pointer}
+.approval_chartedit .config_relation_list li:hover{background-color: #DBE3EE}
+.approval_chartedit .config_relation_list li:hover .del_icon{display: inline-block}
+.approval_chartedit .config_relation_list li .del_icon{position: absolute;right:15px;top:6px;color:#786ceb;font-size: 20px;display: none}
+.approval_chartedit .config_relation_list li .col_786{color: #786ceb}
+.approval_chartedit .config_relation_list li .fr{  float: right; width: 60%}
+
+.ngdialog.lw-select-person.flowTaskConfig .ngdialog-close{display: none;}
+span.useobj{color: #000 !important;float: left;margin-top: 6px;}
+div.objSearch{overflow: auto;margin-top: -2px;}
+
+/*审批流程设置 */
+/*tab标签页*/
+.setApprover .tab_process span{
+    line-height: 50px;
+    display: inline-block;
+    cursor: pointer;
+    font-size: 16px;
+    color: #666666;
+    padding: 0 10px;
+    margin-right: 10px;
+}
+.setApprover .tab_process span.cur {
+    background-image: linear-gradient(-180deg, rgb(120, 108, 236) 50%, rgb(0, 150, 255) 50%);
+    background-image: -webkit-linear-gradient(-180deg, rgb(120, 108, 236) 50%, rgb(0, 150, 255) 50%);
+    background-size: 100% 4px;
+    background-position: bottom right;
+    background-repeat: no-repeat;
+    color: #0096ff;
+}
+/*右侧按钮*/
+.setApprover .tab_btn{
+    margin-top: 10px;
+}
+.setApprover .btn_process{
+    margin-right: 10px;
+}
+.addConfig .content_textBar {
+    display: inline-block;
+    vertical-align: middle;
+    position: relative;
+    border: 1px solid #dbe3ee;
+    width: 240px;
+    height: 30px;
+    line-height: 30px;
+    padding: 0 6px 0 10px;
+    margin-right: 10px;
+}
+/*弹窗*/
+.addConfig .content_textBar input {
+    border: 0;
+    width: 90%;
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    vertical-align: top;
+}
+.addConfig .content_textBar span {
+    color: #999;
+}
+
+.addConfig .content_textBar .icon-error {
+    color: rgba(120, 108, 236, .5);
+    cursor: pointer;
+    vertical-align: middle;
+    float: right;
+}
+.addConfig .content_textBar .icon-error:hover{
+    color: rgba(120, 108, 236,1);
+}
+
+.addConfig .addConfig_search{
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+
+
+/*流程配置阶段*/
+.addApproval .form_info .on_check{display:inline-block;width:16px;height:16px;border:1px solid #DBE3EE;border-radius:2px;margin:0 10px;vertical-align: middle;cursor:pointer;}
+.addApproval .form_info .on_check.check{background:url(../../images/check_box_choice.png) no-repeat;border:0;border-radius:0;}
+.addApproval .form_info.on_choose .on_check{margin:0 10px 0 0!important;}
+.addApproval .form_info .on_checkdesc{color:#999;font-size: 13px;vertical-align: middle;}
+.addApproval .form_info.on_choose .on_checkdesc{padding-right:10px;}
+.addApproval .form_info .checkdefault{background:url(../../images/check_box_disable.png) no-repeat;border:0;border-radius:0;}
+.addApproval .child_name{color:#786cec;font-size:18px!important;cursor:pointer;vertical-align: middle;}
+.addApproval .special_content{overflow: visible!important;}
+.addApproval .show_child_name{
+    position:absolute;
+    top:46px;
+    left:280px;
+    width:600px;
+    height:400px;
+    background-color: rgb( 255, 255, 255 );
+    box-shadow: 0px 1px 12px 0px rgb( 7, 0, 2 );
+    z-index: 400;
+    background: url(../../images/index_showname.png) no-repeat; 
+}
+.addApproval .form_info .bg_hight{cursor:pointer!important;opacity:1!important;}
+.process_mask{
+    position:absolute; 
+    background-color: black;    
+    left:0;
+    top:0;
+    width:100%; 
+    height:auto;
+    padding-bottom: 260px;
+    z-index:999; 
+    color:rgba(0,0,0,.8);
+}
+.process_mask .process_mask_middle{
+    width: 1062px;
+    background: white;
+    height: 80%;
+    position:relative;
+    margin-top:132px;
+    margin-left:auto;
+    margin-right:auto;
+    margin-bottom: 10%;
+}
+.process_mask  .close_btn{
+    display: inline-block;
+    width: 46px;
+    height: 46px;
+    background: white;
+    border-radius: 100%;
+    text-align: center;
+    line-height: 42px;
+    font-size: 24px;
+    color: #333;
+    cursor:pointer;
+    position:fixed;
+    top:244px;
+} 
+/*流程阶段配置弹框*/
+ .addApproval .configure{
+    cursor:not-allowed;
+    opacity:0.2;
+} 
+.flowPhaseConfig .ngdialog-content{
+    width:602px!important;
+    height:402px!important;
+    min-height:0!important;
+    margin-top:200px!important;
+}
+.approval_stage_config .title{
+    line-height: 40px;
+    text-align: center;
+     border-bottom: 1px solid #f8f8f8;
+     position: relative;
+     font-size: 16px;
+}
+.approval_stage_config .config_con{
+    padding:0 20px;
+}
+.approval_stage_config .config_con p{
+    margin-top:10px;
+    font-size: 14px;
+}
+.approval_stage_config .config_con p.no_mar{
+    margin-top: 3px;
+}
+.approval_stage_config  .stage_config span{
+    display:inline-block;
+    width:206px;
+    line-height: 30px;
+    text-align: right;
+    height:30px;
+}
+.approval_stage_config  .stage_config span.stage_config_index{
+    padding-right:36px;
+}
+.approval_stage_config  .stage_config span.stage_config_indexdes{
+    text-align: center;
+    width:246px;
+}
+.approval_stage_config  .stage_config input{
+    width:246px;
+}
+.approval_stage_config .stage_descri{
+    position: relative;
+}
+.approval_stage_config .stage_name{
+    width:246px;
+}
+.approval_stage_config .child_name{
+    color:#786cec;
+    font-size:18px!important;
+    cursor:pointer;
+}
+.approval_stage_config .show_child_name{
+    position:absolute;
+    top:130px;
+    left:-80px;
+    width:600px;
+    height:400px;
+  background-color: rgb( 255, 255, 255 );
+  box-shadow: 0px 1px 12px 0px rgb( 7, 0, 2 );
+  z-index: 400;
+  background: url('../../images/child_ sidebar_showname.png') no-repeat;
+}
+

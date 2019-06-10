@@ -1,0 +1,57 @@
+.myPublish-add .show_info{
+    margin-top: 20px;
+}
+.myPublish-add .text_right .input_class{
+    width: 500px !important;
+}
+.myPublish-add .text_right .select_class{
+    width: 500px !important;
+}
+.myPublish-add .echo_content{
+    margin-top: 10px;
+}
+.myPublish-add .text_right .select_class.select_w100{
+    width: 100px;
+}
+.myPublish-add .content{
+    width: 1000px;
+    height: 640px;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    border:0;
+}
+.myPublish-add .content_area{
+    width: 100%;
+    height:100%;
+    /*border: 1px solid #dbe3ee;*/
+}
+.myPublish-add .input_class.select_input{
+    display: none;
+}
+.myPublish-add .input_class.select_input+.red_color{
+    display: none;
+}
+.myPublish-add .input_class.select_input.error+.red_color{
+    display: inline-block;
+}
+/*上传*/
+.myPublish-add .attach_upload .lf_name{
+    width: 160px;
+    text-align: right;
+    height: auto;
+}
+.myPublish-add .mar_left160{
+    margin-left: 160px;
+}
+.myPublish-add .attach_upload .add_img_box{
+    width: 100%;
+    max-width: 100%;
+}
+.myPublish-add .attach_upload .uploaded{
+    margin-bottom: 20px;
+}
+.myPublish-add .attach_upload div .uploadAttachmentValid.error + span.uploadFileMessage{
+    margin-left: -88px;
+    padding: 10px 0;
+    text-align: left;
+}

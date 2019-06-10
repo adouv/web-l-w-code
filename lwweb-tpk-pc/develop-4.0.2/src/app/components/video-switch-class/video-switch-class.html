@@ -1,0 +1,26 @@
+<div #scrollTop class="auto-scroll scroll-height">
+    <div class="selectorValues">
+        <ul>
+            <li *ngFor="let grade of gradeList" class="selectorValue font-14" (click)="changeGrade(grade)" [ngClass]="{'active':currentGrade.gradeId==grade.id}">
+                {{grade.name}}
+            </li>
+        </ul>
+    </div>
+    <div class="video-list">
+        <div class="video-set-content">
+            <ul>
+                <!-- <li *ngFor="let vs of videoSets" title="{{vs.lessonTitle?vs.lessonTitle:'未配置课节名称'}} {{vs.lessonName}}" (click)="playVideo(vs)" [ngClass]="{'active':vs.id == videoDetails.id,'disable':!vs.hasPermission}"> -->
+                <li *ngFor="let class of classList" class="font-14" (click)="changeClass(class)" [ngClass]="{'active':currentClass.classId==class.classId,'disable':false}">
+
+                    <div flex>
+                        <div class="max-length" [ngClass]="{'width-18':class?.subjectStr?.length >= 4,'width-82':class?.subjectStr?.length <= 4}" title="{{class.classStr}}">{{class.classStr}}</div>
+                        <span class="padding"> ( </span>
+                        <div class="max-length" [ngClass]="{'width-82':class?.classStr?.length <= 4,'width-18':class?.classStr?.length >= 4}" title="{{class.subjectStr}}"> {{class.subjectStr}} </div>
+                        <span class="padding-left"> ) </span>
+                    </div>
+                </li>
+            </ul>
+            <div *ngIf="loadComplete&&gradeList.length==0" class="elliptical-page-message">该教师暂无其他课程</div>
+        </div>
+    </div>
+</div>

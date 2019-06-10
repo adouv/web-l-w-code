@@ -1,0 +1,32 @@
+﻿<Window x:Class="MLPen.SingleStudyWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MLPen"
+        xmlns:ui="clr-namespace:MLPen.ModernUI.Windows.UI;assembly=MLPen.ModernUI"
+        xmlns:converters="clr-namespace:MLPen.Converters"
+        xmlns:uc="clr-namespace:MLPen.Controls"
+        mc:Ignorable="d"
+        Style="{StaticResource DialogWindowStyle}"
+        Title="个人笔迹回放" Height="600" Width="1000" WindowStyle="None" WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <converters:BoolToVisibleConverter x:Key="cvtVisible"/>
+    </Window.Resources>
+    <Grid>
+        <Grid x:Name="ucPageLayout" />
+        <Grid VerticalAlignment="Bottom" Margin="0,0,0,7">
+            <!--<CheckBox Content="显示题干" Margin="40,0,0,0" VerticalAlignment="Center" IsChecked="{Binding IsShowStem,Mode=TwoWay}"/>-->
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="{Binding IsShowPager,Converter={StaticResource cvtVisible}}">
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                    <TextBlock Text="{Binding Pager.PageNumber}" Foreground="{DynamicResource PrimaryBrush}"/>
+                    <TextBlock Text="/"/>
+                    <TextBlock Text="{Binding Pager.PageCount}"/>
+                </StackPanel>
+                <ui:IconButton Content="&#xe6a9;" FontSize="21" Foreground="{DynamicResource PrimaryBrush}" Margin="10,0,0,0" IsEnabled="False" x:Name="btnPrev"/>
+                <ui:IconButton Content="&#xe6aa;" FontSize="21" Foreground="{DynamicResource PrimaryBrush}" Margin="10,0,0,0" x:Name="btnNext"/>
+            </StackPanel>
+        </Grid>
+        <ui:IconButton Content="&#xe643;" FontSize="16" Foreground="{DynamicResource PrimaryBrush}" Margin="0,20,20,0" Click="CloseClick" HorizontalAlignment="Right" VerticalAlignment="Top"/>
+    </Grid>
+</Window>

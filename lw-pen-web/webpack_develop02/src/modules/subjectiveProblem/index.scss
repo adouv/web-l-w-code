@@ -1,0 +1,296 @@
+@import "../../assets/scss/index.scss";
+
+.subjective-problem-content {
+  -webkit-app-region: no-drag;
+  position: absolute;
+  left: 0;
+  z-index: 9;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+  height: 100%;
+
+  .subjective-problem {
+    background: url("../../assets/images/bg.png");
+    background-size: 100% 100%;
+    height: 100%;
+
+    .inner-box {
+      font-size: 30px;
+      color: #ffffff;
+      position: absolute;
+      top: 29px;
+      left: 27px;
+      right: 27px;
+      height: calc(100% - #{computer(68px)});
+
+      .answer-cont-lit {
+        margin-top: 27px;
+
+        span {
+          color: #ff7d55;
+        }
+
+        p {
+          position: relative;
+          top: 28px;
+        }
+      }
+
+      .answer-cont {
+        -webkit-app-region: no-drag;
+        margin-top: computer(7px);
+        height: calc(100% - #{computer(120px)});
+
+        .dynamic-html {
+          height: 100%;
+        }
+
+        .dynamic-html p {
+          color: #fff !important;
+          text-indent: initial !important;
+          word-break: break-all;
+          line-height: normal !important;
+
+          span,
+          u>span {
+            word-break: break-word;
+          }
+
+          span {
+            color: #fff !important;
+            font-size: 30px !important;
+            font-family: 'HiraginoSansGB-W3', 'Microsoft YaHei', serif !important;
+          }
+        }
+      }
+
+      .auto-scroll {
+        overflow-y: auto;
+        overflow-x: hidden;
+
+        &::-webkit-scrollbar-track {
+          border-radius: 10px;
+          background-color: #4d4850;
+        }
+
+        &::-webkit-scrollbar {
+          width: 1px;
+          height: 10px;
+          background-color: #4d4850;
+        }
+
+        &::-webkit-scrollbar-thumb {
+          border-radius: 10px;
+          background-color: rgba(0, 0, 0, 0.2);
+        }
+      }
+    }
+
+    .ant-layout-footer {
+      padding: 0;
+      width: 100%;
+      position: fixed;
+      bottom: 0;
+
+    }
+
+    .footer {
+      width: 100%;
+      background: #3b5253;
+      height: computer(67px);
+      color: #ff7d55;
+      line-height: computer(67px);
+
+      .bottom-ul {
+        ul {
+          li {
+            cursor: pointer;
+            margin: 0 computer(20px);
+            -webkit-app-region: no-drag;
+
+            i {
+              margin-right: 6px;
+            }
+          }
+        }
+
+        .disabled {
+          opacity: 0.5;
+          cursor: default;
+        }
+      }
+
+      .footer-right {
+        position: absolute;
+        right: 40px;
+
+        button {
+          background: none !important;
+        }
+      }
+    }
+  }
+
+  .subjective-bottom {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    border-radius: 5px;
+    background: #fff;
+    z-index: 99999;
+
+    .ant-layout-footer {
+      background: #ffffff;
+      padding: 9px 50px;
+      color: rgba(0, 0, 0, 0.65);
+      font-size: 14px;
+      border-top: 1px solid #dddddd;
+      text-align: center;
+    }
+
+    .status-bar {
+      padding: computer(19px) 0 computer(19px) 0;
+      position: relative;
+
+      span {
+        font-size: computer(18px);
+      }
+
+      .status-text {
+        float: left;
+        color: #333333;
+        font-size: 16px;
+      }
+
+      .submit {
+        margin-left: 46px;
+        position: relative;
+      }
+
+      .submit::before {
+        @include status-ball;
+        background: $submitStatus;
+        top: computer(8px);
+        left: computer(-15px);
+      }
+
+      .no-submit {
+        margin-left: 46px;
+        position: relative;
+      }
+
+      .no-submit::before {
+        @include status-ball;
+        background: $noSubmitStatus;
+        top: computer(8px);
+        left: computer(-15px);
+      }
+
+      .doing {
+        padding-left: 32px;
+      }
+
+      .close-x {
+        float: right;
+        margin-right: 20px;
+      }
+    }
+
+    .students-list {
+      ul {
+        display: flex;
+        flex-wrap: wrap;
+        padding: 0 computer(14px);
+
+        li {
+          position: relative;
+          list-style: none;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          padding: computer(19px) computer(16px);
+
+          &.is-submit {
+            .student-img::after {
+              background: $submitStatus;
+            }
+
+            .student-name {
+              color: $submitStatus;
+              
+            }
+          }
+
+          &.is-out {
+            .student-img {
+              img {
+                -webkit-filter: grayscale(100%);
+                -moz-filter: grayscale(100%);
+                -ms-filter: grayscale(100%);
+                -o-filter: grayscale(100%);
+                filter: grayscale(100%);
+                filter: gray;
+              }
+            }
+
+          }
+
+          .student-img {
+            width: computer(40px);
+            height: computer(40px);
+            background: #ccc;
+            border-radius: 100%;
+            position: relative;
+            font-size: 0;
+
+            img {
+              width: computer(40px);
+              height: computer(40px);
+              border-radius: 100%;
+            }
+          }
+
+          .student-img::after {
+            @include status-ball;
+            background: $noSubmitStatus;
+            top: computer(28px);
+            right: 0;
+          }
+
+          .shuxie {
+            position: absolute;
+            top: 40px;
+            left: 40%;
+            transform: translate(0, -40%);
+          }
+
+          .student-name {
+            color: #333333;
+            font-size: 14px;
+            padding-top: computer(11px);
+            @include line-ell(60px);
+          }
+        }
+      }
+    }
+
+  }
+
+
+  .count-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    font-size: 10rem;
+    font-weight: bold;
+    background: transparent;
+    color: #ff7d55;
+    z-index: 9999999;
+  }
+}

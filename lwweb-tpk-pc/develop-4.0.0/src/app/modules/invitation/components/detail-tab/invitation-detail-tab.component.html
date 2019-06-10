@@ -1,0 +1,30 @@
+<nz-tabset>
+	<nz-tab>
+		<ng-template #nzTabHeading>
+			活动信息
+		</ng-template>
+		<div class="content-wrapper">
+			<div><label>活动名称 :&nbsp;</label>{{data.name}}</div>
+			<div><label>评课类型 :&nbsp;</label>{{data.type==0?'研讨型':'诊断型'}}</div>
+			<div><label>邀请人 :&nbsp;</label>{{data.initiatorName}}</div>
+			<div><label>有效时间 :&nbsp;</label>{{data.startTime|date:'yyyy/MM/dd'}} ~ {{data.endTime|date:'yyyy/MM/dd'}}</div>
+			<div><label>评课要求 :&nbsp;</label>{{data.requirement}}</div>
+		</div>
+	</nz-tab>
+	<nz-tab>
+		<ng-template #nzTabHeading>
+			备课信息
+		</ng-template>
+		<div class="content-wrapper">
+			<video-resource [videoDetails]="videoInfo"></video-resource>
+		</div>
+	</nz-tab>
+	<nz-tab *ngIf="data.teacherInfo">
+		<ng-template #nzTabHeading>
+			教师信息
+		</ng-template>
+		<div class="content-wrapper">
+			<div>{{data.teacherInfo}}</div>
+		</div>
+	</nz-tab>
+</nz-tabset>

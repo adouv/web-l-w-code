@@ -1,0 +1,23 @@
+@import "../../../styles/variable";
+@import "../../../styles/mixin";
+
+.detail {
+	.title{
+		border-bottom: 1px solid #ddd;
+		height: px2rem(80px);
+	}
+	.name {
+		font-size: px2rem(24px);
+		text-align: center;
+		color: #333333;
+	}
+	.sub-name {
+		font-size: px2rem(14px);
+		color: #999;
+		text-align: center;
+		margin-top: px2rem(15px);
+	}
+	.content{
+		margin-top: px2rem(34px);
+	}
+}

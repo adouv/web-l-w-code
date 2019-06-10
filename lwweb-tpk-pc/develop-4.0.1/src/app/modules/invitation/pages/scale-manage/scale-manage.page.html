@@ -1,0 +1,108 @@
+<div class="scale-manage">
+	<div class="scale-manage-content">
+		<div class="header-title">
+			<!--<span *ngIf="!routeParams.id">新建</span><span *ngIf='routeParams.id'>编辑</span>教学评价模板-->
+			<span class="header-title-msg">评课量表管理</span>
+			<div class="header-btns">
+				<!--<nz-input [(ngModel)]="keyword" [nzType]="'search'" nzPlaceHolder="关键字查询"-->
+				<!--(nzOnSearch)="onSearch($event)" ></nz-input>-->
+				<!--<div class="input-group">-->
+				<!--<input (keyup.enter)='onSearch($event)' placeholder="关键字查询" type="text" [(ngModel)]="keyword"/>-->
+				<!--<span (click)="onSearch($event)" class="ant-input-suffix">-->
+				<!--<i class="iconfont icon-search2"></i>-->
+				<!--</span>-->
+				<!--</div>-->
+				<nz-select nzPlaceHolder="请选择" [(ngModel)]="selectedTpkType" class="select-search radius bg-gray" (ngModelChange)="getSelectedTemplate($event)">
+					<nz-option [nzValue]="" [nzLabel]="'请选择'"></nz-option>
+					<nz-option [nzValue]="0" [nzLabel]="'教学评价'"></nz-option>
+					<nz-option [nzValue]="1" [nzLabel]="'教学反思'"></nz-option>
+				</nz-select>
+				<input-search [tpkPlaceholder]="'关键字查询'" [(tpkModel)]="keyword" class="input-search" (onSearch)="onSearch($event)"></input-search>
+				<div class="btns">
+					<!-- <span class="btn-span" (click)='downTemplate()'>下载客观评价模版</span> -->
+					<button *permission="'commentTemplate:create'" routerLink="/invitation/scale/add" tabindex='-1' nz-button [nzType]="'danger'">
+						<span>新建</span>
+					</button>
+				</div>
+			</div>
+		</div>
+		<div class="scale-manage-list auto-scroll">
+			<div class="scale-manage-table">
+				<table>
+
+				</table>
+				<div class="table">
+					<table>
+						<thead>
+							<tr>
+								<th width="10%" class="text-center">序号</th>
+								<th width="25%">
+									<div class="div-align">量表名称</div>
+								</th>
+								<th width="15%">量表类型</th>
+								<th width="20%">更新时间</th>
+								<th width="10%">有效性</th>
+								<th width="10%">添加人</th>
+								<th width="15%" class="text-center">操作</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr  *ngFor="let scale of scaleDatas.list;let i = index;">
+								<td width="10%" class="text-center" (click)="scaleDetails(scale)">{{i+1}}</td>
+								<td width="25%" (click)="scaleDetails(scale)">
+									<div title="{{scale.name}}" class="div-align">{{scale.name}}</div>
+								</td>
+								<td width="15%" (click)="scaleDetails(scale)">
+									{{scale.type == 0?"教学评价":"教学反思"}}
+								</td>
+								<td width="20%" (click)="scaleDetails(scale)">{{scale.gardenId=='system'?'':(scale.lastUpdateTime|date:'yyyy/MM/dd HH:mm:ss')}}</td>
+								<th width="10%">
+										<nz-switch [ngModel]="scale.effectiveness" (ngModelChange)="changeEffectiveness($event,scale)" *ngIf="scale.gardenId!='system'">
+												<span checked>有效</span>
+												<span unchecked>无效</span>
+										</nz-switch>
+								</th>
+								<td width="10%" (click)="scaleDetails(scale)">{{scale.gardenId=='system'?'':scale.creatorName}}</td>
+								<td width="10%" *ngIf="scale.gardenId!='system'" class="text-center">
+									<span class="icon-span-btn" *permission="'commentTemplate:update'" (click)="editScale(scale)">
+										<i class="iconfont icon-edit"></i>
+									</span>
+									<span *permission="'commentTemplate:delete'" (click)="deleteScale(scale)" class="icon-span-btn">
+										<i class="iconfont icon-del"></i>
+									</span>
+									<!--<span class="icon-span-btn"  (click)="editScale(scale)"><i class="iconfont icon-edit"></i></span>-->
+									<!--<span (click)="deleteScale(scale)" class="icon-span-btn"><i class="iconfont icon-del"></i></span>-->
+								</td>
+								<td *ngIf="scale.gardenId=='system'" width="15%" >
+								</td>
+							</tr>
+							<!--<tr (click)="selectScale($event, scale)" [ngClass]="{'active': selectScaleModel&&(selectScaleModel.id == scale.id)}" *ngFor="let scale of scaleDatas; let i = index;">-->
+							<!--<td>{{i+1}}</td>-->
+							<!--<td>{{scale.name}}</td>-->
+							<!--<td>{{datePipe.transform(scale.lastUpdateTime,'yyyy/MM/dd HH:mm')}}</td>-->
+							<!--</tr>-->
+						</tbody>
+					</table>
+					<div flex="main:center cross:center" style="height: 100%" *ngIf="!scaleDatas.loaded">
+						<nz-spin [nzSize]="'large'"></nz-spin>
+					</div>
+					<elliptical-page *ngIf="scaleDatas.list.length === 0" [title]="ellipticalTitle" [imgName]="'no-search-default.png'"></elliptical-page>
+					<p *ngIf="scaleDatas.total>20" class="click-show-more" [ngClass]="{'pointer':scaleDatas.total > scaleDatas.page.size}"
+					 (click)="changeList($event, scaleDatas)">
+						{{scaleDatas.total >
+						scaleDatas.page.size?'点击加载更多':'已加载全部'}}</p>
+				</div>
+			</div>
+
+		</div>
+	</div>
+	<div class="footer" flex='main:center'>
+		<!-- <button routerLink="/video/invitation" tabindex='-1'  [nzType]="'default'" nz-button
+				[nzType]="'danger'">
+			<span>返回</span>
+		</button> -->
+		<button (click)="goVideoList()" tabindex='-1' [nzType]="'default'" nz-button [nzType]="'danger'">
+			<span>返回</span>
+		</button>
+	</div>
+</div>

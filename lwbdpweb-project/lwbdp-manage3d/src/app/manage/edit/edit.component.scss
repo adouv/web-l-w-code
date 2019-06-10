@@ -1,0 +1,33 @@
+.mng-edit{
+    width: 100%;
+    padding: 0 20px;
+    min-width: 1200px;
+    .edit-title{
+        text-align: center;
+        font-size: 16px;
+        line-height: 40px;
+        border-bottom: 1px solid #dbe3ee;
+    }
+    .bread_nav{
+        margin-top: 20px;
+    }
+    .other-info{
+        margin-bottom: 29px;
+        li{
+            margin-bottom: 10px;
+        }
+        .item-left{
+            width: 28%;
+            text-align: right;
+            float: left;
+        }
+        .item-content{
+            width: 501px;
+            height: 76px;
+            padding: 8px 7px;
+        }
+    }
+    .btn_box{
+        margin-bottom: 40px;
+    }
+}

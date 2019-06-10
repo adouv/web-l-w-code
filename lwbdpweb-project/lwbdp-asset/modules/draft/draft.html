@@ -1,0 +1,103 @@
+<div class="main_in">
+    <h3 class="draft-title">草稿箱</h3>
+    <!--搜索区域-->
+    <div class="search_box clearfix">
+        <!--处置形式-->
+        <div class="lw-select-person fl analog-pull-down">
+            <multiple-select-drop ng-model="assetDraft.condition.disposeTypeList" loop-key="name" loop-value="id" loop-change="assetDraft.goSearch()"
+                loop-list="assetDraft.disposeDirection" show-title="处置形式">
+            </multiple-select-drop>
+        </div>
+        <div class="content_textBar">
+            <input type="text" class="input_class" maxlength="50" placeholder="回车键提交查询"  ng-model="assetDraft.condition.keywords" ng-keydown="assetDraft.goSearch($event)">
+            <span class="iconfont icon-error" ng-if="assetDraft.condition.keywords.length > 0" ng-click="assetDraft.cleanKeywords()"></span>
+        </div>
+        <span class="btn_bd" ng-click="assetDraft.goSearch()">查询</span>
+    </div>
+    <!--总计-->
+    <div class="total_num allswitch">
+        <div class="tot_left fl">
+            <button class="btn_bd" ng-disabled="assetDraft.isCheckedIds.length<=0" ng-click="assetDraft.delete()">删除</button>
+            <span>总计 <em class="num">{{assetDraft.pageConfig.totalItems||0}}</em> 条</span>
+        </div>
+        <div class="fr ">
+            <button class="btn_bd " ng-disabled="assetDraft.pageList.length<=0" ng-click="assetDraft.deleteAllDraft()">清空</button>
+            <span class="btn_bd " ng-click="assetDraft.goBack()">返回我的项目</span>
+        </div>
+    </div>
+    <!-- 表格 -->
+    <div class="line_pad" auto-width=".table_absolute" watch-change="assetDraft.pageList">
+        <div class="line_strip"></div>
+        <div class="table_box">
+            <table class="listTable">
+                <thead id="theadTh">
+                <tr>
+                    <th width="8%">
+                        <input type="checkbox" ng-click="assetDraft.allChecked()" ng-model="assetDraft.isChecked" class="checkbox_class draft_checkbox" id="box_head"/>
+                        <label for="box_head">序号</label>
+                    </th>
+                    <th width="28%">名称</th>
+                    <th width="32%">资产大类</th>
+                    <th width="9%">是否电子类</th>
+                    <th width="9%">处置形式</th>
+                    <th width="14%">添加时间</th>
+                </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+    <div class="table_absolute overflow_box poab_top137" id="tableAbsolute">
+        <div class="table_box">
+            <table class="listTable">
+                <tbody>
+                    <tr table-width ng-repeat="data in assetDraft.pageList track by $index" ng-click="assetDraft.goDetail(data.projectId)">
+                        <td>
+                            <label>
+                                <input type="checkbox" ng-click="assetDraft.inputChecked($event,data.id)" ng-checked="assetDraft.isCheckedIds.indexOf(data.id)>-1" class="checkbox_class draft_checkboxSon">{{ $index+1 }}
+                            </label>
+                        </td>
+                        <td>
+                            {{ data.projectName }}
+                        </td>
+                        <td>
+                            {{ data.assetTypeName }}
+                        </td>
+                        <!--  4 1 是否为电子类-->
+                        <td>{{data.isElectronic?'是':'否'}}</td>
+
+                        <!--  5 1 处置形式-->
+                        <td>{{data.categoryName}}</td>
+                        <td>
+                            {{ data.createTime | date:'yyyy-MM-dd HH:mm' }}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- 分页 -->
+            <pagination ng-show="assetDraft.pageList.length>0" conf="assetDraft.pageConfig"></pagination>
+        </div>
+
+        <!--暂无数据-->
+        <div class="nodata_box" ng-show="assetDraft.pageList.length<1">
+            <div class="nodata" ng-show="!assetDraft.isSearch">
+                <span></span>
+                <p>暂无数据</p>
+            </div>
+            <div class="nodata_search" ng-show="assetDraft.isSearch">
+                <span></span>
+                <p>搜索无结果</p>
+            </div>
+        </div>
+        <!-- 选择园区 -->
+        <!--<div class="select_depart">-->
+            <!--<p class="select_depart_list">-->
+                <!--<span class="fos16">参统学校（机关)：</span>-->
+                <!--<span ng-if="assetDraft.visibleGardens.length>1" ng-click="assetDraft.chooseGarden()" class="iconfont icon-setting setting_icon"></span>-->
+            <!--</p>-->
+            <!--<p class="select_depart_list2">-->
+                <!--<span ng-repeat="garden in assetDraft.gardenList">{{garden.name||garden.gardenName}}；</span>-->
+            <!--</p>-->
+        <!--</div>-->
+    </div>
+</div>

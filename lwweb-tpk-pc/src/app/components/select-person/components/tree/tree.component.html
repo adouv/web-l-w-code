@@ -1,0 +1,5 @@
+<div class="lw-tree">
+    <div *ngFor="let da of data | async">
+            <tree-element [data]="d" [index]="'0'" *ngFor="let d of da"></tree-element>
+    </div>
+</div>

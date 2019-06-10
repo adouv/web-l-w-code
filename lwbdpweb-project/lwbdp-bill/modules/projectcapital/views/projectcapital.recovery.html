@@ -1,0 +1,210 @@
+<div class="projectcapitalRecovery">
+    <div class="breadnav ng-scope">
+        <ul>
+            <!--<li>项目财务管理 ></li>-->
+            <li ng-click="backToList()" class="secondTitle">项目财务库 ></li>
+            <li class="thirdTitle">添加财务记录</li>
+        </ul>
+    </div>
+    <div class="page">
+        <p class="pagetit font_MY">
+            <!--添加财政收走资金-->
+            <span class="tableBtn blue" has-permission="bdp:projectCapital:batchImport" ng-click="batchAddRecovery()">批量导入</span>
+        </p>
+        <p class="income_nav">
+            <span><a ui-sref="bill.projectcapital.income">
+                <span>添加项目收入</span></a></span>
+            <span><a ui-sref="bill.projectcapital.payout">
+                <span>添加项目支出</span></a></span>
+            <span class="income_nav_click">
+                <span>添加财政收走资金</span></span>
+        </p>
+        <form class="w5c-form" w5c-form novalidate w5c-form-validate name="recoveryForm" stop-event>
+            <div class="recovery_main">
+                <h3>记账类型 <span>*</span></h3>
+                <div class="form-group">
+                    <select name="recoveryType" class="form-control" ng-model="recoveryType">
+                        <option value="recovery">财政收走</option>
+                        <option value="recoveryWriteBack">财政收走资金冲红</option>
+                    </select>
+                </div>
+                <h3>资金文号 <span>*</span></h3>
+                <input type="text" id="selectCapnum" name="names" required class="form-control curpoint"
+                       ng-model="selectedCapitalNumber.name">
+                <select-capnum ids="selectedCapitalNumber.id" named="selectedCapitalNumber.name"></select-capnum>
+                <!--收走 start-->
+                <div class="recoyery_box" ng-show="recoveryType=='recovery'">
+                    <p class="illustrate" ng-show="capitalAmountInfo.id">{{capitalAmountInfo.typeName}}资金,
+                        总金额{{capitalAmountInfo.totalAmount}}万元, 可收走金额{{(capitalAmountInfo.totalAvailableAmount +
+                        capitalAmountInfo.totalIncomeAvailableAmount)}}万元</p>
+                    <!--<p class="illustrate" ng-show="capitalAmountInfo.id">{{capitalAmountInfo.typeName}}资金,-->
+                        <!--总金额{{capitalAmountInfo.totalAmount}}万元, 可收走金额{{(capitalAmountInfo.totalAvailableAmount +-->
+                        <!--capitalAmountInfo.totalIncomeAvailableAmount)|number:6}}万元</p>-->
+                    <h3 class="plan_h">从未安排资金中收走额度:</h3>
+                    <p class="plan">
+                        可收走金额: <span class="red">{{capitalAmountInfo.totalAvailableAmount?capitalAmountInfo.totalAvailableAmount:0}}万元</span>
+                        本次收走金额: <input type="text" class="form-control" ng-model="recoveryAmount"
+                                       ng-disabled="!capitalAmountInfo.totalAvailableAmount || capitalAmountInfo.totalAvailableAmount < 0"
+                                       ng-keyup="checkRecoveryAmount()"> 万元
+                    </p>
+                    <h3 class="plan_h">从已安排资金中收走额度:</h3>
+                    <p class="plan">可收走总金额: <span class="red sml">{{capitalAmountInfo.totalIncomeAvailableAmount?capitalAmountInfo.totalIncomeAvailableAmount:0}}万元</span>
+                        已安排金额: {{capitalAmountInfo.totalIncomeAmount?capitalAmountInfo.totalIncomeAmount:0}}万元</p>
+                    <h3>请选择从哪些项目收入中收走资金</h3>
+                    <div class="choose_project">
+                        <div ng-repeat="item in capitalProjectIncomeList">
+                            <p class="title">
+                                {{item.projectName}}
+                            </p>
+                            <div class="tableContent" style="padding: 0">
+                                <table class="formTable">
+                                    <tr>
+                                        <td>序号</td>
+                                        <td>收入实际到账时间</td>
+                                        <td>总金额/<em class="blue">已用金额</em>/<em class="green">可用金额</em></td>
+                                        <td>本次收走(万元)</td>
+                                    </tr>
+                                    <tr ng-repeat="bill in item.incomeBillQoList">
+                                        <td>{{$index+1}}</td>
+                                        <td><span class="text">{{bill.receivedDate?(bill.receivedDate | date :'yyyy/MM/dd'):''}}</span>
+                                        </td>
+                                        <td>(<span class="text">{{bill.incomeAmount}};<em class="blue">{{bill.payoutAmount}};</em><em
+                                                class="green">{{bill.availableAmount}}</em></span>)
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-control"
+                                                   placeholder="≤{{bill.availableAmount}}"
+                                                   ng-model="bill.recoveryAmount"
+                                                   ng-disabled="bill.availableAmount == 0 "
+                                                   ng-keyup="checkItemRecoveryAmount(bill)">
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3 ng-show="totalRecoveryAmount && totalRecoveryAmount > 0">本次已输入的收走总额度: <span class="red">{{totalRecoveryAmount}}万元</span>
+                    </h3>
+                    <h3>资金收走原因 <span>*</span></h3>
+                    <textarea class="form-control" cols="200" rows="3" placeholder="500字以内，必填" name="recoveryReason"
+                              ng-model="recoveryReason"
+                              maxlength="500"
+                    ></textarea>
+                </div>
+                <!--收走 end-->
+                <!--冲红 start-->
+                <div ng-show="recoveryType=='recoveryWriteBack'">
+                    <p class="illustrate" ng-show="capitalAmountInfo.typeName">{{capitalAmountInfo.typeName}}资金, 总金额:
+                        {{capitalAmountInfo.totalAmount}}万元, 已安排金额
+                        {{capitalAmountInfo.totalUnavailableAmount}}万元, 未安排金额:
+                        {{(capitalAmountInfo.totalAvailableAmount)}}万元</p>
+                    <h3>
+                        请选择冲红对应的收走项
+                    </h3>
+                    <div class="choose_recovery">
+                        <p class="choose_result" ng-if="selectedRecovery">
+                            <span class="pospan">已选中的收走项:</span>
+                            <span class="res_span ell">
+                                <em class="mr">{{selectedRecovery.createTime?(selectedRecovery.createTime | date :'yyyy/MM/dd'):''}}</em>
+                                <em class="mr">{{selectedRecovery.totalRecoveryAmount}}万元</em>
+                                <em class="mr">{{(selectedRecovery.totalRecoveryAmount - selectedRecovery.capitalRecoveryAmount)}}万元</em>
+                                <em class="mr">{{selectedRecovery.capitalRecoveryAmount}}万元</em>
+                                <em class="billiconfont icon_shutdown deleteIcon"
+                                    ng-click="delSelectedRecovery(selectedRecovery.idx)"></em>
+                            </span>
+                        </p>
+                        <div class="tableContent" style="padding: 0">
+                            <table class="formTable">
+                                <tr>
+                                    <td>序号</td>
+                                    <td>财政收走时间</td>
+                                    <td>收走金额(万元)</td>
+                                    <td>从项目中收走的金额(万元)</td>
+                                    <td>从未安排到项目中收走的金额(万元)</td>
+                                </tr>
+                                <tr ng-repeat="item in recoveryItemList" for="choose_rv{{$index}}">
+                                    <td><input type="radio" id="choose_rv{{$index}}" class="radioClass" name="choose_rv"
+                                               ng-checked="item.checked" ng-click="selectRecovery($index,item)">
+                                        {{$index+1}}
+                                    </td>
+                                    <td><span
+                                            class="text">{{item.createTime?(item.createTime | date :'yyyy/MM/dd'):''}}</span>
+                                    </td>
+                                    <td><span class="text">{{item.totalRecoveryAmount}}</span></td>
+                                    <td><span class="text">{{(item.totalRecoveryAmount - item.capitalRecoveryAmount)}}</span>
+                                    </td>
+                                    <td><span class="text">{{item.capitalRecoveryAmount}}</span></td>
+                                </tr>
+                            </table>
+
+                        </div>
+                    </div>
+                    <h3 class="nor" ng-click="sumTotalRecoveryWriteBackAmount()" ng-show="selectedRecovery">
+                        <input type="radio" class="radioClass" name="backType" value="part" ng-model="backType"> 部分冲红
+                        <span class="pad_l"><input type="radio" class="radioClass" name="backType" value="all"
+                                                   ng-model="backType"><em>全部冲红</em></span>
+                    </h3>
+                    <div ng-show="backType=='part' && selectedRecovery">
+                        <p class="plan">
+                            未安排资金可冲红额度: <span class="red">{{capitalRecoveryWriteBack?capitalRecoveryWriteBack.availableWriteBackAmount:0}}万元</span>
+                            本次冲红金额: <input type="text" class="form-control"
+                                           ng-disabled="!capitalRecoveryWriteBack || capitalRecoveryWriteBack.availableWriteBackAmount==0"
+                                           ng-model="writeBackAmount"
+                                           ng-keyup="checkCapitalRecoveryWriteBack('writeBackAmount',writeBackAmount,capitalRecoveryWriteBack.availableWriteBackAmount)">
+                            万元
+                        </p>
+                        <h3>已安排资金可冲红额度{{projectAvailableWriteBackAmount?projectAvailableWriteBackAmount:0}}万元(<em
+                                class="gray">已配置冲红金额:{{totalProjectRecoveryWriteBackAmount}}万元</em>)</h3>
+                        <div class="choose_project" ng-show="projectRecoveryWriteBackDetailMap">
+                            <div ng-repeat="(projectName,recoveryWriteBackDetailList) in projectRecoveryWriteBackDetailMap">
+                                <p class="title">
+                                    {{projectName}}
+                                </p>
+                                <div class="tableContent" style="padding: 0">
+                                    <table class="formTable">
+                                        <tr>
+                                            <td>序号</td>
+                                            <td>收入实际到账时间</td>
+                                            <td>总金额/<em class="blue">已用金额</em>/<em class="green">可用金额</em></td>
+                                            <td>可冲红金额(万元)</td>
+                                            <td>冲红金额(万元)</td>
+                                        </tr>
+                                        <tr ng-repeat="item in recoveryWriteBackDetailList">
+                                            <td>{{$index+1}}</td>
+                                            <td><span class="text">{{item.receivedDate?(item.receivedDate | date:'yyyy/MM/dd'):''}}</span>
+                                            </td>
+                                            <td>(<span class="text">{{item.incomeAmount}};<em class="blue">{{item.payoutAmount}};</em><em
+                                                    class="green">{{item.availableAmount}}</em></span>)
+                                            </td>
+                                            <td><span class="text">{{item.availableWriteBackAmount}}</span>
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control"
+                                                       placeholder="≤{{item.availableWriteBackAmount}}"
+                                                       ng-model="item.writeBackAmount"
+                                                       ng-disabled="item.availableWriteBackAmount == 0"
+                                                       ng-keyup="checkProjectRecoveryWriteBack(item)">
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <h3>本次冲红总金额: <span class="red">{{totalRecoveryWriteBackAmount}}万元</span></h3>
+                    <h3>冲红原因 <span>*</span></h3>
+                    <textarea class="form-control" cols="200" rows="3" placeholder="500字以内，必填"
+                              name="recoveryWriteBackReason"
+                              maxlength="500" ng-model="recoveryWriteBackReason"
+                    ></textarea>
+                </div>
+                <!--冲红 end-->
+
+            </div>
+            <div class="income_div">
+                <input class="income_sure setbtn sureBtn " type="button" value="确定" name="" ng-click="save()">
+            </div>
+        </form>
+    </div>
+</div>

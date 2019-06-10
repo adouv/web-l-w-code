@@ -1,0 +1,83 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:MLPen.ModernUI.Assets.Styles">
+
+    <Color x:Key="ColorBlack">#333333</Color>
+    <Color x:Key="ColorGray">#999999</Color>
+    
+    <Color x:Key="ColorPrimary">#226cfb</Color>
+    <Color x:Key="ColorWarning">#ff9500</Color>
+    <Color x:Key="ColorDanger">#ff3b30</Color>
+    <Color x:Key="ColorSuccess">#02c583</Color>
+    
+    <Color x:Key="ColorPrimaryLight">#CDE6F7</Color>
+    
+    <Color x:Key="ColorBorder">#dddddd</Color>
+    <Color x:Key="ColorBlackishGreen">#353f3c</Color>
+    <Color x:Key="ColorBlueGray">#3f4551</Color>
+    
+    <!--<Color x:Key="ColorSuccess">#428BCA</Color>
+    <Color x:Key="ColorInfo">#428BCA</Color>
+   
+    <Color x:Key="ColorDanger">#428BCA</Color>-->
+
+    <SolidColorBrush x:Key="WhiteBrush" Color="#FFFFFF" />
+    <SolidColorBrush x:Key="BlackBrush" Color="{StaticResource ColorBlack}" />
+    <SolidColorBrush x:Key="GrayBrush" Color="{StaticResource ColorGray}"/>
+    
+    <SolidColorBrush x:Key="PrimaryBrush" Color="{StaticResource ColorPrimary}" />
+    <SolidColorBrush x:Key="WarningBrush" Color="{StaticResource ColorWarning}"/>
+    <SolidColorBrush x:Key="DangerBrush" Color="{StaticResource ColorDanger}"/>
+    <SolidColorBrush x:Key="SuccessBrush" Color="{StaticResource ColorSuccess}"/>
+
+    <SolidColorBrush x:Key="PrimaryLightBrush" Color="{StaticResource ColorPrimaryLight}"/>
+
+    <SolidColorBrush x:Key="BorderBrush" Color="{StaticResource ColorBorder}"/>
+    <SolidColorBrush x:Key="BlackishGreenBrush" Color="{StaticResource ColorBlackishGreen}"/>
+    <SolidColorBrush x:Key="BlueGrayBrush" Color="{StaticResource ColorBlueGray}"/>
+
+    <!--<SolidColorBrush x:Key="AccentColorBrush" Color="#007ACC"></SolidColorBrush>
+    --><!--标准颜色--><!--
+    <SolidColorBrush x:Key="MSFastColorBackground" Color="#FFFFFF"/>
+    <SolidColorBrush x:Key="MSFastColorBackgroundSelected" Color="#007ACC"/>
+    <SolidColorBrush x:Key="MSFastColorGray" Color="#555555"/>
+    <SolidColorBrush x:Key="MSFastColorGrayLight" Color="#777777"/>
+    <SolidColorBrush x:Key="MSFastColorGrayLighter" Color="#eeeeee"/>
+    <SolidColorBrush x:Key="MSFastColorBorder" Color="#cccccc"/>
+    <SolidColorBrush x:Key="MSFastColorBorderLight" Color="#dddddd"/>
+    <SolidColorBrush x:Key="MSFastColorDisabled" Color="#FF999999"/>
+    <SolidColorBrush x:Key="MSFastColorForeground" Color="#FF333333"/>
+    <SolidColorBrush x:Key="MSFastColorForegroundLight" Color="#FFFFFFFF"/>
+    <SolidColorBrush x:Key="MSFastColorBorderHighlighted" Color="#FF66AFE9"/>
+    <SolidColorBrush x:Key="MSFastBackgroundMask" Color="#B2000000"/>
+    
+    --><!--Default--><!--
+    <SolidColorBrush x:Key="MSFastColorDefault" Color="#E5E5E5"/>
+    <SolidColorBrush x:Key="MSFastColorDefaultLight" Color="#D8D8D8"/>
+    --><!--Primary--><!--
+    <SolidColorBrush x:Key="MSFastColorPrimary" Color="#428BCA"/>
+    <SolidColorBrush x:Key="MSFastColorPrimaryLight" Color="#3071A9"/>
+    <SolidColorBrush x:Key="MSFastColorPrimaryHighlighted" Color="#CDE6F7"/>
+    --><!--Success--><!--
+    <SolidColorBrush x:Key="MSFastColorSuccess" Color="#5CB85C"/>
+    <SolidColorBrush x:Key="MSFastColorSuccessLight" Color="#449D44"/>
+    --><!--Info--><!--
+    <SolidColorBrush x:Key="MSFastColorInfo" Color="#5BC0DE"/>
+    <SolidColorBrush x:Key="MSFastColorInfoLight" Color="#31B0D5"/>
+    --><!--Warning--><!--
+    <SolidColorBrush x:Key="MSFastColorWarning" Color="#F0AD4E"/>
+    <SolidColorBrush x:Key="MSFastColorWarningLight" Color="#EC971F"/>
+    --><!--Danger--><!--
+    <SolidColorBrush x:Key="MSFastColorDanger" Color="#D9534F"/>
+    <SolidColorBrush x:Key="MSFastColorDangerLight" Color="#C9302C"/>
+
+    --><!--边框--><!--
+    <Thickness x:Key="BorderNone">0</Thickness>
+
+    --><!--Close Button--><!--
+    <SolidColorBrush x:Key="MSFastCloseButtonBackgroundHighlighted" Color="#39ADFB"/>
+    <SolidColorBrush x:Key="MSFastCloseButtonBackgroundPressed" Color="#084E7D"/>
+    <SolidColorBrush x:Key="MSFastCloseButtonStroke" Color="#AAFFFFFF"/>
+    <SolidColorBrush x:Key="MSFastCloseButtonStrokeHighlighted" Color="#FFFFFF"/>
+    <SolidColorBrush x:Key="MSFastBorderBrushSelected" Color="#1C97EA"/>-->
+</ResourceDictionary>

@@ -1,0 +1,29 @@
+
+<div class="modal-header">
+    <!--<button type="button" class="close" ng-click="cancel()">-->
+        <span class="Close fr" ng-click="cancel()">×</span><span class="sr-only">Close</span>
+    <!--</button>-->
+    <p class="modal-title" id="modal-title">作用的教学组织结构选择</p>
+</div>
+<div class="modal-body" id="modal-body" ng-init="keywords=''">
+    <section class="clear">
+        <div class="form-group search-group fl">
+            <input type="text" class="search form-control" ng-model="keywords" ng-keydown="search()" placeholder="请输入…">
+            <button class="icon"><i class="glyphicon glyphicon-search"></i></button>
+        </div>
+    </section>
+    <section class="list-header form-inline clear">
+        <ul class="gardenList">
+            <li ng-repeat="organization in organizations" ng-show="keywords==''||organization.name.indexOf(keywords)>=0">
+                <input type="checkbox" class="checkboxClass" id="{{organization.id}}" ng-checked="organizationIds.indexOf(organization.id)>=0" ng-click="checkOrganization($event,organization.id,organization.name)">
+                <label for="{{organization.id}}">{{organization.name}}</label>
+            </li>
+
+        </ul>
+    </section>
+</div>
+<div class="modal-footer">
+    <p style="max-height: 60px;overflow: auto">已选择: <span style="font-size: 12px;font-weight: bold">{{organizationNames}}</span></p>
+    <button class="btn tpk-btn" type="button" ng-click="ok()">确 定</button>
+    <button class="btn tpk-btn-o" type="button" ng-click="cancel()">取 消</button>
+</div>

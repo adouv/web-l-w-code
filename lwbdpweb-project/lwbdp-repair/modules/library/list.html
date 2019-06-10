@@ -1,0 +1,144 @@
+<div class="main_in">
+    <!--搜索区域-->
+    <div class="search_box clearfix">
+        <div>
+            <div class="content_textBar">
+                <input type="text" class="input_class" maxlength="50" placeholder="回车键提交查询"  ng-model="library.condition.keywords" ng-keydown="library.goSearch($event)">
+                <span class="iconfont icon-search" ng-if="library.condition.keywords.length === 0"></span>
+                <span class="iconfont icon-error" ng-if="library.condition.keywords.length > 0" ng-click="library.cleanKeywords()"></span>
+            </div>
+            <a href="javascript:void(0)" class="more_search" ng-click="library.getMoreSearch()">更多条件查询 ></a>
+        </div>
+        <div class="search_result" ng-if="library.isShowCancel">搜索条件：
+            <span ng-if="library.condition.applyYearStart && library.condition.applyYearEnd">
+                项目申报年份（{{library.condition.applyYearStart}}~{{library.condition.applyYearEnd}}）
+            </span>
+            <span ng-if="library.condition.gardenList && library.condition.gardenList.length > 0 ">
+                项目申报单位（<span ng-repeat="garden in library.condition.gardenList">{{garden.name}}；</span>）
+            </span>
+            <span ng-if="library.condition.categoryListName">项目所属类别（{{library.condition.categoryListName}}）</span>
+            <span ng-if="library.condition.kindName">项目配标类别（{{library.condition.kindName}}）</span>
+            <span ng-if="library.condition.stageName">项目所属阶段（{{library.condition.stageName}}）</span>
+            <span ng-if="library.condition.statusName">项目所处状态（{{library.condition.statusName}}）</span>
+            <span ng-if="library.condition.applyAccount">项目申报人（{{library.condition.applyAccount}}）</span>
+            <span ng-if="library.condition.createTimeStart && library.condition.createTimeEnd">
+                项目提交时间段（{{library.condition.createTimeStart}}~{{library.condition.createTimeEnd}}）
+            </span>
+            <span ng-if="library.condition.stageCompleteStart&&library.condition.stageCompleteEnd">
+                {{library.stageName}}完成时间段（{{library.condition.stageCompleteStart}}~{{library.condition.stageCompleteEnd}}）
+            </span>
+            <span ng-if="library.isShowCancel" class="iconfont icon-error" ng-click="library.deleteCondition()"></span>
+        </div>
+    </div>
+    <!--总计-->
+    <div class="total_num allswitch">
+        <div class="tot_left fl">
+            <span>总计 <em class="num">{{library.pageConfig.totalItems||0}}</em> 条</span>
+        </div>
+        <div class="fr">
+            <span class="btn_bd" ui-sref="repair.statistic({processConfigId:library.processConfigId,stage:library.stage,sidebarId:sidebar.id||library.sidebar.id})">图表统计</span>
+            <span class="btn_bd " ng-click="library.exportExcel()">导出</span>
+        </div>
+    </div>
+    <!-- 表格 -->
+    <div class="line_pad" auto-width=".table_absolute" watch-change="library.pageList">
+        <div class="line_strip"></div>
+        <div class="table_box">
+            <table class="listTable">
+                <thead id="theadTh">
+                    <tr>
+                        <th width="5%">
+                            <label>序号</label>
+                        </th>
+                        <!--<th width="70">序号</th>-->
+                        <th width="9%">项目类别</th>
+                        <th width="18%">项目名称</th>
+                        <th width="12%">项目单位</th>
+                        <th width="9%">校内优先级</th>
+                        <th width="8%">申报人</th>
+                        <!--<th width="140">项目完成时间</th>-->
+                        <th width="13%">{{library.stageName}}完成时间</th>
+
+                        <th width="18%">项目阶段</th>
+                        <th width="8%">状态</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+    <div class="table_absolute overflow_box">
+        <div class="table_box">
+            <!--我的项目、审批、项目库-->
+            <table class="listTable">
+                <tbody>
+                    <tr table-width ng-repeat="data in library.pageList track by $index" ng-click="library.goDetail(data.projectId,data.projectStatus)">
+                        <td>
+                            {{ $index+1 }}
+                        </td>
+                        <td>
+                            {{ data.categoryName }}
+                        </td>
+                        <td>
+                            {{ data.projectName }}
+                        </td>
+                        <td>
+                            {{ data.projectGarden }}
+                        </td>
+                        <td>
+                            {{ data.priorityName }}
+                        </td>
+                        <td>
+                            {{ data.applyAccount }}
+                        </td>
+                        <td>
+                            {{ data.stageCompleteTime | date:'yyyy-MM-dd HH:mm' }}
+                        </td>
+                        <td>
+                            {{ data.currTaskStageName }}
+                        </td>
+                        <!--项目状态-->
+                        <td>
+                             <span ng-class="{'yellow_color':data.projectStatus === 0,
+                                            'green_color':data.projectStatus===1,
+                                            'red_color':data.projectStatus === 2}">
+                                {{data.projectStatusName }}</span>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+
+        <pagination conf="library.pageConfig" ng-show="library.pageList.length>0"></pagination>
+        <!-- 暂无数据、暂无搜索结果-->
+        <div class="nodata_box" ng-show="!library.pageList[0]">
+            <div class="nodata" ng-show="library.pageList.length===0 && !(library.keywords && library.keywords !=='')">
+                <span></span>
+                <p>暂无数据</p>
+            </div>
+            <div class="nodata_search" ng-show="library.keywords && library.keywords !== ''">
+                <span></span>
+                <p>搜索无结果</p>
+            </div>
+        </div>
+        <!-- 选择园区 -->
+        <div class="select_depart">
+            <p class="select_depart_list">
+                <span class="fos16">参统学校（机关)：</span>
+                <span ng-if="library.visibleGardens.length>0" ng-click="library.chooseGarden()" class="iconfont icon-setting setting_icon"
+                    ng-class="{'disabled':library.onlyMine}"></span>
+                <input type="checkbox" class="checkbox_class" ng-model="library.onlyMine" ng-change="library.getMyProject(library.onlyMine)" id="gad1">
+                <label for="gad1" class="word_center">只统计由我发起的修缮项目申请单</label>
+            </p>
+            <p class="select_depart_list2" ng-class="{'disabled':library.onlyMine}"><span ng-repeat="garden in library.gardenList">{{garden.name||garden.gardenName}}；</span></p>
+        </div>
+
+    </div>
+</div>
+
+<!-- 修缮类型的弹窗 -->
+<dialog ng-if="library.type" modal>
+    <div dialog-content>
+        <repair-type show="library.type" list="library.list"></repair-type>
+    </div>
+</dialog>

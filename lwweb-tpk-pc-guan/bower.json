@@ -1,0 +1,19 @@
+{
+  "name": "lwweb-tpk-pc-guan",
+  "description": "A Vue.js project",
+  "main": "",
+  "authors": [
+    "doufu_0329@163.com"
+  ],
+  "license": "MIT",
+  "homepage": "http://localhost:8081/index.html",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {}
+}

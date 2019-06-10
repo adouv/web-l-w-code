@@ -1,0 +1,16 @@
+<div class="notification-message" flex="" #notificationMessage>
+    <div flex-box="1" *ngIf="type=='success'">
+        <div>{{filename}}</div>
+        <div class="buttons" flex="main:center cross:center">
+            <button (click)="openFile()" nz-button [nzType]="'primary'">
+				<span>打开文件</span>
+			</button>
+            <button (click)="openFloder()" nz-button [nzType]="'primary'">
+				<span>打开文件夹</span>
+			</button>
+        </div>
+    </div>
+    <div flex-box="1" *ngIf="type=='error'">
+        <div>错误信息:{{message}}</div>
+    </div>
+</div>

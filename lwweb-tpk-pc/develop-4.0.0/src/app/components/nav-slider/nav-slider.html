@@ -1,0 +1,76 @@
+<nz-layout class="layout lw-tpk-pc">
+	<nz-header (click)="this.isShow = false">
+		<div class="center-box"></div>
+		<div class="left-box">
+			<img class="logo inl-bl-mid" *ngIf="currentGarden.gardenLogo" src="{{garden.gardenLogo|showImg}}" (click)="this.isShow = false">
+			<span class="title font18px inl-bl-mid" [title]="currentGarden?.gardenName" (click)="this.isShow = false">{{currentGarden?.gardenName}}</span>
+			<div *ngIf="gardenList.length > 1" class="switch iconfont qiehuan" 
+				(click)="show($event)">
+			</div>
+
+			<!-- <nz-select class="radius bg-gray" [ngModel]="gardenId" [nzPlaceHolder]="'园区'"
+				   (ngModelChange)="changeGrade($event)">
+					<nz-option *ngFor="let garden of gardenList"
+							[nzLabel]="garden.gardenName"
+							[nzValue]="garden.gardenId">
+					</nz-option>
+			</nz-select> -->
+		</div>
+		<div class="right_box">
+			<span class="time inl-bl-mid">{{currentDate?.datetime | date: 'HH:mm:ss'}}</span>
+			<div class="date inl-bl-mid">
+				<div>{{currentDate?.datetime | date: 'MM/dd'}}</div>
+				<div>星期{{currentDate?.dayOfWeek | numberToWeek }}</div>
+			</div>
+		</div>
+	</nz-header>
+	<nz-layout>
+		<nz-sider *ngIf="!hiddenSide">
+			<div class="user-box">
+				<img class="user-icon" *ngIf="account.imgUrl" src="{{account.imgUrl|showImg}}">
+				<img class="user-icon" *ngIf="!account.imgUrl" src="{{'assets/images/user-icon.png'}}">
+				<div class="user-info">
+					<div class="name font16px">{{account.displayName}}</div>
+				</div>
+			</div>
+			<div *ngFor="let menu of menus;">
+				<ng-container>
+					<ul *permission="menu.permission!=null&&menu.permission!=''?menu.permission:''" class="first-ul" [ngClass]="{'active': menu.isParentChecked}">
+						<li>
+							<p class="title-box list-item">
+								<span class="title" [ngClass]="{'active': menu.isChecked}" (click)="goJump(menu)">
+									<i class="iconfont {{menu.icon}}"></i>
+									<span>{{menu.title}}</span>
+								</span>
+								<em class="iconfont icon-sanjiaoyou" [ngStyle]="{opacity:menu.childList?1:0}"
+									[ngClass]="{'icon-sanjiaoxia':menu.isOpen}"
+									(click)="openMenu(menu)"></em>
+							</p>
+							<ul class="second-ul" *ngIf="menu.isOpen">
+								<li *ngFor="let menuChild of menu.childList;" class="list-item">
+									<span class="title" [ngClass]="{'active': menuChild.isChecked}"
+										  (click)="goJump(menuChild)">{{menuChild.title}}</span>
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</ng-container>
+			</div>
+
+		</nz-sider>
+		<nz-layout class="right-box">
+			<nz-content class="container">
+				<router-outlet></router-outlet>
+			</nz-content>
+		</nz-layout>
+	</nz-layout>
+
+	
+	<div [hidden]="!isShow" class="garden-wrap-bg" (click)="this.isShow=false"> 
+		<div [hidden]="!isShow" class="garden-wrap auto-scroll">
+			<div class="garden" [ngClass]="{'active': garden.gardenId == gardenId}" *ngFor="let garden of gardenList" (click)="switchGarden(garden)" [title]="garden.gardenName">
+				{{ garden.gardenName }}
+			</div>
+		</div>
+	</div>
+</nz-layout>

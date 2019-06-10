@@ -1,0 +1,83 @@
+.basicDialog.ui-popup-middle .ztree li span.button.ico_docu{
+    display: none;
+}
+.basicDialog.ui-popup-middle .ztree li span.button.ico_open{
+    display: none;
+}
+.basicDialog.ui-popup-middle .ztree li span.button.ico_close{
+    display: none;
+}
+.basicDialog.ui-popup-middle .ztree li span.button.noline_docu{
+    display: none;
+}
+.basicDialog.ui-popup-middle .ztree li span.button.noline_open,.basicDialog.ui-popup-middle .ztree li span.button.noline_close{
+    background: none;
+    text-align: center;
+    line-height: 16px;
+}
+.basicDialog.ui-popup-middle .ztree li span.button.noline_open:before{
+    font-family:"iconfont" !important;
+    font-size:16px;
+    font-style:normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    content: "\e821";
+}
+.basicDialog.ui-popup-middle .ztree li span.button.noline_close:before{
+    font-family:"iconfont" !important;
+    font-size:16px;
+    font-style:normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    content: "\e822";
+}
+.basicDialog.ui-popup-middle .ztree li span.button.chk{
+    float: left;
+    width: 16px;
+    height: 16px;
+    -webkit-appearance: none;
+    vertical-align: text-top;
+    margin: 0 5px 0 0 !important;
+    cursor: pointer;
+    filter: alpha(opacity=50);
+    background: url('../../../images/check_box_default.png') no-repeat;
+}
+.basicDialog.ui-popup-middle .ztree li span.button.chk.checkbox_true_full, .basicDialog.ui-popup-middle .ztree li span.button.chk.checkbox_true_full_focus{
+    background: url('../../../images/check_box_choice.png') no-repeat;
+}
+.basicDialog.ui-popup-middle .ztree li span.button.chk.checkbox_true_part,.basicDialog.ui-popup-middle .ztree li span.button.chk.checkbox_true_part_focus{
+    background: url('../../../images/check_box_part.png') no-repeat;
+}
+.basicDialog.ui-popup-middle  .ztree{
+    padding: 10px 20px;
+    height: 300px;
+    overflow: auto;
+}
+.basicDialog.ui-popup-middle  .ztree li a{
+    height: 25px;
+}
+.basicDialog.ui-popup-middle .ztree li a.curSelectedNode{
+    background: transparent;
+    border: 1px solid transparent;
+    box-sizing: border-box;
+}
+.basicDialog.ui-popup-middle  .ztree li a:hover{
+    text-decoration: none;
+}
+.basicDialog.ui-popup-middle  .ztree li span{
+    margin-left: 5px;
+}
+.basicDialog.ui-popup-middle  .ztree::-webkit-scrollbar-track {
+    border-radius: 10px;
+    background-color: #ffffff;
+}
+
+.basicDialog.ui-popup-middle  .ztree::-webkit-scrollbar {
+    width: 10px;
+    background-color: #ffffff;
+}
+
+.basicDialog.ui-popup-middle  .ztree::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.2);
+}

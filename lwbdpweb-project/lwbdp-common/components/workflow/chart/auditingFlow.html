@@ -1,0 +1,12 @@
+<div id="flowContent">
+    <canvas id="palette" width="1000px" style="position: absolute;top: 0;left: 0">
+        您的浏览器不支持Canvas标签，请升级或更换浏览器
+    </canvas>
+
+    <div class="Flowtag" id="Flowtag" ng-show="showTag">
+        <div>
+            审批结果：<span ng-if="isPassed" class="green_color">通过</span><span ng-if="!isPassed" class="red_color">不通过</span>
+        </div>
+        <span>{{comment}}</span>
+    </div>
+</div>

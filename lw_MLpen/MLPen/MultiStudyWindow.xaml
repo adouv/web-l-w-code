@@ -1,0 +1,53 @@
+﻿<Window x:Class="MLPen.MultiStudyWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MLPen"
+        xmlns:convert="clr-namespace:MLPen.Converters"
+        xmlns:ui="clr-namespace:MLPen.ModernUI.Windows.UI;assembly=MLPen.ModernUI"
+        xmlns:uc="clr-namespace:MLPen.Controls"
+        mc:Ignorable="d"
+        Style="{StaticResource WindowStyle}"
+        Foreground="{DynamicResource WhiteBrush}"
+        Title="笔记统览" Height="600" Width="1067" ResizeMode="NoResize" WindowState="Maximized" WindowStyle="None" Topmost="False">
+    <Window.Background>
+        <ImageBrush ImageSource="Assets/Images/bg-pages.png"/>
+    </Window.Background>
+    <Window.Resources>
+        <convert:SplitScreenConverter x:Key="ssc"/>
+    </Window.Resources>
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="70"/>
+        </Grid.RowDefinitions>
+        <UniformGrid x:Name="UCPageLayout" Rows="{Binding Rows}" Columns="{Binding Columns}"/>
+        <!--底部工具-->
+        <Grid Grid.Row="1">
+            <StackPanel Orientation="Horizontal">
+                <StackPanel x:Name="WindowSplitView" Orientation="Horizontal">
+                    <ui:RadioIcon GroupName="SplitScreen" Content="单分" HorizontalAlignment="Left" Width="70" Height="70" IconText="&#xe6cc;" IconSize="27" IsChecked="{Binding Path=Screen,Mode=TwoWay, Converter={StaticResource ssc},ConverterParameter=1}" Checked="ScreenChange"/>
+                    <ui:RadioIcon GroupName="SplitScreen" Content="双分" HorizontalAlignment="Left" Width="70" Height="70" IconText="&#xe6a5;" IconSize="27" IsChecked="{Binding Path=Screen,Mode=TwoWay, Converter={StaticResource ssc},ConverterParameter=2}" Checked="ScreenChange"/>
+                    <ui:RadioIcon GroupName="SplitScreen" Content="四分" HorizontalAlignment="Left" Width="70" Height="70" IconText="&#xe6a4;" IconSize="27" IsChecked="{Binding Path=Screen,Mode=TwoWay, Converter={StaticResource ssc},ConverterParameter=4}" Checked="ScreenChange"/>
+                    <Border BorderThickness="0,0,1,0" BorderBrush="{DynamicResource PrimaryBrush}" VerticalAlignment="Center" Height="45" Width="10"/>
+                </StackPanel>
+                <CheckBox x:Name="chkAutoPlay" Content="自动切换" Foreground="{DynamicResource WhiteBrush}" Margin="40,0,-20,0" />
+                <CheckBox Content="显示题干" Foreground="{DynamicResource WhiteBrush}" Margin="40,0,0,0" IsChecked="{Binding IsShowStem,Mode=TwoWay}" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                    <TextBlock Text="{Binding PageIndex}" Foreground="{DynamicResource PrimaryBrush}"/>
+                    <TextBlock Text="/"/>
+                    <TextBlock Text="{Binding PageCount}"/>
+                </StackPanel>
+                <ui:IconButton x:Name="btnPrev" Content="&#xe6a9;" FontSize="29" Foreground="{DynamicResource PrimaryBrush}" Margin="20,0,0,0" IsEnabled="False" Tag="prev" Click="PageClick"/>
+                <ui:IconButton x:Name="btnNext" Content="&#xe6aa;" FontSize="29" Foreground="{DynamicResource PrimaryBrush}" Margin="20,0,0,0" Tag="next" Click="PageClick"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
+                <Button x:Name="btnStudentSelect" Content="学生选择" Background="Transparent" Width="100" Click="StudentSelectClick"/>
+                <ui:IconButton Content="&#xe643;" FontSize="21" Foreground="{DynamicResource PrimaryBrush}" Margin="60,0,20,0" Click="CloseClick"/>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>

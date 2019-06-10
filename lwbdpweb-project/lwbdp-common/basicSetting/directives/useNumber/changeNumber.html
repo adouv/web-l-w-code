@@ -1,0 +1,31 @@
+<div class="basicDialog ui-popup-larg">
+    <div class="addConfig">
+        <div class="addConfig_tit">
+            {{name}}
+            <span class="iconfont icon-close del_btn" ng-click="clickEvent()"></span>
+        </div>
+        <div class="change_number max_height">
+            <div class="addConfig_search">
+                <h4 class="fos14 fl">使用对象 <em class="col999">（总计{{gardens.length}}个）</em></h4>
+                <div class="content_textBar fr" style="margin-top: 10px">
+                    <input type="text" class="input_class" placeholder="回车键提交查询"  ng-model="keyWord" ng-keydown="search($event)">
+                    <span class="iconfont icon-search" ng-show="keyWord.length === 0"></span>
+                    <span class="iconfont icon-error" ng-show="keyWord.length > 0" ng-click="keyWord = '' "></span>
+                </div>
+            </div>
+            <div>
+                <span ng-repeat="garden in showGardens" class="bgdbe">{{garden.gardenName}}</span>
+            </div>
+            <div class="nodata_box" ng-show="showGardens.length<1">
+                    <div class="nodata" ng-show="!isSearch">
+                        <span></span>
+                        <p>暂无数据</p>
+                    </div>
+                    <div class="nodata_search"  ng-show="isSearch">
+                        <span></span>
+                        <p>搜索无结果</p>
+                    </div>
+            </div>
+        </div>
+    </div>
+</div>

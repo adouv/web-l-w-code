@@ -1,0 +1,79 @@
+<div class="analysis-list">
+    <div class="app-adress">
+        <nz-breadcrumb [nzSeparator]="'>'">
+            <nz-breadcrumb-item>
+                <a (click)="goHome()">析</a>
+            </nz-breadcrumb-item>
+            <nz-breadcrumb-item>
+                备课资源列表
+            </nz-breadcrumb-item>
+        </nz-breadcrumb>
+    </div>
+    <div class="analysis-title-group">
+        <span class="title" [ngSwitch]="endDate&&startDate">
+			<span class="title-date" *ngSwitchCase="beforeDate&&beforeDate">昨日</span>
+        <span class="title-date" *ngSwitchCase="nowDate&&nowDate">今日</span>
+        <span class="title-date" *ngSwitchDefault>
+				{{startDate===endDate? startDate.replace('-','/'): startDate.replace('-','/')+'~'+endDate.replace('-','/')}}
+			</span> 在线备课资源包列表
+        </span>
+        <div class="date-group">
+            <div class="date-picker-box">
+                <input id="time" type="text" title="" class="date-picker" placeholder="开始时间 ~ 结束时间" datePicker [range]="'~'" [dateFormat]="'yyyy-MM-dd'" [dateValue]="dateRange" (dateValueChange)="changeDate($event)">
+            </div>
+        </div>
+    </div>
+    <div class="analysis-content-group" flex="dir:top box:justify">
+        <div class="analysis-fitter">
+            <select-group titles="按年级" *ngIf="gradeList && gradeList.length>0" [model]="selectData.gradeId" [data]="gradeList" (selectEvent)="selectedGrade($event)"></select-group>
+            <select-group titles="按学科" *ngIf="subjectList && subjectList.length>0" [model]="selectData.subjectCode" [data]="subjectList" (selectEvent)="selectedSubject($event)"></select-group>
+            <select-group titles="按老师" *ngIf="teacherList && teacherList.length>0" [model]="selectData.teacherId" [data]="teacherList" (selectEvent)="selectedTeacher($event)"></select-group>
+            <div class="message-group" flex="main:justify">
+                <div class="messages">共计<span class="total">{{rank.total}}</span>节的备课资源包</div>
+                <div (click)="sortByChange()" class="messages sortBy">
+                    按发布时间{{sortBy=='ASC'?'正序':'倒序'}}<i class="iconfont" [ngClass]="{'icon-the_order':sortBy=='ASC','icon-flashback':sortBy=='DESC'}"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="analysis-content auto-scroll">
+            <div class="video-box" *ngIf="rank.list.length>0">
+                <div class="inl-bl-mid video-item permission" *ngFor="let lesson of rank.list;let i = index" (click)="goDetail(lesson)">
+                    <div class="video-box-item" [style.background]="lesson?.subjectCode | backgroundImgCss">
+                        <div class="lesson-detail-subjectname">
+                            <span [title]="lesson.subjectName">{{ lesson.subjectName }}</span>
+                        </div>
+                        <div class="lesson-detail-teachername">
+                            <em class="iconfont video_start"></em>
+                            <div class="lesson-detail-teachername-info">
+                                <span [title]="lesson.lessonTitle">{{ lesson.lessonTitle }}</span>
+                                <span [title]="lesson.teacherName">{{ lesson.teacherName }}</span>
+                            </div>
+                        </div>
+
+                        <div class="lesson-detail-data">
+                            <span class="lesson-detail-data-left" [title]="lesson.gradeName+''+lesson.className">{{ lesson.gradeName }}{{ lesson.className }}</span>
+                            <div class="lesson-detail-data-right">
+                                <span>{{ dateFormat(lesson.giveLessonDate,'yyyy/MM/dd') }}</span>
+                                <span>{{ lesson.week ? '周'+(lesson.giveLessonDate | dateToWeek) : '' }}第&nbsp;{{ lesson.period }}&nbsp;节</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <p *ngIf="rank.total>20" class="click-show-more" [ngClass]="{'pointer':rank.total > rank.page.size}" (click)="changeList($event, rank)">
+                {{rank.total > rank.page.size?'点击加载更多':'已加载全部'}}
+            </p>
+
+            <elliptical-page *ngIf="rank.list.length === 0 && rank.loaded" [title]="ellipticalTitle" [imgName]="ellipticalImg"></elliptical-page>
+        </div>
+
+        <div class="footer">
+            <button (click)="goHome()" tabindex='-1' class="close" [nzType]="'primary'" nz-button nzGhost>
+                    <span>返回</span>
+                </button>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,214 @@
+.vacation .modal-header {border-bottom: none;padding: 15px 30px;}
+.modal-header h2 {font-size: 14px;text-align: center; border-bottom: 1px solid rgb(0,186,139);margin: 25px 0 0 0;padding-bottom: 25px;}
+.modal-header h2 .fontWeight {font-weight: 700;}
+.vacation .modal-body {padding: 0 30px 55px 30px;}
+.vacation .modal-body section { margin-bottom:20px;}
+.btn-list {width: 160px;height: 30px;border: 1px solid rgb(150,150,150);padding: 0 10px;border-radius: 5px;outline: none;}
+.part {position: relative;}
+.part .search-logo {position: absolute;display: inline-block;width: 20px;height: 22px;background: url("../images/search.png");right: 13px;
+    top: 5px;
+}
+
+.part .timer {
+    display: block;
+    width: 27px;
+    position: absolute;
+    height: 27px;
+    background: url("../images/clock.png") no-repeat;
+    right: 5px;
+    top: 1px;
+}
+.vacation .modal-dialog {
+    width: 1010px;
+}
+.modal-sm {
+    width: 300px;
+}
+.delete-model {
+    width: 200px;
+}
+.add {
+    width: 100px;
+    height: 30px;
+    line-height: 16px;
+}
+.delt {
+    width: 80px;
+    height: 30px;
+    line-height: 16px;
+}
+.vacation-list {
+    max-height: 322px;
+    overflow: auto;
+}
+.vacation-list table tbody .text-over {
+    height: 23px;
+}
+.vacation-list table tbody input {
+    width: 135px;
+    height: 23px;
+}
+.vacation-list table tbody input[type='button'] {
+    background: #FFFFFF;
+    border: none;
+}
+.vacationObj {
+    position: absolute;
+    left: 203px;
+    top: 79px;
+    background: #FFFFFF;
+    border: 1px solid rgb(150,150,150);
+    width: 347px;
+    z-index: 10;
+    height: 307px;
+}
+.vacationObj-2 {
+    left: 356px;
+    top: 201px;
+}
+/*.vacationObj .btn-list {*/
+    /*width: 160px;*/
+/*}*/
+.title-search {
+    margin: 10px 20px;
+    position: relative;
+}
+.select-course {
+    margin: 20px 20px 0 24px ;
+}
+.select-course label {
+    margin-left:3px;
+}
+.title-search i {
+    width: 27px;
+    height: 27px;
+    display: block;
+    background: url("../images/search.png") no-repeat;
+    top: 5px;
+    position: absolute;
+    right: 83px;
+}
+.class-list {
+    height: 160px;
+    overflow: auto;
+    border-bottom: 1px solid rgb(150, 150, 150);
+}
+.sure-back {text-align: center;padding: 9px}
+.sure-back button {
+    display: inline-block;
+    width: 100px;
+    height: 37px;
+}
+.sure-back .delet {
+    background: #FFFFFF;
+    border: 1px solid rgb(0, 186, 139);
+}
+.btn-list2 {
+    width: 230px;
+}
+.tbody .time-list {
+    width: 310px;
+}
+.tbody .time-list input {
+    width: 125px;
+    z-index: 10;
+}
+.tbody .time-list div {
+    position: relative;
+    margin-top:-4px;
+}
+.tbody .time-list div .span{
+    position: absolute;
+    z-index: 5;
+    display: block;
+    width: 20px;
+    height: 20px;
+    right: 1px;
+    top: 2px;
+    background: #FFFFFF url("../images/clock.png") no-repeat;
+    background-size: 90% 90%;
+}
+
+.tbody .time-list div .Cover {
+    display: none;
+    background: #FFFFFF;
+    position: absolute;
+    width: 6px;
+    height: 20px;
+    right: 0;
+    top: 2px;
+}
+.tbody .time-list div .cover {
+    display: block;
+}
+.isFect {
+    width: 75px;
+    height: 30px;
+    margin-left:25px;
+    border-radius: 5px;
+}
+.table tr td {
+    min-width: 75px;
+}
+.table .last-td {
+    width: 80px;
+}
+.modal-dialog  .table .tbody .save {
+    top: 4px;
+    background: url("../images/success.png") no-repeat;
+}
+.modal-dialog  .editname {
+    background: #fff;
+    outline: none;
+    border: none;
+    text-align: center;
+}
+.fontSmall {
+    font-size: 12px;
+}
+.modal-dialog  .cur {
+    background: rgb(246,246,246);
+    color:rgb(0,186,139)
+}
+.modal-dialog  .curve {
+    position: relative;
+    left: -3px;
+    top: -1px;
+}
+.modal-dialog  .class-list p {
+    margin-left: 5%;
+    height: 30px;
+    padding: 0 10px;
+    line-height: 30px;
+    margin-right: 5%;
+}
+.modal-dialog  .class-list p span:first-child{width: 96%;display: inline-block;cursor: pointer}
+.modal-dialog  .class-list p .delete-con{
+    color: rgb(150,150,150);
+    display: none;
+    cursor: pointer;
+}
+.modal-dialog  .class-list p .delete-logo {
+    display: inline-block;
+}
+.modal-dialog  .table tbody tr td div.text-over {
+    width: 100px;
+    text-align: center;
+    margin: 0;
+    vertical-align: middle;
+}
+.modal-dialog  .vacation-list table tbody .limit-width {
+    width: 100px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.modal-dialog  .modal-open .modal {
+    overflow-y: hidden;
+}
+.modal-dialog  .modal.fade .modal-dialog {
+    margin: 9% auto;
+}
+.modal-dialog  .btn-list.btn-time {
+    margin-left: 28px;
+    padding-left:5px;}

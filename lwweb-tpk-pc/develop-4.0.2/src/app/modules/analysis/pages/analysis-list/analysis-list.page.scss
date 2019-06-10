@@ -1,0 +1,213 @@
+@import "../../../../../styles/variable";
+.analysis-list {
+    height: 100%;
+    width: 100%;
+    .app-adress {
+        width: computer(1326px);
+        margin: 0 auto;
+    }
+    .ant-breadcrumb {
+        height: computer(20px);
+        line-height: computer(20px);
+        margin-top: computer(8px);
+    }
+    .analysis-fitter {
+        width: computer(1326px);
+        margin: 0 auto;
+        padding-top: computer(5px);
+    }
+    .title-date {
+        font-weight: bold;
+        font-size: computer(16px);
+    }
+    .analysis-title-group {
+        width: computer(1326px);
+        margin: computer(-6px) auto auto auto;
+        height: computer(50px);
+        line-height: computer(50px);
+        border-bottom: 1px solid $color_border;
+        text-align: center;
+        position: relative;
+        .title {
+            color: $color_font-deep;
+            font-size: computer(14px);
+        }
+        .date-group {
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
+    }
+    .analysis-content-group {
+        height:calc(100% - #{computer(70px)});
+        .message-group {
+            height: computer(50px);
+            line-height: computer(50px);
+            padding: 0 computer(10px);
+        }
+        .sortBy {
+            cursor: pointer;
+        }
+        .messages {
+            font-size: computer(14px);
+            color: $color_font-light;
+            .iconfont {
+                font-size: computer(14px);
+                color: $color_main;
+                margin-left: 10px;
+                &:before {
+                    font-size: computer(20px);
+                }
+            }
+        }
+        .total {
+            color: $color_main;
+        }
+    }
+    .analysis-content {
+        width: computer(1366px);
+        .video-box {
+            width: computer(1326px);
+            margin: 0 auto;
+            overflow: hidden;
+            font-size: 0;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            .video-item {
+                width: computer(265px);
+                height: computer(155px);
+                position: relative;
+                cursor: pointer;
+                .video-box-item {
+                    width: computer(240px);
+                    height: computer(135px);
+                    margin: 0 auto !important;
+                    border-radius: computer(6px);
+                    color: #ffffff !important;
+                    font-family: 'MicrosoftYaHei', Sans-serif;
+                    .lesson-detail-subjectname {
+                        display: flex;
+                        flex-direction: row;
+                        justify-content: center;
+                        height: computer(43px);
+                        line-height: computer(43px);
+                        span {
+                            width: computer(220px);
+                            margin-left: computer(10px);
+                            margin-right: computer(10px);
+                            font-size: computer(24px);
+                            text-align: center;
+                            overflow: hidden;
+                            text-overflow: ellipsis;
+                            white-space: nowrap;
+                        }
+                        .xiazai:before {
+                            content: "\e695";
+                            font-size: computer(21px);
+                        }
+                    }
+                    .lesson-detail-teachername {
+                        display: flex;
+                        flex-direction: row;
+                        justify-content: center;
+                        align-items: center;
+                        width: 100%;
+                        margin: computer(10px) 0;
+                        .video_start:before {
+                            content: "\e661";
+                            font-size: computer(30px);
+                        }
+                        .lesson-detail-teachername-info {
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: flex-start;
+                            align-items: flex-start;
+                            font-size: computer(14px);
+                            margin-left: computer(10px);
+                            span {
+                                max-width: computer(183px);
+                                overflow: hidden;
+                                text-overflow: ellipsis;
+                                white-space: nowrap;
+                            }
+                        }
+                    }
+                    .lesson-detail-data {
+                        width: 100%;
+                        min-width: computer(180px);
+                        display: flex;
+                        flex-direction: row;
+                        flex-wrap: nowrap;
+                        justify-content: space-between;
+                        padding: 0 computer(10px);
+                        .lesson-detail-data-left {
+                            overflow: hidden;
+                            max-width: computer(90px);
+                            text-overflow: ellipsis;
+                            white-space: nowrap;
+                            font-size: computer(14px);
+                        }
+                        .lesson-detail-data-right {
+                            overflow: hidden;
+                            max-width: computer(150px);
+                            text-overflow: ellipsis;
+                            white-space: nowrap;
+                            font-size: computer(12px);
+                            display: flex;
+                            flex-direction: row;
+                            justify-content: center;
+                            align-items: center;
+                            span:nth-child(2) {
+                                width: computer(65px);
+                                text-overflow: ellipsis;
+                                white-space: nowrap;
+                                overflow: hidden;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .footer {
+        height: computer(50px);
+        line-height: computer(50px);
+        text-align: center;
+        border-top: 1px solid $color_border;
+    }
+    .class-message {
+        max-width: calc(100% - #{computer(50px)});
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        display: inline-block;
+    }
+    .teacher-name-message {
+        max-width: computer(160px);
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        display: inline-block;
+    }
+    .teacher-class-message span {
+        float: left;
+    }
+    .click-show-more {
+        font-size: computer(14px);
+        margin: computer(10px) 0;
+        text-align: center;
+        color: $color_font-light;
+        cursor: default;
+        clear: both;
+        &.pointer {
+            cursor: pointer;
+        }
+    }
+    .date-picker {
+        width: computer(240px);
+        top: calc((100% - #{computer(30px)}) / 2);
+        color: $color_font-light;
+        font-size: computer(14px);
+    }
+}

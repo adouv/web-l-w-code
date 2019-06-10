@@ -1,0 +1,38 @@
+.bill .batchInput{overflow: hidden}
+.bill .border_page .pagetit{
+    color:#3b3b3b;line-height: 62px;height: 62px;
+    text-align: center;font-size: 18px;font-family: "Microsoft YaHei", "Simsun", "arial", "sans-serif";
+    border-bottom: 1px solid #e3e3e3;
+}
+.bill .border_page  .batchcon{
+    width: 20%;margin: 20px auto;
+}
+.bill .border_page  .batchcon p{
+    line-height: 35px;font-weight: 600;
+}
+.bill .border_page  .batchcon p .warning{font-size: 12px;color: #999999;font-weight: normal;}
+.bill .border_page  .batchcon p a{
+    color:#0096ff;
+}
+.bill .border_page .nonext{margin: 10px 0 5px 0;color:#0096ff}
+.bill .border_page .export{
+    width: 150px;
+    margin-left: 83px;
+    height: 150px;
+    background: url('../images/upload.png') no-repeat center;position: relative;margin-bottom: 10px;
+}
+.bill .flow-btn{width: 100%;height: 100%;display: inline-block;position:absolute;top:0;right:0;cursor: pointer;}
+.bill .upload_result{margin-top: 10px;}
+.bill .upload_result .clear{height: 40px;}
+.bill .upload_result .clear p{line-height: inherit;}
+.bill .upload_result .clear>div{display: inline-block;}
+.bill .upload_result .clear .batch_name{width: 45%;text-align: right;height: 35px;margin-right: 1%;}
+.bill .upload_result .clear .batch_name p{height: 18px;line-height: 18px;text-decoration: underline;width: 100%; overflow: hidden;text-overflow: ellipsis;  white-space: nowrap;font-weight: normal;}
+.bill .upload_result .clear .batch_cont{width: 52%;text-align: left;height: 35px;vertical-align: bottom;}
+.bill .upload_result .clear .batch_cont p{height: 18px;width: 90%;background: #f6f6f6;border-radius: 8px;position: relative;float: left;}
+.bill .upload_result .clear .batch_cont p span{position: absolute;top:0;left: 0;background: #77b6ff;width: 50%;height: 18px;border-radius: 8px;}
+.bill .upload_result .clear .batch_cont p em{position: absolute;top:-16px;right: 0;color:#4c7db6;}
+.bill .upload_result .clear .del{float: right;width: 24px;height: 25px;cursor: pointer;background: url(/images/del1.png) no-repeat;margin-top: -6px ;}
+.bill .border_page .btnbox{text-align: center;width: 100%;margin: 40px 0;}
+
+ /*红色 f64c74*/

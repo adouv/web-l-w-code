@@ -1,0 +1,37 @@
+  [{
+    "id":"all-5",
+    "name":"全部项目",
+    "url":"/repair/all",
+    "icon":"",
+    "hasPage":true,
+    "pId":"0",
+    "permission":"repair:processConfig:all"
+  },
+  {
+    "id":"setting-5",
+    "name":"基础设置",
+    "icon":"",
+    "url":"",
+    "hasPage":false,
+    "pId":"0",
+    "permission":"repair:processConfig:dictionary || repair:processConfig:process"
+  },
+  {
+    "id":"setting-18",
+    "name":"模块字典",
+    "icon":"&#xe620;",
+    "url":"/repair/settings/dictionary",
+    "hasPage":true,
+    "pId":"setting-5",
+    "permission":"repair:processConfig:dictionary"
+  },
+  {
+    "id":"setting-19",
+    "name":"审批流程",
+    "icon":"&#xe621;",
+    "url":"/repair/settings/process",
+    "hasPage":true,
+    "pId":"setting-5",
+    "permission":"repair:processConfig:process"
+  }
+]

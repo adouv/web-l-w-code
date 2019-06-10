@@ -1,0 +1,122 @@
+<div class="prepare-info">
+    <nz-layout>
+        <nz-header>
+            <div class="header" flex="main:justify cross:center">
+                <nz-breadcrumb [nzSeparator]="'>'">
+                    <nz-breadcrumb-item>
+                        <a (click)="goHome()">教</a>
+                    </nz-breadcrumb-item>
+                    <!--<nz-breadcrumb-item (click)="goBack()">-->
+                    <!--课表备课-->
+                    <!--</nz-breadcrumb-item>-->
+                    <nz-breadcrumb-item>
+                        讲课详情
+                    </nz-breadcrumb-item>
+                </nz-breadcrumb>
+                <div class="title">
+                    {{classAllName}}
+                </div>
+                <div *ngIf="coursewareHeader?.isDownload" (click)="openDownLoadDialog()" class='download' flex='cross:center main:center'>
+                    <span class="iconfont icon-download upload-btn"></span>
+                    <div class="name">
+                        下载列表
+                        <span *ngIf="coursewareHeader?.downloadList.length > 0">({{coursewareHeader?.downloadList.length}})</span>
+                    </div>
+                </div>
+            </div>
+        </nz-header>
+
+        <nz-content class="isHaveContent" *ngIf="isHaveContent">
+            <!-- 教学课件 -->
+            <div class="content" flex="" flex-box="1">
+                <div flex-box="0" class="left">
+                    <ul>
+                        <li [ngClass]="{'active':options.design==lt.code}" *ngFor="let lt of leftTab" (click)="changeTab(lt)">
+                            {{lt.name}}
+                        </li>
+                    </ul>
+                </div>
+                <div flex-box="0" class="right">
+                    <!-- 教学设计-->
+                    <div *ngIf="options.design=='teaching_plan'" class="content-list right-content li-0">
+                        <resource-list *ngIf="teachingPlanList && teachingPlanList.length>0" [resourceList]="teachingPlanList" [showDeleteBtn]="!courseMaterial.publishStatus&&courseMaterial.enableUpdate" (downloadList)='getDownloadList($event)' (onRefreshResourceItem)="refreshCoursewareList()"
+                            (showDownloadBtn)="getShowDownload($event)"></resource-list>
+                        <div class="no-courseware">
+                            <elliptical-page *ngIf="resourceListLoadComplete&&courseMaterial.enableUpdate&&(!teachingPlanList || teachingPlanList.length == 0)" title="暂无课件"></elliptical-page>
+                            <elliptical-page *ngIf="resourceListLoadComplete&&!courseMaterial.enableUpdate&&(!teachingPlanList || teachingPlanList.length == 0)" title="该节次已上过课，无法再次备课"></elliptical-page>
+                        </div>
+                    </div>
+
+                    <!--教学课件-->
+                    <div *ngIf="options.design=='courseware'" class="right-content li-1 auto-scroll">
+                        <resource-list *ngIf="coursewareList && coursewareList.length>0" [resourceList]="coursewareList" [showDeleteBtn]="!courseMaterial.publishStatus&&courseMaterial.enableUpdate" (downloadList)='getDownloadList($event)' (onRefreshResourceItem)="refreshCoursewareList()"
+                            (showDownloadBtn)="getShowDownload($event)"></resource-list>
+                        <div class="no-courseware">
+                            <elliptical-page *ngIf="resourceListLoadComplete&&courseMaterial.enableUpdate&&(!coursewareList || coursewareList.length == 0)" title="暂无教学课件" imgName="no-courseware.png"></elliptical-page>
+                            <elliptical-page *ngIf="resourceListLoadComplete&&!courseMaterial.enableUpdate&&(!coursewareList || coursewareList.length == 0)" title="该节次已上过课，无法再次备课" imgName="no-courseware.png"></elliptical-page>
+                        </div>
+                    </div>
+                    <!--课上练习-->
+                    <div *ngIf="options.design=='exercise'" class="right-content li-2 auto-scroll">
+                        <div flex-box="0">
+                            <div flex="">
+                                <div *ngIf="isHaveExercises" flex-box="0" class="designStatus">
+                                    <nz-select [ngModel]="designStatus" (ngModelChange)="checkStatus($event)" [nzSize]="'default'" [nzPlaceHolder]="'全部'" class="radius bg-gray invitation-home-select" style="width: 120px;">
+                                        <nz-option [nzLabel]="'已分类'" [nzValue]="1"></nz-option>
+                                        <nz-option [nzLabel]="'未分类'" [nzValue]="0"></nz-option>
+                                    </nz-select>
+                                </div>
+                                <div flex-box="1" class="type-box">
+                                    <span class="type-title">题型：</span>
+                                    <div class="type-items">
+                                        <span class="type-item" *ngFor="let type of questionTypeList" [ngClass]="{'active':type?.active}" (click)="getExerciseListByType(type)">{{type?.name}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="content-header" style="margin-top:10px;">
+                                <label class="label-checkbox" nz-checkbox [(ngModel)]="checkedAll" [nzDisabled]="list.length<=0" (ngModelChange)="checkedAllChange($event)">
+								</label>
+                                <span class="label-checkbox-title">全选</span>
+                                <span class="select-exercises">( 已 选 {{detailsData.length}} 题 )</span>
+                            </div>
+                        </div>
+                        <div class="auto-scroll" [ngClass]="{'exercises-content':list.length>0||isHaveExercises}" flex-box="1">
+
+                            <exercises-card [index]="i" *ngFor="let d of list;let i=index" [config]="exercisesCardConfig" [data]="d" (showDetails)="showExerciseDetails($event)" (statusChange)="statusChange($event)"></exercises-card>
+                            <elliptical-page *ngIf="listLoadComplete&&courseMaterial.enableUpdate&&exerciseType===''&&designStatus === 0 && (!list || list.length === 0)" title="暂无未分类习题" imgName="no-courseware.png"></elliptical-page>
+                            <elliptical-page *ngIf="listLoadComplete&&courseMaterial.enableUpdate&&exerciseType===''&&designStatus === 1 && (!list || list.length === 0)" title="暂无已分类习题" imgName="no-courseware.png"></elliptical-page>
+                            <elliptical-page *ngIf="listLoadComplete&&exerciseType&&(!list ||list.length === 0)" title="暂无对应习题" imgName="no-courseware.png"></elliptical-page>
+                            <elliptical-page *ngIf="listLoadComplete&&exerciseType===''&&!courseMaterial.enableUpdate&&(!list ||list.length === 0)" title="该节次已上过课，无法再次备课" imgName="no-courseware.png"></elliptical-page>
+                        </div>
+                    </div>
+                    <!--活动材料-->
+                    <div *ngIf="options.design=='activity_material'" class="right-content li-3 auto-scroll">
+                        <resource-list *ngIf="activityMaterialList && activityMaterialList.length>0" [resourceList]="activityMaterialList" [showDeleteBtn]="!courseMaterial.publishStatus&&courseMaterial.enableUpdate" (downloadList)='getDownloadList($event)' (onRefreshResourceItem)="refreshCoursewareList()"
+                            (showDownloadBtn)="getShowDownload($event)"></resource-list>
+                        <div class="no-courseware">
+                            <elliptical-page *ngIf="resourceListLoadComplete&&courseMaterial.enableUpdate&&(!activityMaterialList || activityMaterialList.length == 0)" title="暂无活动材料" imgName="no-courseware.png"></elliptical-page>
+                            <elliptical-page *ngIf="resourceListLoadComplete&&!courseMaterial.enableUpdate&&(!activityMaterialList || activityMaterialList.length == 0)" title="该节次已上过课，无法再次备课" imgName="no-courseware.png"></elliptical-page>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nz-content>
+        <nz-content flex="main:center cross:center" *ngIf="resourceListLoadComplete && !isHaveContent">
+            <elliptical-page imgName="no-courseware.png" title="该节次已上过课，无法再次备课"></elliptical-page>
+        </nz-content>
+        <nz-footer *ngIf="resourceListLoadComplete">
+            <button nz-button [nzType]="'primary'" nzGhost (click)="goBack()">返回</button>
+            <button nz-button *ngIf="courseMaterial.enableUpdate" [nzType]="'primary'" btnDebunce (debounceClick)="courseMaterialClick()" [waitTime]="1000" [disabled]="!btnDebunce">{{courseMaterial.publishStatus?'取消发布':'发布备课'}}
+			</button>
+            <button (click)="doExercises(0)" [nzType]="'primary'" nzGhost [ngClass]="{'btn-disable':detailsData.length==0}" *ngIf="options.design=='exercise'" tabindex='-1' class="close" nz-button>
+				<span>讲题</span>
+			</button>
+            <button (click)="doExercises(1)" [nzType]="'primary'" [ngClass]="{'btn-disable':detailsData.length==0}" *ngIf="options.design=='exercise'" tabindex='-1' nz-button>
+				<span>做题</span>
+			</button>
+        </nz-footer>
+    </nz-layout>
+    <courseware-header hidden="true" (canceUpload)="canceUpload($event)" (beforeUpload)="beforeUpload()" [showUploadBtn]="'true'" (linkLibrary)="linkLibrary()" [existFileNames]="materialFileNames" (onUploadSuccess)="onUploadSuccess($event)" [verification]="verificationFrom"
+        [options]="options"></courseware-header>
+    <exercises-details *ngIf="showDetails" [type]="detailsType" [data]="detailsData" (btnClick)="btnClick($event)"></exercises-details>
+</div>

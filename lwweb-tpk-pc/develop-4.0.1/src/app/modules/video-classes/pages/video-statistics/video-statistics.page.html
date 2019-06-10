@@ -1,0 +1,75 @@
+<div class="video-statistics">
+	<div class="app-adress">
+		<nz-breadcrumb [nzSeparator]="'>'" >
+			<nz-breadcrumb-item>
+				<a routerLink="/video/unicast">课堂点播</a>
+			</nz-breadcrumb-item>
+			<nz-breadcrumb-item>
+				<a (click)="goJump()">课程列表</a>
+			</nz-breadcrumb-item>
+			<nz-breadcrumb-item *ngIf="videoDetails&&videoDetails.hasRecord">
+				<a routerLink="/video/unicast/{{videoid}}">课程详情</a>
+			</nz-breadcrumb-item>
+			<nz-breadcrumb-item>
+				听评课统计
+			</nz-breadcrumb-item>
+		</nz-breadcrumb>
+	</div>
+	<div class="container-statistics auto-scroll">
+		<div flex-box="0" class="left-container">
+			<!--<video-header></video-header>-->
+			<header>
+				<div class="class-desc">
+					{{videoDetails?.gradeName}}（{{videoDetails?.className}}）{{videoDetails?.subjectName}}
+				</div>
+				<div *ngIf="videoDetails&&videoDetails.hasRecord" class="video-btns">
+					<button routerLink="/video/unicast/{{videoid}}" nz-button [nzType]="'danger'">
+					<span>课程回看</span>
+					</button>
+				</div>
+			</header>
+			<div class="left-container-content auto-scroll">
+				<div class="video-details">
+					<div class="video-detail-group">
+						<span>课程:</span>
+						<span>{{videoDetails?.subjectName}}</span>
+					</div>
+					<div class="video-detail-group">
+						<span>授课教师:</span>
+						<span>{{videoDetails?.teacherName}}</span>
+					</div>
+					<div class="video-detail-group">
+						<span>节次:</span>
+						<span>{{videoDetails?.week}} {{videoDetails?.periodtext}}</span>
+					</div>
+					<div class="video-detail-group">
+						<span>授课时间:</span>
+						<span>{{videoDetails?.giveLessonTime}}</span>
+					</div>
+				</div>
+				<div class="video-statistics-chart">
+					<div class="circle-max">
+						<div class="circle-min">
+						</div>
+						<button nz-button [nzType]="'primary'" class="round-btn click-bright">
+							<span class="count-number">{{videoDetails?.totalClicks}}</span>
+							<span class="count-text">点击量</span>
+						</button>
+						<button nz-button [nzType]="'danger'" class="round-btn leave-word">
+							<span class="count-number">{{videoDetails?.messageCount}}</span>
+							<span class="count-text">留言</span>
+						</button>
+						<button nz-button [nzType]="'danger'" class="round-btn click-likes">
+							<span class="count-number">{{videoDetails?.favourCount}}</span>
+							<span class="count-text">点赞</span>
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="right-container-tab">
+			<dynamic-tabs [tabsComponents]="videoTabs" [tabInputs]="tabInputs" ></dynamic-tabs>
+		</div>
+	</div>
+
+</div>

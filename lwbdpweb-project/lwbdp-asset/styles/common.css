@@ -1,0 +1,893 @@
+/*清除默认checkbox样式*/
+
+.checkbox_class {
+    width: 16px;
+    height: 16px;
+    -webkit-appearance: none;
+    cursor: pointer;
+    filter: alpha(opacity=50);
+    background: url(../images/check_box_default.png) no-repeat;
+    vertical-align: middle;
+}
+
+.checkbox_list {
+    color: #333;
+    font-size: 14px;
+    float: left;
+    margin-right: 12px;
+}
+
+.checkbox_class:checked {
+    background: url(../images/check_box_choice.png) no-repeat;
+    border: 0;
+}
+
+.overflow_hide{
+    overflow: hidden;
+}
+
+/*清除默认select样式*/
+
+.select_class {
+    /*appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    font-size: 14px;
+    width: 160px;
+    height: 30px;
+    color: #333;
+    padding: 0 30px 0 4px;
+    background: url("../images/drop_down.png") no-repeat 100%;
+    background-size: 29px 29px;
+    border: 1px solid #dbe3ee;
+    box-sizing: border-box;
+    margin: 0 10px 0 0;
+    vertical-align: middle;
+    cursor: pointer;*/
+}
+
+.select_class option {
+    width: 100%;
+}
+
+.radio_class {
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    width: 16px;
+    height: 16px;
+    background: url("../images/radio_box_default.png") no-repeat 100%;
+    background-size: 16px 16px;
+    box-sizing: border-box;
+    margin: 0 10px 0 0;
+    vertical-align: middle;
+}
+
+.radio_class:checked {
+    background-image: url("../images/radio_box_choice.png");
+}
+
+.textarea_class {
+    border: 1px solid #dbe3ee;
+    padding: 3px;
+}
+.textarea_class:focus{border-color: #0096ff;}
+
+.input_class {
+    width: 160px;
+    height: 30px;
+    line-height: 30px;
+    border: 1px solid #dbe3ee;
+    box-sizing: border-box;
+    margin: 0 10px 0 0;
+    padding: 0 10px;
+    vertical-align: middle;
+}
+.input_class,
+.textarea_class {
+    font-size: 14px;
+    color: #0096ff;
+    text-shadow: 0px 0px 0px #333333;
+    -webkit-text-fill-color: transparent;
+}
+.textarea_class{
+    padding: 10px;
+}
+input::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder{
+    text-shadow: none;
+    -webkit-text-fill-color: initial;
+    color: #999999;
+}
+.input_class:focus{border-color:#0096ff;}
+.btn_bd {
+    display: inline-block;
+    padding: 0 15px;
+    height: 30px;
+    line-height: 30px;
+    border: 1px solid #0096ff;
+    color: #0096ff;
+    font-size: 14px;
+    border-radius: 3px;
+    cursor: pointer;
+    vertical-align: middle;
+    min-width: 70px;
+    text-align: center;
+    background-color: #fff;
+}
+
+.btn_bd.disabled{
+    opacity: .5;
+    cursor: default;
+}
+.btn_bd.disabled:hover{
+    box-shadow: none;
+}
+
+.btn_bd:hover {
+    border-style: solid;
+    border-width: 1px;
+    border-color: #0096ff;
+    border-radius: 3px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px 0 rgba(0, 127, 255, 0.5);
+    height: 30px;
+}
+
+.btn_margin {
+    margin-left: 14px;
+}
+
+.btn_box {
+    text-align: center;
+    padding: 10px 0;
+    width: 100%;
+}
+
+.btn_bg {
+    margin-left: 10px;
+    display: inline-block;
+    padding: 0 15px;
+    height: 30px;
+    line-height: 30px;
+    background-color: #0096ff;
+    border: 1px solid #0096ff;
+    color: #fff;
+    font-size: 14px;
+    border-radius: 3px;
+    cursor: pointer;
+    vertical-align: middle;
+    min-width: 70px;
+    text-align: center;
+}
+
+.btn_bg:hover {
+    border-style: solid;
+    border-width: 1px;
+    border-color: #0096ff;
+    border-radius: 3px;
+    background-color: #0096ff;
+    box-shadow: 0 2px 4px 0 rgba(0, 127, 255, 0.5);
+    height: 30px;
+}
+
+.yellow_color {
+    color: #ffb900 !important;
+}
+
+.red_color {
+    color: #ff272e !important;
+}
+
+.green_color {
+    color: #00bb8b !important;
+}
+
+.col999 {
+    color: #999 !important;
+}
+
+.input_class::-webkit-input-placeholder {
+    color: #999999;
+    font-size: 12px;
+}
+
+html::-webkit-scrollbar-track {
+    border-radius: 10px;
+    background-color: #ffffff;
+}
+
+html::-webkit-scrollbar {
+    width: 10px;
+    background-color: #ffffff;
+}
+
+html::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.overflow_box {
+    overflow: auto;
+}
+
+.overflow_box::-webkit-scrollbar-track {
+    border-radius: 10px;
+    background-color: #ffffff;
+}
+
+.overflow_box::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+    background-color: #ffffff;
+}
+
+.overflow_box::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+
+.overflow_box_sml {
+    overflow: auto;
+}
+
+.overflow_box_sml::-webkit-scrollbar-track {
+    border-radius: 10px;
+    background-color: #ffffff;
+}
+
+.overflow_box_sml::-webkit-scrollbar {
+    width: 8px;
+    height: 10px;
+    background-color: #ffffff;
+}
+
+.overflow_box_sml::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+.edit_btn {
+    font-size: 20px;
+    color: #786cec;
+}
+
+input[type=checkbox],
+input[type=radio] {
+    margin: 0 5px 0 0;
+}
+
+input[type=file]:focus,
+input[type=checkbox]:focus,
+input[type=radio]:focus {
+    outline: none;
+}
+
+label {
+    font-weight: normal;
+    margin-bottom: 0 !important;
+}
+
+.confirmNoIcon {
+    width: 400px;
+    height: 200px;
+    position: relative;
+}
+
+.confirmNoIcon .layui-layer-btn {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+.confirmNoIcon .layui-layer-btn0,
+.confirmNoIcon .layui-layer-btn1 {
+    width: 70px;
+    height: 30px;
+    border: 1px solid #0096ff !important;
+}
+
+.confirmNoIcon .layui-layer-btn0:hover,
+.confirmNoIcon .layui-layer-btn1:hover {
+    box-shadow: 0 2px 4px 0 #0096ff;
+}
+
+.confirmNoIcon .layui-layer-btn .layui-layer-btn0 {
+    color: #0096ff;
+    background-color: #ffffff;
+}
+
+.confirmNoIcon .layui-layer-btn1 {
+    background: #0096ff;
+    color: #ffffff;
+}
+
+
+/*开关按钮样式*/
+
+.on_btn {
+    width: 46px;
+    height: 21px;
+    background-image: url(../images/off_btn.png);
+    position: relative;
+    top: 0;
+    left: 30px;
+    cursor: pointer;
+}
+
+.on_btn.cur {
+    background-image: url(../images/on_btn.png);
+}
+
+.white_btn {
+    width: 20px;
+    height: 21px;
+    background-image: url(../images/white_btn.png);
+    position: absolute;
+    top: 0;
+    left: 0;
+    cursor: pointer;
+    z-index: 99;
+}
+
+.white_btn.cur {
+    left: 27px;
+}
+
+
+/* 表格中字体按钮样式*/
+
+.table_box table span.iconfont {
+    font-size: 20px;
+    color: #786cec;
+    padding: 5px;
+    cursor: pointer;
+    visibility: hidden;
+}
+
+.table_box table tr:hover span.iconfont {
+    visibility: inherit;
+}
+
+
+/*弹窗表格中样式*/
+
+.table_layer {
+    margin-top: 10px;
+    width: 100%;
+    position: relative;
+    max-height: 370px;
+    overflow: auto;
+    padding: 0 10px;
+    box-sizing: border-box;
+}
+.table_layer.dialog_log{
+    height:430px;
+    max-height: none;
+}
+.max_height {
+    max-height: 442px;
+    overflow: auto;
+}
+
+.table_layer::-webkit-scrollbar-track,
+.max_height::-webkit-scrollbar-track {
+    border-radius: 10px;
+    background-color: #ffffff;
+}
+
+.table_layer::-webkit-scrollbar,
+.max_height::-webkit-scrollbar {
+    width: 10px;
+    background-color: #ffffff;
+}
+
+.table_layer::-webkit-scrollbar-thumb,
+.max_height::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.table_layer .line_strip {
+    position: absolute;
+    top: -4px;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background-image: -webkit-linear-gradient(left, #786cec 20%, #3c76f6 20%, #008aff 20%, #0096ff 20%, #017eff 20%);
+    background-image: -o-linear-gradient(left, #786cec 20%, #3c76f6 20%, #008aff 20%, #0096ff 20%, #017eff 20%);
+    background-size: 100% 4px;
+    background-position: top right;
+    background-repeat: no-repeat;
+}
+
+.table_layer .listTable {
+    width: 100%;
+    border: 1px solid #dae4ee;
+}
+
+.table_layer .listTable th {
+    background: #f8f8f8;
+    height: 40px;
+    padding: 5px;
+    font-size: 14px;
+    color: #333;
+    font-weight: bold;
+    border: 1px solid #dbe3ee;
+    border-top: 0;
+    text-align: center;
+}
+
+.table_layer .listTable tr td {
+    font-size: 14px;
+    color: #333333;
+    padding: 5px;
+    height: 40px;
+    border: 1px solid #dbe3ee;
+    max-width: 100px;
+    text-align: center;
+}
+
+.table_layer table label {
+    margin: 0 !important;
+}
+
+.basicTab tr:hover {
+    cursor: default !important;
+}
+
+.contentWrapper::-webkit-scrollbar-track {
+    border-radius: 10px;
+    background-color: #ffffff;
+}
+
+.contentWrapper::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+    background-color: #ffffff;
+}
+
+.contentWrapper::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.main_content::-webkit-scrollbar-track {
+    border-radius: 10px;
+    background-color: #ffffff;
+}
+.asset .fl{float: left}
+.asset .fr{float: right}
+.main_content::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+    background-color: #ffffff;
+}
+
+.main_content::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+
+/*覆盖弹窗样式*/
+
+.ui-popup {
+    font-family: PingFangSC-Light, 'helvetica neue', 'hiragino sans gb', arial, 'microsoft yahei ui', 'microsoft yahei', simsun, sans-serif !important;
+    z-index: 99999 !important;
+}
+
+.ui-popup-modal .ui-dialog{border: 1px solid #ebebeb;box-shadow: 0 8px 12px 0 rgba( 7, 0, 2 , 0.3) !important;}
+.ui-dialog-body {
+    padding: 0 !important;
+}
+
+.ui-popup-modal:before {
+    background: none !important;
+}
+
+.ui-popup-large {
+    width: 800px;
+    height: 600px;
+    position: relative;
+}
+.basicDialog {position: relative;}
+.basicDialog .addConfig {
+    width: 800px;
+    height: 600px;
+    position: relative;
+}
+.basicDialog .log_page_posa{position: absolute;bottom:45px;left:0px;width: 100%;}
+
+.basicDialog .addConfig_tit {
+    font-size: 16px;
+    padding: 0 10px 0 20px;
+    text-align: center;
+    height: 36px;
+    line-height: 36px;
+    border-bottom: 1px solid #dae4ee;
+}
+
+.basicDialog .addConfig_tit .del_btn {
+    display: inline-block;
+    padding: 0 15px;
+    height: 36px;
+    cursor: pointer;
+    float: right;
+} 
+.ui-dialog .icon-close{color:#999999;}
+.ui-dialog .icon-close:hover {
+    color: #786cec;
+}
+
+
+.basicDialog .addConfig_form {
+    width: 610px;
+    margin: 40px auto;
+}
+
+.basicDialog .form_list {
+    font-size: 0;
+    margin-bottom: 10px;
+}
+
+.basicDialog .form_tit,
+.form_list .input_class {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.basicDialog .form_tit {
+    width: 86px;
+    text-align: right;
+    font-size: 14px;
+    margin-right: 10px;
+}
+
+.basicDialog .form_list .input_class {
+    font-size: 14px;
+    padding: 0 10px;
+    width: 490px;
+}
+
+.basicDialog .form_list .textarea_class {
+    padding: 5px 10px;
+    font-size: 14px;
+    width: 490px;
+    height: 160px;
+    border: 1px solid #dae4ee;
+}
+
+.ui-popup-large .btn_poab {
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+    text-align: center;
+}
+
+.basicDialog .btn_poab .btn_bd {
+    margin-right: 10px;
+}
+
+
+.form_list input::-webkit-input-placeholder,
+.form_list textarea::-webkit-input-placeholder {
+    color: #999;
+}
+
+.form_list input::-moz-placeholder,
+.form_list textarea::-moz-placeholder {
+    color: #999;
+}
+
+.form_list input::-ms-placeholder,
+.form_list textarea::-ms-placeholder {
+    color: #999;
+}
+
+
+/*w5c错误提示*/
+.w5c-form input.error, .w5c-form textarea.error, .w5c-form select.error{
+    border-color : #ff272e !important;
+}
+.w5c-form input:focus:focus, .w5c-form textarea:focus:focus, .w5c-form select:focus:focus{
+    border-color: #0096ff !important;
+    outline: 0;
+    outline: none;
+    box-shadow: none;
+}
+
+/*吐司提示*/
+.nspop_megcontainer{z-index: 99999 !important;}
+
+.ngdialog {
+    box-sizing: border-box;
+}
+
+.ngdialog *,
+.ngdialog *:before,
+.ngdialog *:after {
+    box-sizing: inherit;
+}
+
+.ngdialog {
+    position: fixed;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+    z-index: 9999;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+.ngdialog.ngdialog-disabled-animation,
+.ngdialog.ngdialog-disabled-animation .ngdialog-overlay,
+.ngdialog.ngdialog-disabled-animation .ngdialog-content {
+    -webkit-animation: none!important;
+    animation: none!important;
+}
+
+.ngdialog-overlay {
+    position: fixed;
+    background: rgba(0, 0, 0, 0);
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    -webkit-backface-visibility: hidden;
+    -webkit-animation: ngdialog-flyin 0.5s;
+    animation: ngdialog-flyin 0.5s;
+}
+
+.ngdialog-no-overlay {
+    pointer-events: none;
+}
+
+.ngdialog.ngdialog-closing .ngdialog-overlay {
+    -webkit-backface-visibility: hidden;
+    -webkit-animation: ngdialog-flyout 0.5s;
+    animation: ngdialog-flyout 0.5s;
+}
+
+.ngdialog-content {
+    background: white;
+    -webkit-backface-visibility: hidden;
+    -webkit-animation: ngdialog-flyin 0.5s;
+    animation: ngdialog-flyin 0.5s;
+    pointer-events: all;
+}
+
+.ngdialog.ngdialog-closing .ngdialog-content {
+    -webkit-backface-visibility: hidden;
+    -webkit-animation: ngdialog-flyout 0.5s;
+    animation: ngdialog-flyout 0.5s;
+}
+
+.ngdialog-close:before {
+    font-family: 'Helvetica', Arial, sans-serif;
+    content: '\00D7';
+    cursor: pointer;
+}
+
+html.ngdialog-open,
+body.ngdialog-open {
+    overflow: hidden;
+}
+
+.ngdialog.asset-dialog {
+    padding-bottom: 160px;
+    padding-top: 160px;
+}
+
+.ngdialog.asset-dialog.ngdialog-closing .ngdialog-content {
+    -webkit-animation: ngdialog-flyout .5s;
+    animation: ngdialog-flyout .5s;
+}
+
+.ngdialog.asset-dialog .ngdialog-content {
+    -webkit-animation: ngdialog-flyin .5s;
+    animation: ngdialog-flyin .5s;
+    background: #fff;
+    border-radius: 3px;
+    color: #444;
+    font-family: 'Helvetica',sans-serif;
+    font-size: 1.1em;
+    line-height: 1.5em;
+    margin: 0 auto;
+    max-width: 100%;
+    position: relative;
+    width: 900px;
+    height: 600px;
+    box-shadow: 0 5px 16px #ccc;
+}
+
+.ngdialog.asset-dialog .ngdialog-close {
+    border-radius: 5px;
+    cursor: pointer;
+    position: absolute;
+    right: 0;
+    top: 0;
+    border:0;
+    outline:0;
+    background-color: #fff;
+}
+
+.ngdialog.asset-dialog .ngdialog-close:before {
+    background: transparent;
+    border-radius: 3px;
+    color: #bbb;
+    content: '\D7';
+    font-size: 30px;
+    font-weight: 400;
+    height: 40px;
+    line-height: 40px;
+    margin-right: 20px;
+}
+
+.ngdialog.asset-dialog .ngdialog-close:hover:before,
+.ngdialog.asset-dialog .ngdialog-close:active:before {
+    color: #777;
+}
+
+.ngdialog.asset-dialog .ngdialog-message {
+    margin-bottom: .5em;
+}
+
+.ngdialog.asset-dialog .ngdialog-input {
+    margin-bottom: 1em;
+}
+
+.ngdialog.asset-dialog .ngdialog-input textarea,
+.ngdialog.asset-dialog .ngdialog-input input[type="text"],
+.ngdialog.asset-dialog .ngdialog-input input[type="password"],
+.ngdialog.asset-dialog .ngdialog-input input[type="email"],
+.ngdialog.asset-dialog .ngdialog-input input[type="url"] {
+    background: #fff;
+    border: 0;
+    border-radius: 3px;
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    margin: 0 0 .25em;
+    min-height: 2.5em;
+    padding: .25em .67em;
+    width: 100%;
+}
+
+.ngdialog.asset-dialog .ngdialog-input textarea:focus,
+.ngdialog.asset-dialog .ngdialog-input input[type="text"]:focus,
+.ngdialog.asset-dialog .ngdialog-input input[type="password"]:focus,
+.ngdialog.asset-dialog .ngdialog-input input[type="email"]:focus,
+.ngdialog.asset-dialog .ngdialog-input input[type="url"]:focus {
+    box-shadow: inset 0 0 0 2px #8dbdf1;
+    outline: none;
+}
+
+.ngdialog.asset-dialog .ngdialog-buttons {
+    *zoom: 1;
+}
+
+.ngdialog.asset-dialog .ngdialog-buttons:after {
+    content: '';
+    display: table;
+    clear: both;
+}
+
+.ngdialog.asset-dialog .ngdialog-button {
+    border: 0;
+    border-radius: 3px;
+    cursor: pointer;
+    float: right;
+    font-family: inherit;
+    font-size: .8em;
+    letter-spacing: .1em;
+    line-height: 1em;
+    margin: 0 0 0 .5em;
+    padding: .75em 2em;
+    text-transform: uppercase;
+}
+
+.ngdialog.asset-dialog .ngdialog-button:focus {
+    -webkit-animation: ngdialog-pulse 1.1s infinite;
+    animation: ngdialog-pulse 1.1s infinite;
+    outline: none;
+}
+
+@media (max-width: 568px) {
+    .ngdialog.asset-dialog .ngdialog-button:focus {
+        -webkit-animation: none;
+        animation: none;
+    }
+}
+
+.ngdialog.asset-dialog .ngdialog-button.ngdialog-button-primary {
+    background: #3288e6;
+    color: #fff;
+}
+
+.ngdialog.asset-dialog .ngdialog-button.ngdialog-button-secondary {
+    background: #e0e0e0;
+    color: #777;
+}
+.asset-dialog .garden-auto::-webkit-scrollbar-track,.asset-dialog .garden-list::-webkit-scrollbar-track {
+    border-radius: 2px;
+    background-color: #ffffff;
+}
+
+.asset-dialog .garden-auto::-webkit-scrollbar,.asset-dialog .garden-list::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+    background-color: #ffffff;
+}
+
+.asset-dialog .garden-auto::-webkit-scrollbar-thumb,.asset-dialog .garden-list::-webkit-scrollbar-thumb {
+    border-radius: 2px;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+.ngdialog.lw-select-person .ngdialog-content{min-height: 600px;height:auto;}
+.ngdialog.lw-select-person .ngdialog-content,.ztree *{font-family: inherit;}
+
+.curr{
+    cursor: pointer
+}
+
+.ngdialog .icon-close {
+    color: #999999;
+    cursor: pointer;
+}
+.ngdialog .icon-close:hover {
+    color: #786cec;
+}
+/*选园区按钮划过*/
+.ngdialog.lw-select-garden .ngdialog-content{font-family: inherit;}
+.lw-select-garden .garden-btn:hover{ box-shadow: 0px 2px 4px 0px rgba(0, 127, 255, 0.5);}
+
+
+/*列表,搜索缺省*/
+.nodata_box{
+    width:100%;color:#999999;text-align: center;
+    padding-top:80px;
+    margin-bottom: 30px;
+}
+.nodata_box span{display: inline-block;width:180px;height:143px;}
+.nodata_box p{margin-top: 20px;}
+.nodata_box .nodata span{background: url(../images/nodata.png);}
+.nodata_box .nodata_search span{background: url(../images/nodata1.png);}
+div.lw-select-person.ngdialog{overflow: hidden}
+
+/* 所以输入框数据格式校验 */
+.notEmptyPass{
+    display: inline-block;
+    width: 25px;
+    height: 18px;
+    background: url('../images/not_pass.png') no-repeat;
+    z-index: 2;
+    position: absolute;
+    right: 6px;
+    top: 10px;
+    padding: 10px 5px;
+    cursor: pointer;
+}
+.right_format{
+    position: absolute;
+    top: -28px;
+    right: 10px;
+    padding: 5px 20px;
+    background: rgba( 236, 66, 63 , 0.9);
+    color: #fff;
+    font-family: 'microsoft yahei',PingFangSC-Light,'helvetica neue','hiragino sans gb',arial,'microsoft yahei ui',simsun,sans-serif;
+    z-index: 9;
+    white-space: nowrap;
+}
+.asset .btn_bg:disabled,.purchase .btn_bg:disabled{
+    opacity: .2;
+    box-shadow: none !important;
+    cursor: not-allowed !important;
+}
+.asset .btn_bg:disabled:hover,.purchase .btn_bg:disabled:hover{
+    box-shadow: none !important;
+}
+.asset .pointer{
+    cursor: pointer;
+}

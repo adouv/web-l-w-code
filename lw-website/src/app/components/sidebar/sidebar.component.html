@@ -1,0 +1,22 @@
+<div class="sidebar">
+	<ul>
+		<li class="sidebar-li" *ngFor="let item of list">
+			<div *ngIf="item.childColumns" class="first-menu" (click)="showMenu(item)" [ngClass]="{'active': item.isSubMenu}">
+				<span class="title">{{item.name}}</span>
+				<span class="iconfont icon-arrow-bottom arrow" [ngClass]="{'icon-arrow-top': item.isSubMenu}"></span>
+			</div>
+			<div *ngIf="!item.childColumns" class="first-menu" [ngClass]="{'active': item.isSubMenu}" [routerLink]="['/list/'+type+'/'+item.id]">
+				<span class="title">{{item.name}}</span>
+			</div>
+			<!-- 三级下拉菜单 -->
+			<ul class="sub-menu" *ngIf="item.isSubMenu">
+				<li class="sub-menu-li" *ngFor="let subTit of item.childColumns" [routerLink]="['/list/'+type+'/'+item.id+'/'+subTit.id]">
+					<span>{{subTit.name}}</span>
+				</li>
+			</ul>
+		</li>
+	</ul>
+	<div class="side_pic">
+		<img src="assets/images/side_pic.png" alt="">
+	</div>
+</div>

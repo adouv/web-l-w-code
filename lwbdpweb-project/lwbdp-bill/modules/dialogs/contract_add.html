@@ -1,0 +1,100 @@
+<link rel="stylesheet" href="modules/dialogs/style/detail.css">
+<div class="doalogdetail">
+  <div class="page">
+    <p class="pagetit font_MY" ng-if="pageType=='add'">
+      合同添加
+      <span class="close" ng-click="close()"></span>
+    </p>
+    <p class="pagetit font_MY" ng-if="pageType=='edit'">
+      合同修改
+      <span class="close" ng-click="close()"></span>
+    </p>
+    <p class="detail_info">
+      <span class="name">项目大类:</span>
+      <span class="content">{{project.projectTypeName?project.projectTypeName:'无'}}</span>
+    </p>
+    <p class="detail_info">
+      <span class="name">项目/工程类别:</span>
+      <span class="content">{{project.projectItemTypeName?project.projectItemTypeName:'无'}}</span>
+    </p>
+    <p class="detail_info">
+      <span class="name">合同项目:</span>
+      <span class="content">{{project.name?project.name:'无'}}</span>
+    </p>
+    <input hidden name="projectId" value="{{data.id}}"/>
+    <div class="input_form">
+      <form class="w5c-form" w5c-form novalidate w5c-form-validate name="contractForm" stop-event>
+        <!--<div class="formItem">
+          <p class="form_name">合同对应的项目阶段：</p>
+          <select name="" id="" class="form-control">
+            <option value="">项目阶段</option>
+            <option value="">项目阶段</option>
+            <option value="">项目阶段</option>
+          </select>
+        </div>-->
+        <div class="formItem">
+          <p class="form_name">合同编号：</p>
+          <input type="text" class="form-control"
+                 maxlength="50" placeholder="50字以内..."
+                 name="contractNo"
+                 ng-model="contractVo.contractNo"/>
+        </div>
+        <div class="formItem">
+          <p class="form_name">合同名称*：</p>
+          <input type="text" maxlength="100" class="form-control"
+                 required placeholder="100字以内,必填..."
+                 name="contractName"
+                 ng-model="contractVo.contractName"/>
+        </div>
+
+        <div class="formItem">
+          <p class="form_name">合同金额（万元）*：</p>
+          <input type="text" required ng-keyup="checkInputAmount('contractAmount')" name="contractAmount"
+                 placeholder="只允许正实数,支持小数点后6位,必填..."
+                 class="form-control" ng-model="contractVo.contractAmount" min="0"/>
+        </div>
+
+
+        <div class="formItem">
+          <p class="form_name">承建单位*：</p>
+          <input type="text" id="selectUnit" class="selectBtn form-control" name="buildUnitName"
+                 placeholder="不支持手工输入,必填..." ng-model="contractVo.buildUnitName" required>
+          <select-unit ids="contractVo.buildUnitId" named="contractVo.buildUnitName"></select-unit>
+        </div>
+
+
+        <div class="formItem">
+          <p class="form_name">上报决算价（万元）：</p>
+          <input type="text" class="form-control" min="0"
+                 placeholder="只允许正实数,支持小数点后6位,非必填..."
+                 ng-keyup="checkInputAmount('reportFinalPrice')" name="reportFinalPrice"
+                 ng-model="contractVo.reportFinalPrice"/>
+        </div>
+
+        <div class="formItem">
+          <p class="form_name">评审决算价（万元）：</p>
+          <input type="text" class="form-control" min="0"
+                 placeholder="只允许正实数,支持小数点后6位,非必填..."
+                 ng-keyup="checkInputAmount('auditFinalPrice')" name="auditFinalPrice"
+                 ng-model="contractVo.auditFinalPrice"/>
+        </div>
+        <div class="formItem">
+          <p class="form_name">签订日期：</p>
+          <!--<input type="date" class="form-control"
+                 name="signDate" ng-model="signDate"/>-->
+            <div class="form-group" id="get-time">
+                <input id="signDate" lw-laydate type="text" value="{{signDate | date:'yyyy/MM/dd'}}"
+                       ng-model="signDate" class="form-control">
+            </div>
+        </div>
+        <div class="btnbox">
+          <span class="setbtn cancelBtn" ng-click="close()">取消</span>
+          <span class="setbtn sureBtn" ng-if="pageType=='add'" w5c-form-submit="save()" refresh-list>确定</span>
+          <span class="setbtn sureBtn" ng-if="pageType=='edit'" w5c-form-submit="edit()" refresh-list>修改</span>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>
+

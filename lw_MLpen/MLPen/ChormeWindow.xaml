@@ -1,0 +1,18 @@
+﻿<dialog:MLDialog x:Class="MLPen.ChormeWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MLPen"
+        xmlns:wpf="clr-namespace:CefSharp.Wpf;assembly=CefSharp.Wpf"
+        xmlns:uc="clr-namespace:MLPen.Controls"
+        xmlns:dialog="clr-namespace:MLPen.Dialogs"
+        xmlns:ui="clr-namespace:MLPen.ModernUI.Windows.UI;assembly=MLPen.ModernUI"
+        mc:Ignorable="d"
+        Title="ChormeWindow" WindowStartupLocation="CenterScreen" AllowsTransparency="True" ResizeMode="NoResize" WindowStyle="None">
+
+    <Grid>
+        <uc:UCChorme x:Name="Chrome"/>
+        <ui:MSLoading x:Name="Loading" IsOpen="True" CornerRadius="0,0,6,6" Background="Transparent"/>
+    </Grid>
+</dialog:MLDialog>

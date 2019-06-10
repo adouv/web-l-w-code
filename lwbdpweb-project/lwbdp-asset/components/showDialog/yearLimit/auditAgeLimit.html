@@ -1,0 +1,62 @@
+<div class="yearLimit">
+
+    <div class="main_in " id="year_in">
+        <!--<h3 class="draff_title">固定资产最低使用年限标准置配置</h3>-->
+        <!--总计-->
+        <div class="yearLimit_title">
+            固定资产最低使用年标准
+            <span class="iconfont icon-close" ng-click="auditAgeLimit.cancel()"></span>
+        </div>
+        <div class="total_num">
+            <div class="tot_left fl">
+                <!--<input type="text" class="input_class" ng-model="auditAgeLimit.keywords" placeholder="回车键提交查询" >-->
+                <div class="content_textBar">
+                    <input type="text" class="input_class" placeholder="回车键提交查询" ng-model="auditAgeLimit.keywords" ng-keydown="auditAgeLimit.enterSearch($event)">
+                    <span class="iconfont icon-error" ng-show="auditAgeLimit.keywords" ng-click="auditAgeLimit.removeKeywords()"></span>
+                </div>
+                <span class="btn_bd" ng-click="auditAgeLimit.search()">查询</span>
+            </div>
+
+        </div>
+        <!-- 表格 -->
+        <div class="table_absolute overflow_box" style="top:60px">
+            <div class="table_box">
+                <table class="listTable draftTab">
+                    <thead>
+                        <tr>
+                            <th>资产小类</th>
+                            <th>最低使用年限</th>
+                            <th>备注</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="data in auditAgeLimit.pageList">
+                            <td>{{data.name}}</td>
+                            <td>{{data.minLifecycle}}</td>
+                            <td>{{data.description}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="nodata_box" ng-show="auditAgeLimit.pageList.length<1">
+                    <div class="nodata" ng-show="!auditAgeLimit.isSearch">
+                        <span></span>
+                        <p>暂无数据</p>
+                    </div>
+                    <div class="nodata_search" ng-show="auditAgeLimit.isSearch">
+                        <span></span>
+                        <p>搜索无结果</p>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <pagination ng-show="auditAgeLimit.pageList.length>0" conf="auditAgeLimit.paginationConf"></pagination>
+            </div>
+        </div>
+    </div>
+    <!-- 点击添加按钮弹窗 -->
+    <dialog ng-if="auditAgeLimit.addLimit" modal>
+        <div dialog-content>
+            <add-config close-click="auditAgeLimit.closeDialog()" return="auditAgeLimit.new" put="auditAgeLimit.addAssetConfig()"></add-config>
+        </div>
+    </dialog>
+</div>

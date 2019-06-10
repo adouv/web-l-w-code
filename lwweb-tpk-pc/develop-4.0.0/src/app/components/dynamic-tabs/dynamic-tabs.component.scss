@@ -1,0 +1,12 @@
+@import "../../../styles/variable";
+// tabs
+.video-detail-tabs::ng-deep {
+	height: 100%;
+	.ant-tabs-content{
+		height: calc(100% - #{computer(80px)});
+	}
+	.ant-tabs-bar {
+		margin-bottom: 11px;
+		margin-right: 20px;
+	}
+}

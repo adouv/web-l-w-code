@@ -1,0 +1,57 @@
+<div class="scale-select">
+    <div class="scale-select-content">
+        <div class="scale-select-input">
+            <!--<nz-input class="chapter-search-condition-input" [(ngModel)]="keyword" [nzType]="'search'" nzPlaceHolder="请输入关键字"-->
+            <!--(keyup)="onSearch($event)"  ></nz-input>-->
+            <!--<div class="input-group">-->
+            <!--<input (keyup.enter)='onSearch($event)' placeholder="关键字查询" type="text" [(ngModel)]="keyword"/>-->
+            <!--<span (click)="onSearch($event)" class="ant-input-suffix">-->
+            <!--<i class="iconfont icon-search2"></i>-->
+            <!--</span>-->
+            <!--</div>-->
+            <input-search class="input-search" [tpkPlaceholder]="'关键字查询'" [(tpkModel)]="keyword" (onSearch)="onSearch($event)"></input-search>
+        </div>
+        <div class="scale-select-table auto-scroll">
+            <table>
+                <thead>
+                    <tr>
+                        <th width="15%" class="text-center">序号</th>
+                        <th width="50%">量表名称</th>
+                        <th width="35%">更新时间</th>
+                    </tr>
+                </thead>
+            </table>
+            <div class="table">
+                <table>
+                    <colgroup>
+                        <col width="15%">
+                        <col width="50%">
+                        <col width="35%">
+                    </colgroup>
+                    <tbody>
+                        <tr (click)="selectScale($event, scale)" [ngClass]="{'active': selectScaleModel&&(selectScaleModel.id == scale.id)}" *ngFor="let scale of scaleDatas; let i = index;">
+                            <td class="text-center">{{i+1}}</td>
+                            <td>{{scale.name}}</td>
+                            <td>{{datePipe.transform(scale.lastUpdateTime,'yyyy/MM/dd HH:mm')}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <!--<p class="click-show-more" [ngClass]="{'pointer':record.total > record.page.size}"-->
+                <!--(click)="changeRecordList($event,false,record)">{{record.total >-->
+                <!--record.page.size?'点击加载更多':'已加载全部'}}</p>-->
+                <elliptical-page *ngIf="scaleDatas.length === 0" title="暂无匹配的量表数据"></elliptical-page>
+            </div>
+        </div>
+    </div>
+    <div class="footer" flex='main:center'>
+        <button (click)='onCancel()' tabindex='-1' class="close" nz-button [nzType]="'primary'" nzGhost>
+			<span>取消</span>
+		</button>
+        <button *ngIf="!selectScaleModel||!selectScaleModel.id" class="btn-disable" tabindex='-1' nz-button [nzType]="'primary'">
+			<span>确定</span>
+		</button>
+        <button *ngIf="selectScaleModel&&selectScaleModel.id" (click)='onOk()' tabindex='-1' nz-button [nzType]="'primary'">
+			<span>确定</span>
+		</button>
+    </div>
+</div>

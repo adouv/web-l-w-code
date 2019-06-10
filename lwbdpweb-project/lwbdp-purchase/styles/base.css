@@ -1,0 +1,37 @@
+*{margin: 0;padding: 0;box-sizing: border-box;}
+html,body{
+    height: 100%;
+    width: 100%;
+    font-size: 14px;
+    font-family: 'microsoft yahei',PingFangSC-Light,'helvetica neue','hiragino sans gb',arial,'microsoft yahei ui',simsun,sans-serif !important;
+}
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, p, pre, form, fieldset,span, input, p, blockquote, th, td,select { margin:0; padding:0; }
+h1, h2, h3, h4, h5, p{ font-size:100%;}
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6{
+    font-family: 'microsoft yahei', PingFangSC-Light,'helvetica neue','hiragino sans gb',arial,'microsoft yahei ui',simsun,sans-serif;
+}
+address, cite, dfn, em, var { font-style: normal}
+input, button, select, textarea { outline:none;}
+legend { color: #000;}
+img { border: 0;}
+ul,li{ list-style: none;}
+button, input, select, textarea { font-size: 100%;outline: none;}
+table { border-collapse: collapse; border-spacing: 0;}
+textarea { resize:none;}   /*=====禁用了文本的拖拉，尤其在谷歌下=====*/
+p{ text-align:inherit; text-justify:distribute;}   /*=====为了使文本段落左右两边对齐=====*/
+/*======== Link ========*/
+a { color: #666; text-decoration:none; }
+a:focus, a:hover{text-decoration:none;}
+a:focus { -moz-outline-style: none; } /* IE不支持 */
+/*======== 清除浮动 ========*/
+.clearfix:before,.clearfix:after{content:""; display:table;}
+.clearfix:after{clear:both;}
+.clearfix{zoom:1;}
+.clear{ clear: both;}
+/*==================================== 公共样式 ====================*/
+.fl{ float: left !important;}
+.fr{ float: right !important;}
+.ell{ overflow: hidden; text-overflow:ellipsis; white-space:nowrap;}   /*文字超出省略号显示*/
+.clear{ clear: both;}
+i,s,em{ font-style: normal;}
+.none{ display: none;}

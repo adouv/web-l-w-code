@@ -1,0 +1,47 @@
+<div class="bdp_list_search fixed_asset">
+    <div class="dialog-header">
+        相关政策标准查看
+        <span class="iconfont icon-close del_btn dialog-close" ng-click="closeThisDialog()"></span>
+    </div>
+    <div class="table_absolute overflow_box">
+        <div class="search_box">
+            <div class="content_textBar fr">
+                <input type="text" class="input_class" placeholder="回车键提交查询"  ng-model="purchaseFixedAsset.keywords"
+                       ng-keydown="purchaseFixedAsset.goSearch($event)">
+                <span class="iconfont icon-search"
+                      ng-if="!purchaseFixedAsset.keywords || purchaseFixedAsset.keywords == '' "></span>
+                <span class="iconfont icon-error" ng-if="purchaseFixedAsset.keywords.length > 0"
+                      ng-click="purchaseFixedAsset.cleanKeywords()"></span>
+            </div>
+        </div>
+        <div class="table_box">
+            <table class="listTable-border">
+                <thead>
+                <th width="50">序号</th>
+                <th width="290">政策名称</th>
+                </thead>
+                <tbody>
+                <tr ng-repeat="data in purchaseFixedAsset.pageList track by $index">
+                    <td>{{$index + 1}}</td>
+                    <td>{{data.name}}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <!-- 分页 -->
+        <pagination conf="purchaseFixedAsset.paginationConf"
+                    ng-show="purchaseFixedAsset.pageList.length>0"></pagination>
+
+        <!-- 暂无数据、暂无搜索结果-->
+        <div class="nodata_box" ng-show="purchaseFixedAsset.pageList.length < 1">
+            <div class="nodata" ng-show="!purchaseFixedAsset.showSearch">
+                <span></span>
+                <p>暂无数据</p>
+            </div>
+            <div class="nodata_search" ng-show="purchaseFixedAsset.showSearch">
+                <span></span>
+                <p>搜索无结果</p>
+            </div>
+        </div>
+    </div>
+</div>

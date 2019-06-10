@@ -1,0 +1,34 @@
+.bdp_list_search.fixed_asset .search_box {
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    margin-bottom: 10px;
+}
+
+.bdp_list_search.fixed_asset .content_textBar {
+    margin-right: 0;
+}
+
+.bdp_list_search.fixed_asset .table_absolute {
+    max-height: 441px;
+    padding-bottom: 0;
+}
+
+.bdp_list_search.fixed_asset .listTable-border {
+    border: 1px solid #dbe3ee;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.bdp_list_search.fixed_asset .listTable-border th, .bdp_list_search.fixed_asset .listTable-border td {
+    border: 1px solid #dbe3ee;
+    height: 40px;
+    text-align: center;
+    padding: 5px;
+}
+
+.bdp_list_search.fixed_asset .tm_pagination.page-list {
+    position: fixed;
+    width: 100%;
+    bottom: 50px;
+}

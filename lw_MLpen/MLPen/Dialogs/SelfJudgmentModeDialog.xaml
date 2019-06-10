@@ -1,0 +1,29 @@
+﻿<local:MLDialog x:Class="MLPen.Dialogs.SelfJudgmentModeDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MLPen.Dialogs"
+        xmlns:ui="clr-namespace:MLPen.ModernUI.Windows.UI;assembly=MLPen.ModernUI"
+        mc:Ignorable="d"
+        Title="配置该道题的自判模式"
+        Height="300" Width="500" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <StackPanel Margin="0,40,0,0">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="模式选择：" Width="160" TextAlignment="Right"/>
+                <RadioButton Content="赋分模式" IsChecked="True" Tag="score" Checked="ModeCheckedChange"/>
+                <RadioButton Content="对错模式" Margin="40,0,0,0" Tag="self-judge" Checked="ModeCheckedChange"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0,18,0,0" x:Name="ScorePanel">
+                <TextBlock Text="满分设置：" Width="160" TextAlignment="Right" VerticalAlignment="Center"/>
+                <ui:TextBoxEx x:Name="txtScore" PlaceHolder="设置分数值" Width="100" Text="100" />
+                <TextBlock Text="分" VerticalAlignment="Center" Margin="10,0,0,0"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0,18,0,0">
+                <TextBlock x:Name="lblMsg" Foreground="Red" VerticalAlignment="Center" Visibility="Collapsed" Margin="160,0,0,0"/>
+            </StackPanel>
+        </StackPanel>
+        <Button HorizontalAlignment="Center" VerticalAlignment="Bottom" Content="确 定" Style="{StaticResource MSButtonPrimary}" Margin="0,0,0,20" Width="100" Click="ConfirmClick" />
+    </Grid>
+</local:MLDialog>

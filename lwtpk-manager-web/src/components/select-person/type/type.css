@@ -1,0 +1,13 @@
+.lw-select-person .ztree li span.button.chk { width:16px;height:16px;-webkit-appearance: none;  vertical-align: text-top;margin: 0 6px 0 0;cursor: pointer; box-sizing: border-box;overflow: hidden;background: url("../images/off-select.png");background-size: contain;background-repeat:no-repeat;}
+.lw-select-person .ztree li span.button.chk.checkbox_false_full_focus{background-position: 0 0;}
+.lw-select-person .ztree li span.button.chk.checkbox_true_part {background-image: url(../images/has-select.png);background-size: contain;background-repeat:no-repeat;width: 16px;height: 16px;}
+.lw-select-person .ztree li span.button.chk.checkbox_true_full {  background-image: url(../images/on-select.png);background-size: contain;background-repeat:no-repeat;background-position:0 0;width: 16px;height: 16px;}
+.lw-select-person .ztree li span.button.chk.checkbox_true_full_focus {background-image: url(../images/on-select.png);background-size: contain;background-repeat:no-repeat;background-position:0 0;width: 16px;height: 16px;}
+.lw-select-person .garden-content-left::-webkit-scrollbar-track {border-radius: 2px;background-color: #ffffff;}
+.lw-select-person .garden-content-left::-webkit-scrollbar {width: 8px;height: 8px;background-color: #ffffff;}
+.lw-select-person .garden-content-left::-webkit-scrollbar-thumb {border-radius: 2px;background-color: rgba(0, 0, 0, 0.2);}
+.lw-select-person .ztree li span.button.switch {  font-family: "iconfont" !important;  font-size: 12px;  font-style: normal;  -webkit-font-smoothing: antialiased;  -moz-osx-font-smoothing: grayscale;  background: none;  vertical-align: baseline;  width: 12px;  height: 12px;  margin-right: 5px;  }
+.lw-select-person .ztree li span.button.noline_close:before {  content: "\e822";  }
+.lw-select-person .ztree li span.button.noline_open:before {  content: "\e821";  }
+.lw-select-person .ztree li a:hover{text-decoration: none}
+.lw-select-person .ztree li{line-height: 30px}

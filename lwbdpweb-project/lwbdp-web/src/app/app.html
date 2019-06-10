@@ -1,0 +1,27 @@
+<div class="head">
+    <header class="header_box">
+        <div class="header_content"></div>
+        <div class="header_user">
+            <span class="header_icon"></span>
+            <span>{{app.account.displayName }}</span>
+            <span class="bdpIconfont icon-dropdown01_icon header_row">
+                <div class="header_logout">
+                    <span>个人资料</span>
+                    <span>关于</span>
+                    <span ng-click="app.logout()">退出登录</span>
+                </div>
+            </span>
+        </div>
+    </header>
+    <ul class="top_nav" ng-hide="isHideNavBar">
+        <li>基建项目管理</li>
+        <li ng-click="app.goModule('repair')" ng-class="{'cur':app.currentTab=='repair'}">修缮项目管理</li>
+        <li ng-click="app.goModule('purchase')" ng-class="{'cur':app.currentTab=='purchase'}">设备采购项目管理</li>
+        <li ng-click="app.goModule('asset')" ng-class="{'cur':app.currentTab=='asset'}">资产管理</li>
+        <li ng-click="app.goModule('bill')" ng-class="{'cur':app.currentTab=='bill'}">项目财务管理</li>
+        <li ng-click="app.goModule('logistics')" ng-class="{'cur':app.currentTab=='logistics'}">后勤运维管理</li>
+    </ul>
+</div>
+<div class="contentWrapper w5c-auto" ng-class="{hidden_top_nav:isHideNavBar}">
+    <div class="wrapFlex" ui-view></div>
+</div>

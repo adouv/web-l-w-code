@@ -1,0 +1,35 @@
+<div class="linkContent">
+    <div class="search_box">
+        <p>
+            <input type="text" class="input_class" ng-model="link.listKeywords" ng-change="link.searchList('module')">
+            <span class="connectIconfont icon-close-circle" ng-click="link.cleanAll('module')" ng-show="link.listKeywords && link.listKeywords!==''"></span>
+            <span class="connectIconfont icon-client_search" ng-show="!link.listKeywords || link.listKeywords===''"></span>
+        </p>
+    </div>
+    <div class="search_no_result" ng-show="link.moduleList && link.moduleList.length<1 && link.listKeywords && link.listKeywords!==''">
+        搜索无结果
+    </div>
+    <div class="no_data" ng-show="link.moduleList && link.moduleList.length<1 && !link.listKeywords">
+        暂无数据
+    </div>
+    <div class="link_module_list overflow_box_sml">
+        <dl ng-repeat="item in link.moduleList" ng-right-click="link.rightClick(item.categoryId,item.onTop)" ng-class="{'top':item.onTop ,'right':item.categoryId === link.selectedId}" ng-click="link.enterModule(item,item.sceneEntryUrl)">
+            <dt>
+                    <img  ng-src="{{link.filePath+item.ico}}" alt="">
+                </dt>
+            <dd>
+                <p class="name">{{item.categoryName}}</p>
+                <p class="garden">{{item.gardenName}}</p>
+            </dd>
+        </dl>
+        <div class="operation" id="operation_box" ng-show="link.showMask">
+            {{item.onTop}}
+            <p ng-show="!link.selectedTop" ng-click="link.toTop(true)">置顶</p>
+            <p ng-show="link.selectedTop" ng-click="link.toTop(false)">取消置顶</p>
+            <p ng-click="link.cancelLink()">取消连接</p>
+        </div>
+    </div>
+    <div class="bottom_posa" ng-click="link.showSearch()">
+        <span class="connectIconfont icon-add"></span>
+    </div>
+</div>

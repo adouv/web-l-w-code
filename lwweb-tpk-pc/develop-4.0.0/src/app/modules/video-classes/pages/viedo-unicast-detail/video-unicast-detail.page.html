@@ -1,0 +1,52 @@
+<div class="video-container">
+	<div class="app-adress">
+		<nz-breadcrumb [nzSeparator]="'>'">
+			<nz-breadcrumb-item>
+				<a (click)="goVideoIndex()">评</a>
+			</nz-breadcrumb-item>
+			<nz-breadcrumb-item *ngIf="from!='focusLessons'">
+				<!-- playback 课堂回放-高级筛选进入 -->
+				<a (click)="goInvitation()">{{from=="playBack"?"课堂回放列表":(from=="myLessons"?"我的课":"")}}</a>
+			</nz-breadcrumb-item>
+			<nz-breadcrumb-item>
+				课堂详情
+			</nz-breadcrumb-item>
+		</nz-breadcrumb>
+	</div>
+	<div flex="dir:left box:last" class="video-content">
+		<div flex="dir:top" class="left-container">
+			<video-header [videoDetails]="videoLiveDetails" *ngIf="videoLiveDetails"></video-header>
+			<div class="auto-scroll-box">
+				<div class="video-scroll auto-scroll" flex-box="1" scrollWidth>
+					<div class="video-wrapper">
+						<div scaleWidth="16" scaleHeight="9" scaleOrigin="width">
+
+							<video-player *ngIf="source&&source.length>0&&this.source[0].errorMsg!=1&&!noSource" [source]="source"
+							 [playType]="playType"></video-player>
+							<!-- <div  *ngIf="isVideoSource" class="video-elliptical-page"> -->
+							<div *ngIf="loadComplete&&(!source||source.length==0)||noSource" class="video-elliptical-page">
+								<elliptical-page title="暂无视频源" imgName="video-error.png"></elliptical-page>
+							</div>
+						</div>
+					</div>
+					<video-thumbsup [videoDetails]="videoLiveDetails" *ngIf="videoLiveDetails"></video-thumbsup>
+				</div>
+			</div>
+
+		</div>
+		<div class="file-wrapper right-container">
+			<div class="tabs-content">
+				<dynamic-tabs [tabsComponents]="videoTabs" [tabInputs]="tabInputs"></dynamic-tabs>
+			</div>
+			<div *ngIf="videoLiveDetails?.teacherId.split(',').indexOf(accountService.getAccountId()) !== -1" class="footer"
+			 flex="main:center cross:center">
+				<tabs-footer [videoDetails]="videoLiveDetails"></tabs-footer>
+			</div>
+		</div>
+
+	</div>
+
+	<div class="footers">
+		<button nz-button [nzType]="'default'" (click)="goInvitation()">返回</button>
+	</div>
+</div>

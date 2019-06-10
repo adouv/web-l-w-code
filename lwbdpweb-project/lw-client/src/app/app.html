@@ -1,0 +1,18 @@
+<!--<div ng-class="{'cli_min_width overflow_box_sml':!app.isClient}">-->
+<div ng-class="{'client':!app.isLogin}" class="client_width">
+    <header class="header_box_top" ng-if="!app.isLogin">
+        <!-- <div class="statusBtns" style="left: 10px;right: auto;" ng-class="{true: 'is_connect', false: 'not_connect'}[app.nameString === 'connect']">
+            <span ng-show="app.isShowBack" kj-back><i class="clientIconfont icon-cli-back"></i></span>
+        </div> -->
+        <div class="statusBtns" ng-class="{true: 'is_connect', false: 'not_connect'}[app.nameString === 'connect']">
+            <span ng-if="app.isClient" ng-click="app.minimize()"><i class="clientIconfont icon-minimize"></i></span>
+            <span class="fullscreen" ng-class="{true:'hide_fullscreen',false:''}[app.isShowBack]" id="fullscreen" full-screen="true"><i class="clientIconfont icon-zuidahua"></i></span>
+            <span class="normalscreen" ng-class="{true:'hide_fullscreen',false:''}[app.isShowBack]" id="normalscreen" full="{{app.isDetail}}" is-connect="{{app.isConnect}}" full-screen="false"><i class="clientIconfont icon-zuidahua"></i></span>
+            <span ng-if="app.isClient" ng-click="app.close()"><i class="clientIconfont icon-client_close"></i></span>
+        </div>
+        {{app.name}}
+    </header>
+    <div ng-class="{'client_wrapper overflow_box_sml':!app.isLogin}" ui-view>
+    </div>
+</div>
+<!--</div>-->

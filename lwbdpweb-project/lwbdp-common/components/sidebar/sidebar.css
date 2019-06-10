@@ -1,0 +1,270 @@
+
+.bdp .contentWrapper {
+    position: absolute;
+    left: 0;
+    top: 138px;
+    right: 0px;
+    bottom: 0;
+    overflow: auto;
+}
+.bdp .sidebar-wrap {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    height: 100%;
+    overflow-y: hidden;
+}
+
+.bdp .hidden_top_nav {
+    top: 88px;
+}
+.bdp .header_box .task-li{
+    display: inline-block;
+    color: #fff;
+    margin-left: 20px;
+}
+.bdp .header_box .task-li .red{
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    border-radius: 50%;
+    background-color: red;
+    line-height: 20px;
+    font-size: 12px;
+}
+.bdp .header_box .task-li span{
+    display: inline-block;
+}
+.bdp .header_box .header_user {
+    position: absolute;
+    top: calc((100% - 10px) / 2);
+    right: 20px;
+    color: white;
+    cursor: pointer;
+}
+.right-205{
+    right: 205px!important;
+}
+.bdp .sidebar {
+    width: 160px;
+    height: 100%;
+    margin-left: -10px;
+    border-right: 1px solid #dae4ee;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.bdp .sidebar .menuList {
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    background: #f8f8f8;
+    cursor: pointer;
+}
+
+.bdp .sidebar .menuList .iconfont {
+    font-size: 16px;
+    color: #b1b0b0;
+    width: 16px;
+    height: 16px;
+    display: block;
+    margin: 0 auto;
+    bottom: -12px;
+    line-height: 16px;
+    position: relative
+}
+
+.bdp .sidebar>ul{
+    display: block;
+}
+.bdp .sidebar>ul>li>a{
+    background-color: #F8F8F8;
+}
+.bdp .sidebar li a{
+    height: 40px;
+    line-height: 40px;
+    display: block;
+    color:#333;
+    background: #f2f2f2;
+}
+.bdp .sidebar li a:hover{
+    color:#333;
+    background-color: #ddd !important;
+}
+.bdp .sidebar.little-bar{
+    width: 41px;
+    margin-left: 0;
+}
+.bdp .sidebar.little-bar i,.bdp .sidebar.little-bar a{
+    margin-left: 0 !important;
+    padding-left: 0 !important;
+}
+
+.bdp .sidebar.little-bar .sidebar-name{
+    display: none;
+}
+.bdp .sidebar li a i{
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    display: inline-block;
+    margin-left: 10px;
+    margin-right: -5px;
+}
+.bdp .sidebar li ul li i{
+    margin-left: 25px;
+    font-size: 16px;
+}
+.bdp .sidebar .rotate{
+    transform:rotate(90deg);
+}
+.bdp .sidebar .menuList + .side-wrap{
+    display: block !important;
+}
+.bdp .sidebar li a.cur {
+    /*background-color: #0096ff;*/
+    color: #0096ff;
+}
+.bdp .sidebar>.menuList + .side-wrap>li>ul>li>ul>li>a{
+    padding-left: 10px;
+}
+.bdp .sidebarList>.side-wrap>li>ul>li>ul>li>a {
+   padding-left: 15px;
+    background: #fff;
+}
+.bdp .sidebarList>.side-wrap>li>ul>li>ul>li i{
+    margin-left: 35px;
+}
+.bdp .sidebarList>.side-wrap>li>ul>li a{
+    margin-left: 8px;
+    background: #f8f8f8;
+}
+.bdp span.icon-menuUnfold{
+    font-size: 20px;
+}
+.bdp span.icon-switch{
+    padding-right: 8px;
+    color: #473f95;
+}
+.bdp span.icon-switch:hover{
+    color: #fff;
+}
+.bdp .flow_number{
+    padding: 0 5px;
+    cursor: pointer;
+}
+.bdp .flow_number:hover{
+    border-bottom: 1px solid #fff;
+}
+
+.bdp .flowDialog-list .flowDialog-ul{
+    padding: 0 20px 20px;
+    overflow: auto;
+    max-height: 280px;
+}
+.bdp .flowDialog-list .flowDialog-ul li{
+    position: relative;
+    overflow: hidden;
+    min-height: 30px;
+    line-height: 20px;
+    padding: 5px 10px;
+}
+.bdp .flowDialog-list .flowDialog-ul li:hover{
+    background: #dae4ee;
+    cursor: pointer;
+}
+.bdp .flowDialog-list .flowDialog-ul li span{
+    display: inline-block;
+    vertical-align: middle;
+}
+.bdp .flowDialog-list .flowDialog-ul .flowDialog_name{
+    display: inline-block;
+    max-width: 410px;
+    margin-left: 100px;
+}
+.bdp .flowDialog-list .flowDialog-ul .look_btn{
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translate(-11px,-50%);
+    font-size: 24px;
+    color: #766deb;
+    float: right;
+    margin-top: 2px;
+    display: none;
+}
+.bdp .flowDialog-list .flowDialog-ul li:hover .look_btn{
+    display: block;
+}
+.bdp .flowDialog-list .flowDialog-ul .default_load{
+    padding: 0px 4px;
+    color: #766deb;
+    font-size: 14px;
+    line-height: 20px;
+}
+.bdp .flowDialog-list .flowDialog-ul.preview-chart{
+    max-height: 480px;
+}
+.ngdialog.preview-flow{
+    z-index: 1000000;
+}
+body .bdp.fullscreen .ngdialog-content{
+    width:100%!important;
+    height:100%!important;
+    z-index:90;
+    position:fixed;
+    top:0%;
+    left:0%;
+}
+.preview-flow .icon-fullScreen,.preview-flow .icon-cancelFullscreen{
+    cursor: pointer;
+    position: absolute;
+    right: 46px;
+    top: 0px;
+    font-size: 16px;
+}
+.ngdialog.flow-dialog div.ngdialog-content,.ngdialog.preview-flow div.ngdialog-content{
+    width: 800px;
+    border-radius: 7px;
+}
+.preview-flow canvas{
+    cursor: default!important;
+}
+.bill .current-load,.logistics .current-load{
+    display: none!important;
+}
+.current-load{
+    position: absolute;
+    top: 100px;
+    right: 21px;
+    z-index: 5;
+}
+.current-load .flow_number{
+    color: #007eff;
+}
+.current-load .flow_number:hover{
+    text-decoration: underline;
+}
+.bdp .current-load span.icon-switch:hover {
+    color: #766dec;
+    cursor: pointer;
+}
+.bdp .current-load  span.icon-switch{
+    padding-right: 8px;
+    color: #766dec;
+}
+.cur-def{
+    cursor: default!important;
+}
+.mask-switch {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100000000;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, .6);
+}

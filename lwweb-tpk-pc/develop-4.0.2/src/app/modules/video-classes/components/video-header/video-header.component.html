@@ -1,0 +1,62 @@
+<header class="title-wrapper" flex-box="0" flex="main:justify">
+    <!--直播-->
+    <div class="left-title" *ngIf="!isUnicast" [title]="title">
+        <div class="title" *ngIf="videoDetails && videoDetails.status === 1">
+            <span style="color: #333333">
+                {{videoDetails?.lessonTitle ? videoDetails?.lessonTitle:''}}
+                <span style="color: #333333" *ngIf="videoDetails?.lessonTitle"> / </span>
+            </span>
+            <span>
+                <span style="color: #999999" *ngIf="videoDetails?.teacherName">{{videoDetails.teacherName}} - </span>
+                {{videoDetails.subjectName}} - 
+            </span>
+            <span>{{videoDetails.gradeName}}{{videoDetails.className}}</span>
+            <span>周{{videoDetails.week | numberToUpperCase}} 第{{videoDetails.period}}节</span>
+        </div>
+<!-- 课间 -->
+        <div class="title" *ngIf="videoDetails && videoDetails.status === 0">
+            <span>{{videoDetails.gradeName}}{{videoDetails.className}}</span>
+            <span>- 课间 </span>
+            <span *ngIf="videoDetails.subjectName">
+                下节课：<span *ngIf="videoDetails?.lessonTitle">{{videoDetails?.lessonTitle ? videoDetails?.lessonTitle:''}} / </span>
+                <span *ngIf="videoDetails.subjectName!='自习'">{{videoDetails.teacherName}} - </span>
+                {{videoDetails.subjectName}} <span *ngIf="videoDetails.subjectName=='自习'">-</span>
+                周{{videoDetails.week | numberToUpperCase}} 第{{videoDetails.period}}节
+            </span>
+        </div>
+    </div>
+    <!--点播-->
+    <div class="left-title title" *ngIf="videoDetails && isUnicast" [title]="title">
+        <span style="color: #333333"> {{videoDetails?.lessonTitle?videoDetails?.lessonTitle:''}}
+            <span  style="color: #333333" *ngIf="videoDetails?.lessonTitle"> / </span>
+            </span>
+            <span style="color: #999999" *ngIf="videoDetails?.teacherName">{{videoDetails.teacherName}} - 
+         <span style="color:#999999">{{videoDetails.subjectName}}</span> -</span>
+        <span>{{videoDetails.gradeName}}{{videoDetails.className}} {{videoDetails.week}} 第{{videoDetails.period}}节</span>
+    </div>
+    <!--直播-->
+    <div *ngIf="!isUnicast">
+        <div class="right-title" flex="main:justify">
+        <!--  <div *ngIf="cameras.length > 0">
+                <nz-radio-group [(ngModel)]="checkedCamera" (click)="onModelChange()"
+                                *ngIf="cameras.length > 1">
+                    <label nz-radio *ngFor="let camera of cameras;let i = index" [nzValue]="camera.pcPlayUrl"
+                           title="{{camera?.displayName}}">
+                        <span>{{camera.displayName}}</span>
+                    </label>
+                </nz-radio-group>
+            </div> -->
+            <div *ngIf="videoDetails && videoDetails.status === 1">
+                <i class="iconfont icon-Look_icon"></i>
+                {{videoDetails?.totalClicks > 10000 ? ((videoDetails.totalClicks / 10000).toFixed(2) + '万') : videoDetails.totalClicks}}次
+            </div>
+        </div>
+    </div>
+    <!--点播-->
+    <div *ngIf="videoDetails && isUnicast">
+        <div>
+            <i class="iconfont icon-Look_icon"></i>
+            {{videoDetails?.totalClicks > 10000 ? ((videoDetails.totalClicks / 10000).toFixed(2) + '万') : videoDetails.totalClicks}}次
+        </div>
+    </div>
+</header>

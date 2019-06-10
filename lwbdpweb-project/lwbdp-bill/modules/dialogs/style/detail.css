@@ -1,0 +1,48 @@
+.doalogdetail{
+    width: 100%;
+    height: 100%;
+}
+.doalogdetail .page{width: 100%;border: none;margin: 0;}
+.doalogdetail .pagetit{
+    height: 60px;line-height: 60px;position: relative;
+}
+.doalogdetail .pagetit span{position: absolute;background: url(/images/dialog_close.png) no-repeat;
+    width:17px;height: 17px;top:15px; right: 19px;cursor: pointer;}
+.doalogdetail .infobox>div{  padding:20px 0; clear: both; }
+.doalogdetail .infobox .info_name,
+.doalogdetail .infobox .info_content{display: inline-block;width: 48%;float: left;}
+.doalogdetail .infobox  .info_name{text-align: right;font-weight: normal;}
+.doalogdetail .infobox .info_content{text-align: left;margin-left: 1%;}
+.doalogdetail .flowBox .count {
+    margin-left: 20px;
+    width: 25%;
+    float: left;
+}
+.doalogdetail .flowBox .detail {
+    width: 60%;
+    margin-left: 5%;
+    float: left;
+}
+.doalogdetail .btnbox {
+    margin: 25px 0 25px 0;
+    text-align: center;
+}
+.doalogdetail .tableContent{min-height: 100px;margin-top: 20px;}
+/*合同添加*/
+.doalogdetail .detail_info{
+    height: 50px;line-height: 50px;
+}
+.doalogdetail .detail_info span{
+    display: inline-block;
+    text-align: left;
+}
+.doalogdetail .detail_info .name{
+    width: 26%;text-align: right;margin-right: 20px;
+}
+.doalogdetail  .input_form{
+    width: 61%;margin:0 auto;
+}
+.doalogdetail .input_form .form_name{
+    font-weight: 600;
+    line-height: 35px;height: 35px;margin-top: 13px;font-size: 14px;
+}

@@ -1,0 +1,10 @@
+<div class="input-group-search">
+	<input (keyup.enter)='searchContent()' (keyup)="keyupSearch()" placeholder="{{tpkPlaceholder}}" type="text" [ngModel]="tpkModel"
+	(ngModelChange)="changeKeyWord($event)" maxlength="{{maxlength}}" />
+		<span *ngIf="tpkModel == ''" (click)="searchContent()" class="ant-input-suffix">
+			<i class="iconfont icon-search2"></i>
+		</span>
+		<span *ngIf="tpkModel != ''" (click)="deleteContent()" class="ant-input-suffix">
+			<i class="iconfont icon-icon_shutdown"></i>
+		</span>
+</div>

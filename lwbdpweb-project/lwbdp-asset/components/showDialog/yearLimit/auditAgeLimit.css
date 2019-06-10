@@ -1,0 +1,41 @@
+.yearLimit {
+    width: 900px;
+    height: 600px;
+}
+
+.yearLimit #year_in {
+    width: 900px;
+    height: 600px;
+    min-width: 0px;
+}
+
+.yearLimit #year_in .yearLimit_title {
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    position: relative;
+    padding: 0px 0px 10px 0px;
+    box-sizing: border-box;
+    font-size: 16px;
+    border-bottom: 1px solid #ccc;
+}
+
+.yearLimit #year_in .yearLimit_title .icon-close {
+    position: absolute;
+    right: 10px;
+}
+
+.yearLimit #year_in .total_num {
+    width: 100%;
+    position: relative;
+}
+
+.yearLimit #year_in .total_num .tot_left {
+    position: absolute;
+    right: 10px;
+}
+
+.yearLimit #year_in .overflow_box {
+    margin-top: 10px;
+}

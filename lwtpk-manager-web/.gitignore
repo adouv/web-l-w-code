@@ -1,0 +1,14 @@
+/.idea
+target
+node_modules
+tmp
+sass-cache
+*/**/bower_components*
+build
+target
+*.iml
+/lwtpk-android
+*.bak
+/**/gulpfile.js
+/pack
+package-lock.json

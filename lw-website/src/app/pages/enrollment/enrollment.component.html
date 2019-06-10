@@ -1,0 +1,33 @@
+<div class="enrollment" *ngIf="articleDetail">
+	<h1 class="title"><span>{{ title }}</span></h1>
+	<div>
+		<div class="content">
+				<div class="huan">	
+					<div class="scroll scroll-l">
+						<div [innerHTML]="guideContentHtml | html"></div>
+					</div>
+				</div>
+		</div>
+	</div>
+	<div class="bottom-slogn-fix">
+			<div class="bmsj">
+					<div>
+						<p class="register-header">
+						<span>{{date}}</span>
+						</p>
+					</div>
+			</div>
+	</div>
+	
+
+	<div class="bottom-fix">
+				<div class="btn">	
+						<span *ngIf="registerTitle.value === 'rest'">{{registerTitle?.title}}</span>
+						<span *ngIf="registerTitle.value === 'over'">{{registerTitle?.title}}</span>
+						<span *ngIf="registerTitle.value === 'dayOver'">{{registerTitle?.title}}</span>
+						<span *ngIf="registerTitle.value === 'start'" (click)="redirectTo()" [ngStyle]="{'cursor':'pointer'}">{{registerTitle?.title}}</span>
+						<span *ngIf="registerTitle.value === 'simply'" (click)="routeTo(path)" [ngStyle]="{'cursor':'pointer'}">{{registerTitle?.title}}</span>
+						<span (click)="routeTo()" [ngStyle]="{'cursor':'pointer'}">去往官方网站</span>
+					</div>
+	</div>
+</div>

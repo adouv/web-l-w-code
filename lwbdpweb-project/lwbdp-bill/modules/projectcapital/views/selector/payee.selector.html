@@ -1,0 +1,25 @@
+<div class="modal-header">
+    <h3 class="modal-title" id="modal-title">付款单位选择</h3>
+</div>
+<div class="modal-body" id="modal-body">
+    <section class="clear">
+       <input type="text" class="search form-control" placeholder="请输入合同名称..." ng-model="keywords">
+       <button class="icon" ng-click="searchBuildUnit()"><i class="glyphicon glyphicon-search"></i></button>
+    </section>
+    已选中收款单位：
+    <section class="list-header clear">
+        <span ng-if="selectedBuildUnit">{{selectedBuildUnit.name}}</span>
+    </section>
+  收款单位列表
+    <section class="clear" style="height: 100px">
+      <ul>
+        <li ng-repeat="buildUnit in buildUnitList">
+          <input type="radio" id="{{buildUnit.id}}" name="buildUnit"><label for="{{buildUnit.id}}" ng-click="changeSelectedBuildUnit(buildUnit)">{{buildUnit.name}}</label>
+        </li>
+      </ul>
+    </section>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" type="button" ng-click="ok()">确 定</button>
+    <button class="btn btn-warning" type="button" ng-click="cancle()">取 消</button>
+</div>

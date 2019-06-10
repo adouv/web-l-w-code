@@ -1,0 +1,104 @@
+@import "../../../../../styles/variable";
+@import "../../../../../styles/mixin";
+.classroom-unicast ::ng-deep {
+	height: calc(100% - #{computer(50px)});
+	box-sizing: border-box;
+	padding: 0 0 0 computer(20px);
+	.nolesson {
+		width: 100%;
+		height: 100%;
+		//position: relative;
+		.center {
+			position: absolute;
+			top: 40%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			text-align: center;
+			img {
+				width: 240px;
+				height: 11.25rem;
+				margin-bottom: 10px;
+			}
+			.nolesson_name {
+				font-size: computer(14px);
+				color: #999;
+			}
+		}
+	}
+	.header-breadcrumb {
+
+		position: absolute;
+		top: computer(7px);
+		z-index: 200;
+	}
+	.line{
+		width: calc(100% - #{computer(40px)});
+		border-bottom: 1px solid #eee;
+		position: absolute;
+		top: computer(55px);
+	}
+	.ant-tabs-bar {
+		width: 87%;
+        // margin: 0 auto;
+        margin-left: computer(115px);
+		border-bottom: none;
+	} // .ant-tabs-nav-container {
+	// 	width: 70% !important;
+	// 	margin: 0 auto;
+	// 	padding: 0 !important;
+	// }
+	// .ant-tabs-nav-wrap {
+	// 	width: 90%;
+	// 	margin: 0 auto;
+	// }
+	.loading {
+		position: absolute;
+		//left: calc(50% - #{computer(30px)});
+		top: calc(50% - #{computer(15px)});
+		width: calc(100% - #{computer(30px)});
+	}
+	.unicast-list {
+		display: inline-block;
+		width: 100%;
+		height: calc(100vh - #{computer(175px)});
+		box-sizing: border-box;
+		.unicast-list-mr20 {
+			margin-right: computer(20px);
+		}
+		.unicast-list-content {
+			position: relative;
+			height: calc(100vh - #{computer(310px)});
+			text-align: center;
+			padding: computer(10px) 0 0;
+			.isScroll {
+				width: calc(100vw - 13rem);
+				height: computer(100px);
+			}
+		}
+		.clear {
+			clear: both;
+		}
+		.paginaction {
+			padding: computer(20px) 0;
+			width: 100%;
+			text-align: center;
+		}
+	}
+	
+
+}
+.nolesson_name {
+    font-size: computer(14px);
+    color: #999;
+    text-align: center;
+}
+.footer {
+	width: calc(100% - #{computer(40px)});
+	border-top: 1px solid $color_border;
+	position: absolute;
+	background-color: #fff;
+	bottom: 0;
+	height: computer(50px);
+	line-height: computer(50px);
+	text-align: center;
+}

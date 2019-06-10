@@ -1,0 +1,59 @@
+@import "../../../../../styles/variable";
+.tree-element::ng-deep{
+    height: computer(30px);
+    line-height:computer(30px);
+    cursor: pointer;
+    position: relative;
+    -moz-user-select:none;/*火狐*/
+    -webkit-user-select:none;/*webkit浏览器*/
+    -ms-user-select:none;/*IE10*/
+    -khtml-user-select:none;/*早期浏览器*/
+      user-select:none;
+    .margin-left--10{
+        margin-left:-10px;
+    }
+    .icon-sanjiaoxia{
+        font-size: 12px;
+        float: left;
+    }
+    .btn-tree-shang{
+        // position: absolute;
+        // left: 0;
+        // top: 50%;
+        // margin-top: -7px;
+        line-height: 30px;
+        margin-right:computer(10px);
+    }
+    .ant-checkbox-inner{
+        width: computer(20px);
+        height: computer(20px);
+    }
+    .ant-checkbox-inner:after{
+        top:computer(3px);
+        left:computer(7px);
+    }
+    .tree-checkbox{
+        width: computer(20px);
+        margin: 0 computer(10px);
+    }
+    .text-tree{
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+		color: $color_font-deep
+    }
+    .icon-checkbox_default:before{
+		color: #cccccc;
+		font-size: computer(16px);
+    }
+    .icon-checkbox_check:before{
+        color:$color_main;
+		font-size: computer(16px);
+    }
+    .btn-tree-shang:before{
+        font-size: computer(12px);
+    }
+}
+.tree-element:hover{
+    background: rgba(0, 160, 233, 0.1);
+}

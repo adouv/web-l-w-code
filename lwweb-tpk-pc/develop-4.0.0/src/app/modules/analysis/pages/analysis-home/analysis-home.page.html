@@ -1,0 +1,115 @@
+<div class="analysis-home-box">
+	<header>
+		<span class="text-bold" [ngSwitch]="condition.endDate&&condition.startDate">
+			<span *ngSwitchCase="beforeDate&&beforeDate">昨日</span>
+			<span *ngSwitchCase="nowDate&&nowDate">今日</span>
+			<span *ngSwitchDefault>
+				{{condition.startDate===condition.endDate? condition.startDate: condition.startDate+'~'+condition.endDate}}</span>
+		</span>
+		<span class="text">备课活动统计</span>
+		<div class="date-picker-box">
+			<input id="time" type="text" title="" class="date-picker" placeholder="开始时间 ~ 结束时间" datePicker
+				   [range]="'~'" [dateFormat]="'yyyy-MM-dd'" [dateValue]="dateRange"
+				   (dateValueChange)="changeDate($event)">
+		</div>
+	</header>
+	<div class="analysis-home-content auto-scroll">
+		<ul class="chart-box" flex="main:justify cross:center" flex-box="0">
+			<li flex="cross:center">
+				<img src="../../../../../assets/images/analysis/classes.png" alt="">
+				<div>
+					<div class="text">在线备课节次比例</div>
+					<div>
+						<span class="count col-blue">
+							{{statisticsPrepare?.prepareLessonPercent}}
+							<span class="unit">%</span>
+						</span>
+						<span class="col-gray">（{{statisticsPrepare?.prepareLessonCount}}/{{statisticsPrepare?.totalLessonCount || 0}}）</span>
+					</div>
+				</div>
+			</li>
+			<li flex="cross:center">
+				<img src="../../../../../assets/images/analysis/person.png" alt="">
+				<div>
+					<div class="text">在线备课人数比例</div>
+					<div>
+						<span class="count col-purple">
+							{{statisticsPrepare?.prepareTeacherPercent}}
+							<span class="unit">%</span>
+						</span>
+						<span class="col-gray">（{{statisticsPrepare?.prepareTeacherCount}}/{{statisticsPrepare?.totalTeacherCount || 0}}）</span>
+					</div>
+				</div>
+			</li>
+			<li flex="cross:center">
+				<img src="../../../../../assets/images/analysis/document.png" alt="">
+				<div>
+					<div class="text">全校总计上传文件数</div>
+					<div>
+						<span class="count col-yellow">
+							{{statisticsPrepare?.totalFileCount}}
+							<span class="unit">个</span>
+						</span>
+					</div>
+					<div class="info">
+						视频: {{statisticsPrepare?.videoCount}}
+						文档: {{statisticsPrepare?.documentCount}}
+						图片: {{statisticsPrepare?.pictureCount}}
+						音频: {{statisticsPrepare?.audioCount}}
+						其他: {{statisticsPrepare?.otherCount}}
+					</div>
+				</div>
+			</li>
+		</ul>
+
+		<div class="table-title">
+			<div class="fl">
+				<span class="tab-item" [ngClass]="{'active':tabCode === 'subject'}"
+					  (click)="changeTab('subject')">学科</span>
+				<span class="tab-item" [ngClass]="{'active':tabCode === 'grade'}"
+					  (click)="changeTab('grade')">年级</span>
+			</div>
+			<span class="text-bold">全校分{{tabCode === 'subject'?'学科':'年级'}}统计</span>
+			<span class="text">（按在线备课节次比例倒序排名）</span>
+		</div>
+
+		<div class="mar-bot-20px">
+			<table *ngIf="statisticsPrepareSomeList.length > 0">
+				<thead>
+				<tr>
+					<th width="70">排名</th>
+					<th width="130">
+						{{tabCode === 'subject'?'学科':'年级'}}
+					</th>
+					<th width="215">在线备课节次比例</th>
+					<th width="210">在线备课人数比例</th>
+					<th width="540">文件数量统计</th>
+				</tr>
+				</thead>
+				<tbody>
+				<tr (click)="goToList(item)" *ngFor="let item of statisticsPrepareSomeList;let i = index">
+					<td>{{i + 1}}</td>
+					<td>{{item?.name}}</td>
+					<td>
+						<span class="percent">{{item?.prepareLessonPercent}}%</span>
+						（<span class="col-blue">{{item?.prepareLessonCount}}</span>/{{item?.totalLessonCount || 0}}）
+					</td>
+					<td>
+						<span class="percent">{{item?.prepareTeacherPercent}}%</span>
+						（<span class="col-blue">{{item?.prepareTeacherCount}}</span>/{{item?.totalTeacherCount ||
+						0}}）
+					</td>
+					<td>总计
+						<span class="col-blue">{{item?.totalFileCount}}</span>
+						个文件，其中视频（{{item?.videoCount}}）
+						文档（{{item?.documentCount}}）
+						图片（{{item?.pictureCount}}）
+						音频（{{item?.audioCount}}）
+						其他（{{item?.otherCount}}）
+					</td>
+				</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>

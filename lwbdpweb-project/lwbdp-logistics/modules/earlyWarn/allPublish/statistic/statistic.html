@@ -1,0 +1,76 @@
+<div class="main_in all-statistics">
+    <div class="statisticalChart">
+        <div class="list_box">
+            <span class="condition-search" ng-click="allPublishStatistics.getMoreSearch()">条件搜索 &gt;</span>
+            <div class="search-result">搜索条件：
+                <span ng-if="allPublishStatistics.condition.type">类别（{{allPublishStatistics.condition.typeName}}）;</span>
+                <span ng-if="allPublishStatistics.condition.urgencyLevel">紧急程度（{{allPublishStatistics.condition.urgencyLevelName}}）;</span>
+                <span ng-if="allPublishStatistics.condition.publishStatus">发送状态（{{allPublishStatistics.condition.publishStatusName}}）;</span>
+                <span ng-if="allPublishStatistics.condition.accountName">发送人（{{allPublishStatistics.condition.accountName}}）;</span>
+                <span ng-if="allPublishStatistics.condition.startTime && allPublishStatistics.condition.endTime">
+                发送时间（{{allPublishStatistics.condition.startTime}}~{{allPublishStatistics.condition.endTime}}）;
+            </span>
+                <span ng-if="allPublishStatistics.isShowCancel" class="iconfont icon-error"
+                      ng-click="allPublishStatistics.deleteCondition()"></span>
+            </div>
+        </div>
+        <p class="count">总计 <span>{{allPublishStatistics.totalNum}}</span>条<span class="fr btn_bd" ng-click="allPublishStatistics.goBack()">返回</span></p>
+        <div id="mychart" style="width:1030px;height:550px;">
+        </div>
+        <p class="gray">*点击数字下方的圆点查看详细列表</p>
+        <p class="choose">
+            参统学校(机关)
+            <span class="iconfont icon-setting" ng-class="{'opacity':allPublishStatistics.isMyApply}" ng-click="allPublishStatistics.chooseGarden()"></span>
+            <input type="checkbox" class="checkbox_class" ng-model="allPublishStatistics.isMyApply" ng-click="allPublishStatistics.getChart()">只统计由我发起的预警预报
+        </p>
+        <p class="showback" ng-class="{'opacity':allPublishStatistics.isMyApply}"><span ng-repeat="garden in allPublishStatistics.selectedGarden">{{garden.name||garden.gardenName}};</span></p>
+
+        <!-- 点击图表展示的弹窗 -->
+        <dialog modal close="!allPublishStatistics.showDialog" ng-if="allPublishStatistics.showDialog" class="all-statistics-popup">
+            <div dialog-content>
+                <div class="statisticalChart_dialog">
+                    <h2>
+                        <em class="color-purple">{{allPublishStatistics.DialogTitle}}</em>类预警预报统计
+                        <span class="iconfont icon-close" ng-click="allPublishStatistics.showDialog=false"></span>
+                    </h2>
+                    <div class="school-box">
+                        <span class="font-school">参统学校（机关）：</span><span ng-repeat="garden in allPublishStatistics.selectedGarden">{{garden.name||garden.gardenName}};</span>
+                    </div>
+                    <p class="count">
+                        总计 <span>{{allPublishStatistics.paginationConf.totalItems}}</span> 条
+                        <button class="fr btn_bd" ng-click="allPublishStatistics.exportStatistic()">导出</button>
+                    </p>
+                    <div class="table_list overflow_box_sml">
+                        <table>
+                            <tr>
+                                <th>序号</th>
+                                <th>名称</th>
+                                <th>紧急程度</th>
+                                <th>发送人</th>
+                                <th>发送单位</th>
+                                <th>发送时间</th>
+                            </tr>
+                            <tr ng-repeat="data in allPublishStatistics.noticeList track by $index">
+                                <td>{{$index+1}}</td>
+                                <td>{{data.title}}</td>
+                                <td>{{data.urgencyLevelName}}</td>
+                                <td>{{data.displayName}}</td>
+                                <td>{{data.gardenName}}</td>
+                                <td>{{data.addDate}}</td>
+                            </tr>
+                        </table>
+                        <div class="nodata_box" ng-show="allPublishStatistics.noticeList.length<1">
+                            <div class="nodata">
+                                <span></span>
+                                <p>暂无数据</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div ng-show="allPublishStatistics.noticeList.length>0">
+                        <pagination conf="allPublishStatistics.paginationConf"></pagination>
+                    </div>
+                </div>
+            </div>
+        </dialog>
+    </div>
+</div>

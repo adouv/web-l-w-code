@@ -1,0 +1,21 @@
+{
+  "name": "lwbdp-web",
+  "description": "A workflow for Angular made with Webpack",
+  "main": "",
+  "authors": [
+    "adouv <doufu_0329@163.com>"
+  ],
+  "license": "ISC",
+  "keywords": [
+    "lwbdp-web"
+  ],
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

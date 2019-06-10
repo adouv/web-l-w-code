@@ -1,0 +1,16 @@
+.lw-select-person .garden-content-left.department-tree{margin: 0 0 0 10px;}
+.lw-select-person #selectDepartmentTree::-webkit-scrollbar-track {
+    border-radius: 2px;
+    background-color: #ffffff;
+}
+
+.lw-select-person #selectDepartmentTree::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+    background-color: #ffffff;
+}
+
+.lw-select-person #selectDepartmentTree::-webkit-scrollbar-thumb {
+    border-radius: 2px;
+    background-color: rgba(0, 0, 0, 0.2);
+}

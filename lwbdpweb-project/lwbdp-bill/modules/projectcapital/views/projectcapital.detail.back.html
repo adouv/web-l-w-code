@@ -1,0 +1,160 @@
+<div class="projectcapitalDetail">
+    <div class="breadnav ng-scope">
+        <ul>
+            <!--<li>项目财务管理 ></li>-->
+            <li><a ui-sref="bill.projectcapital.index" class="secondTitle">项目财务库</a> ></li>
+            <li class="thirdTitle">财政收走详情</li>
+        </ul>
+    </div>
+    <div class="page">
+        <p class="income_nav font_MY">
+            资金文号收走详情
+        </p>
+        <div class="infobox recovery">
+            <div>
+                <span class="info_name">记账类型：</span>
+                <span class="info_content">财政收走</span>
+            </div>
+            <div>
+                <span class="info_name">资金文号：</span>
+                <span class="info_content">{{capital.name}}</span>
+            </div>
+            <div>
+                <span class="info_name">财政收走总金额：</span>
+                <span class="info_content">{{(recovery.capitalRecovery?recovery.capitalRecovery.recoveryAmount:0) + (recovery.projectRecoveryAmount?recovery.projectRecoveryAmount:0)}}万元</span>
+            </div>
+            <div class="more_line">
+                <span class="info_name">从未安排资金中收走额度：</span>
+                <span class="info_content">
+                    <span>可收走金额:{{capital.totalAvailableAmount}}万元</span>
+                    <span>本次收走金额:{{recovery.capitalRecovery?recovery.capitalRecovery.recoveryAmount:0}}万元</span>
+                </span>
+            </div>
+            <div class="more_line" ng-if="recovery.projectRecoveryAmount > 0">
+                <span class="info_name">从已安排资金中收走额度：</span>
+                <span class="info_content">
+                    <span>已安排总金额:{{capital.totalIncomeAmount}}万元</span>
+                    <span>本次收走金额:{{recovery.projectRecoveryAmount?recovery.projectRecoveryAmount:0}}万元</span>
+                </span>
+            </div>
+            <!--<div>
+                <span class="info_name">本次安排支持资金总额：</span>
+                <span class="info_content">916.33333333333</span>
+            </div>-->
+        </div>
+        <div class="show_detail" ng-if="recovery.projectRecoveryAmount > 0">
+            <div ng-repeat="(projectName,writeBackList) in recovery.projectRecoveryDetailMap">
+                <p class="title">
+                    {{projectName}}
+                </p>
+                <div class="tableContent" style="padding: 0">
+                    <table class="formTable">
+                        <tr>
+                            <td>序号</td>
+                            <td>收入实际到账时间</td>
+                            <td>总金额/<em class="blue">已支出金额</em>/<em class="green">可用金额</em></td>
+                            <td>本次收走(万元)</td>
+                        </tr>
+                        <tr ng-repeat="item in writeBackList">
+                            <td>{{$index+1}}</td>
+                            <td><span
+                                    class="text">{{item.receivedDate?(item.receivedDate | date:'yyyy/MM/dd'):''}}</span>
+                            </td>
+                            <td><span class="text">({{item.incomeAmount }};<em class="blue">{{item.payoutAmount }};</em><em
+                                    class="green">{{item.availableAmount }}</em>)</span></td>
+                            <td><span class="text">{{item.recoveryAmount }}</span></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    <div class="infobox recovery">
+        <div class="more_line">
+            <span class="info_name">资金收走原因：</span>
+            <span class="info_content">
+              {{recovery.description}}
+            </span>
+        </div>
+        <div>
+            <span class="info_name">点击量：</span>
+            <span class="info_content">{{hits.clickVolume?hits.clickVolume:0}}次</span>
+        </div>
+        <div>
+            <span class="info_name">最近更新人：</span>
+            <span class="info_content">{{recovery.operatorName}}</span>
+        </div>
+        <div>
+            <span class="info_name">更新时间：</span>
+            <span class="info_content">{{recovery.createTime?(recovery.createTime|date:'yyyy/MM/dd HH:mm'):''}}</span>
+        </div>
+    </div>
+    <div class="infobox recovery">
+        <p  class="income_nav font_MY" ng-if="recoveryWriteBack.length > 0">资金文号财政收走冲红</p>
+    </div>
+    <div ng-if="recoveryWriteBack.length > 0" ng-repeat="item in recoveryWriteBack">
+        <div class="infobox recovery">
+            <div>
+                <span class="info_name">冲红金额：</span>
+                <span class="info_content">{{(item.totalCapitalWriteBackAmount + item.totalProjectWriteBackAmount) }}万元</span>
+            </div>
+            <div class="more_line">
+                <span class="info_name">未安排资金本次冲红金额：</span>
+                <span class="info_content">
+                    <span>本次收走金额:{{(recovery.capitalRecovery?recovery.capitalRecovery.recoveryAmount:0) }}万元</span>
+                    <span>本次冲红金额:{{item.totalCapitalWriteBackAmount }}万元</span>
+                </span>
+            </div>
+            <div class="more_line">
+                <span class="info_name">已安排资金本次冲红金额：</span>
+                <span class="info_content">
+                    <span>本次收走金额:{{(recovery.projectRecoveryAmount?recovery.projectRecoveryAmount:0) }}万元</span>
+                    <span>本次冲红金额:{{item.totalProjectWriteBackAmount }}万元</span>
+                </span>
+            </div>
+        </div>
+        <div class="show_detail" ng-if="item.projectWriteBackListMap.length && item.projectWriteBackListMap.length > 0">
+            <div ng-repeat="(projectName,recoveryWriteBackList) in item.projectWriteBackListMap">
+                <p class="title">
+                    {{projectName}}
+                </p>
+                <div class="tableContent" style="padding: 0">
+                    <table class="formTable">
+                        <tr>
+                            <td>序号</td>
+                            <td>收入实际到账时间</td>
+                            <td>总金额/<em class="blue">已支出金额</em>/<em class="green">可用金额</em></td>
+                            <td>本次冲红(万元)</td>
+                        </tr>
+                        <tr ng-repeat="item in recoveryWriteBackList">
+                            <td>{{$index+1}}</td>
+                            <td><span class="text">{{item.receivedDate?(item.receivedDate | date:'yyyy/MM/dd'):''}}</span></td>
+                            <td>(<span class="text">{{item.incomeAmount }};<em class="blue">{{item.payoutAmount }};</em><em
+                                    class="green">{{item.availableAmount }}</em></span>)
+                            </td>
+                            <td><span class="text">{{item.writeBackAmount }}</span></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="infobox recovery">
+            <div class="more_line">
+                <span class="info_name">冲红原因：</span>
+                <span class="info_content">{{item.description}}</span>
+            </div>
+            <div>
+                <span class="info_name">操作人：</span>
+                <span class="info_content">{{item.operatorName}}</span>
+            </div>
+            <div>
+                <span class="info_name">操作时间：</span>
+                <span class="info_content">{{item.createTime?(item.createTime | date:'yyyy/MM/dd HH:mm'):''}}</span>
+            </div>
+        </div></div>
+    <div class="btnbox">
+        <span class="setbtn sureBtn" ng-click="goProjectCapitalList()">返回</span>
+    </div>
+</div>
+</div>
+</div>

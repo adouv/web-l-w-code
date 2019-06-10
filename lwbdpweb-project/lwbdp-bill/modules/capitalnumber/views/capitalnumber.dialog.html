@@ -1,0 +1,39 @@
+<div class="large_dialog">
+  <p class="tit">
+    资金文号分配明细
+  </p>
+  <div class="capitalnumTable">
+    <table class="num_table">
+      <tr class="first">
+        <th>资金文号</th>
+        <th>资金总额（万元）</th>
+        <th>安排金额</th>
+        <th>项目名称</th>
+        <th>建设单位</th>
+        <th>操作人</th>
+        <th>操作时间</th>
+      </tr>
+      <tbody>
+      <tr ng-repeat="item in capitalProject.capitalProjectDistributeQoList">
+        <td ng-if="$index==0" rowspan="{{capitalProject.capitalProjectDistributeQoList.length}}">{{capitalProject.name}}</td>
+        <td ng-if="$index==0" rowspan="{{capitalProject.capitalProjectDistributeQoList.length}}">{{capitalProject.totalAmount}}</td>
+        <td>{{item.amount}}</td>
+        <td>{{item.projectName}}</td>
+        <td>{{item.constructUnitName}}</td>
+        <td>{{item.operatorName}}</td>
+        <td>{{item.operatorTime | date:'yyyy-MM-dd'}}</td>
+      </tr>
+      <tr>
+        <td ng-if="$index==0" rowspan="{{capitalProject.projectCapitalDetailList.length}}">{{capitalProject.name}}</td>
+        <td ng-if="$index==0" rowspan="{{capitalProject.projectCapitalDetailList.length}}">{{capitalProject.totalAmount}}</td>
+        <td colspan="3">已安排金额：{{capitalProject.usedAmount}}</td>
+        <td colspan="4">可用金额：{{capitalProject.capitalAvailableAmount}}</td>
+      </tr>
+      </tbody>
+
+    </table>
+  </div>
+  <div class="modal-footer" style="text-align:center;">
+    <button class="capitalnumBtn" type="button" ng-click="close()">确定</button>
+  </div>
+</div>

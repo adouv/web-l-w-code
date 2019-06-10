@@ -1,0 +1,11 @@
+.my-warn .count{
+    margin: 14px 0 0 20px;
+}
+.my-warn .content_textBar .icon-error{
+    position: absolute;
+    top:0;
+    right: 8px;
+}
+.my-warn .text-bold{
+    font-weight: bold;
+}

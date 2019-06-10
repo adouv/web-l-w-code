@@ -1,0 +1,16 @@
+<!--<p-growl id="normal" styleClass="tpk-ui-growl" life='5000'></p-growl>-->
+<div class="uploadfile">
+    <div class="upload_btn" (click)="openFileSelector()">
+        <img src="../../../../../assets/images/btn_bg.png"/>
+        <div class="btn_name">上传</div>
+    </div>
+
+    <input class="upload_input" type="file" ng2FileSelect [uploader]="uploader"
+           (change)="fileSelectorCallBack($event)" multiple #selectFileView/>
+    <!--<div class="min_btn" *ngIf="isUploader" (click)="openDialog()">-->
+        <!--<div class='upload'>-->
+            <!--<span class="iconfont icon-shangchuan upload_btn2"></span>-->
+            <!--<span>文件上传</span>-->
+        <!--</div>-->
+    <!--</div>-->
+</div>

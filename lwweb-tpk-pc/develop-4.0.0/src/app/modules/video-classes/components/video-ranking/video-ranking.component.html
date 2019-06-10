@@ -1,0 +1,26 @@
+<div class="video-ranking">
+	<div *ngIf="isHaveContent" class="video-ranking-content auto-scroll">
+		<div class="ranking-explain" flex="dir:left">
+			<div class="ranking-explain-group" flex="dir:right box:first">
+				<div class="rexplain-circle" flex="main:center cross:center">
+					<span class="class-score-4">{{courseCommentAnalysis&&courseCommentAnalysis.totalScore?courseCommentAnalysis.totalScore:0}}<span>分</span></span>
+				</div>
+				<div class="rexplain-circle-title">本次被评课总得分</div>
+			</div>
+			<div class="ranking-explain-group" flex="dir:right box:first">
+				<div class="rexplain-circle" flex="main:center cross:center">
+					<span class="class-score-4">{{courseCommentAnalysis&&courseCommentAnalysis.avgScore?courseCommentAnalysis.avgScore:0}}<span>分</span></span>
+				</div>
+				<div class="rexplain-circle-title">本次被评课平均分</div>
+			</div>
+		</div>
+		<div *ngIf="chartOption&&courseCommentAnalysis" id="echarts" echarts [options]="chartOption" class="demo-chart"></div>
+	</div>
+	<footer *ngIf="isHaveContent">
+		<button (click)="exportFile()" class="left-btn" nz-button [nzType]="'default'">
+			<span>导出</span>
+		</button>
+	</footer>
+	<!--<div id="echarts"></div>-->
+	<div *ngIf="!isHaveContent" class="elliptical-page-message">暂无老师完成教学评价</div>
+</div>

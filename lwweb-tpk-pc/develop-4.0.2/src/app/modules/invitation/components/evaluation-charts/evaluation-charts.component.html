@@ -1,0 +1,102 @@
+<div class="header-wrapper">
+	<ul>
+		<li [ngClass]="{'active':tabType===0}" (click)="tabType=0">客观评价得分</li>
+		<li [ngClass]="{'active':tabType===1}" (click)="tabType=1">主观评价结果</li>
+		<li [ngClass]="{'active':tabType===2}" (click)="tabType=2">{{type?'诊断结果':'改进建议'}}</li>
+	</ul>
+</div>
+
+<div class="chart-scroll-box auto-scroll">
+	<div [hidden]="tabType!==0">
+		<div flex="main:center cross:center">
+			<app-ball *ngIf="chartData" [healthDegree]="chartData.scoringRate"
+					  [totalScore]="chartData.totalScore"></app-ball>
+		</div>
+		<div class="wave-charts">
+			<div class="wave-charts-1">
+				<div flex="main:center cross:center">
+					<wave-chart *ngIf="chartData" [chartTitle]="'同班级全学科'"
+								[percent]="chartData.exceedSameClass+'%'"></wave-chart>
+					<wave-chart *ngIf="chartData" class="margin-left-70" [chartTitle]="'同年级同学科'"
+								[percent]="chartData.exceedSameGradeSubject+'%'"></wave-chart>
+				</div>
+			</div>
+			<div class="wave-charts-1">
+				<div flex="main:center cross:center">
+					<wave-chart *ngIf="chartData" [chartTitle]="'同年级全学科'"
+								[percent]="chartData.exceedSameGrade+'%'"></wave-chart>
+					<wave-chart *ngIf="chartData" class="margin-left-70" [chartTitle]="'全校同学科'"
+								[percent]="chartData.exceedSameSubject+'%'"></wave-chart>
+					<wave-chart *ngIf="chartData" class="margin-left-70" [chartTitle]="'全校全学科'"
+								[percent]="chartData.exceedSameGarden+'%'"></wave-chart>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+	<div [hidden]="tabType!==1">
+		<div class="subjective-evaluation-item" *ngFor="let subItem of subjectList;let i = index">
+			<p>{{i+1}}、{{subItem.name}}</p>
+			<div class="evaluation-answer-box" flex *ngFor="let sub of subItem.commentSubjectiveVoList">
+				<img src="../../../../../assets/images/user-icon.png" alt="" class="icon-box">
+				<div class="text-box" flex-box="1">
+					<div class="user-info-box">
+						<span>{{sub.appraiserName}}</span>
+						<span class="light-gray-text">{{sub.createTime | date:'yyyy/MM/dd HH:mm'}}</span>
+					</div>
+					<div class="word-break">
+						{{sub.content}}
+					</div>
+					<div *ngIf="sub.replyList">
+						<div *ngFor="let rep of sub?.replyList">
+							<div class="answered-box word-break">
+								<div class="light-gray-text answered-user-box">
+									{{rep.creatorName}} 回复于{{rep.createTime | date:'yyyy/MM/dd HH:mm'}}
+								</div>
+								{{rep.content}}
+							</div>
+						</div>
+					</div>
+					<div *ngIf="!hiddenReply">
+						<label for="answer" class="answer-btn col-blue"
+						  (click)="sub.isReply = !sub.isReply;sub.replyContent = '';">
+							{{sub.isReply?'取消回复':'回复'}}
+						</label>
+						<div *ngIf="sub.isReply">
+					<textarea name="" id="answer" class="textarea-class"
+							  [(ngModel)]="sub.replyContent" [maxlength]="200"></textarea>
+							<div>
+								<span class="light-gray-text">{{sub.replyContent?.length}}/200</span>
+								<button class="submit-btn" [disabled]="sub.replyContent?.length < 1"
+								btnDebunce (debounceClick)="submitReply(sub)" [waitTime]="1500" [disabled]="!sub.btnDebunce" >提交
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="no-result" *ngIf="!subjectList || subjectList.length < 1">暂无老师完成教学评价</div>
+	</div>
+
+	<div class="comments-container" [hidden]="tabType!==2">
+		<ul>
+			<li *ngFor="let item of commentList">
+				<div class="img-wrapper">
+					<img src="../../../../../assets/images/user-icon.png" alt="">
+				</div>
+				<div class="rs-wrapper">
+					<div>
+						<span>{{item.appraiserName}}</span>
+						<span class="fr">{{item?.lastUpdateTime|date:'yyyy/MM/dd HH:mm'}}</span>
+					</div>
+					<div class="comment-wrapper word-break">
+						{{item.comment}}
+					</div>
+				</div>
+			</li>
+		</ul>
+		<div class="no-result" [hidden]="commentList.length > 0">暂无老师完成教学评价</div>
+	</div>
+</div>

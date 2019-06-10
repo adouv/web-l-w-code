@@ -1,0 +1,110 @@
+<div class="main_in">
+    <h3 class="draft_tit">全单位所有项目</h3>
+    <!-- 搜索 -->
+    <div class="search_box clearfix">
+        <div>
+            <div class="content_textBar">
+                <input type="text" class="input_class" maxlength="50" placeholder="回车键提交查询"  ng-model="purchaseAll.condition.keywords" ng-keydown="purchaseAll.goSearch($event)">
+                <span class="iconfont icon-search" ng-if="purchaseAll.condition.keywords.length === 0"></span>
+                <span class="iconfont icon-error" ng-if="purchaseAll.condition.keywords.length > 0" ng-click="purchaseAll.cleanKeywords()"></span>
+            </div>
+            <a href="javascript:void(0)" class="more_search" ng-click = "purchaseAll.getMoreSearch('allunits','purchase')">更多条件查询 ></a> 
+        </div>
+        <div class="search_result" ng-if="(purchaseAll.condition.applyYearStart && purchaseAll.condition.applyYearEnd)||
+            (purchaseAll.condition.gardenList && purchaseAll.condition.gardenList.length>0)|| purchaseAll.condition.categoryListName || purchaseAll.condition.stageName ||
+            purchaseAll.condition.statusName || purchaseAll.condition.applyAccount ||
+            (purchaseAll.condition.createTimeStart && purchaseAll.condition.createTimeEnd)">搜索条件：
+            <span ng-if="purchaseAll.condition.applyYearStart&&purchaseAll.condition.applyYearEnd">
+                项目申报年份（{{purchaseAll.condition.applyYearStart}}~{{purchaseAll.condition.applyYearEnd}}）
+            </span>
+            <span ng-if="purchaseAll.condition.gardenList && purchaseAll.condition.gardenList.length>0">
+                项目申报单位（<span ng-repeat="garden in purchaseAll.condition.gardenList">{{garden.name}}；</span>）
+            </span>
+            <span ng-if="purchaseAll.condition.categoryListName">项目所属类别（{{purchaseAll.condition.categoryListName}}）</span>
+            <span ng-if="purchaseAll.condition.stageName">项目所属阶段（{{purchaseAll.condition.stageName}}）</span>
+            <span ng-if="purchaseAll.condition.statusName">项目所处状态（{{purchaseAll.condition.statusName}}）</span>
+            <span ng-if="purchaseAll.condition.applyAccount">项目申报人（{{purchaseAll.condition.applyAccount}}）</span>
+            <span ng-if="purchaseAll.condition.applyYearStart&&purchaseAll.condition.createTimeEnd">
+                项目提交时间段（{{purchaseAll.condition.createTimeStart}}~{{purchaseAll.condition.createTimeEnd}}）
+            </span>
+            <span ng-if="purchaseAll.isShowCancel" class="iconfont icon-error" ng-click="purchaseAll.deleteCondition()"></span>
+        </div>
+    </div>
+    <!-- 总计 -->
+    <div class="totalize clearfix">
+        <div class="fl">
+            <span class="total_info">总计<em class="blue_color">{{purchaseAll.paginationConf.totalItems||0}}</em>条，其中进行中的项目{{purchaseAll.paginationConf.ingCount}}条，已正常完成的项目的<em class="green_color">{{purchaseAll.paginationConf.finishCount}}</em>条，审核不通过的项目<em class="red_color">{{purchaseAll.paginationConf.notPassNum}}</em>条。</span>
+        </div>
+        <div class="fr">
+            <span class="btn_bd" ng-click="purchaseAll.exportExcel()">导出</span>
+        </div>
+    </div>
+    <!-- 表格 -->
+    <div class="line_pad" auto-width=".table_absolute" watch-change="purchaseAll.pageList">
+        <div class="line_strip"></div>
+        <div class="table_box">
+            <table class="listTable table-hover">
+                <thead  id="theadTh">
+                    <th width="5%">序号</th>
+                    <th width="11%">申报年份</th>
+                    <th width="28%">名称</th>
+                    <th width="12%">类别</th>
+                    <th width="22%">阶段</th>
+                    <th width="14%">添加时间</th>
+                    <th width="8%">状态</th>
+                </thead>
+            </table>
+        </div>
+    </div>
+    <div class="table_absolute overflow_box">
+        <div class="table_box">
+            <table class="listTable table-hover">
+                <tbody>
+                    <tr table-width ng-repeat="data in purchaseAll.pageList track by $index" ng-click="purchaseAll.getDetail(data)">
+                        <td>{{$index+1}}</td>
+                        <td>{{data.applyYear}}</td>
+                        <td>{{data.projectName}}</td>
+                        <td>{{data.categoryName}}</td>
+                        <td>{{data.currTaskStageName}}</td>
+                        <td>{{data.createTime | date:'yyyy-MM-dd HH:mm'}}</td>
+                        <!--项目状态-->
+                        <td>
+                            <span ng-class="{'green_color':data.projectStatus===1,
+                                            'red_color':data.projectStatus === 2}">
+                                {{data.projectStatusName }}
+                            </span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <!-- 分页 -->
+        <pagination conf="purchaseAll.paginationConf" ng-show="purchaseAll.pageList.length>0"></pagination>
+
+        <!-- 暂无数据、暂无搜索结果-->
+        <div class="nodata_box" ng-show="purchaseAll.pageList.length<1">
+            <div class="nodata" ng-show="purchaseAll.pageList.length === 0 && !(purchaseAll.keywords && purchaseAll.keywords !=='')">
+                <span></span>
+                <p>暂无数据</p>
+            </div>
+            <div class="nodata_search" ng-show="purchaseAll.keywords && purchaseAll.keywords !==''">
+                <span></span>
+                <p>搜索无结果</p>
+            </div>
+        </div>
+
+        <!-- 选择园区 -->
+        <div class="select_depart">
+            <p class="select_depart_list">
+                <span class="fos16">参统学校（机关)：</span>
+                <span ng-if="purchaseAll.visibleGardens.length>0" ng-click="purchaseAll.chooseGarden()" class="iconfont icon-setting setting_icon"
+                      ng-class="{'disabled':purchaseAll.onlyMine}"></span>
+                <input type="checkbox" class="checkbox_class" ng-model="purchaseAll.onlyMine" ng-click="purchaseAll.getMyProject(purchaseAll.onlyMine)" id="gad1">
+                <label for="gad1" class="word_center">只统计由我发起的设备采购项目申请单</label>
+            </p>
+            <p class="select_depart_list2">
+                <span ng-repeat="garden in purchaseAll.gardenList">{{garden.name||garden.gardenName}}；</span>
+            </p>
+        </div>
+    </div>
+</div>

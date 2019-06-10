@@ -1,0 +1,117 @@
+@import "../../../../../styles/variable.scss";
+@import "../../../../../styles/mixin";
+@import "../../../../../styles/subjectBg.scss";
+@import "../../../../../styles/common.scss";
+.live-clazz {
+    .live-clazz-list {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        margin-top: computer(20px);
+        span{
+            // min-width: computer(73px);
+            height: computer(30px);
+            color:#666666;
+            background-color: #eeeeee;
+            font-family: MicrosoftYaHei,sans-serif;
+            font-size: computer(14px);
+            font-weight: normal;
+            font-stretch: normal;
+            font-style: normal;
+            letter-spacing: 0px;
+            border-radius: 15px;
+            text-align: center;
+            padding: 0 computer(10px);
+            margin-right: 20px;
+            margin-bottom: 20px;
+            cursor: pointer;
+            em {
+                display: inline-block;
+                margin: computer(4px) computer(10px) 0;
+                font-style: normal;
+                cursor: pointer;
+            }
+        }
+        .active {
+            color: #ffffff;
+            background-color: #00a0e9;
+        }
+    }
+    .live-clazz-course-wrap {
+        min-height: computer(120px);
+        .live-clazz-course {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            align-items: center;
+            // .live-clazz-course-box {
+            //     display: flex;
+            //     flex-direction: row;
+            //     flex-wrap: wrap;
+                .live-clazz-course-content {
+                    width: computer(180px);
+                    height: computer(120px);
+                .live-clazz-course-content-box {
+                    width: computer(160px);
+                    height: computer(100px);
+                     display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    cursor: pointer;
+                    p {
+                        color: #ffffff;
+                        
+                        .camera:before {
+                            content: "\e6c0";
+                            font-size: computer(30px);
+                            color: #ffffff;
+                        }
+                        &:nth-child(1) {
+                            font-size: computer(18px);
+                            margin-top: computer(10px);
+                            display: flex;
+                            flex-direction: row;
+                            justify-content: center;
+                            align-items: center;
+                            span {
+                                margin-left: computer(5px);
+                                max-width: computer(110px);
+                                overflow: hidden;
+                                text-overflow: ellipsis;
+                                white-space: nowrap;
+                            }
+                        }
+                        &:nth-child(2) {
+                            max-width: computer(140px);
+                            font-size: computer(14px);
+                            margin: 0 0 0 computer(5px);
+                            overflow: hidden;
+                            text-overflow: ellipsis;
+                            white-space: nowrap;
+                        }
+                        &:nth-child(3) {
+                            font-size: computer(12px);
+                            margin-top: computer(5px);
+                            margin-bottom: computer(10px);
+                        }
+                    }
+                }  
+                  
+                   
+                }
+            // }
+           
+        }
+    }
+   
+}
+
+.nolesson_name_box {
+    height: computer(130px);
+    line-height: computer(130px);
+    .nolesson_name {
+        font-size: computer(14px);
+        color: #999;
+        text-align: center;
+    }
+}

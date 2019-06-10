@@ -1,0 +1,25 @@
+[{
+        "title": "教",
+        "icon": "nav-jiao.png",
+        "router": "http://10.0.0.10:74/course/timetable",
+        "type": 0
+    },
+    {
+        "title": "评",
+        "icon": "nav-ping.png",
+        "router": "http://10.0.0.10:74/video/index",
+        "type": 0
+    },
+    {
+        "title": "管",
+        "icon": "nav-guan.png",
+        "router": "lwpGuan",
+        "type": 1
+    },
+    {
+        "title": "研",
+        "icon": "nav-yan.png",
+        "router": "http://10.0.0.10:74/analysis/home",
+        "type": 0
+    }
+]

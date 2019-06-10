@@ -1,0 +1,43 @@
+<div class="choose_dialog choose_suit">
+    <p class="title">
+        选择要关联的资产 <span class="iconfont icon-close" ng-click="cancel()"></span>
+    </p>
+    <div class="suit_table overflow_box_sml">
+        <table>
+            <tr>
+                <th>序号</th>
+                <th width="100">资产编号</th>
+                <th>中小学办学条件达标系统编号</th>
+                <th>资产名称</th>
+                <th>账面原值(元)</th>
+                <th>数量</th>
+                <th>资产大类</th>
+                <th width="80">规格型号</th>
+                <th>会计凭证号</th>
+                <th>取得方式</th>
+                <th>取得日期</th>
+                <th>已使用年限</th>
+                <th style="white-space: nowrap"><input type="checkbox" class="checkbox_class" ng-checked="echoIds.length==filteredList.length" ng-click="selectAll($event)">选择</th>
+            </tr>
+            <tr class="mouse" ng-repeat="data in filteredList track by $index" ng-show="echoIds.indexOf(data.assetNo)>-1||selectedIds.indexOf(data.assetNo)<0">
+                <td>{{$index+1}}</td>
+                <td>{{data.assetNo}}</td>
+                <td>{{data.standardSystemNo}}</td>
+                <td>{{data.assetName}}</td>
+                <td>{{data.assetTotalAmount}}</td>
+                <td>{{data.assetCount}}</td>
+                <td>{{data.assetTypeName}}</td>
+                <td>{{data.specifications}}</td>
+                <td>{{data.accountingVoucherNumber}}</td>
+                <td>{{data.acquireWayName}}</td>
+                <td>{{data.acquireDate}}</td>
+                <td>{{data.usedYear}}</td>
+                <td><input type="checkbox" ng-click="clickCheckbox($event,data.assetNo,$index)" ng-checked="echoIds.indexOf(data.assetNo)>-1" class="checkbox_class hover"></td>
+            </tr>
+        </table>
+    </div>
+    <div class="btn_box">
+        <span class="btn_bd" ng-click="cancel('Suit')">取消</span>
+        <span class="btn_bg" ng-click="sure('Suit')">确定</span>
+    </div>
+</div>

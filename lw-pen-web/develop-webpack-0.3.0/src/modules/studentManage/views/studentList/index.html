@@ -1,0 +1,44 @@
+<div class="student-list">
+  <lw-win-close></lw-win-close>
+  <div class="title">学生管理</div>
+  <div class="modal-content">
+    <div class="sdkEditAdd">
+      <form class="modal-content-form clearfix">
+        <div class="form-item clearfix">
+          <div class="contUl select nodrag-area">
+            <a-select v-model="selectClassName" @change="selecChange" class="a-select mar-r-20px">
+              <a-select-option :key="item.id" v-for="item in classList">{{item.pname}}{{item.name}} ({{item.countStudent ? item.countStudent : 0}}人)</a-select-option>
+            </a-select>
+          </div>
+          <a-input-search placeholder="关键字查询" @change="checkNo(keywords)" v-model="keywords" style="width: 240px" @search="onSearch" class="mar-r-40px nodrag-area" />
+
+        </div>
+        <div class="form-item formx clearfix">
+          <div class="lw-tpk-pc nodrag-area" flex>
+            <a-button @click="addStudentModal()" :disabled="classList.length==0">添加学生</a-button>
+            <span class="footer-btn btn-text cursor">创建临时班级</span>
+          </div>
+          <!-- <button type="button" class="footer-btn btn-cancel nodrag-area" @click="addStudentModal()">添加学生</button> -->
+          <!-- <button type="button" class="footer-btn btn-text nodrag-area">创建临时班级</button> -->
+        </div>
+      </form>
+    </div>
+    
+    <div class="ImgBox nodrag-area">
+      <ul>
+        <li v-for="item in studentList">
+          <span class="Imgp">
+            <img :src="item.imgUrl" alt="" width="80">
+          </span>
+          <span class="tel">{{item.name}}</span>
+        </li>
+      </ul>
+      <div v-if="!isLoadComplete && singleValue" style="margin-top: 40px;text-align: center;">
+        <a-spin size="large" class="spin-loading" />
+      </div>
+      <!-- <lw-elliptical-page class="animated fadeIn" v-if="isLoadComplete&&studentList.length <= 0" title="暂无学生"></lw-elliptical-page> -->
+    </div>
+  </div>
+</div>
+
+<!-- <app-modals (event)="switchModal($event)"></app-modals> -->

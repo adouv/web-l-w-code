@@ -1,0 +1,35 @@
+<div class="capnumInput">
+    <div class="modal-header">
+        <h3 class="modal-title" id="modal-title">请填写本次安排的额度</h3>
+    </div>
+    <form class="w5c-form" w5c-form novalidate w5c-form-validate name="inputnum">
+    <div class="modal-body" id="modal-body">
+        <section class="clear">
+            <div class="form-group search-group">
+                <p class="shownum">
+                    <span class="num">{{tempCapitalNumber.name}}</span>
+                    <span class="num">{{tempCapitalNumber.typeName}}</span>
+                </p>
+                <p><span class="garden">所属园区：{{tempCapitalNumber.gardenName}}</span></p>
+                <p class="money">
+                    当前文号总金额为{{tempCapitalNumber.totalAmount}}万元，已安排{{isPayout?((tempCapitalNumber.totalAmount-tempCapitalNumber.availableAmount)):(tempCapitalNumber.usedAmount)}}万元，
+                    可用额度<i class="green">{{isPayout?(tempCapitalNumber.availableAmount):(tempCapitalNumber.availableAmount)}}</i>万元
+                    <span ng-if="tempCapitalNumber.recoveryDate">，{{tempCapitalNumber.recoveryDate|date:'yyyy/MM/dd'}}收回</span>。
+                </p>
+                <p class="numchoose">
+                    <span>本次安排额度 <em>*</em>：</span>
+                    <input type="text" class="form-control" name="assignAmount" ng-model="assignAmount" required min="0" ng-keyup="checkAssignAmount(assignAmount)">
+                    万元
+                </p>
+            </div>
+        </section>
+    </div>
+    <div class="modal-footer">
+        <span class="setbtn sureBtn" ng-click="ok()">确 定</span>
+        <!--<span class="setbtn cancelBtn" ng-click="cancle()">取 消</span>-->
+       <!-- <button class="btn btn-primary" type="button" >确 定</button>
+        <button class="btn btn-warning" type="button" ng-click="cancle()">取 消</button>-->
+    </div>
+    </form>
+</div>
+

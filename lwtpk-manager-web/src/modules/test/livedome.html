@@ -1,0 +1,110 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>四频道切换直播demo</title>
+
+
+</head>
+<body >
+<style>
+* {
+    padding: 0;
+    margin: 0;
+    font-size: 12px;
+}
+a {
+    color: #909090;
+    text-decoration: none;
+}
+.live {
+    background: #E0E0E0;
+    padding: 20px;
+}
+.live {
+    width: 970px;
+    height: 440px;
+    margin: 10px auto;
+}
+.live_l {
+    width: 970px;
+    float: left;
+}
+.live_title {
+    height: 34px;
+    line-height: 34px;
+    color: #FFF;
+    font-weight: bold;
+    text-indent: 12px;
+    background: #c41a00;
+}
+.live_r {
+    width: 264px;
+    float: right;
+}
+.live_channellist {
+    width: 252px;
+    padding: 6px;
+    background: #FFF;
+}
+.live_channellist a.live_tv {
+	line-height: 51px;
+    text-align: center;
+	font-size:16px;
+   /* background: url("../images/ttv1.png") no-repeat;*/
+}
+.live_channellist a.live_tv1 {
+   /* background: url("../images/ttv1.png") no-repeat;*/
+}
+.live_channellist a {
+    width: 250px;
+    height: 51px;
+    border: 1px solid #CCC;
+    margin-bottom: 6px;
+    display: block;
+}
+.live_channellist a.live_gg {
+    height: 155px;
+}
+.clear {
+    clear: both;
+    display: block;
+    font-size: 0;
+    height: 0;
+    line-height: 0;
+    overflow: hidden;
+}
+
+</style>
+
+<div class="live">
+	<div class="live_l">
+		
+		<div id="liveId" style="float:left;margin-right:10px">
+			
+		</div>
+		<div id="liveId2">
+		</div>
+	</div>
+	<div class="live_r">
+		
+	</div>
+	<div class="clear"></div>
+</div>
+<script>
+severadd='rtmp://111.204.160.25:1935/live/live3'
+function liveClick(liveid,divname){
+	playlive='<embed type="application/x-shockwave-flash" src="./chplayer/player.swf" width="480" height="400" id="ply" name="ply" bgcolor="#000000" quality="high" allowfullscreen="true" allowscriptaccess="always" wmode="opaque" salign="lt" flashvars="JcScpServer='+severadd+'&amp;JcScpVideoPath=live'+liveid+'">';
+    playlive="<embed type='application/x-shockwave-flash' src='./chplayer/player.swf' width='480' height='400' id='ply' name='ply' bgcolor='#000000' quality='high' allowfullscreen='true' allowscriptaccess='always' wmode='opaque' salign='lt' flashvars='JcScpServer="+severadd+"&amp;JcScpVideoPath=live"+liveid+">"
+
+	
+	document.getElementById(divname).innerHTML=playlive; 
+
+
+	
+}
+liveClick(1,'liveId')
+liveClick(2,'liveId2')
+</script>
+</body>
+</html>

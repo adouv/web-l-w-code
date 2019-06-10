@@ -1,0 +1,17 @@
+$color_main: #00a0e9;
+$color_font-deep: #333333;
+$color_font-center: #666666;
+$color_font-light: #999999;
+$color_border: #eeeeee;
+$color_background: rgba(52, 56, 63, .2);
+
+// 计算不同分辨率下html的font-size
+$html-font-size: 16px;
+$refer-width: 1366px;
+$device-width: 1025px, 1366px;
+$font-sizes: (14px, 16px, 18px, 20px);
+
+// 根据rem为各个元素计算大小
+@function computer($px) {
+	@return $px / $html-font-size * 1rem;
+}

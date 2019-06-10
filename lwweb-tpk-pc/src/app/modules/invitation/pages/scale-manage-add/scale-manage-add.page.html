@@ -1,0 +1,156 @@
+<div class="scale-manage-add">
+    <div class="header-title">
+        <!--<span *ngIf="!routeParams.id">新建</span><span *ngIf='routeParams.id'>编辑</span>教学评价模板-->
+        <span>
+			<span *ngIf="!routeParams.id||routeParams.id==''">配置</span>
+        <span *ngIf='routeParams.id&&routeParams.id!=""&&isSeeStatus'>编辑</span>
+        <span *ngIf='!isSeeStatus'>查看</span>评价量表</span>
+    </div>
+    <div class="add-info-list auto-scroll">
+        <div class="add-info-list-content">
+            <div class="add-info">
+                <div class="list-title">量表基本信息</div>
+                <ul class="add-ul">
+                    <li class="add-li" flex='cross:center'>
+                        <span class="name">所属园区
+							<span class="span-maohao">:</span>
+                        </span>
+                        <span class="content">{{gardenName}}</span>
+                    </li>
+                    <li class="add-li" flex='cross:center'>
+                        <span class="name">量表名称
+							<span class="span-maohao">:</span>
+                        </span>
+                        <span *ngIf="!isSeeStatus">{{data.name}}</span>
+                        <input *ngIf="isSeeStatus" type="text" class="input-tepl" [ngClass]="{'error': (!data.name&&vaildModel.hasName) || (data.name==''&&vaildModel.hasName)}" nz-input [(ngModel)]="data.name" maxlength="20" (focus)="emptyValue()">
+                    </li>
+                    <li class="add-li" flex='cross:center'>
+                        <span class="name">量表类型
+							<span class="span-maohao">:</span>
+                        </span>
+                        <span *ngIf='!isSeeStatus'>
+								{{data.type==0?"教学评价":"教学反思"}}
+						</span>
+                        <nz-select *ngIf="isSeeStatus" [nzDisabled]="optionDisable" [nzPlaceHolder]="'请选择'" [(ngModel)]="selectType" class="select-search radius bg-gray" (ngModelChange)="getSelectedTemplate($event)">
+                            <nz-option [nzValue]="0" [nzLabel]="'教学评价'"></nz-option>
+                            <nz-option [nzValue]="1" [nzLabel]="'教学反思'"></nz-option>
+                        </nz-select>
+                    </li>
+                </ul>
+            </div>
+
+            <input type="file" class="upload-input" ng2FileSelect [uploader]="uploader" (change)="selectedFileOnChanged($event)" #selectFile />
+
+            <div class="add-info add-info-scale">
+                <div class="list-title">量表模块</div>
+                <ul class="add-ul">
+                    <li class="add-li" flex='cross:center'>
+                        <span class="name">客观评价
+							<span class="span-maohao">:</span>
+                        </span>
+                        <button *ngIf="isSeeStatus" (click)='uploadTemp()' tabindex='-1' class="close" nz-button [nzType]="'primary'" nzGhost>
+							<span>上传</span>
+						</button>
+                        <span class="btn-span" *ngIf="isSeeStatus" (click)='downTemplate()'>下载客观评价模版</span>
+                        <!--<p>-->
+                        <!--<span>支持上传xls、xlsx格式的文件;</span> <br>-->
+                        <!--<span>格式大小不超过2M</span>-->
+                        <!--</p>-->
+                    </li>
+                    <li flex='cross:center' *ngIf="vaildModel.isFile">
+                        <span class="name">&nbsp;</span>
+                        <div>
+                            <span class="wrong">必填项</span>
+                        </div>
+                    </li>
+                    <!--<li class="add-li" flex='cross:center' *ngIf="vaildModel.type">-->
+                    <!--<span class="name">&nbsp;</span>-->
+                    <!--<div>-->
+                    <!--<span class="wrong">文件格式错误！</span>-->
+                    <!--</div>-->
+                    <!--</li>-->
+                    <!--<li class="add-li" flex='cross:center' *ngIf="vaildModel.isMaxSize">-->
+                    <!--<span class="name">&nbsp;</span>-->
+                    <!--<div>-->
+                    <!--<span class="wrong">不支持超过2M的文件上传！</span>-->
+                    <!--</div>-->
+                    <!--</li>-->
+                    <li class="add-li" flex='cross:center' *ngIf="uploader.queue.length>0 && uploaderProgress!=100">
+                        <span class="name">&nbsp;</span>
+                        <div class="progress-bar">
+                            <span class="percent" [ngStyle]="{'width': uploaderProgress +'%'}"></span>
+                        </div>
+                        <span>{{uploaderProgress}}%</span>
+                    </li>
+                    <li class="add-li" flex='cross:center' *ngIf="uploaderProgress==100 && !uploadErr&&isSeeStatus">
+                        <div class="temp-table-box">
+                            <evaluate-table [tempData]='modelTemplate' [isUsed]='true' [(isSubmit)]='isSubmit'></evaluate-table>
+                        </div>
+                    </li>
+                    <li class="add-li" flex='cross:center' *ngIf="!isSeeStatus">
+                        <div class="temp-table-box">
+                            <evaluate-table [tempData]='modelTemplate' [isUsed]='false' [(isSubmit)]='isSubmit'></evaluate-table>
+                        </div>
+                    </li>
+                    <li class="add-li" flex='' *ngIf="selectType !== 1">
+                        <div flex-box="0" class="name">主观评价
+                            <span class="span-maohao">:</span>
+                        </div>
+                        <div flex-box="1">
+                            <div flex='' *ngFor="let input of inputDatas;let i = index;" class="input-group">
+                                <input *ngIf="isSeeStatus" flex-box="0" type="text" class="input-tepl" [ngClass]="{'error':input.status}" (ngModelChange)="inputChange($event,input)" nz-input [(ngModel)]="input.data.name" maxlength="50" (focus)="inputValue(input)">
+                                <!--<input *ngIf="!isSeeStatus" disabled="true"  flex-box="0" type="text" class="input-tepl" [ngClass]="{'error':input.status}" (ngModelChange)="inputChange($event,input)" nz-input [(ngModel)]="input.data.name" maxlength="50" (focus)="inputValue(input)">-->
+                                <span *ngIf="!isSeeStatus">{{input.data.name}}</span>
+                                <div *ngIf="isSeeStatus" flex-box="1" flex="dir:left box:mean" class="answer-input-group-add">
+                                    <span (click)="addInputGroup(i)">
+										<i class="iconfont icon-plus1"></i>
+									</span>
+                                    <span>
+										<i (click)="removeInputGroup(i)" *ngIf="inputDatas.length>1" class="iconfont icon-minus1"></i>
+									</span>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="add-info check-box-add" [ngStyle]="{'margin-top':'selectType===1'?'0px':'-1.25rem'}">
+                <label nz-radio [(ngModel)]="singleValue" [nzDisabled]="isDisabled" *ngIf="selectType !== 1">
+					<span class="check-box-add-title">改进建议/诊断结果</span>
+				</label>
+                <ul class="add-ul">
+                    <li class="add-li" flex='cross:center'>
+                        <span class="name">有效性
+							<span class="span-maohao">:</span>
+                        </span>
+                        <span *ngIf='!isSeeStatus'>{{data.effectiveness?"有效":"无效"}}</span>
+                        <nz-switch *ngIf='isSeeStatus' [ngModel]="effectiveness" (ngModelChange)="changeEffectiveness($event)">
+                            <span checked>有效</span>
+                            <span unchecked>无效</span>
+                        </nz-switch>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div *ngIf="isSeeStatus" class="footer" flex='main:center'>
+        <button (click)='cancelTemplate()' tabindex='-1' class="close" nz-button [nzType]="'primary'" nzGhost>
+			<span>取消</span>
+		</button>
+        <button (click)='saveTemplateList()' tabindex='-1' nz-button [nzType]="'primary'">
+			<span>确定</span>
+		</button>
+    </div>
+    <div *ngIf="!isSeeStatus" class="footer" flex='main:center'>
+        <!-- <button (click)='cancelTemplate()'  tabindex='-1' class="close" [nzType]="'default'" nz-button
+				[nzType]="'danger'">
+			<span>返回</span>
+		</button> -->
+        <button routerLink="/invitation/scale" tabindex='-1' [nzType]="'primary'" nz-button nzGhost>
+			<span>返回</span>
+		</button>
+    </div>
+</div>

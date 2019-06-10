@@ -1,0 +1,54 @@
+/* ==========================人员选择弹窗==================== */
+.person_select{ width: 850px; height: 480px; background: #fff;}
+.choose-tit{ height: 40px; line-height: 40px; background: #529fe2; padding-left: 20px; color: #fff; font-size: 14px;}
+.choose-bd{ padding: 10px; overflow: hidden;}
+.choose-left{ width: 410px; height: 400px; border: 1px solid rgb(200,200,200); float: left;}
+.perList{ height: 38px; border-bottom: 1px solid rgb(200,200,200); font-size: 14px; color: #3b3b3b;  padding:0 10px;}
+.perList_span{ display: inline-block; font-size: 14px; color: #3b3b3b;line-height: 38px;}
+.perInput{ border: 0; font-size: 14px; color: #9c9c9c; width: 120px; float: left; margin-top: -2px;}
+.input_case{ display: inline-block; float: right; position: relative; width: 150px; border: 1px solid #d0d0d0; height: 20px; margin: 5px 0 0; background: #fff; border-radius: 20px; padding: 3px 20px; overflow: hidden;box-sizing: content-box;-webkit-box-sizing: content-box;}
+.search_btn{ display: inline-block; width: 22px; height: 22px; background: url(/components/selectGarden/imgs/search.png) no-repeat; top:inherit; right:inherit;}
+.perList_bd{ overflow: hidden; width: 410px;}
+.section_list{ width: 240px; height: 359px; float: left; background: #fefefe;overflow: inherit;}
+.name_list{ float: left; width: 168px; background: #fff; height: 360px;border-left: 1px solid rgb(200,200,200);}
+.name_listP{ height: 28px; line-height: 28px; border-bottom: 1px solid rgb(200,200,200); padding-left: 10px; font-size: 14px; color: #3b3b3b;margin-bottom:0;}
+.name_list_con{ height: 335px; overflow: auto;}
+.name_con{ font-size: 12px; color: #3b3b3b; padding: 6px 8px;cursor: pointer;}
+.choose-center{ margin: 145px 12px 0;}
+.arrowLeft,.arrowRight,.allLeft,.allRight{ display: inline-block; padding: 0 16px; height: 24px; line-height: 24px; border: 1px solid #c6c9ca; font-size: 14px; color: #a2a2a2; margin-bottom: 20px; border-radius: 5px; cursor: pointer;}
+.arrowLeft:hover,.arrowRight:hover{ box-shadow: 0 0 5px rgba(94,178,230,0.4); border: 1px solid rgb(200,200,200);}
+.choose-right{ float: right; width: 165px; height: 400px; border: 1px solid rgb(200,200,200);}
+.chooseRi_con{ height: 361px; overflow: auto;padding-left: 0}
+
+.park-type{ float: left; width: 180px; height: 400px; border: 1px solid rgb(200,200,200); border-right: 0;}
+.park-type-bd{ height: 359px; overflow:auto;}
+.tissue-tit{ height: 28px; line-height: 28px; overflow: hidden;}
+.tissue-name{ display: inline-block; background: #81cdba; font-size: 14px; color: #fff; text-align: center; width: 50%; float: left; cursor: pointer;}
+.tissue-name.cur{ background: #00ba8b;}
+.selectorBox_cur{ background: rgb(246,246,246); }
+.tissue-bd{ height: 335px; overflow: auto;}
+.tissue-bd .con-users{ display: none;}
+.tissue-bd .con-users.cur{ display: block;padding-left: 0;}
+.user_con{ font-size: 12px; color: #3b3b3b; padding: 8px 30px; cursor: pointer;}
+
+.depPerson .section_list{ width:440px !important;}
+.layui-layer .layui-layer-btn0 {
+    background: #05a2e8;
+    color: #fff;
+    border-radius: 5px;
+}
+btn1 {
+    background: none !important;
+}
+.layui-layer .layui-layer-btn1 {
+    border: 1px solid #c6c9ca;
+    background: #f6f6f6;
+    color: #888888;
+    border-radius: 5px;
+}
+.layui-layer .layui-layer-btn-{text-align: center;position: relative;top:-20px;}
+.layui-layer .layui-layer-content{height: 430px;}
+.layui-layer .layui-layer-btn .layui-layer-btn0{background: #00ba8b;width: 70px;height: 32px;}
+.layui-layer .layui-layer-btn .layui-layer-btn1{width: 70px;height: 32px;}
+.none{display: none}
+.selectorBox_center .name_list_con{padding-left: 0;}

@@ -1,0 +1,232 @@
+@import "../../../../../../styles/variable";
+$td-border:#cccccc;
+.dialog-draggable {
+    background-color: #fff;
+    border: 0;
+    border-radius: 4px;
+    background-clip: padding-box;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.dialog-evaluate::ng-deep {
+    height: computer(600px) !important;
+    color: $color_font-deep;
+    .draggable {
+        cursor: move;
+    }
+    .container {
+        height: computer(540px);
+        padding: 0 computer(20px);
+    }
+    .dialog-evaluate-content {
+        max-width: computer(760px);
+        margin: 0 auto;
+        width: 100%;
+    }
+    .explain-title {
+        padding: computer(15px) 0 computer(5px);
+        text-align: center;
+        font-size: computer(16px);
+        font-weight: bold;
+    }
+    .explain-group-title {
+        float: left;
+        margin-right: 5px;
+        color: $color_font-deep;
+    }
+    .explain-group-content {
+        width: 100%;
+        input {
+            width: auto !important;
+            color: $color_font-deep;
+        }
+    }
+    .explain {
+        white-space: nowrap;
+        padding: computer(10px) 0;
+        .lessons {
+            //width: computer(190px);
+            max-width: 24%;
+            //margin-right: computer(10px);
+            margin-right: 1%;
+        }
+        .datetime {
+            float: right !important;
+            //width: computer(145px);
+        }
+        .subject {
+            margin-right: 1%;
+            max-width: 42%;
+        }
+        .class {
+            //width: computer(120px);
+            max-width: 31%;
+            margin-right: 1%;
+        }
+        .explain-group {
+            float: left;
+            text-align: left;
+            overflow: hidden;
+            /*溢出隐藏*/
+            text-overflow: ellipsis;
+            /*以省略号...显示*/
+            white-space: nowrap;
+            /*强制不换行*/
+        }
+    }
+    .other_wrap {
+        margin-bottom: computer(20px);
+    }
+    .other-title {
+        padding: computer(10px) 0 computer(5px);
+        display: inline-block;
+        width: 100%;
+        text-align: left;
+        color: $color_font-deep;
+        .title {
+            float: left;
+            margin-top: computer(20px);
+        }
+        .people {
+            float: right;
+        }
+    }
+    .other-textarea {
+        border: 1px solid $color_border;
+        width: 100%;
+        resize: none;
+        min-height: computer(120px);
+        padding: computer(10px);
+        outline-style: none;
+        box-sizing: border-box;
+        overflow: hidden;
+    }
+    .test-textarea {
+        border: 1px solid $color_border;
+        width: 100%;
+        padding: computer(10px);
+        min-height: computer(120px);
+        outline: 0;
+        word-wrap: break-word;
+        overflow-x: hidden;
+        overflow-y: auto;
+        text-align: left;
+        color: $color_font-deep;
+        word-break: break-all;
+    }
+    .red {
+        border: 1px solid red !important;
+    }
+}
+
+.inputnum ::ng-deep {
+    //width: computer(40px) !important;
+    padding: 0 !important;
+    display: inherit;
+    height: computer(16px) !important;
+    border: 0;
+    input {
+        //height: computer(40px);
+        text-align: center;
+        padding: 0;
+        font-size: computer(14px);
+        height: computer(16px) !important;
+        color: $color_font-deep;
+    }
+    .ant-input-number-handler-wrap {
+        display: none;
+    }
+}
+
+.footer {
+    border-top: 1px solid $color_border;
+    height: computer(60px);
+    line-height: computer(60px);
+    text-align: center;
+    border-radius: 0 0 0 0;
+    .close {
+        margin-left: computer(20px);
+    }
+    //margin: computer(15px) computer(-16px) computer(-5px) computer(-16px);
+}
+
+.dialog-evaluate {
+    .evaluate-table {
+        border-right: 1px solid $td-border;
+        border-bottom: 1px solid $td-border;
+        color: $color_font-deep;
+        width: 100%;
+        .td-title {
+            width: computer(100px);
+        }
+        .td-title-font {
+            font-weight: bold;
+        }
+        .td-50 {
+            width: computer(50px);
+        }
+    }
+    .evaluate-child-table {
+        width: 100%;
+        .td-title {
+            width: computer(100px);
+        }
+        .td-50 {
+            width: computer(50px);
+        }
+    }
+    .evaluate-table td {
+        border-left: 1px solid $td-border;
+        border-top: 1px solid $td-border;
+        //height: computer(40px);
+        //line-height: computer(40px);
+        text-align: center;
+        padding: 10px;
+        color: $color_font-deep;
+    }
+    .no-padding {
+        padding: 0 !important;
+    }
+    .no-line {
+        //border-left:0 !important;
+        border-top: 0 !important;
+    }
+    .no-left-line {
+        border-left: 0 !important;
+    }
+    .text-left {
+        text-align: left !important;
+    }
+    .td-input,
+    .inputnum,
+    .inputnum input {
+        text-align: left;
+        height: computer(16px) !important;
+        border: 0;
+        outline-style: none;
+        width: 100%;
+        /*必须设置宽度*/
+        overflow: hidden;
+        /*溢出隐藏*/
+        text-overflow: ellipsis;
+        /*以省略号...显示*/
+        white-space: nowrap;
+        /*强制不换行*/
+    }
+    .td-input-num {
+        text-align: center;
+        height: computer(16px) !important;
+        border: 0;
+        outline-style: none;
+        width: 100%;
+    }
+}
+
+.evaluation-confirm::ng-deep {
+    .tplcontent {
+        font-size: computer(14px);
+        span {
+            color: #F04134;
+        }
+    }
+}

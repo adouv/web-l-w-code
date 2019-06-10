@@ -1,0 +1,184 @@
+.statisticalChart {
+    width: 100%;
+    height: 100%;
+    padding: 0 20px;
+}
+
+.statisticalChart .gray {
+    color: #999999;
+    font-size: 12px;
+    margin: 15px 0;
+}
+
+.statisticalChart .icon-setting {
+    color: rgb(120, 108, 236);
+    cursor: pointer;
+}
+
+.statisticalChart .showback {
+    font-size: 14px;
+}
+
+.statisticalChart p {
+    margin-bottom: 10px;
+}
+
+.statisticalChart .choose {
+    font-size: 16px;
+}
+
+.statisticalChart .choose .checkbox_class {
+    margin: 0 2px 0 5px;
+}
+
+.statisticalChart .directions {
+    line-height: 30px;
+    margin-top: 20px;
+}
+
+.statisticalChart_dialog {
+    width: 1160px;
+    height: 600px;
+}
+
+.statisticalChart_dialog h2 {
+    position: relative;
+    height: 36px;
+    line-height: 36px;
+    text-align: center;
+    font-size: 16px;
+    font-weight: normal;
+    border-bottom: 1px solid #f8f8f8;
+}
+
+.opacity {
+    opacity: .3;
+    cursor: default !important;
+}
+
+.statisticalChart_dialog h2 span {
+    color: #999999;
+    position: absolute;
+    top: 0px;
+    cursor: pointer;
+    right: 20px
+}
+
+.statisticalChart_dialog .count, .statisticalChart .count {
+    line-height: 35px;
+    color: #999999;
+}
+.statisticalChart_dialog .count, .statisticalChart .count .btn_bd{
+    margin-bottom: 20px;
+    margin-right: 20px;
+}
+
+.statisticalChart_dialog .count {
+    padding-left: 20px;
+}
+
+.statisticalChart_dialog .count span, .statisticalChart .count span {
+    color: #39bdfb;
+}
+
+.statisticalChart_dialog .table_list {
+    width: 100%;
+    padding: 0px 20px;
+    height: 465px;
+    overflow: auto;
+}
+
+.statisticalChart_dialog table {
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
+}
+
+.statisticalChart_dialog table tr:nth-of-type(odd) {
+    background: #f8f8f8;
+}
+
+.statisticalChart_dialog table th {
+    height: 39px;
+    text-align: center;
+    border: 1px solid #dae4ee;
+}
+
+.statisticalChart_dialog table td {
+    padding: 15px 10px;
+    border: 1px solid #dae4ee;
+}
+
+.statisticalChart_dialog table td:nth-child(1),
+.statisticalChart_dialog table th:nth-child(1) {
+    width: 4%;
+    border-left: none;
+}
+
+.statisticalChart_dialog table td:nth-child(2) {
+    width: 29%;
+}
+
+.statisticalChart_dialog table td:nth-child(3) {
+    width: 21%;
+}
+
+.statisticalChart_dialog table td:nth-child(4) {
+    width: 7%;
+}
+
+.statisticalChart_dialog table td:nth-child(5) {
+    width: 8%;
+}
+
+.statisticalChart_dialog table td:nth-child(6) {
+    width: 12%;
+}
+
+.statisticalChart_dialog table td:last-child,
+.statisticalChart_dialog table th:last-child {
+    border-right: none;
+}
+
+.statisticalChart .list_box {
+    position: relative;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+.condition-search {
+    color: #0096ff;
+    cursor: pointer;
+}
+
+.search-result {
+    padding: 15px 0;
+    border-bottom: 1px solid #dbe3ee;
+    margin-bottom: 20px;
+}
+
+.all-statistics-popup .ui-popup {
+    position: absolute;
+    width: 1160px;
+    height: 600px;
+    top: calc((100% - 600px) / 2);
+    left: calc((100% - 1160px) / 2);
+}
+
+.all-statistics-popup .ui-dialog {
+    border: 1px solid #dbe3ee !important;
+}
+
+.all-statistics-popup .ui-dialog .school-box {
+    padding: 20px 20px 10px 20px;
+}
+
+.all-statistics-popup  .ui-dialog .font-school {
+    display: inline-block;
+    font-size: 16px;
+    vertical-align: middle;
+}
+.all-statistics-popup .table_list{
+    max-height: 400px;
+    overflow: auto;
+}

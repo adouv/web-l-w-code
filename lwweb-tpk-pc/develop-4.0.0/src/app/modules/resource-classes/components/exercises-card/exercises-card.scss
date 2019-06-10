@@ -1,0 +1,117 @@
+@import "../../../../../styles/variable";
+
+.exercise-card::ng-deep{
+	width: 100%;
+	display: inline-block;
+	margin-top: computer(20px);
+	//padding: 20px;
+	.check-content{
+		width: 16px;
+		margin-right: computer(20px);
+		margin-top: computer(20px);
+		.label-checkbox{
+			margin-right: 0;
+		}
+	}
+
+	.check-content{
+		//margin-right: computer(15px);
+		//float: left;
+	}
+	.exercise-card-container{
+		box-sizing: border-box;
+		position: relative;
+		border: 1px solid $color_border;
+		//padding: computer(20px);
+		width:100%;
+		overflow: hidden;
+		.tag-class{
+			position: absolute;
+			left: 0;
+			top: 0;
+			width: computer(45px);
+			height: computer(45px);
+			&.in-class{
+				background: url("../../../../../assets/images/in-class.png") no-repeat;
+			}
+			&.before-class{
+				background: url("../../../../../assets/images/before-class.png") no-repeat;
+			}
+			&.after-class{
+				background: url("../../../../../assets/images/after-class.png") no-repeat;
+			}
+		}
+		.exercise-card-container-content::ng-deep{
+			padding: computer(20px);
+			box-sizing: border-box;
+			font-size: computer(14px);
+			cursor: pointer;
+			word-wrap: break-word;
+			width:100%;
+			overflow: hidden;
+			.dynamicHtml{
+				width:100%;
+				word-wrap: break-word;
+				font-size: computer(14px) !important;
+			}
+			img{
+				max-width: 100%;
+			}
+			p{
+				word-wrap: break-word;
+			}
+		}
+		.exercise-card-container-footer, .exercise-card-handle-container-footer{
+			height: computer(40px);
+			background-color: #f8f8f8;
+			padding: 0 computer(20px);
+			box-sizing: border-box;
+			width: 100%;
+			line-height:computer(40px);
+			.btn-disabled{
+				opacity: 0.5;
+				cursor: not-allowed !important;
+			}
+			.button-group{
+				float: left;
+				color:$color_main;
+				font-size: computer(14px);
+				line-height: computer(40px);
+				margin-right: computer(40px);
+				cursor: pointer;
+				.icon-span{
+					font-size: computer(20px);
+					margin-right: computer(10px);
+				}
+			}
+			.exercises-tag{
+				//height:  computer(20px);
+				width: auto;
+				padding: 0 computer(5px);
+				line-height: computer(20px);
+				border: 1px solid #fb534a;
+				border-radius: computer(5px);
+				color:#fb534a;
+				display: inline-block;
+				//margin-top: computer(10px);
+				margin-right: computer(20px);
+			}
+		}
+		.exercise-card-handle-container-footer{
+			background-color: #fff;
+			border-top: 1px solid $color_border;
+		}
+		.exercises-answer{
+			background: rgb(246,246,246);
+			padding: computer(20px);
+			border-top: 1px solid $color_border;
+			p{
+				font-size: computer(16px);
+				margin-bottom: computer(10px);
+			}
+			.right-answer{
+				margin-bottom: computer(20px);
+			}
+		}
+	}
+}

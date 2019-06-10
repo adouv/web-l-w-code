@@ -1,0 +1,687 @@
+.content .nav-form {
+    width: 500px;
+    float: left
+}
+
+.content .nav-form .form-control {
+    width: 170px;
+    margin-right: 11.5px
+}
+
+.content .form-control {
+    float: left;
+}
+
+.content .btn-group:last-child {
+    float: right;
+    border-radius: 5px;
+    overflow: hidden
+}
+
+.content .btn-group:last-child .btn {
+    padding-left: 30px;
+    padding-right: 30px
+}
+
+table.table tr td {
+    text-align: center;
+    vertical-align: middle;
+    font-family: 'Microsoft YaHei';
+    font-size: 14px;
+}
+
+table.table thead tr td {
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.table>tbody>tr {
+    height: 70px;
+}
+
+.table>tbody>tr>td {
+    height: 60px;
+    cursor: default;
+}
+
+.slash {
+    border-left: 30px solid #aaa;
+    border-bottom: 30px solid #aaa;
+    border-top: 30px solid transparent;
+    border-right: 30px solid transparent;
+}
+
+.rotate-line span {
+    display: block
+}
+
+.rotate-line span:first-child {
+    text-align: right
+}
+
+.rotate-line span:last-child {
+    text-align: left
+}
+
+.table tr td .course-edit:hover {
+    color: #00ba8b
+}
+
+.table tr td .course-edit p {
+    margin: 0;
+}
+
+.table tr td:hover .course-add {
+    display: inline
+}
+
+.table tr td:hover .course-add:before {
+    content: '+';
+    font-size: 28px;
+    color: #00ba8b;
+    font-weight: bold;
+    cursor: pointer
+}
+
+.class-content {
+    overflow: hidden;
+    height: 310px;
+    margin-bottom: 0;
+    position: relative
+}
+
+.class-content .row {
+    padding: 0 15px;
+}
+
+.class-content .row h5 {
+    height: 22px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    float: left;
+    vertical-align: middle;
+    line-height: 22px;
+}
+
+.class-content .row h5:first-child {
+    font-weight: bold;
+    width: 51.6%;
+}
+
+.class-content .row h5:last-child {
+    font-weight: bold;
+    width: 41%;
+}
+
+.class-content .row h5 label {
+    position: absolute;
+    right: 0;
+}
+
+.class-content .pull-left {
+    width: 32%;
+    border: 1px solid #e5e5e5;
+    height: 350px;
+    overflow: auto;
+    padding: 0;
+}
+
+.class-content .pull-right {
+    width: 67%;
+    border: 1px solid #e5e5e5;
+    height: 350px;
+    padding: 10px 0;
+    position: relative
+}
+
+.class-content .pull-right .form-group {
+    width: 100%;
+    padding: 0 20px;
+    background: #fff;
+    margin-bottom: 0
+}
+
+.class-content .pull-right .form-group .form-control {
+    padding-right: 30px;
+}
+
+.class-content .pull-right .form-group .glyphicon {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+}
+
+.class-content .pull-right ul {
+    padding: 0 25px;
+    overflow: auto;
+    height: 220px;
+}
+
+.class-content .pull-right li {
+    line-height: 28px;
+    padding: 0 10px;
+    height: 28px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    cursor: default
+}
+
+.class-content .pull-right li.cur {
+    background: #f6f6f6;
+    color: rgb(0, 186, 139)
+}
+
+.form-group .teacher-box {
+    border: 1px solid #e5e5e5;
+    height: 318px;
+    border-radius: 4px;
+    position: absolute;
+    width: 57%;
+    background: #fff;
+    z-index: 10;
+    left: 24%;
+    top: 70%;
+}
+
+.form-group .class-box {
+    border: 1px solid #e5e5e5;
+    height: 318px;
+    border-radius: 4px;
+    position: absolute;
+    width: 57%;
+    background: #fff;
+    z-index: 10;
+    left: 24%;
+    top: 70% !important;
+}
+
+.form-group .teacher-box .footer {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    text-align: center;
+    border-top: 1px solid #e5e5e5
+}
+
+.form-group .teacher-box .footer .credit {
+    margin-bottom: 0;
+    text-align: left;
+    padding: 10px;
+}
+
+.form-group .teacher-box .row {
+    width: 100%;
+    height: 140px;
+    overflow: auto;
+    position: absolute;
+    top: 36px;
+    left: 15px;
+    padding: 5px 0;
+}
+
+.form-group .teacher-box ul li {
+    width: 33%;
+    float: left;
+}
+
+.form-group .teacher-box ul li label {
+    font-weight: 500
+}
+
+.form-group .teacher-box ul li input {
+    margin-right: 10px;
+}
+
+.form-group .teacher-box>.h5>input {
+    width: 200px;
+    height: 30px;
+    margin-top: 5px;
+    margin-right: 5px;
+    font-weight: normal;
+}
+
+.form-inline select.form-control {
+    max-width: 200px;
+}
+
+
+/*.modal.fade .modal-dialog{margin: 1% auto}*/
+
+.class-config .modal-header {
+    line-height: 34px;
+    padding: 5px;
+}
+
+.modal-header #modal-title {
+    display: inline-block;
+    vertical-align: middle
+}
+
+.modal section.row {
+    border-bottom: 1px solid #e5e5e5;
+    padding: 0 15px;
+    margin-top: 10px;
+}
+
+.modal section.row h5 {
+    font-weight: bold;
+    display: inline-block;
+}
+
+.modal section.row input {
+    margin-top: 9px;
+    margin-right: 4px;
+}
+
+.modal section.row label {
+    line-height: 36px;
+    margin-bottom: 0;
+}
+
+.class-config .modal-body {
+    height: 425px;
+    overflow-y: auto;
+    overflow-x: hidden
+}
+
+.class-config .modal-body .text-main .form-item {
+    width: 18%;
+}
+
+.modal-footer {
+    text-align: center
+}
+
+.form-group header.h5 {
+    border-bottom: 1px solid #e5e5e5;
+    text-align: center;
+    line-height: 42px;
+    height: 42px;
+    font-weight: bold;
+    margin-top: 0;
+    padding-left: 10px;
+}
+
+.cfg-shadow {
+    position: absolute;
+    width: 100%;
+    min-height: 350px;
+    height: 100%;
+    background: rgba(150, 150, 150, .1);
+    top: 0;
+    z-index: 1000
+}
+
+.errors {
+    margin-top: 20px;
+    max-height: 200px;
+    overflow: auto;
+    border-top: 1px solid #cbcbcb;
+}
+
+.errors ul {
+    padding: 0;
+    margin: 0;
+}
+
+.errors li {
+    width: 33%;
+    line-height: 32px;
+    float: left
+}
+
+
+/*
+table thead tr.active td:nth-child(1){width: 3%}
+table thead tr.active td:nth-child(2){width: 3%}
+table thead tr.active td:nth-child(3){width: 3%}*/
+
+.default {
+    height: 550px;
+    position: relative;
+    color: grey;
+    background: url("../images/noorg.png") no-repeat;
+    background-position: center 40%;
+}
+
+.defaultLg {
+    font-size: 14px;
+    font-family: "Microsoft YaHei";
+    position: absolute;
+    top: 52%;
+    width: 100%;
+    text-align: center
+}
+
+.scheduleDefault {
+    color: grey;
+    position: relative;
+    height: 100%;
+    background: url("../images/noschedule.png") no-repeat;
+    background-position: center 40%;
+}
+
+.scheduleDefaultLg {
+    font-size: 14px;
+    font-family: "Microsoft YaHei";
+    position: absolute;
+    top: 52%;
+    width: 100%;
+    text-align: center
+}
+
+table tr td {
+    position: relative
+}
+
+.camera_no {
+    height: 20px;
+    background: url("../images/no_camera.png") no-repeat top center;
+}
+
+.camera_no.camera_course {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    width: 20px;
+}
+
+.modal-header.pd {
+    padding: 16px;
+}
+
+.modal-header.pd #modal-title {
+    margin: 10px 0;
+}
+
+.form-control.course {
+    width: 82%;
+}
+
+.coursename {
+    margin-left: 30px;
+    padding-top: 5px;
+    font-weight: 400;
+    font-size: 15px;
+}
+
+.modal-title.kebiao {
+    font-size: 15px;
+}
+
+.page {
+    padding-bottom: 20px;
+}
+
+.sure {
+    width: 116px;
+    height: 38px;
+}
+
+.radioClass.course-radio {
+    display: inline-block;
+}
+
+.camera-sel {
+    font-size: 16px;
+    margin-left: 5px;
+    padding-top: 3px;
+    display: inline-block;
+    font-weight: 400;
+}
+
+.course-container .text-over {
+    display: inline-block;
+    max-width: 110px;
+    overflow: hidden;
+    margin-bottom: -5px;
+    box-sizing: border-box;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.in-bk {
+    display: inline-block
+}
+
+span.in-bk {
+    line-height: 20px
+}
+
+.prompt-page {
+    color: rgb(197, 197, 197);
+    margin-left: 20px;
+    font-size: 15px;
+}
+
+.teacher {
+    display: inline-block;
+    width: 80% !important;
+}
+
+.course-container .pull-right span {
+    float: right;
+    display: inline-block
+}
+
+.pull-right .isStatic {
+    color: black;
+    position: absolute;
+    right: -75px;
+    top: 0;
+    z-index: 1;
+    display: inline-block;
+    width: 80px;
+    text-align: right;
+    cursor: pointer
+}
+
+.pull-right .noStatic {
+    color: rgb(200, 200, 200);
+    position: absolute;
+    right: -77px;
+    top: 0;
+    z-index: 2;
+    background: #fff;
+}
+
+.pull-right .delt {
+    position: absolute;
+    right: 40px;
+    top: 0;
+    z-index: 2;
+    color: rgb(200, 200, 200);
+    cursor: pointer;
+}
+
+.pull-right .delhide {
+    display: none;
+    margin-left: 5px;
+}
+
+.pull-right .mainVoice {
+    position: absolute;
+    right: 10px;
+    top: 0;
+    z-index: 2;
+    color: rgb(200, 200, 200);
+    cursor: pointer;
+    background: url('../../../assets/mainVoice.png') no-repeat center center;
+    width: 16px;
+    height: 26px;
+}
+
+.pull-right .mainVoiceHide {
+    display: none;
+    margin-left: 5px;
+}
+
+.mainVoiceTextHid {
+    width: 120px;
+    display: inline-block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.pull-right .showdel {
+    display: block !important;
+}
+
+.class-content .pull-right li {
+    overflow: visible;
+    position: relative;
+}
+
+.line-body {
+    height: 0;
+    width: 100%;
+    border-bottom: 1px solid rgb(200, 200, 200)
+}
+
+.modal-body.coursebody {
+    padding: 10px 0;
+    overflow: visible;
+    height: 520px;
+}
+
+.modal-dialog {
+    width: 890px;
+    height: 770px;
+}
+
+.text-main {
+    width: 870px;
+    padding: 0 100px;
+}
+
+.modal-content {
+    height: auto
+}
+
+.text-main .row .courseArea {
+    font-weight: 400;
+    font-size: 15px
+}
+
+.class-config .modal-footer {
+    padding-top: 96px;
+    border: none;
+}
+
+.course-container .checked-camera {
+    height: 123px;
+    border-bottom: 1px solid rgb(200, 200, 200);
+    padding: 0;
+    font-size: 14px;
+}
+
+#ullist {
+    height: 84px;
+    overflow: auto
+}
+
+#ullist li {
+    border-bottom: 1px solid #fff;
+    width: 84%
+}
+
+#ullist li div {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    flex-wrap: nowrap;
+}
+
+.checked-camera p {
+    margin-left: 20px;
+}
+
+.label-group.pull-right {
+    font-weight: 400;
+    font-size: 15px
+}
+
+.check-title {
+    display: inline-block;
+    margin-right: 5px;
+}
+
+.class-content .pull-right {
+    font-size: 14px
+}
+
+.text-main .form-group.class-content .row h5 {
+    display: inline-block;
+    font-weight: 400;
+    font-size: 16px
+}
+
+.class-content .pull-right .form-group .glyphicon {
+    top: 12px;
+    right: 111px
+}
+
+.liList:hover .delt {
+    display: block;
+    width: 20px;
+    height: 28px;
+    text-align: center;
+    line-height: 28px;
+    font-size: 22px;
+}
+
+.liList:hover .mainVoice {
+    display: block;
+}
+
+.className,
+.teacherName {
+    font-weight: 400;
+    font-size: 16px;
+}
+
+.modal-footer.techername-foot {
+    padding-top: 50px;
+}
+
+.modal-footer.techername-foot button:first-child {
+    margin-right: 60px;
+}
+
+.modal-footer.techername-foot button {
+    width: 115px;
+}
+
+.liList:hover .isStatic {
+    display: block;
+}
+
+#column li {
+    float: left;
+    cursor: pointer;
+    padding: 5px 20px;
+    margin: 0 5px;
+}
+
+.content .nav-form .addWidth {
+    width: 190px;
+    margin-right: 11px
+}
+
+.table-bordered thead tr td {
+    border-bottom-width: 1px
+}
+
+.buttom_distance {
+    margin-bottom: 9px;
+}
+
+.administration {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    margin-bottom: 20px;
+}

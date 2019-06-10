@@ -1,0 +1,104 @@
+* {
+	margin: 0;
+	padding: 0;
+	font-size: 0;
+}
+
+#container {
+	position: relative;
+	width: 940px;
+	min-height: 1348px;
+	.box {
+		float: left;
+		padding: 20px 0 0 20px;
+		width: 470px;
+		-webkit-box-sizing: border-box;
+		-moz-box-sizing: border-box;
+		-ms-box-sizing: border-box;
+		-o-box-sizing: border-box;
+		position: relative;
+		cursor: pointer;
+		.serialNumber {
+			display: inline-block;
+			position: absolute;
+			top: 20px;
+			left: 20px;
+			width: 40px;
+			height: 40px;
+			font-size: 18px;
+			font-style: normal;
+			text-align: center;
+			line-height: 40px;
+			background-color: #7552f8;
+			color: #ffffff;
+		}
+		&:hover .pic {
+			border: solid 1px #7552f8;
+		}
+	}
+	.pic {
+		padding: 30px 29px 33px 20px;
+		border: 1px solid #dddddd;
+		overflow: hidden;
+
+			
+		.tooltip {
+			margin-bottom: 11px;
+			text-align: center;
+			font-size: 18px;
+			line-height: 1;
+			&.registrationExpired {
+				color: #f66666;
+			}
+			&.registrationOver {
+				color: #7552f8;
+			}
+		}
+		.title {
+			margin-bottom: 17px;
+			line-height: 1;
+			font-size: 18px;
+			text-align: center;
+			    font-weight: 700;
+		}
+		.txt {
+			text-align: justify;
+			line-height: 30px;
+			letter-spacing: 0px;
+			font-size: 16px;
+			display: -webkit-box;
+			-webkit-box-orient: vertical;
+			-webkit-line-clamp: 5;
+			overflow: hidden;
+		}
+		.des {
+			color: #999999;
+			.author {
+				float: left;
+				font-size: 14px;
+			}
+			.timer {
+				float: right;
+				font-size: 14px;
+			}
+			&:after {
+				content: '';
+				display: block;
+				height: 0;
+				overflow: hidden;
+				clear: both;
+			}
+		}
+	}
+	img {
+		width: 410px;
+		height: 230px;
+	}
+	.wrap::after {
+		content: '';
+		overflow: hidden;
+		height: 0;
+		display: block;
+		clear: both;
+	}
+}

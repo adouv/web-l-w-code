@@ -1,0 +1,766 @@
+<div>
+    <div class="asset_application" ng-click="assetForm.trueFormat = false" ng-if="assetForm.isEdit===true||assetForm.isEdit===undefined">
+        <div class="add_applation">
+            <h2>
+                <span class="num" ng-show="!assetForm.showSecond">
+                <i>1</i>
+            </span>
+                <span class="num second" ng-show="assetForm.showSecond">
+                <i>1</i>
+                <i>2</i>
+            </span>
+            </h2>
+            <!--第一步-->
+            <form class="w5c-form" novalidate name="showSecondForm">
+                <div class="first_step" ng-show="!assetForm.showSecond">
+                    <h3>请确认要处置的资产是否属于电子类
+                        <!--<select class="select_class" ng-model="assetForm.editForm.isElectronic">
+                            <option ng-value="false">非电子类</option>
+                            <option ng-value="true">电子类</option>
+                        </select>-->
+
+                        <select-options ng-model="assetForm.editForm.isElectronic" repeat-items="data in assetForm.IsElectronicSelectList" item-key="value" change="assetForm.setIsDisposal()">
+                            {{data.name}}
+                        </select-options>
+                    </h3>
+                    <p class="info">注:根据目前的财政审批政策,电子类和非电子类的资产审批流程不同;请自行将电子类和非电子的资产分开进行处置申报</p>
+                    <div class="line_strip"></div>
+                    <div class="table_div">
+                        <table class="form_table pubTable">
+                            <tr>
+                                <th colspan="2">行政事业单位国有资产处置申报表
+                                    <span class="help_span">填表辅助 <i class="icon-prompt iconfont"
+                                                                    ng-click="assetForm.help='show'"></i></span>
+                                </th>
+                            </tr>
+                            <tr class=first>
+                                <td style="width: 60%">申报单位:{{assetForm.editForm.applyUnitName}}<span ng-if="assetForm.visibleGardens.length>1" class="iconfont icon-setting set_icon verMiddle" title="选择园区" ng-click=" assetForm.chooseGarden()"></span>
+                                </td>
+                                <td>
+                                    <span class="nameLeft">资产管理信息系统单位登录名:</span>
+                                    <input type="text" claass="input_class" style="padding-left: 206px;border:0;" placeholder="点击输入" ng-model="assetForm.editForm.systemLoginName" name="systemLoginName" maxlength="100" required ng-blur="assetForm.checkLoginName(assetForm.editForm.systemLoginName)"
+                                        ng-focus="assetForm.loginNameIcon = false;assetForm.loginName=false">
+                                    <span class="notEmptyPass" ng-show="assetForm.loginNameIcon" ng-click="assetForm.verify('loginName')"></span>
+                                    <div class="right_format" ng-show="assetForm.loginName">请输入正确登录名</div>
+                                </td>
+                            </tr>
+                        </table>
+                        <table class="form_table pubTable">
+                            <tbody class="third">
+                                <tr class="second">
+                                    <!--点击弹出弹窗-->
+                                    <td>资产大类</td>
+                                    <td class="text_left pointer" colspan="11" ng-click="assetForm.showDialog('kind')">
+                                        <span ng-if="assetForm.editForm.assetTypeName">{{assetForm.editForm.assetTypeName}}；</span>
+                                    </td>
+                                </tr>
+                                <tr class="second">
+                                    <!--点击弹出弹窗-->
+                                    <td>申报原因</td>
+                                    <td class="text_left pointer" colspan="11" ng-click="assetForm.showDialog('reason')">
+                                        <span ng-if="assetForm.editForm.applyReasonName">{{assetForm.editForm.applyReasonName}}；</span>
+                                    </td>
+                                </tr>
+                                <tr class="second">
+                                    <td>处置形式</td>
+                                    <td class="text_left" colspan="11">
+                                        <select-options  name="" ng-model="assetForm.editForm.disposeType" repeat-items="data in assetForm.disposeTypeList" item-key="id" change="assetForm.selectList(assetForm.disposeTypeList,assetForm.editForm,'disposeType','disposeTypeName')">
+                                            {{data.name}}
+                                        </select-options>
+                                    </td>
+                                </tr>
+                                <tr class="second">
+                                    <td>处置方向</td>
+                                    <td class="text_left" colspan="11">
+                                        <select-options name="" ng-model="assetForm.editForm.disposeDirection" repeat-items="data in assetForm.disposeDirectionList" item-key="id" change="assetInput.selectList(assetForm.disposeDirectionList,assetForm.editForm,'disposeDirection','disposeDirectionName')">
+                                            {{data.name}}
+                                        </select-options>
+                                        <div ng-show="assetForm.editForm.disposeDirection==='transferTo'" style="display: inline-block" ng-click="assetForm.chooseGarden('allocatedGardenId','allocatedGardenName')" class="input_class bord" required>
+                                            {{assetForm.editForm.allocatedGardenName}}
+                                        </div>
+
+                                    </td>
+                                </tr>
+                                <tr class="th">
+                                    <td>序号</td>
+                                    <td>资产编号</td>
+                                    <td>中小学办学条件达标系统编号<span style="color: #999;font-size: 12px;">（非必填）</span></td>
+                                    <td>资产名称</td>
+                                    <td>账面原值(元)</td>
+                                    <td>数量</td>
+                                    <td>资产大类</td>
+                                    <td>规格型号</td>
+                                    <td>会计凭证号</td>
+                                    <td>取得方式</td>
+                                    <td>取得日期</td>
+                                    <td>已使用年限</td>
+                                </tr>
+                                <tr ng-repeat="detail in assetForm.editForm.assetDisposeDetailList track by $index">
+                                    <td>{{$index+1}}
+                                        <span class="add_minus">
+                                        <i class="iconfont icon-minus"
+                                           ng-if="assetForm.editForm.assetDisposeDetailList.length>1"
+                                           ng-click="assetForm.removeLine($index,'assetDisposeDetailList')"></i>
+                                        <i class="iconfont icon-plus"
+                                           ng-click="assetForm.addLine(assetForm.editForm.assetDisposeDetailList,$index)"></i>
+                                    </span>
+                                    </td>
+                                    <td>
+                                        <textarea class="textarea_class overflow_box_sml" ng-class="{'auto':detail.assetNo}" ng-blur="assetForm.validateAssetNo(detail,$index)" maxlength="100" ng-model="detail.assetNo" name="assetNo{{$index}}" required></textarea>
+                                    </td>
+                                    <td>
+                                        <textarea class="textarea_class overflow_box_sml" ng-class="{'auto':detail.standardSystemNo}" maxlength="100" ng-model="detail.standardSystemNo" name="standardSystemNo{{$index}}" ng-blur="assetForm.validateSystemNo(detail)"></textarea>
+                                    </td>
+                                    <td>
+
+                                        <textarea class="textarea_class overflow_box_sml" ng-class="{'auto':detail.assetName}" maxlength="50" ng-model="detail.assetName" name="assetName{{$index}}" name="assetName" required></textarea>
+                                    </td>
+                                    <td>
+                                        <input type="text" ng-change="assetForm.vailAssetTotalAmount($index,detail.assetTotalAmount)" class="input_class" ng-model="detail.assetTotalAmount" name="assetTotalAmount{{$index}}" required>
+                                    </td>
+                                    <td>{{detail.assetCount?detail.assetCount:0}}</td>
+                                    <td>
+                                        <select-options style="width:150px;" ng-model="detail.assetType" item-key="id" repeat-items="data in assetForm.assetTypeList" name="assetType{{$index}}" change="assetForm.selectList(assetForm.canUseKind,detail,'assetType','assetTypeName')" required>
+                                                {{data.name}}
+                                        </select-options>
+                                    </td>
+                                    <td>
+                                        <textarea class="textarea_class overflow_box_sml" ng-class="{'auto':detail.specifications}" maxlength="50" ng-model="detail.specifications" name="specifications{{$index}}" required></textarea>
+                                    </td>
+                                    <td>
+                                        <textarea class="textarea_class overflow_box_sml" ng-class="{'auto':detail.accountingVoucherNumber}" maxlength="50" ng-model="detail.accountingVoucherNumber" name="accountingVoucherNumber{{$index}}" required></textarea>
+                                    </td>
+                                    <td>
+                                        <select-options style="width:100px" class="select_class get_method" id="" repeat-items="data in assetForm.acquireWayList" item-key="id" ng-model="detail.acquireWay" name="acquireWay{{$index}}" change="assetForm.selectList(assetForm.acquireWayList,detail,'acquireWay','acquireWayName')" required>
+                                            {{data.name}}
+                                        </select-options>
+                                    </td>
+                                    <td>
+                                        <input id="acquireDate{{$index}}" style="padding:0 5px;" readonly class="input_class pointer" type="text" lw-laydate ng-model="detail.acquireDate" name="acquireDate{{$index}}" required name="acquireDate">
+                                    </td>
+                                    <td><input type="text" class="input_class" ng-model="detail.usedYear" ng-change="assetForm.verification(detail,'usedYear')" name="usedYear{{$index}}" name="usedYear" required></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="4">合计</td>
+                                    <td style="width:7%;">{{assetForm.assetTotalAmountSum||0}}</td>
+                                    <td style="width:5%;">{{assetForm.assetCountSum||0}}</td>
+                                    <td colspan="6"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <!--走财政审批 电子类或非电子类单价大于等于5万元或总价大于等于10万-->
+                        <table class="form_table show_box" ng-if="!(assetForm.editForm.isElectronic==='false' && !assetForm.isFinance && assetForm.isDisposal)">
+                            <tr>
+                                <td width="25" ng-repeat="data in assetForm.auditCondition | limitTo : 4">
+                                    <p ng-if="data.taskName" class="dept">{{data.taskName}}:</p>
+                                    <p class="result">
+                                        <span ng-if="data.isApproved===null" class="waitpass">待审核</span>
+                                        <span ng-if="data.isApproved===true" class="notpass">同意</span>
+                                        <span ng-if="data.isApproved===false" class="notpass">未通过</span>
+                                        <span ng-if="data.commentList.length>0" class="note">{{data.commentList[0].fullMessage}}</span>
+                                    </p>
+                                    <p ng-if="data.signLabel" class="sign">{{ data.signLabel }}: <span ng-if="data.isApproved!==null">{{ data.displayName }}</span></p>
+                                    <p ng-if="data.stampLabel" class="seal">{{ data.stampLabel }}</p>
+                                    <p ng-if="data.isApproved!==null" class="date">{{ data.auditDate | date : 'yyyy年MM月dd日'}}
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="25" ng-repeat="data in assetForm.auditCondition | limitTo : -4">
+                                    <p ng-if="data.taskName" class="dept">{{data.taskName}}:</p>
+                                    <p class="result">
+                                        <span ng-if="data.isApproved===null" class="waitpass">待审核</span>
+                                        <span ng-if="data.isApproved===true" class="notpass">同意</span>
+                                        <span ng-if="data.isApproved===false" class="notpass">未通过</span>
+                                        <span ng-if="data.commentList.length>0" class="note">{{data.commentList[0].fullMessage}}</span>
+                                    </p>
+                                    <p ng-if="data.signLabel" class="sign">{{ data.signLabel }}: <span ng-if="data.isApproved!==null">{{ data.displayName }}</span></p>
+                                    <p ng-if="data.stampLabel" class="seal">{{ data.stampLabel }}</p>
+                                    <p ng-if="data.isApproved!==null" class="date">{{ data.auditDate | date : 'yyyy年MM月dd日'}}
+                                    </p>
+                                </td>
+                            </tr>
+                        </table>
+                        <!--不走财政审批 非电子类单价小于等于5万或总价小于等于10万-->
+                        <table class="form_table show_box" ng-if="assetForm.editForm.isElectronic==='false' && !assetForm.isFinance && assetForm.isDisposal">
+                            <tr>
+                                <td width="33.3" ng-repeat="data in assetForm.auditCondition | limitTo : 3">
+                                    <p ng-if="data.taskName" class="dept">{{data.taskName}}:</p>
+                                    <p class="result">
+                                        <span ng-if="data.isApproved===null" class="waitpass">待审核</span>
+                                        <span ng-if="data.isApproved===true" class="notpass">同意</span>
+                                        <span ng-if="data.isApproved===false" class="notpass">未通过</span>
+                                        <span ng-if="data.commentList.length>0" class="note">{{data.commentList[0].fullMessage}}</span>
+                                    </p>
+                                    <p ng-if="data.signLabel" class="sign">{{ data.signLabel }}:
+                                        <span ng-if="data.isApproved!==null">{{ data.displayName }}</span>
+                                    </p>
+                                    <p ng-if="data.stampLabel" class="seal">{{ data.stampLabel }}</p>
+                                    <p ng-if="data.isApproved!==null" class="date">{{ data.auditDate | date : 'yyyy年MM月dd日'}}
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="33.3" ng-repeat="data in assetForm.auditCondition | limitTo : -3">
+                                    <p ng-if="data.taskName" class="dept">{{data.taskName}}:</p>
+                                    <p class="result">
+                                        <span ng-if="data.isApproved===null" class="waitpass">待审核</span>
+                                        <span ng-if="data.isApproved===true" class="notpass">同意</span>
+                                        <span ng-if="data.isApproved===false" class="notpass">未通过</span>
+                                        <span ng-if="data.commentList.length>0" class="note">{{data.commentList[0].fullMessage}}</span>
+                                    </p>
+                                    <p ng-if="data.signLabel" class="sign">{{ data.signLabel }}:
+                                        <span ng-if="data.isApproved!==null">{{ data.displayName }}</span>
+                                    </p>
+                                    <p ng-if="data.stampLabel" class="seal">{{ data.stampLabel }}</p>
+                                    <p ng-if="data.isApproved!==null" class="date">{{ data.auditDate | date : 'yyyy年MM月dd日'}}
+                                    </p>
+                                </td>
+                            </tr>
+                        </table>
+                        <table class="form_table pubTable">
+                            <tr class=first>
+                                <td style="width:60%">资产管理员:{{assetForm.editForm.creatorName}}</td>
+                                <td>
+                                    <span class="nameLeft">联系电话:</span>
+                                    <input type="text" style="padding-left: 80px" class="input_class" placeholder="点击输入" ng-model="assetForm.editForm.phone" name="phone" ng-focus="assetForm.phoneNumberIcon = false;assetForm.phoneNumber=false" required ng-blur="assetForm.checkPhone(assetForm.editForm.phone)">
+                                    <!-- 校验电话号码-->
+                                    <span class="notEmptyPass" ng-show="assetForm.phoneNumberIcon" ng-click="assetForm.verify('phoneNumber')"></span>
+                                    <div class="right_format" ng-show="assetForm.phoneNumber">请输入正确手机号</div>
+                                </td>
+                            </tr>
+                        </table>
+                        <!--填表辅助-->
+                        <div class="help" id="help" ng-blur="assetForm.help='hide'" ng-show="assetForm.help==='show'" ng-mouseleave="assetForm.help='hide'">
+                            <p class="title">填表辅助</p>
+                            <p class="mg_bt">直接在左侧的各列中单击单元格即可进行对应的操作</p>
+                            <p>*可直接在左侧的单元格单击进行手动输入资产信息,除去"中小学办学条件达标系统编号"为非必填项外.其他均为必填</p>
+                            <p>
+                                *资产编号批量添加格式:最后六位作为自然数序列可以连续录入，用“—”线连接开始编号值和结束编号值，开始编号值必须小于结束编号值，结束编号值最大位数不能超过6位，不足6位的部分默认等同于开始编号值的相应位的值。用“\”区分单个的编号的序列号值单个编号的值最多不允许超过6位，不足6位的部分默认等同于前部的起始编号值相应位的值，如下所示:</p>
+                            <p>201658578787-1320\454\1106</p>
+                            <p>注意：连续输入的资产编号中不允许出现相同的编号；连续输入的总条数最大不能超过10000条。</p>
+                        </div>
+                    </div>
+                    <div class="btn_box">
+                        <span class="btn_bd" ng-click="closeThisDialog()">取消</span>
+                        <span class="btn_bg" form-submit-valid="assetForm.goSecond()">下一步</span>
+                    </div>
+                    <!--选择资金大类弹窗-->
+                    <dialog ng-if="assetForm.kindShow" modal close="!assetForm.kindShow">
+                        <div dialog-content>
+                            <choose-kind-reason list="assetForm.KindList" echo-ids="assetForm.editForm.assetType" echo-names="assetForm.editForm.assetTypeName" show="assetForm.kindShow" showtitle="'kind'">
+                            </choose-kind-reason>
+                        </div>
+                    </dialog>
+                    <!--选择申请原因弹窗-->
+                    <dialog ng-if="assetForm.reasonShow" modal close="!assetForm.reasonShow">
+                        <div dialog-content>
+                            <choose-kind-reason list="assetForm.ReasonList" echo-ids="assetForm.editForm.applyReason" echo-names="assetForm.editForm.applyReasonName" show="assetForm.reasonShow" showtitle="'reason'">
+                            </choose-kind-reason>
+                        </div>
+                    </dialog>
+                </div>
+            </form>
+            <!--第二步-->
+            <form class="w5c-form" novalidate name="addOrder">
+                <div class="second_step" ng-show="assetForm.showSecond">
+                    <!--原始资料-->
+                    <p class="purple_p">上传资产原始材料(必填)</p>
+                    <p class="count">当前已有关联资产原始材料的资产
+                        <span class="green">{{(assetForm.editForm.originalEvidenceList|countAssetNum).length}}</span>项 未关联资产原始材料的资产 <span class="red">{{assetForm.editForm.assetDisposeDetailList.length-(assetForm.editForm.originalEvidenceList|countAssetNum).length}}</span>                        项;
+                        <span class="info">(备注:必须确保下一步您选择要处置的所有资产项均有对应的原始材料)</span>
+                    </p>
+                    <div class="line_strip"></div>
+                    <div class="table_div">
+                        <table class="form_table">
+                            <tr>
+                                <th>关联资产</th>
+                                <th>
+                                    对应原始资料扫描照片 (无法提供原始材料证明亦是通过照片扫描件的方式上传)
+                                    <p class="img_info">只允许上传jpg png gif格式图片,大小不超过10M;请保证图片清晰可见</p>
+                                </th>
+                                <th class="deal_box">操作</th>
+                            </tr>
+                            <tr ng-repeat="data in assetForm.editForm.originalEvidenceList track by $index" ng-init="idx=$index">
+                                <td ng-click="assetForm.showDialog('origin',$index)">
+                                    <div ng-class="{'error':addOrder['originalAssetDetails'+$index].change&&addOrder['originalAssetDetails'+$index].$invalid}" class="td_wrapper"></div>
+                                    <input type="text" class="none" ng-model="assetForm.editForm.originalEvidenceList[$index].assetDetails" name="originalAssetDetails{{$index}}" required>
+                                    <span class="add_relation" ng-if="!assetForm.editForm.originalEvidenceList[$index].assetDetails"></span>
+                                    <p ng-if="assetForm.editForm.originalEvidenceList[$index].assetDetails">
+                                        {{assetForm.editForm.originalEvidenceList[$index].assetDetails}}</p>
+                                </td>
+                                <td class="add_img_td" flow-init="{query:{folder: 'dbp'}}" flow-files-submitted="$flow.upload()" flow-file-added="assetForm.validFile($file,'jpg,jpeg,png,gif',10*1024*1024)" flow-file-success="assetForm.originalUploadSuccess($message,$file,$index)">
+                                    <div ng-class="{'error':addOrder['originalAttachmentList'+$index].change&&addOrder['originalAttachmentList'+$index].$invalid}" class="td_wrapper"></div>
+                                    <input type="text" class="none" ng-model="data.attachmentList[0]" name="originalAttachmentList{{$index}}" required>
+                                    <!--展示已经前面的记录-->
+                                    <div class="img_box uploaded" ng-repeat="x in data.attachmentList track by x.url">
+                                        <pic-view edit="true" del-file="assetForm.removeFile(data.attachmentList,$index);$flow.files[$index].cancel()" file-name="x.name" file-path="x.url"></pic-view>
+                                    </div>
+                                    <div class="img_box uploading" ng-class="{true:'uploaded',false:'uploading'}[file.hide]" ng-repeat="file in $flow.files" ng-if="!file.hide">
+                                        <pic-view ng-if="file.hide" file-name='file.name' file-path='file.path'></pic-view>
+                                        <p class="percent">
+                                            <em ng-hide="file.hide">{{file.progress() |flowPercentage}}</em>
+                                            <span ng-show="file.hide" ng-class="{'top':file.hide}" class="stop" ng-click="file.cancel();assetForm.originalDeleteFile($index,idx)"></span>
+                                        </p>
+                                        <p class="procress" ng-hide="file.hide">
+                                            <span class="bg_purple" ng-style="{width: (file.progress() * 100 + '%')}"></span>
+                                        </p>
+                                    </div>
+                                    <flow-btn class="img_box add" ng-click="assetForm.addFileToList($index)"></flow-btn>
+                                </td>
+                                <td>
+                                    <span class="iconfont icon-del" ng-if="$index!=0" ng-click="assetForm.removeLine($index,'originalEvidenceList')"></span>
+                                    <span class="iconfont icon-plus" ng-click="assetForm.addLine(assetForm.editForm.originalEvidenceList,$index)"></span>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <!--说明-->
+                    <div flow-init="{query:{folder: 'dbp'}}" flow-files-submitted="$flow.upload()" flow-file-added="assetForm.validFile($file,'jpg,jpeg,png,gif',10*1024*1024)" flow-file-success="assetForm.applyUploadSuccess($message,$file,$index)">
+                        <p class="purple_p">资产处置申报说明/申请 (必填)
+                            <flow-btn class="btn_bd">上传</flow-btn>
+                            <span class="info">请上传加盖公章后的文件扫描件,只允许上传jpg png gif格式图片,大小不超过10M;请保证图片文件清晰可见</span>
+                        </p>
+                        <div class="add_img_box">
+                            <div class="red_color valid_item" ng-show="addOrder.applyEvidences.change&&addOrder.applyEvidences.$invalid">此项不能为空！</div>
+                            <input type="text" class="control_valid none" name="applyEvidences" required ng-model="assetForm.editForm.applyEvidenceList[0].attachmentList[0]">
+                            <!--展示已经前面的记录-->
+                            <div class="img_box uploaded" ng-repeat="x in assetForm.editForm.applyEvidenceList[0].attachmentList track by x.url">
+                                <pic-view edit="true" del-file="assetForm.removeFile(assetForm.editForm.applyEvidenceList[0].attachmentList,$index);$flow.files[$index].cancel()" file-name="x.name" file-path="x.url"></pic-view>
+                            </div>
+                            <div class="img_box uploading" ng-class="{true:'uploaded',false:'uploading'}[file.hide]" ng-repeat="file in $flow.files" ng-if="!file.hide">
+                                <pic-view ng-if="file.hide" file-name='file.name' file-path='file.path'></pic-view>
+                                <p class="percent">
+                                    <em ng-hide="file.hide">{{file.progress() |flowPercentage}}</em>
+                                    <span ng-show="file.hide" ng-class="{'top':file.hide}" class="stop" ng-click="file.cancel();assetForm.originalDeleteFile($index,idx)"></span>
+                                </p>
+                                <p class="procress" ng-hide="file.hide">
+                                    <span class="bg_purple" ng-style="{width: (file.progress() * 100 + '%')}"></span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--设备清单-->
+                    <p class="purple_p mgt_15">成套设备资产明细/清单 (若有成套设备,则必填)</p>
+                    <div class="line_strip"></div>
+                    <div class="table_div">
+                        <table class="form_table">
+                            <tr>
+                                <th>成套设备资产</th>
+                                <th>
+                                    对应资产明细文件
+                                    <p class="img_info">只允许上传jpg png gif格式图片,大小不超过10M;请保证图片清晰可见</p>
+                                </th>
+                                <th class="deal_box">操作</th>
+                            </tr>
+                            <tr ng-repeat="data in assetForm.editForm.batchAssetEvidenceList track by $index" ng-init="idx=$index">
+                                <td ng-click="assetForm.showDialog('suit',$index)">
+                                    <span class="add_relation" ng-if="!assetForm.editForm.batchAssetEvidenceList[$index].assetDetails"></span>
+                                    <p ng-if="assetForm.editForm.batchAssetEvidenceList[$index].assetDetails">
+                                        {{data.assetDetails}}</p>
+                                </td>
+                                <td class="add_img_td" flow-init="{query:{folder: 'dbp'}}" flow-files-submitted="$flow.upload()" flow-file-added="assetForm.validFile($file,'jpg,jpeg,png,gif',10*1024*1024)" flow-file-success="assetForm.batchUploadSuccess($message,$file,$index)">
+                                    <div class="img_box uploaded" ng-repeat="x in data.attachmentList track by x.url">
+                                        <pic-view file-name="x.name" edit="true" del-file="assetForm.removeFile(data.attachmentList,$index);$flow.files[$index].cancel()" file-path="x.url"></pic-view>
+                                    </div>
+                                    <div class="img_box uploading" ng-class="{true:'uploaded',false:'uploading'}[file.hide]" ng-repeat="file in $flow.files" ng-if="!file.hide">
+                                        <pic-view ng-if="file.hide" file-name='file.name' file-path='file.path'></pic-view>
+                                        <p class="percent">
+                                            <em ng-hide="file.hide">{{file.progress()|flowPercentage}}</em>
+                                            <span ng-show="file.hide" ng-class="{'top':file.hide}" class="stop" ng-click="file.cancel();assetForm.batchdDeleteFile($index,idx)"></span>
+                                        </p>
+                                        <p class="procress" ng-hide="file.hide">
+                                            <span class="bg_purple" ng-style="{width: (file.progress() * 100) + '%'}"></span>
+                                        </p>
+                                    </div>
+                                    <flow-btn class="img_box add"></flow-btn>
+                                </td>
+                                <td>
+                                    <span class="iconfont icon-del" ng-if="$index!=0" ng-click="assetForm.removeLine($index,'batchAssetEvidenceList')"></span>
+                                    <span class="iconfont icon-plus" ng-click="assetForm.addLine(assetForm.editForm.batchAssetEvidenceList)"></span>
+                                </td>
+                            </tr>
+
+                        </table>
+                    </div>
+                    <!--辅助材料-->
+                    <p class="purple_p">其他辅助支持材料 (非必填)</p>
+                    <div class="material_box" flow-init="{query:{folder: 'dbp'}}" flow-files-submitted="$flow.upload()" flow-file-added="assetForm.validFile($file,'jpg,jpeg,png,gif,doc,docx,xls,xlsx,pdf',10*1024*1024)" flow-file-success="assetForm.assistUploadSuccess($message,$file,$index)">
+                        <div class="left" style="margin-bottom: 20px;">
+                            <p>
+                                <span class="name fl">材料名称</span>
+                                <input type="text" ng-model="assetForm.otherEvidence.name" ng-required="assetForm.validOtherEvidence" name="otherEvidenceName" class="input_class fl" style="margin-bottom: 10px;" placeholder="20个汉字以内，必填" maxlength="20">
+                            </p>
+                            <p>
+                                <span class="name fl">描述</span>
+                                <textarea class="textarea_class fl" ng-required="assetForm.validOtherEvidence" name="otherEvidenceDesc" ng-model="assetForm.otherEvidence.description" placeholder="500个汉字以内，必填" maxlength="500"></textarea>
+                            </p>
+                        </div>
+                        <div class="right">
+                            <p class="name">材料附件</p>
+                            <div class="name_right">
+                                <p style="height: 35px;">
+                                    <flow-btn class="btn_bd fl">上传</flow-btn>
+                                    <span class="info" style="display: inline-block;width: 350px;margin: 0 0 0 10px;">只允许上传jpg png gif格式图片和excel word pdf格式的文件,大小不超过10M;请保证图片文件清晰可见</span>
+                                    <input type="text" class="control_valid none" name="otherEvidenceAttachment" ng-required="assetForm.validOtherEvidence" ng-model="assetForm.otherEvidence.attachmentList[0]">
+                                    <div class="red_color valid_item" ng-show="addOrder.otherEvidenceAttachment.change&&addOrder.otherEvidenceAttachment.$invalid">此项不能为空！</div>
+                                </p>
+                                <div class="add_img_box" style="height: 180px">
+                                    <div class="img_box uploading" ng-class="{true:'uploaded',false:'uploading'}[file.hide]" ng-repeat="file in $flow.files.slice()">
+                                        <pic-view ng-if="file.hide" file-name='file.name' file-path='file.path' del-file="file.cancel();assetForm.assistDeleteFile($index)"></pic-view>
+                                        <p class="percent">
+                                            <em ng-hide="file.hide">{{file.progress()|flowPercentage}}</em>
+                                            <span ng-show="file.hide" ng-class="{'top':file.hide}" class="stop" ng-click="file.cancel();assetForm.deleteFile($index)"></span>
+                                        </p>
+                                        <p class="procress" ng-hide="file.hide">
+                                            <span class="bg_purple" ng-style="{width: (file.progress() * 100 + '%')}"></span>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <p class="finish_box">
+                            <span class="btn_bg" ng-click="assetForm.validOtherEvidence=true" form-submit-valid="assetForm.generateEvidenceList($flow)">完成</span>
+                        </p>
+                    </div>
+                    <div class="succedFile" ng-show="assetForm.editForm.otherEvidenceList.length>0">
+                        <div class="line_strip"></div>
+                        <div class="table_div">
+                            <table class="form_table">
+                                <tr>
+                                    <th>材料名称</th>
+                                    <th>
+                                        对应文件
+                                    </th>
+                                    <th>
+                                        描述
+                                    </th>
+                                    <th class="deal_box">操作</th>
+                                </tr>
+                                <tr ng-repeat="data in assetForm.editForm.otherEvidenceList track by $index">
+                                    <td>
+                                        {{ data.name }}
+                                    </td>
+                                    <td class="add_img_td">
+
+                                        <pic-view ng-repeat="x in data.attachmentList" file-name="x.name" file-path="x.url"></pic-view>
+
+                                    </td>
+                                    <td>{{data.description}}</td>
+                                    <td>
+                                        <span class="iconfont icon-del" ng-click="assetForm.removeLine($index,'otherEvidenceList')"></span>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <!--下一步操作人-->
+                    <p class="next">
+                        下一步操作人(必填)
+                        <select-options class="get_method selectWid400" ng-model="assetForm.editForm.nextOperator" repeat-items="data in assetForm.nextAuditTaskInfo.nextAuditorQoList" item-key="accountId" required>
+                            {{data.displayName}} <span>（{{data.gardenName}}）</span>
+                        </select-options>
+                    </p>
+                    <div class="btn_box2" style="text-align: center;margin: 30px 0;">
+                        <span class="btn_bd" ng-click="assetForm.showSecond=false;assetForm.validOtherEvidence=false">上一步</span>
+                        <span class="btn_bg" ng-click="assetForm.validOtherEvidence=false" form-submit-valid="assetForm.saveFormApply()">确定</span>
+                    </div>
+
+                    <!--成套资料弹窗-->
+                    <dialog ng-if="assetForm.suitShow" modal close="!assetForm.suitShow">
+                        <div dialog-content>
+                            <choose-relation-asset show="assetForm.suitShow" list="assetForm.editForm.assetDisposeDetailList" selected-ids="{{assetForm.editForm.batchAssetEvidenceList|countAssetNum}}" echo-ids="assetForm.editForm.batchAssetEvidenceList[assetForm.suitIndex].assetNos"
+                                echo-names="assetForm.editForm.batchAssetEvidenceList[assetForm.suitIndex].assetDetails">
+                            </choose-relation-asset>
+                        </div>
+                    </dialog>
+
+                    <!--原始资料弹窗-->
+                    <dialog ng-if="assetForm.originShow" modal close="!assetForm.originShow">
+                        <div dialog-content>
+                            <choose-relation-asset show="assetForm.originShow" selected-ids="{{assetForm.editForm.originalEvidenceList|countAssetNum}}" list="assetForm.editForm.assetDisposeDetailList" echo-ids="assetForm.editForm.originalEvidenceList[assetForm.originIndex].assetNos"
+                                echo-names="assetForm.editForm.originalEvidenceList[assetForm.originIndex].assetDetails">
+                            </choose-relation-asset>
+                        </div>
+                    </dialog>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="detail_info assetaApplication_detail" style="padding: 0 20px" ng-show="assetForm.isEdit===false">
+        <p class="is_elec">
+            <span>
+             处置的资产是否属于电子类: {{assetForm.detailForm.isElectronic==='true'?'电子类':'非电子类'}}
+        </span>
+        </p>
+        <div class="line_strip"></div>
+        <div class="table_div">
+            <table class="form_table">
+                <tr>
+                    <th colspan="2">行政事业单位国有资产处置申报表</th>
+                </tr>
+                <tr class=first>
+                    <td style="width: 60%">申报单位:{{assetForm.detailForm.applyUnitName}}</td>
+                    <td>资产管理信息系统单位登录名: {{assetForm.detailForm.systemLoginName}}</td>
+                </tr>
+            </table>
+            <table class="form_table">
+                <tbody class="third">
+                    <tr class="second">
+                        <td>资产大类</td>
+                        <td class="text_left" colspan="11">{{assetForm.detailForm.assetTypeName}}</td>
+                    </tr>
+                    <tr class="second">
+                        <td>申报原因</td>
+                        <td class="text_left" colspan="11">{{assetForm.detailForm.applyReasonName}}</td>
+                    </tr>
+                    <tr class="second">
+                        <td>处置形式</td>
+                        <td class="text_left" colspan="11">{{assetForm.detailForm.disposeTypeName}}</td>
+                    </tr>
+                    <tr class="second">
+                        <td>处置方向</td>
+                        <td class="text_left" colspan="11">
+                            {{assetForm.detailForm.disposeDirectionName}} {{assetForm.detailForm.allocatedGardenName}}
+                        </td>
+                    </tr>
+                    <tr class="th">
+                        <td>序号</td>
+                        <td>资产编号</td>
+                        <td>中小学办学条件达标系统编号</td>
+                        <td>资产名称</td>
+                        <td>账面原值(元)</td>
+                        <td>数量</td>
+                        <td>资产大类</td>
+                        <td>规格型号</td>
+                        <td>会计凭证号</td>
+                        <td>取得方式</td>
+                        <td>取得日期</td>
+                        <td>已使用年限</td>
+                    </tr>
+                    <tr ng-repeat="detail in assetForm.detailForm.assetDisposeDetailList track by $index">
+                        <td>{{ $index+1 }}</td>
+                        <td>
+                            {{ detail.assetNo }}
+                        </td>
+                        <td>
+                            {{ detail.standardSystemNo }}
+                        </td>
+                        <td>{{ detail.assetName }}</td>
+                        <td ng-if="detail.assetTotalAmount.toString().indexOf('.')>1">{{ detail.assetTotalAmount }}</td>
+                        <td ng-if="detail.assetTotalAmount.toString().indexOf('.')<=1"> {{ detail.assetTotalAmount }}.00
+                        </td>
+                        <td>
+                            {{ detail.assetCount }}
+                        </td>
+                        <td>
+                            {{ detail.assetTypeName }}
+                        </td>
+                        <td>
+                            {{ detail.specifications }}
+                        </td>
+                        <td>
+                            {{ detail.accountingVoucherNumber }}
+                        </td>
+                        <td>
+                            {{ detail.acquireWayName }}
+                        </td>
+                        <td>
+                            {{ detail.acquireDate| date:'yyyy-MM-dd' }}
+                        </td>
+                        <td>
+                            {{ detail.usedYear }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="4">合计</td>
+                        <td style="width:7%;" ng-if="assetForm.assetTotalAmountSum.toString().indexOf('.')>1">{{ assetForm.assetTotalAmountSum }}
+                        </td>
+                        <td style="width:7%;" ng-if="assetForm.assetTotalAmountSum.toString().indexOf('.')<=1"> {{ assetForm.assetTotalAmountSum }}.00
+                        </td>
+                        <td style="width:5%;">{{ assetForm.assetCountSum||0 }}</td>
+                        <td colspan="6"></td>
+                    </tr>
+                </tbody>
+            </table>
+            <!--走财政审批 电子类或非电子类单价大于等于5万元或总价大于等于10万-->
+            <table class="form_table show_box" ng-if="assetForm.isFinance&&assetForm.auditCondition.length>0">
+                <tr>
+                    <td width="25" ng-repeat="data in assetForm.auditCondition | limitTo : 4">
+                        <p ng-if="data.taskName" class="dept">{{data.taskName}}:</p>
+                        <p class="result">
+                            <span ng-if="data.isApproved===null" class="waitpass">待审核</span>
+                            <span ng-if="data.isApproved===true" class="notpass">同意</span>
+                            <span ng-if="data.isApproved===false" class="notpass">未通过</span>
+                            <span ng-if="data.commentList.length>0" class="note">{{data.commentList[0].fullMessage}}</span>
+                        </p>
+                        <p ng-if="data.signLabel" class="sign">{{ data.signLabel }}: <span ng-if="data.isApproved!==null">{{ data.displayName }}</span></p>
+                        <p ng-if="data.stampLabel" class="seal">{{ data.stampLabel }}</p>
+                        <p ng-if="data.isApproved!==null" class="date">{{ data.auditDate | date : 'yyyy年MM月dd日'}}</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="25" ng-repeat="data in assetForm.auditCondition | limitTo : -4">
+                        <p ng-if="data.taskName" class="dept">{{data.taskName}}:</p>
+                        <p class="result">
+                            <span ng-if="data.isApproved===null" class="waitpass">待审核</span>
+                            <span ng-if="data.isApproved===true" class="notpass">同意</span>
+                            <span ng-if="data.isApproved===false" class="notpass">未通过</span>
+                            <span ng-if="data.commentList.length>0" class="note">{{data.commentList[0].fullMessage}}</span>
+                        </p>
+                        <p ng-if="data.signLabel" class="sign">{{ data.signLabel }}: <span ng-if="data.isApproved!==null">{{ data.displayName }}</span></p>
+                        <p ng-if="data.stampLabel" class="seal">{{ data.stampLabel }}</p>
+                        <p ng-if="data.isApproved!==null" class="date">{{ data.auditDate | date : 'yyyy年MM月dd日'}}</p>
+                    </td>
+                </tr>
+            </table>
+            <!--不走财政审批 非电子类单价小于等于5万或总价小于等于10万-->
+            <table class="form_table show_box" ng-if="!assetForm.isFinance&&assetForm.auditCondition.length>0">
+                <tr>
+                    <td width="33.3" ng-repeat="data in assetForm.auditCondition | limitTo : 3">
+                        <p ng-if="data.taskName" class="dept">{{data.taskName}}:</p>
+                        <p class="result">
+                            <span ng-if="data.isApproved===null" class="waitpass">待审核</span>
+                            <span ng-if="data.isApproved===true" class="notpass">同意</span>
+                            <span ng-if="data.isApproved===false" class="notpass">未通过</span>
+                            <span ng-if="data.commentList.length>0" class="note">{{data.commentList[0].fullMessage}}</span>
+                        </p>
+                        <p ng-if="data.signLabel" class="sign">{{ data.signLabel }}:
+                            <span ng-if="data.isApproved!==null">{{ data.displayName }}</span>
+                        </p>
+                        <p ng-if="data.stampLabel" class="seal">{{ data.stampLabel }}</p>
+                        <p ng-if="data.isApproved!==null" class="date">{{ data.auditDate | date : 'yyyy年MM月dd日'}}</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="33.3" ng-repeat="data in assetForm.auditCondition | limitTo : -3">
+                        <p ng-if="data.taskName" class="dept">{{data.taskName}}:</p>
+                        <p class="result">
+                            <span ng-if="data.isApproved===null" class="waitpass">待审核</span>
+                            <span ng-if="data.isApproved===true" class="notpass">同意</span>
+                            <span ng-if="data.isApproved===false" class="notpass">未通过</span>
+                            <span ng-if="data.commentList.length>0" class="note">{{data.commentList[0].fullMessage}}</span>
+                        </p>
+                        <p ng-if="data.signLabel" class="sign">{{ data.signLabel }}:
+                            <span ng-if="data.isApproved!==null">{{ data.displayName }}</span>
+                        </p>
+                        <p ng-if="data.stampLabel" class="seal">{{ data.stampLabel }}</p>
+                        <p ng-if="data.isApproved!==null" class="date">{{ data.auditDate | date : 'yyyy年MM月dd日'}}</p>
+                    </td>
+                </tr>
+            </table>
+            <table class="form_table">
+                <tr class=first>
+                    <td style="width: 60%">资产管理员:{{ assetForm.detailForm.creatorName }}</td>
+                    <td>联系电话: {{ assetForm.detailForm.phone }}</td>
+                </tr>
+            </table>
+        </div>
+        <div class="origin_metail">
+            <div ng-if="assetForm.detailForm.originalEvidenceList.length>0">
+                <p class="purple_p">资产原始材料</p>
+                <p class="count">当前已有关联资产原始材料的资产
+                    <span class="green"> {{assetForm.detailForm.originalEvidenceList.length}}</span> 项
+                </p>
+                <div class="line_strip"></div>
+                <div class="table_div">
+                    <table class="form_table origin_metail">
+                        <tr>
+                            <th>关联资产</th>
+                            <th>
+                                对应原始资料扫描照片 (无法提供原始材料证明亦是通过照片扫描件的方式上传)
+                            </th>
+                        </tr>
+                        <tr ng-repeat="data in assetForm.detailForm.originalEvidenceList track by $index">
+                            <td>
+                                <p> {{ data.assetDetails }}; </p>
+                            </td>
+                            <td class="add_img_td">
+                                <pic-view ng-repeat="x in data.attachmentList track by x.url" file-name="x.name" file-path="x.url"></pic-view>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div ng-if="assetForm.detailForm.applyEvidenceList.length>0">
+                <p class="purple_p mgt_15">资产处置申报说明/申请</p>
+                <div class="add_img_box" style="overflow: hidden">
+                    <pic-view ng-repeat="x in assetForm.detailForm.applyEvidenceList[0].attachmentList track by x.url" file-name="x.name" file-path="x.url"></pic-view>
+                </div>
+            </div>
+            <div ng-if="assetForm.detailForm.batchAssetEvidenceList.length>0">
+                <p class="purple_p mgt_15">成套设备资产明细/清单</p>
+                <div class="line_strip"></div>
+                <div class="table_div">
+                    <table class="form_table">
+                        <tr>
+                            <th>成套设备资产</th>
+                            <th>对应资产明细文件</th>
+                        </tr>
+                        <tr ng-repeat="data in assetForm.detailForm.batchAssetEvidenceList track by $index">
+                            <td>
+                                <p> {{ data.assetDetails }}; </p>
+                            </td>
+                            <td class="add_img_td">
+                                <pic-view ng-repeat="x in data.attachmentList track by $index" file-name="x.name" file-path="x.url"></pic-view>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div ng-if="assetForm.detailForm.otherEvidenceList.length>0">
+                <p class="purple_p mgt_15">其他辅助支持材料</p>
+                <div class="line_strip"></div>
+                <div class="table_div">
+                    <table class="form_table">
+                        <tr>
+                            <th>材料名称</th>
+                            <th>对应文件</th>
+                            <th>描述</th>
+                        </tr>
+                        <tr>
+                            <td>
+                                {{assetForm.detailForm.otherEvidenceList[0].name}}
+                            </td>
+                            <td class="add_img_td">
+                                <pic-view ng-repeat="x in assetForm.detailForm.otherEvidenceList[0].attachmentList track by $index" file-name="x.name" file-path="x.url"></pic-view>
+                            </td>
+                            <td>{{assetForm.detailForm.otherEvidenceList[0].description}}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div ng-if="assetForm.attachments&&assetForm.attachments.proveData">
+                <!-- 项目立项信息 -->
+                <div class="disposal_list">
+                    <div class="project_detail">
+                        <p class="file_preview_tit">
+                            <span>资产处置信息</span>
+                        </p>
+                        <div class="project_info fl">
+                            <div class="reDraft_list">
+                                <span class="wid200 word_center fl">相关证明材料：</span>
+                                <div class="bale_list fl">
+                                    <pic-view sp="true" file-name="x.name" file-path="x.url" ng-repeat="x in assetForm.attachments.proveData"></pic-view>
+                                </div>
+                                <span class="btn_bd downloadBale" ng-if='assetForm.attachments.proveData.length>1' download-zip="assetForm.attachments.proveData" zip-name="相关证明材料">打包下载</span>
+                            </div>
+                            <div class="reDraft_list">
+                                <span class="wid200 word_center fl">资产处置申请单原件扫描件：</span>
+                                <div class="bale_list fl">
+                                    <pic-view sp="true" file-name="x.name" file-path="x.url" ng-repeat="x in assetForm.attachments.applyData"></pic-view>
+                                </div>
+                                <span class="btn_bd downloadBale" ng-if='assetForm.attachments.applyData.length>1' download-zip="assetForm.attachments.applyData" zip-name="资产处置申请单原件扫描件">打包下载</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="btn_box">
+                <span class="btn_bd" ng-click="closeThisDialog()">返回</span>
+            </div>
+        </div>
+    </div>
+</div>

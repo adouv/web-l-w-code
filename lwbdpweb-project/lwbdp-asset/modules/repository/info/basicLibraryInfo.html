@@ -1,0 +1,56 @@
+<div class="basicDetail">
+    <!--面包屑导航-->
+    <div class="crumbs">
+        <a href="javascript:void(0)" class="crumbs_tit">资产管理</a>&nbsp;>
+        <a href="javascript:void(0)" class="crumbs_tit">基础设置</a>&nbsp;>
+        <a href="javascript:void(0)" class="crumbs_tit">审批流程设置</a>&nbsp;>
+        <span>添加审批流程设置</span>
+    </div>
+    <p class="readAsset_name">{{basicLibraryInfo.pageList.name}}</p>
+    <!-- 资产名称详情 -->
+    <div class="assetInfo">
+        <div class="assetInfo_list">
+            <span class="assetName">平台编号：</span>
+            <span class="assetDetail">{{basicLibraryInfo.pageList.id}}</span>
+        </div>
+        <div class="assetInfo_list">
+            <span class="assetName">金财网资产编号：</span>
+            <span class="assetDetail">{{basicLibraryInfo.pageList.specifications}}</span>
+        </div>
+        <div class="assetInfo_list">
+            <span class="assetName">中小学办学条件达标系统资产编号：</span>
+            <span class="assetDetail">{{basicLibraryInfo.pageList.educationStandardNo}}</span>
+        </div>
+        <div class="assetInfo_list">
+            <span class="assetName">资产大类：</span>
+            <span class="assetDetail">{{basicLibraryInfo.pageList.assetTypeName}}</span>
+        </div>
+        <div class="assetInfo_list">
+            <span class="assetName">规格型号：</span>
+            <span class="assetDetail">{{basicLibraryInfo.pageList.specifications}}</span>
+        </div>
+        <div class="assetInfo_list">
+            <span class="assetName">账面原值：</span>
+            <span class="assetDetail">{{basicLibraryInfo.pageList.price}}</span>
+        </div>
+        <div class="assetInfo_list">
+            <span class="assetName">会计凭证号：</span>
+            <span class="assetDetail">{{basicLibraryInfo.pageList.accountingVoucherNumber}}</span>
+        </div>
+        <div class="assetInfo_list">
+            <span class="assetName">取得方式：</span>
+            <span class="assetDetail">{{basicLibraryInfo.pageList.acquireWayName}}</span>
+        </div>
+        <div class="assetInfo_list">
+            <span class="assetName">已使用年限：</span>
+            <span class="assetDetail">{{basicLibraryInfo.pageList.usedYear}}</span>
+        </div>
+        <div class="assetInfo_list">
+            <span class="assetName">所属单位：</span>
+            <span class="assetDetail">{{basicLibraryInfo.pageList.gardenName}}</span>
+        </div>
+    </div>
+    <div class="btn_box">
+        <span class="btn_bg" ui-sref="asset.basicLibrary">返回</span>
+    </div>
+</div>

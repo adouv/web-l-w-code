@@ -1,0 +1,115 @@
+<header class="header" style="min-width: 1200px;height: 60px">
+    <!--<div class="col-md-8 navbar-left">-->
+    <div class=" nav-left fl">
+        <div class=" title-logo fl"></div>
+        <div class="sys-title">智慧教室</div>
+    </div>
+    <div class="nav-right fr">
+        <div class="btn-group" uib-dropdown>
+            <img class="img-circle" src="../images/user_header.jpg" height="35" width="35">
+            <a class="person-info" href="javascript:void(0);">{{user.displayName}}</a>
+            <a href="javascript:void(0);" uib-dropdown-toggle>
+                <i class="fa fa-angle-down person"></i>
+            </a>
+            <ul class="dropdown-menu" uib-dropdown-menu aria-labelledby="simple-dropdown">
+                <li>
+                    <a href="javascript:void(0);">个人信息</a>
+                </li>
+                <li>
+                    <a href="javascript:void(0);">修改密码</a>
+                </li>
+            </ul>
+        </div>
+        <div class="btn-group">
+            <a href="javascript:void(0);" class="person-info" ng-click="logout()">
+                注 销
+                <i class="glyphicon glyphicon-off" style="font-size: 18px;top:5px;"></i>
+            </a>
+        </div>
+    </div>
+</header>
+<section class="body" style="min-width: 1200px">
+    <!--<div class="col-md-2 aside">-->
+    <div class=" aside fl">
+        <ul class="list-group">
+            <!--has-permission="streamMedia:list"-->
+            <li has-permission="streamMedia:list" class="list-group-item" ng-class="{'cur':url.stre}"
+                ng-click="goModule('streamMedia')">
+                <a href="javascript:void(0);" title="园区流媒体接口信息管理">
+                    <i class="glyphicon icon-media"></i>
+                    <span>园区流媒体接口信息管理</span>
+                </a>
+            </li>
+            
+            <!--has-permission="camera:list,area:list,camera:list"-->
+            <li has-permission="camera:list,area:list,camera:list" class="list-group-item" ng-class="{'cur':url.came}"
+                ng-click="goModule('camera')">
+                <a href="javascript:void(0);" title="园区摄像头和功能区管理">
+                    <i class="glyphicon icon-camera"></i>
+                    <span>园区摄像头和功能区管理</span>
+                </a>
+            </li>
+            <!-- <li  class="list-group-item" ng-class="{'cur':url.clas}"
+                ng-click="goModule('classroomManage')">
+                <a href="javascript:void(0);" title="园区教室管理">
+                    <i class="glyphicon icon-classroomManage"></i>
+                    <span>园区教室管理</span>
+                </a>
+            </li> -->
+            <li has-permission="organization:create" class="list-group-item" ng-class="{'cur':url.orga}"
+                ng-click="goModule('organization')">
+                <a href="javascript:void(0);" title="园区教学组织结构管理">
+                    <i class="glyphicon icon-organization"></i>
+                    <span>园区教学组织结构管理</span>
+                </a>
+            </li>
+            <!-- has-permission="timeTable:list"-->
+            <li has-permission="timeTable:list" class="list-group-item" ng-class="{'cur':url.dail}"
+                ng-click="goModule('dailyschedule')">
+                <a href="javascript:void(0);" title="园区作息时间表管理">
+                    <i class="glyphicon icon-dailyschedule"></i>
+                    <span>园区作息时间表管理</span>
+                </a>
+            </li>
+            <!--has-permission="courseTable:create"-->
+            <li has-permission="courseTable:create" class="list-group-item" ng-class="{'cur':url.cour}"
+                ng-click="goModule('courseschedule')">
+                <a href="javascript:void(0);" title="园区课表信息管理">
+                    <i class="glyphicon icon-courseschedule"></i>
+                    <span>园区课表信息管理</span>
+                </a>
+            </li>
+            <!--has-permission="liveActivity:list"-->
+            <li has-permission="liveActivity:list" class="list-group-item" ng-class="{'cur':url.acti}"
+                ng-click="goModule('activity')">
+                <a href="javascript:void(0);" title="园区点播和直播活动管理">
+                    <i class="glyphicon icon-unicastlive"></i>
+                    <span>园区点播和直播活动管理</span>
+                </a>
+            </li>
+            <li has-permission="normalSchedule:list,normalSchedule:update" class="list-group-item"
+                ng-class="{'cur':url.norm}" ng-click="goModule('normalmanage')">
+                <a href="javascript:void(0);" title="资源权限管理">
+                    <i class="glyphicon icon-normalmanage"></i>
+                    <span>资源权限管理</span>
+                </a>
+            </li>
+            <!--<li class="list-group-item"-->
+                <!--ng-class="{'cur':url.temp}" ng-click="goModule('templatemanage')">-->
+                <!--<a href="javascript:void(0);" title="教学评价模板管理">-->
+                    <!--<i class="glyphicon icon-templatemanage"></i>-->
+                    <!--<span>教学评价模板管理</span>-->
+                <!--</a>-->
+            <!--</li>-->
+            <li class="list-group-item"
+                ng-class="{'cur':url.teac}" ng-click="goModule('teachmanage')">
+                <a href="javascript:void(0);" title="教材版本管理">
+                    <i class="glyphicon icon-teachmanage"></i>
+                    <span>教材版本管理</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <!--<div class="col-md-10 content" ui-view></div>-->
+    <div class="content fl" ui-view></div>
+</section>

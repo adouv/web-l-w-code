@@ -1,0 +1,149 @@
+.autograph-dialog-title {
+    line-height: 56px;
+    font-size: 16px;
+    text-align: center;
+}
+
+.autograph-dialog-text {
+    width: 100%;
+    line-height: 24px;
+    padding: 20px 11px;
+    box-sizing: border-box;
+    border: 1px solid #ebebeb;
+    background: #ffffff;
+    font-size: 14px;
+}
+
+.autograph-dialog-text p {
+    padding-bottom: 24px;
+}
+
+.edit_user.autograph-dialog {
+    margin-top: -220px;
+    margin-left: -220px;
+    z-index: 7;
+}
+
+.autograph-dialog label {
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.autograph-upload .autograph-dialog-text p {
+    padding: 0px 11px;
+}
+
+.autograph-content {
+    height: 162px;
+    max-height: 162px;
+}
+
+.btn_blue.disable {
+    border-color: #ccc;
+    background: #ccc;
+    cursor: default;
+    box-shadow: none;
+}
+
+.autograph-upload .btn_bd {
+    border-color: #226cfb;
+    background: #226cfb;
+    color: #fff;
+}
+
+.autograph-upload .btn_bd:hover {
+    border-style: solid;
+    border-width: 1px;
+    border-color: #226cfb;
+    border-radius: 3px;
+    background-color: #226cfb;
+    box-shadow: 0px 2px 4px 0px rgba(59, 188, 250, 0.5);
+    height: 30px;
+}
+
+.autograph-upload .lf_name.w250 {
+    display: none;
+}
+
+.autograph-upload .float-massage {
+    display: none!important;
+}
+
+.upload-wrap {
+    position: relative;
+    margin-top: 40px;
+}
+
+.upload-wrap.upload-error .btn_bd {
+    border-color: red;
+}
+
+.upload-wrap .distance_num {
+    position: absolute;
+    top: -6px;
+    left: 90px;
+}
+
+.upload-wrap .picView.img_box img {
+    width: 120px;
+    height: 60px;
+}
+
+.upload-wrap .picView {
+    width: 120px;
+    height: 60px !important;
+    border: 1px solid #ebebeb;
+}
+
+.upload-wrap .file_wrapper.img_box {
+    width: 120px;
+    height: 60px;
+}
+
+.upload-wrap .picView .files_name,
+.upload-wrap .remove.top {
+    display: none;
+}
+
+.autograph-upload .error {
+    border-color: red;
+}
+
+.autographPic {
+    border: 1px solid #ccc;
+}
+
+.mask-bdp {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.mask-userInfo {
+    z-index: 2;
+}
+
+.mask-password {
+    z-index: 4;
+}
+
+.mask-autograph {
+    z-index: 4;
+}
+
+.autograph-null {
+    background-image: url('../image/autograph.png');
+    background-size: 100% 100%;
+    cursor: pointer;
+}
+
+.autographPic.autograph-null {
+    border: 0;
+}
+
+.autograph-dialog .checkbox_class:checked {
+    background: url('../image/checkbox_select.png') no-repeat;
+}

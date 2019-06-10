@@ -1,0 +1,73 @@
+@font-face {font-family: "connecticonfont";
+  src: url('./fonts/iconfont.eot?t=1494586922806'); /* IE9*/
+  src: url('./fonts/iconfont.eot?t=1494586922806#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('./fonts/iconfont.woff?t=1494586922806') format('woff'), /* chrome, firefox */
+  url('./fonts/iconfont.ttf?t=1494586922806') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+  url('./fonts/iconfont.svg?t=1494586922806#iconfont') format('svg'); /* iOS 4.1- */
+}
+ /*src: url('../../app/styles/fonts/iconfont.eot?t=1494586922806');  IE9*/
+
+.connectIconfont {
+  font-family:"connecticonfont" !important;
+  font-size:16px;
+  font-style:normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.icon-close-circle:before { content: "\e666"; }
+
+.icon-triangleDown:before { content: "\e821"; }
+
+.icon-warn:before { content: "\e604"; }
+
+.icon-prompt:before { content: "\e61d"; }
+
+.icon-connect-plus:before { content: "\e633"; }
+
+.icon-connect-minus:before { content: "\e634"; }
+
+.icon-rightarrowIcon:before { content: "\e8d2"; }
+
+.icon-triangleUp:before { content: "\e822"; }
+
+.icon-client_look:before { content: "\e61c"; }
+
+.icon-link:before { content: "\e631"; }
+
+.icon-wisdom:before { content: "\e635"; }
+
+.icon-linkSelected:before { content: "\e636"; }
+
+.icon-wisdomSelected:before { content: "\e638"; }
+
+.icon-lookSelected:before { content: "\e639"; }
+
+.icon-colleague:before { content: "\e63a"; }
+
+.icon-colleagueSelected:before { content: "\e63b"; }
+
+.icon-meau:before { content: "\e63c"; }
+
+.icon-client_switch:before { content: "\e63d"; }
+
+.icon-exit:before { content: "\e63e"; }
+
+.icon-client_search:before { content: "\e63f"; }
+
+.icon-back:before { content: "\e645"; }
+
+.icon-add:before { content: "\e646"; }
+
+.icon-link2:before { content: "\e647"; }
+
+.icon-colleagueOrg:before { content: "\e649"; }
+
+.icon-quite:before { content: "\e64a"; }
+
+.icon-camera:before { content: "\e64b"; }
+
+.icon-fullScreen:before { content: "\e698"; }
+
+.icon-cancelFullscreen:before { content: "\e699"; }
+
+.icon-chaxun-shenpibiao:before { content: "\e6a9"; }

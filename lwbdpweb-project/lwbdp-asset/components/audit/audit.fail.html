@@ -1,0 +1,87 @@
+<div>
+    <div ng-repeat="data in auditFail.auditInfo track by $index" ng-show="auditFail.auditInfo.length<3 || $index==0||$index==(auditFail.auditInfo.length-1)||auditFail.isAllShow">
+        <div>
+            <p class="file_preview_tit">
+                <span>第{{$index+1|NumberToChinese}}次审核不通过情况</span>
+            </p>
+            <div class="disposal_content">
+                <div class="check_node">
+                    <div class="check_title">* 被审核节点</div>
+                    <div class="reDraft_list">
+                        <span class="w250 word_center">节点名称：</span>
+                        <span class="word_center">{{ data.auditedNode.taskName }}</span>
+                    </div>
+                    <div class="reDraft_list">
+                        <span class="w250 word_center">节点操作内容：</span>
+                        <span ng-click="auditFail.showTaskInfo(true,data.auditedNode.taskId)"
+                              ng-if="auditFail.isAudit&&currentTask.isRedo && currentTask.assignee === auditFail.account.accountId &&
+                           $index === auditFail.auditInfo.length -1" class="word_center"><span class="btn_bd">编辑</span></span>
+                        <span ng-click="auditFail.showTaskInfo(false,data.auditedNode.taskId,data.auditedNode.taskKey)"
+                              ng-if="!(auditFail.isAudit&&currentTask.isRedo && currentTask.assignee === auditFail.account.accountId && 
+                          $index === auditFail.auditInfo.length -1)" class="word_center"><span class="btn_bd">查看</span></span>
+                    </div>
+                </div>
+                <div class="check_node">
+                    <div class="check_title">
+                        * 审核节点
+                    </div>
+                    <div class="reDraft_list">
+                        <span class="w250 word_center">节点名称：</span>
+                        <span class="word_center">{{ data.auditNode.taskName }}</span>
+                    </div>
+                    <div class="reDraft_list">
+                        <span class="w250 word_center">审核人：</span>
+                        <span class="word_center">{{ data.auditNode.auditor }}</span>
+                    </div>
+                    <div class="reDraft_list">
+                        <span class="w250 word_center">操作时间：</span>
+                        <span class="word_center">{{ data.auditNode.auditTime | date:'yyyy/MM/dd' }}</span>
+                    </div>
+                    <div class="reDraft_list">
+                        <span class="w250 word_center">审核结果：</span>
+                        <span ng-if="data.auditNode.auditResult==='false'" class="word_center red">不通过</span>
+                        <span ng-if="data.auditNode.auditResult==='true'" class="word_center green">通过</span>
+                    </div>
+                    <div class="reDraft_list">
+                        <span class="w250 word_center">审核意见：</span>
+                        <span class="word_center">{{ data.auditNode.comment }}</span>
+                    </div>
+                </div>
+                <div class="check_node">
+                    <div class="check_title">
+                        * 处理情况
+                    </div>
+                    <div class="reDraft_list">
+                        <span class="w250 word_center">处理结果：</span>
+                        <span ng-if="data.disposeResult.result" class="word_center green">修改并再次提交</span>
+                        <span ng-if="data.disposeResult.result===false" class="word_center red">放弃并结束本次项目</span>
+                        <span class="word_center" ng-if="!data.disposeResult.result && $index==auditFail.auditInfo.length-1">待{{data.disposeResult.accountId!=auditFail.account.accountId? data.disposeResult.accountName:''}}处理</span>
+                    </div>
+                    <div class="reDraft_list">
+                        <span class="w250 word_center">操作人：</span>
+                        <span class="word_center">{{ data.disposeResult.accountName }}</span>
+                    </div>
+                    <div class="reDraft_list">
+                        <span class="w250 word_center">操作时间：</span>
+                        <span class="word_center">{{ data.disposeResult.operateTime | date:'yyyy/MM/dd' }}</span>
+                    </div>
+                </div>
+                <div></div>
+                <div class="check_node word_center"
+                     ng-if="auditFail.isAudit&&currentTask.isRedo && currentTask.assignee === auditFail.account.accountId && $index === auditFail.auditInfo.length -1">
+                    <span class="btn_bd" ng-if="currentTask.isAllowedAbort"
+                          ng-click="reapplyOrder({flag:false,taskKey:data.auditedNode.taskKey,taskId:data.auditedNode.taskId})">放弃并结束本项目申请</span>
+                    <button class="btn_bg" ng-disabled="!formData" ng-click="reapplyOrder({flag:true,taskKey:data.auditedNode.taskKey,taskId:data.auditedNode.taskId})">重新提交</button>
+                </div>
+            </div>
+        </div>
+        <!--查看更多信息-->
+        <div ng-click="auditFail.toggleAuditList(true)" class="check_fail" ng-if="$index==0&&auditFail.auditInfo.length>2&&!auditFail.isAllShow">
+            点击查看更多审核不通过信息
+            <p class="iconfont icon-arrowLook"></p>
+        </div>
+    </div>
+    <div ng-click="auditFail.toggleAuditList(false)" style="margin-top: 20px;" class="check_fail" ng-if="auditFail.isAllShow&&auditFail.auditInfo.length>2">
+        收起<p class="iconfont icon-arrowStop"></p>
+    </div>
+</div>

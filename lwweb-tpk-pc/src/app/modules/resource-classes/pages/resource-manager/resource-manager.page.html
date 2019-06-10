@@ -1,0 +1,40 @@
+<div class="resource-manager">
+	<nz-breadcrumb [nzSeparator]="'>'">
+		<nz-breadcrumb-item>
+			<span [routerLink]="['/resource/home/1']">云微课</span>
+		</nz-breadcrumb-item>
+		<nz-breadcrumb-item>
+			微课管理
+		</nz-breadcrumb-item>
+	</nz-breadcrumb>
+
+	<p class="title">
+		{{courseTitle}}
+	</p>
+
+	<!--上传-->
+	<div class="upload-box">
+		<input accept=".mp4,.rmvb,.wmv,.avi,.flv"
+			   type="file" value='上传' ng2FileSelect [uploader]="uploader" id="resource" multiple class="file-input"/>
+
+		<div class="prompt-box">
+			<div class="iconfont icon-prompt question_mark inl-bl-mid"></div>
+			<div class="tip_name inl-bl-mid">上传须知</div>
+			<div class="tip_content">
+				<p>1、支持常见的视频文件的上传；单个文件大小不支持超过100M；</p>
+				<p>2、支持多视频同时上传，但同次上传的视频只支持绑定相同知识点；</p>
+			</div>
+		</div>
+
+		<button class="ant-btn-danger label-btn" nz-button [nzType]="'primary'">
+			<label for="resource" class="button-bd file-btn">上传</label>
+		</button>
+	</div>
+
+	<quality-courses [qualityCoursesList]="qualityCoursesList"
+					 (onRefreshQualityCourse)="getQualityCourseList()"></quality-courses>
+
+	<div class="footer-btn" flex="cross:center main:center">
+		<button nz-button [nzType]="'default'" (click)="goBack()">返回</button>
+	</div>
+</div>

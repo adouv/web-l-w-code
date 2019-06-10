@@ -1,0 +1,16 @@
+
+.xxlr_btm{width:100%;height:55px;color:#fff;text-align:center;line-height:55px;position:relative;bottom:0px;}
+.dataTables_paginate{position: relative;height: 35px;}
+.lwPage{font-size:12px;margin-top: 5px;position: absolute;top:1px;right:0px;font-family:"Microsoft YaHei"}
+.lwPage label{padding: 0;margin:0;font-weight: normal}
+.lwPage .countNum{padding: 0 5px;}
+.lwPage a{text-decoration:none;border:solid 1px #ccc;color:#717171;background: #3c91e1}
+.lwPage a,.lwPage span{min-width:27px;height:27px;line-height:24px;float:left;margin-right:5px;text-align:center;border:1px solid #c6d3e4;background: -webkit-linear-gradient(#fff,#ebf4f9);background: -moz-linear-gradient(#fff,#ebf4f9);border-radius: 3px;}
+.lwPage .current{background:#00bf96;color:#fff;border:solid 1px #05b19d;box-shadow: inset 0 0 10px #34bfa1;}
+.lwPage .current.prev,.lwPage .current.next{height: 27px;line-height: 24px;display: inline-block;margin-right: 5px;color: #aaa;box-shadow: none;text-align: center;border: 1px solid #eee;background: #eee;border-radius: 3px;}
+.lwPage .prev,.lwPage .next{padding: 0 5px;}
+.tm_psize_go{margin-right:5px;float:left;height:27px;line-height:24px;position:relative;border:1px solid #c6d3e4;color:#717171;border-radius:3px;}
+#tm_pagego{height:27px;width:27px;float:left;text-align:center;border:1px solid #c6d3e4;line-height: 24px;color:#717171;border-radius:3px;}
+.sortdesc{border-top:5px solid;width:0px;height:0px;display:inline-block;vertical-align:middle;border-right:5px solid transparent;border-left:5px solid transparent;margin-left:5px;}
+.sortasc{border-bottom:5px solid;width:0px;height:0px;display:inline-block;vertical-align:middle;border-right:5px solid transparent;border-left:5px solid transparent;margin-left:5px;}
+.lwPage .tm_go{margin:0 5px;}

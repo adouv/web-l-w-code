@@ -1,0 +1,15 @@
+<div class="bdp_list_search w5c-form flowDialog-list">
+    <div class="dialog-header">
+        当前加载的审批流程
+        <span class="iconfont icon-close del_btn dialog-close" ng-click="closeThisDialog()"></span>
+    </div>
+    <ul class="flowDialog-ul overflow_box_small">
+        <li ng-repeat="flowItem in currentFlow.currentFlows">
+            <span class='flowDialog_name'>{{flowItem.name}} ;<span class='default_load' ng-if="flowItem.isDefault">（默认加载）</span></span>
+            <span class='iconfont icon-look look_btn' ng-click="currentFlow.previewFlowChart(flowItem.name,flowItem.processDefinitionId,$event)"></span>
+        </li>
+    </ul>
+    <div class="dialog-btn">
+        <div class="btn_bg" ng-click="closeThisDialog()">确定</div>
+    </div>
+</div>

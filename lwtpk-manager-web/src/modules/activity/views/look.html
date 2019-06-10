@@ -1,0 +1,119 @@
+<div class="row manage_add">
+  <span class="manage" ng-click="goList()">园区点播和直播活动管理--></span>
+  <span class="add">园区{{activityType}}活动查看</span>
+</div>
+
+<section class="row border-color edit">
+  <blockquote class="border-color">园区{{activityType}}活动查看</blockquote>
+</section>
+
+<div class="look_main">
+  <div class="row">
+    <div class="live_list clearfix">
+      <p class="list_name">名称 :</p>
+
+      <div class="detil">{{activity.name}}</div>
+    </div>
+    <div class="live_list clearfix">
+      <p class="list_name">嘉宾 :</p>
+      <div class="detil">{{activity.guests}}</div>
+    </div>
+    <div class="live_list clearfix">
+      <p class="list_name">类型 :</p>
+
+      <div class="detil">{{activityType}}</div>
+    </div>
+
+    <!--直播-->
+    <div id="live" ng-show="activityType=='直播'">
+      <div class="live_list clearfix">
+        <p class="list_name">直播活动封面 :</p>
+
+        <div class="live_page">
+          <img ng-if="activity.coverUrl" src="{{filePath+activity.coverUrl}}" alt="">
+          <i class="cover" ng-if="activity.coverUrl==null"></i>
+        </div>
+      </div>
+      <div class="live_list clearfix">
+        <p class="list_name">直播摄像头地址 :</p>
+
+        <div class="detil">{{activity.cameraUrl}}</div>
+      </div>
+      <div class="live_list clearfix">
+        <p class="list_name">直播开始时间 :</p>
+
+        <div class="detil">{{activity.startTime | date:'yyyy年MM月dd日 HH:mm'}}</div>
+      </div>
+      <div class="live_list clearfix">
+        <p class="list_name">直播结束时间 :</p>
+
+        <div class="detil">{{activity.endTime | date:'yyyy年MM月dd日 HH:mm'}}</div>
+      </div>
+      <div class="live_list clearfix">
+        <p class="list_name">直播观看人数上限 :</p>
+
+        <div class="detil">{{!activity.limitCount?'不限':activity.limitCount+'人'}}</div>
+      </div>
+      <div class="live_list clearfix">
+        <p class="list_name">直播内容介绍 :</p>
+
+        <div class="detil">{{activity.content}}</div>
+      </div>
+      <div class="live_list clearfix">
+        <p class="list_name">可见范围 :</p>
+
+        <div class="detil">
+          <p>{{publicType}}<!--<a href="javascript:void(0)" ng-click="goPublicList()">{{count}}</a>{{countType}}</p>-->
+        </div>
+      </div>
+      <div class="live_list clearfix">
+        <p class="list_name">有效性 :</p>
+
+        <div class="detil">{{status}}</div>
+      </div>
+    </div>
+
+    <!--点播-->
+    <div id="unicast" ng-show="activityType=='点播'">
+      <div class="live_list clearfix">
+        <p class="list_name">活动视频封面 :</p>
+
+        <div class="live_page">
+          <img ng-if="activity.coverUrl" src="{{filePath+activity.coverUrl}}" alt="">
+          <i class="cover" ng-if="activity.coverUrl==null"></i>
+        </div>
+      </div>
+      <div class="live_list clearfix">
+        <p class="list_name">活动视频 :</p>
+
+        <div class="detil">
+          <p ng-repeat="video in activity.videoList">{{video.videoUrl?video.videoUrl:video.videoName}}</p>
+        </div>
+        <!--<div class="live_page">-->
+        <!--<i class="cover"></i>-->
+        <!--</div>-->
+      </div>
+      <div class="live_list clearfix">
+        <p class="list_name">内容介绍 :</p>
+
+        <div class="detil">{{activity.content}}</div>
+      </div>
+      <div class="live_list clearfix">
+        <p class="list_name">公开范围 :</p>
+
+        <div class="detil">
+          <p>{{publicType}}<!--<a href="javascript:void(0)" ng-click="goPublicList()">{{count}}</a>{{countType}}</p>-->
+        </div>
+      </div>
+      <div class="live_list clearfix">
+        <p class="list_name">有效性 :</p>
+
+        <div class="detil">{{status}}</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sure_back clearfix">
+    <button class="btn btn-default btn-lg tpk-btn-o" ng-click="goList()">返 回</button>
+  </div>
+</div>

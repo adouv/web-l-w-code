@@ -1,0 +1,37 @@
+<div class="bdp_list_search w5c-form">
+    <div class="dialog-header switchFlow-dialog-header">
+        切换审批流程
+        <span class="iconfont icon-close del_btn dialog-close" ng-click="closeThisDialog()"></span>
+    </div>
+    <div class="switchFlow-list">
+        <span class="flow-title-text" ng-click="previewFlowDialog($event)">
+            已选择的审批流程：
+        </span>
+        <div class="switchFlow-checked" ng-repeat="checkedItem in switchFlowDialog.checkedFlow">
+            <span class="switchFlow-text">{{checkedItem.name}}</span>
+            <span class="switchFlow-del" ng-click="switchFlowDialog.selectWorkflow(checkedItem)">×</span>
+        </div>
+    </div>
+    <div class='h-line'></div>
+    <ul class="all-switchFlow">
+        <li class='switchFlow-item' ng-repeat='item in switchFlowDialog.allWorkflow' ng-click="switchFlowDialog.selectWorkflow(item)">
+            <b ng-class="{'checked':switchFlowDialog.checkedFlow.indexOf(item)>=0}"></b>
+            <div class="flow-wrapper">
+                <div class="checkedWorkflow">
+                    <span class="switchFlow-name">
+                        {{item.name}}
+                        <span class="default-load" ng-if="item.isDefault">（默认加载）</span>
+                    </span>
+                </div>
+                <i class="iconfont icon-look" ng-click="switchFlowDialog.previewFlowChart(item.name,item.processDefinitionId,$event)"></i>
+            </div>
+        </li>
+    </ul>
+    <div class="nodata" ng-if="switchFlowDialog.allWorkflow.length==0">
+        <img src="../../../../lwbdp-asset/images/nodata.png" alt="暂无数据">
+    </div>
+    <div class="dialog-btn">
+        <div class="btn_bd" ng-click="closeThisDialog()">取消</div>
+        <div class="btn_bg" ng-click="switchFlowDialog.confirmCallBack(closeThisDialog)">确定</div>
+    </div>
+</div>

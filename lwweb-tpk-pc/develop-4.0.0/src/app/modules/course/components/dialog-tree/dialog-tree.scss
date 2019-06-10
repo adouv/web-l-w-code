@@ -1,0 +1,59 @@
+@import "../../../../../styles/variable";
+.lw-tpk-tree::ng-deep{
+	font-size: computer(14px);
+	display: inline-block;
+	width: 100%;
+	// padding-right: 40px;
+	span{
+		-webkit-user-select:none;
+		user-select:none;
+		white-space: normal;
+	}
+	.tree-title{
+		cursor: pointer;
+		white-space: nowrap;
+		height: computer(20px);
+		line-height: computer(20px);
+	}
+	.tree-title-icon{
+		//margin-right: computer(10px);
+		.iconfont:before{
+			font-size:computer(12px) !important;
+			color:$color_font-deep;
+		}
+	}
+	.tree-childs{
+		margin-left: computer(24px);
+		
+	}
+	.tree-child{
+		cursor: pointer;
+		white-space: nowrap;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		height: computer(20px);
+		line-height: computer(20px);
+	}
+	.span-title{
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		height: computer(20px);
+		line-height: computer(20px);
+	}
+	.ant-checkbox-wrapper + span, .ant-checkbox + span{
+		padding-right: 0;
+		padding-left: 0;
+	}
+	.btn-disabled{
+		opacity: 0.5;
+		cursor: not-allowed;
+	}
+	.margin-right-10{
+		margin-right: computer(10px);
+	}
+	.margin-bottom-10{
+		margin-bottom: computer(10px);
+	}
+}

@@ -1,0 +1,17 @@
+<div class="addSalary">
+   <div class="header">
+       添加基础信息模板
+       <span class="iconfont icon-close del_btn" ng-click="closeThisDialog()"></span>
+   </div>
+    <form class="w5c-form" w5c-form novalidate w5c-form-validate name="add">
+        <div class="content">
+        <textarea name="names" id="names" cols="30" rows="10" class="content-area" ng-model="addBaseInfo.names" required
+                  placeholder="请输入要添加的模板项名称，输入的模板项名称不能和已有的模板名称相同；每个模板项名称不能超过10个汉字，多个模板项名称之间用中英文的分号或逗号隔开……" ng-keyup="addBaseInfo.replaceSymbol()"></textarea>
+        </div>
+        <div class="footer">
+            <div class="btn_bd" ng-click="closeThisDialog()">取消</div>
+            <div class="btn_bg" w5c-form-submit="addBaseInfo.saveTitle(closeThisDialog)">确定</div>
+        </div>
+    </form>
+
+</div>

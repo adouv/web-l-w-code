@@ -1,0 +1,201 @@
+<div class="exercises-statistics">
+	<nz-breadcrumb [nzSeparator]="'>'">
+		<nz-breadcrumb-item>
+			<span [routerLink]="['/resource/home']">云资源</span>
+		</nz-breadcrumb-item>
+		<nz-breadcrumb-item>
+		<span>知识点列表</span>
+		</nz-breadcrumb-item>
+		<nz-breadcrumb-item>
+			<span (click)="goBack()">习题</span>
+		</nz-breadcrumb-item>
+		<nz-breadcrumb-item>
+			作答统计
+		</nz-breadcrumb-item>
+	</nz-breadcrumb>
+	<p class="title">
+		{{courseTitle}}
+	</p>
+	<div class="exercises-statistics-container" flex="dir:right box:first">
+		<div class="right">
+			<div class="header" flex="main:justify">
+				<span>课上作答统计</span>
+				<nz-select class="header-select bg-gray radius"
+						   (nzOpenChange)="exercisesClassesChange()"
+						   [(ngModel)]="exercisesClassChecked"
+						   [nzPlaceHolder]="statistics.length>0?statistics[0].name:'暂无班级'">
+					<nz-option *ngFor="let statistic of exercisesClasses" [nzLabel]="statistic.className"
+							   [nzValue]="statistic">
+					</nz-option>
+				</nz-select>
+				<nz-select class="header-select bg-gray radius"
+						   (nzOpenChange)="timesChange()"
+						   [(ngModel)]="timesChecked"
+						   [nzPlaceHolder]="times.length>0?times[0]:'暂无次数'">
+					<nz-option *ngFor="let time of times" [nzLabel]="time"
+							   [nzValue]="time">
+					</nz-option>
+				</nz-select>
+			</div>
+			<div class="content">
+				<div class="table-box">
+					<table class="table-box-header">
+						<colgroup>
+							<col width="61">
+							<col width="85">
+							<col width="215">
+						</colgroup>
+						<thead>
+						<tr>
+							<th>选项</th>
+							<th>姓名</th>
+							<th>时间</th>
+						</tr>
+						</thead>
+					</table>
+					<div class="table">
+						<table class="exercisesTable" >
+							<colgroup>
+								<col width="61">
+								<col width="85">
+								<col width="215">
+							</colgroup>
+							<tbody>
+							<tr *ngFor="let answer of data.answers"  class="tr-hover">
+								<td>{{answer.option}}</td>
+								<td class="user-table-td" colspan="2">
+									<table border="0" cellspacing="0" cellpadding="0">
+										<colgroup>
+											<col width="85">
+											<col width="220">
+										</colgroup>
+										<tbody>
+										<tr *ngFor="let user of answer.users; let i = index">
+											<td class="td-first">
+												{{user.displayName}}
+											</td>
+											<td>
+												{{user.duration}}
+											</td>
+										</tr>
+										</tbody>
+									</table>
+								</td>
+							</tr>
+							<!--<tr class="tr-hover">-->
+								<!--<td>曹操</td>-->
+								<!--<td>1分23秒</td>-->
+							<!--</tr>-->
+							<!--<tr class="tr-hover">-->
+								<!--<td>夏侯惇</td>-->
+								<!--<td>1分23秒</td>-->
+							<!--</tr>-->
+							<!--<tr class="tr-hover">-->
+								<!--<td>刘备</td>-->
+								<!--<td>1分23秒</td>-->
+							<!--</tr>-->
+							<!--<tr class="tr-hover">-->
+								<!--<td rowspan="2">B</td>-->
+								<!--<td>王允</td>-->
+								<!--<td>1分23秒</td>-->
+							<!--</tr>-->
+							<!--<tr class="tr-hover">-->
+								<!--<td>吕布</td>-->
+								<!--<td>1分23秒</td>-->
+							<!--</tr>-->
+							<!--<tr class="tr-hover">-->
+								<!--<td rowspan="3">C</td>-->
+								<!--<td>赵云</td>-->
+								<!--<td>1分23秒</td>-->
+							<!--</tr>-->
+							<!--<tr class="tr-hover">-->
+								<!--<td>郭嘉</td>-->
+								<!--<td>1分23秒</td>-->
+							<!--</tr>-->
+							<!--<tr class="tr-hover">-->
+								<!--<td>荀彧</td>-->
+								<!--<td>1分23秒</td>-->
+							<!--</tr>-->
+							<!--<tr class="tr-hover">-->
+								<!--<td>D</td>-->
+								<!--<td>关羽</td>-->
+								<!--<td>1分23秒</td>-->
+							<!--</tr>-->
+							</tbody>
+						</table>
+
+						<p class="click-show-more"
+						   [ngClass]="{'pointer':true}">
+							已加载全部</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="left">
+			<div class="header">
+				答题概况
+			</div>
+			<div class="content auto-scroll">
+				<div class="exercises-details">
+					<p [dynamicHtml]="data.contentHtml">
+					</p>
+					<!--<p>-->
+						<!--<span>A.非负数 </span>             <span>B.非 正数</span>            <span> C. 正数</span>             <span>D.0</span>-->
+					<!--</p>-->
+				</div>
+				<div class="exercises-details-statistics">
+					<div class="exercises-details-statistics-groups">
+						<div class="statistics-group">
+							<span>答题人数: </span>
+							<span>{{data.totalAnswerCount}}</span>
+						</div>
+						<div class="statistics-group">
+							<span>平均作答时间: </span>
+							<span>{{data.avgDuration}}</span>
+						</div>
+					</div>
+					<div class="exercises-details-statistics-groups">
+						<div class="statistics-group">
+							<span>正确人数: </span>
+							<span>{{data.rightCount}}</span>
+						</div>
+						<div class="statistics-group">
+							<span>最短作答时间: </span>
+							<span>{{data.minDuration}}</span>
+						</div>
+					</div>
+					<div class="exercises-details-statistics-groups">
+						<div class="statistics-group">
+							<span>正确率: </span>
+							<span>{{data.rightRatio}}</span>
+						</div>
+						<div class="statistics-group">
+							<span>最长作答时间: </span>
+							<span>{{data.maxDuration}}</span>
+						</div>
+					</div>
+					<div class="exercises-details-statistics-groups">
+						<div class="statistics-group">
+							<span>正确选项: </span>
+							<span>{{data.rightOption}}</span>
+						</div>
+						<div class="statistics-group">
+							<span>错误最多选项: </span>
+							<span>{{data.mostWrongOption}}</span>
+						</div>
+					</div>
+				</div>
+				<div class="exercises-details-echarts">
+					<span>选项分布</span>
+					<div id="echarts" echarts [options]="chartOption" class="demo-chart"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="footer">
+		<button tabindex='-1' class="close" [nzType]="'default'" nz-button
+			 (click)="goBack()"	[nzType]="'danger'">
+			<span>返回</span>
+		</button>
+	</div>
+</div>

@@ -1,0 +1,270 @@
+.picView.img_box.office {
+    display: inline-block;
+    width: 132px;
+    height: 140px;
+    margin-right: 10px;
+    position: relative;
+    border: none;
+    margin-bottom: 30px;
+    vertical-align: middle;
+}
+
+.picView.img_box.office:hover .file_delBtn{
+    display: block;
+}
+.ib {
+    display: inline-block;
+    /*float: left;*/
+}
+
+.picView.img_box.office div {
+    /*width: 128px;*/
+    width: 140px;
+    height: 140px;
+    border: 0;
+}
+.picView.img_box div.file-pptx,.picView.img_box div.file-ppt,.picView.img_box div.file-dwg {
+    width: 140px;
+    height: 140px;
+}
+
+.picView.img_box {
+    display: inline-block;
+    width: 140px;
+    height: 165px !important;
+    margin-right: 10px;
+    position: relative;
+    cursor: pointer;
+}
+
+.picView.img_box:hover .file_delBtn{
+    display: block;
+}
+
+.picView.img_box img {
+    width: 140px;
+    height: 140px;
+    /*border: 1px solid #dbe3ee;*/
+}
+.filePreview .spac{
+    font-family: "Microsoft YaHei", "Simsun", "arial", "sans-serif";
+}
+.picView .files_name {
+    width: 100%;
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    cursor: pointer;
+    /*position: absolute;*/
+    /*bottom: -20px;*/
+    font-size: 14px;
+    left: 0;
+    padding-top: 5px;
+}
+
+.picView .file_closeBtn {
+    font-size: 20px;
+    float: right;
+}
+
+.word {
+    width: 128px;
+    height: 136px;
+    background-image: url('./image/word.png')
+}
+
+.pdf {
+    width: 128px;
+    height: 136px;
+    background-image: url('./image/pdf.png')
+}
+
+.excel {
+    width: 128px;
+    height: 136px;
+    background-image: url('./image/excel.png')
+}
+
+.dwg {
+    width: 128px;
+    height: 136px;
+    background-image: url('./image/dwg.png')
+}
+
+.rar {
+    width: 128px;
+    height: 136px;
+    background-image: url('./image/rar.png')
+}
+
+.filePreview {
+    width: 787px;
+    height: 600px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    background: #fff;
+}
+
+.filePreview .file_tit {
+    text-align: center;
+    font-size: 16px;
+    height: 36px;
+    line-height: 36px;
+    border-bottom: 1px solid #dbe3ee;
+    position: relative;
+    padding: 0 20px;
+}
+
+.filePreview .view_icon {
+    float: right;
+    color: #999999;
+    font-size: 16px;
+    margin-left: 20px;
+    cursor: pointer;
+}
+
+.filePreview .view_icon:hover {
+    color: #786cec;
+}
+
+
+/* 展示图片 */
+
+.filePreview .filePic {
+    width: 100%;
+    height: 100%;
+}
+
+.filePreview .filePic.office {
+    width: 100%;
+    height: 564px;
+    overflow: hidden;
+}
+
+.filePreview .filePic .file_showPic {
+    /*max-width: 100%;
+    height: auto;*/
+    width: 100%;
+    height: 564px;
+    position: relative;
+    /*background: pink;*/
+}
+
+.filePreview .filePic .file_showPic .minHeightPic {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-60%)
+}
+
+.filePreview .filePic .file_showPic .minWidthPic {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%)
+}
+
+.filePreview .filePic .file_showPic .minWidthHeightPic {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -60%)
+}
+
+.filePreview .filePic .file_showPic .minWidthMaxHeightPic {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%)
+}
+
+.filePreview .filePic .file_showPic .maxWidthminHeightPic {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-60%)
+}
+
+.picViewBigHeight {
+    /*position: absolute;*/
+    /*transform: translateY(-50%);*/
+    /*top: 50%;*/
+    width: 136px;
+    height: auto;
+}
+
+.picViewSmallHeight {
+    /*position: absolute;*/
+    width: 136px;
+    /*display: block; */
+    height: 136px;
+}
+
+.filePreview .filePic .file_showPic.office {
+    height: 564px;
+}
+
+.filePreview.fullpage {
+    width: 100%;
+    height: 100%;
+}
+
+#fullpage {
+    width: 100%;
+    height: 100%;
+}
+
+.office {
+    width: 128px;
+    height: 140px;
+}
+
+#web-office {
+    height: 564px;
+    /*height: 100%*/
+}
+
+#officeMask {
+    width: 106px;
+    height: 32px;
+    bottom: 1px;
+    right: 20px;
+    position: absolute;
+    background-color: white;
+    cursor: pointer
+}
+
+#officeMask2 {
+    width: 41px;
+    height: 23px;
+    top: 37px;
+    right: 2px;
+    position: absolute;
+    background-color: #ebebeb;
+    cursor: pointer
+}
+
+.picView .file_delBtn {
+    position: absolute;
+    top: 3px;
+    right: 5px;
+    width: 20px;
+    height: 20px;
+    background: url('image/img_delete.png') no-repeat;
+    padding: 5px;
+    opacity: .5;
+    display: none;
+}
+
+.picView:hover .file_delBtn{
+    opacity: .5;
+}
+
+.picView .file_delBtn:hover{
+    opacity: .8 !important;
+}
+
+.bd_col99{
+    border: 1px solid #dbe3ee;
+}

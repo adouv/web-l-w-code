@@ -1,0 +1,353 @@
+.repair .main_in {
+    min-width: 1050px;
+    position: relative;
+    /*overflow: hidden;*/
+    position: absolute;
+    width: 100%;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+/* 搜索 */
+
+.repair .search_box {
+    margin-top: 20px;
+    padding: 0 20px;
+}
+
+.repair .more_search {
+    color: #0096ff;
+    margin-left: 10px;
+    display: inline-block;
+    padding: 5px 0;
+}
+.repair .more_search:focus{
+    outline: none;
+}
+
+.repair .search_result {
+    padding: 6px 0;
+    border-bottom: 1px solid #dbe3ee;
+    line-height: 24px;
+}
+
+.repair .search_result>span{
+    margin-right: 10px
+}
+
+.repair .search_result .icon-error{
+    color: rgba(120, 108, 236, .5);
+    cursor: pointer;
+    vertical-align: middle;
+}
+
+.repair .search_box .checkboxs {
+    overflow: hidden;
+    margin-top: 6px;
+}
+.repair .draff_title{
+    height: 42px;   
+    line-height:42px;
+    text-align: center;
+    font-size: 16px;
+    border-bottom: 1px solid #dbe3ee;
+}
+
+.repair .total_num {
+    margin-top: 16px;
+    height: 35px;
+    line-height: 33px;
+    padding: 0 30px 0 20px;
+    margin-bottom: 16px;
+}
+
+.repair .total_num .num {
+    color: #0096ff;
+}
+
+.repair .table_box {
+    width: 100%;
+    position: relative;
+}
+
+.repair .line_strip {
+    height: 4px;
+    background-image: linear-gradient(-180deg, rgb(120, 108, 236) 50%, rgb(0, 150, 255) 50%);
+    background-image: -webkit-linear-gradient(left, #786cec 20%, #3c76f6 20%, #008aff 20%, #0096ff 20%, #017eff 20%);
+    background-size: 100% 4px;
+    background-position: top right;
+    background-repeat: no-repeat;
+    width: 100%;
+}
+
+.repair .table_box .listTable {
+    width: 100%;
+}
+
+.repair .table_box .listTable thead th {
+    background: #f8f8f8;
+    height: 40px;
+    padding: 5px 10px;
+    font-size: 14px;
+    color: #333;
+    font-weight: bold;
+    border: 1px solid #dbe3ee;
+    border-top: 0;
+    text-align: center;
+}
+
+.repair .table_box .listTable thead th:first-child {
+    border-left: 0;
+}
+
+.repair .table_box .listTable thead th:last-child {
+    border-right: 0;
+}
+
+.repair .table_box .listTable tr td {
+    font-size: 14px;
+    color: #333333;
+    padding: 5px 10px;
+    height: 50px;
+    border: 1px solid #dbe3ee;
+    max-width: 100px;
+    text-align: center;
+    line-height: 22px;
+    word-break: break-all;
+}
+
+.repair .table_box .listTable tr td:first-child {
+    border-left: 0;
+}
+
+.repair .table_box .listTable tr td:last-child {
+    border-right: 0;
+}
+
+.repair .table_box .listTable tbody tr:hover {
+    background-color: #dbe3ee !important;
+    cursor: pointer;
+}
+
+.repair .table_box .listTable tr:nth-child(2n) {
+    background-color: #f8f8f8;
+}
+
+.repair .table_box .red_color {
+    color: #ff272e !important;
+}
+
+.repair .table_box .green_color {
+    color: #00bb8b !important;
+}
+
+.repair .modal-dialog .addConfig {
+    width: 800px;
+    height: 600px;
+    position: relative;
+}
+
+.repair .modal-dialog .addConfig_tit {
+    font-size: 16px;
+    padding: 0 10px 0 20px;
+    text-align: center;
+    height: 36px;
+    line-height: 36px;
+    border-bottom: 1px solid #dae4ee;
+}
+
+.repair .modal-dialog .addConfig_tit .del_btn {
+    display: inline-block;
+    padding: 0px 15px;
+    height: 36px;
+    cursor: pointer;
+    float: right;
+}
+
+.repair .modal-dialog .addConfig_form {
+    width: 610px;
+    margin: 40px auto;
+}
+
+.repair .modal-dialog .form_list {
+    font-size: 0;
+    margin-bottom: 10px;
+}
+
+.repair .modal-dialog .form_tit, .form_list .input_class {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.repair .modal-dialog .form_tit {
+    width: 86px;
+    text-align: right;
+    font-size: 14px;
+    margin-right: 10px;
+}
+
+.repair .form_list .input_class {
+    font-size: 14px;
+    padding: 0 10px;
+    width: 490px;
+}
+
+.repair .form_list .textarea_class {
+    padding: 5px 10px;
+    font-size: 14px;
+    width: 490px;
+    height: 160px;
+    border: 1px solid #dae4ee;
+}
+
+.repair .modal-dialog .btn_poab {
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+    text-align: center;
+}
+
+.repair .btn_poab .btn_bd {
+    margin-right: 10px;
+}
+
+.repair .form_list input::-webkit-input-placeholder, .form_list textarea::-webkit-input-placeholder {
+    color: #999;
+}
+
+.repair .form_list input::-moz-placeholder, .form_list textarea::-moz-placeholder {
+    color: #999;
+}
+
+.repair .form_list input::-ms-placeholder, .form_list textarea::-ms-placeholder {
+    color: #999;
+}
+
+.repair .modal-dialog.modal-w800 {
+    width: 800px;
+}
+
+
+/* 选择园区 */
+
+.repair .select_depart {
+    padding: 20px 0;
+}
+
+.repair .select_depart_list .setting_icon {
+    font-size: 20px;
+    color: #786cec;
+    padding: 0 8px 0 0px;
+    cursor: pointer;
+}
+
+.repair .select_depart_list span {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.repair .select_depart_list .fos16 {
+    font-size: 16px;
+}
+.repair .select_depart_list2.disabled{
+    opacity: .2;
+}
+.repair .select_depart_list2 {
+    margin-top: 7px;
+    font-size: 14px;
+    margin-left: 138px;
+}
+
+
+/* 修缮类别 */
+
+.repair .repair_type {
+    display: inline-block;
+    vertical-align: middle;
+    width: 160px;
+    height: 30px;
+    line-height: 30px;
+    padding: 0 10px;
+    border: 1px solid #dbe3ee;
+    margin-right: 10px;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+
+/* 表格出现滚动条 */
+
+.repair .table_absolute {
+    padding: 0 20px;
+    padding-bottom: 100px;
+}
+
+.repair .box_pad20 {
+    padding: 0 20px;
+}
+
+.repair .poab_top137 {
+    top: 159px;
+}
+.repair .line_pad {
+    padding: 14px 20px 0;
+    position: relative;
+    z-index: 2;
+}
+
+.repair .btn_bd.btn_bd_detele{
+    cursor: not-allowed;
+    opacity: 0.2;
+}
+.repair .btn_bd.btn_bd_detele.opacity{
+    cursor: pointer;
+    opacity:1;
+}
+
+.repair .margap{
+    margin-right: 10px;
+}
+/* input新样式 */
+
+.repair .content_textBar {
+    display: inline-block;
+    vertical-align: middle;
+    position: relative;
+    border: 1px solid #dbe3ee;
+    width: 240px;
+    height: 30px;
+    line-height: 30px;
+    padding: 0 6px 0 10px;
+    margin-right: 10px;
+}
+.repair .content_textBar:hover{
+    border-color: #0096ff;
+}
+
+.repair .content_textBar input {
+    border: 0;
+    width: 90%;
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    vertical-align: top;
+}
+
+.repair .content_textBar .icon-search{
+    color: #999;
+}
+
+.repair .content_textBar .icon-error {
+    color: rgba(120, 108, 236, .5);
+    cursor: pointer;
+    vertical-align: middle;
+    float: right;
+}
+.repair .content_textBar .icon-error:hover{
+    color: rgba(120, 108, 236,1);
+}
+.repair .btn_process{
+    margin-right: 10px;
+}

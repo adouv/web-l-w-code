@@ -1,0 +1,54 @@
+.canteen_detail .canteen_info_tit {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.canteen_detail .canteen_info_tit h3 {
+    height: 40px;
+    line-height: 40px;
+    border-bottom: 1px solid #dbe3ee;
+    text-align: center;
+    font-size: 16px;
+}
+
+.canteen_detail .canteen_info_tit p {
+    text-align: center;
+    font-size: 14px;
+    color: #999;
+    margin-top: 5px;
+}
+.canteen_detail .canteen_infos {
+    width: 70%;
+    margin: 0 auto;
+}
+
+.canteen_infos_li {
+    overflow: hidden;
+    margin-bottom: 18px;
+
+}
+.canteen_infos_content{
+    display: inline-block;
+    font-size: 14px;
+    vertical-align: middle;
+    width: 80%;
+}
+@media (max-width:1150px){
+    .canteen_infos_content{
+        width: 75%;
+    }
+}
+.canteen_li .echoPic{
+    margin: 0 30px 20px 0;
+    text-align: center;
+}
+
+
+
+
+
+
+
+
+
+

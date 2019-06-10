@@ -1,0 +1,30 @@
+<div class="select-person-component">
+    <div [hidden]="gardenLength==1" class="header" flex="dir:left box:mean">
+        <div class="search-group margin-right-20" flex="">
+            <div flex-box="0" class="margin-right-10">行政区域</div>
+            <nz-cascader nzPlaceHolder="请选择" flex-box="1" nzChangeOnSelect [nzOptions]="addressPositions" [ngModel]="values" (ngModelChange)="selectAddress($event)">
+            </nz-cascader>
+        </div>
+        <div class="search-group" flex="">
+            <div flex-box="0" class="margin-right-10">学校类型</div>
+            <nz-select nzAllowClear (ngModelChange)="selectDataChange($event)" flex-box="1" [(ngModel)]="seletedData" [nzSize]="'default'" nzMode="multiple" nzPlaceHolder="请选择">
+                <nz-option *ngFor="let option of selectData" [nzLabel]="option.label" [nzValue]="option.value"></nz-option>
+            </nz-select>
+        </div>
+    </div>
+    <div class="content" flex="dir:left box:mean">
+        <div [hidden]="gardenLength==1" class="content-group auto-scroll-6 margin-right-20">
+            <garden-district [gardenId]="gardenId"></garden-district>
+        </div>
+        <div class="content-group margin-right-20">
+            <organization></organization>
+        </div>
+        <div class="content-group">
+            <selected-person></selected-person>
+        </div>
+    </div>
+    <div class="footer">
+        <button (click)="onCancel()" class="margin-right-20" nz-button [nzType]="'primary'" nzGhost>取消</button>
+        <button (click)="onOk()" nz-button [nzType]="'primary'">确定</button>
+    </div>
+</div>

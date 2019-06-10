@@ -1,0 +1,113 @@
+@import "../../../styles/variable";
+
+.chapter-item {
+	padding: 0 0 0 computer(60px);
+	line-height: 40px;
+	cursor: pointer;
+	&:hover {
+		background: $color_border;
+	}
+}
+
+.title-box {
+	display: flex;
+	justify-content: space-between;
+	.icon-click {
+		color: $color_main;
+		margin-right: 20px;
+		font-weight: normal;
+		cursor: pointer;
+	}
+	.icon-click-type{
+		width: computer(24px);
+		display: inline-block;
+		line-height:computer(24px) ;
+		height: computer(24px);
+		border-radius: computer(24px) ;
+		background: $color_main;
+		color:#fff;
+		font-size:computer(14px);
+		text-align: center;
+		margin-right: computer(18px);
+	}
+	.icon-disable{
+		//background:$color_background  !important;
+		color:$color_background !important; ;
+	}
+}
+.title-box-level1{
+	font-size: computer(16px);
+}
+:host ::ng-deep {
+	.child-collapse .ant-collapse-item {
+		margin-top: 0;
+	}
+	.ant-collapse-header{
+		//padding: 8px 0 8px 32px;
+		padding: 0 0 0 32px !important;
+	}
+	.ant-collapse-header .title-box{
+		padding: 8px 0 8px 0px;
+	}
+	//.child-collapse .ant-collapse-header[aria-expanded=true]{
+	//	color:$color_main !important;
+	//}
+	.callapse-no-child .arrow{
+		display: none;
+	}
+	.callapse-no-child .arrow:before {
+		content: '' !important;
+	}
+	.child-collapse .ant-collapse-header {
+		font-weight: normal !important;
+		font-size: computer(14px) !important;
+		background: none !important;
+		&:hover{
+			background: $color_border !important;
+		}
+	}
+
+	.child-collapse .ant-collapse-borderless {
+		//margin-left: computer(18px);
+	}
+	.child-collapse .ant-collapse-content-status-active {
+		border: 0 !important;
+	}
+	.child-collapse .chapter-item {
+		padding: 0 0 0 computer(36px);
+		cursor: pointer;
+	}
+	.check-box{
+		color:$color_main;
+	}
+
+	.callapse-child-2{
+		.ant-collapse-header{
+			padding-left: computer(48px) !important;
+			box-sizing: border-box;
+		}
+		.arrow{
+			left: computer(32px) !important;
+		}
+	}
+	.callapse-child-3{
+		.ant-collapse-header{
+			padding-left: computer(68px) !important;
+			box-sizing: border-box;
+		}
+		.arrow{
+			left: computer(52px) !important;
+		}
+
+	}
+	.callapse-child-4{
+		.ant-collapse-header{
+			padding-left: computer(88px) !important;
+			box-sizing: border-box;
+		}
+		.arrow{
+			left: computer(72px) !important;
+		}
+	}
+}
+

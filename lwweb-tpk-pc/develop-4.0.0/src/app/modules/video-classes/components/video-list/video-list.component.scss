@@ -1,0 +1,64 @@
+@import "../../../../../styles/variable";
+
+.video-set ::ng-deep{
+	height: 100%;
+	width: computer(368px);
+	font-size: computer(14px);
+	line-height: computer(40px);
+	.video-set-content{
+		height: calc(100% - #{computer(50px)});
+		overflow-x: hidden;
+	}
+	li {
+		//width: computer(318px);
+		padding: 0 computer(10px);
+		height: computer(40px);
+		// overflow: hidden;
+		// text-overflow: ellipsis;
+		// white-space: nowrap;
+		cursor: pointer;
+		&:hover{
+			background-color: #eee;
+		}
+		a {
+			display: inline-block;
+			text-decoration: none;
+			max-width: computer(300px);
+			overflow: hidden;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+			display: flex;
+			flex-direction: row;
+			justify-content: space-between;
+			.iconfont{
+				position: relative;
+				bottom: - computer(2px);
+			}
+			span:nth-child(1) {
+				max-width: computer(185px);
+				text-overflow: ellipsis;
+				overflow: hidden;
+				white-space: nowrap;
+			}
+			span:nth-child(2) {
+				width: computer(114.39px);
+			}
+			span{
+				color: #666;
+			}
+		}
+	}
+	.disable{
+		cursor: not-allowed;
+		opacity: 0.5;
+		a{
+			cursor: not-allowed;
+		}
+	}
+	.active{
+		color:$color_main;
+		span{
+			color:$color_main;
+		}
+	}
+}

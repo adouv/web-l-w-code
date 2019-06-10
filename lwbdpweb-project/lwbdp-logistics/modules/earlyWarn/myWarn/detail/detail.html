@@ -1,0 +1,107 @@
+<div class="warn-class">
+    <div class="header">
+        <span ng-if="myWarnDetail.notice && myWarnDetail.notice.publishStatus != 2 && myWarnDetail.notice.isNeedReply && !myWarnDetail.noticeAccount.replyDate" ng-click="myWarnDetail.goBack()" class="second-warning">预警预报 &gt;</span>
+        <span ng-if="!(myWarnDetail.notice && myWarnDetail.notice.publishStatus != 2 && myWarnDetail.notice.isNeedReply && !myWarnDetail.noticeAccount.replyDate)" ng-click="myWarnDetail.toRouter()" class="second-warning">预警预报 &gt;</span>
+        <span ng-if="myWarnDetail.notice && myWarnDetail.notice.publishStatus != 2 && myWarnDetail.notice.isNeedReply && !myWarnDetail.noticeAccount.replyDate" ng-click="myWarnDetail.goBack()" class="second-warning">我的预警 &gt;</span>
+        <span ng-if="!(myWarnDetail.notice && myWarnDetail.notice.publishStatus != 2 && myWarnDetail.notice.isNeedReply && !myWarnDetail.noticeAccount.replyDate)" ng-click="myWarnDetail.toRouter()" class="second-warning">我的预警 &gt;</span>
+        <span class="first-warning" class="color_999">预警预报通知详情</span>
+    </div>
+    <div class="title">
+        {{myWarnDetail.notice.title}}
+    </div>
+    <div class="name_time color_999">
+        <span>{{myWarnDetail.notice.displayName}}</span>
+        <span>{{myWarnDetail.notice.addDate}}</span>
+        <!--<span>13:22</span>-->
+    </div>
+    <!--有内容-->
+    <div class="show_info" ng-if="myWarnDetail.notice && myWarnDetail.notice.publishStatus != 2">
+        <div class="content" compile-html="myWarnDetail.notice.content"></div>
+        <div class="list">
+            <div class="text_left">类别：</div>
+            <div class="text_right">{{myWarnDetail.notice.typeName}}</div>
+        </div>
+        <div class="list">
+            <div class="text_left">紧急程度：</div>
+            <div class="text_right">{{myWarnDetail.notice.urgencyLevelName}}</div>
+        </div>
+        <div class="list">
+            <div class="text_left ver-top">通知附件：</div>
+            <div class="text_right">
+                <div class="text_right">
+                    <pic-view ng-repeat="x in myWarnDetail.notice.attachmentList track by $index" file-name="x.name" file-path="x.url"></pic-view>
+                </div>
+            </div>
+        </div>
+        <!--本通知需要您做以下回复-->
+        <div class="edit" ng-show="myWarnDetail.notice.isNeedReply && !myWarnDetail.noticeAccount.replyDate">
+            <form class="w5c-form" novalidate name="reply">
+                <div class="title_second">
+                    本通知需要您做以下回复
+                </div>
+                <div class="list" ng-if="myWarnDetail.notice.replyRequirement">
+                    <div class="text_left">回复要求：</div>
+                    <div class="text_right">{{myWarnDetail.notice.replyRequirement}}</div>
+                </div>
+                <div class="list">
+                    <div class="text_left ver-top">回复意见：</div>
+                    <div class="text_right">
+                        <textarea name="replyContent" maxlength="1000" id="" cols="30" rows="10" ng-model="myWarnDetail.reply.replyContent" class="textarea_class" placeholder="1000个汉字以内，必填" required></textarea>
+                    </div>
+                </div>
+                <div class="list">
+                    <div class="text_right text_right_upload">
+                        <bdp-upload-file
+                                required='true'
+                                attachment-list="myWarnDetail.reply.attachmentList"
+                                title="回复附件"
+                                remark-file=""
+                                type="0"
+                                size="{{5*1024*1024}}"
+                                format="jpg,png,gif,doc,docx,xls,xlsx,ppt,pptx,pdf"
+                                message="只允许上传jpg、png、gif格式图片和doc、docx、xls、xlsx、ppt、pptx、和pdf格式的文档，单个文件大小不超过5M；">
+                        </bdp-upload-file>
+                    </div>
+                </div>
+                <div class="btn_box">
+                    <button class="btn_bd" ng-click="myWarnDetail.goBack()">取消</button>
+                    <button class="btn_bg" form-submit-valid="myWarnDetail.saveReply()">确定</button>
+                </div>
+            </form>
+        </div>
+        <!--本通知您做的回复如下-->
+        <div class="echo" ng-show="myWarnDetail.notice.isNeedReply && myWarnDetail.noticeAccount.replyDate">
+            <div class="title_second">
+                本通知您做的回复如下
+            </div>
+            <div class="list">
+                <div class="text_left">回复意见：</div>
+                <div class="text_right">{{myWarnDetail.noticeAccount.replyContent}}</div>
+            </div>
+            <div class="list">
+                <div class="text_left">回复附件：</div>
+                <div class="text_right ver-top">
+                    <pic-view ng-repeat="x in myWarnDetail.noticeAccount.attachmentList track by $index" file-name="x.name" file-path="x.url"></pic-view>
+                </div>
+            </div>
+            <div class="btn_box">
+                <button class="btn_bg" ng-click="myWarnDetail.toRouter()">返回</button>
+            </div>
+        </div>
+        <!-- 不必回复 -->
+        <div class="echo" ng-if="!myWarnDetail.notice.isNeedReply">
+            <div class="btn_box">
+                <button class="btn_bg" ng-click="myWarnDetail.toRouter()">返回</button>
+            </div>
+        </div>
+
+    </div>
+    <!--被撤回-->
+    <div class="no_result" ng-if="myWarnDetail.notice && myWarnDetail.notice.publishStatus == 2">
+        <div class="with_draw_img"></div>
+        <div class="color_999 with_draw_text">该通知已被发布者撤回！</div>
+        <div class="btn_box">
+            <button class="btn_bg" ng-click="myWarnDetail.toRouter()">返回</button>
+        </div>
+    </div>
+</div>

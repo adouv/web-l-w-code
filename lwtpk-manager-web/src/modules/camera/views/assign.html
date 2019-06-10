@@ -1,0 +1,84 @@
+<div class="camera-container">
+    <section class="row border-color">
+        <blockquote class="border-color">园区摄像头和功能区管理</blockquote>
+        <div class="garden-select">
+            <select class="form-control select-control" ng-change="toggleGarden()"
+                    ng-model="gardenId"
+                    ng-options="garden.id as garden.name for garden in gardens">
+            </select>
+        </div>
+    </section>
+    <section class="row template-row">
+        <div class="pull-right">
+            <!-- has-permission="area:list"-->
+            <button class="btn btn-default btn-sm tpk-btn-o fr" ng-click="goList()">摄像头详细信息查看</button>
+        </div>
+        <!--<div class="pull-right"
+             flow-init="{target:'',singleFile:true}"
+             flow-files-submitted="$flow.upload()"
+             flow-file-success="input.uploadSuccess($message,$flow)">
+            <a class="btn tpk-btn" href="javascript:void(0);" flow-btn>导 入</a>
+            <a class="font-color font-hv-color" href="javascript:void(0);">导入模版下载</a>
+        </div>-->
+    </section>
+    <div uib-alert ng-if="alertShow" class="alert alert-success" close="alertClose()">操作成功!</div>
+    <section class="row fu">
+        <div class="win-tab" style="margin-left: 9%">
+            <div class="win-title">园区功能区</div>
+            <div class="win-content">
+                <area-tree-init></area-tree-init>
+            </div>
+        </div>
+        <div class="win-tab">
+            <div class="win-title">
+                现有摄像头
+            </div>
+            <div class="win-content">
+                <div class="form-group">
+                    <input type="text" class="form-control" ng-model="cameraKeywords" ng-keydown="searchCarams()" placeholder="搜索">
+                    <i class="glyphicon glyphicon-search"></i>
+                </div>
+                <ul class="assign">
+                    <li ng-repeat="camera in cameras track by $index" ng-class="{'cur':selectedIndex==$index}" ng-dblclick="selected($index)" ng-click="addCur('selected',$index)">
+                        {{camera.name}}
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="win-tab" style="border: 0;width: 8%">
+            <div class="row" style="margin-top:100%;">
+                <div class="form-button">
+                    <button class="btn btn-default" ng-click="multipleSelected('selected')" ng-disabled="!areaSelected">  &gt; &gt;  </button>
+                </div>
+                <div class="form-button">
+                    <button class="btn btn-default" ng-click="singleSelected('selected')" ng-disabled="!areaSelected"> &gt; </button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-button">
+                    <button class="btn btn-default" ng-click="singleSelected('remove')" ng-disabled="!areaSelected"> &lt; </button>
+                </div>
+                <div class="form-button">
+                    <button class="btn btn-default" ng-click="multipleSelected('remove')" ng-disabled="!areaSelected">&lt;&lt;</button>
+                </div>
+            </div>
+        </div>
+        <div class="win-tab">
+            <div class="win-title">
+                已选摄像头
+            </div>
+            <div class="win-content">
+                <ul class="assign" style="margin-top:0px;">
+                    <li ng-repeat="selected in selectedCameras track by $index" ng-class="{'cur':removeIndex==$index}" ng-dblclick="remove($index)" ng-click="addCur('remove',$index)">
+                        {{selected.name}}
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+</div>
+<!--
+<section class="row footer">
+    <a class="btn btn-success btn-lg tpk-btn fl" href="javascript:void(0);">确 定</a>
+    <a class="btn btn-default btn-lg tpk-btn-o fr" href="javascript:void(0);">取 消</a>
+</section>-->

@@ -1,0 +1,408 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+    width: 100%;
+    color: #333333;
+    font-family: PingFangSC-Light, 'helvetica neue', 'hiragino sans gb', arial, 'microsoft yahei ui', 'microsoft yahei', simsun, sans-serif !important;
+}
+
+body,
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+p,
+pre,
+form,
+fieldset,
+span,
+input,
+p,
+blockquote,
+th,
+td,
+select {
+    margin: 0;
+    padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+p {
+    font-size: 100%;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+    font-family: PingFangSC-Light, 'helvetica neue', 'hiragino sans gb', arial, 'microsoft yahei ui', 'microsoft yahei', simsun, sans-serif;
+}
+
+address,
+cite,
+dfn,
+em,
+var {
+    font-style: normal
+}
+
+input,
+button,
+select,
+textarea {
+    outline: none;
+}
+
+legend {
+    color: #000;
+}
+
+img {
+    border: 0;
+}
+
+ul,
+li {
+    list-style: none;
+}
+
+button,
+input,
+select,
+textarea {
+    font-size: 100%;
+    outline: none;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+textarea {
+    resize: none;
+}
+
+
+/*=====禁用了文本的拖拉，尤其在谷歌下=====*/
+
+p {
+    text-align: inherit;
+    text-justify: distribute;
+}
+
+
+/*=====为了使文本段落左右两边对齐=====*/
+
+
+/*======== Link ========*/
+
+a {
+    color: #666;
+    text-decoration: none;
+}
+
+a:focus,
+a:hover {
+    text-decoration: none;
+}
+
+a:focus {
+    -moz-outline-style: none;
+}
+
+
+/* IE不支持 */
+
+
+/*======== 清除浮动 ========*/
+
+.clearfix:before,
+.clearfix:after {
+    content: "";
+    display: table;
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+.clearfix {
+    zoom: 1;
+}
+
+.clear {
+    clear: both;
+}
+
+
+/*==================================== 公共样式 ====================*/
+
+.fl {
+    float: left !important;
+}
+
+.fr {
+    float: right !important;
+}
+
+.ell {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+
+/*文字超出省略号显示*/
+
+.clear {
+    clear: both;
+}
+
+i,
+s,
+em {
+    font-style: normal;
+}
+
+.none {
+    display: none !important;
+}
+
+.input_class,
+.textarea_class {
+    font-size: 14px;
+    color: #0096ff;
+    border: 1px solid #ebebeb;
+    text-shadow: 0px 0px 0px #333333;
+    -webkit-text-fill-color: transparent;
+    font-family: inherit;
+}
+
+.input_class::-webkit-input-placeholder {
+    color: #999999;
+    font-size: 12px;
+}
+
+.textarea_class {
+    padding: 10px;
+}
+
+input::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder {
+    text-shadow: none;
+    -webkit-text-fill-color: initial;
+}
+
+.input_class:focus {
+    border: 1px solid #0096ff;
+}
+
+.overflow_box {
+    overflow: auto;
+}
+
+.overflow_box::-webkit-scrollbar-track,
+.overflow_box::-moz-scrollbar-track {
+    border-radius: 10px;
+    background-color: #ffffff;
+}
+
+.overflow_box::-webkit-scrollbar,
+.overflow_box::-moz-scrollbar {
+    width: 10px;
+    height: 10px;
+    background-color: #ffffff;
+}
+
+.overflow_box::-webkit-scrollbar-thumb,
+.overflow_box::-moz-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.overflow_box_sml {
+    overflow: auto;
+}
+
+.overflow_box_sml::-webkit-scrollbar-track,
+.overflow_box_sml::-moz-scrollbar-track {
+    border-radius: 10px;
+    background-color: #ffffff;
+}
+
+.overflow_box_sml::-webkit-scrollbar,
+.overflow_box_sml::-moz-scrollbar {
+    width: 8px;
+    height: 10px;
+    background-color: #ffffff;
+}
+
+.overflow_box_sml::-webkit-scrollbar-thumb,
+.overflow_box_sml::-moz-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+
+/*右键操作*/
+
+
+/*.operation_mask{
+    position:fixed;
+    background: rgba(0,0,0,0.2);
+    top:0;
+    left : 300px;
+    bottom:0;
+    right:0;
+}*/
+
+.operation {
+    position: fixed;
+    top: 100px;
+    width: 100px;
+    background: #1b2736;
+    padding-left: 20px;
+    border-radius: 6px;
+    padding: 1px 0 1px 23px;
+    z-index: 3;
+}
+
+.operation p {
+    line-height: 30px;
+    cursor: pointer;
+    color: #767d87;
+}
+
+.operation p:hover {
+    color: #ffffff;
+}
+
+.show-exit {
+    position: absolute;
+    top: -20px;
+    left: 60px;
+    width: 100px;
+    height: 60px;
+    background: #1b2736;
+    border-radius: 6px;
+    font-size: 14px;
+    text-align: left;
+    padding-left: 10px;
+}
+
+.show-exit p {
+    line-height: 30px;
+    color: #767d87;
+    cursor: pointer
+}
+
+.show-exit p:hover {
+    color: #ffffff;
+}
+
+.show-exit .connectIconfont {
+    margin-right: 10px;
+}
+
+.show-exit .triangle {
+    position: absolute;
+    left: -9px;
+    top: 27px;
+    width: 0;
+    height: 0;
+    border-top: 5px solid transparent;
+    border-right: 10px solid #1b2736;
+    border-bottom: 5px solid transparent;
+}
+
+.show-exit p .connectIconfont {
+    font-size: 14px !important;
+    color: #767d87;
+    cursor: pointer;
+}
+
+.show-exit p:hover .connectIconfont {
+    color: #ffffff !important;
+}
+
+.show-exit .switch .connectIconfont,
+.show-exit .switch {
+    font-size: 14px;
+    color: #767d87;
+    cursor: pointer;
+}
+
+.search_no_result {
+    width: 100%;
+    background: url('../image/no_data2.png') center 80px no-repeat;
+    height: 215px;
+    color: #999999;
+    text-align: center;
+    padding-top: 190px;
+}
+
+.no_data {
+    width: 100%;
+    background: url('../image/no_data.png') center 80px no-repeat;
+    height: 215px;
+    color: #999999;
+    text-align: center;
+    padding-top: 190px;
+}
+
+.btn_blue {
+    display: inline-block;
+    background: #226cfb;
+    color: #ffffff;
+    border-radius: 3px;
+    padding: 0px 20px;
+    line-height: 30px;
+    cursor: pointer;
+    text-align: center;
+    border: 1px solid #226cfb;
+}
+
+.btn_blue:hover,
+.btn_white:hover {
+    box-shadow: 0px 2px 4px 0px rgba(59, 188, 250, 0.5);
+}
+
+.btn_white {
+    display: inline-block;
+    background: #ffffff;
+    color: #226cfb;
+    border-radius: 3px;
+    padding: 0px 20px;
+    line-height: 30px;
+    cursor: pointer;
+    text-align: center;
+    margin-right: 20px;
+    border: 1px solid #226cfb;
+}

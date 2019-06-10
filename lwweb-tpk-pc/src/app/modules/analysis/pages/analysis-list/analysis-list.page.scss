@@ -1,0 +1,258 @@
+@import "../../../../../styles/variable";
+.analysis-list {
+    height: 100%;
+    width: 100%;
+    padding: 0 computer(20px);
+    .ant-breadcrumb {
+        height: computer(20px);
+        line-height: computer(20px);
+        margin-top: computer(8px);
+    }
+    .analysis-fitter {
+        padding-top: computer(5px);
+    }
+    .title-date {
+        font-weight: bold;
+        font-size: computer(16px);
+    }
+    .analysis-title-group {
+        width: 100%;
+        height: computer(50px);
+        line-height: computer(50px);
+        border-bottom: 1px solid $color_border;
+        text-align: center;
+        position: relative;
+        margin-top: computer(-6px);
+        .title {
+            color: $color_font-deep;
+            font-size: computer(14px);
+        }
+        .date-group {
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
+    }
+    .analysis-content-group {
+        height:calc(100% - #{computer(70px)});
+        .message-group {
+            height: computer(50px);
+            line-height: computer(50px);
+            padding: 0 computer(10px);
+        }
+        .sortBy {
+            cursor: pointer;
+        }
+        .messages {
+            font-size: computer(14px);
+            color: $color_font-light;
+            .iconfont {
+                font-size: computer(14px);
+                color: $color_main;
+                margin-left: 10px;
+                &:before {
+                    font-size: computer(20px);
+                }
+            }
+        }
+        .total {
+            color: $color_main;
+        }
+    }
+    .analysis-content {
+        width: calc(100% + #{computer(20px)});
+        padding-right: computer(20px);
+        clear: both;
+        .video-box {
+            margin: 0 auto;
+            overflow: hidden;
+            font-size: 0;
+            width: 100%;
+            clear: both;
+        }
+        .video-item {
+            // padding:0 computer(10px) computer(30px);
+            position: relative;
+            cursor: pointer;
+            // max-width: computer(240px);
+            width: computer(260px);
+            padding: 0 computer(10px);
+            float: left;
+            .video-item-content {
+                width: computer(240px);
+                padding: 0 0 computer(30px);
+            }
+            &.opacity {
+                cursor: not-allowed;
+                opacity: .5;
+            }
+            &.permission {
+                &:hover img {
+                    margin-top: -6%;
+                    margin-left: -10%;
+                    width: 120%;
+                    height: 120%;
+                }
+            }
+            .img-box {
+                width: computer(240px);
+                height: computer(135px);
+                overflow: hidden;
+                position: relative;
+                .img-box-title {
+                    position: absolute;
+                    background: #fff;
+                    bottom: computer(30px);
+                    width: calc(100% - #{computer(20px)});
+                    left: computer(10px);
+                    color: $color_main;
+                    padding: computer(10px);
+                    font-size: computer(13px);
+                    text-align: center;
+                    white-space: normal;
+                    div {
+                        overflow: hidden;
+                        display: -webkit-box;
+                        -webkit-box-orient: vertical;
+                        -webkit-line-clamp: 2;
+                        max-height: 50px;
+                    }
+                }
+            }
+            img {
+                width: 100%;
+                height: 100%;
+                transition: all 100ms;
+            }
+            .teacher-name {
+                font-size: computer(14px);
+                color: $color_font-deep;
+                max-width: computer(240px);
+                margin: computer(7px) 0;
+            }
+            .class-name {
+                font-size: computer(12px);
+                color: $color_font-light;
+                line-height: normal;
+                max-width: computer(240px);
+            }
+            .class-score {
+                font-size: computer(24px);
+                line-height: normal;
+                .score {
+                    font-size: computer(14px);
+                }
+            }
+            .class-score-1-3 {
+                background: linear-gradient(90deg, #febb5c 0%, #ff7d55 100%), linear-gradient(#34383f, #34383f);
+                -webkit-background-clip: text;
+                color: transparent;
+            }
+            .class-score-4 {
+                background: linear-gradient(90deg, #00d3ec 0%, #226cfb 100%), linear-gradient(#34383f, #34383f);
+                -webkit-background-clip: text;
+                color: transparent;
+            }
+            .footer-group {
+                margin-top: computer(10px);
+                align-items: center;
+                width: computer(240px);
+                overflow: hidden;
+                height: computer(34px);
+                line-height: computer(34px);
+                .teacher-name {
+                    text-overflow: ellipsis;
+                    overflow: hidden;
+                    white-space: nowrap;
+                    max-width: computer(240px);
+                }
+            }
+            .analysis-type-span {
+                background-color: rgba(51, 61, 74, 0.5);
+                opacity: 0.5;
+                width: computer(68px);
+                height: computer(24px);
+                display: block;
+            }
+            .analysis-type-text {
+                color: #fff;
+                width: computer(68px);
+                height: computer(24px);
+                text-align: center;
+                line-height: computer(24px);
+                font-size: computer(12px);
+                position: absolute;
+                top: 0;
+            }
+            .analysis-type-div {
+                display: inline-block;
+                position: absolute;
+                // top: computer(10px);
+                top: 0;
+                right: computer(10px);
+                width: computer(68px);
+                height: computer(24px);
+            }
+            .ranking {
+                display: inline-block;
+                font-size: computer(14px);
+                color: #ffffff;
+                text-align: center;
+                width: computer(32px);
+                height: computer(32px);
+                line-height: computer(32px);
+                background-blend-mode: normal, normal;
+                border-radius: 50%;
+                position: absolute;
+                top: 0;
+                left: 0;
+            }
+            .red {
+                background-image: linear-gradient(0deg, #ff7d55 0%, #febb5c 100%), linear-gradient(#ffffff, #ffffff);
+            }
+            .blue {
+                background-image: linear-gradient(0deg, #226cfb 0%, #00d3ec 100%), linear-gradient(#ffffff, #ffffff);
+            }
+        }
+    }
+    .footer {
+        height: computer(50px);
+        line-height: computer(50px);
+        text-align: center;
+        border-top: 1px solid $color_border;
+    }
+    .class-message {
+        max-width: calc(100% - #{computer(50px)});
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        display: inline-block;
+    }
+    .teacher-name-message {
+        max-width: computer(160px);
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        display: inline-block;
+    }
+    .teacher-class-message span {
+        float: left;
+    }
+    .click-show-more {
+        font-size: computer(14px);
+        margin: computer(10px) 0;
+        text-align: center;
+        color: $color_font-light;
+        cursor: default;
+        clear: both;
+        &.pointer {
+            cursor: pointer;
+        }
+    }
+    .date-picker {
+        width: computer(240px);
+        top: calc((100% - #{computer(30px)}) / 2);
+        color: $color_font-light;
+        font-size: computer(14px);
+    }
+}

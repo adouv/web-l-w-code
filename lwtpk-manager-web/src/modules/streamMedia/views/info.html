@@ -1,0 +1,74 @@
+<div class="mediaInput">
+  <p class="breadnav bgnone">
+    <span ng-click="toBack()">园区流媒体接口信息管理--></span><span class="cur">园区流媒体接口信息查看</span>
+  </p>
+    <section class="row border-color inputTit">
+        <blockquote class="border-color inputTit">园区流媒体接口信息查看</blockquote>
+    </section>
+
+    <div class="inputform">
+        <div class="formitem">
+            <div class="itemname">所属园区 ： </div>
+            <div class="itemcon">
+                <span ng-repeat="garden in streamMedia.streamMediaGardens">{{garden.gardenName}};</span>
+            </div>
+        </div>
+        <div class="formitem">
+            <div class="itemname">流媒体服务器地址和端口号 ：</div>
+            <div class="itemcon">{{streamMedia.ip}}:{{streamMedia.port}}</div>
+        </div>
+        <div class="formitem">
+            <div class="itemname">流媒体平台版本名称 ： </div>
+            <div class="itemcon">{{streamMedia.name}}</div>
+        </div>
+        <div class="formitem" ng-repeat="im in versionItems.items">
+            <div class="itemname">{{im.itemName}} ： </div>
+            <div class="itemcon">{{itemMap[im.itemCode]}}</div>
+        </div>
+        <!--<div class="formitem">-->
+            <!--<div class="itemname">移动端点播端口 ： </div>-->
+            <!--<div class="itemcon">{{streamMedia.mbRecordPort}}</div>-->
+        <!--</div>-->
+        <!--<div class="formitem">-->
+            <!--<div class="itemname">移动端直播端口 ： </div>-->
+            <!--<div class="itemcon">{{streamMedia.mbLivePort}}</div>-->
+        <!--</div>-->
+        <!--<div class="formitem">-->
+            <!--<div class="itemname">PC端直播端口 ： </div>-->
+            <!--<div class="itemcon">{{streamMedia.pcLivePort}}</div>-->
+        <!--</div>-->
+        <!--<div class="formitem">-->
+            <!--<div class="itemname">录制文件存放目录 ： </div>-->
+            <!--<div class="itemcon">{{streamMedia.recordFolder}}</div>-->
+        <!--</div>-->
+        <!--<div class="formitem">-->
+            <!--<div class="itemname">上传文件存放目录 ： </div>-->
+            <!--<div class="itemcon">{{streamMedia.uploadFolder}}</div>-->
+        <!--</div>-->
+        <!--<div class="formitem">-->
+            <!--<div class="itemname">ftp目录 ： </div>-->
+            <!--<div class="itemcon">{{streamMedia.ftpRoot}}</div>-->
+        <!--</div>-->
+        <!--<div class="formitem">-->
+            <!--<div class="itemname">ftp端口 ： </div>-->
+            <!--<div class="itemcon">{{streamMedia.ftpPort}}</div>-->
+        <!--</div>-->
+        <div class="formitem">
+            <div class="itemname">有效性 ： </div>
+            <div class="itemcon">
+                <div class="inblk va-middle">
+                    <input type="checkbox" id="checked" checked class="cbx hidden" readonly ng-checked="streamMedia.status">
+                    <label class="lbl"></label>
+                </div>
+            </div>
+        </div>
+        <div class="formitem special">
+            <div class="itemname">备注 ： </div>
+            <div class="itemcon">{{streamMedia.description}}</div>
+        </div>
+        <i class="clear"></i>
+    </div>
+    <div class="btnBox clear">
+        <button class="btn btn-default btn-lg tpk-btn-o" ng-click="toBack()">返 回</button>
+    </div>
+</div>

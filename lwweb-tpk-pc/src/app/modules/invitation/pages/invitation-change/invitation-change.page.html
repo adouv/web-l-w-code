@@ -1,0 +1,88 @@
+<div flex="dir:top" style="height: 100%;">
+    <h1 style="font-weight: bold;">{{activityId?'编辑':'新建'}}评课活动</h1>
+    <div class="invitation-add-box">
+        <!--请选择参加评课的课节视频录像-->
+        <div class="invitation-video-box" flex="dir:top">
+            <h2><span>请选择参加评课的课节视频录像</span></h2>
+            <condition-select (onChangeSelect)="getVideoList($event)" [condition]="condition" *ngIf="invitationInfo && condition" [appraiserIds]="invitationInfo.appraiserIds">
+            </condition-select>
+            <div class="select-class-box">
+                <div>已选<span class="col-blue"> {{invitationInfo.courseRecords?.length}} </span>节课<span *ngIf="vaildModel.courseRecordsStatus" class="error">必填项</span></div>
+                <label nz-checkbox [(ngModel)]="showSelected">
+					<span>只看已选中</span>
+				</label>
+            </div>
+            <invitation-card flex-box *ngIf="videoList && showSelected !== undefined" [list]="videoList" [onlyShowSelect]="showSelected" (onSelectChange)="getSelectVideo($event)"></invitation-card>
+        </div>
+
+        <!--邀请信息-->
+        <div class="invitation-info-box">
+            <h2><span>活动信息</span></h2>
+            <div class="invitation-item-box mar-top-10px mar-bottom-10px">
+                <div>活动名称：</div>
+                <nz-input [ngClass]="{'errorInput': vaildModel.nameStatus}" [nzSize]="'large'" [(ngModel)]="invitationInfo.name" (keyup)="changeInput('name', 20)" [nzPlaceHolder]="'请输入名称'" (nzFocus)="vaildModel.nameStatus=false"></nz-input>
+            </div>
+            <div class="invitation-item-box">
+                <div>评课类型：</div>
+                <nz-select (nzOpenChange)="vaildModel.typeStatus=false" class="radius bg-gray" [(ngModel)]="invitationInfo.type" [nzPlaceHolder]="'请选择类型'" nzAllowClear>
+                    <nz-option *ngFor="let type of invitationTypes" [nzLabel]="type.name" [nzValue]="type.code">
+                    </nz-option>
+                </nz-select>
+                <span *ngIf="vaildModel.typeStatus" class="error">必填项</span>
+            </div>
+            <div class="invitation-item-box">
+                <div>发起人：</div>
+                <div>{{invitationInfo.initiatorName}}</div>
+            </div>
+            <div class="invitation-item-box appraiser-box">
+                <div>被邀请人：</div>
+                <!--<nz-select (nzOpenChange)="vaildModel.appraiserIdsStatus=false" [nzMode]="'multiple'" [nzPlaceHolder]="'请选择人员'"
+						   [(ngModel)]="invitationInfo.appraiserIds" [nzNotFoundContent]="'无法找到'">
+					<nz-option *ngFor="let invitee of invitationInvitees"
+							   [nzLabel]="invitee.name"
+							   [nzValue]="invitee.id">
+					</nz-option>
+				</nz-select>-->
+                <div>
+                    <div (click)="checkPerson()">
+                        <span class="iconfont icon-select_a_person col-blue pointer"></span>
+                        <span class="col-blue pointer">选人</span>
+                    </div>
+                    <div class="mar-top-10px">
+                        <nz-tooltip [nzTitle]="invitee.departmentName" [nzPlacement]="'top'" *ngFor="let invitee of invitationInvitees">
+                            <nz-tag nz-tooltip style="margin-bottom: 8px" [nzClosable]="true" (nzClose)="deleteAppraiser(invitee)">{{invitee.name}}
+                            </nz-tag>
+                        </nz-tooltip>
+                    </div>
+                </div>
+                <span *ngIf="vaildModel.appraiserIdsStatus" class="error">必填项</span>
+            </div>
+            <div class="invitation-item-box mar-bottom-10px">
+                <div>有效时间：</div>
+                <nz-rangepicker [nzSize]="'large'" [ngModel]="invitationInfo._date" (ngModelChange)="changeDate($event)" [nzPlaceholder]="['开始时间', '结束时间']"></nz-rangepicker>
+                <span *ngIf="vaildModel._dateStatus" class="error">必填项</span>
+            </div>
+            <div class="invitation-item-box textarea-box">
+                <div>评课要求：</div>
+                <nz-input [(ngModel)]="invitationInfo.require" (keyup)="changeInput('require', 300)" nzType="textarea" nzPlaceHolder="请输入评课要求"></nz-input>
+            </div>
+            <div class="invitation-item-box textarea-box">
+                <div class="title">评课量表：</div>
+                <button *ngIf="!invitationInfo.templateName||invitationInfo.templateName==''" (click)='selectScale()' tabindex='-1' class="close" nz-button [nzType]="'primary'" nzGhost>
+					<span>选择</span>
+				</button>
+                <span *ngIf="invitationInfo.templateName&&invitationInfo.templateName!=''" class="check-scale-title">{{invitationInfo.templateName?invitationInfo.templateName:''}}<i (click)="deleteSelectScale()" class="iconfont icon-End_icon"></i></span>
+            </div>
+            <div class="invitation-item-box textarea-box">
+                <div>教师信息：</div>
+                <nz-input [(ngModel)]="invitationInfo.teacherInfo" (keyup)="changeInput('teacherInfo', 300)" nzType="textarea" nzPlaceHolder="请输入教师信息"></nz-input>
+            </div>
+        </div>
+    </div>
+
+    <div class="btn-box">
+        <button nz-button [nzType]="'primary'" class="mar-rig-20px" (click)="goBack()" nzGhost>返回</button>
+        <button nz-button [nzType]="'primary'" class="mar-rig-20px" *ngIf="!btnDebunce">添加</button>
+        <button nz-button [nzType]="'primary'" btnDebunce (debounceClick)="changeActivity()" [waitTime]="1500" *ngIf="btnDebunce">添加</button>
+    </div>
+</div>

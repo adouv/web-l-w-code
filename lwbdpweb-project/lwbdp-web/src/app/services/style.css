@@ -1,0 +1,75 @@
+/*dialog ����meg ��ʽ*/
+
+.nspop_megcontainer .warning .bdpIconfont:before { content: "\e6d7"; }
+
+.nspop_megcontainer .bdpIconfont:before,.nspop_megcontainer .success .bdpIconfont:before { content: "\e8d0"; }
+
+.nspop_megcontainer .error .bdpIconfont:before { content: "\e8d1"; }
+.nspop_megcontainer .main_msg .textContent .bdpIconfont{font-size: 30px;padding-right: 10px;line-height: 52px;float: left}
+
+div.nspop_megcontainer {
+    position: fixed;
+    bottom: 12px;
+    width: 100%;
+    text-align: center;
+    height: 100%;
+    z-index: 10001 !important;
+
+}
+.nspop_megcontainer .main_msg {
+    position: absolute;
+    /*min-width: 200px;*/
+    display: inline-block;
+    height: 52px;
+    border-radius: 2px;
+    transform: translateX(-50%);
+    top: 49.8%;
+}
+.nspop_megcontainer .main_msg,.nspop_megcontainer .main_msg.success{
+    background-color: #33caa2;
+}
+.nspop_megcontainer .main_msg.error{
+    background-color: #fe5257;
+}
+.nspop_megcontainer .main_msg.warning{
+    background-color: #ffc833;
+}
+.nspop_megcontainer .textContent {
+    overflow: hidden;
+    color: #ffffff;
+    height: 100%;
+    padding: 0 15px;
+    text-align: center;
+}
+.nspop_megcontainer .textContent span{
+    font-size: 16px;
+    line-height: 52px;
+    float: left
+}
+
+@keyframes  ttanimations {
+    from {
+        opacity: 0
+    }
+    to {
+        opacity:1
+    }
+}
+.myactive {
+    -webkit-animation-name: ttanimations;
+    animation-name: ttanimations;
+    -webkit-animation-duration: .5s;
+    animation-duration: .5s;
+    -webkit-animation-timing-function: ease-in-out;
+    animation-timing-function: ease-in-out;
+}
+.nspop_megcontainer .lw-confirm-wrap{width: 400px;height: 200px;background-color: #fff;border-radius: 5px;box-shadow: 0px 7px 18px #ccc;position: absolute;top:0;bottom: 0;margin: auto;left: 0;right: 0}
+.nspop_megcontainer .lw-confirm-header{line-height: 40px;border-bottom: 1px solid #ebebeb;font-size: 16px;position: absolute;width: 100%;z-index: 999;}
+.nspop_megcontainer .lw-confirm-content{height: 100%;width: 100%;position: absolute;top: 0;padding-top: 60px;padding-left: 20px;padding-right: 20px;font-size: 14px;}
+.nspop_megcontainer .lw-confirm-footer{position: absolute;bottom: 0;width: 100%;height: 50px;text-align: center}
+.nspop_megcontainer .lw-confirm-btn{margin: 0 10px;background-color: #0097ff;padding: 7px 26px;color: #fff;border-radius: 3px;}
+.nspop_megcontainer .lw-confirm-text{text-align: left}
+.nspop_megcontainer .lw-close{right: 0;width: 20px;height: 20px;font-weight: bold;font-size: 12px;margin: 10px;line-height: 20px;position: absolute;color:#999999;cursor: pointer;}
+.nspop_megcontainer .lw-close:hover{color: #786cec;}
+.nspop_megcontainer .lw-confirm-cancel{background-color: #fff;color:#0097ff;border:1px solid #0097ff;padding: 6px 25px;}
+.nspop_megcontainer .lw-confirm-cancel:hover,.nspop_megcontainer .lw-confirm-btn:hover{box-shadow: 0px 2px 4px 0px rgba(0, 127, 255, 0.5);}

@@ -1,0 +1,83 @@
+<div class="bdp_list_search w5c-form">
+    <div class="dialog-header">
+        更多条件组合搜索
+        <span class="iconfont icon-close del_btn dialog-close" ng-click="closeThisDialog()"></span>
+    </div>
+    <div class="dialog-list">
+        <input type="text" readonly style="visibility: hidden;position: absolute">
+        <span class="dialog_name">项目申报年份</span>
+        <div class="dialog_date">
+            <input type="text" id="applyYearStart" lw-laydate='YYYY' readonly="readonly" class="dialog_input_middle" ng-model="purchaseSearch.condition.applyYearStart" placeholder="开始年份">
+            <span class="iconfont icon-dateYear dialog_date_icon"></span>
+        </div>
+        <span class="dialog_line">一</span>
+        <div class="dialog_date">
+            <input type="text" id="applyYearEnd" lw-laydate='YYYY' readonly="readonly" class="dialog_input_middle" ng-model="purchaseSearch.condition.applyYearEnd" placeholder="结束年份" min-date="purchaseSearch.condition.applyYearStart">
+            <span class="iconfont icon-dateYear dialog_date_icon"></span>
+        </div>
+    </div>
+    <div class="dialog-list">
+        <span class="dialog_name">项目申报单位</span>
+        <input type="text" class="dialog_input" ng-click="purchaseSearch.chooseGarden()" ng-model="purchaseSearch.condition.gardenListName" placeholder="可多选，非必填">
+    </div>
+    <div class="dialog-list">
+        <span class="dialog_name">项目所属类别</span>
+        <input type="text" class="dialog_input" ng-click="purchaseSearch.getProjectType()" ng-model="purchaseSearch.condition.categoryListName" placeholder="可多选，非必填">
+    </div>
+   <!-- <div class="dialog-list" ng-if="!purchaseSearch.isAllunits">
+        <span class="dialog_name">项目配标类别</span>
+        <input type="text" class="dialog_input" ng-click="purchaseSearch.getKindType()" ng-model="purchaseSearch.condition.kindName" placeholder="可多选，非必填">
+    </div>-->
+    <div class="dialog-list" ng-if="!purchaseSearch.isChar && !purchaseSearch.isAllunits">
+        <span class="dialog_name">项目所处阶段</span>
+        <input type="text" class="dialog_input" ng-click="purchaseSearch.getProjectStage()" ng-model="purchaseSearch.condition.stageName" placeholder="可多选，非必填">
+    </div>
+    <div class="dialog-list" ng-if="!purchaseSearch.isChar">
+        <span class="dialog_name">项目所处状态</span>
+        <input type="text" class="dialog_input" ng-click="purchaseSearch.getProjectStatus()" ng-model="purchaseSearch.condition.statusName" placeholder="可多选，非必填">
+    </div>
+    <div class="dialog-list" ng-if="!purchaseSearch.isChar">
+        <span class="dialog_name">项目申报人</span>
+        <input type="text"  maxlength="10" class="dialog_input dialog_applyAccount"  ng-model="purchaseSearch.condition.applyAccount" placeholder="10个汉字以内，非必填" maxlength="10">
+    </div>
+    <div class="dialog-list" ng-if="!purchaseSearch.isChar">
+        <span class="dialog_name">项目提交时间段</span>
+        <div class="dialog_date">
+            <input type="text" id="createTimeStart" lw-laydate='YYYY-MM-DD hh:mm:ss' readonly="readonly" class="dialog_input_middle" ng-class="{'error':purchaseSearch.validCreateTimeStart&&!purchaseSearch.condition.createTimeStart}" max-date='purchaseSearch.condition.createTimeEnd' ng-model="purchaseSearch.condition.createTimeStart" placeholder="开始时间">
+            <span class="iconfont icon-llreservecalendar dialog_date_icon"></span>
+        </div>
+        <span class="dialog_line">一</span>
+        <div class="dialog_date">
+            <input type="text" id="createTimeEnd" lw-laydate='YYYY-MM-DD hh:mm:ss' readonly="readonly" class="dialog_input_middle" ng-class="{'error':purchaseSearch.validCreateTimeEnd&&!purchaseSearch.condition.createTimeEnd}" ng-model="purchaseSearch.condition.createTimeEnd" placeholder="结束时间" min-date="purchaseSearch.condition.createTimeStart">
+            <div class="iconfont icon-llreservecalendar dialog_date_icon"></div>
+        </div>
+    </div>
+    <div class="dialog-list" ng-if="!purchaseSearch.isLibrary&&!purchaseSearch.isAllunits&&!purchaseSearch.isChar">
+        <span class="dialog_name">任务生成时间段</span>
+        <div class="dialog_date">
+            <input type="text" id="taskTimeStart" lw-laydate='YYYY-MM-DD hh:mm' readonly="readonly" max-date="purchaseSearch.condition.taskTimeEnd" ng-class="{'error':purchaseSearch.validTaskTimeStart&&!purchaseSearch.condition.taskTimeStart}" class="dialog_input_middle" ng-model="purchaseSearch.condition.taskTimeStart" placeholder="开始时间">
+            <div class="iconfont icon-llreservecalendar dialog_date_icon"></div>
+        </div>
+        <span class="dialog_line">一</span>
+        <div class="dialog_date">
+            <input type="text" id="taskTimeEnd" lw-laydate='YYYY-MM-DD hh:mm' readonly="readonly" ng-class="{'error':purchaseSearch.validTaskTimeEnd&&!purchaseSearch.condition.taskTimeEnd}" class="dialog_input_middle" ng-model="purchaseSearch.condition.taskTimeEnd" placeholder="结束时间" min-date="purchaseSearch.condition.taskTimeStart">
+            <div class="iconfont icon-llreservecalendar dialog_date_icon"></div>
+        </div>
+    </div>
+    <div class="dialog-list" ng-if="purchaseSearch.isLibrary">
+        <span class="dialog_name">{{isLibrary}}完成时间段</span>
+        <div class="dialog_date">
+            <input type="text" id="stageTimeStart" lw-laydate='YYYY-MM-DD hh:mm' readonly="readonly" max-date="purchaseSearch.condition.stageCompleteEnd" ng-class="{'error':purchaseSearch.validStageCompleteStart&&!purchaseSearch.condition.stageCompleteStart}" class="dialog_input_middle" ng-model="purchaseSearch.condition.stageCompleteStart" placeholder="开始时间">
+            <div class="iconfont icon-llreservecalendar dialog_date_icon"></div>
+        </div>
+        <span class="dialog_line">一</span>
+        <div class="dialog_date">
+            <input type="text" id="stageTimeEnd" lw-laydate='YYYY-MM-DD hh:mm' readonly="readonly" min-date="purchaseSearch.condition.stageCompleteStart" ng-class="{'error':purchaseSearch.validStageCompleteEnd&&!purchaseSearch.condition.stageCompleteEnd}" class="dialog_input_middle" ng-model="purchaseSearch.condition.stageCompleteEnd" placeholder="结束时间" min-date="purchaseSearch.condition.taskTimeStart">
+            <div class="iconfont icon-llreservecalendar dialog_date_icon"></div>
+        </div>
+    </div>
+    <div class="dialog-btn">
+        <div class="btn_bd" ng-click="closeThisDialog()">取消</div>
+        <div class="btn_bg" ng-click="purchaseSearch.clickSure()">确定</div>
+    </div>
+</div>

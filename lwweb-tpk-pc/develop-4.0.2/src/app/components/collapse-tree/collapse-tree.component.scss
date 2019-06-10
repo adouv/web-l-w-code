@@ -1,0 +1,106 @@
+@import "../../../styles/variable";
+@import "../../../styles/mixin";
+@mixin collapse-level($len) {
+    @for $i from 1 through $len {
+        &.level-#{$i} {
+            &>.ant-collapse-header {
+                padding-left: computer($i*20px + 10px);
+                &>i {
+                    left: computer($i*20px - 5px);
+                }
+            }
+        }
+    }
+}
+
+::ng-deep {
+    div.ant-collapse-content {
+        padding: 0;
+        &>div.ant-collapse-content-box {
+            padding: 0;
+        }
+        .ant-collapse-item>.ant-collapse-header {
+            color: $color_font-deep;
+        }
+        .ant-collapse-item>.ant-collapse-header .radio-node-box {
+            color: $color_main !important;
+        }
+        .ant-collapse-header {
+            .arrow {
+                font-weight: bold;
+            }
+            &[aria-expanded=true] {
+                border: 0;
+                .arrow {
+                    color: $color_main;
+                }
+            }
+        }
+    }
+    collapse-tree>nz-collapseset>.ant-collapse {
+        &>.ant-collapse-item {
+            border: 1px solid #eee;
+            margin-bottom: computer(20px);
+            @include collapse-level(10);
+            &>.ant-collapse-header {
+                background-color: #f8f8f8;
+                .ng-star-inserted {
+                    font-size: computer(14px);
+                }
+            }
+            &>.ant-collapse-content {
+                border: 0;
+            }
+        }
+    }
+    .ant-collapse-content-box {
+        collapse-tree>nz-collapseset>.ant-collapse {
+            &>.ant-collapse-item {
+                border: 0;
+                margin-bottom: 0;
+                &>.ant-collapse-header {
+                    background-color: #fff;
+                    &:hover {
+                        background-color: #f7f7f7;
+                    }
+                }
+            }
+        }
+    }
+    nz-collapse {
+        border: 1px solid #eee;
+    }
+    .last-collapse {
+        &>.ant-collapse-header {
+            &>i.arrow {
+                display: none !important;
+            }
+        }
+    }
+    div.ant-collapse>.ant-collapse-item {
+        border: 0;
+    }
+    label[hidden] {
+        display: none;
+    }
+    .hide-box {
+        width: 100%;
+        .ant-checkbox {
+            display: none;
+        }
+    }
+}
+
+.in-box {
+    display: inline-block;
+}
+
+.radio-node-box {
+    color: $color_main !important;
+}
+
+.ell-box {
+    width: 100%;
+    padding-right: computer(15px);
+    @include line-ell(100%);
+}

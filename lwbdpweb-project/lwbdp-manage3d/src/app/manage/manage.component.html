@@ -1,0 +1,54 @@
+<div class='mng-home'>
+  <nav class='mng-nav'>
+    <div class="nav-top">
+      <div class="handle-box fr">
+        <span class='btn_bd'>
+          批量导入
+        </span>
+        <span class='btn_bd'>
+          基础数据模版管理
+        </span>
+      </div>
+      <div class='sel-year'>
+        <span>数据年份：</span>
+        <select>
+          <option value="2017">2017</option>
+        </select>
+      </div>
+      <span class='btn_bd year-mng' (click)='showDialog()'>
+        数据年份管理
+      </span>
+      <!-- <span>
+        当前数据封版面状态：
+      </span>
+      <span class='not-blockade'>
+        未封版
+      </span> -->
+      <!-- <div class='prompt-container'>
+        <span class="iconfont icon-prompt"></span>
+        <div class="prompt-text">
+          系统自动在每一年度最后一天的结束对该年度的当前的数据进行封版操作，封版后多有的数据只能进行查看操作。
+        </div>
+      </div> -->
+    </div>
+    <ul class="nav-bottom">
+      <li>园区</li>
+      <li>行政区</li>
+      <li>街区</li>
+    </ul>
+  </nav>
+  <div class="mng-list">
+    <router-outlet></router-outlet>
+    <!-- 分页 -->
+    <div class="tm_pagination page-list">
+      <lw-paginator class='tpk-ui-paginator'></lw-paginator>
+    </div>
+  </div>
+  <p-dialog header="数据年份管理" [(visible)]="isShow" modal="modal" width="600" height="400" [responsive]="true">
+    <p></p>
+        <p-footer>
+            <button type="button" pButton icon="fa-check" (click)="isShow=false" label="Yes">确定</button>
+        </p-footer>
+</p-dialog>
+</div>
+

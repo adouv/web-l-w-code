@@ -1,0 +1,343 @@
+.repair .addTable_box {
+    margin-top: 12px;
+    width: 100%;
+    position: relative;
+}
+
+.repair .addTable_box .line_strip {
+    position: absolute;
+    top: -4px;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background-image: linear-gradient(-180deg, rgb(120, 108, 236) 50%, rgb(0, 150, 255) 50%);
+    background-image: -webkit-linear-gradient(left, #786cec 20%, #3c76f6 20%, #008aff 20%, #0096ff 20%, #017eff 20%);
+    background-size: 100% 4px;
+    background-position: top right;
+    background-repeat: no-repeat;
+}
+
+.repair .itemTable {
+    width: 100%;
+    font-size: 14px;
+    color: #333;
+    font-family: "simsun" !important;
+    margin-top: -1px;
+    table-layout:fixed;
+}
+
+.repair .td_clean_hover:hover{
+    cursor: pointer;
+}
+.repair .td_clean_hover .clean_shadow{
+    width: 100%;
+    height: 100%;
+    display: none;
+    line-height: 70px;
+    color: #0096ff;
+    font-family: "Microsoft YaHei", "Simsun", "arial", "sans-serif";
+    background-color: rgba(255,255,255,.8);
+    position: relative;
+}
+
+.repair .amount_box{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    line-height: 85px;
+}
+
+.repair .td_clean_hover:hover .clean_shadow{
+    display: block;
+}
+.repair .itemTable caption {
+    border: 1px solid #999;
+    color: #333;
+    height: 40px;
+    line-height: 40px;
+    background: #f8f8f8;
+    text-align: center;
+    padding: 0 !important;
+    font-size: 16px;
+    font-weight: bold;
+    border-bottom: 0;
+}
+
+.repair .itemTable td {
+    padding: 5px 10px;
+    height: 30px;
+    line-height: 30px;
+    border: 1px solid #999;
+    position: relative;
+    vertical-align: middle;
+    word-break: break-all;
+    word-wrap:break-word;
+}
+
+.repair .itemTable td span.spanText{
+    position: relative;
+    z-index: 2;
+}
+
+.repair .itemTable .input_class,.repair .itemTable textarea {
+    /*width: 70%;*/
+    border: 0;
+    /*padding: 0 !important;*/
+    margin: 0 !important;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0px;
+    top:0;
+    background-color: #fff;
+}
+
+.repair .itemTable textarea{
+    width: 100%;
+    height: 100%;
+    color: #0096ff;
+    text-shadow: 0px 0px 0px #333333;
+    -webkit-text-fill-color: transparent;
+    padding: 5px 10px;
+}
+
+.repair .itemTable .oneTitle{
+    padding-left: 50px;
+}
+
+.repair .col0096ff{
+    color: #0096ff;
+    display: inline-block;
+    padding: 0 10px;
+    cursor: pointer;
+    position: absolute;
+    right:10px;
+    top:7px;
+}
+
+.repair .itemTable .w50{
+    width: 50% !important;
+    display: inline-block;
+}
+.repair .itemTable .w40{
+    display: inline-block;
+    width: 40% !important;
+}
+.repair .itemTable .w30{
+    display: inline-block;
+    width: 20% !important;
+}
+
+.repair .itemTable .tab_height90{
+    height: 90px;
+}
+.repair .itemTable .tab_height150{
+    height: 170px;
+}
+.repair .itemTable .tab_top{
+    position: absolute;
+    top: 20px;
+    left: 20px;
+}
+.repair .itemTable .tab_bottom{
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+}
+.repair .itemTable .textarea_h70{
+    display: inline-block;
+    height: 70px;
+    width: 100%;
+    border: 0;
+    padding-left: 10px;
+}
+.repair .file_preview{
+    margin-top: 20px;
+}
+.repair .file_preview_tit{
+    font-size: 16px;
+    padding-left: 10px;
+    height: 24px;
+    line-height: 24px;
+    background-image: linear-gradient(-180deg, #786cec 100%, #ffffff 0%);
+    background-image: -webkit-linear-gradient(-180deg, #786cec 100%, #ffffff 0%);
+    background-size: 4px 100%;
+    background-position: left top;
+    background-repeat: no-repeat;
+}
+.repair .file_preview_con{
+    margin: 20px auto 0 auto;
+    position: relative;
+}
+.repair .file_preview_con p{
+    text-align: right;
+    width: 100%;
+    margin-top: -30px;
+}
+.repair div.html-compile{
+    margin: 35px 0px;
+}
+.repair div.html-compile p{
+    text-align: left;
+}
+.repair .file_preview_con .file_preview_list{
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+.repair .width160{
+    width: 160px !important;
+    text-align: right;
+    margin-right: 10px;
+}
+.repair .width200{
+    width: 45% !important;
+}
+.repair .maleft10{
+    margin-left: 10px !important;
+}
+.repair .reDraft_content2{
+    width: 870px;
+    margin: 20px auto 0;
+}
+
+/* 弹窗 */
+.fund_number{
+    max-height: 80px;
+    min-height: 40px;
+    overflow: auto;
+    border-bottom: 1px solid #dbe3ee;
+    margin: 10px 20px 0 20px;
+}
+.fund_number_list{
+    padding:0 10px;
+    height: 30px;
+    line-height: 30px;
+    overflow: hidden;
+    margin: 0 10px 10px 0;
+    background: #dbe3ee;
+    float: left;
+}
+.repair .icon_delete_btn:hover{
+    color: #786cec;
+}
+.fund_number_list .remove_button{
+    width: 16px !important;
+    height: 16px !important;
+    -webkit-background-size: 16px 16px !important;
+    background-size: 16px 16px !important;
+}
+.fund_number_list .delete_btn,.fund_number_list .icon_delete_btn{
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+    font-size: 12px;
+    border-radius: 50%;
+}
+
+.fund_number_list.fund_middle{
+    display: inline-block;
+    vertical-align: middle;
+    float: none;
+    margin: 0;
+    background-color: #fff;
+}
+
+.fund_number_list.fund_middle .delete_btn{
+    margin-left: -5px;
+    margin-top: -2px;
+}
+
+.basicDialog .allot-wrapper{
+    width: 280px;
+    height: 220px;
+    position: absolute;
+    margin: auto;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 6px #666;
+}
+.basicDialog .allot-wrapper span{
+    line-height: 25px;
+    display: block;
+}
+.basicDialog .allot-wrapper .btn_wrapper{
+    text-align: center;
+    position: absolute;
+    width: 100%;
+    left: 0;
+    bottom: 20px;
+}
+.basicDialog .allot-wrapper .input_class{
+    width: 100%;
+    margin: 5px 0;
+}
+.search_number{
+    padding:10px 20px;
+    overflow: hidden;
+}
+.numberTab{
+    padding: 0 20px;
+    overflow: auto;
+    max-height: 265px;
+}
+.numberTab .numberTable{
+    width: 100%;
+    border-top: 1px solid #dbe3ee;
+}
+.numberTab .numberTable td{
+    height: 30px;
+    line-height: 30px;
+    padding:5px 10px;
+}
+
+.numberTab .numberTable tr{
+    width: 50%;
+    display: inline-block;
+    border-bottom: 1px solid #dbe3ee;
+}
+.numberTab .numberTable td label{
+    vertical-align: middle;
+    max-width: 355px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.numberTab .numberTable tr td:first-child{
+    border-left: 0;
+}
+.numberTab .numberTable tr td:last-child{
+    border-right: 0;
+}
+.numberTab .numberTable tr em{
+    display: inline-block;
+}
+.numberTab .numberTable tr:nth-child(2n){
+    border-left: 1px solid #dbe3ee;
+}
+.basicDialog .numberTab .numberTable label,.basicDialog .numberTab .numberTable td,.basicDialog .numberTab .numberTable tr{
+    cursor: pointer;
+}
+.numberTab .numberTable tr:nth-child(4n+1),.numberTab .numberTable tr:nth-child(4n+2){
+    background: #f8f8f8;
+}
+.vertical_align{
+    vertical-align: middle;
+    display: inline-block;
+    margin-top: 5px;
+}
+
+/* 校验input 父级框变红 */
+.itemTable td input.error,.itemTable td textarea.error{
+    box-shadow: none;
+    border:1px solid #ff272e !important;
+}
+
+.itemTable tr .tdVerify{
+    outline: 1px solid #ff272e;
+}

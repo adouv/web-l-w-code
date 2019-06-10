@@ -1,0 +1,103 @@
+@import "../../../../../styles/mixin";
+@import "../../../../../styles/variable";
+$font-size-medium: 14px;
+$font-size-large: 18px;
+$bg-color-shallow: #f8f8f8;
+:host {
+	width: 100%;
+	::ng-deep {
+		.ant-collapse-item {
+			margin-top: computer(20px);
+		}
+		.ant-collapse > .ant-collapse-item > .ant-collapse-header {
+			line-height: 24px;
+			font-size: computer($font-size-large);
+			font-weight: 900;
+			background-color: $bg-color-shallow;
+		}
+		.ant-collapse-borderless > .ant-collapse-item > .ant-collapse-content {
+			font-size: computer($font-size-medium);
+			border-top: none;
+		}
+		.ant-collapse > .ant-collapse-item:last-child,
+		.ant-collapse > .ant-collapse-item {
+			border-bottom: none;
+		}
+		.ant-collapse-content {
+			padding: 0;
+		}
+		.ant-collapse-content-status-active {
+			border: 1px solid #f3f3f3;
+		}
+		.ant-collapse-content > .ant-collapse-content-box {
+			padding: 0;
+		}
+		.ant-collapse > .ant-collapse-item > .ant-collapse-header .arrow {
+			transform: scale(0.75) rotate(90deg);
+		}
+		.ant-collapse > .ant-collapse-item > .ant-collapse-header[aria-expanded="true"] .arrow {
+			transform: scale(0.75) rotate(-90deg);
+			color: $color_main;
+		}
+	}
+
+	.resource-home {
+		width: 100%;
+		height: 100%;
+		padding-left: computer(20px);
+		.resource-home-top {
+			justify-content: space-between;
+			border-left: 1px solid #fbfbfb;
+			border-bottom: 1px solid $color_border;
+			padding: computer(10px) 0;
+			height: computer(50px);
+			display: inline-block;
+			.select {
+				width: computer(120px);
+				height: computer(30px);
+				font-size: computer($font-size-medium);
+				margin-right: computer(16px);
+			}
+		}
+		.resource-home-main {
+			padding-right: computer(20px);
+			overflow: auto;
+			margin-top: 10px;
+			@include scroll-bar();
+		}
+		.footer-main {
+			margin-bottom: computer(10px);
+		}
+		.beike {
+			margin-right: computer(18px);
+		}
+		.select-container {
+			display: inline-block;
+		}
+		.ant-btn-default {
+			width: computer(100px);
+			height: computer(30px);
+			background-color: #ffffff;
+			border-radius: 15px;
+			color: #fd8158;
+			border: 1px solid #fea67b;
+			background-blend-mode: normal, normal;
+			&:hover, &:focus {
+				background-color: #ffffff;
+			}
+			background-image: linear-gradient(90deg, #ffffff 0%, #ffffff 100%), linear-gradient(#34383f, #34383f);
+		}
+		.right-btns {
+			float: right;
+			padding-right: computer(20px);
+		}
+		.footer {
+			text-align: center;
+			border-top: 1px solid $color_border;
+			padding: computer(10px) 0;
+			position: relative;
+			line-height: computer(30px);
+			background-color: #fff;
+		}
+	}
+}

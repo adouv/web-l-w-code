@@ -1,0 +1,100 @@
+@import "../../../styles/variable";
+@import "../../../styles/mixin";
+
+::ng-deep resource-list {
+	//display: inline-block;
+	overflow: auto;
+	height: 100%;
+	@include scroll-bar();
+}
+
+section {
+	margin: 0 auto;
+	width: 100%;
+	overflow: hidden;
+}
+
+.resource-item-padding {
+	width: computer(200px);
+	height: computer(180px);
+	padding: 0 computer(10px);
+	float: left;
+	cursor: pointer;
+	position: relative;
+	text-align: center;
+	.tag-class{
+		position: absolute;
+		left: computer(45px);
+		top: computer(21px);
+		width: computer(45px);
+		height: computer(45px);
+		z-index: 10;
+		&.in-class{
+			background: url("../../../assets/images/in-class.png") no-repeat;
+		}
+		&.before-class{
+			background: url("../../../assets/images/before-class.png") no-repeat;
+		}
+		&.after-class{
+			background: url("../../../assets/images/after-class.png") no-repeat;
+		}
+	}
+}
+
+.resource-item {
+	height: 100%;
+	border: 1px solid transparent;
+	border-radius: computer(6px);
+	position: relative;
+	&:hover, &:active {
+		border: 1px solid $color_main;
+		& .iconfont {
+			opacity: 1;
+		}
+	}
+}
+
+img {
+	margin-top: computer(20px);
+	width: computer(110px);
+	height: computer(120px);
+	text-align: center;
+}
+
+p {
+	font-size: computer(14px);
+	color: $color_font-deep;
+	padding-top: computer(5px);
+	width: computer(140px);
+	@include line-ell(140px)
+}
+
+.icon-download, .icon-del {
+	position: absolute;
+	opacity: 0;
+	top: computer(10px);
+	color: $color_font-light;
+	&:hover {
+		color: $color_main;
+	}
+}
+
+.icon-download {
+	left: computer(10px);
+}
+
+.icon-del {
+	right: computer(10px);
+}
+
+
+.footer {
+	width: 85%;
+	text-align: center;
+	border-top: 1px solid $color_border;
+	padding: computer(10px) 0;
+	line-height: computer(30px);
+	background-color: #fff;
+	position: fixed;
+	bottom: 0px;
+}

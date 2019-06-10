@@ -1,0 +1,33 @@
+@import "../../../../../styles/variable";
+
+ul, li {
+	list-style: none;
+}
+
+li {
+	display: inline-block;
+	margin: computer(10px) computer(10px) 0 0;
+	cursor: default;
+}
+.liCanClick{
+	a{
+		cursor: pointer;
+	}
+}
+li a {
+	line-height: computer(30px);
+	display: inline-block;
+	padding: 0 computer(20px);
+	border-radius: computer(30px);
+	background-color: #eee;
+	color: #333;
+	text-decoration: none;
+	font-size: computer(14px);
+	cursor: default;
+}
+
+li a.active{
+	background-color: #00a0e9;
+	color: #fff;
+	cursor: default;
+}

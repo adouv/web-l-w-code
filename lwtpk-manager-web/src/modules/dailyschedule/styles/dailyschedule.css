@@ -1,0 +1,58 @@
+/*list*/
+.clear{ clear: both;}
+.row.media{margin:20px -15px 0 -15px;}
+.row.media .nav-form select{display: inline;width: 170px;}
+.content .nav-form{width: 100%;}
+.content .nav-form input{width: 190px}
+.content input.form-control{float: left;padding-right: 35px;}
+.content .btn-group:last-child {float: right;border-radius: 5px;overflow: hidden}
+.content .btn-group:last-child .btn{padding-left:30px;padding-right: 30px}
+table{border-bottom: 1px solid #ddd;border-top:1px solid #aaa;}
+table tr td {font-size: 14px;}
+table thead td{font-size: 16px;}
+table td i.fa{color: #999;cursor: pointer;font-size: 22px;}
+table td i.fa:hover{color: #00ba8b;}
+
+/*input*/
+table tr {line-height: 44px;}
+table tr td {min-width: 35px;}
+.content table td input.form-control{padding-right: 0;width: 150px;margin:0 10px;}
+input.form-control.time{padding-right: 35px;width:30%;background: url("../images/clock.png") no-repeat right}
+.form-control.time.add-time {background-position: 118px 4.5px}
+.form-control.time.data-time {background-position: 97% 4.5px}
+tbody td .btn{border-radius: 50%;font-size: 32px;width: 34px;height: 34px;line-height: 29px;padding: 0;margin-left: 10px;}
+table tr td .btn{display: inline-block;}
+table tr td:nth-child(5n){width: 100px;}
+.form-result{text-align: center;line-height: 100px;}
+.form-result .btn {padding: 8px 30px;text-align: center}
+.form-result .btn.tpk-btn{margin-right: 50px;}
+.daily-detail .row{margin: 20px 0;}
+.daily-detail .col-sm-5{padding-top: 7px;}
+.daily-detail table thead td{padding: 0 20px;}
+.daily-detail {font-size: 14px;}
+.daily-detail .row:first-child{margin:0;}
+.daily-detail section.row:first-child{border: 0;}
+/*作息时间表添加*/
+.row ol.breadcrumb {background: none;font-size: 16px;margin-top:15px;}
+.row ol.breadcrumb span:first-child a {color: rgb(0,186,139);text-decoration: none;}
+section.row.bd-none {border-bottom: none;}
+.border-color.inputTit {border-bottom: 1px solid rgb(0,186,139); width: 95%;text-align: center;margin: 0 auto 20px auto;}
+.table tbody tr td:last-child {width: 100px;}
+.table tbody tr td {text-align: center;}
+.schedule-container .table tbody tr td .text-over { width: 140px;white-space: nowrap;overflow: hidden;display: inline-block;text-overflow: ellipsis;margin: 0;vertical-align: middle;}
+.table tbody tr td:last-child i{display: none;}
+.table tbody tr:hover td i{  display: inline-block;}
+.row.font {  font-size: 16px;}
+.form-group .pd {  padding-top:7px;font-size: 16px;}
+.row.font label {font-weight: 100;}
+.form-group .col-sm-4.control-label {font-size: 16px;font-weight: 100;}
+.form-inline .time {width: 31%;}
+section.media.no-row,section.border-color.no-row  {margin-left:0;margin-right:0;}
+.form-group .mt {margin-top:8px;font-size: 16px;}
+.bg-color-gary {background: rgb(250,244,244);color: rgb(150,150,150);}
+.content-none td {height: 11px;border-bottom:1px solid #aaa}
+.form-control {height: 38px}
+.select-origination {height: 34px}
+form-group .isEffect {padding-top: 5px}
+.active td {text-align: center}
+.tbody tr td {text-align: center}

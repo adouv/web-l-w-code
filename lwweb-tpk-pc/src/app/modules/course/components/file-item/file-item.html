@@ -1,0 +1,22 @@
+<div class="progressitem">
+  <img class="filetype" src="{{uploaderItem.name|filetype}}"/>
+  <div class="fileinfo">
+    <div class="filename">{{uploaderItem.name}}</div>
+    <div class="holder"></div>
+    <div class="progress" *ngIf="uploaderItem.state==0">
+      <!-- <progress-bar class="progressbar" [progress]="uploaderItem.progress"></progress-bar> -->
+      <div class="progresstext">{{uploaderItem.progress}}%</div>
+    </div>
+    <div class="success" *ngIf="uploaderItem.state==1"><i class="icon iconfont icon-success"></i>{{functionName +
+      uploaderItem.msg}}
+    </div>
+    <div class="failed" *ngIf="uploaderItem.state==2">{{functionName + uploaderItem.msg + "!" + uploaderItem.errorMsg || '' }}</div>
+  </div>
+  <div class="caozuo">
+    <div class="delete" (click)="delete()" *ngIf="uploaderItem.type === '1' && uploaderItem.state !== 0">删除</div>
+    <div class="holder"></div>
+    <div class="cancel" (click)="open()" *ngIf="uploaderItem.type === '2' && uploaderItem.state === 1">打开</div>
+    <div class="holder"></div>
+    <div class="cancel" (click)="cancel()" *ngIf="uploaderItem.state==0">取消</div>
+  </div>
+</div>

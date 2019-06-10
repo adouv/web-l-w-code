@@ -1,0 +1,78 @@
+<div class="classroom-unicast">
+    <header class="header-breadcrumb">
+        <nz-breadcrumb [nzSeparator]="'>'">
+            <nz-breadcrumb-item>
+                <a routerLink="/video/index">评</a>
+            </nz-breadcrumb-item>
+            <nz-breadcrumb-item>
+                课堂回放列表
+            </nz-breadcrumb-item>
+        </nz-breadcrumb>
+    </header>
+    <div class="line"></div>
+    <!-- <div *ngIf="gradeId==null || gradeId==''"  [ngStyle]="{'display':gradeId==null || gradeId=='' ? 'block' : 'none' }">
+		<div class="nolesson animated fadeIn">
+			<div class="center">
+				<img src="./assets/images/no-course.png" />
+				<div class="nolesson_name">暂无课程录制
+				</div>
+			</div>
+		</div>
+	</div> -->
+    <nz-tabset [nzSelectedIndex]="selectIndex" flex-box="0" (nzSelectedIndexChange)="changeClass($event)" *ngIf="gradeId!=null || gradeId!=''">
+        <nz-tab *ngFor="let tab of this.gradeList">
+            <ng-template #nzTabHeading>
+                {{tab.name}}
+            </ng-template>
+            <div class="unicast-list" flex="dir:top">
+                <div flex-box="0" class="unicast-list-mr20">
+                    <select-group titles="按班级" *ngIf="classesList && classesList.data.length>0" [model]="selectData.classId" [data]="classesList.data" (selectEvent)="selectedClass($event)"></select-group>
+                    <select-group titles="按学科" *ngIf="subjectList && subjectList.data.length>0" [model]="selectData.subjectCode" [data]="subjectList.data" (selectEvent)="selectedSubject($event)"></select-group>
+                    <select-group titles="按老师" *ngIf="teacherList && teacherList.data.length>0" [model]="selectData.teacherId" [data]="teacherList.data" (selectEvent)="selectedTeacher($event)"></select-group>
+                </div>
+                <div class="unicast-list-content" flex="dir:top main:center">
+                    <div flex-box="1" class="unicast-list-scroll auto-scroll" *ngIf="isloadComplete">
+                        <div #unicastListEle *ngIf="rank.list.length > 0" class="adbox" [ngStyle]="{'overflow': 'hidden'}">
+                            <video-card style="float: left;" *ngFor="let video of rank.list" (click)="goDetail(video)" [video]="video"></video-card>
+                        </div>
+
+                        <div *ngIf="isScroll && rank.list.length < rank.total" class="isScroll" flex="main:center cross:center">
+                            <nz-spin [nzSize]="'large'"></nz-spin>
+                        </div>
+
+                        <div class="center">
+                            <img *ngIf="isNoData" src="../../../../../assets/images/classback-noresult.png" alt="暂无匹配课堂回放数据" />
+                            <div *ngIf="isNoData" class="nolesson_name">暂无匹配课堂回放数据</div>
+                        </div>
+
+                        <span *ngIf="isScroll" class="isScroll" flex="main:center cross:center">
+                                <nz-spin [nzSize]="'large'"></nz-spin>
+                        </span>
+
+                        <p class="click-show-more" *ngIf="isloadComplete&&unicastList.length>0" [ngClass]="{'pointer':rank.total > rank.page.size}" (click)="changeList($event, rank)">
+                            {{rank.total > rank.page.size?'点击加载更多':'已加载全部'}}
+                        </p>
+
+                        <!-- <p class="click-show-more pointer" *ngIf="currentTotal!=lessonsTotal" (click)="handleScroll($event)">
+                            点击加载更多
+                        </p>
+                        <p class="click-show-more" *ngIf="currentTotal==lessonsTotal">
+                            已加载全部
+                        </p> -->
+                    </div>
+                    <div *ngIf="!isloadComplete" class="loading" flex="main:center cross:center">
+                        <nz-spin [nzSize]="'large'"></nz-spin>
+                    </div>
+                </div>
+
+                <!-- <div class="clear paginaction" *ngIf="unicastList.length>0">
+					<nz-pagination (nzPageIndexClickChange)="changePage($event)" [nzPageIndex]="pageIndex" [nzPageSize]="pageSize" [nzTotal]="totalCount"></nz-pagination>
+				</div> -->
+
+            </div>
+        </nz-tab>
+    </nz-tabset>
+    <!-- <div class="footer">
+			<button nz-button [nzType]="'default'" (click)="goVideoBack()">返回</button>
+	</div> -->
+</div>

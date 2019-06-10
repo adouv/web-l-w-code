@@ -1,0 +1,126 @@
+<div class="main_in">
+    <!-- 搜索 -->
+    <div class="search_box clearfix">
+        <div>
+            <div class="content_textBar">
+                <input type="text" class="input_class" maxlength="50" placeholder="回车键提交查询"  ng-model="purchaseLibrary.condition.keywords" ng-keydown="purchaseLibrary.goSearch($event)">
+                <span class="iconfont icon-search" ng-if="purchaseLibrary.condition.keywords.length === 0"></span>
+                <span class="iconfont icon-error" ng-if="purchaseLibrary.condition.keywords.length > 0" ng-click="purchaseLibrary.cleanKeywords()"></span>
+            </div> 
+            <a href="javascript:void(0)" class="more_search" ng-click="purchaseLibrary.getMoreSearch('purchase')">更多条件查询 ></a>
+        </div>
+        <div class="search_result" ng-if="(purchaseLibrary.condition.applyYearStart&&purchaseLibrary.condition.applyYearEnd)||
+            (purchaseLibrary.condition.gardenList && purchaseLibrary.condition.gardenList.length>0)|| purchaseLibrary.condition.categoryListName || purchaseLibrary.condition.stageName ||
+            purchaseLibrary.condition.statusName || purchaseLibrary.condition.applyAccount ||
+            (purchaseLibrary.condition.createTimeStart && purchaseLibrary.condition.createTimeEnd)||
+            (purchaseLibrary.condition.stageCompleteStart&&purchaseLibrary.condition.stageCompleteEnd)">搜索条件：
+            <span ng-if="purchaseLibrary.condition.applyYearStart&&purchaseLibrary.condition.applyYearEnd">
+                项目申报年份（{{purchaseLibrary.condition.applyYearStart}}~{{purchaseLibrary.condition.applyYearEnd}}）
+            </span>
+            <span ng-if="(purchaseLibrary.condition.gardenList && purchaseLibrary.condition.gardenList.length>0)">
+                项目申报单位（<span ng-repeat="garden in purchaseLibrary.condition.gardenList">{{garden.name}}；</span>）
+            </span>
+            <span ng-if="purchaseLibrary.condition.categoryListName">项目所属类别（{{purchaseLibrary.condition.categoryListName}}）</span>
+            <span ng-if="purchaseLibrary.condition.stageName">项目所属阶段（{{purchaseLibrary.condition.stageName}}）</span>
+            <span ng-if="purchaseLibrary.condition.statusName">项目所处状态（{{purchaseLibrary.condition.statusName}}）</span>
+            <span ng-if="purchaseLibrary.condition.applyAccount">项目申报人（{{purchaseLibrary.condition.applyAccount}}）</span>
+            <span ng-if="purchaseLibrary.condition.applyYearStart&&purchaseLibrary.condition.createTimeEnd">
+                项目提交时间段（{{purchaseLibrary.condition.createTimeStart}}~{{purchaseLibrary.condition.createTimeEnd}}）
+            </span>
+            <span ng-if="purchaseLibrary.condition.stageCompleteStart&&purchaseLibrary.condition.stageCompleteEnd">
+                {{purchaseLibrary.stageName}}完成时间段（{{purchaseLibrary.condition.stageCompleteStart}}~{{purchaseLibrary.condition.stageCompleteEnd}}）
+            </span>
+            <span ng-if="purchaseLibrary.isShowCancel" class="iconfont icon-error" ng-click="purchaseLibrary.deleteCondition()"></span>
+        </div>
+    </div>
+    <!-- 总计 -->
+    <div class="totalize clearfix">
+        <div class="fl">
+            <span class="total_info">总计<em class="blue_color">{{purchaseLibrary.paginationConf.totalItems||0}}</em>条<!--，其中状态为"阶段审批未通过"的<em class="yellow_color">{{purchaseLibrary.stage.passCount}}</em>条，"阶段审批进行中"的<em class="color_333">{{purchaseLibrary.stage.ingCount}}</em>条，"阶段审批未通过"的<em class="red_color">{{purchaseLibrary.stage.notPassCount}}</em>条。--></span>
+        </div>
+        <div class="fr">
+            <span class="btn_bd btn_mgl10" ng-click="purchaseLibrary.exportExcel()">导出</span>
+            <span class="btn_bg" ui-sref="purchase.statistic({processConfigId:purchaseLibrary.processConfigId,stage:purchaseLibrary.stageId||stage,sidebarId:sidebar.id||purchaseLibrary.sidebar.id})">图表统计</span>
+        </div>
+    </div>
+    <!-- 表格 -->
+    <div class="line_pad" auto-width=".table_absolute" watch-change="purchaseLibrary.pageList">
+        <div class="line_strip"></div>
+        <div class="table_box">
+            <table class="listTable table-hover">
+                <thead id="theadTh">
+                    <th width="5%">
+                        序号
+                    </th>
+                    <th width="8%">申报年份</th>
+                    <th width="8%">项目类别</th>
+                    <th width="8%">配标类别</th>
+                    <th width="11%">项目名称</th>
+                    <th width="11%">项目单位</th>
+                    <th width="9%">校内优先级</th>
+                    <th width="8%">申报人</th>
+                    <th width="12%">{{purchaseLibrary.stageName}}时间</th>
+                    <th width="12%">项目阶段</th>
+                    <th width="8%">项目状态</th>
+                </thead>
+            </table>
+        </div>
+    </div>
+    <div class="table_absolute overflow_box">
+        <div class="table_box">
+            <table class="listTable table-hover">
+               <tbody>
+                    <tr table-width ng-repeat="data in purchaseLibrary.pageList track by $index" ng-click="purchaseLibrary.goPage(data)">
+                        <td>
+                            {{$index+1}}
+                        </td>
+                        <td>{{data.applyYear}}</td>
+                        <td>{{data.categoryName}}</td>
+                        <td>{{data.kindName||'未配置'}}</td>
+                        <td>{{data.projectName}}</td>
+                        <td>{{data.projectGarden}}</td>
+                        <td>{{data.priorityName}}</td>
+                        <td>{{data.applyAccount}}</td>
+                        <td>{{data.stageCompleteTime | date:'yyyy-MM-dd HH:mm'}}</td>
+                        <td>{{data.currTaskStageName}}</td>
+                        <!--项目状态-->
+                        <td>
+                            <span ng-class="{'yellow_color':data.projectStatus === 0,
+                                            'green_color':data.projectStatus===1,
+                                            'red_color':data.projectStatus === 2}">
+                                {{data.projectStatusName }}
+                            </span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <!-- 分页 -->
+        <pagination conf="purchaseLibrary.paginationConf" ng-show="purchaseLibrary.pageList.length>0"></pagination>
+
+        <!-- 暂无数据、暂无搜索结果-->
+        <div class="nodata_box" ng-show="purchaseLibrary.pageList.length < 1">
+            <div class="nodata" ng-show="!purchaseLibrary.showSearch">
+                <span></span>
+                <p>暂无数据</p>
+            </div>
+            <div class="nodata_search" ng-show="purchaseLibrary.showSearch">
+                <span></span>
+                <p>搜索无结果</p>
+            </div>
+        </div>
+        
+        <!-- 选择园区 -->
+        <div class="select_depart">
+            <p class="select_depart_list">
+                <span class="fos16">参统学校（机关)：</span>
+                <span ng-if="purchaseLibrary.visibleGardens.length>1" ng-click="purchaseLibrary.chooseGarden()" class="iconfont icon-setting setting_icon" ng-class="{'disabled':purchaseLibrary.onlyMine}"></span>
+                <input type="checkbox" class="checkbox_class" ng-model="purchaseLibrary.onlyMine" ng-change="purchaseLibrary.getMyProject(purchaseLibrary.onlyMine)" id="gad1">
+                <label for="gad1" class="word_center">只统计由我发起的设备采购项目申请单</label>
+            </p>
+            <p class="select_depart_list2" ng-class="{'disabled':purchaseLibrary.onlyMine}">
+                <span ng-repeat="garden in purchaseLibrary.gardenList">{{garden.name||garden.gardenName}}；</span>
+            </p>
+        </div>
+    </div>
+</div>

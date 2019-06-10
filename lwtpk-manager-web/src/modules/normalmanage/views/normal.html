@@ -1,0 +1,45 @@
+<section class="row border-color">
+    <blockquote class="border-color">资源权限管理</blockquote>
+    <div class="garden-select">
+        <select class="form-control select-control" ng-change="toggleGarden()"
+                ng-model="gardenId"
+                ng-options="garden.id as garden.name for garden in gardens">
+        </select>
+    </div>
+</section>
+<section class="row fu">
+    <div class="garden-select normal-select">
+        <select class="form-control select-control" ng-change="changeNormal()"
+                ng-model="normal"
+                ng-options="nl as nl.name for nl in normaltypes">
+        </select>
+    </div>
+    <div class="win-tab">
+        <div class="win-title">
+            {{normal.name}}
+            <div class="fr">
+                <label class="normal-checkbox"> <input type="radio" ng-change="dataTypeChange()" name="datatype" class="radioClass course-radio valid" value="1" ng-model="dataType"> <span class="normal-sel">按班级</span> </label>
+                <label class="normal-checkbox"> <input type="radio" ng-change="dataTypeChange()" name="datatype" class="radioClass course-radio valid"  value="2" ng-model="dataType"> <span class="normal-sel">按学科</span> </label>
+            </div>
+        </div>
+        <div class="win-content">
+            <!--<organization-tree-init></organization-tree-init>-->
+            <normalmanage-tree node-select="nodeclick(selectData)"></normalmanage-tree>
+        </div>
+    </div>
+    <div class="win-tab">
+        <div class="win-title">
+            已选用户
+            <!--has-permission="normalSchedule:update" -->
+            <button has-permission="normalSchedule:update" ng-disable="selectTreeData.length==0" class="btn btn-default btn-sm tpk-btn-o fr" ng-class="{'btn-disable disabled':selectTreeData.length==0}" href="javascript:void(0);" select="peoples" refresh-data="getAllotUser()" garden-id="gardenId" permission-ids="selectTreeData" type="normal.id" mode="dataType" disable="selectTreeData.length==0"  normal-select="" multi="true"> 分配用户</button>
+        </div>
+        <div class="win-content">
+            <ul class="assign">
+                <li ng-repeat="people in peoples">
+                    {{people.name}}
+                    <i has-permission="normalSchedule:update" ng-if="!people.default" class="glyphicon glyphicon-remove text-right" ng-click="deletePeople(people,$index)"></i>
+                </li>
+            </ul>
+        </div>
+    </div>
+</section>

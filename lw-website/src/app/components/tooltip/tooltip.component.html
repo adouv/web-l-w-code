@@ -1,0 +1,29 @@
+<div class="tooltip" [ngSwitch]="isShowNow">
+	<div class="tooltip-wrap1" *ngSwitchCase="1">
+		<p class="tip1 tip">
+			*距离正式报名还有28天
+		</p>
+		<p class="tip2 tip">
+			*现在开始报名 / 今天的报名时段已结束（8:00~16:00）
+		</p>
+		<p class="tip3 tip">
+			*该报名活动已经过期
+		</p>
+	</div>
+	<div class="tooltip-wrap2" *ngSwitchCase="2">
+		<div class="tip1 tip">
+			<span>
+				*距离正式报名还有28天
+			</span>
+		</div>
+		<div class="tip2 tip">
+			<span class="now">现在开始报名</span>
+			<span class="over">今天的报名时段已结束（8:00~16:00）</span>
+		</div>
+		<div class="tip3 tip">
+			<span>
+				该报名活动已经过期
+			</span>
+		</div>
+	</div>
+</div>

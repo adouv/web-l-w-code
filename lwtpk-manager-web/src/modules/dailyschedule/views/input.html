@@ -1,0 +1,102 @@
+<section class="row bd-none">
+  <ol class="breadcrumb">
+    <span ng-click="toBack()"><a href="javascript:void(0);">园区作息时间表管理--></a></span>
+    <span class="active">园区作息时间表{{id?'编辑':'添加'}}</span>
+  </ol>
+</section>
+<!--<section class="row">-->
+    <!--<blockquote class="border-color">园区作息时间表{{id?'编辑':'添加'}}</blockquote>-->
+<!--</section>-->
+
+<section class="row border-color inputTit">
+  <blockquote class="border-color inputTit">园区作息时间表{{id?'编辑':'添加'}}</blockquote>
+</section>
+
+<section class="row form-horizontal">
+    <form class="w5c-form" w5c-form novalidate w5c-form-validate name="org">
+        <div class="form-group">
+            <label class="col-sm-4 control-label">所属园区：</label>
+            <div class="col-sm-6 mt">{{gardenName}}</div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-4 control-label">名称：</label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control" name="name" ng-model="data.name" required ng-maxlength="50" style="width:66%">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-4 control-label">作用对象：</label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control" required name="organizationNames" ng-model="organizationNames"
+                       ng-readonly="true" ng-click="selectOrganization()" style="width:66%" ng-disabled="isStartTime">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-4 control-label">起止日期：</label>
+            <div class="col-sm-6 form-inline">
+                <input type="text" class="form-control time data-time"lw-laydate='yyyy-MM-dd' id="startTime" min-date="{{nowDate|date:'yyyy-MM-dd'}}" 
+                ng-class="{'error':notDateStart && (org.startTime.$error.required || compareDate)}" ng-blur="notDateStart=1"
+                name="startTime" ng-model="data.startTime" required ng-disabled="isStartTime">
+                <input type="text" class="form-control time data-time fl" ng-class="{'error':notDateEnd && (org.endTime.$error.required || compareDate)}"
+                id="endTime" lw-laydate='yyyy-MM-dd' min-date="{{data.startTime}}"
+                ng-blur="notDateEnd=1" name="endTime" ng-model="data.endTime" required style="margin-left: 6%">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-4 control-label">日时间段配置：</label>
+            <div class="col-sm-8" style="margin-top: 30px">
+                <table>
+                    <thead>
+                    <tr>
+                        <td>序号</td>
+                        <td class="text-center">节次名称</td>
+                        <td class="text-center">开始时间</td>
+                        <td class="text-center">结束时间</td>
+                        <td></td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="time in times">
+                        <td>
+                            {{$index+1}}
+                        </td>
+                        <td>
+                            <input class="form-control" type="text" name="name_{{$index}}" ng-model="time.name" required
+                                   ng-class="{'error':notName[$index] && org.name_{{$index}}.$error.required}" ng-maxlength="20" ng-blur="notName[$index]=1">
+                        </td>
+                        <td>
+                            <input class="form-control time add-time" type="time" name="startTime_{{$index}}" required
+                                   ng-class="{'error':notTimesStart[$index] && (org.startTime_{{$index}}.$error.required || compareTime[{{$index}}])}" ng-model="time.startTime" ng-blur="notTimesStart[$index]=1">
+                        </td>
+                        <td>
+                            <input class="form-control time add-time" type="time" name="endTime_{{$index}}" required
+                                   ng-class="{'error':notTimesEnd[$index] && (org.endTime_{{$index}}.$error.required || compareTime[{{$index}}])}" ng-model="time.endTime" ng-blur="notTimesEnd[$index]=1">
+                        </td>
+                        <td>
+                            <a class="btn tpk-btn" href="javascript:void(0);" ng-click="addTime()">+</a>
+                            <a class="btn tpk-btn" href="javascript:void(0);" ng-show="$index!=0"
+                               ng-click="removeTime($index)">-</a>
+                        </td>
+                    </tr>
+                    <tr class="content-none"><td colspan="5"></td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-4 control-label">有效性 :</label>
+            <div class="col-sm-6 isEffect" style="padding-top: 7px">
+                <div class="inblk va-middle">
+                    <input type="checkbox" id="checked" checked class="cbx hidden" ng-checked="data.status"
+                           ng-model="data.status" name="status">
+                    <label for="checked" class="lbl"></label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group form-result">
+            <button class="btn btn-lg tpk-btn" w5c-form-submit="toSave()" ng-click="validTime()">确 定</button>
+            <button class="btn btn-lg tpk-btn-o" ng-click="toBack()">返 回</button>
+        </div>
+    </form>
+
+</section>

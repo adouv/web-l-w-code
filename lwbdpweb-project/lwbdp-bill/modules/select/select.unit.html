@@ -1,0 +1,40 @@
+<div id="select-unit" class="select-shadow" ng-controller="selectUnitctrl">
+    <div class="selectbox">
+    <!--建设单位-->
+    <div class="select-title">
+        收款方
+        <span class="select-close billiconfont icon-close" type="select-unit" close-select></span>
+    </div>
+    <div class="getType">
+        <div class="select_condition form-group">
+            <span style="display: block;width: 96%;margin:0 auto;position: relative;">
+            <input type="text" class="form-control" placeholder="请输入关键字" ng-model="condition1.keywords"
+                   ng-keyup="setUnit.keyUp($event)" maxlength="50">
+            <span class="searchBtn setbtn cancelBtn" ng-click="setUnit.searchbuildUnit()">查询</span>
+        </span>
+        </div>
+        <div class="selected single">
+            已选中单位: <span ng-if="returnUnit.id">{{returnUnit.name}} <i ng-click="setUnit.delAll()"></i></span>
+        </div>
+        <div class="resultbox">
+            <div class="hasresult" ng-if="result_unit.length>0">
+                <ul>
+                    <li ng-repeat="data in result_unit" ng-if="data.id">
+                        <input class="radioClass" name ="choose"  ng-checked="data.checked" type="radio" id="unit{{$index}}" ng-click="setUnit.singleChoose(data)">
+                        <label for="unit{{$index}}" title="{{data.name?data.name:data.contractName}}">{{data.name?data.name:data.contractName}}</label>
+                    </li>
+                </ul>
+            </div>
+            <div class="noresult" ng-if="result_unit.length==0 && !isFirstUnit">
+                未找到和您关键词匹配的结果!
+            </div>
+            <div class="nochoose" ng-if="result_unit.length==0 && isFirstUnit">
+                您暂无可选建设单位!
+            </div>
+        </div>
+        <div class="returnbox">
+            <span class="setbtn sureBtn" type="select-unit" ng-click="setUnit.setUnit()" close-select>确定</span>
+        </div>
+    </div>
+</div>
+</div>

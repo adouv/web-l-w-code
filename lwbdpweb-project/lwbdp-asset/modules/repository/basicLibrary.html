@@ -1,0 +1,83 @@
+<div class="main_in basicLibrary">
+    <!--搜索区域-->
+    <div class="search_box">
+        <select-options class="select_class" ng-model="basicLibrary.selectedType" repeat-items="type in basicLibrary.assetType" item-key="name">
+            {{type.name}}
+        </select-options>
+        <select-options class="select_class" ng-model="basicLibrary.selectedWay" repeat-items="way in basicLibrary.acquireway" item-key="name">
+            {{way.name}}
+        </select-options>
+                <!--<input type="text" class="input_class" placeholder="回车键提交查询"  ng-model="basicLibrary.keywords" />-->
+                <div class="content_textBar">
+                    <input type="text" class="input_class" maxlength="50" placeholder="回车键提交查询"  ng-model="basicLibrary.keywords" ng-keydown="basicLibrary.enterSearch($event)">
+                    <span class="iconfont icon-error" ng-show="basicLibrary.keywords" ng-click="basicLibrary.removeKeywords()"></span>
+                </div>
+                <span class="btn_bd" ng-click="basicLibrary.getAssetLibraryList()">查询</span>
+    </div>
+    <!--总计-->
+    <div class="total_num">
+        <div class="tot_left fl">
+            <span class="verMiddle">总计 <em class="num">{{basicLibrary.pageList.length}}</em> 条</span>&nbsp;&nbsp;&nbsp;
+
+        </div>
+        <div class="fr ">
+            <span class="btn_bg ">添加</span>
+            <span class="btn_bd mal10 " ng-click="basicLibrary.getExcel() ">导出</span>
+        </div>
+    </div>
+    <!-- 表格 -->
+    <div class="line_pad">
+        <div class="line_strip"></div>
+    </div>
+    <div class="table_absolute overflow_box">
+        <div class="table_box">
+            <table class="listTable">
+                <thead>
+                    <tr>
+                        <th width="5%">序号</th>
+                        <th>平台编号</th>
+                        <th>资产名称</th>
+                        <th>资产大类</th>
+                        <th>规格型号</th>
+                        <th width="13%">取得方式</th>
+                        <th width="10%">已使用年限</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="data in basicLibrary.pageList track by $index" ui-sref="asset.basicLibraryInfo({id:data.id})">
+                        <td ng-bind="$index + 1 "></td>
+                        <td ng-bind="data.id "></td>
+                        <td ng-bind="data.name "></td>
+                        <td ng-bind="data.assetTypeName "></td>
+                        <td ng-bind="data.specifications "></td>
+                        <td ng-bind="data.acquireWayName "></td>
+                        <td ng-bind="data.usedYear "></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="nodata_box" ng-show="basicLibrary.pageList.length<1">
+            <div class="nodata" ng-show="!basicLibrary.isSearch">
+                <span></span>
+                <p>暂无数据</p>
+            </div>
+            <div class="nodata_search" ng-show="basicLibrary.isSearch">
+                <span></span>
+                <p>搜索无结果</p>
+            </div>
+        </div>
+        <!-- 分页 -->
+        <pagination conf="basicLibrary.paginationConf" ng-show="basicLibrary.pageList.length>0"></pagination>
+
+        <!-- 参统学校机关-->
+        <div>
+            <span class="verMiddle fl">参统学校（机关）：</span>
+            <div class="fl" style="width:80%">
+                <em class="iconfont icon-setting set_icon verMiddle" title="选择园区" ng-click=" basicLibrary.chooseGarden()"></em>
+                <div>
+                    <span ng-repeat="item in basicLibrary.gardenList track by $index">{{item.name||item.gardenName}}；</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

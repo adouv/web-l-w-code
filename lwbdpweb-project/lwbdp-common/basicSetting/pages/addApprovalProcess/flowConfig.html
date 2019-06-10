@@ -1,0 +1,117 @@
+<div class="approval_chartedit w5c-form">
+    <p class="title">
+        节点用户配置
+        <span class="iconfont icon-close" ng-click="flowConfig.configCancel()"></span>
+    </p>
+    <div class="config_con">
+        <p>
+            节点最晚完成任务相对时间截点 :
+            收到任务后 <input type="text" class="input_class w600"
+                         ng-class="{'error':flowConfig.configData.dueDay!==undefined&&!flowConfig.configData.dueDay&&!flowConfig.noDueday}"
+                         required name="dueDay" ng-model="flowConfig.configData.dueDay"
+                         ng-disabled="flowConfig.noDueday" input-number>天&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="checkbox" ng-model="flowConfig.noDueday" class="checkbox_class" name="noDueday"
+                   ng-click="flowConfig.configData.dueDay=undefined">不设置
+            <button class="btn_bd" ng-disabled="flowConfig.configData.dueDay===undefined&&!flowConfig.noDueday"
+                    ng-click="flowConfig.settingGlobalTime()">应用到流程所有节点
+            </button>
+        </p>
+        <p><span>用户关系类型:</span>
+            <select class="select_class" ng-model="flowConfig.configData.accountRelationType" name="relationType"
+                    ng-options="relation.itemValue as relation.itemName for relation in flowConfig.relations"></select>
+        </p>
+        <div class="config_inner" ng-if="flowConfig.configData.accountRelationType==1">
+            <!--<p> <span class="left">已选择用户</span> : 8人</p>-->
+            <p><span class="left" style="text-align: left">选择用户:</span></p>
+            <select-person multiple="multiple" 
+               person-ids='flowConfig.configuredAccountIds'
+               person-cancel="flowConfig.configCancel()"
+               person-success="flowConfig.configSure($person)">
+            </select-person>
+        </div>
+        <div class="config_inner" ng-if="flowConfig.configData.accountRelationType==2">
+            <p><span class="left" style="width: auto">相对类型:</span>
+                <select class="select_class" ng-model="flowConfig.configData.accountRelativeType"
+                        ng-change="flowConfig.changeRelativeType()"
+                        required name="relativeType"
+                        ng-options="item.itemValue as item.itemName for item in flowConfig.relatives"></select>
+                <span class="gray" ng-if="flowConfig.configData.accountRelativeType==1">该项表示当前配置节点的人员组完全参照参考节点的人员组变化而变化</span>
+                <span class="gray" ng-if="flowConfig.configData.accountRelativeType==2">该项表示当前配置节点的审批单的具体操作人完全同参考节点同一审批单的相同操作人</span>
+                <span class="gray" ng-if="flowConfig.configData.accountRelativeType==3">该项表示当前配置节点的可选操作用户同其配置的某一节点字段产生的具体园区对应的负责人</span>
+            </p>
+            <div style="border-bottom:1px solid #dbe3ee;line-height: 30px;height: 40px;">
+                <span class="left" style="width: auto">请选择参考节点:</span>
+                <p class="gray" style="display: inline-block;border:0;">单击某个节点即可选择截点作为参考节点(只支持单选)</p>
+            </div>
+        </div>
+        <!-- 3. 按项目条件自动分派用户型 -->
+        <div class="config_inner" ng-if="flowConfig.configData.accountRelationType==3">
+            <p class="config_inner_condition">
+                <span>项目条件</span>
+                <span class="fr">对应的指定用户列表</span>
+            </p>
+            <div class="conditionUserList">
+                <div class="conditionUserList_left">
+                    <div class="square_box">
+                        <all-garden-type for-garden="flowConfig.gardenList"></all-garden-type>
+                    </div>
+                </div>
+                <div class="conditionUserList_text">且</div>
+                <div class="conditionUserList_center">
+                    <div class="square_box">
+                        <all-project-type for-project="flowConfig.projectList"></all-project-type>
+                    </div>
+                </div>
+                <div class="conditionUserList_text">对应</div>
+                <div class="conditionUserList_right">
+                    <div class="square_box_big">
+                        <div class="conditionUserList_search">
+                            <input type="text" class="input_class" maxlength="50" placeholder="回车键提交查询"  ng-model="flowConfig.personKeywords" ng-keydown="flowConfig.personSearch($event)">
+                            <span class="iconfont icon-search" ng-click="flowConfig.personSearch($event)"></span>
+                            <span class="iconfont icon-error" ng-click="flowConfig.seaTextEmapty()"></span>
+                            <i class="iconfont icon-plus add_icon" ng-click="flowConfig.selectPersonDialog()"></i>
+                        </div>
+                        <ul class="conditionUserList_ul">
+                            <li ng-repeat="data in flowConfig.personSelectAll.personList | filter:{name:flowConfig.selChecknames}">
+                                {{data.name}}
+
+                                <!--deleteIindividua 删除单个项-->
+                                <span class="iconfont icon-error delItem" ng-click="flowConfig.deleteIindividua($index)"></span>
+                            </li>
+                            <!--<li>-->
+                                <!--天天-->
+                                <!--<span class="iconfont icon-error"></span>-->
+                            <!--</li>-->
+                            <!--<li>-->
+                                <!--蜀君-->
+                                <!--<span class="iconfont icon-error"></span>-->
+                            <!--</li>-->
+                        </ul>
+                    </div>
+                </div>
+                <div class="conditionUserList_end">
+                    <button class="btn_bd margin_bot20" ng-click="flowConfig.allClear()">清空左侧配置</button>
+                    <button class="btn_bd">生成左侧配置</button>
+                </div>
+            </div>
+            <div class="config_relation">
+                <p class="config_relation_tit">已有配置的关系：</p>
+                <ul class="config_relation_list">
+                    <li>
+                        <span>所有云南-高中的家具类-教学课桌椅项目 <i class="col_786">——</i></span>
+                        <span class="fr">XXX、XXX、XXX、XXX、XXX、XXX、XXX、XXX、XXX、XXX、XXX、XXX、XXX、XXX、XXX、XXX、XXX、XXX；</span>
+                        <span class="iconfont icon-del del_icon" ng-click="flowConfig.clearItemConfig()"></span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div ng-show="flowConfig.configData.accountRelationType==2" class="reference_flow overflow_box" id="reference_box">
+        <approval-flowchart ng-if="flowConfig.flowChartData" flow-chart-click="flowConfig.clickFlowNode($flowNode)"
+                            flow-chart-data="flowConfig.flowChartData"></approval-flowchart>
+    </div>
+    <div class="btn_box" ng-if="flowConfig.configData.accountRelationType==2">
+        <span class="btn_bd" ng-click="flowConfig.configCancel()">取消</span>
+        <span class="btn_bg" ng-click="flowConfig.configSure()">确定</span>
+    </div>
+</div>

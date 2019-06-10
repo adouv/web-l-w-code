@@ -1,0 +1,34 @@
+<div class="tree-header">
+	<nz-select class="mar-bot-10px radius bg-gray" [nzDisabled]="optionDisable"
+			   (nzOpenChange)="changeGrade($event, selectParams.gradeCode)"
+			   [(ngModel)]="selectParams.gradeCode"
+			   [nzPlaceHolder]="'暂无年级'">
+		<nz-option *ngFor="let grade of gradeList" [nzLabel]="grade.name"
+				   [nzValue]="grade.gradeCode">
+		</nz-option>
+	</nz-select>
+	<nz-select class="mar-bot-10px radius bg-gray" [nzDisabled]="optionDisable"
+			   (nzOpenChange)="changeSubject($event, selectParams.subjectCode)"
+			   [(ngModel)]="selectParams.subjectCode"
+			   [nzPlaceHolder]="'暂无学科'">
+		<nz-option *ngFor="let subject of subjectList" [nzLabel]="subject.name"
+				   [nzValue]="subject.id">
+		</nz-option>
+	</nz-select>
+	<nz-select class="mar-bot-10px radius bg-gray"
+			   (nzOpenChange)="changeEdition($event, selectParams.semesterCode)"
+			   [(ngModel)]="selectParams.semesterCode"
+			   [nzPlaceHolder]="'暂无学期'">
+		<nz-option *ngFor="let edition of editionList" [nzLabel]="edition.name"
+				   [nzValue]="edition.id">
+		</nz-option>
+	</nz-select>
+</div>
+<div class="scroll-box">
+	<div *ngIf="!isLoadComplete" style="margin-top: 40px;text-align: center;">
+			<nz-spin  [nzSize]="'large'" class="spin-loading" [nzSpinning]="outlineNodes.length == 0"></nz-spin>
+	</div>
+	<collapse-tree *ngIf="outlineNodes.length > 0 && (clickId || clickId === '')" type="outline_tree"
+				   [data]="outlineNodes" [clickId]="clickId"></collapse-tree>
+	<elliptical-page class="animated fadeIn"  *ngIf="isLoadComplete&&outlineNodes.length <= 0" title="暂无相应课程安排，请联系管理员"></elliptical-page>
+</div>

@@ -1,0 +1,43 @@
+<div id="select-num" class="select-shadow" ng-controller="selectNumctrl">
+<div class="selectbox">
+    <div class="select-title">
+        资金文号
+        <span class="select-close billiconfont icon-close" type="select-num" close-select></span>
+    </div>
+    <div class="getType">
+        <div class="select_condition select_condition_num form-group">
+            <select ng-model="condition3.gardenIdString"  class="form-control" style="width: 18%;">
+            <option value="">选择园区</option>
+            <option ng-repeat="data in gardens" value="{{data.id}}">{{data.name}}</option>
+        </select>
+            <span style="display: block;width: 96%;margin:0 auto;position: relative;">
+               <input type="text" class="form-control" placeholder="请输入关键字" ng-model="condition3.keywords"
+                       ng-keyup="setCapnum.keyUp($event)" maxlength="50">
+                <span class="searchBtn setbtn cancelBtn" ng-click="setCapnum.searchCapnum()">查询</span>
+            </span>
+        </div>
+        <div class="selected single">
+            已选中文号: <span ng-if="returnCapNum.id"><em>{{returnCapNum.name}}</em> <i ng-click="setCapnum.delAll()"></i></span>
+        </div>
+        <div class="resultbox">
+            <div class="hasresult" ng-if="result_cap.length>0">
+                <ul>
+                    <li ng-repeat="data in result_cap" ng-if="data.id">
+                        <input class="radioClass" name ="choose" ng-checked="data.checked"  type="radio" id="unit{{$index}}" ng-click="setCapnum.singleChoose(data)">
+                        <label for="unit{{$index}}" title="{{data.name}}">{{data.name}}</label>
+                    </li>
+                </ul>
+            </div>
+            <div class="noresult" ng-if="result_cap.length==0 && !isFirstCap">
+                未找到和您关键词匹配的结果!
+            </div>
+            <div class="nochoose" ng-if="result_cap.length==0 && isFirstCap">
+                您暂无可选资金文号!
+            </div>
+        </div>
+        <div class="returnbox">
+            <span class="setbtn sureBtn" type="select-num" ng-click="setCapnum.setCapnum()" close-select>确定</span>
+        </div>
+    </div>
+</div>
+</div>

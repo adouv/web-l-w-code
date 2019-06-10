@@ -1,0 +1,128 @@
+@import "../../../../../styles/variable";
+@import "../../../../../styles/mixin";
+.exercises-statistics::ng-deep{
+	height:100%;
+	width: 100%;
+	padding: 0 computer(20px);
+	.title {
+		padding: computer(20px) 0 computer(10px);
+		font-size: computer(14px);
+		color: $color_font-deep;
+		text-align: center;
+	}
+	.exercises-statistics-container{
+		height: calc(100% - #{computer(140px)});
+		.click-show-more {
+			font-size: computer(14px);
+			margin: computer(10px) 0;
+			text-align: center;
+			color: $color_font-light;
+			cursor: default;
+			&.pointer {
+				cursor: pointer;
+			}
+		}
+		.right{
+			height: 100%;
+			width: computer(367px);
+			margin-left: computer(18px);
+			.header-select{
+				width: 120px;
+				height: computer(30px);
+				margin-top: computer(10px);
+			}
+			.content{
+				height: calc(100% - #{computer(50px)});
+				.table-box {
+					//height: calc(100% - #{computer(42px)});
+					height: 100%;
+					.table {
+						@include scroll-bar();
+						height: calc(100% - #{computer(50px)});
+						width: calc(100% + #{computer(10px)});
+						overflow: auto;
+					}
+				}
+				table {
+					//width: 100%;
+					border-collapse: collapse;
+					//width: calc(100vw - #{computer(600px)});
+					td, th {
+						padding: computer(10px) computer(5px) computer(10px) computer(10px);
+						border: 1px solid $color_border;
+						font-size: computer(14px);
+						color: $color_font-center;
+						text-align: left;
+						word-break: break-all;
+					}
+					th {
+						color: $color_font-light;
+					}
+				}
+			}
+		}
+		.left{
+			height: 100%;
+			.content{
+				width: 100%;
+				border-top: 1px solid $color_border;
+				padding-top: computer(20px);
+				height: calc(100% - #{computer(50px)});
+				p{
+					font-size: computer(16px);
+					color:$color_font-deep;
+					margin-bottom: computer(20px);
+					span{
+						margin-right: computer(40px);
+					}
+				}
+				.exercises-details-statistics{
+					.exercises-details-statistics-groups{
+						margin-bottom: computer(10px);
+						display: inline-block;
+						width: 100%;
+						.statistics-group{
+							width: 50%;
+							float: left;
+							font-size: computer(16px);
+							color:$color_font-deep;
+						}
+					}
+				}
+				.exercises-details-echarts{
+					font-size: computer(16px);
+					color:$color_font-deep;
+					margin-top: computer(10px);
+					.demo-chart{
+						width: 100%;
+						height: computer(270px);
+						margin: computer(-40px) auto;
+					}
+				}
+			}
+		}
+		.header{
+			height: computer(50px);
+			line-height: computer(50px);
+			font-size: computer(16px);
+			color: $color_font-center;
+		}
+	}
+	.exercisesTable{
+		.user-table-td{
+			padding: 0 !important;
+			border: 0 !important;
+		}
+		.td-first{
+			border-left:0 !important;
+		}
+	}
+	.footer{
+		text-align: center;
+		border-top: 1px solid $color_border;
+		padding-top: computer(19px);
+		.close{
+			margin-right: computer(20px);
+		}
+	}
+}

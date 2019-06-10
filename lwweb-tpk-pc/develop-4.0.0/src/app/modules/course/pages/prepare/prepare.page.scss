@@ -1,0 +1,280 @@
+@import "../../../../../styles/variable";
+.prepare-page::ng-deep{
+    height: 100%;
+    width: 100%;
+    .prepare-page-content{
+        height: calc(100% - #{computer(50px)});
+        padding: 0 computer(20px);
+    }
+    .padding-right-20{
+        padding-right: computer(20px) !important;
+    }
+    elliptical-page{
+        .elliptical-page{
+            margin-bottom: computer(40px);
+        }
+    }
+    .app-adress{
+        height: computer(50px);
+        line-height: computer(50px);
+        position: relative;
+        nz-breadcrumb{
+            position: absolute;
+        }
+        .prepare-title{
+            width: 100%;
+            text-align: center;
+            font-size: computer(16px);
+            color:$color_font-center;
+        }
+        .ant-breadcrumb{
+            line-height: computer(50px);
+        }
+    }
+    .prepare-content{
+        width: 100%;
+        .header-content{
+            background-color: #f8f8f8;
+            padding: computer(20px) computer(40px) 0;
+            border: solid 1px $color_border;
+            height: auto;
+            display: inline-block;
+            width: 100%;
+            .text-group{
+                font-size: computer(14px);
+                color:$color_font-deep;
+                margin-bottom: computer(20px);
+                min-height: computer(30px);
+                line-height: computer(30px);
+                display: inline-block;
+                width: 100%;
+                height: auto;
+                .check-title{
+                    color: $color_font-light;
+                    font-size: computer(14px);
+                    display: inline-block;
+                    margin-left: computer(20px);
+                }
+            }
+            .select-tag{
+                padding: 0 computer(10px) 0 computer(20px);
+                margin-bottom: computer(10px);
+                font-size: computer(14px);
+                border-radius: computer(15px);
+                height: computer(30px);
+                line-height: computer(30px);
+                text-align: center;
+                background-color: $color_border ;
+                color: $color_font-deep;
+                margin-right: computer(10px);
+                cursor: default;
+                //float: left;
+                display: inline-block;
+                .icon-span{
+                    cursor: pointer;
+                    font-size: computer(12px) !important;
+                    margin-left: computer(10px);
+                    color:#333333;
+                    &:hover{
+                        color: $color_main;
+                    }
+                    .iconfont:before{
+                        font-size: computer(12px) !important;
+                        
+                    }
+                }
+            }
+        }
+        .prepare-content-tabset{
+            height: 1000px;
+            nz-tabset .ant-tabs-bar{
+                text-align: center;
+            }
+        }
+    }
+    .ant-affix{
+        width: calc(100% - #{computer(50px)});
+    }
+    .affix-container-content{
+        width: 100%;
+        background: #fff;
+        .prepare-tabset{
+            width: 100%;
+            height: computer(50px);
+            border-bottom: 1px solid $color_border;
+            line-height: computer(50px);
+            text-align: center;
+            .tabset-tab-group{
+                cursor: pointer;
+                display: inline-block;
+                width: computer(101px);
+                height: computer(49px);
+                text-align: center;
+                color:$color_font-center;
+                font-size: computer(16px);
+                
+                &.tabset-tab-group-active{
+                    color:$color_main;
+                    border-bottom: 2px solid $color_main;
+                }
+            }
+    
+        }
+        .prepare-tab{
+            height: computer(50px);
+            line-height: computer(50px);
+            background: #fff;
+            .prepare-tab-title{
+                font-size: computer(16px);
+                color:$color_font-center;
+                margin-right: computer(78px);
+                display: inline-block;
+                cursor: pointer;
+                &.prepare-tab-title-active{
+                    color:$color_main;
+                }
+            }
+            .ant-btn{
+                float: right;
+                margin-top: computer(10px);
+            }
+        }
+    }
+    .ant-back-top-inner{
+        width: computer(60px);
+        height: computer(60px);
+        border-radius: computer(60px);
+        background: $color_border;
+        color:$color_font-light;
+        line-height: computer(60px);
+        text-align: center;
+        box-shadow: 0px 4px 6px 0px rgba(7, 0, 2, 0.3);
+        &:hover{
+            color:#fff;
+            background: $color_main;
+            box-shadow: 0px 4px 6px 0px rgba(7, 0, 2, 0.3);
+        }
+    }
+    .ant-back-top{
+        right: 40px;
+        bottom: 40px;
+    }
+    .margin-top-100{
+        margin-top: computer(200px);
+    }
+    .margin-top-160{
+        margin-top: computer(240px);
+    }
+    .prepare-content-tab-courseware{
+        min-height: 600px;
+    }
+    
+    .footer{
+        height: computer(50px);
+        line-height: computer(50px);
+        margin: 0 computer(20px);
+        border-top:1px solid $color_border;
+        text-align: center;
+        .ant-btn-danger{
+            margin-left: computer(20px);
+        }
+    }
+    .input-class{
+        height: computer(30px);
+        border-radius: 3px;
+        padding: 0 computer(8px);
+        border: solid 1px #dddddd;
+        width:computer(500px);
+    }
+    .error{
+        color:red;
+        font-size: computer(14px);
+        margin-left: computer(10px);
+    }
+    .input-error{
+        border: 1px solid red;
+    }
+    .exercises{
+        // padding-bottom: computer(20px);
+        // 题型
+        .designStatus{
+            padding-right: computer(15px);
+        }
+        .type-box {
+            margin-bottom: computer(10px);
+            margin-top: computer(-10px);
+            .type-title {
+                display: inline-block;
+                color: #999999;
+                white-space: nowrap;
+                margin-top: computer(15px);
+                font-size: computer(14px);
+            }
+            .type-items {
+                display: inline-block;
+                width: calc(100% - #{computer(60px)});
+                vertical-align: top;
+            }
+            .type-item {
+                display: inline-block;
+                height: computer(30px);
+                color: $color_font-center;
+                border-radius: 15px;
+                text-align: center;
+                line-height: computer(30px);
+                cursor: pointer;
+                margin-right: computer(10px);
+                padding: 0 computer(15px);
+                margin-top: computer(10px);
+                &:hover{
+                    color:#00a0e9;
+                }
+                &.active {
+                    background-color: #00a0e9;
+                    color: #ffffff;
+                }
+            }
+        }
+    }
+// 全选
+.check-box {
+	letter-spacing: 0;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: computer(20px);
+	label {
+		width: auto;
+	}
+	.all-check {
+		margin: 0 computer(10px);
+	}
+	.nz-button {
+		float: right;
+		&:disabled {
+			opacity: 0.5;
+			color: #fd8158;
+			border-color: #fe997b;
+			background: #fff;
+		}
+	}
+}
+    .goLibrary-verification{
+        color:red;
+        float: right;
+        font-size: computer(14px);
+        margin-right: computer(20px);
+    } 
+    .span-maohao{
+        margin:  0 computer(7px);
+    }
+   
+}
+
+.force-class{
+    color:red;
+    span{
+        display: block;
+        padding: computer(5px) 0;
+    }
+}

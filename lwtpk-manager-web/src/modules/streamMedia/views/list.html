@@ -1,0 +1,73 @@
+<section class="row border-color">
+    <blockquote>流媒体接口信息管理</blockquote>
+    <div class="garden-select">
+        <select class="form-control select-control" ng-change="toggleGarden()"
+                ng-model="gardenId"
+                ng-options="garden.id as garden.name for garden in gardens">
+        </select>
+    </div>
+</section>
+<section class="row media">
+    <div class="nav-form">
+        <select class="form-control select-control" ng-model="version" ng-change="platformChange()" ng-options="platform.id  as platform.platformName for platform in platforms" >
+            <!--<option value="">请选择流媒体平台版本</option>-->
+            <!--<option value="shijikuihua">SunFlower</option>-->
+        </select>
+        <div class="form-group search-area">
+            <input type="text" class="form-control " ng-model="condition.keywords" placeholder="请输入服务器地址">
+            <button class="btn tpk-btn" id="lw-search" style="margin-left: 10px;">确 定</button>
+        </div>
+        <!--has-permission="streamMedia:create"-->
+        <button class="btn tpk-btn fr btn-add" ng-click="streamMediaModule.toAdd()"> + 新 建 </button>
+    </div>
+    <p>
+        <!--has-permission="streamMedia:delete"-->
+        <!--<button class="btn tpk-btn-delete" ng-click="batchDelete()"> 删 除 </button>-->
+        <input type="button" class="delte-btn" ng-click="batchDelete()"  value="删 除">
+    </p>
+</section>
+<section class="row">
+    <table class="table">
+        <thead>
+        <tr class="active">
+            <td>
+                <input type="checkbox" class="checkboxClass" ng-click="checkAllBox($event)" ng-model="checkAll">序号
+            </td>
+            <td>流媒体平台版本</td>
+            <td>服务器地址及端口号</td>
+            <td>所属园区</td>
+            <td>最近更新人</td>
+            <td>更新时间</td>
+            <td>有效性</td>
+            <td>操作</td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="streamMedia in datas">
+            <td>
+                <input type="checkbox" class="checkboxClass mediaId" ng-checked="streamMedia.checked" id="{{streamMedia.id}}" ng-click="checkCheckbox($event,streamMedia.id);">{{$index+1}}
+            </td>
+            <td>{{streamMedia.name}}</td>
+            <td>{{streamMedia.ip}}:{{streamMedia.port}}</td>
+            <td title="{{streamMedia.streamMediaGardens|foreach:'gardenName':'；'}}"><div class="garden-list-bar">{{streamMedia.streamMediaGardens|foreach:'gardenName':'；'}}</div></td>
+            <td>{{streamMedia.lastUpdateAccountName}}</td>
+            <td>{{streamMedia.lastUpdateTime|date:'yyyy/MM/dd HH:mm:ss'}}</td>
+            <td>
+                <div class="inblk va-middle">
+                    <input type="checkbox" id="{{streamMedia.id+'_check'}}" class="cbx hidden" ng-checked="streamMedia.status" ng-model="streamMedia.status" ng-click="changeStatus($event,streamMedia.id)">
+                    <label for="{{streamMedia.id+'_check'}}" class="lbl" ></label>
+                </div>
+            </td>
+            <td>
+                <div class="tpk-icon-border">
+                    <!--has-permission="streamMedia:update"  has-permission="streamMedia:delete" has-permission="streamMedia:list"-->
+                    <i class='tpk-ico tpk-edit' ng-click="streamMediaModule.toEdit(streamMedia.id)"></i>
+                    <i class="tpk-ico tpk-delete" delete-media="{{streamMedia.id}}" ></i>
+                    <i class="tpk-ico tpk-detail" ng-click="streamMediaModule.toDetail(streamMedia.id)" ></i>
+                </div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</section>
+<lw-page url="/streamMedia" version="{{version}}" garden-id="{{gardenId}}"></lw-page>

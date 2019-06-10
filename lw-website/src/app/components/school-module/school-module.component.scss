@@ -1,0 +1,195 @@
+@import '../../../assets/styles/variable.scss';
+:host ::ng-deep .ant-tabs-nav .ant-tabs-tab {
+    padding: 0;
+}
+:host ::ng-deep .ant-tabs-bar{
+    margin: 0; 
+}
+:host ::ng-deep .ant-tabs-ink-bar {
+    bottom: 0px;
+    height: 4px;
+    background-color: #7552f8;
+}
+:host ::ng-deep .ant-tabs-nav .ant-tabs-tab {
+    margin: 0;
+    padding: 0 19px;
+    color: #999999;
+    font-size: 24px;
+    &.ant-tabs-tab-active {
+        color: #7552f8;
+        font-size: 24px;
+    }
+    &:hover {
+        color: #7552f8;
+    }
+}
+#school-module-container .ant-tabs-nav .ant-tabs-tab-active{
+    color: #7552f8 !important;
+}
+
+:host ::ng-deep .ant-tabs-extra-content {
+    position: absolute;
+    right: 21px;
+    top: 13px;
+    z-index: 4;
+    width: 41px;
+    font-size: 14px;
+    border: 0;
+    color: #ffa500;
+    cursor: pointer;
+}
+
+#school-module-container {
+    margin-top: 50px;
+    padding-top: 81px;
+    height: 619px;
+    overflow: hidden;
+	position: relative;
+	z-index: 3;
+
+    .school-module {
+        margin: 0 auto;
+        width: 1000px;
+        height: 466px;
+        box-shadow: 0px 1px 40px 0px
+            rgba(117, 82, 248, 0.1);
+    }
+        .tab-box {
+            .school-detail {
+                float: left;
+                padding: 36px 0 0 21px;
+                width: 480px;
+                .school-img {
+                    margin-bottom: 18px;
+                    width: 458px;
+                    height: 281px;
+                    overflow: hidden;
+                    div {
+                        display: inline-block;
+                        width: 100%;
+                        height: 100%;
+                        transition: all 1s;
+                    }
+                    &:hover {
+                        cursor: pointer;
+                        div {
+                            transform: scale(1.1);
+                        }
+                    }
+                }
+                .school-content {
+                    cursor: pointer;
+                    span {
+                        display: inline-block;
+                        width: 308px;
+                        font-size: 16px;
+                        color: #333333;
+                        text-overflow: ellipsis;
+                        overflow: hidden;
+                        white-space: nowrap;
+                    }
+                    em {
+                        display: inline-block;
+                        margin-right: 11px;
+                        float: right;
+                        font-style: normal;
+                        font-size: 14px;
+                        color: #999999;
+                        
+                    }
+                }
+				.school-content:hover span, .school-content:hover em {
+					color: #ffa500;
+				}
+            }
+            .school-news-box {
+                float: right;
+                padding: 50px 20px 0 0;
+                color: #333333;
+                .school-news-list {
+                    margin-top: -16px;
+                    width: 456px;
+                    // height: 257px;
+                    list-style: none;
+                    .school-news-item {
+                        position: relative;
+						height: 48px;
+						line-height: 48px;
+						> div {
+							height: 48px;
+							line-height: 48px;
+						}
+                        .icon {
+                            position: absolute;
+                            top: 20px;
+                            left: -17px;
+                            display: inline-block;
+                            width: 8px;
+                            height: 8px;
+                            border-radius: 50%;
+                            opacity: 0.5;
+                            background-color: #7552f8;
+                        }
+                        p {
+                            margin-bottom: 0;
+                            display: inline-block;
+							width: 353px;
+                            font-size: 16px;
+							text-overflow: ellipsis;
+							overflow: hidden;
+							white-space: nowrap;
+                        }
+                        .timer {
+                            float: right;
+                            font-style: normal;
+                            display: inline-block;
+                            color: #999999;
+                        }
+                        &:hover {
+                            color: #ffa500;
+                            cursor: pointer;
+                            .icon {
+                                background-color: #ffa500;
+                                opacity: 0.5;
+                            }
+                            .timer {
+                                color: #ffa500;
+                            }
+                        }
+                    }
+                }
+            }
+
+    }
+
+}
+
+@media screen and (min-width: 1980px) {
+    .school-img{
+        img {
+            transform: scale(1.5)
+        }
+    }
+}
+// .ng-tns-c8-1.ng-star-inserted {
+//     line-height: 32px;
+//     height: 36px;
+// }
+
+.more1{
+    color: rgb(117, 82, 248);
+    cursor: pointer;
+    &:hover{
+        color: #ffa500;
+    }
+}
+.more2{
+    color: rgb(117, 82, 248);
+    cursor: pointer;
+    &:hover{
+        color: #ffa500;
+    }
+}
+.line{
+	border-bottom: 1px dashed #cccccc !important;
+}

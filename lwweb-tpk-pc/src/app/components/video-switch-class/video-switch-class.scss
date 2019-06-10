@@ -1,0 +1,177 @@
+@import "../../../styles/variable";
+@import "../../../styles/mixin";
+
+.selectorValues {
+	// padding-left: computer(64px);
+	width: computer(368px);
+	// min-height: computer(37px);
+	user-select: none;
+	box-sizing: border-box;
+
+	ul {
+		display: inline-block;
+		max-width: 100%;
+
+		.selectorValue:hover {
+			color: $color_main;
+		}
+
+		.selectorValue {
+			overflow: hidden;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+			max-width: 100%;
+			padding: 0 computer(20px);
+			display: inline-block;
+			width: auto;
+			height: 30px;
+			line-height: 30px;
+			font-size: computer(14px);
+			min-width: 80px;
+			color: $color_font-center;
+			text-align: center;
+			cursor: pointer;
+			// margin:0 computer(10px) computer(10px) 0;
+			margin: 0 10px 10px 0;
+			background-color: #eeeeee;
+			border-radius: 15px;
+			//margin-bottom: 4px;
+		}
+
+		.active {
+			background: $color_main;
+			color: #fff !important;
+			border-radius: computer(30px);
+		}
+	}
+}
+
+.list-scroll {
+	overflow-y: auto;
+	overflow-x: unset;
+	height: 100%;
+}
+
+.font-14 {
+	font-size: computer(14px);
+}
+
+.scroll-height {
+	height: 100%;
+	overflow-x: hidden;
+}
+
+.video-list {
+	// height: 100%;
+
+	line-height: computer(40px);
+
+	.video-set-content {
+		height: calc(100% - #{computer(20px)});
+	}
+
+	ul {
+
+		// height: calc(100% - #{computer(20px)});
+		li {
+			// width: computer(328px);
+			padding: 0 computer(10px);
+			height: computer(40px);
+			// overflow: hidden;
+			// text-overflow: ellipsis;
+			overflow: hidden;
+			white-space: nowrap;
+			text-overflow: ellipsis;
+			max-width: computer(368px);
+
+			&:hover {
+				background-color: #eee;
+				cursor: pointer;
+			}
+
+			.max-length {
+				max-width: 50%;
+				@include line-ell(50%);
+			}
+
+			.padding {
+				padding: 0 computer(3px);
+			}
+
+			.padding-left {
+				padding-left: computer(3px);
+			}
+
+			.width-82 {
+				max-width: 82%;
+				min-width: 0;
+				@include line-ell(82%);
+			}
+
+			.width-18 {
+				max-width: calc(100% - #{computer(86px)});
+				min-width: 0;
+			}
+
+			.class-max-length {
+				max-width: computer(238px);
+				overflow: hidden;
+				white-space: nowrap;
+				text-overflow: ellipsis;
+				display: inline-block;
+				font-size: computer(14px);
+				@include line-ell(238px);
+			}
+
+			.subject-max-length {
+				max-width: computer(84px);
+				overflow: hidden;
+				white-space: nowrap;
+				text-overflow: ellipsis;
+				display: inline-block;
+				font-size: computer(14px);
+				@include line-ell(84px);
+			}
+
+			.class-line-ell {
+				width: 50%;
+				@include line-ell(50%);
+			}
+
+			.subject-line-ell {
+				width: 50%;
+				@include line-ell(50%);
+			}
+
+			a {
+				text-decoration: none;
+
+				.iconfont {
+					position: relative;
+					bottom: -computer(2px);
+				}
+
+				span {
+					color: #666;
+				}
+			}
+		}
+	}
+
+	.disable {
+		cursor: not-allowed;
+		opacity: 0.5;
+
+		a {
+			cursor: not-allowed;
+		}
+	}
+
+	.active {
+		color: $color_main;
+
+		a span {
+			color: $color_main !important;
+		}
+	}
+}

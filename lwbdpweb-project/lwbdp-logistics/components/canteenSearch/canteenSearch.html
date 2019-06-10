@@ -1,0 +1,115 @@
+<div class="bdp_list_search">
+    <div class="dialog-header">
+        更多条件组合搜索
+        <span class="iconfont icon-close del_btn dialog-close" ng-click="closeThisDialog()"></span>
+    </div>
+    <form class="w5c-form" novalidate name="search">
+        <!--月采购单-->
+       <div ng-if="canteenSearch.tabName=='contract'">
+           <div class="dialog-list" >
+               <span class="dialog_name">合同名称</span>
+               <input type="text" class="dialog_input dialog_applyAccount" ng-model="canteenSearch.supplierPactCondition.name">
+           </div>
+           <div class="dialog-list" >
+               <span class="dialog_name">合同甲方</span>
+               <input type="text" class="dialog_input" ng-model="canteenSearch.supplierPactCondition.firstPartyName" readonly ng-click="canteenSearch.chooseGarden(canteenSearch.supplierPactCondition)">
+           </div>
+           <div class="dialog-list" >
+               <span class="dialog_name">合同乙方</span>
+               <input type="text" class="dialog_input" ng-model="canteenSearch.supplierPactCondition.secondPartyName" readonly ng-click="canteenSearch.selectSecondParty()">
+           </div>
+
+           <div class="dialog-list">
+               <span class="dialog_name">有效期限</span>
+               <div class="dialog_date">
+                   <input type="text" id="useStart" lw-laydate='YYYY-MM-DD' class="dialog_input_middle"  ng-class="{'error':canteenSearch.SupplierPact.validValidityStart}" ng-model="canteenSearch.supplierPactCondition.validityStart" min-date="canteenSearch.supplierPactCondition.validityEnd"
+                          readonly="readonly" placeholder="开始时间">
+                   <div class="iconfont icon-llreservecalendar dialog_date_icon"></div>
+               </div>
+               <span class="dialog_line">一</span>
+               <div class="dialog_date">
+                   <input type="text" id="useEnd" lw-laydate='YYYY-MM-DD' class="dialog_input_middle"  ng-class="{'error':canteenSearch.SupplierPact.validValidityEnd}" ng-model="canteenSearch.supplierPactCondition.validityEnd" min-date="canteenSearch.supplierPactCondition.validityStart"
+                          readonly="readonly" placeholder="结束时间">
+                   <div class="iconfont icon-llreservecalendar dialog_date_icon"></div>
+               </div>
+           </div>
+           <div class="dialog-list">
+               <span class="dialog_name">合同金额</span>
+               <div class="dialog_date">
+                   <input type="text" class="dialog_input_middle dialog_applyAccount" name="amountMin" ng-class="{'error':canteenSearch.SupplierPact.validAmountMin}"  maxlength="15" placeholder="" ng-model="canteenSearch.supplierPactCondition.amountMin">
+               </div>
+               <span class="dialog_line">一</span>
+               <div class="dialog_date">
+                   <input type="text" class="dialog_input_middle dialog_applyAccount" name="amountMax" ng-class="{'error':canteenSearch.SupplierPact.validamountMax}"  maxlength="15" placeholder="" ng-model="canteenSearch.supplierPactCondition.amountMax">
+
+               </div>
+           </div>
+           <div class="dialog-list">
+               <span class="dialog_name">提交时间</span>
+               <div class="dialog_date">
+                   <input type="text" id="submitStart" lw-laydate='YYYY-MM-DD hh:mm' class="dialog_input_middle" ng-class="{'error':canteenSearch.SupplierPact.validCreateTimeStart}" ng-model="canteenSearch.supplierPactCondition.createTimeStart" max-date="canteenSearch.supplierPactCondition.createTimeEnd"
+                          placeholder="开始时间">
+                   <div class="iconfont icon-llreservecalendar dialog_date_icon"></div>
+               </div>
+               <span class="dialog_line">一</span>
+               <div class="dialog_date">
+                   <input type="text" id="submitEnd" lw-laydate='YYYY-MM-DD hh:mm' class="dialog_input_middle"  ng-class="{'error':canteenSearch.SupplierPact.validCreateTimeEnd}" ng-model="canteenSearch.supplierPactCondition.createTimeEnd" min-date="canteenSearch.supplierPactCondition.createTimeStart"
+                          readonly="readonly" placeholder="结束时间">
+                   <div class="iconfont icon-llreservecalendar dialog_date_icon"></div>
+               </div>
+           </div>
+       </div>
+        <!-- 供应商合同 -->
+        <div ng-if="canteenSearch.tabName=='order'">
+            <div class="dialog-list">
+                <span class="dialog_name">采购单位</span>
+                <input type="text" class="dialog_input" ng-model="canteenSearch.purchaseCondition.gardenName" readonly ng-click="canteenSearch.chooseGarden(canteenSearch.purchaseCondition)">
+            </div>
+            <div class="dialog-list">
+                <span class="dialog_name">上报月份</span>
+                <div class="dialog_date">
+                    <input type="text" id="start" lw-laydate='YYYY-MM' ng-class="{'error':canteenSearch.PurchaseOrder.validReportTimeStart}" class="dialog_input_middle" ng-model="canteenSearch.purchaseCondition.reportTimeStart" max-date="canteenSearch.purchaseCondition.reportTimeEnd"
+                           readonly="readonly" placeholder="开始时间">
+                    <div class="iconfont icon-llreservecalendar dialog_date_icon"></div>
+                </div>
+                <span class="dialog_line">一</span>
+                <div class="dialog_date">
+                    <input type="text" id="end" lw-laydate='YYYY-MM' ng-class="{'error':canteenSearch.PurchaseOrder.validReportTimeEnd}" class="dialog_input_middle" ng-model="canteenSearch.purchaseCondition.reportTimeEnd" min-date="canteenSearch.purchaseCondition.reportTimeStart"
+                           readonly="readonly" placeholder="结束时间">
+                    <div class="iconfont icon-llreservecalendar dialog_date_icon"></div>
+                </div>
+            </div>
+            <div class="dialog-list">
+                <span class="dialog_name">采购金额</span>
+                <div class="dialog_date">
+                    <input type="text" class="dialog_input_middle dialog_applyAccount" ng-class="{'error':canteenSearch.PurchaseOrder.validAmountStart}" placeholder="" name="amountMin" ng-model="canteenSearch.purchaseCondition.amountMin"  maxlength="15">
+                </div>
+                <span class="dialog_line">一</span>
+                <div class="dialog_date">
+                    <input type="text" class="dialog_input_middle dialog_applyAccount" ng-class="{'error':canteenSearch.PurchaseOrder.validAmountEnd}" placeholder="" name="amountMax" ng-model="canteenSearch.purchaseCondition.amountMax"  maxlength="15">
+
+                </div>
+            </div>
+            <div class="dialog-list">
+                <span class="dialog_name">上报时间</span>
+                <div class="dialog_date">
+                    <input type="text" id="startTime" lw-laydate='YYYY-MM-DD hh:mm' ng-class="{'error':canteenSearch.PurchaseOrder.validCreateTimeStart}" class="dialog_input_middle" ng-model="canteenSearch.purchaseCondition.createTimeStart" max-date="canteenSearch.purchaseCondition.createTimeEnd"
+                           placeholder="开始时间">
+                    <div class="iconfont icon-llreservecalendar dialog_date_icon"></div>
+                </div>
+                <span class="dialog_line">一</span>
+                <div class="dialog_date">
+                    <input type="text" id="endTime" lw-laydate='YYYY-MM-DD hh:mm'  ng-class="{'error':canteenSearch.PurchaseOrder.validCreateTimeEnd}" class="dialog_input_middle" ng-model="canteenSearch.purchaseCondition.createTimeEnd" min-date="canteenSearch.purchaseCondition.createTimeStart"
+                           readonly="readonly" placeholder="结束时间">
+                    <div class="iconfont icon-llreservecalendar dialog_date_icon"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="dialog-btn">
+            <div class="btn_bd" ng-click="closeThisDialog()">取消</div>
+            <div class="btn_bg" form-submit-valid="canteenSearch.searchPurchaseOrder(closeThisDialog)" ng-if="canteenSearch.tabName=='order'">确定</div>
+            <div class="btn_bg" form-submit-valid="canteenSearch.searchSupplierPact(closeThisDialog)" ng-if="canteenSearch.tabName=='contract'">确定</div>
+        </div>
+    </form>
+</div>

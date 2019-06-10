@@ -1,0 +1,62 @@
+.content .nav-form {
+  width: 500px;
+  float: left
+}
+
+.content .nav-form .form-control {
+  width: 170px;
+  margin-right: 11.5px
+}
+
+.content .form-control {
+  float: left;
+}
+
+.content-box {
+  width: 30%;
+  border: 1px solid #cccccc;
+  margin: 20px 0 0 20px;
+}
+
+.search {
+  width: 30%;
+}
+
+.action-box {
+  height: 60px;
+  border-bottom: 1px solid #cccccc;
+  padding: 10px;
+}
+
+.list {
+  height: 550px;
+  overflow-y: auto;
+  font-size: 14px;
+  padding-bottom: 60px;
+}
+
+.list ul {
+  padding-top: 10px;
+}
+
+.list ul li {
+  width: 100%;
+  height: 40px;
+  line-height: 40px;
+  clear: both;
+}
+
+.list ul li:hover {
+  color: #00ba8b;
+  cursor: pointer
+}
+.list ul li .tpk-icon-border{
+  opacity: 0;
+}
+.list ul li:hover .tpk-icon-border{
+  opacity: 1;
+}
+
+.err{
+  border:1px solid red;
+}

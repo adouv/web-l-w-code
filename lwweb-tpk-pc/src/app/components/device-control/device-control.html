@@ -1,0 +1,13 @@
+<div class="control-box">
+	<div class="control-home" (click)="startMove('home')">
+		<span class="iconfont icon-index-icon-copy"></span>
+	</div>
+	<span class="control-arrow up iconfont icon-up" (mousedown)="startMove('up')" (mouseup)="stopMove()"></span>
+	<span class="control-arrow down iconfont icon-down" (mousedown)="startMove('down')" (mouseup)="stopMove()"></span>
+	<span class="control-arrow left iconfont icon-zuo" (mousedown)="startMove('left')" (mouseup)="stopMove()"></span>
+	<span class="control-arrow right iconfont icon-you" (mousedown)="startMove('right')" (mouseup)="stopMove()"></span>
+</div>
+<div class="control-zoom">
+	<img src="../../../assets/images/big.png" alt=""  (mousedown)="zoom('plus')" (mouseup)="stopMove()">
+	<img src="../../../assets/images/small.png" alt=""  (mousedown)="zoom('minus')" (mouseup)="stopMove()">
+</div>

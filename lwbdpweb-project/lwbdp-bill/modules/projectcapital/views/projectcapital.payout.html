@@ -1,0 +1,228 @@
+<div class="projectcapitalPayout">
+    <div class="breadnav ng-scope">
+        <ul>
+            <!--<li>项目财务管理 ></li>-->
+            <li ng-click="backToList()" class="secondTitle">项目财务库 ></li>
+            <li class="thirdTitle">添加财务记录</li>
+        </ul>
+    </div>
+    <div class="page ng-scope">
+        <p class="pagetit font_MY">
+            <!--添加财务记录-->
+            <span class="tableBtn blue" has-permission="bdp:projectCapital:batchImport"
+                  ng-click="batchAddPayout()">批量导入</span>
+        </p>
+        <p class="income_nav">
+        <span><a ui-sref="bill.projectcapital.income">
+          <span>添加项目收入</span></a></span>
+            <span class="income_nav_click">
+          <span>添加项目支出</span></span>
+            <span><a ui-sref="bill.projectcapital.recovery">
+          <span>添加财政收走资金</span></a></span>
+        </p>
+        <form class="w5c-form" w5c-form novalidate w5c-form-validate name="payOutForm" stop-event>
+            <div class="income_title">
+                <p class="spacing">记账类型 <span>*</span></p>
+                <div class="form-group">
+                    <select class="form-control" required ng-model="payoutType">
+                        <option value="payout">支出</option>
+                        <option value="payoutWriteBack">冲红</option>
+                    </select>
+                </div>
+                <p class="spacing">该笔支出{{payoutType=='payoutWriteBack'?'冲红':''}}对应的项目 <span>*</span></p>
+                <input type="text" id="selectProject" class="form-control curpoint selectBtn" placeholder="不支持手工输入,必填......"
+                       ng-model="selectedProject.name" name="name1">
+                <select-project ids="selectedProject.id" named="selectedProject.name"></select-project>
+                <!--冲红部分 start-->
+                <div class="payout_back" ng-show="payoutType=='payoutWriteBack'">
+                    <div class="choose_payout">
+                        <p class="choose_result" ng-if="selectedPayout">
+                            <span class="pospan">已选中的支出:</span>
+                            <span class="res_span ell">来自{{selectedPayout.expenseTypeItemName}} ({{selectedPayout.payoutAmount}};<em
+                                    class="blue">{{selectedPayout.payoutWriteBackAmount}};</em><em class="green">{{selectedPayout.availableAmount}}</em>)
+                  <em class="billiconfont icon_shutdown deleteIcon"
+                      ng-click="delSelectedPayout(selectedPayout.idx)"></em>
+              </span>
+                        </p>
+                        <div class="choose_box">
+                            <div class="form-group">
+                                <select class="form-control"
+                                        ng-options="item.expenseTypeItemId as item.expenseTypeItemName for item in expenseTypeList"
+                                        ng-model="tempExpenseTypeItemId">
+                                    <option value="">请选择支出类型</option>
+                                </select>
+                                <select class="form-control"
+                                        ng-options="item.contractNo as item.contractName for item in contractList"
+                                        ng-model="tempContractNo">
+                                    <option value="">请选择项目对应合同</option>
+                                </select>
+                                <select class="form-control"
+                                        ng-options="item.payee as item.payeeName for item in payeeList"
+                                        ng-model="tempPayee">
+                                    <option value="">请选择支出对象</option>
+                                </select>
+                                <input type="text" class="form-control" placeholder="回车键提交查询"  ng-model="tempKeywords">
+                                <span class="tableBtn blue" ng-click="getFilterProjectPayoutList()">查询</span>
+                            </div>
+                            <div class="tableContent" style="padding: 0">
+                                <table class="formTable">
+                                    <tr>
+                                        <td>序号</td>
+                                        <td>支出类型</td>
+                                        <td>该笔支出的金额(总额/<em class="blue">已冲红金额</em>/<em class="green">剩余金额</em>)</td>
+                                        <td>更新时间</td>
+                                    </tr>
+                                    <tr ng-repeat="item in filterProjectPayoutList" for="choose_py{{$index}}">
+                                        <td><input type="radio" id="choose_py{{$index}}" class="radioClass"
+                                                   name="choose_py" ng-checked="item.checked"
+                                                   ng-click="showPayoutBillDetail($index,item)"> {{$index+1}}
+                                        </td>
+                                        <td><span class="text">{{item.expenseTypeItemName}}</span></td>
+                                        <td>(<span class="text">{{item.payoutAmount}};<em class="blue">{{item.payoutWriteBackAmount}}</em>;<em
+                                                class="green">{{item.availableAmount}}</em></span>)
+                                        </td>
+                                        <td><span class="text">{{item.createTime|date:'yyyy/MM/dd'}}</span></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="spacing normal" ng-show="selectedPayout">
+                        <input type="radio" class="radioClass" name="backType" value="part" ng-model="backType"> 部分冲红
+                        <span class="pad_l">
+            <input type="radio" class="radioClass" name="backType" value="all" ng-model="backType"> 全部冲红
+            </span>
+                    </p>
+                    <!--部分冲红 start-->
+                    <div class="payback_part" ng-show="selectedPayout && backType=='part'">
+                        <p class="illustrate spe">该支出对应的可冲红金额为: {{selectedPayout.availableAmount}}万元</p>
+                        <p class="spacing">本次要冲红的金额 <span>*</span>(万元)</p>
+                        <div class="form-group">
+                            <input type="text" class="form-control"
+                                   placeholder="只能小于等于{{selectedPayout.availableAmount}}万元"
+                                   ng-model="writeBackTotalAmount"
+                                   ng-disabled="!selectedPayout || selectedPayout.availableAmount <=0"
+                                   ng-keyup="inputed(writeBackTotalAmount,'writeBackTotalAmount',selectedPayout.availableAmount)">
+                        </div>
+                        <p class="allocation">冲红金额在该支出中的具体分配 <span>*</span>: <span ng-show="writeBackTotalAmount">(已分配: {{writeBackAmountSum}} 万元,待分配 : {{(writeBackTotalAmount - writeBackAmountSum)}} 万元,您必须待分配金额为0时才能提交该冲红)</span>
+                        </p>
+                        <div class="tableContent" style="padding:0;">
+                            <table class="formTable">
+                                <tr>
+                                    <td class="tableAverage">您选择的支出来源构成 <i>(总额/<em class="green">可冲红金额</em>)</i></td>
+                                    <td>冲红的金额</td>
+                                </tr>
+                                <tr ng-repeat="item in payoutDetailList">
+                                    <td>{{item.capitalName}} ({{item.payoutAmount}};<em class="green">{{item.availableAmount}}</em>)
+                                    </td>
+                                    <td><input type="text" placeholder="≤{{item.availableAmount}}"
+                                               class="form-control" ng-model="item.amount"
+                                               ng-keyup="checkPayoutWriteBackTotalAmount(item)"
+                                               ng-disabled="item.availableAmount <= 0"> 万元
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <!--部分冲红 end-->
+                    <!--全部冲红 start-->
+                    <div class="payback_all" ng-if="backType=='all'">
+                        <p class="spacing">本次要冲红的总金额: <span class="red">{{selectedPayout.availableAmount}}</span>万元</p>
+                    </div>
+                    <p class="spacing">冲红原因 <span>*</span></p>
+                    <textarea class="form-control" cols="200" rows="3" maxlength="500" placeholder="500字以内,非必填"
+                              ng-model="writeBackReason"></textarea>
+                    <!--全部冲红 end-->
+                </div>
+                <!--冲红部分 end-->
+
+                <!--支出部分 start-->
+                <div ng-show="payoutType=='payout'">
+                    <div class="choose_payout" ng-show="selectedProject.name">
+                        <p class="choose_result" ng-if="selectedIncome">
+                            <span class="pospan">已选中的收入:</span>
+                            <span class="res_span ell">来自{{selectedIncome.typeName}} ({{selectedIncome.incomeAmount}};<em
+                                    class="blue">{{(selectedIncome.incomeAmount-selectedIncome.availableAmount)}}</em>;<em
+                                    class="green">{{selectedIncome.availableAmount}}</em>) {{selectedIncome.receivedDate| date:'yyyy/MM/dd'}}
+                  <em class="billiconfont icon_shutdown deleteIcon"
+                      ng-click="delSelectPayIncome(selectedIncome.idx)"></em>
+              </span>
+                        </p>
+                        <div class="tableContent" style="padding: 0">
+                            <table class="formTable">
+                                <tr>
+                                    <td>序号</td>
+                                    <td>建设单位</td>
+                                    <td>收入类型</td>
+                                    <td>总金额/<em class="blue">已用金额</em>/<em class="green">可用金额</em></td>
+                                    <td>实际到账时间</td>
+                                </tr>
+                                <tr ng-repeat="item in projectIncomeList" for="py_bc{{$index}}">
+                                    <td><input type="radio" class="radioClass" id="py_bc{{$index}}" name="choose_pybc"
+                                               ng-checked="item.checked" ng-click="showIncomeBillDetail($index,item)">
+                                        {{$index+1}}
+                                    </td>
+                                    <td><span class="text">{{item.constructUnitName}}</span></td>
+                                    <td><span class="text">{{item.typeName}}</span></td>
+                                    <td>(<span class="text">{{item.incomeAmount}};<em class="blue">{{(item.incomeAmount-item.availableAmount)}}</em>;<em
+                                            class="green">{{item.availableAmount}}</em></span>)
+                                    </td>
+                                    <td><span class="text">{{item.receivedDate | date:'yyyy/MM/dd'}}</span></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <div ng-if="incomeDetail">
+                        <p class="spacing">请配置支出对应的资金文号(可多选) <span>*</span></p>
+                        <div class="choosenum">
+                            <span ng-repeat="detail in incomeDetail" ng-click="showCapitalNumberDialog($index,detail)">{{detail.name}} ({{detail.totalAmount}};<em
+                                    class="blue">{{detail.totalAmount-detail.availableAmount}}</em>;<em
+                                    class="green">{{detail.availableAmount}}</em>)</span>
+                        </div>
+                        <div ng-if="selectedCapitalNumberArray.length>0">
+                            <p class="spacing">已配置支出的资金文号及金额</p>
+                            <div class="selected_num">
+                                <span ng-repeat="item in selectedCapitalNumberArray">{{item.gardenName}}){{item.name}} ({{item.amount}})<em
+                                        class="del" ng-click="removeCapitalNumber($index)"></em></span>
+                            </div>
+                        </div>
+                        <p class="clear spacing">本次安排资金额度 <span>*</span>(万元):{{allAssignAmount}}</p>
+                        <!--<div class="form-group">
+                          <input type="number" class="form-control" ng-model="allAssignAmount" placeholder="输入金额不超过该笔收入的可用金额;支出小数点后6位,必填..."
+                                 number-up-down ng-change="numberFiltration('allAssignAmount',allAssignAmount)">
+                        </div>-->
+                    </div>
+                    <p class="spacing">支出对应的项目合同</p>
+                    <input type="text" id="selectContract" class="payout_white curpoint form-control" name="contractName"
+                           placeholder="请选择对应合同,单选非必填..." ng-model="selectedProjectContract.contractName">
+                    <select-contract ids="selectedProjectContract.contractNo"
+                                     named="selectedProjectContract.contractName"></select-contract>
+                    <p class="spacing">支出费用名称<span>*</span></p>
+                    <div class="tree_box form-group">
+                        <input type="text" class="form-control curpoint" name="pyname" id="treeData"
+                               ng-model="expenseTypeItemName">
+                        <z-tree setname="expenseTypeName"></z-tree>
+                    </div>
+                    <p class="payout_collect spacing">收款方 <span style="color:#ff272e">*</span>(<span
+                            style="color:#999999">承建单位</span>)</p>
+                    <input type="text" id="selectUnit" class="selectBtn curpoint form-control" placeholder="请选择收款方,必填..."
+                           ng-model="selectedBuildUnit.name" name="buildUnitname">
+                    <select-unit ids="selectedBuildUnit.id" named="selectedBuildUnit.name"></select-unit>
+                    <p class="spacing">支付实际到账时间</p>
+                    <!--<input type="date" class="payout_white form-control" ng-model="capitalChangeDate" name="capitalChangeDate">-->
+                    <div class="form-group" id="get-time">
+                        <input id="py_time" readonly lw-laydate type="text"
+                               value="{{capitalChangeDate | date:'yyyy/MM/dd'}}" ng-model="capitalChangeDate"
+                               class="form-control curpoint">
+                    </div>
+                    <p class="spacing">备注</p>
+                    <textarea cols="200" rows="3" placeholder="500字以内，非必填" ng-model="projectCapital.description"
+                              maxlength="500"></textarea>
+                </div>
+            </div>
+            <div class="income_div">
+                <input class="income_sure setbtn sureBtn " type="button" value="确定" name="" ng-click="save()">
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,31 @@
+<div class="approval_chartedit w5c-form">
+    <p class="title">
+        配置情况
+        <span class="iconfont icon-close" ng-click="closeThisDialog()"></span>
+    </p>
+    <div class="config_con">
+        <p>
+            节点最晚完成任务相对时间截点：<span ng-show="flowConfig.currentConfigured.dueDay>-1">收到任务后 {{flowConfig.currentConfigured.dueDay}}天</span><span ng-show="flowConfig.currentConfigured.dueDay<0">无</span>
+        </p>
+        <p><span class="left">用户关系类型：</span>{{flowConfig.currentConfigured.relationTypeName}}</p>
+        <div class="config_inner" ng-if="flowConfig.currentConfigured.accountRelationType==1">
+            <!--<p> <span class="left">已选择用户</span> : 8人</p>-->
+            <p><span class="left">选择用户：</span></p>
+            <echo-person multiple="multiple" person-ids='flowConfig.configuredAccountIds'></echo-person>
+        </div>
+        <div class="config_inner" ng-if="flowConfig.currentConfigured.accountRelationType==2">
+            <p><span class="left">相对类型：</span>{{flowConfig.currentConfigured.relativeTypeName}}</p>
+            <p class="no_mar">
+                <span class="left"></span>
+                <span class="gray" ng-if="flowConfig.currentConfigured.accountRelativeType==1">该项表示当前配置节点的人员组完全参照参考节点的人员组变化而变化</span>
+                <span class="gray" ng-if="flowConfig.currentConfigured.accountRelativeType==2">该项表示当前配置节点的审批单的具体操作人完全同参考节点同一审批单的相同操作人</span>
+            </p>
+        </div>
+    </div>
+    <div ng-show="flowConfig.currentConfigured.accountRelationType==2" class="reference_flow overflow_box" id="reference_box">
+        <approval-flowchart ng-if="flowConfig.flowChartData" flow-chart-data="flowConfig.flowChartData" flow-chart-hover="false"></approval-flowchart>
+    </div>
+    <div class="btn_box" ng-if="flowConfig.currentConfigured.accountRelationType==2">
+        <span class="btn_bd" ng-click="closeThisDialog()">关闭</span>
+    </div>
+</div>

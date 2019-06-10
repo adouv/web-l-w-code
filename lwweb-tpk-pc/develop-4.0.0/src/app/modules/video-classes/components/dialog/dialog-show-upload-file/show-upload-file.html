@@ -1,0 +1,52 @@
+<div class="show-upload-file">
+	<div class="header" flex="main:justify">
+		<nz-select *ngIf="_type==0" style="width: 120px;" (nzOpenChange)="searchTeaching($event)" [(ngModel)]="selectedTeaching" [nzPlaceHolder]="teachings.length>0?teachings[0].displayName:'暂无老师'"
+				   nzAllowClear
+				   class="mar-bot-10px radius bg-gray">
+			<nz-option
+				*ngFor="let teach of teachings"
+				[nzLabel]="teach.displayName"
+				[nzValue]="teach"
+				[nzDisabled]="teach.disabled">
+			</nz-option>
+		</nz-select>
+		<div *ngIf="isEvaluation" class="handles">
+			<nz-dropdown [nzPlacement]="'bottomLeft'" class="ant-dropdown-default">
+				<button nz-button nz-dropdown>导出</button>
+				<ul nz-menu>
+					<li nz-menu-item>
+						<a>导出当前</a>
+					</li>
+					<li nz-menu-item>
+						<a>导出所有</a>
+					</li>
+				</ul>
+			</nz-dropdown>
+			<nz-dropdown [nzPlacement]="'bottomLeft'" class="ant-dropdown-trigger">
+				<button nz-button nz-dropdown>打印</button>
+				<ul nz-menu>
+					<li nz-menu-item>
+						<a>打印当前</a>
+					</li>
+					<li nz-menu-item>
+						<a>打印所有</a>
+					</li>
+				</ul>
+			</nz-dropdown>
+		</div>
+		<div *ngIf="!isEvaluation"></div>
+		<div  *ngIf="!isEvaluation" class="handles">
+			<button (click)="exportFile()" nz-button [nzType]="'default'">
+				<span>导出</span>
+			</button>
+			<button (click)="printView()" nz-button [nzType]="'danger'">
+				<span>打印</span>
+			</button>
+		</div>
+	</div>
+	<div class="auto-scroll"  flex="main:center cross:center">
+		<div class="content" #htmlDom >
+			<!--{{data[0].commentHtml}}-->
+		</div>
+	</div>
+</div>

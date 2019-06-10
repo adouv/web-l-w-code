@@ -1,0 +1,488 @@
+<div>
+    <div class="repairDraft" style="padding: 15px 4%">
+        <div class="flowContent">
+            <!-- 面包屑导航 -->
+            <div class="repair_bread_nav">
+                <!--<a href="JavaScript:void(0)" class="jump_href">修缮项目管理</a>>-->
+                <a href="JavaScript:void(0)" ng-click="projectDetail.goJump(crumb.url)"  class="jump_href" ng-repeat="crumb in projectDetail.crumbList">{{crumb.name}}></a>
+                <span>修缮项目申请单详情页</span>
+            </div>
+            <div class="draft_title">
+                <p class="draft_detail">{{ projectDetail.apply.projectName }}</p>
+                <p class="draft_date">{{ projectDetail.apply.creatorName }}&nbsp;&nbsp;&nbsp;（{{projectDetail.apply.projectGarden }}）&nbsp;&nbsp;&nbsp;{{projectDetail.apply.createTime | date:'yyyy/MM/dd' }}</p>
+            </div>
+
+        </div>
+        <div ng-repeat="data in projectDetail.auditInfo track by $index">
+            <div ng-show="$index==0||$index==projectDetail.auditInfo.length-1||projectDetail.isAllShow">
+                <p class="file_preview_tit">
+                    <span>第{{$index+1|NumberToChinese}}次审核不通过情况</span>
+                </p>
+                <div class="disposal_content">
+                    <div class="check_node">
+                        <div class="check_title">
+                            * 被审核节点
+                        </div>
+                        <div class="reDraft_list">
+                            <span class="w200 word_center">节点名称：</span>
+                            <span class="word_center">{{ data.auditedNode.taskName }}</span>
+                        </div>
+                        <div class="reDraft_list">
+                            <span class="w200 word_center">节点操作内容：</span>
+                            <span ng-click="showTaskInfo({isEdit:true,taskId:data.auditedNode.taskId})"
+                                  ng-if="projectDetail.isAudit&&currentTask.isRedo && currentTask.assignee === projectDetail.account.accountId &&
+                            $index === projectDetail.auditInfo.length -1" class="word_center"><span class="btn_bd">编辑</span></span>
+                            <span ng-click="showTaskInfo({isEdit:false,taskId:data.auditedNode.taskId})"
+                                  ng-if="!(projectDetail.isAudit&&currentTask.isRedo && currentTask.assignee === projectDetail.account.accountId && 
+                            $index === projectDetail.auditInfo.length -1)" class="word_center"><span class="btn_bd">查看</span></span>
+                        </div>
+                    </div>
+                    <div class="check_node">
+                        <div class="check_title">
+                            * 审核节点
+                        </div>
+                        <div class="reDraft_list">
+                            <span class="w200 word_center">节点名称：</span>
+                            <span class="word_center">{{ data.auditNode.taskName }}</span>
+                        </div>
+                        <div class="reDraft_list">
+                            <span class="w200 word_center">审核人：</span>
+                            <span class="word_center">{{ data.auditNode.auditor }}（{{data.auditNode.auditorGarden}}）</span>
+                        </div>
+                        <div class="reDraft_list">
+                            <span class="w200 word_center">操作时间：</span>
+                            <span class="word_center">{{ data.auditNode.auditTime | date:'yyyy/MM/dd HH:mm' }}</span>
+                        </div>
+                        <div class="reDraft_list">
+                            <span class="w200 word_center">审核结果：</span>
+                            <span ng-if="data.auditNode.auditResult==='false'" class="word_center red">不通过</span>
+                            <span ng-if="data.auditNode.auditResult==='true'" class="word_center green">通过</span>
+                        </div>
+                        <div class="reDraft_list" ng-show="data.auditNode.comment">
+                            <span class="w200 word_center fl">审核意见：</span>
+                            <span class="word_center w650 fl">{{ data.auditNode.comment }}</span>
+                        </div>
+                    </div>
+                    <div class="check_node">
+                        <div class="check_title">
+                            * 处理情况
+                        </div>
+                        <div class="reDraft_list">
+                            <span class="w200 word_center">操作结果：</span>
+                            <span ng-if="data.disposeResult.result==='true'" class="word_center">重新修改并提交</span>
+                            <span ng-if="data.disposeResult.result==='false'" class="word_center">放弃并结束</span>
+                            <span class="word_center" ng-if="!data.disposeResult.result && $index==projectDetail.auditInfo.length-1">待{{data.disposeResult.accountId!=projectDetail.account.accountId? data.disposeResult.accountName:''}}处理</span>
+                        </div>
+                        <div class="reDraft_list" ng-show="data.disposeResult.result && data.disposeResult.accountName">
+                            <span class="w200 word_center">操作人：</span>
+                            <span class="word_center">{{ data.disposeResult.accountName }}（{{data.disposeResult.gardenName}}）</span>
+                        </div>
+                        <div class="reDraft_list" ng-show="data.disposeResult.result && data.disposeResult.operateTime">
+                            <span class="w200 word_center">操作时间：</span>
+                            <span class="word_center">{{ data.disposeResult.operateTime | date:'yyyy/MM/dd HH:mm' }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--查看更多信息-->
+            <div ng-click="projectDetail.isAllShow = true" class="check_fail" ng-if="$index==0&&projectDetail.auditInfo.length>2&&!projectDetail.isAllShow">
+                点击查看更多审核不通过信息
+                <p class="iconfont icon-arrowLook"></p>
+            </div>
+            <div class="btn_box2" ng-if="projectDetail.isAudit&&currentTask.isRedo && currentTask.assignee === projectDetail.account.accountId && $index === projectDetail.auditInfo.length -1">
+                <span class="btn_bd" ng-if="currentTask.isAllowedAbort" ng-click="saveAuditData({flag:false,taskId:data.auditedNode.taskId})">放弃并结束本项目申请</span>
+                <button class="btn_bg" ng-disabled="!formData" ng-click="saveAuditData({flag:true,taskId:data.auditedNode.taskId})">重新提交</button>
+            </div>
+        </div>
+        <div ng-click="projectDetail.isAllShow = false" class="check_fail" style="margin-top: 20px;" ng-if="projectDetail.auditInfo.length>2&&projectDetail.isAllShow">
+            点击收起审核不通过信息
+            <p class="iconfont icon-arrowStop"></p>
+        </div>
+        <!-- 审核信息 -->
+        <div ng-transclude=""></div>
+
+
+        <!-- 项目信息 -->
+        <div class="repaDisposal_flow">
+            <p class="info_or_flow">
+            <span class="curr" ng-click="projectDetail.showTabs = false"
+                  ng-class="{true:'current'}[!projectDetail.showTabs]">项目信息</span>
+                <span class="curr" ng-click="projectDetail.showTabs = true"
+                      ng-class="{true:'current'}[projectDetail.showTabs]">流程进度结果</span>
+            </p>
+            <!--项目信息-->
+            <div ng-show="!projectDetail.showTabs">
+                <!-- 项目前期信息 -->
+                <div class="disposal_info smallFullPage" style="min-width: 1060px;">
+                    <div class="border_wrapper detail_draft_list" id="applyOrder">
+                        <div class="reDraft_list">
+                            <span class="w120 word_center">项目申报单位：</span>
+                            <span class="word_center">{{ projectDetail.apply.projectGarden }}</span>
+                        </div>
+                        <div class="reDraft_list">
+                            <span class="w120 word_center fl">项目名称：</span>
+                            <span class="word_center fl w750">{{ projectDetail.apply.projectName }}</span>
+                        </div>
+                        <div class="reDraft_list">
+                            <span class="w120 word_center fl">项目内容：</span>
+                            <span class="word_center fl w750">{{ projectDetail.apply.content }}</span>
+                        </div>
+                        <div class="reDraft_list">
+                            <span class="w120 word_center fl">申报理由：</span>
+                            <span class="word_center fl w750">{{ projectDetail.apply.reason }}</span>
+                        </div>
+                        <div class="reDraft_list">
+                            <span class="w120 word_center fl">备注：</span>
+                            <span class="word_center fl w750">{{ projectDetail.apply.remarks }}</span>
+                        </div>
+                        <div class="reDraft_list">
+                            <span class="w120 word_center">校内项目优先级：</span>
+                            <span class="word_center">{{ projectDetail.apply.priorityName }}</span>
+                        </div>
+                        <div class="reDraft_list">
+                            <span class="w120 word_center">项目类别：</span>
+                            <span class="word_center">{{ projectDetail.apply.categoryName }}</span>
+                        </div>
+                        <div class="reDraft_list">
+                            <span class="w120 word_center">项目联系人：</span>
+                            <span class="word_center">{{ projectDetail.apply.creatorName }}</span>
+                        </div>
+                        <div class="reDraft_list">
+                            <span class="w120 word_center">联系人电话：</span>
+                            <span class="word_center">{{ projectDetail.apply.cellphone }}</span>
+                        </div>
+                    </div>
+                    <span class="word_center lookApproveInfo" ng-click="projectDetail.backAuditForm('applyOrder')">&nbsp; 返回审批>></span>
+                    <div class="report_btn">
+                        <span class="btn_bd" ng-click="projectDetail.againToApply(projectDetail.apply.projectId)" ng-if="!projectDetail.isAll">以此为模板重新提交</span>
+                    </div>
+                </div>
+                <div class="disposal_list">
+                    <div class="project_detail">
+                        <p class="file_preview_tit">
+                            <span>项目前期信息</span>
+                        </p>
+                        <div class="project_info fl">
+                            <div class="reDraft_list">
+                                <span class="w250 word_center">项目设计单位：</span>
+                                <!--<span class="word_center">北京城市学院</span>-->
+                            </div>
+                            <!--发布项目设计任务书-->
+                            <div class="reDraft_list redWidth fl" id="{{projectDetail.publishProject}}"
+                                 ng-class="{'loadBale_list':projectDetail.attachments.publishProject.length>1}">
+                                <span class="w250 word_center fl">项目设计任务书：</span>
+                                <div class="bale_list fl">
+                                    <pic-view sp="true" file-name="x.name" file-path="x.url"
+                                              ng-repeat="x in projectDetail.attachments.publishProject"></pic-view>
+                                </div>
+                                <span class="btn_bd downloadBale"
+                                      ng-if="projectDetail.attachments.publishProject.length>=2" download-zip="projectDetail.attachments.publishProject" zip-name="{{projectDetail.apply.projectName}}项目设计任务书">打包下载</span>
+                            </div>
+                            <div class="clear"></div>
+                            <div class="border_wrapper" id="{{projectDetail.attachments.projectPlan[0].id}}">
+                                <div class="reDraft_list fl"
+                                     ng-class="{'loadBale_list':projectDetail.attachments.projectPlan.length>1}">
+                                    <span class="w250 word_center fl">项目设计图纸：</span>
+                                    <div class="bale_list fl">
+                                        <pic-view sp="true" file-name="x.name" file-path="x.url"
+                                                  ng-repeat="x in projectDetail.attachments.projectPlan"></pic-view>
+                                    </div>
+                                    <span class="btn_bd downloadBale"
+                                          ng-if="projectDetail.attachments.projectPlan.length>=2" download-zip="projectDetail.attachments.projectPlan" zip-name="{{projectDetail.apply.projectName}}项目设计图纸">打包下载</span>
+                                </div>
+                                <div class="clear"></div>
+                                <div class="reDraft_list fl"
+                                     ng-class="{'loadBale_list':projectDetail.attachments.planConfirm.length>1}">
+                                    <span class="w250 word_center fl">项目设计确认单：</span>
+                                    <div class="bale_list fl">
+                                        <pic-view sp="true" file-name="x.name" file-path="x.url"
+                                                  ng-repeat="x in projectDetail.attachments.planConfirm"></pic-view>
+                                    </div>
+                                    <span class="btn_bd downloadBale"
+                                          ng-if="projectDetail.attachments.planConfirm.length>=2" download-zip="projectDetail.attachments.planConfirm" zip-name="{{projectDetail.apply.projectName}}项目设计确认单">打包下载</span>
+                                </div>
+                                <div class="clear"></div>
+                            </div>
+                            <span class="word_center lookApproveInfo" ng-click="projectDetail.backAuditForm(projectDetail.attachments.projectPlan[0].id)">&nbsp; &nbsp; 返回审批>></span><br>
+                            <div class="border_wrapper" id="{{projectDetail.attachments.projectProof[0].id}}">
+                            <div class="reDraft_list" id="{{projectDetail.projectProof}}"
+                                 ng-class="{'loadBale_list':projectDetail.attachments.projectProof.length>1}">
+                                <span class="w250 word_center fl">项目论证材料：</span>
+                                <div class="bale_list fl">
+                                    <pic-view sp="true" file-name="x.name" file-path="x.url"
+                                              ng-repeat="x in projectDetail.attachments.projectProof"></pic-view>
+                                </div>
+                                <span class="btn_bd downloadBale"
+                                      ng-if="projectDetail.attachments.projectProof.length>=2" download-zip="projectDetail.attachments.projectProof" zip-name="{{projectDetail.apply.projectName}}项目论证材料">打包下载</span>
+                            </div>
+                            </div>
+                            <span class="word_center lookApproveInfo" ng-click="projectDetail.backAuditForm(projectDetail.attachments.projectProof[0].id)">&nbsp; &nbsp; 返回审批>></span>
+                        </div>
+                    </div>
+                    <div class="project_detail">
+                        <div class="project_info fl">
+                            <div class="reDraft_list">
+                                <span class="w250 word_center">项目造价单位：</span>
+                                <!--<span class="word_center">北京城市学院</span>-->
+                            </div>
+                            <div class="border_wrapper" id="{{projectDetail.attachments.projectCost[0].id}}">
+                                <div class="reDraft_list fl" id="{{projectDetail.projectCost}}"
+                                     ng-class="{'loadBale_list':projectDetail.attachments.projectCost.length>1}">
+                                    <span class="w250 word_center fl">项目造价单：</span>
+                                    <div class="bale_list fl">
+                                        <pic-view sp="true" file-name="x.name" file-path="x.url"
+                                                  ng-repeat="x in projectDetail.attachments.projectCost"></pic-view>
+                                    </div>
+                                    <span class="btn_bd downloadBale"
+                                          ng-if="projectDetail.attachments.projectCost.length>=2" download-zip="projectDetail.attachments.projectCost" zip-name="{{projectDetail.apply.projectName}}项目造价单">打包下载</span>
+                                </div>
+                                <div class="clear"></div>
+                                <div class="reDraft_list fl"
+                                     ng-class="{'loadBale_list':projectDetail.attachments.control.length>1}">
+                                    <span class="w250 word_center fl">项目造价确认单：</span>
+                                    <div class="bale_list fl">
+                                        <pic-view sp="true" file-name="x.name" file-path="x.url"
+                                                  ng-repeat="x in projectDetail.attachments.control"></pic-view>
+                                    </div>
+                                    <span class="btn_bd downloadBale"
+                                          ng-if="projectDetail.attachments.control.length>=2" download-zip="projectDetail.attachments.control" zip-name="{{projectDetail.apply.projectName}}项目造价确认单">打包下载</span>
+                                </div>
+                                <div class="clear"></div>
+                            </div>
+                            <span class="word_center lookApproveInfo" ng-click="projectDetail.backAuditForm(projectDetail.attachments.projectCost[0].id)">&nbsp; &nbsp; 返回审批>></span>
+                        </div>
+                    </div>
+                    <div class="project_detail">
+                        <div class="project_info fl">
+                            <div class="border_wrapper" id="{{projectDetail.attachments.financeBudget[0].id}}">
+                                <div class="reDraft_list"
+                                     ng-class="{'loadBale_list':projectDetail.attachments.financeBudget.length>1}">
+                                    <span class="w250 word_center fl">项目财政预算评审单：</span>
+                                    <div class="bale_list fl">
+                                        <pic-view sp="true" file-name="x.name" file-path="x.url"
+                                                  ng-repeat="x in projectDetail.attachments.financeBudget"></pic-view>
+                                    </div>
+                                    <span class="btn_bd downloadBale"
+                                          ng-if="projectDetail.attachments.financeBudget.length>=2" download-zip="projectDetail.attachments.financeBudget" zip-name="{{projectDetail.apply.projectName}}项目财政预算评审单">打包下载</span>
+                                </div>
+                            </div>
+                            <span class="word_center lookApproveInfo" ng-click="projectDetail.backAuditForm(projectDetail.attachments.financeBudget[0].id)">&nbsp; &nbsp; 返回审批>></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 项目立项信息 -->
+                <div class="disposal_list">
+                    <div class="project_detail">
+                        <p class="file_preview_tit">
+                            <span>项目立项信息</span>
+                        </p>
+                        <div class="project_info fl" id="{{projectDetail.projectApprExamine}}">
+                            <div class="border_wrapper" id="projectApproval">
+                            <div class="reDraft_list">
+                                <span class="w250 word_center">项目立项材料：</span>
+                                <div class="bale_list word_center" style='max-width: 55%;' ng-if="projectDetail.hasProject">
+                                    <span class="col009" ng-click="projectDetail.openProject('approvalProject')">政府采购立项表｜</span>
+                                    <span class="col009" ng-click="projectDetail.openProject('approvalApply')">立项申请｜</span>
+                                    <span class="col009" ng-click="projectDetail.openProject('projectApply')">项目说明</span>
+                                </div>
+                            </div>
+                            </div>
+                            <span class="word_center lookApproveInfo" ng-click="projectDetail.backAuditForm('projectApproval')">&nbsp; &nbsp; 返回审批>></span><br>
+                            <div class="border_wrapper" id="{{projectDetail.attachments.projectApprExamine[0].id}}">
+                            <div class="reDraft_list"
+                                 ng-class="{'loadBale_list':projectDetail.attachments.projectApprExamine.length>1}">
+                                <span class="w250 word_center fl">项目立项材料纸质版（含签名盖章）：</span>
+                                <div class="bale_list fl">
+                                    <pic-view sp="true" file-name="x.name" file-path="x.url" ng-repeat="x in projectDetail.attachments.projectApprExamine"></pic-view>
+                                </div>
+                                <span class="btn_bd downloadBale"
+                                      ng-if="projectDetail.attachments.projectApprExamine.length>=2" download-zip="projectDetail.attachments.projectApprExamine" zip-name="{{projectDetail.apply.projectName}}项目立项材料纸质版">打包下载</span>
+                            </div>
+                            </div>
+                            <span class="word_center lookApproveInfo" ng-click="projectDetail.backAuditForm(projectDetail.attachments.projectApprExamine[0].id)">&nbsp; &nbsp; 返回审批>></span>
+                        </div>
+                    </div>
+                </div>
+                <!-- 项目后期信息 -->
+                <div class="disposal_list">
+                    <div class="project_detail">
+                        <p class="file_preview_tit">
+                            <span>项目后期信息</span>
+                        </p>
+                        <div class="project_info fl">
+                            <div class="reDraft_list">
+                                <span class="w250 word_center fl">项目招标代理公司：</span>
+                                <!--<span class="word_center">北京城市学院</span>-->
+                            </div>
+                            <div class="border_wrapper" id="{{projectDetail.attachments.projectProxy[0].id}}">
+                            <div class="reDraft_list" 
+                                 ng-class="{'loadBale_list':projectDetail.attachments.projectProxy.length>1}">
+                                <span class="w250 word_center fl">项目招标材料：</span>
+                                <div class="bale_list fl">
+                                    <pic-view sp="true" file-name="x.name" file-path="x.url"
+                                              ng-repeat="x in projectDetail.attachments.projectProxy"></pic-view>
+                                </div>
+                                <span class="btn_bd downloadBale"
+                                      ng-if="projectDetail.attachments.projectProxy.length>=2" download-zip="projectDetail.attachments.projectProxy" zip-name="projectDetail.apply.projectName">打包下载</span>
+                            </div>
+                            </div>
+                            <span class="word_center lookApproveInfo" ng-click="projectDetail.backAuditForm(projectDetail.attachments.projectProxy[0].id)">&nbsp; &nbsp; 返回审批>></span><br>
+                            <div class="border_wrapper" id="{{projectDetail.attachments.projectAgreementScript[0].id}}">
+                            <div id="{{projectDetail.projectRecord}}">
+                                <div class="reDraft_list fl"
+                                     ng-class="{'loadBale_list':projectDetail.attachments.projectAgreementScript.length>1}">
+                                    <span class="w250 word_center fl">项目合同原件扫描件：</span>
+                                    <div class="bale_list fl">
+                                        <pic-view sp="true" file-name="x.name" file-path="x.url"
+                                                  ng-repeat="x in projectDetail.attachments.projectAgreementScript"></pic-view>
+                                    </div>
+                                    <span class="btn_bd downloadBale"
+                                          ng-if="projectDetail.attachments.projectAgreementScript.length>=2" download-zip="projectDetail.attachments.projectAgreementScript" zip-name="{{projectDetail.apply.projectName}}项目合同原件扫描件">打包下载</span>
+                                </div>
+                                <div class="clear"></div>
+                                <div class="reDraft_list fl"
+                                     ng-class="{'loadBale_list':projectDetail.attachments.projectAgreementLawyer.length>1}">
+                                    <span class="w250 word_center fl">项目合同律师意见书：</span>
+                                    <div class="bale_list fl">
+                                        <pic-view sp="true" file-name="x.name" file-path="x.url"
+                                                  ng-repeat="x in projectDetail.attachments.projectAgreementLawyer"></pic-view>
+                                    </div>
+                                    <span class="btn_bd downloadBale"
+                                          ng-if="projectDetail.attachments.projectAgreementLawyer.length>=2" download-zip="projectDetail.attachments.projectAgreementLawyer" zip-name="{{projectDetail.apply.projectName}}项目合同律师意见书">打包下载</span>
+                                </div>
+                                <div class="clear"></div>
+                                <div class="reDraft_list fl"
+                                     ng-class="{'loadBale_list':projectDetail.attachments.projectRecord.length>1}">
+                                    <span class="w250 word_center fl">项目备案通知书：</span>
+                                    <div class="bale_list fl">
+                                        <pic-view sp="true" file-name="x.name" file-path="x.url"
+                                                  ng-repeat="x in projectDetail.attachments.projectRecord"></pic-view>
+                                    </div>
+                                    <span class="btn_bd downloadBale"
+                                          ng-if="projectDetail.attachments.projectRecord.length>=2" download-zip="projectDetail.attachments.projectRecord" zip-name="{{projectDetail.apply.projectName}}项目备案通知书">打包下载</span>
+                                </div>
+                                <div class="clear"></div>
+                            </div>
+                        </div>
+                        <span class="word_center lookApproveInfo" ng-click="projectDetail.backAuditForm(projectDetail.attachments.projectAgreementScript[0].id)">&nbsp; &nbsp; 返回审批>></span>
+                        </div>
+                    </div>
+                    <div class="project_detail">
+                        <div class="project_info fl">
+                            <div class="reDraft_list">
+                                <span class="w250 word_center">项目监理单位：</span>
+                                <!--<span class="word_center">北京城市学院</span>-->
+                            </div>
+                            <div class="border_wrapper" id="{{projectDetail.attachments.projectSupervision[0].id}}">
+                            <div class="reDraft_list" id="{{projectDetail.projectSupervision}}"
+                                 ng-class="{'loadBale_list':projectDetail.attachments.projectSupervision.length>1}">
+                                <span class="w250 word_center fl">项目监理材料：</span>
+                                <div class="bale_list fl">
+                                    <pic-view sp="true" file-name="x.name" file-path="x.url"
+                                              ng-repeat="x in projectDetail.attachments.projectSupervision"></pic-view>
+                                </div>
+                                <span class="btn_bd downloadBale"
+                                      ng-if="projectDetail.attachments.projectSupervision.length>=2" download-zip="projectDetail.attachments.projectSupervision" zip-name="{{projectDetail.apply.projectName}}项目监理材料">打包下载</span>
+                            </div>
+                            </div>
+                            <span class="word_center lookApproveInfo" ng-click="projectDetail.backAuditForm(projectDetail.attachments.projectSupervision[0].id)">&nbsp; &nbsp; 返回审批>></span><br>
+                            <div class="border_wrapper" id="{{projectDetail.attachments.projectBuild[0].id}}">
+                                <div class="reDraft_list"
+                                     ng-class="{'loadBale_list':projectDetail.attachments.projectBuild.length>1}">
+                                    <span class="w250 word_center fl">项目施工材料：</span>
+                                    <div class="bale_list fl">
+                                        <pic-view sp="true" file-name="x.name" file-path="x.url"
+                                                  ng-repeat="x in projectDetail.attachments.projectBuild"></pic-view>
+                                    </div>
+                                    <span class="btn_bd downloadBale"
+                                          ng-if="projectDetail.attachments.projectBuild.length>=2" download-zip="projectDetail.attachments.projectBuild" zip-name="{{projectDetail.apply.projectName}}项目施工材料">打包下载</span>
+                                </div>
+                            </div>
+                            <span class="word_center lookApproveInfo" ng-click="projectDetail.backAuditForm(projectDetail.attachments.projectBuild[0].id)">&nbsp; &nbsp; 返回审批>></span>
+                        </div>
+                    </div>
+                    <div class="project_detail">
+                        <div class="project_info fl">
+                            <div class="border_wrapper" id="{{projectDetail.attachments.projectReview[0].id}}">
+                            <div class="reDraft_list"
+                                 ng-class="{'loadBale_list':projectDetail.attachments.projectReview.length>1}">
+                                <span class="w250 word_center fl">项目决算申请材料：</span>
+                                <div class="bale_list fl">
+                                    <pic-view sp="true" file-name="x.name" file-path="x.url"
+                                              ng-repeat="x in projectDetail.attachments.projectReview"></pic-view>
+                                </div>
+                                <span class="btn_bd downloadBale"
+                                      ng-if="projectDetail.attachments.projectReview.length>=2" download-zip="projectDetail.attachments.projectReview" zip-name="{{projectDetail.apply.projectName}}项目决算申请材料">打包下载</span>
+                            </div>
+                            </div>
+                            <span class="word_center lookApproveInfo" ng-click="projectDetail.backAuditForm(projectDetail.attachments.projectReview[0].id)">&nbsp; &nbsp; 返回审批>></span><br>
+                            <div class="border_wrapper" id="{{projectDetail.attachments.projectResolve[0].id}}">
+                            <div class="reDraft_list" id="{{projectDetail.projectResolve}}"
+                                 ng-class="{'loadBale_list':projectDetail.attachments.projectResolve.length>1}">
+                                <span class="w250 word_center fl">项目决算评审报告：</span>
+                                <div class="bale_list fl">
+                                    <pic-view sp="true" file-name="x.name" file-path="x.url"
+                                              ng-repeat="x in projectDetail.attachments.projectResolve"></pic-view>
+                                </div>
+                                <span class="btn_bd downloadBale"
+                                      ng-if="projectDetail.attachments.projectResolve.length>=2" download-zip="projectDetail.attachments.projectResolve" zip-name="{{projectDetail.apply.projectName}}项目决算评审报告">打包下载</span>
+                            </div>
+                            </div>
+                            <span class="word_center lookApproveInfo" ng-click="projectDetail.backAuditForm(projectDetail.attachments.projectResolve[0].id)">&nbsp; &nbsp; 返回审批>></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 流程图 -->
+            <div ng-show="projectDetail.showTabs">
+                <div class="flow_title">
+                    <p>当前修缮项目所处流程进度状态： <span ng-class="{'red_color':projectDetail.apply.projectStatus==1,'green_color':projectDetail.apply.projectStatus==2}">{{projectDetail.apply.projectStatusName}}</span></p>
+                    <div style="margin: 10px 0">
+                        <span class="bd_solid col00b"></span>
+                        <span class="paddl20">已完成</span>
+                        <span class="bd_solid col999"></span>
+                        <span class="paddl20">未完成</span>
+                        <span class="bd_solid col009"></span>
+                        <span class="paddl20">当前代办</span>
+                        <span class="bd_solid colffc"></span>
+                        <span class="paddl20">待再次处理</span>
+                        <!--<span class="iconfont icon-done doneBtn"></span>-->
+                        <!--<span class="paddl20">通过</span>
+                        <span class="iconfont icon-done undoneBbtn"></span>
+                        <span class="paddl20">不通过</span>
+                        <span class="auditedBtn"></span>
+                        <span class="paddl20">通过且有审核意见</span>
+                        <span class="auditedBtn2"></span>
+                        <span class="paddl20">未通过且有审核意见</span>-->
+                        <p class="col999">鼠标移到通过和未通过图标上时会出现相应的审批意见详情。</p>
+                    </div>
+                </div>
+                <div class="flow_info_box">
+                    <div class="flow_info_detail fl" status-position="main_content">
+                    <span ng-repeat="stage in stagePosition|orderBy:'position'"
+                          ng-click="goPosition(stage.position,'main_content','flowContent')"
+                          ng-class="{'green':(projectDetail.apply.projectStatus==1||currentStage>stage.stageId||projectDetail.apply.projectStatus==2&&currentStage==stage.stageId),'blue':(projectDetail.apply.projectStatus==0&&currentStage==stage.stageId),'gray':currentStage<stage.stageId}">{{stage.stageName}} ></span>
+                    </div>
+                    <!-- 流程图位置 -->
+                    <div class="flow_chart_box">
+                        <audit-flow orderid='projectDetail.projectId' audit="projectDetail.auditInfo"></audit-flow>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div ng-if="!projectDetail.auditCancelBTN" class="reDraft_btn" style="padding:0">
+            <span class="btn_bd" ng-click="projectDetail.goBack()"  ng-if="!projectDetail.isAudit">返回</span>
+        </div>
+    </div>
+
+    <!--收起-->
+    <div class="stop_step" back-to-top=".main_content"></div>
+
+    <!-- 编辑弹窗 -->
+    <dialog ng-if="projectDetail.exit" modal>
+        <div dialog-content>
+            <outlay-from show="projectDetail.exit"></outlay-from>
+        </div>
+    </dialog>
+</div>

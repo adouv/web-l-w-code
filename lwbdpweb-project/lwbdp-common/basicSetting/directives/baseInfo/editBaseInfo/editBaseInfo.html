@@ -1,0 +1,16 @@
+<div class="editSalary">
+   <div class="header">
+       编辑基础信息模板
+       <span class="iconfont icon-close del_btn" ng-click="closeThisDialog()"></span>
+   </div>
+    <form class="w5c-form" w5c-form novalidate w5c-form-validate name="edit">
+        <div class="content">
+            <input type="text" class="input_class content-text" ng-model="editBaseInfo.name" name="name" required maxlength="10">
+            <div class="red_color">提示：不超过十个汉字，必填</div>
+        </div>
+        <div class="footer">
+            <div class="btn_bd" ng-click="closeThisDialog()">取消</div>
+            <div class="btn_bg" w5c-form-submit="editBaseInfo.editTitle(closeThisDialog)">确定</div>
+        </div>
+    </form>
+</div>

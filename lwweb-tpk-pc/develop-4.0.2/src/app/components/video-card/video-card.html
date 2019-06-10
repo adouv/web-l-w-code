@@ -1,0 +1,52 @@
+<div class="video-card" [ngClass]="{'video-disable':isDisabled && !video.hasPermission,'video-active':!isDisabled || video.hasPermission}">
+    <div class="inl-bl-mid video-item" [style.background]="video?.subjectCode | backgroundImgCss" (click)="onClick(video)">
+
+        <div class="video-box" [ngClass]="{'out-border': selectedIndex == video.index}">
+            <!-- <img *ngIf="video.subjectCode" src="{{video.subjectCode | courseImg}}" alt=""> -->
+            <!-- <div class="img-box-title">
+				<div title="{{video.lessonTitle?video.lessonTitle:'未配置课节名称'}}">
+					{{video.lessonTitle?video.lessonTitle:'未配置课节名称'}}
+				</div>
+			</div> -->
+            <div class="video-detail">
+                <div class="video-detail-subjectname">
+                    <span class="s1" [title]="video.subjectName" [ngClass]="{'s2':!video.lessonTitle}">{{ video.subjectName }}</span><span class="s3" [title]="video.lessonTitle" *ngIf="video.lessonTitle">（<span>{{ video.lessonTitle }}</span>）</span>
+                    <!-- <em class="iconfont xiazai"></em> -->
+                </div>
+                <div class="video-detail-teachername">
+                    <em class="iconfont video_start"></em>
+                    <div class="video-detail-teachername-info">
+                        <!-- <span [title]="video.lessonTitle">{{ video.lessonTitle }}</span> -->
+                        <span [title]="video.teacherName">{{ video.teacherName }}</span>
+                    </div>
+                    <div class="video-detail-teachername-class">
+                        <span [title]="video.gradeClass" class="video-detail-data-left">{{ video.gradeName }}{{ video.className }}</span>
+                    </div>
+                </div>
+                <div class="video-detail-data">
+                    <!-- <span [title]="video.gradeClass" class="video-detail-data-left">{{ video.gradeName }}{{ video.className }}</span> -->
+                    <div class="video-detail-data-right">
+                        <span>{{ video.startDate }}</span>
+                        <span>{{video.giveLessonTime|date:'yyyy/MM/dd'}}周{{video.giveLessonTime|dateToWeek}}第&nbsp;{{video.period}}节&nbsp;</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- <div flex="main:justify" class="txt-wrapper text-box" [ngClass]="{'active': actived}">
+			<p class="teacher-name" *ngIf="video.classesname">{{video.classesname}}</p>
+			<p class="teacher-name" *ngIf="!video.classesname">
+				{{video.gradeName}}{{video.className}}({{video.subjectName}})</p>
+			<p class="teacher-name stu-name">{{video.teacherName}}</p>
+		</div>
+		<p class="txt-wrapper class-name" flex="main:justify cross:center" [ngClass]="{'active': actived}">
+			<span *ngIf="video.datetimetext">{{video.datetimetext}}</span>
+			<span *ngIf="!video.datetimetext">{{video.giveLessonTime|date:'yyyy/MM/dd'}}周{{video.giveLessonTime|dateToWeek}}第{{video.period}}节</span>
+			<span *ngIf="video.totalClicks!=null">
+				<em class="iconfont icon-Look_icon inl-bl-mid"></em>
+				<span class="inl-bl-mid">{{video.totalClicks>10000?((video.totalClicks/10000).toFixed(2) + '万'):video.totalClicks}}次</span>
+			</span>
+		</p> -->
+        <!--<span class="ranking red">1</span>-->
+    </div>
+</div>

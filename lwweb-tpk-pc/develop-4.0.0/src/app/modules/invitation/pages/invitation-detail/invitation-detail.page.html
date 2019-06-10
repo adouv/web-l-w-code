@@ -1,0 +1,93 @@
+<div class="invitation-container auto-scroll">
+	<div class="app-adress">
+		<nz-breadcrumb [nzSeparator]="'>'">
+			<nz-breadcrumb-item>
+				<!--<span routerLink="/video/invitation" class="activeCrumb">评课邀请</span>-->
+				<a href="javascript:void(0);" (click)="routeGo('index')"  class="activeCrumb" >评
+			</a>
+			</nz-breadcrumb-item>
+            <nz-breadcrumb-item>
+				<!--<span routerLink="/video/invitation" class="activeCrumb">评课邀请</span>-->
+				<a href="javascript:void(0);"  (click)="routeGo('list')" class="activeCrumb">评课活动列表
+			</a>
+            </nz-breadcrumb-item>
+			<nz-breadcrumb-item>
+				评课详情
+			</nz-breadcrumb-item>
+		</nz-breadcrumb>
+	</div>
+	<div flex="dir:left box:last" class="video-content">
+		<div flex="dir:top" class="left-container">
+			<p class="header-title" >
+				<span class="title" [title]="title">{{currentClass?.lessonTitle?currentClass?.lessonTitle: ''}}
+				<span style="color: #333333" *ngIf="currentClass?.lessonTitle">&nbsp;/&nbsp;</span>
+				</span>
+				<span class="mar-rig-20px" [title]="title">
+					<span *ngIf="currentClass?.teacherName">{{currentClass?.teacherName}}&nbsp;-</span>
+					
+					{{currentClass?.subjectName}}&nbsp;-&nbsp;{{currentClass?.gradeName}}{{currentClass?.className}}
+						第{{currentClass?.giveLessonTime|dateToWeek}}周 第{{currentClass?.period}}节
+				</span></p>
+				<div class="auto-scroll-box auto-scroll">
+					<div flex-box="1" class="scroll-wrapper">
+						<div class="video-scroll" flex-box="1" scrollWidth>
+							<div class="video-wrapper">
+								<div scaleWidth="16" scaleHeight="9" scaleOrigin="width">
+										
+									<video-player [playType]="playType" *ngIf="player&&player.length>0&&player[0].errorMsg!=1&&player[0].mbPlayUrl&&!noSource" [source]="player"></video-player>
+									<div *ngIf="loadComplete&&(!player||!player[0]||!player[0].mbPlayUrl)||noSource" class="video-elliptical-page"
+										 flex="main:center cross:center">
+										<elliptical-page title="暂无匹配课堂回放数据" imgName="no_video.png"></elliptical-page>
+									</div>
+								</div>
+								<!--控制器-->
+								<div *permission="'camera:ptz'">
+									<!--<device-control *ngIf="source&&(source&&source.pcPlayUrl != null)" [camera]="source"></device-control>-->
+								</div>
+							</div>
+							<div>
+								<div class="title-wrapper"><h3>评课邀请包含课节</h3></div>
+								<div class="praise-wrapper">
+									<nz-tabset class="praise-person" [nzShowPagination]="true" nzSize="small"
+											   nzTabPosition="bottom">
+										<nz-tab *ngFor="let item of list;let i = index;">
+											<ng-template #nzTabHeading>
+												<video-card isDisabled [actived]="currentClassStartTime === item.giveLessonTime" (vclick)="onChangeCard($event)" [video]="item" [selectedIndex]="index" [lastIndex]="(i == (list.length - 1)) ? i : ''"></video-card>
+											</ng-template>
+										</nz-tab>
+									</nz-tabset>
+								</div>
+							</div>
+							<invitation-detail-tab [data]="data" [videoInfo]="videoInfo"></invitation-detail-tab>
+						</div>
+					</div>
+				</div>
+			
+		</div>
+		<div class="file-wrapper right-container" [ngClass]="{'margin-box':invitationType===0&&isAppraise === 1 }">
+			<!--<div class="tabs-content" [ngStyle]="{'height':invitationType === 0 ? 'auto': '100%' }">-->
+				<nz-select *ngIf="commentator.length > 0 &&
+				((invitationType===0&&isAppraise === 1)&&appraiserStatus===2||
+				(invitationType===0&&isAppraise === 1)&&isOutTime)"
+						   class="tb-select radius bg-gray" [ngModel]="currentAccountId"
+						   (ngModelChange)="changeAccount($event)">
+					<nz-option *ngFor="let option of commentator"
+						[nzLabel]="option.displayName"
+						[nzValue]="option.accountId">
+					</nz-option>
+				</nz-select>
+				<dynamic-tabs *ngIf="tabInputs&&tabInputs.length>0" [tabsComponents]="leftTabs"
+							  [tabOutputs]="tabOutputs" [tabInputs]="tabInputs"
+							  [(selectedIndex)]="selectedIndex"></dynamic-tabs>
+			<!--</div>-->
+			<!--<div class="footer" *ngIf="isEvaluated && invitationType===0 && !isOutTime">-->
+				<!--<button nz-button nzType="danger" (click)="evaluationClass()">提交</button>-->
+			<!--</div>-->
+		</div>
+	</div>
+	<div class="footer-wrapper" flex="main:center cross:center">
+		<button nzType="default" nz-button (click)="routeGo('list')">返回</button>
+		<button nzType="danger" [routerLink]="'/invitation/edit/' + data.id" *ngIf="isShowEdit" nz-button>编辑</button>
+		<button nzType="danger" *ngIf="params.tabIndex == 1" (click)="downEvaluationTemplate(data.id)"  nz-button >下载报告</button>
+	</div>
+</div>

@@ -1,0 +1,365 @@
+.link_list {}
+
+.link_list li {
+    height: 68px;
+    line-height: 68px;
+    border-bottom: 1px solid #ebebeb;
+    text-align: center;
+    position: relative;
+    background-repeat: no-repeat;
+    background-position: 60px 14px;
+    cursor: pointer;
+}
+
+.link_list li.garden {
+    background-image: url('../../image/garden.png');
+}
+
+.link_list li.scene {
+    background-image: url('../../image/scene.png');
+}
+
+.link_list li.module {
+    background-image: url('../../image/module.png');
+}
+
+.link_list li.event {
+    background-image: url('../../image/event.png');
+}
+
+.link_list li p.module_desc {
+    line-height: 28px;
+    margin-top: -28px;
+    text-align: right;
+    font-size: 12px;
+    margin-right: 6px;
+    display: none;
+}
+
+.link_list li.active p.module_desc {
+    color: #226cfb;
+    display: block;
+}
+
+.link_list li:hover {
+    background-color: #e9f1f7;
+}
+
+.link_list li.active {
+    background-color: #d0dae4;
+}
+
+.link_list li img {
+    position: absolute;
+    top: 16px;
+    left: 40px;
+    width: 40px;
+    height: 40px;
+    overflow: hidden;
+}
+
+.linkContent {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    padding: 50px 0;
+}
+
+.linkContent .bottom_posa {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background: #f2f2f2;
+    border-top: 1px solid #ebebeb;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    color: #666666;
+    cursor: pointer;
+}
+
+.linkContent .bottom_posa:hover span {
+    color: #226cfb;
+}
+
+.linkContent .bottom_posa span {
+    font-size: 24px;
+}
+
+.link_garden_list,
+.link_module_list {
+    width: 100%;
+    padding: 10px 10px 20px 10px;
+    height: 100%;
+}
+
+.link_garden_list li {
+    display: inline-block;
+    height: 50px;
+    line-height: 50px;
+    padding: 0 15px 0 10px;
+    margin: 10px;
+    border: 1px solid #ebebeb;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.link_garden_list li.top,
+.link_module_list dl.top {
+    background: #f2f2f2;
+}
+
+.link_garden_list li:hover,
+.link_module_list dl:hover {
+    background: #e9f1f7;
+}
+
+.link_garden_list li img {
+    width: 40px;
+    height: 40px;
+    vertical-align: middle;
+    overflow: hidden;
+}
+
+.link_garden_list li img[src=""] {
+    opacity: 0;
+}
+
+.link_module_list dl {
+    width: 200px;
+    height: 80px;
+    border: 1px solid #ebebeb;
+    border-radius: 6px;
+    cursor: pointer;
+    display: inline-block;
+    margin: 10px;
+    position: relative;
+    padding-left: 60px;
+}
+
+.link_module_list dl.right {
+    border: 2px solid #226cfb;
+}
+
+.link_module_list dl dt {
+    width: 40px;
+    height: 40px;
+    overflow: hidden;
+    left: 10px;
+    position: absolute;
+    top: 20px;
+    border-radius: 20px;
+}
+
+.link_module_list dl dt img {
+    width: 100%;
+    height: 100%;
+}
+
+.link_module_list dl dd {
+    width: 140px;
+    position: absolute;
+    top: 12px;
+    right: 0;
+}
+
+.link_module_list dl dd .name {
+    font-size: 16px;
+    line-height: 30px;
+    width: 133px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.link_module_list dl.right dt {
+    top: 19px;
+    left: 9px;
+}
+
+.link_module_list dl.right dd {
+    top: 11px;
+    right: -1px;
+}
+
+.link_module_list dl dd .garden {
+    line-height: 25px;
+    width: 133px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.link_search {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    padding-top: 50px;
+}
+
+.link_search .search_box,
+.linkContent .search_box {
+    height: 50px;
+    line-height: 50px;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    border-bottom: 1px solid #ebebeb;
+    padding-left: 20px;
+    margin: 0;
+    background: #ffffff;
+    z-index: 1;
+}
+
+.link_search .search_box {
+    text-align: center;
+}
+
+.link_search .search_input {
+    width: 100%;
+    margin: 10px 0 0 20px;
+    position: relative;
+}
+
+.link_search .search_input .search_input_icon {
+    width: 340px;
+    margin-bottom: 10px;
+    position: relative;
+}
+
+.link_search .search_input input {
+    width: 100%;
+}
+
+.link_search .search_input span {
+    position: absolute;
+    right: 10px;
+    top: 5px;
+    color: #226cfb;
+}
+
+.link_search .search_box p,
+.linkContent .search_box p {
+    margin-right: 20px;
+    width: 210px;
+    position: relative;
+    height: 30px;
+    margin-top: -2px;
+}
+
+.link_search .search_box .icon-back {
+    font-size: 24px;
+    cursor: pointer;
+    position: absolute;
+    left: 20px;
+    vertical-align: middle;
+}
+
+.link_search .search_box .icon-back:hover {
+    color: #226cfb;
+}
+
+.link_search .search_box input,
+.linkContent .search_box input {
+    width: 210px;
+    padding: 0 35px 0 10px;
+    height: 100%;
+}
+
+.link_search .search_box p span,
+.linkContent .search_box p span {
+    width: 16px;
+    height: 16px;
+    position: absolute;
+    top: 18px;
+    right: 10px;
+    border-radius: 9px;
+    line-height: 17px;
+    text-align: center;
+}
+
+.link_search .search_box p span.icon-close-circle,
+.linkContent .search_box p span.icon-close-circle {
+    color: #226cfb;
+}
+
+.link_search .search_box p span.icon-client_search,
+.linkContent .search_box p span.icon-client_search {
+    color: #999999;
+}
+
+.link_search .seacch_result {
+    height: calc(100% - 50px);
+    padding-left: 10px;
+}
+
+.link_search .seacch_result .title {
+    height: 58px;
+    line-height: 58px;
+    border-bottom: 1px solid #ebebeb;
+}
+
+.link_search .seacch_result .result_list {
+    padding-left: 10px;
+}
+
+.link_search .seacch_result dl {
+    width: 100%;
+    height: 68px;
+    position: relative;
+    padding: 10px 0 0 50px;
+    border-bottom: 1px solid #ebebeb;
+}
+
+.link_search .seacch_result dl:hover .link_btn {
+    display: block;
+}
+
+.link_search .seacch_result dl .link_btn {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    line-height: 68px;
+    width: 120px;
+    background: #d0dae4;
+    text-align: center;
+    cursor: pointer;
+}
+
+.link_search .seacch_result dl .link_btn span {
+    font-size: 24px;
+    margin-right: 10px;
+}
+
+.link_search .seacch_result dl dt {
+    position: absolute;
+    left: 0;
+    top: 14px;
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.link_search .seacch_result dl dt img {
+    width: 100%;
+    height: 100%;
+}
+
+.link_search .seacch_result dl dd {
+    height: 100%;
+    width: 100%;
+}
+
+.link_search .seacch_result dl dd .name {
+    line-height: 28px;
+}
+
+.link_search .seacch_result dl dd .garden {
+    line-height: 20px;
+    width: 130px;
+    font-size: 12px;
+    color: #999999;
+}

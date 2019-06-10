@@ -1,0 +1,82 @@
+<!--// 1 : 单选。 2： 多选。 3：判断。 4：一问一答， 6 组合题。 5：一问多单选 7一题多多选-->
+<div class="answer-card">
+	<!--子题类型 在组合体中出现-->
+	<div *ngIf="config?.type==6" class="exercise-editor-group-answer" [ngClass]="{'exercise-editor-group-answer-ueditor': config?.type==4||(config?.type==6&&exerciseTypeCheck?.type==4)}">
+		<span class="exercise-editor-group-answer-title">子题类型<span class="margin-left-5">:</span></span>
+		<nz-select class="exercises-header-select bg-gray radius margin-left-5"
+				   (nzOpenChange)="exerciseTypeChange()"
+				   [(ngModel)]="exerciseTypeCheck"
+				   [nzPlaceHolder]="exerciseTypes.length>0?exerciseTypes[0].name:'题目类型'">
+			<nz-option *ngFor="let type of exerciseTypes" [nzLabel]="type.name"
+					   [nzValue]="type">
+			</nz-option>
+		</nz-select>
+	</div>
+	<!--供选答案 在单选题和多选题 以及组合题中的单选和多选中出现-->
+	<div
+		*ngIf="config?.type==1||config?.type==2||config?.type==7||exerciseTypeCheck?.type==1||exerciseTypeCheck?.type==2"
+		class="exercise-editor-group-answer exercise-editor-group-answer-noUeditor">
+		<span class="exercise-editor-group-answer-title">供选答案<span class="margin-left-5">:</span></span>
+		<nz-select class="exercises-header-select bg-gray radius margin-left-5"
+				   (nzOpenChange)="selectNumChange()"
+				   [(ngModel)]="selectNumCheck"
+				   [nzPlaceHolder]="selectNum.length>0?selectNum[0]:'2'">
+			<nz-option *ngFor="let type of selectNum" [nzLabel]="type"
+					   [nzValue]="type">
+			</nz-option>
+		</nz-select>
+	</div>
+	<div class="exercise-editor-group-answer" flex="" [ngClass]="{'exercise-editor-group-answer-ueditor': config?.type==4||(config?.type==6&&exerciseTypeCheck?.type==4)}">
+		<span flex-box="0" class="exercise-editor-group-answer-title">正确答案<span class="margin-left-5">:</span></span>
+
+		<!--单选 在单选题和组合体中出现-->
+		<nz-radio-group *ngIf="config?.type==1||exerciseTypeCheck?.type==1" flex-box="1" [(ngModel)]="config.checked" (ngModelChange)="judgeChange(config)"
+						class="margin-left-5 line-height">
+			<label [ngClass]="{'margin-left-10':i!=0}" *ngFor="let answer of config.data;let i = index;" nz-radio [nzValue]="answer.value">
+				<span>{{answer.label}}</span>
+			</label>
+			<span *ngIf="config.errStatus" class="span-err">此项不能为空</span>
+		</nz-radio-group>
+
+		<!--多选题 在多选题和组合题和一题多多选中出现-->
+		<div *ngIf="config?.type==2||((config?.type==6||config?.type==7)&&exerciseTypeCheck?.type==2)" flex-box="1"
+			 class="margin-left-5 line-height">
+			<!--{{config.data[0].label}}-->
+			<label [ngClass]="{'margin-left-10':i!=0}" *ngFor="let type of config.data;let i = index;" nz-checkbox [(ngModel)]="type.checked" (ngModelChange)="judgeChange(config)">
+				<span>{{type.label}}</span>
+			</label>
+			<span *ngIf="config.errStatus" class="span-err">此项不能为空</span>
+		</div>
+
+		<!--判断题 在组合题和判断题中出现-->
+		<nz-radio-group *ngIf="config?.type==3||exerciseTypeCheck?.type==3" flex-box="1" [(ngModel)]="config.checked" (ngModelChange)="judgeChange(config)"
+						class="margin-left-5 line-height">
+			<label nz-radio [nzValue]="'对'">
+				<span>对</span>
+			</label>
+			<label class="margin-left-10" nz-radio [nzValue]="'错'">
+				<span>错</span>
+			</label>
+			<span *ngIf="config.errStatus" class="span-err">此项不能为空</span>
+		</nz-radio-group>
+
+		<!--编辑器 只在一问一答和组合题中出现-->
+		<div *ngIf="config?.type==4||(config?.type==6&&exerciseTypeCheck?.type==4)" class="exercise-editor-group-content-ueditor margin-left-10" [ngClass]="{'input-err':config.errStatus}">
+			<ueditor flex-box="1" #editfull
+					 class="ueditor" [config]="ueditorDynamicConfig" [(ngModel)]="config.data"(onContentChange)="ueditorChange(config)"></ueditor>
+		</div>
+
+
+		<!--一题多单选-->
+		<div *ngIf="config?.type==5" class="margin-left-5 line-height">
+			<div *ngFor="let d of config.data;let i = index" class="answer-input-group">
+				<span class="answer-input-group-title">{{d.title}}</span>
+				<input maxlength="5" [ngClass]="{'input-err': d.errStatus}" (keyup)="handleInput($event, d)" [(ngModel)]="d.model"   type="text" class="answer-input"/>
+				<div [ngClass]="{'answer-input-group-add-last-child':i==config.data.length-1}" class="answer-input-group-add">
+					<span *ngIf="i==config.data.length-1" (click)="addType5Answer()"><i class="iconfont icon-plus1"></i></span>
+					<span *ngIf="config.data.length>1&&i==config.data.length-1" (click)="removeType5Answer()"><i class="iconfont icon-minus1"></i></span>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

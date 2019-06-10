@@ -1,0 +1,41 @@
+<section class="row border-color">
+    <blockquote class="border-color">摄像头详细信息查看</blockquote>
+    <div class="garden-select">
+        <select class="form-control select-control" ng-change="toggleGarden()"
+                ng-model="gardenId"
+                ng-options="garden.id as garden.name for garden in gardens">
+        </select>
+    </div>
+</section>
+<section class="row" style="margin:20px 0;">
+    <div class="nav-form">
+        <input type="text" class="form-control" style="width: 190px" placeholder="请选择功能区" ng-model="keywords" ng-click="selectedArea()">
+        <button class="btn tpk-btn" style="margin-left: 10px;" id="lw-search">搜 索</button>
+    </div>
+    <!--<div class="input-border" style="width: 240px;position: relative">
+        <input type="text" class="form-control" placeholder="请输入关键字">
+        <i class="glyphicon glyphicon-search" style="position: absolute;top: 0;right: 0;padding: 0 10px;"></i>
+    </div>-->
+    <div class="btn-group">
+        <a class="btn btn-default tpk-btn-o" href="javascript:void(0);" ng-click="goCamera()">摄像头视角</a>
+    </div>
+</section>
+<section class="row">
+    <table class="table">
+        <thead>
+        <tr class="active">
+            <td>序号</td>
+            <td>功能分区</td>
+            <td>所含摄像头</td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="data in datas">
+            <td>{{$index+1}}</td>
+            <td>{{data.areaName}}</td>
+            <td title="{{data.list|foreach:'name':'；'}}"><span ng-if="$index<6" ng-repeat="camera in data.list">{{camera.name}}；</span><span ng-if="data.list.length>5">…</span></td>
+        </tr>
+        </tbody>
+    </table>
+</section>
+<lw-page url="/camera/page" garden-id="{{gardenId}}" view="{{view}}"></lw-page>

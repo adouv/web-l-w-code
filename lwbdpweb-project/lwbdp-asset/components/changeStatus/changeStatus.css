@@ -1,0 +1,35 @@
+/*开关按钮样式*/
+
+.on_btn {
+    width: 46px;
+    height: 21px;
+    background-image: url(./image/off_btn.png);
+    position: relative;
+    top: 0;
+    left: 30px;
+    cursor: pointer;
+}
+
+.on_btn.cur {
+    background-image: url(./image/on_btn.png);
+}
+
+.on_btn.cur .white_btn {
+    left: 27px;
+}
+
+.white_btn {
+    width: 20px;
+    height: 21px;
+    background-image: url(./image/white_btn.png);
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    cursor: pointer;
+    z-index: 99;
+}
+
+
+/*.white_btn.cur {
+    left: 27px;
+}*/

@@ -1,0 +1,475 @@
+.btn_bd {
+  display: inline-block;
+  padding: 0 15px;
+  height: 30px;
+  line-height: 30px;
+  border: 1px solid #0096ff;
+  color: #0096ff;
+  font-size: 14px;
+  border-radius: 3px;
+  cursor: pointer;
+  vertical-align: middle;
+  min-width: 70px;
+  text-align: center;
+}
+
+.btn_bd:hover {
+  border-style: solid;
+  border-width: 1px;
+  border-color: #0096ff;
+  border-radius: 3px;
+  background-color: #ffffff;
+  box-shadow: 0px 2px 4px 0px rgba(0, 127, 255, 0.5);
+  height: 30px;
+}
+
+
+/*清除默认checkbox样式*/
+
+.checkbox_class {
+  width: 16px;
+  height: 16px;
+  -webkit-appearance: none;
+  cursor: pointer;
+  filter: alpha(opacity=50);
+  background: url(/assets/img/check_box_default.png) no-repeat;
+  vertical-align: middle;
+}
+
+.checkbox_list {
+  color: #333;
+  font-size: 14px;
+  float: left;
+  margin-right: 12px;
+}
+
+.checkbox_class:checked {
+  background: url(/assets/img/check_box_choice.png) no-repeat;
+  border: 0;
+}
+
+.overflow_hide {
+  overflow: hidden;
+}
+
+.select_class option {
+  width: 100%;
+}
+
+.radio_class:checked {
+  background-image: url("/assets/img/radio_box_choice.png");
+}
+
+.textarea_class {
+  border: 1px solid #dbe3ee;
+  padding: 3px;
+}
+
+.textarea_class:focus {
+  border-color: #0096ff;
+}
+
+.input_class {
+  width: 160px;
+  height: 30px;
+  line-height: 30px;
+  border: 1px solid #dbe3ee;
+  box-sizing: border-box;
+  margin: 0 10px 0 0;
+  padding: 0 10px;
+  vertical-align: middle;
+}
+
+.input_class,
+.textarea_class {
+  font-size: 14px;
+  color: #0096ff;
+  text-shadow: 0px 0px 0px #333333;
+  -webkit-text-fill-color: transparent;
+}
+
+.textarea_class {
+  padding: 10px;
+}
+
+input::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder {
+  text-shadow: none;
+  -webkit-text-fill-color: initial;
+  color: #999999;
+}
+
+.input_class:focus {
+  border-color: #0096ff;
+}
+
+.btn_bd {
+  display: inline-block;
+  padding: 0 15px;
+  height: 30px;
+  line-height: 30px;
+  border: 1px solid #0096ff;
+  color: #0096ff;
+  font-size: 14px;
+  border-radius: 3px;
+  cursor: pointer;
+  vertical-align: middle;
+  min-width: 70px;
+  text-align: center;
+  background-color: #fff;
+}
+
+.btn_bd.disabled {
+  opacity: .5;
+  cursor: default;
+}
+
+.btn_bd.disabled:hover {
+  box-shadow: none;
+}
+
+.btn_bd:hover {
+  border-style: solid;
+  border-width: 1px;
+  border-color: #0096ff;
+  border-radius: 3px;
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px 0 rgba(0, 127, 255, 0.5);
+  height: 30px;
+}
+
+.btn_margin {
+  margin-left: 14px;
+}
+
+.btn_box {
+  text-align: center;
+  padding: 10px 0;
+  width: 100%;
+}
+
+.btn_bg {
+  margin-left: 10px;
+  display: inline-block;
+  padding: 0 15px;
+  height: 30px;
+  line-height: 30px;
+  background-color: #0096ff;
+  border: 1px solid #0096ff;
+  color: #fff;
+  font-size: 14px;
+  border-radius: 3px;
+  cursor: pointer;
+  vertical-align: middle;
+  min-width: 70px;
+  text-align: center;
+}
+
+.btn_bg:hover {
+  border-style: solid;
+  border-width: 1px;
+  border-color: #0096ff;
+  border-radius: 3px;
+  background-color: #0096ff;
+  box-shadow: 0 2px 4px 0 rgba(0, 127, 255, 0.5);
+  height: 30px;
+}
+
+.yellow_color {
+  color: #ffb900 !important;
+}
+
+.red_color {
+  color: #ff272e !important;
+}
+
+.green_color {
+  color: #00bb8b !important;
+}
+
+.col999 {
+  color: #999 !important;
+}
+
+.input_class::-webkit-input-placeholder {
+  color: #999999;
+  font-size: 12px;
+}
+
+html::-webkit-scrollbar-track {
+  border-radius: 10px;
+  background-color: #ffffff;
+}
+
+html::-webkit-scrollbar {
+  width: 10px;
+  background-color: #ffffff;
+}
+
+html::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.overflow_box {
+  overflow: auto;
+}
+
+.overflow_box::-webkit-scrollbar-track {
+  border-radius: 10px;
+  background-color: #ffffff;
+}
+
+.overflow_box::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+  background-color: #ffffff;
+}
+
+.overflow_box::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.overflow_box_sml {
+  overflow: auto;
+}
+
+.overflow_box_sml::-webkit-scrollbar-track {
+  border-radius: 10px;
+  background-color: #ffffff;
+}
+
+.overflow_box_sml::-webkit-scrollbar {
+  width: 8px;
+  height: 10px;
+  background-color: #ffffff;
+}
+
+.overflow_box_sml::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.edit_btn {
+  font-size: 20px;
+  color: #786cec;
+}
+
+input[type=checkbox],
+input[type=radio] {
+  margin: 0 5px 0 0;
+}
+
+input[type=file]:focus,
+input[type=checkbox]:focus,
+input[type=radio]:focus {
+  outline: none;
+}
+
+label {
+  font-weight: normal;
+  margin-bottom: 0 !important;
+}
+
+.confirmNoIcon {
+  width: 400px;
+  height: 200px;
+  position: relative;
+}
+
+.confirmNoIcon .layui-layer-btn {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+.confirmNoIcon .layui-layer-btn0,
+.confirmNoIcon .layui-layer-btn1 {
+  width: 70px;
+  height: 30px;
+  border: 1px solid #0096ff !important;
+}
+
+.confirmNoIcon .layui-layer-btn0:hover,
+.confirmNoIcon .layui-layer-btn1:hover {
+  box-shadow: 0 2px 4px 0 #0096ff;
+}
+
+.confirmNoIcon .layui-layer-btn .layui-layer-btn0 {
+  color: #0096ff;
+  background-color: #ffffff;
+}
+
+.confirmNoIcon .layui-layer-btn1 {
+  background: #0096ff;
+  color: #ffffff;
+}
+
+
+/*开关按钮样式*/
+
+.on_btn {
+  width: 46px;
+  height: 21px;
+  background-image: url(/assets/img/off_btn.png);
+  position: relative;
+  top: 0;
+  left: 30px;
+  cursor: pointer;
+}
+
+.on_btn.cur {
+  background-image: url(/assets/img/on_btn.png);
+}
+
+.white_btn {
+  width: 20px;
+  height: 21px;
+  background-image: url(/assets/img/white_btn.png);
+  position: absolute;
+  top: 0;
+  left: 0;
+  cursor: pointer;
+  z-index: 99;
+}
+
+.white_btn.cur {
+  left: 27px;
+}
+
+
+/* 表格中字体按钮样式*/
+
+.table_box table span.iconfont {
+  font-size: 20px;
+  color: #786cec;
+  padding: 5px;
+  cursor: pointer;
+  visibility: hidden;
+}
+
+.table_box table tr:hover span.iconfont {
+  visibility: inherit;
+}
+
+
+/*弹窗表格中样式*/
+
+.table_layer {
+  margin-top: 10px;
+  width: 100%;
+  position: relative;
+  max-height: 370px;
+  overflow: auto;
+  padding: 0 10px;
+  box-sizing: border-box;
+}
+
+.table_layer.dialog_log {
+  height: 430px;
+  max-height: none;
+}
+
+.max_height {
+  max-height: 442px;
+  overflow: auto;
+}
+
+.table_layer::-webkit-scrollbar-track,
+.max_height::-webkit-scrollbar-track {
+  border-radius: 10px;
+  background-color: #ffffff;
+}
+
+.table_layer::-webkit-scrollbar,
+.max_height::-webkit-scrollbar {
+  width: 10px;
+  background-color: #ffffff;
+}
+
+.table_layer::-webkit-scrollbar-thumb,
+.max_height::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.table_layer .line_strip {
+  position: absolute;
+  top: -4px;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background-image: -webkit-linear-gradient(left, #786cec 20%, #3c76f6 20%, #008aff 20%, #0096ff 20%, #017eff 20%);
+  background-image: -o-linear-gradient(left, #786cec 20%, #3c76f6 20%, #008aff 20%, #0096ff 20%, #017eff 20%);
+  background-size: 100% 4px;
+  background-position: top right;
+  background-repeat: no-repeat;
+}
+
+.table_layer .listTable {
+  width: 100%;
+  border: 1px solid #dae4ee;
+}
+
+.table_layer .listTable th {
+  background: #f8f8f8;
+  height: 40px;
+  padding: 5px;
+  font-size: 14px;
+  color: #333;
+  font-weight: bold;
+  border: 1px solid #dbe3ee;
+  border-top: 0;
+  text-align: center;
+}
+
+.table_layer .listTable tr td {
+  font-size: 14px;
+  color: #333333;
+  padding: 5px;
+  height: 40px;
+  border: 1px solid #dbe3ee;
+  max-width: 100px;
+  text-align: center;
+}
+
+.table_layer table label {
+  margin: 0 !important;
+}
+
+.basicTab tr:hover {
+  cursor: default !important;
+}
+
+.contentWrapper::-webkit-scrollbar-track {
+  border-radius: 10px;
+  background-color: #ffffff;
+}
+
+.contentWrapper::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+  background-color: #ffffff;
+}
+
+.contentWrapper::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.main_content::-webkit-scrollbar-track {
+  border-radius: 10px;
+  background-color: #ffffff;
+}
+
+.main_content::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+  background-color: #ffffff;
+}
+
+.main_content::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0.2);
+}

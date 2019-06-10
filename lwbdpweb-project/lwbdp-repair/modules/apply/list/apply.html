@@ -1,0 +1,150 @@
+<div class="main_in">
+    <!--搜索区域-->
+    <div class="search_box clearfix">
+        <div>
+            <div class="content_textBar">
+                <input type="text" maxlength="50" class="input_class" placeholder="回车键提交查询"  ng-model="repairApplyList.condition.keywords" ng-keydown="repairApplyList.goSearch($event)">
+                <span class="iconfont icon-search" ng-if="repairApplyList.condition.keywords.length === 0"></span>
+                <span class="iconfont icon-error" ng-if="repairApplyList.condition.keywords.length > 0" ng-click="repairApplyList.cleanKeywords()"></span>
+            </div>
+            <a href="javascript:void(0)" class="more_search" ng-click="repairApplyList.getMoreSearch()">更多条件查询 ></a>
+        </div>
+        <div class="search_result" ng-if="repairApplyList.isShowCancel">搜索条件：
+            <span ng-if="repairApplyList.condition.applyYearStart && repairApplyList.condition.applyYearEnd">
+                项目申报年份（{{repairApplyList.condition.applyYearStart}}~{{repairApplyList.condition.applyYearEnd}}）
+            </span>
+            <span ng-if="repairApplyList.condition.gardenList && repairApplyList.condition.gardenList.length > 0">
+                项目申报单位（<span ng-repeat="garden in repairApplyList.condition.gardenList">{{garden.name}}；</span>）
+            </span>
+            <span ng-if="repairApplyList.condition.categoryListName">项目所属类别（{{repairApplyList.condition.categoryListName}}）</span>
+            <span ng-if="repairApplyList.condition.kindName">项目配标类别（{{repairApplyList.condition.kindName}}）</span>
+            <span ng-if="repairApplyList.condition.stageName">项目所属阶段（{{repairApplyList.condition.stageName}}）</span>
+            <span ng-if="repairApplyList.condition.statusName">项目所处状态（{{repairApplyList.condition.statusName}}）</span>
+            <span ng-if="repairApplyList.condition.applyAccount">项目申报人（{{repairApplyList.condition.applyAccount}}）</span>
+            <span ng-if="repairApplyList.condition.createTimeStart && repairApplyList.condition.createTimeEnd">
+                项目提交时间段（{{repairApplyList.condition.createTimeStart}}~{{repairApplyList.condition.createTimeEnd}}）
+            </span>
+            <span ng-if="repairApplyList.condition.taskTimeStart&&repairApplyList.condition.taskTimeEnd">
+                任务生成时间段（{{repairApplyList.condition.taskTimeStart}}~{{repairApplyList.condition.taskTimeEnd}}）
+            </span>
+            <span ng-if="repairApplyList.isShowCancel" class="iconfont icon-error" ng-click="repairApplyList.deleteCondition()"></span>
+        </div>
+    </div>
+    <!--总计-->
+    <div class="total_num allswitch">
+        <div class="tot_left fl">
+            <!--<span class="iconfont icon-switch switch_btn"></span>-->
+            <span>总计 <em class="num">{{repairApplyList.pageConfig.totalItems}}</em> 条</span>
+            <span>，其中等待您去处理的项目 <em class="num yellow_color" >{{repairApplyList.waitdealcount}}</em> 条，</span>
+            <span>已完成{{repairApplyList.stageName}}的项目 <em class="num green_color">{{repairApplyList.finishcount}}</em> 条</span>
+        </div>
+        <div class="fr ">
+            <span class="btn_bd" has-permission="repair:processConfig:create" ng-if="repairApplyList.stageOrder == 1 && repairApplyList.isApply" ui-sref="repair.draft({processConfigId:repairApplyList.processConfigId,sidebarId:repairApplyList.sidebar.id||sidebar.id})">草稿箱</span>
+            <span class="btn_bg margap" has-permission="repair:processConfig:create" ng-if="repairApplyList.stageOrder == 1 && repairApplyList.isApply" ui-sref="repair.append({processConfigId:repairApplyList.processConfigId,sidebarId:repairApplyList.sidebar.id||sidebar.id})">添加</span>
+            <span class="btn_bd " ng-click="repairApplyList.exportExcel()">导出</span>
+        </div>
+    </div>
+    <!-- 表格 -->
+    <div class="line_pad" auto-width=".table_absolute" watch-change="repairApplyList.pageList">
+        <div class="line_strip"></div>
+        <div class="table_box">
+            <table class="listTable">
+                <thead  id="theadTh">
+                    <th width="5%">
+                        <label for="dsa">序号</label>
+                    </th>
+                    <!--<th width="70">序号</th>-->
+                    <th width="9%">项目类别</th>
+                    <th width="15%">项目名称</th>
+                    <th width="10%">项目单位</th>
+                    <th width="9%">校内优先级</th>
+                    <th width="8%">申报人</th>
+                    <!--<th width="140">任务生成时间</th>-->
+                    <th width="13%" ng-if="repairApplyList.taskType!==null">任务生成时间</th>
+                    <th width="15%">项目阶段</th>
+                    <th width="8%">项目状态</th>
+                    <th width="8%" ng-if="repairApplyList.taskType!==null">任务状态</th>
+                </thead>
+            </table>
+        </div>
+    </div>
+    <div class="table_absolute overflow_box">
+        <div class="table_box">
+            <!--我的项目、审批、项目库-->
+            <table class="listTable">
+                <tbody>
+                    <tr table-width ng-repeat="data in repairApplyList.pageList track by $index" ng-click="repairApplyList.goDetail(data.projectId,data.projectStatus,data.taskStatus)">
+                        <td>
+                            {{ $index+1 }}
+                        </td>
+                        <td>
+                            {{ data.categoryName }}
+                        </td>
+                        <td>
+                            {{ data.projectName }}
+                        </td>
+                        <td>
+                            {{ data.projectGarden }}
+                        </td>
+                        <td>
+                            {{ data.priorityName }}
+                        </td>
+                        <td>
+                            {{ data.applyAccount }}
+                        </td>
+                        <td>
+                            {{ data.taskTime | date:'yyyy-MM-dd HH:mm' }}
+                        </td>
+                        <td>
+                            {{ data.currTaskStageName }}
+                        </td>
+                        <!--项目状态-->
+                        <td>
+                            <span ng-class="{'yellow_color':data.projectStatus === 2&& data.taskStatus=== 1,
+                                            'green_color':data.projectStatus===0&&data.taskStatus===0,
+                                            'col999':data.projectStatus === 1 && data.taskStatus=== 1}">
+                                {{data.projectStatusName }}</span>
+                        </td>
+
+                        <!--任务状态-->
+                        <td ng-show="repairApplyList.taskType!==null">
+                            <span class="green_color" ng-if="data.projectStatus===0&&data.taskStatus===0">
+                                {{ data.taskStatusName }}（{{data.taskCount}}th）
+                            </span>
+                            <span class="yellow_color" ng-if="data.projectStatus===2&&data.taskStatus===1">
+                                {{ data.taskStatusName }}
+                            </span>
+                            <span ng-if="data.projectStatus===0&&data.taskStatus===1">
+                                {{ data.taskStatusName }}
+                            </span>
+                            <span class="col999" ng-if="data.projectStatus===1&&data.taskStatus===1">
+                                {{ data.taskStatusName }}
+                            </span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <pagination conf="repairApplyList.pageConfig " ng-show="repairApplyList.pageList.length>0"></pagination>
+        <!-- 暂无数据、暂无搜索结果-->
+        <div class="nodata_box" ng-show="repairApplyList.pageList.length<1">
+            <div class="nodata" ng-show="repairApplyList.pageList.length===0 && !(repairApplyList.keywords && repairApplyList.keywords !=='')">
+                <span></span>
+                <p>暂无数据</p>
+            </div>
+            <div class="nodata_search" ng-show="repairApplyList.keywords && repairApplyList.keywords !== ''">
+                <span></span>
+                <p>搜索无结果</p>
+            </div>
+        </div>
+    </div>
+    <instructions module-code="repair"></instructions>
+</div>
+
+<!-- 修缮类型的弹窗 -->
+<dialog ng-if="repairApplyList.isRepairTypeShow" modal>
+    <div dialog-content>
+        <repair-type show="repairApplyList.isRepairTypeShow" ids="repairApplyList.condition.categoryIds" names="repairApplyList.condition.categoryNames"></repair-type>
+    </div>
+</dialog>

@@ -1,0 +1,30 @@
+<div class="video-task" flex="dir:top">
+    <div flex-box="0" class="video-task-filter">
+        <select-group titles="按年级" *ngIf="gradeList && gradeList.length>0" [model]="gradeId" [data]="gradeList" (selectEvent)="changeClass($event)"></select-group>
+        <select-group titles="按班级" *ngIf="classesList && classesList.data.length>0 && gradeId!=''" [model]="selectData.classId" [data]="classesList.data" (selectEvent)="selectedClass($event)"></select-group>
+        <select-group titles="按学科" *ngIf="subjectList && subjectList.data.length>0 && gradeId!=''" [model]="selectData.subjectCode" [data]="subjectList.data" (selectEvent)="selectedSubject($event)"></select-group>
+        <select-group titles="按老师" *ngIf="teacherList && teacherList.data.length>0 && gradeId!=''" [model]="selectData.teacherId" [data]="teacherList.data" (selectEvent)="selectedTeacher($event)"></select-group>
+    </div>
+    <div flex="main:center cross:center" *ngIf="unicastList.length==0">
+        <elliptical-page *ngIf="isloadComplete&&unicastList.length==0" title="{{defaultMessage.title}}" imgName="{{defaultMessage.imgName}}"></elliptical-page>
+        <div *ngIf="!isloadComplete" class="loading" flex="main:center cross:center">
+            <nz-spin [nzSize]="'large'"></nz-spin>
+        </div>
+    </div>
+
+    <div class="unicast-list-content" flex="dir:top">
+        <div flex-box="1" class="unicast-list-scroll auto-scroll">
+            <div class="unicast-list-scroll-item" *ngIf="unicastList.length > 0" [ngStyle]="{'overflow' : 'hidden'}">
+                <video-card-one [selectIndex]="selectIndex" *ngFor="let video of rank.list" [videoQueryParams]="videoQueryParams" [typeIndex]="1" [video]="video"></video-card-one>
+                <div *ngIf="!isloadComplete" class="isScroll" flex="main:center cross:center">
+                    <nz-spin [nzSize]="'large'"></nz-spin>
+                </div>
+            </div>
+
+            <div class="clear"></div>
+            <p class="click-show-more" *ngIf="isloadComplete && unicastList.length > 0" [ngClass]="{'pointer':rank.total > rank.page.offset}" (click)="changeList($event, rank)">
+                {{rank.total > rank.page.offset?'点击加载更多':'已加载全部'}}
+            </p>
+        </div>
+    </div>
+</div>

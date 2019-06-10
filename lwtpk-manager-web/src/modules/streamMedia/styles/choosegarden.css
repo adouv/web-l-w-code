@@ -1,0 +1,18 @@
+.modal-title {font-size: 16px;font-weight: bold;}
+.modal-body .form-group{position: relative}
+.modal-body .search-group{width: 100%;}
+.modal-body .tpk-btn{padding-left: 20px;padding-right: 20px}
+.modal-body button.icon {border: 0;outline: 0;background: rgba(255,255,255,0);position: absolute;right: 0;top:0;padding: 6px 12px}
+.modal-body .list-header .form-group{border-bottom: 1px solid #ccc;width: 100%}
+.modal-body .form-group #checkAll {margin-right: 5px;}
+.modal-body .form-group label.checkbox {line-height: 28px}
+.modal-body .form-inline .checkboxClass {margin-top:6px;}
+.modal-body .subject-list .form-inline{line-height: 28px;margin-left: 8px;}
+.modal-body .subject-list .form-inline input.checkboxClass{margin-right: 10px}
+.gardenList{margin: 0;padding:0 1%;}
+.gardenList li{ line-height: 30px;height: 30px;width: 48%;display: inline-block;}
+.chooseGarden .list-header{height:150px;overflow: auto;}
+.modal-footer{text-align: center;}
+.modal-footer p{text-align: left;font-size: 16px;}
+.modal-footer .tpk-btn-o{margin-left: 30px;}
+.garden-name {margin-left:5px;position: relative;bottom: 2px;}

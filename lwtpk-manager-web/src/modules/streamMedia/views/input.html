@@ -1,0 +1,149 @@
+<div class="mediaInput">
+  <p class="breadnav bgnone">
+    <span ng-click="toBack()">园区流媒体接口信息管理--></span><span class="cur">园区流媒体接口信息{{id?'编辑':'添加'}}</span>
+  </p>
+  <!--<section class="row border-color inputTit">-->
+    <!--<blockquote class="border-color inputTit">园区流媒体1111接口信息{{id?'编辑':'添加'}}</blockquote>-->
+  <!--</section>-->
+  <section class="row border-color inputTit">
+    <blockquote class="border-color inputTit">园区流媒体接口信息{{id?'编辑':'添加'}}</blockquote>
+  </section>
+
+  <form class="w5c-form" w5c-form novalidate w5c-form-validate name="streamMediaForm">
+    <div class="inputform">
+      <div class="formitem">
+        <div class="itemname">所属园区</div><span>*</span>
+        <div class="itemcon">
+          <input type="text" style="width: 66%;padding-left: 8px" class="form-control" ng-model="gardenNames" name="gardenNames" required readonly ng-value="gardenNames" ng-click="chooseGarden()"/>
+        </div>
+      </div>
+      <div class="formitem">
+        <div class="itemname">流媒体服务器地址和端口号</div><span>*</span>
+        <div class="itemcon">
+          <input type="text" style="width: 35%;" class="form-control"
+                 name="ip"
+                 ng-pattern="patterns.ip" required placeholder="请输入IP地址或对应域名" ng-value="streamMedia.ip" ng-model="streamMedia.ip">
+          <input type="text" style="width: 27%;" class="form-control" name="port"
+                 ng-pattern="/^([0-9]|[1-9]\d|[1-9]\d{2}|[1-9]\d{3}|[1-5]\d{4}|6[0-4]\d{3}|65[0-4]\d{2}|655[0-2]\d|6553[0-5])$/"
+                 required placeholder="请输入端口号" ng-value="streamMedia.port" ng-model="streamMedia.port" >
+          <!--<button class="btn btn-default btn-sm tpk-btn-o">测试连通性</button>-->
+        </div>
+      </div>
+      <div class="formitem">
+        <div class="itemname">流媒体平台版本名称</div><span>*</span>
+        <div class="itemcon">
+          <select class="form-control select-control" style="width: 66%; padding-left:12px" ng-change="platformChange()" name="version" ng-model="version"
+                  ng-options="platform.platformCode  as platform.platformName for platform in platforms"  required>
+          </select>
+        </div>
+      </div>
+      <!--可控制是否显示,默认隐藏-->
+      <div class="btm-line"></div>
+        <div class="chooseshow">
+            <div class="formitem" ng-repeat="im in versionItems.items" >
+                <div class="itemname">{{im.itemName}}</div><span>*</span>
+                <div class="itemcon">
+                    <input ng-if="patterns.port.include.indexOf(im.itemCode) != -1" type="text" style="width: 66%;" class="form-control" required
+                           ng-pattern="/^([0-9]|[1-9]\d|[1-9]\d{2}|[1-9]\d{3}|[1-5]\d{4}|6[0-4]\d{3}|65[0-4]\d{2}|655[0-2]\d|6553[0-5])$/"
+                           name="{{im.itemCode}}" ng-model="$parent.itemMap[im.itemCode]" ng-value="$parent.itemMap[im.itemCode]" >
+
+                    <input ng-if="patterns.root.include.indexOf(im.itemCode) != -1" type="text" style="width: 66%;" maxlength="100" class="form-control" name="{{im.itemCode}}" ng-model="$parent.itemMap[im.itemCode]" ng-value="$parent.itemMap[im.itemCode]"  required>
+
+                    <input ng-if="patterns.users.include.indexOf(im.itemCode) != -1" type="text" style="width: 66%;" maxlength="20" class="form-control"name="{{im.itemCode}}" ng-model="$parent.itemMap[im.itemCode]" ng-value="$parent.itemMap[im.itemCode]"  required>
+
+                    <input ng-if="patterns.disable.include.indexOf(im.itemCode) != -1" readonly type="text" style="width: 66%;"  class="form-control"name="{{im.itemCode}}" ng-model="$parent.itemMap[im.itemCode]" ng-value="$parent.itemMap[im.itemCode]"  required>
+
+                    <input ng-if="patterns.other.include.indexOf(im.itemCode) != -1"  type="text" style="width: 66%;"  class="form-control"name="{{im.itemCode}}" ng-model="$parent.itemMap[im.itemCode]" ng-value="$parent.itemMap[im.itemCode]"  required>
+                    <!--<input ng-else type="text" style="width: 66%;" maxlength="100" class="form-control" name="{{im.itemCode}}" ng-model="$parent.itemMap[im.itemCode]" ng-value="$parent.itemMap[im.itemCode]"  required>-->
+                </div>
+                <p ng-if="patterns.root.include.indexOf(im.itemCode) != -1">{{patterns.root[im.itemCode]}}</p>
+            </div>
+        </div>
+      <!--<div class="chooseshow" ng-show="version=='shijikuihua'">-->
+        <!--<div class="formitem">-->
+          <!--<div class="itemname">rtmp端口</div><span>*</span>-->
+          <!--<div class="itemcon">-->
+            <!--<input type="text" style="width: 66%;" class="form-control" required-->
+                   <!--ng-pattern="/^([0-9]|[1-9]\d|[1-9]\d{2}|[1-9]\d{3}|[1-5]\d{4}|6[0-4]\d{3}|65[0-4]\d{2}|655[0-2]\d|6553[0-5])$/"-->
+                   <!--name="rtmpPort" ng-model="streamMedia.rtmpPort" ng-value="streamMedia.rtmpPort" >-->
+          <!--</div>-->
+        <!--</div>-->
+        <!--<div class="formitem">-->
+          <!--<div class="itemname">移动端点播端口</div><span>*</span>-->
+          <!--<div class="itemcon"><input type="text" style="width: 66%;"-->
+                                      <!--ng-pattern="/^([0-9]|[1-9]\d|[1-9]\d{2}|[1-9]\d{3}|[1-5]\d{4}|6[0-4]\d{3}|65[0-4]\d{2}|655[0-2]\d|6553[0-5])$/"-->
+                                      <!--class="form-control" name="mbRecordPort" ng-model="streamMedia.mbRecordPort" ng-value="streamMedia.mbRecordPort" required ></div>-->
+        <!--</div>-->
+        <!--<div class="formitem">-->
+          <!--<div class="itemname">移动端直播端口</div><span>*</span>-->
+          <!--<div class="itemcon"><input type="text" style="width: 66%;" class="form-control"-->
+                                      <!--ng-pattern="/^([0-9]|[1-9]\d|[1-9]\d{2}|[1-9]\d{3}|[1-5]\d{4}|6[0-4]\d{3}|65[0-4]\d{2}|655[0-2]\d|6553[0-5])$/"-->
+                                      <!--name="mbLivePort" ng-model="streamMedia.mbLivePort" ng-value="streamMedia.mbLivePort" required ></div>-->
+        <!--</div>-->
+        <!--<div class="formitem">-->
+          <!--<div class="itemname">PC端直播端口</div><span>*</span>-->
+          <!--<div class="itemcon"><input type="text" style="width: 66%;" class="form-control" name="pcLivePort"-->
+                                      <!--ng-pattern="/^([0-9]|[1-9]\d|[1-9]\d{2}|[1-9]\d{3}|[1-5]\d{4}|6[0-4]\d{3}|65[0-4]\d{2}|655[0-2]\d|6553[0-5])$/"-->
+                                      <!--ng-model="streamMedia.pcLivePort" ng-value="streamMedia.pcLivePort" required ></div>-->
+        <!--</div>-->
+        <!--<div class="formitem">-->
+          <!--<div class="itemname">录制文件存放目录</div><span>*</span>-->
+          <!--<div class="itemcon">-->
+            <!--<input type="text" style="width: 66%;" maxlength="100" class="form-control" name="recordFolder" ng-model="streamMedia.recordFolder" ng-value="streamMedia.recordFolder" required >-->
+                <!--</div>-->
+                    <!--<p>示例:初一\</p>-->
+                <!--</div>-->
+                <!--<div class="formitem">-->
+                    <!--<div class="itemname">上传文件存放目录</div><span>*</span>-->
+                    <!--<div class="itemcon">-->
+                        <!--<input type="text" style="width: 66%;" maxlength="100" class="form-control" name="uploadFolder" ng-model="streamMedia.uploadFolder" ng-value="streamMedia.uploadFolder" required>-->
+                    <!--</div>-->
+                    <!--<p>示例:初一\</p>-->
+                <!--</div>-->
+                <!--<div class="formitem">-->
+                    <!--<div class="itemname">ftp目录</div><span>*</span>-->
+                    <!--<div class="itemcon">-->
+                        <!--<input type="text" style="width: 66%;" maxlength="100" class="form-control" name="ftpRoot" ng-model="streamMedia.ftpRoot" ng-value="streamMedia.ftpRoot" required ng-pattern="/^[A-Za-z]*:\\[a-zA-Z0-9\\]+\\$/">-->
+                    <!--</div>-->
+                    <!--<p>示例:D:\录制视频\2016年\</p>-->
+                <!--</div>-->
+                <!--<div class="formitem">-->
+                    <!--<div class="itemname">ftp端口</div><span>*</span>-->
+                    <!--<div class="itemcon"><input type="text" style="width: 66%;" class="form-control" name="ftpPort"-->
+                                                <!--ng-pattern="/^([0-9]|[1-9]\d|[1-9]\d{2}|[1-9]\d{3}|[1-5]\d{4}|6[0-4]\d{3}|65[0-4]\d{2}|655[0-2]\d|6553[0-5])$/"-->
+                                                <!--ng-model="streamMedia.ftpPort" ng-value="streamMedia.ftpPort" required></div>-->
+                <!--</div>-->
+                <!--<div class="formitem">-->
+                    <!--<div class="itemname">ftp用户名</div><span>*</span>-->
+                    <!--<div class="itemcon"><input type="text" style="width: 66%; " maxlength="20" class="form-control" name="ftpAdmin" ng-model="streamMedia.ftpAdmin" ng-value="streamMedia.ftpAdmin" required></div>-->
+                <!--</div>-->
+                <!--<div class="formitem">-->
+                    <!--<div class="itemname">ftp密码</div><span>*</span>-->
+                    <!--<div class="itemcon"><input type="text" style="width: 66%;" maxlength="20" class="form-control" name="ftpPassword" ng-model="streamMedia.ftpPassword" ng-value="streamMedia.ftpPassword" required></div>-->
+                <!--</div>-->
+            <!--</div>-->
+      <div class="formitem special clearfix">
+        <div class="itemname remark"><span>备注</span></div>
+        <!--<div class="itemcon">-->
+          <textarea class="form-control" maxlength="200" name="description" ng-model="streamMedia.description" placeholder="最多200字...">{{streamMedia.description}}</textarea>
+        <!--</div>-->
+      </div>
+            <div class="formitem">
+                <div class="itemname">有效性</div><span>*</span>
+                <div class="itemcon">
+                    <div class="inblk va-middle">
+                        <input type="checkbox" id="checked" checked class="cbx hidden"  ng-checked="streamMedia.status" ng-model="streamMedia.status" name="status">
+                        <label for="checked" class="lbl"></label>
+                    </div>
+                </div>
+            </div>
+
+            <i class="clear"></i>
+        </div>
+        <div class="btnBox clear"><!--w5c-form-submit="toSave()"-->
+            <button class="btn btn-lg tpk-btn" w5c-form-submit="toSave()">确 定</button>
+            <button class="btn btn-default btn-lg tpk-btn-o" ng-click="toBack()">返 回</button>
+        </div>
+    </form>
+
+</div>

@@ -1,0 +1,242 @@
+<div class="projectcapital">
+    <!--内容-->
+    <div class="list_content ng-scope search_condotion posr" ng-class="{true: 'isfoldCon'}[isfold]">
+        <!--<p ng-if="processingTaskNum.processNum > 0" class="uploadShow font_MY posr" ng-click="toTasklist()">-->
+        <!--进行中任务<span class="red"> {{processingTaskNum.processNum}}</span>条;导入任务<span class="hblue"> {{processingTaskNum.importNum}}</span>条;导出任务<span class="black"> {{processingTaskNum.exportNum}}</span>条-->
+        <!--<em class="graycross"></em>-->
+        <!--</p>-->
+        <div>
+            <!--左侧点选-->
+            <select class="selectPro" ng-model="item.itemValue"
+                    ng-options="item.itemValue as item.itemName for item in home.projectCategory"
+                    ng-change="switchTypeMenu(item.itemValue)">
+                <option value="">请选择项目类型</option>
+            </select>
+            <div class="fl selectgarden_posa" ng-if="independentTypeId==''">
+                <input type="text" class="form-control fl selectGarden" placeholder="请选择建设单位"
+                       ng-model="condition.constructUnitName" name="constructUnitName">
+                <select-garden ids="condition.gardenIdString" named="condition.constructUnitName"
+                               type="multi"></select-garden>
+            </div>
+            <div class="fl selectgarden_posa" ng-if="independentTypeId==item.itemValue">
+                <input type="text" class="form-control fl selectGarden" placeholder="请选择建设单位"
+                       ng-model="condition.constructUnitName" name="constructUnitName">
+                <select-garden ids="condition.gardenIdString" named="condition.constructUnitName"
+                               type="multi"></select-garden>
+            </div>
+            <div class="input-group">
+                <!--<input type="text" class="form-control" placeholder="回车键提交查询"  name="keywords" ng-model="condition.keywords"
+                    maxlength="50">-->
+                <div class="content_txBar">
+                    <input type="text" class="form-control lw-search" placeholder="回车键提交查询"  ng-model="condition.keywords" ng-keydown="enterSearch($event)" maxlength="50">
+                    <span class="billiconfont icon_shutdown" ng-show="condition.keywords" ng-click="removeKeywords()"></span>
+                </div>
+                <span class="input-group-btn">
+                    <!--<button id="lw-search" class="btn btn-default" type="button" ng-click="refreshSourceNum()">查询</button>-->
+                    <button id="lw-search" class="btn btn-default lw-search" type="button" ng-click="refreshSourceNum()">查询</button>
+		        </span>
+            </div>
+            <button class="btn btn-default cur" has-permission="bdp:projectCapital:create" ng-click="toAddIncome()">添加
+            </button>
+        </div>
+        <div class="form_top_line"></div>
+        <div class="main billTable_absolute">
+            <div class="main_top">
+                <p ng-if="optionTypeList.length>0">
+                    当前选中的财务标签:
+                </p>
+                <ul ng-if="optionTypeList.length>0" class="selected_obj" id="selected_obj">
+                    <li ng-repeat="item in optionTypeList" ng-show="selectedIds.indexOf(item.pId)<0&&item.checked">
+                        {{item.name}}
+                        <span ng-click="removeNode(item)"></span>
+                    </li>
+                </ul>
+            </div>
+            <div class="main_bottom">
+                <div class="main_b_left">
+                    <div class="up_down" ng-class="{true:'up_down_click'}[incomeMultipleChooseContext.length > 0]">
+                        <p class="tit">
+                            项目收入类型
+                            <!--<span class="fr" ng-click="cancelIncomeMultipleChooseOrder()">清除选中</span>-->
+                            <span class="fr billiconfont icon_Cleared clearIcon"
+                                  ng-click="cancelIncomeMultipleChooseOrder()"></span>
+                        </p>
+                        <div class="upbox">
+                            <div class="posr" ng-class="{true:'purple'}[multipleChooseOrderTypeForIncome.length > 0]"
+                                 ng-click="selectIncomeMultipleChooseOrder('amount','multipleChooseOrderTypeForIncome')">
+                                <!--<em class="glyphicon glyphicon-chevron-up" ng-class="{true:'white'}[multipleChooseOrderTypeForIncome=='ASC']"></em>-->
+                                金额
+                                <!--<em class="glyphicon glyphicon-chevron-down" ng-class="{true:'white'}[multipleChooseOrderTypeForIncome=='DESC']"></em>-->
+                                <em class="billiconfont icon_SortingDown"
+                                    ng-class="{true:'icon_SortingUp'}[multipleChooseOrderTypeForIncome=='ASC']"></em>
+                            </div>
+                            <div class="posr"
+                                 ng-class="{true:'purple'}[multipleChooseOrderTypeForHitsIncome.length > 0]"
+                                 ng-click="selectIncomeMultipleChooseOrder('hits','multipleChooseOrderTypeForHitsIncome')">
+                                <!--<em class="glyphicon glyphicon-chevron-up" ng-class="{true:'white'}[multipleChooseOrderTypeForHitsIncome=='ASC']"></em>-->
+                                点击量
+                                <!--<em class="glyphicon glyphicon-chevron-down" ng-class="{true:'white'}[multipleChooseOrderTypeForHitsIncome=='DESC']"></em>-->
+                                <em class="billiconfont icon_SortingDown"
+                                    ng-class="{true:'icon_SortingUp'}[multipleChooseOrderTypeForHitsIncome=='ASC']"></em>
+                            </div>
+                        </div>
+                    </div>
+                    <ul class="main_money ztree" id="sourceList" income-tree url="/bill/incomeTypeStatistics">
+                        <!--<li ng-class="{true:'cur'}[item.selected]" ng-repeat="item in sourceTypeGroupNumList"  ng-click="selectSourceType(item)">{{item.name}}({{item.counts}})
+                            <img ng-class="{true:'main_show'}[item.selected]" src="/images/x.png" ng-click="removeOption(item,$event)">
+                        </li>-->
+                    </ul>
+                    <div class="up_down " ng-class="{true:'up_down_click'}[payoutMultipleChooseContext.length > 0]">
+                        <!-- up_down_click -->
+                        <p class="tit">
+                            项目支出类型
+                            <!--<span class="fr " ng-click="cancelPayoutMultipleChooseOrder()">清除选中</span>-->
+                            <span class="fr billiconfont icon_Cleared clearIcon"
+                                  ng-click="cancelPayoutMultipleChooseOrder()"></span>
+                        </p>
+                        <div class="upbox">
+                            <div class="posr" ng-class="{true:'purple'}[multipleChooseOrderTypeForPayout.length > 0]"
+                                 ng-click="selectPayoutMultipleChooseOrder('amount','multipleChooseOrderTypeForPayout')">
+                                <!--<em class="glyphicon glyphicon-chevron-up" ng-class="{true:'white'}[multipleChooseOrderTypeForPayout=='ASC']"></em>-->
+                                金额
+                                <!--<em class="glyphicon glyphicon-chevron-down" ng-class="{true:'white'}[multipleChooseOrderTypeForPayout=='DESC']"></em>-->
+                                <em class="billiconfont icon_SortingDown"
+                                    ng-class="{true:'icon_SortingUp'}[multipleChooseOrderTypeForPayout=='ASC']"></em>
+                            </div>
+                            <div class="posr"
+                                 ng-class="{true:'purple'}[multipleChooseOrderTypeForHitsPayout.length > 0]"
+                                 ng-click="selectPayoutMultipleChooseOrder('hits','multipleChooseOrderTypeForHitsPayout')">
+                                <!--<em class="glyphicon glyphicon-chevron-up" ng-class="{true:'white'}[multipleChooseOrderTypeForHitsPayout=='ASC']"></em>-->
+                                点击量
+                                <!--<em class="glyphicon glyphicon-chevron-down" ng-class="{true:'white'}[multipleChooseOrderTypeForHitsPayout=='DESC']"></em>-->
+                                <em class="billiconfont icon_SortingDown"
+                                    ng-class="{true:'icon_SortingUp'}[multipleChooseOrderTypeForHitsPayout=='ASC']"></em>
+                            </div>
+                        </div>
+                    </div>
+                    <ul class="main_money ztree" id="expenseType" payout-tree url="/bill/expenseTypeStatistics">
+                        <!--<li ng-class="{true:'cur'}[item.selected]" ng-repeat="item in sourceTypeGroupNumList"  ng-click="selectSourceType(item)">{{item.name}}({{item.counts}})
+                            <img ng-class="{true:'main_show'}[item.selected]" src="/images/x.png" ng-click="removeOption(item,$event)">
+                        </li>-->
+                    </ul>
+                    <!--<ul class="main_money">
+                        <li ng-class="{true:'cur'}[item.selected]" ng-repeat="item in expenseTypeGroupNumList" ng-click="selectExpenseType(item)">{{item.name}}({{item.counts}}) <img ng-class="{true:'main_show'}[item.selected]" src="/images/x.png" ng-click="removeOption(item,$event)"></li>
+                    </ul>-->
+                </div>
+                <div class="main_b_right">
+                    <div class="main_main">
+                        <!--右侧下拉-->
+                        <!--<div class="posa form-group">-->
+                        <div class="main_main_orders">
+                            <!--<div class="main_main_orderTitle">-->
+                                <!--当前数据按-->
+                                <!--<span class="blue">-->
+									<!--<em ng-if="singleOrderObject">{{singleOrderObject.name}}{{singleOrderObject.type?singleOrderObject.type:""}}</em>-->
+									<!--<em ng-if="multipleOrderArr.length>0" ng-repeat="data in multipleOrderArr">{{data.name}}{{data.type}}&nbsp;</em>-->
+								<!--</span>排序-->
+
+                            <!--</div>-->
+                            <div class="posa form-group">
+                                <span>按 </span>
+                                <select class="form-control" ng-model="condition.context"
+                                        ng-change="selectSingleChooseOrder()">
+                                    <option value="">条件选择...</option>
+                                    <option value="updateTime">更新时间</option>
+                                    <option value="construct">建设单位</option>
+                                </select>
+                                <span>排列</span>
+                                <em class="billiconfont icon_SortingDown" ng-click="selectOrderType()"
+                                    ng-class="{true:'icon_SortingUp'}[condition.orderType=='ASC']"></em>
+                                <!--<span class="order_type" ng-click="selectOrderType()" ng-class="{'order_up':(condition.orderType=='ASC'),'order_down':(condition.orderType=='DESC')}"></span>-->
+                            </div>
+                        </div>
+                        <h3>
+                            <em ng-if="headerCount>100000000">100000000 <span class="headerCountIcon"></span> </em>
+                            <em ng-if="headerCount<=100000000">{{headerCount}}</em>
+                            条财务数据被找到，总流水金额
+                            <em ng-if="headerCount==0">0</em>
+                            <em ng-if="headerAmount>100000000">100000000<span class="headerCountIcon"></span></em>
+                            <em ng-if="headerAmount<=100000000">{{headerAmount}}</em> 万元.
+                            <button class="btn btn-default" ng-click="batchExport()">
+                                <!--<img class="cap_export" src="images/export.png">-->
+                                导出
+                            </button>
+                        </h3>
+                        <table class="table table-hover">
+                            <thead>
+                            <tr>
+                                <th>序号</th>
+                                <th>记账类型</th>
+                                <th>项目名称</th>
+                                <th>建设单位</th>
+                                <th>类型</th>
+                                <th>合同金额</th>
+                                <th>发生金额(万元)</th>
+                                <th>来源/支出对象</th>
+                                <th>实际到账时间</th>
+                                <!--<th>最近更新人</th>
+                                <th>更新时间</th>-->
+                                <th class="operate_th">操作
+                                    <!--<span class="prompt"></span>-->
+                                    <show-message></show-message>
+                                    <div class="operate_prompt" id="operate_prompt" >
+                                        说明：针对项目财务流水账的特点，为了保留操作痕迹，系统不提供对流水账的编辑和删除功能，所有的金额调整都统一采用反向流水账的方式实现。
+                                    </div>
+                                </th>
+                            </tr>
+                            </thead>
+
+                            <!--栗子-->
+                            <tbody ng-repeat="item in datas">
+                            <tr ng-dblclick="info(item)">
+                                <td>{{$index+1}}</td>
+                                <td>{{item.billTypeName}}<span class="blue_down"
+                                                               ng-if="item.financeAssetWriteBackQoList && item.financeAssetWriteBackQoList.length > 0"
+                                                               show-trs>({{item.financeAssetWriteBackQoList.length}})<em
+                                        class="caret"></em></span></td>
+                                <td class="ell" title="{{item.projectName}}">{{item.projectName}}</td>
+                                <td class="ell" title="{{item.constructUnitName}}">{{item.constructUnitName}}</td>
+                                <td class="ell" title="{{item.typeName}}">{{item.typeName}}</td>
+                                <!--<td class="ell">{{item.contractAmount|number:6}}</td>-->
+                                <td class="ell">{{item.contractAmount}}</td>
+                                <td class="ell">{{item.amount}}</td>
+                                <!--<td class="ell">{{item.amount|number:6}}</td>-->
+                                <td class="ell" title="{{item.capitalNameOrPayee}}">{{item.capitalNameOrPayee}}</td>
+                                <td>{{item.receivedDate?(item.receivedDate | date:'yyyy-MM-dd'):''}}</td>
+                                <td>
+                                    <!--<img src="/images/see.png" ng-click="info(item)">-->
+                                    <span class="billiconfont icon_look" ng-click="info(item)"></span>
+                                </td>
+                            </tr>
+                            <tr ng-if="item.financeAssetWriteBackQoList && item.financeAssetWriteBackQoList.length > 0"
+                                ng-repeat="writeBackItem in item.financeAssetWriteBackQoList" class="detail_tr" ng-dblclick="info(item)">
+                                <td></td>
+                                <td ng-if="writeBackItem.billType == 4 || writeBackItem.billType == 5">冲红</td>
+                                <td ng-if="writeBackItem.billType == 6">撤回</td>
+                                <td ng-if="writeBackItem.billType == 7 || writeBackItem.billType == 8">财政收走-冲红</td>
+                                <td class="ell">{{writeBackItem.projectName}}</td>
+                                <td class="ell">{{writeBackItem.constructUnitName}}</td>
+                                <td class="ell">{{item.typeName}}</td>
+                                <td class="ell" ng-if="item.billType == 2">{{item.contractAmount}}</td>
+                                <!--<td class="ell" ng-if="item.billType == 2">{{item.contractAmount|number:6}}</td>-->
+                                <td class="ell" ng-if="item.billType != 2"></td>
+                                <td class="ell">{{writeBackItem.amount}}</td>
+                                <!--<td class="ell">{{writeBackItem.amount|number:6}}</td>-->
+                                <td class="ell" ng-if="item.billType == 1">无</td>
+                                <td class="ell" ng-if="item.billType != 1">{{item.capitalNameOrPayee}}</td>
+                                <td>{{item.receivedDate?(item.receivedDate | date:'yyyy-MM-dd'):''}}</td>
+                                <td></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="pageBox">
+                        <lw-page url="/bill"></lw-page>
+                    </div>
+                    <!--<p class="pageBoxnum" ng-if="headerCount>0">{{headerCount}}项目财务数据被找到</p>-->
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

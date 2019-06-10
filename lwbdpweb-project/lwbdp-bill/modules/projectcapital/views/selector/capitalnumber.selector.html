@@ -1,0 +1,26 @@
+<div class="modal-header">
+    <h3 class="modal-title" id="modal-title">资金文号选择</h3>
+</div>
+<div class="modal-body" id="modal-body">
+    <section class="clear">
+          <input type="text" name="keywords" ng-model="keywords">
+          <button class="icon" ng-click="searchCapitalNumber()"><i class="glyphicon glyphicon-search"></i></button>
+    </section>
+
+    已选中合同：
+    <section class="list-header clear">
+      <span ng-if="selectedCapitalNumber">{{selectedCapitalNumber.name}}({{selectedCapitalNumber.gardenName}})</span>
+    </section>
+    合同列表
+    <section class="clear" style="height: 100px">
+    <ul>
+      <li ng-repeat="item in capitalNumberList" style="float:left">
+        <input type="radio" id="{{item.id}}" name="capitalNumber"><label for="{{item.id}}" ng-click="changeSelectedCapitalNumber(item)">{{item.name}}({{item.gardenName}})</label>
+      </li>
+    </ul>
+    </section>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" type="button" ng-click="ok()">确 定</button>
+    <button class="btn btn-warning" type="button" ng-click="cancle()">取 消</button>
+</div>

@@ -1,0 +1,105 @@
+<div class='client_login'>
+    <p class="login_drag" client-drag>
+        <span class="clientIconfont icon-client_close" ng-if="login.isClient" ng-click="login.close()"></span>
+    </p>
+
+    <div class="login-content">
+        <div class="logo_box" ng-if="!login.first"></div>
+        <div class="logo_box logo_box_newp" ng-if="login.first"></div>
+
+        <div class="login_newp_msg" ng-if="login.first">系统检测到您是首次登陆或被管理员重置过密码。为了确保您的账号安全，请在下部重新修改您的个人密码：</div>
+
+        <div class="input_box" ng-if="!login.first">
+            <div class="login-input">
+                <span class="clientIconfont icon-cli-user"></span>
+                <input type="text" class="input_class" autocomplete="off" placeholder="请输入用户名或ID" autofocus auto-focus ng-model="login.user.username" ng-keypress="login.keyPress($event)">
+            </div>
+            <div class="login-input login_input_2">
+                <span class="clientIconfont icon-cli-password"></span>
+                <input type="password" class="input_class" autocomplete="new-password" placeholder="请输入密码" ng-model="login.user.password" ng-keypress="login.keyPress($event)">
+            </div>
+        </div>
+        <!--首次登陆-->
+        <div class="input_box first" ng-if="login.first">
+            <div class="login-input" style="display:flex;">
+                <label style="width:100px;text-align:right;line-height:40px;">新密码：</label><input type="password" class="input_class" placeholder="请输入新密码" auto-focus autocomplete="off" ng-model="login.password.new" ng-keypress="login.keyPress($event,'new')">
+            </div>
+            <div class="login-input login_input_2" style="display:flex;">
+                <label style="width:100px;text-align:right;line-height:40px;">确认密码：</label><input type="password" class="input_class" autocomplete="off" placeholder="请再次输入新密码" ng-model="login.password.new_2" ng-keypress="login.keyPress($event,'new')">
+            </div>
+        </div>
+        <span ng-show="!login.first" class="loginButton btn_blue" ng-click="login.login()" ng-keypress="login.keyPress($event)">
+                <em ng-show="!login.isLonging">登 录</em>
+                <svg ng-show="login.isLonging" width='40px' height='40px' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" class="uil-balls"><rect x="0" y="0" width="100" height="100" fill="none" class="bk"></rect>
+                        <g transform="rotate(0 50 50)">
+                            <circle r="5" cx="30" cy="50">
+                                <animateTransform attributeName="transform" type="translate" begin="0s" repeatCount="indefinite" dur="1s" values="0 0;29.999999999999996 -17.320508075688775" keyTimes="0;1"/>
+                                <animate attributeName="fill" dur="1s" begin="0s" repeatCount="indefinite"  keyTimes="0;1" values="#fefefe;#cec9c9"/>
+                            </circle>
+                        </g>
+                        <g transform="rotate(120 50 50)">
+                            <circle r="5" cx="30" cy="50">
+                                <animateTransform attributeName="transform" type="translate" begin="0s" repeatCount="indefinite" dur="1s" values="0 0;29.999999999999996 -17.320508075688775" keyTimes="0;1"/>
+                                <animate attributeName="fill" dur="1s" begin="0s" repeatCount="indefinite"  keyTimes="0;1" values="#cec9c9;#3c302e"/>
+                            </circle>
+                        </g>
+                        <g transform="rotate(240 50 50)">
+                            <circle r="5" cx="30" cy="50">
+                                <animateTransform attributeName="transform" type="translate" begin="0s" repeatCount="indefinite" dur="1s" values="0 0;29.999999999999996 -17.320508075688775" keyTimes="0;1"/>
+                                <animate attributeName="fill" dur="1s" begin="0s" repeatCount="indefinite"  keyTimes="0;1" values="#3c302e;#fefefe"/>
+                            </circle>
+                        </g>
+                    </svg>
+            </span>
+        <!-- <div ng-show="!login.first" class="lostMessage" ng-click="login.losePassword()">忘记密码?</div>
+        <div ng-show="!login.first" class="tdcode" ng-click="login.TDCode()">扫码登录</div> -->
+
+        <span ng-show="login.first" class="btn_white" ng-click="login.first = false">
+                <em  ng-show="!login.isLonging">取 消</em>
+                <svg ng-show="login.isLonging" width='40px' height='40px' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" class="uil-balls"><rect x="0" y="0" width="100" height="100" fill="none" class="bk"></rect>
+                        <g transform="rotate(0 50 50)">
+                            <circle r="5" cx="30" cy="50">
+                                <animateTransform attributeName="transform" type="translate" begin="0s" repeatCount="indefinite" dur="1s" values="0 0;29.999999999999996 -17.320508075688775" keyTimes="0;1"/>
+                                <animate attributeName="fill" dur="1s" begin="0s" repeatCount="indefinite"  keyTimes="0;1" values="#fefefe;#cec9c9"/>
+                            </circle>
+                        </g>
+                        <g transform="rotate(120 50 50)">
+                            <circle r="5" cx="30" cy="50">
+                                <animateTransform attributeName="transform" type="translate" begin="0s" repeatCount="indefinite" dur="1s" values="0 0;29.999999999999996 -17.320508075688775" keyTimes="0;1"/>
+                                <animate attributeName="fill" dur="1s" begin="0s" repeatCount="indefinite"  keyTimes="0;1" values="#cec9c9;#3c302e"/>
+                            </circle>
+                        </g>
+                        <g transform="rotate(240 50 50)">
+                            <circle r="5" cx="30" cy="50">
+                                <animateTransform attributeName="transform" type="translate" begin="0s" repeatCount="indefinite" dur="1s" values="0 0;29.999999999999996 -17.320508075688775" keyTimes="0;1"/>
+                                <animate attributeName="fill" dur="1s" begin="0s" repeatCount="indefinite"  keyTimes="0;1" values="#3c302e;#fefefe"/>
+                            </circle>
+                        </g>
+                    </svg>
+            </span>
+        <span ng-show="login.first" class="btn_blue" ng-click="login.changePassword()" ng-keypress="login.keyPress($event)">
+                <em  ng-show="!login.isLonging">确 定</em>
+                <svg ng-show="login.isLonging" width='40px' height='40px' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" class="uil-balls"><rect x="0" y="0" width="100" height="100" fill="none" class="bk"></rect>
+                        <g transform="rotate(0 50 50)">
+                            <circle r="5" cx="30" cy="50">
+                                <animateTransform attributeName="transform" type="translate" begin="0s" repeatCount="indefinite" dur="1s" values="0 0;29.999999999999996 -17.320508075688775" keyTimes="0;1"/>
+                                <animate attributeName="fill" dur="1s" begin="0s" repeatCount="indefinite"  keyTimes="0;1" values="#fefefe;#cec9c9"/>
+                            </circle>
+                        </g>
+                        <g transform="rotate(120 50 50)">
+                            <circle r="5" cx="30" cy="50">
+                                <animateTransform attributeName="transform" type="translate" begin="0s" repeatCount="indefinite" dur="1s" values="0 0;29.999999999999996 -17.320508075688775" keyTimes="0;1"/>
+                                <animate attributeName="fill" dur="1s" begin="0s" repeatCount="indefinite"  keyTimes="0;1" values="#cec9c9;#3c302e"/>
+                            </circle>
+                        </g>
+                        <g transform="rotate(240 50 50)">
+                            <circle r="5" cx="30" cy="50">
+                                <animateTransform attributeName="transform" type="translate" begin="0s" repeatCount="indefinite" dur="1s" values="0 0;29.999999999999996 -17.320508075688775" keyTimes="0;1"/>
+                                <animate attributeName="fill" dur="1s" begin="0s" repeatCount="indefinite"  keyTimes="0;1" values="#3c302e;#fefefe"/>
+                            </circle>
+                        </g>
+                    </svg>
+            </span>
+        <!-- <div ng-show="login.first" class="tdcode" ng-click="login.first = false">返回登录</div> -->
+    </div>
+</div>

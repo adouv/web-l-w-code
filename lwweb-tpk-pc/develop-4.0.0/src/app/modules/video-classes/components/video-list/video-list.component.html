@@ -1,0 +1,25 @@
+<div class="video-set">
+	<!-- <nz-select class="select"  style="width: 120px;margin-left: 10px;" [(ngModel)]="selectedClass" [nzPlaceHolder]="selectedClass?.name"
+			   class="radius bg-gray"
+			   (nzOpenChange)="searchVideoSet($event)"
+	>
+		<nz-option
+			*ngFor="let clazz of countClasses"
+			[nzLabel]="clazz.name"
+			[nzValue]="clazz"
+			[nzDisabled]="clazz.disabled">
+		</nz-option>
+	</nz-select> -->
+	<div #scrollTop class="auto-scroll video-set-content">
+		<ul>
+			<li *ngFor="let vs of videoSets" title="{{vs.lessonTitle?vs.lessonTitle:'未配置课节名称'}} {{vs.lessonName}}" (click)="playVideo(vs)" [ngClass]="{'active':vs.id == videoDetails.id,'disable':!vs.hasPermission}">
+				<a href="javascript:void(0);" >
+					<span>{{vs.lessonTitle?vs.lessonTitle:'未配置课节名称'}}</span>
+					<span>{{vs.lessonName}}</span>
+				</a>
+			</li>
+		</ul>
+		<div *ngIf="loadComplete&&videoSets.length==0" class="elliptical-page-message">该教师暂无其他课程</div>
+	</div>
+	<!--<tabs-footer [videoDetails]="videoDetails"></tabs-footer>-->
+</div>

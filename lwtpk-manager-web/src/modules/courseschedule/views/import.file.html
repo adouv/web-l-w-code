@@ -1,0 +1,121 @@
+
+<div class="modal-header pd">
+    <button type="button" class="close" ng-click="cancel()">
+        <span>×</span><span class="sr-only">Close</span>
+    </button>
+    <div ng-show="stepOne">
+        <h4 class="modal-title" id="modal-title">请选择要导入的课表范围：</h4>
+        <div class="form-inline w5c-form">
+            <select class="form-control" ng-class="{'error':gardenNotNull}"
+                    ng-model="data.gardenId"
+                    ng-change="getGrades()"
+                    ng-options="garden.id as garden.name for garden in gardens">
+                <option value="">请选择园区</option>
+            </select>
+            <select class="form-control" ng-class="{'error':gradeNotNull}"
+                    ng-model="data.gradeId"
+                    ng-change="getClasses()"
+                    ng-options="grade.id as grade.name for grade in grades">
+                <option value="">请选择年级/学院</option>
+            </select>
+            <select class="form-control" ng-class="{'error':classNotNull}"
+                    ng-model="data.classId"
+                    ng-options="class.id as class.name for class in classes">
+                <option value="">请选择班级/专业</option>
+            </select>
+            <button class="btn form-control tpk-btn-o" style="float: right;margin-top:2px;" ng-click="createTemplate()">
+                确定
+            </button>
+        </div>
+    </div>
+</div>
+<div flow-init="{target:importUrl,singleFile:true,query:{gardenId:gardenId}}"
+     flow-file-added="addFileAfter($file)"
+     flow-file-success="import($message)">
+    <div class="modal-body" id="modal-body">
+        <div class="container" ng-show="stepOne && templateBar">
+            <h4>课表导入模版已生成：</h4>
+            <h5>{{gardenName+gradeName+className}}.xls
+                <button class="btn tpk-btn-o" ng-click="export()">&nbsp; &nbsp; 下 载 &nbsp; &nbsp;</button>
+            </h5>
+        </div>
+        <div class="container" ng-show="stepTwo">
+            <h4>请选择课表模版文件：
+                <button class="btn tpk-btn-o" flow-btn>&nbsp; 请选择文件 &nbsp;</button>
+                <span style="font-size: 14px;margin-left:10px;">{{uploadFileName}}</span></h4>
+        </div>
+    </div>
+    <div class="modal-footer buttom_distance">
+        <button class="btn tpk-btn-o" type="button" ng-show="stepTwo" ng-click="last()">上一步</button>
+        <button class="btn tpk-btn-o" type="button" ng-click="cancel()">取 &nbsp; 消</button>
+        <button class="btn tpk-btn" type="button" ng-show="stepOne" ng-click="next()">下一步</button>
+        <button class="btn tpk-btn" type="button" ng-show="stepTwo" ng-click="$flow.upload()">确 &nbsp; 定</button>
+        <div ng-show="stepTwo && errors" class="errors">
+            <ul>
+                <li ng-repeat="(col,error) in errors">{{col+"："+error}}</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+<!--
+
+[
+{"id":"math","name":"数学","pId":""},
+{"id":"english","name":"英语","pId":""},
+{"id":"chinese","name":"语文","pId":""}
+,{"id":"physics","name":"物理","pId":""},
+{"id":"chemistry","name":"化学","pId":""},
+{"id":"political","name":"政治","pId":""},
+{"id":"geography","name":"地理","pId":""},
+{"id":"history","name":"历史","pId":null},
+{"id":"calligraphy","name":"书法","pId":null}
+,{"id":"sport","name":"体育","pId":null},
+{"id":"safety","name":"三防三生","pId":null},
+{"id":"plant","name":"植物","pId":null}
+,{"id":"other","name":"其他","pId":null},
+{"id":"message","name":"信息","pId":null},
+{"id":"music","name":"音乐","pId":null}
+,{"id":"weiqi","name":"围棋","pId":null},
+{"id":"art","name":"美术","pId":null},
+{"id":"animal","name":"动物","pId":null}
+,{"id":"biology","name":"生物","pId":null},
+{"id":"health","name":"健教三生","pId":null}
+,{"id":"writing","name":"健三写作","pId":null},
+{"id":" labour","name":"健三防劳","pId":null},
+{"id":"healthLecture","name":"健康讲座","pId":null},
+{"id":"classMeeting","name":"班会","pId":null}
+,{"id":"psychology","name":"心理","pId":""}]
+
+
+-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

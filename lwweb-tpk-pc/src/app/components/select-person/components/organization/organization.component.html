@@ -1,0 +1,23 @@
+<div class="organization">
+    <div class="input-search" >
+		<input-search [tpkPlaceholder]="'搜索'" [(tpkModel)]="inputPerson" (onKeyupSearch)="searchPerson($event)"></input-search>
+	</div>
+    <div *ngIf="gardenId&&(personData.length>0||treeData.length>0)" class="organization-content auto-scroll-6">
+        <div (click)="checkPerson(p)" *ngFor="let p of personData" class="tree-person-card">
+            <div class="person-message">
+                <div class="person-message-name">{{p.name}}</div>
+                <div title="{{p.departmentName}}" class="person-message-msg">{{p.departmentName}}</div>
+            </div>
+            <div class="check-box-img">
+                <i class="iconfont" [ngClass]="{'icon-checkbox_check':p.checked,'icon-checkbox_default':!p.checked}"></i>
+            </div>
+        </div>
+        <lw-tree></lw-tree>
+    </div>
+    <div *ngIf="!gardenId" flex="main:center cross:center" class="no-result organization-content">
+      <span class="no-result-msg">请选择园区</span>
+    </div>
+    <div *ngIf="gardenId&&personData.length==0&&treeData.length==0" flex="main:center cross:center" class="no-result organization-content">
+        <span class="no-result-msg">没有找到相关结果</span>
+      </div>
+</div>

@@ -1,0 +1,17 @@
+<div class='login'>
+    <div class="login-header"></div>
+    <div class="login-content">
+        <div class="login-frame">
+            <div class="login-input">
+                <span class="bdpIconfont icon-user_icon"></span>
+                <input type="text" placeholder="请输入用户名" ng-model="login.user.username" autofocus ng-keypress="login.keyPress($event)">
+            </div>
+            <div class="login-input">
+                <span class="bdpIconfont icon-password_icon"></span>
+                <input type="password" placeholder="请输入密码" ng-model="login.user.password" ng-keypress="login.keyPress($event)">
+            </div>
+            <div class="lostMessage" ng-click="login.losePassword()">忘记密码?</div>
+            <button class="loginButton" ng-click="login.login()" ng-keypress="login.keyPress($event)">登录</button>
+        </div>
+    </div>
+</div>

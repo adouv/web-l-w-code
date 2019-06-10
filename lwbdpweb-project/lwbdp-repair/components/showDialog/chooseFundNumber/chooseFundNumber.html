@@ -1,0 +1,67 @@
+<div class="basicDialog ui-popup-large repair" ng-click='amount.showAllotAmount = false'>
+    <!--ng-click='amount.showAllotAmount = false'-->
+    <div class="addConfig">
+        <div class="addConfig_tit">
+            配置资金
+            <span class="iconfont icon-close del_btn" ng-click="amount.clickCancel()"></span>
+        </div>
+        <div class="found-form">
+            <div class="form_list">
+                <span class="form_tit" style='width: 70px'>资金类型：</span>
+                <select-options class="select_class selectW300" ng-model="amount.categoryId" change="amount.cleanAmount()"
+                                repeat-items="category in amount.categoryList" item-key="itemValue">
+                                {{category.itemName}}
+                </select-options>
+            </div>
+            <div class="form_list" ng-if="amount.categoryId=='FINANCE_CAPITAL'">
+                <span class="form_tit" style='width: 70px'>资金性质：</span>
+                <select-options class="select_class selectW300" ng-model="amount.natureId"
+                                repeat-items="nature in amount.natureList"  item-key="itemValue">
+                    {{nature.itemName}}
+                </select-options>
+            </div>
+            <div class="form_list" ng-if="amount.categoryId=='NON_FINANCE_CAPITAL'">
+                <span class="form_tit" style='width: 70px'>金额：</span>
+                <input type="text" class="input_class" style='width: 300px;' ng-model='amount.noFinanceAmount' ng-change="amount.controlPrice(amount,'noFinanceAmount')"/><span style="font-size: 14px;vertical-align: middle">元</span>
+            </div>
+        </div>
+        <div class="fund_number overflow_box" ng-if="amount.categoryId=='FINANCE_CAPITAL'">
+            <span class="vertical_align fl">已选择的资金文号及分配的金额：</span>
+            <div class="fund_number_list" ng-repeat="data in selectedList track by $index">
+                <span class>{{data.name}}（<em class="green_color">{{data.amount}}</em>）</span>
+                <span class="delete_btn remove_button" ng-click="amount.remove($index)"></span>
+            </div>
+        </div>
+        <div class="search_number" ng-if="amount.categoryId=='FINANCE_CAPITAL'">
+            <span class="btn_bd fr" ng-click="amount.sureKeywords(keywords)">查询</span>
+            <input type="text" class="input_class fr" ng-model="keywords" placeholder="资金文号名称关键字" ng-keydown='amount.goSearch($event,keywords)' >
+        </div>
+        <div class="numberTab overflow_box" auto-scroll="amount.list" ng-if="amount.categoryId=='FINANCE_CAPITAL'">
+            <table class="numberTable">
+                <tbody>
+                    <tr ng-repeat="data in amount.list"  ng-if="((!amount.keywords||data.name.indexOf(amount.keywords)>-1)&&amount.natureId==data.nature )&& selectedIds.indexOf(data.id)<0" ng-click="amount.allotFinanceAmount(data,$index)">
+                        <td>
+                            <label>{{data.name}}（<em>{{data.totalAmount}}</em>,<em class="blue_color">{{data.usedAmount}}</em>,<em class="green_color">{{data.availableAmount}}</em>）</label>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="btn_poab">
+            <span class="btn_bd" ng-click="amount.clickCancel()">取消</span>
+            <span class="btn_bg" ng-click="amount.clickSure()">确定</span>
+        </div>
+        <div class="allot-wrapper" ng-show="amount.showAllotAmount" ng-click='amount.stopEvent()'>
+            <form class="w5c-form" novalidate name="availableAmount">
+            <span>请输入资金文号在该资金文号上安排的资金金额：</span>
+            <input type="text" class="input_class disabled" ng-disabled="amount.allotAmount.availableAmount===0" required name="amount" ng-model="amount.allotAmount.amount" ng-change="amount.controlPrice(amount.allotAmount,'amount',amount.allotAmount.availableAmount)"/>
+            <span>该资金文号可剩余可分配金额：</span>
+            <span class="green_color">{{amount.allotAmount.availableAmount}}万元</span>
+            <div class="btn_wrapper">
+                <button class="btn_bd" ng-click="amount.cancelAllot()">取消</button>
+                <button class="btn_bg" form-submit-valid="amount.sureAllot()">确定</button>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>

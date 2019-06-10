@@ -1,0 +1,49 @@
+.stream-container .clear{ clear: both;}
+.stream-container .row.media{margin:20px -15px 0 -15px;}
+.stream-container .row.media .nav-form select{display: inline;width: 170px;}
+.stream-container .nav-form{width: 100%;}
+.stream-container .nav-form input{width: 190px}
+.stream-container input.form-control{float: left;padding-right: 35px;}
+.stream-container .btn-group:last-child {float: right;border-radius: 5px;overflow: hidden}
+.stream-container .btn-group:last-child .btn{padding-left:30px;padding-right: 30px}
+.stream-container table tr td {text-align: center;font-size: 14px;}
+.stream-container table thead td{font-size: 16px;}
+.stream-container table td i.fa{color: #999;cursor: pointer;font-size: 22px;}
+.stream-container table td i.fa:hover{color: #00ba8b;}
+/*流媒体接口信息添加*/
+.stream-container .mediaInput{width: 100%;}
+/*.mediaInput .chooseshow{display: none;}*/
+.stream-container .mediaInput section.row blockquote.inputTit{font-weight: normal;}
+.stream-container .mediaInput section.inputTit{border-bottom: 0px;}
+.stream-container .mediaInput .breadnav{text-indent: 20px;margin:0 auto;width: 87%; color:#646464;background:#f5f5f5;font-size: 16px;line-height: 30px;height: 30px;}
+.stream-container .mediaInput .breadnav span{cursor: pointer;}
+.stream-container .mediaInput .breadnav .cur{color:#000;  }
+.stream-container .mediaInput .inputform{  margin:0 auto;  width: 87%;}
+.stream-container .mediaInput .formitem{margin-top:19px;}
+.stream-container .formitem.special {}
+.stream-container .formitem.special>div{float: left;}
+.stream-container .formitem.special .itemcon{margin-left: 3px;}
+.stream-container .formitem.special textarea{height: 150px;width: 38%;float: left;margin-left:45px;resize: none;}
+.stream-container .itemname.remark { position: relative;margin-top:3px;}
+.stream-container .itemname.remark span { position: absolute;right: -15px;font-weight: 100;}
+.stream-container .formitem span {display: inline-block; padding: 5px;}
+.stream-container .formitem>div{display: inline-block;}
+.stream-container .formitem .itemname{width: 35%;text-align: right;font-size: 16px;font-family: "Microsoft YaHei", "Simsun", "arial", "sans-serif"}
+.stream-container .formitem .itemcon{width: 59%;text-align: left;font-size: 16px;}
+.stream-container .formitem .itemcon .form-control{margin-right: 3%;float: none;padding-right: 0;display: inline-block;height: 38px}
+.stream-container .formitem p{margin-left: 38.5%;margin-top:7px;margin-bottom:0;text-indent: 5px;color: rgb(150,150,150)}
+.stream-container .btnBox{height: 140px;line-height: 140px;margin-top: 30px;text-align: center;}
+.stream-container .btnBox button{padding:8px 30px;}
+.stream-container .btnBox button.tpk-btn{margin-right: 50px;}
+
+/*流媒体信息查看*/
+/*
+流媒体页面更改
+*/
+.stream-container .btm-line {border-bottom: 1px solid #cccccc;margin-top:18px;}
+.stream-container .table tbody tr td:last-child {width: 93px;}
+.stream-container .table tbody tr td:last-child i {display: none;}
+.stream-container .table tbody tr:hover td i {display: inline-block;}
+.stream-container .garden-list-bar{max-width: 400px;line-height:25px;height: 25px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;text-align: center;margin: 0 auto}
+.stream-container .search-area {display: inline-block;margin-left:8px;}
+.stream-container .itemcon {padding-left: 28px}

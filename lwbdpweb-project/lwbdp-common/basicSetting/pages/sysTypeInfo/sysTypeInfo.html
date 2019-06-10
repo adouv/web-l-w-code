@@ -1,0 +1,55 @@
+<!-- 系统字典值设置 -->
+<div class="line_pad">
+    <div class="line_strip"></div>
+</div>
+<div class="table_absolute overflow_box" style="top:18px">
+    <div class="table_box">
+        <table class="listTable basicTab">
+            <thead>
+                <tr>
+                    <th width="80">序号</th>
+                    <th width="150">名称</th>
+                    <th>字典值</th>
+                    <th width="100">最近更新人</th>
+                    <th width="150">最近更新时间</th>
+                    <th width="80">操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="assetItem in sysTypeInfo.menuList track by $index">
+                    <td>{{$index+1}}</td>
+                    <td>{{assetItem.name}}</td>
+                    <td>
+                        <p ng-repeat="data in assetItem.qoList track by $index" ng-class={col999:data.isHidden}>{{data.name+"；"}}</p>
+                    </td>
+                    <td class="change_layer" ng-click="sysTypeInfo.showPopup('log',$index)">{{assetItem.lastUpdateUserName}}</td>
+                    <td>{{assetItem.lastUpdateTime | date : "yyyy/MM/dd HH:mm"}}</td>
+                    <td>
+                        <span class="iconfont icon-edit edit_btn" title="编辑" ng-click="sysTypeInfo.showPopup('exit',$index,assetItem.id)"></span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div>
+        <pagination conf="sysTypeInfo.paginationConf" ng-show="sysTypeInfo.menuList.length>0"></pagination>
+    </div>
+    <div class="nodata_box" ng-show="sysTypeInfo.menuList.length<1">
+        <div class="nodata">
+            <span></span>
+            <p>暂无数据</p>
+        </div>
+    </div>
+</div>
+<!-- 点击编辑弹窗 -->
+<dialog ng-if="sysTypeInfo.update_exit" modal>
+    <div dialog-content>
+        <deal-dispose dispose='sysTypeInfo.configList' show="sysTypeInfo.update_exit" parent="sysTypeInfo.parentId" save="sysTypeInfo.saveBaseConfig()" module="sysTypeInfo.module"></deal-dispose>
+    </div>
+</dialog>
+<!-- 点击最近更新人弹窗 -->
+<dialog ng-if="sysTypeInfo.update_log" modal>
+    <div dialog-content>
+        <update-log data="sysTypeInfo.selectedItem" close-click="sysTypeInfo.closeDialog('log')" type="systype"></update-log>
+    </div>
+</dialog>

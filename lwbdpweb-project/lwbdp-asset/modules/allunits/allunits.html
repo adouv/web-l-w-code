@@ -1,0 +1,121 @@
+<div class="main_in">
+    <h3 class="draff_title" ng-if="assetAll.currentName==='draft'">草稿箱</h3>
+    <!--搜索区域-->
+    <div class="search_box clearfix">
+        <div>
+            <div class="content_textBar">
+                <input type="text" class="input_class" maxlength="50" placeholder="回车键提交查询"  ng-model="assetAll.condition.keywords" ng-keydown="assetAll.goSearch($event)">
+                <span class="iconfont icon-search" ng-if="assetAll.condition.keywords.length === 0"></span>
+                <span class="iconfont icon-error" ng-if="assetAll.condition.keywords.length > 0" ng-click="assetAll.cleanKeywords()"></span>
+            </div>
+            <a href="javascript:void(0)" class="more_search" ng-click="assetAll.getMoreSearch('allunits')">更多条件查询 ></a>
+        </div>
+        <div class="search_result" ng-if="assetAll.isShowCancel">搜索条件：
+            <span ng-if="assetAll.condition.applyYearStart && assetAll.condition.applyYearEnd">
+                项目申报年份（{{assetAll.condition.applyYearStart}}~{{assetAll.condition.applyYearEnd}}）
+            </span>
+            <span ng-if="assetAll.condition.gardenList && assetAll.condition.gardenList.length > 0">
+                项目申报单位（<span ng-repeat="garden in assetAll.condition.gardenList">{{garden.name}}；</span>）
+            </span>
+            <span ng-if="assetAll.condition.categoryListName">项目所属类别（{{assetAll.condition.categoryListName}}）</span>
+            <span ng-if="assetAll.condition.kindName">项目配标类别（{{assetAll.condition.kindName}}）</span>
+            <span ng-if="assetAll.condition.stageName">项目所属阶段（{{assetAll.condition.stageName}}）</span>
+            <span ng-if="assetAll.condition.statusName">项目所处状态（{{assetAll.condition.statusName}}）</span>
+            <span ng-if="assetAll.condition.applyAccount">项目申报人（{{assetAll.condition.applyAccount}}）</span>
+            <span ng-if="assetAll.condition.createTimeStart && assetAll.condition.createTimeEnd">
+                项目提交时间段（{{assetAll.condition.createTimeStart}}~{{assetAll.condition.createTimeEnd}}）
+            </span>
+            <span ng-if="assetAll.condition.taskTimeStart&&assetAll.condition.taskTimeEnd">
+                任务生成时间段（{{assetAll.condition.taskTimeStart}}~{{assetAll.condition.taskTimeEnd}}）
+            </span>
+            <span ng-if="assetAll.isShowCancel" class="iconfont icon-error" ng-click="assetAll.deleteCondition()"></span>
+        </div>
+    </div>
+    <!--总计-->
+    <div class="total_num allswitch">
+        <div class="tot_left fl">
+            <span>总计 <em class="num">{{assetAll.pageConfig.totalItems||0}}</em> 条</span>
+        </div>
+        
+    </div>
+    <!-- 表格 -->
+    <div class="line_pad" auto-width=".table_absolute" watch-change="assetAll.pageList">
+        <div class="line_strip"></div>
+        <div class="table_box">
+            <table class="listTable">
+                <thead id="theadTh">
+                <tr>
+                    <th width="5%">
+                        <label>序号</label>
+                    </th>
+                    <!--<th width="70">序号</th>-->
+                    <th width="5%">类别</th>
+                    <th width="25%">名称</th>
+                    <th width="16%">申报单位</th>
+                    <th width="20%">阶段</th>
+                    <th width="8%">状态</th>
+                    <th width="8%">申报人</th>
+                    <th width="13%">更新时间</th>
+                </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+    <div class="table_absolute overflow_box" id="tableAbsolute">
+        <div class="table_box">
+            <table class="listTable">
+                <tbody>
+                    <tr table-width ng-repeat="data in assetAll.pageList track by $index " ui-sref="asset.detail({id:data.projectId,sidebarId:assetAll.sidebar.id||sidebar.id})">
+                        <!--  1 1 序号-->
+                        <td ui-sref="asset.draft">
+                            <input ng-if="assetAll.currentName==='draft'" ng-click="assetAll.stopEvent($event,data.id)" type="checkbox" id='{{data.id}}'
+                                class="checkbox_class draft_checkbox draft_checkboxSon" /> {{ $index+1
+                            }}
+                        </td>
+                        <td ng-bind="data.categoryName "></td>
+                        <td ng-bind="data.projectName"></td>
+                        <td ng-bind="data.projectGarden"></td>
+                        <td ng-bind="data.currTaskName "></td>
+                        <td>
+                            <span ng-if="data.projectStatus	=== 0">{{ data.projectStatusName }}</span>
+                            <span class="green_color" ng-if="data.projectStatus === 1">{{ data.projectStatusName }}</span>
+                            <span class="red_color" ng-if="data.projectStatus === 2">{{ data.projectStatusName }}</span>
+                        </td>
+
+                        <td ng-bind="data.creatorName "></td>
+                        <td>{{ data.lastUpdateTime| date:'yyyy-MM-dd HH:mm'}}</td>
+
+
+
+                    </tr>
+                </tbody>
+            </table>
+            <!-- 分页 -->
+            <pagination ng-show="assetAll.pageList.length>0" conf="assetAll.pageConfig "></pagination>
+        </div>
+
+        <!--暂无数据-->
+        <div class="nodata_box" ng-show="assetAll.pageList.length<1">
+            <div class="nodata" ng-show="assetAll.pageList.length===0 && !(assetAll.keywords && assetAll.keywords !=='')">
+                <span></span>
+                <p>暂无数据</p>
+            </div>
+            <div class="nodata_search" ng-show="assetAll.keywords && assetAll.keywords !== ''">
+                <span></span>
+                <p>搜索无结果</p>
+            </div>
+        </div>
+        <!-- 选择园区 -->
+        <div class="select_depart">
+            <p class="select_depart_list">
+                <span class="fos16">参统学校（机关)：</span>
+                <span ng-if="assetAll.visibleGardens.length>1" ng-class="{'disabled':assetAll.onlyMine}" ng-click="assetAll.chooseGarden()" class="iconfont icon-setting setting_icon"></span>
+                <input type="checkbox" class="checkbox_class" ng-model="assetAll.onlyMine" ng-change="assetAll.getMyProject(assetAll.onlyMine)" id="gad1">
+                <label for="gad1" class="word_center">只统计由我发起的资产项目申请单</label>
+            </p>
+            <p class="select_depart_list2" ng-class="{'disabled':assetAll.onlyMine}">
+                <span ng-repeat="garden in assetAll.gardenList">{{garden.name||garden.gardenName}}；</span>
+            </p>
+        </div>
+    </div>
+</div>

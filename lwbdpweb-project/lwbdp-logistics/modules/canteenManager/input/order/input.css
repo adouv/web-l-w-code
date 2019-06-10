@@ -1,0 +1,215 @@
+.canteen_order {}
+
+.canteen_order .canteen_add_form {
+    width: 80%;
+    margin: 0 auto;
+    position: relative;
+    margin-bottom: 60px;
+}
+
+.canteen_order .canteen_li .pact_tit {
+    width: 225px;
+}
+
+.canteen_order .canteen_li .pact_text {
+    display: inline-block;
+    vertical-align: middle;
+    width: calc(100% - 235px);
+    font-size: 14px;
+}
+
+.canteen_order .pact_table .listTable thead th {
+    border: 1px solid #dbe3ee;
+}
+
+.canteen_order .table_box .listTable tbody tr:hover {
+    background-color: transparent !important;
+}
+
+.canteen_order .pact_table .listTable thead th:first-child,
+.bdp .pact_table .listTable tbody td:first-child {
+    border-left: 1px solid #dbe3ee;
+}
+
+.canteen_order .pact_table .listTable thead th:last-child,
+.bdp .pact_table .listTable tbody td:last-child {
+    border-right: 1px solid #dbe3ee;
+}
+
+.canteen_order .table_box .listTable tr:nth-child(2n) {
+    background-color: #fff;
+}
+
+.canteen_order .listTable tbody tr td:first-child:hover .add_minus {
+    opacity: 1;
+}
+
+.canteen_order .text_td {
+    position: relative;
+    text-align: center;
+}
+
+.canteen_order .add_minus {
+    opacity: 0;
+    position: absolute;
+    width: 100%;
+    background: #ffffff;
+    left: 0;
+    cursor: pointer;
+}
+
+.canteen_order .add_minus .iconfont {
+    color: #ffffff;
+    background: #786cec;
+    margin: 0px 5px;
+}
+
+.canteen_order .canteen_li .pact_form_select {
+    width: 240px;
+}
+
+.canteen_order .canteen_li .pact_form_input {
+    width: 240px;
+}
+
+.canteen_order .canteen_li .pact_form_area {
+    width: 100%;
+    height: 30px;
+    margin-top: 4px;
+    margin-left: -2px;
+    overflow: hidden;
+}
+
+.canteen_order .check_list {
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.canteen_order .margin_bot20 {
+    margin-bottom: 20px;
+    display: inline-block;
+}
+
+.canteen_order .text_700 {
+    width: 70%;
+    height: 80px;
+}
+
+.canteen_order .canteen_li .pact_textArea {
+    height: 76px;
+    width: calc(100% - 235px)
+}
+
+.canteen_order .order_add {
+    border: 1px solid #dbe3ee;
+    padding: 20px;
+}
+
+.canteen_order .pad_20 {
+    padding: 0 20px;
+}
+
+.canteen_order .button_box {
+    padding-bottom: 0;
+}
+
+.canteen_order .configed {
+    padding: 10px 0;
+    border-bottom: 1px solid #dbe3ee;
+    margin-bottom: 20px;
+}
+
+.canteen_order .configed_title {
+    padding: 2px 0 2px 10px;
+    font-size: 16px;
+    border-left: 5px solid #786ceb;
+}
+
+.canteen_order .canteen_add_form:hover .configed_btn {
+    display: inline-block;
+}
+
+.canteen_order .configed_btn {
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+    padding: 10px 0;
+    background-color: #dbe3ee;
+    display: none;
+    position: absolute;
+    left: 0;
+    bottom: -40px;
+}
+
+.canteen_order .configed_btn span {
+    color: #786ceb;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.canteen_order .configed_btn span:first-child {
+    margin-right: 20px;
+}
+
+.canteen_order .order_btn {
+    margin-top: 60px;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.canteen_order .input_w60 {
+    width: 60px;
+}
+
+.canteen_order .input_w80 {
+    width: 80px;
+}
+
+
+/*上传*/
+
+.canteen_order .order_add .attach_upload .lf_name {
+    display: none;
+}
+
+.canteen_order .order_add .mar_left160 {
+    margin-left: 0;
+}
+
+.canteen_order .order_add .float-massage {
+    left: 0;
+    font-size: 14px;
+}
+
+.canteen_order .canteen_li .upload_botton {
+    position: relative;
+    width: calc(100% - 260px);
+}
+
+.canteen_order .text_center_td {
+    text-align: center;
+    position: relative;
+}
+
+.canteen_order .upload_margin_top .add_img_box {
+    margin-top: 30px;
+}
+
+.canteen_order .border_red {
+    border: 1px solid red;
+}
+
+.canteen_order .tdInputWidth input {
+    width: 100%;
+}
+
+.canteen_order .tdInputWidth input,
+.canteen_order .tdInputWidth textarea {
+    border: 1px solid transparent;
+}
+
+.canteen_order .canteen_li .pact_form_area.auto,
+.canteen_order .canteen_li .pact_form_area:focus {
+    height: 65px;
+    overflow: auto;
+}

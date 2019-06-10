@@ -1,0 +1,86 @@
+<div id="app">
+  <div class="practice-content">
+    <lw-win-close></lw-win-close>
+    <div class="praction-title">请选择要加载的习题包</div>
+    <div class="search nodrag-area">
+      <ul>
+        <li>
+
+          <a-select defaultValue="全部" @change="changeStatus" class="a-select mar-r-10px">
+            <a-select-option value="">全部</a-select-option>
+            <a-select-option value="1">已使用</a-select-option>
+            <a-select-option value="2">未使用</a-select-option>
+          </a-select>
+        </li>
+        <li>
+          <a-date-picker placeholder="请选择日期" :defaultValue="moment(startTime, dateFormat)" :format="dateFormat" @change="onChangeDate"
+            style="width:120px" class="mar-r-10px" />
+        </li>
+        <li>
+          <a-input-search placeholder="关键字查询" @change="checkNo(keyword)" v-model="keyword" style="width: 240px" @search="onSearch" class="mar-r-40px" />
+        </li>
+        <li>
+          <div class="lw-tpk-pc">
+            <!-- <button nz-button [nzType]="'default'">本地文件</button> -->
+            <a-button @click="openWin('library')">校本题库</a-button>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="table-list" >
+      <table>
+        <thead>
+          <tr>
+            <th width="82">序号</th>
+            <th width="255">习题包名称</th>
+            <th wdith="162">所属上课时间</th>
+            <th width="97">使用状态</th>
+            <th width="82">使用次数</th>
+            <th width="120">操作</th>
+          </tr>
+        </thead>
+        <tbody ref="table">
+          <tr class="nodrag-area" v-for="(item,index) in questionBag.list">
+            <td>{{index+1}}</td>
+            <td class="td-2">
+              <template v-if="item.sourceType == 0">
+                  <img src="../../assets/images/file0.png">
+              </template>
+              <template v-if="item.sourceType == 1">
+                  <img src="../../assets/images/file1.png">
+              </template>
+              <template v-if="item.sourceType == 2">
+                  <img src="../../assets/images/file2.png">
+              </template>
+              <span>{{item.name}}</span>
+            </td>
+            <td class="td-3">{{item.giveLessonTime|dateformats('YYYY/MM/DD HH:mm')}}</td>
+            <td class="td-4">{{item.useCount > 0 ? '已使用' : '未使用'}}</td>
+            <td class="td-5">{{item.useCount}}次</td>
+            <td class="startTd">
+              <div class="lw-tpk-pc nodrag-area">
+                <a-button type="danger" @click="openWin('subjectiveProblem',{eId:item.id},true)">进入习题包</a-button>
+              </div>
+            </td>
+          </tr>
+          <tr class="noHover" style="text-align:center" v-if="questionBag.total>20">
+            <span class="click-show-more nodrag-area" :class="{'cursor':questionBag.total > questionBag.page.size}"
+              @click="changeList(questionBag)">
+              {{questionBag.total > questionBag.page.size?'点击加载更多':'已加载全部'}}</span>
+          </tr>
+          <tr class="noHover" v-if="!isLoadComplete">
+            <div v-if="!isLoadComplete" style="margin-top: 40px;text-align: center;">
+              <a-spin size="large" class="spin-loading" />
+            </div>
+            <lw-elliptical-page class="animated fadeIn" v-if="isLoadComplete&&questionBag.list.length <= 0" title="暂无习题包"></lw-elliptical-page>
+
+          </tr>
+          <tr class="noHover" v-if="isLoadComplete&&questionBag.list.length <= 0">
+            <lw-elliptical-page class="animated fadeIn"  title="暂无习题包"></lw-elliptical-page>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+</div>

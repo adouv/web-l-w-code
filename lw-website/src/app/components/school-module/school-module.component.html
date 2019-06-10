@@ -1,0 +1,70 @@
+<div id="school-module-container">
+    <nz-tabset class="school-module" [nzTabBarExtraContent]="extraTemplate">
+        <nz-tab nzTitle="教育教学" class="tab" (nzClick)="onTabClicked(educationObj)">
+            <div class="line"></div>
+            <div class="tab-box">
+                <div class="school-detail">
+                    <div class="school-img">
+                        <div *ngIf="coverUrl!=''" alt="学校图片信息说明" (click)="onListClicked(articleList[0])" [ngStyle]="{'background':'url('+coverUrl+') no-repeat center center','width':'458px','height':'281px','background-size':'cover'}"></div>
+                        <div *ngIf="coverUrl==''" alt="学校图片信息说明" [ngStyle]="{'background':'url(../../../assets/images/news-list.png) no-repeat center center','width':'458px','height':'281px','background-size':'cover'}"></div>
+                        <!-- <img *ngIf="coverUrl!=''" src="{{coverUrl}}" alt="学校图片信息说明" (click)="onListClicked(articleList[0])">
+						<img *ngIf="coverUrl==''" src="../../../assets/images/news-list.png" alt="学校图片信息说明" /> -->
+                    </div>
+                    <ul class="school-content" *ngFor="let item of articleList;let i=index;">
+                        <li *ngIf="i==0" (click)="onListClicked(item)">
+                            <span>{{firstTitle}}</span>
+                            <em>{{firstTime | date: 'y-MM-dd'}}</em>
+                        </li>
+                    </ul>
+                </div>
+                <div class="school-news-box">
+                    <ul class="school-news-list">
+                        <li class="school-news-item" *ngFor="let item of articleList.slice(1,articleList.length+1);let i=index;" (click)="onListClicked(item)">
+                            <div *ngIf="i < 6">
+                                <em class="icon"></em>
+                                <p>{{item.title.substr(0,35)}}</p>
+                                <em class="timer">{{item.publishTime | date: 'y-MM-dd'}}</em>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nz-tab>
+        <nz-tab nzTitle="新闻中心" class="tab" (nzClick)="onTabClicked(activedObj)">
+            <div class="line"></div>
+            <div class="tab-box">
+                <div class="school-detail">
+                    <div class="school-img">
+                        <div *ngIf="coverUrl!=''" alt="学校图片信息说明" (click)="onListClicked(articleList[0])" [ngStyle]="{'background-image':'url('+ coverUrl +')','width':'458px','height':'281px','background-size':'cover'}"></div>
+
+                        <div *ngIf="coverUrl==''" alt="学校图片信息说明" [ngStyle]="{'background-image':'url(../../../assets/images/news-list.png)','width':'458px','height':'281px','background-size':'cover'}"></div>
+                        <!-- <img *ngIf="coverUrl!=''" src="{{coverUrl}}" alt="学校图片信息说明" (click)="onListClicked(articleList[0])">
+						<img *ngIf="coverUrl==''" src="../../../assets/images/news-list.png" alt="学校图片信息说明" /> -->
+                    </div>
+                    <ul class="school-content" *ngFor="let item of articleList;let i=index;">
+                        <li *ngIf="i==0" (click)="onListClicked(item)">
+                            <span>{{item.title.substr(0,35)}}</span>
+                            <em>{{item.publishTime | date: 'y-MM-dd'}}</em>
+                        </li>
+                    </ul>
+                </div>
+                <div class="school-news-box">
+                    <ul class="school-news-list">
+                        <li class="school-news-item" *ngFor="let item of articleList.slice(1,articleList.length+1);let i=index;" (click)="onListClicked(item)">
+                            <em class="icon"></em>
+                            <p>{{item.title.substr(0,35)}}</p>
+                            <em class="timer">{{item.publishTime | date: 'y-MM-dd'}}</em>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nz-tab>
+    </nz-tabset>
+    <ng-template #extraTemplate>
+        <!-- <div><a style="color:#7552f8" href="/layout/list/{{tallNum}}/{{callNum}}">MORE</a></div> -->
+        <!-- <div><a style="color:#7552f8" href="/layout/list/{{tallNum}}/{{callNum}}">MORE</a></div> -->
+        <div *ngIf="show" class="more1"><span (click)="clickNav(0)">MORE</span></div>
+        <div *ngIf="!show" class="more2"><span (click)="clickNav(1)">MORE</span></div>
+
+    </ng-template>
+</div>

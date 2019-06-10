@@ -1,0 +1,247 @@
+@import "../../../../../styles/variable";
+@import "../../../../../styles/common.scss";
+
+:host {
+	width: 100%;
+}
+
+.classroom-unicast::ng-deep {
+	position: relative;
+	height: 100%;
+	padding: 0 computer(20px);
+	overflow-x: hidden; 
+	.ant-tabs-bar {
+		margin-bottom: 16px !important;
+	}
+
+	.ant-tabs-nav-scroll {
+		text-align: center;
+	}
+
+	.tabPromise {
+		// nz-tabs-nav {
+		// 	height: 56px;
+
+			.ant-tabs-nav-container {
+				display: none;
+			}
+		// }
+	}
+
+	i.fa {
+		font-size: 12px;
+
+		&.lv {
+			color: #28ca8f;
+		}
+
+		&.huang {
+			color: #febd60;
+		}
+
+		&.hui {
+			color: #999999;
+		}
+	}
+
+	.header-breadcrumb {
+		position: absolute;
+		top: computer(7px);
+		z-index: 200;
+	}
+
+	.header-buttom {
+		position: absolute;
+		top: computer(13px);
+		right: 0;
+		z-index: 200;
+		// right: computer(10px);
+		>button {
+			margin-right: 10px;
+		}
+	}
+
+	.line {
+		width: calc(100% - #{computer(40px)});
+		border-bottom: 1px solid #eee;
+		position: absolute;
+		top: computer(55px);
+	}
+
+	.ant-tabs-bar {
+		width: 70%;
+		margin: 0 auto;
+		border-bottom: none;
+	}
+
+	// .ant-tabs-nav-container {
+	// 	width: 70% !important;
+	// 	margin: 0 auto;
+	// 	padding: 0 !important;
+	// }
+	// .ant-tabs-nav-wrap {
+	// 	width: 90%;
+	// 	margin: 0 auto;
+	// }
+	.loading {
+		margin-top: computer(80px);
+	}
+
+	.unicast-list {
+		display: inline-block;
+		width: 100%;
+		// height: calc(100% - #{computer(15px)});
+		height: calc(100vh - #{computer(175px)});
+		box-sizing: border-box;
+
+		>div {
+			margin-top: computer(5px);
+			.header {
+				height: computer(30px);
+				line-height: computer(30px);
+				font-weight: bold;
+
+				.span-btn {
+					margin-right: computer(20px);
+					font-size: computer(16px);
+					color: #666;
+					cursor: pointer;
+
+					&.active {
+						color: $color_main;
+					}
+				}
+			}
+
+			.selectGroup {
+				margin-top: computer(10px);
+				height: computer(20px);
+				line-height: computer(20px);
+
+				>ul,
+				>div {
+					height: computer(20px);
+					line-height: computer(20px);
+				}
+
+				>ul {
+					display: flex;
+					float: left;
+
+					li {
+						display: flex;
+						font-size: computer(14px);
+						border-right: 1px solid #ddd;
+						margin-right: computer(20px);
+						padding-right: computer(13px);
+
+						div {
+							label {
+								>span {
+									padding: 0 0 0 computer(5px) !important;
+									font-size: computer(14px);
+									color: #333;
+								}
+
+								span:last-child {
+									margin-right: computer(20px);
+								}
+							}
+
+							i {
+								margin-left: computer(5px);
+							}
+						}
+					}
+
+					li:first-child {
+						color: #999;
+						margin: 0;
+						padding: 0;
+					}
+
+					li:first-child,
+					li:last-child {
+						border: none;
+					}
+				}
+
+				>div {
+					float: right;
+					// margin-right: computer(20px);
+				}
+			}
+
+			.selectGroup:after {
+				clear: both;
+				content: " ";
+			}
+		}
+
+		.unicast-list-content {
+			// height: calc(100% - #{computer(45px)});
+			height: calc(100vh - #{computer(254px)});
+			text-align: center;
+			padding: computer(20px) 0 0;
+			.isScroll {
+				width: 100%;
+				height: computer(100px);
+			}
+		}
+
+		.clear {
+			clear: both;
+		}
+
+		.paginaction {
+			padding: computer(20px) 0;
+			width: 100%;
+			text-align: center;
+		}
+	}
+
+	.click-show-more {
+		font-size: computer(15px);
+		color: #999;
+	}
+	// nz-footer{
+	// 	width: calc(100% - #{computer(40px)});
+	// 	position: fixed;
+	// 	bottom: 0;
+    //     background: #fff;
+    //     text-align: center;
+    //     height: computer(50px);
+    //     padding: 0;
+    //     line-height: computer(50px);
+	// 	border-top:1px solid $color_border;
+    //     margin:0 computer(20px);
+    //     .ant-btn{
+    //         margin-left:computer(20px);
+    //     }
+
+	// }
+	.ant-tabs-content{
+		margin-bottom: computer(50px);
+	}
+
+	.personAssign {
+		.ant-tabs-nav-container {
+			visibility: hidden;
+			.ant-tabs-ink-bar{
+				background: #eeeeee !important;
+				bottom: -2px;
+			}
+		}
+	}
+}
+.footer {
+	width: calc(100% - #{computer(290px)});
+	border-top: 1px solid $color_border;
+	position: absolute;
+	background-color: #fff;
+	bottom: 0;
+	height: computer(50px);
+	line-height: computer(50px);
+	text-align: center;
+	margin: 0 computer(95px) 0 computer(45px);
+}

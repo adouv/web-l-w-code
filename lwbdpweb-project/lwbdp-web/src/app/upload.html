@@ -1,0 +1,9 @@
+
+<form-upload submit-url="path"
+             format="xls,xlsx" size="{{1024*1024*2}}"
+             before-submit="beforeUpload($params)"
+             submit-success="submitSuccess($flow)">
+    <input type="text" ng-model="upload.data.url">
+    <button file-btn>上传</button>
+    <button file-sure>确定</button>
+</form-upload>

@@ -1,0 +1,64 @@
+<div class="bdp_list_search">
+    <div class="dialog-header">
+        更多条件组合搜索
+        <span class="iconfont icon-close del_btn dialog-close" ng-click="closeThisDialog()"></span>
+    </div>
+    <form class="w5c-form" novalidate name="search">
+    <div class="dialog-list" ng-if="!moreSearch.hideType">
+        <span class="dialog_name">类别</span>
+        <select-options name="type" id="type" class="dialog_select" ng-model="moreSearch.condition.type"
+                        repeat-items="type in moreSearch.warningTypeList" item-key="id"
+                        >
+            {{type.name}}
+        </select-options>
+    </div>
+    <div class="dialog-list">
+        <span class="dialog_name">紧急程度</span>
+        <select-options name="urgencyLevel" id="urgencyLevel" class="dialog_select" ng-model="moreSearch.condition.urgencyLevel"
+                        repeat-items="urgencyLevel in moreSearch.noticeUrgencyLevelList" item-key="itemValue"
+                       >
+            {{urgencyLevel.itemName}}
+        </select-options>
+    </div>
+    <div class="dialog-list" ng-if="moreSearch.condition.sideBarCode=='receive'">
+        <span class="dialog_name">发送单位</span>
+        <input type="text" class="dialog_input dialog_applyAccount" ng-model="moreSearch.condition.gardenName">
+    </div>
+    <div class="dialog-list" ng-if="moreSearch.condition.sideBarCode=='receive'">
+        <span class="dialog_name">处理状态</span>
+        <select-options name="" id="" class="dialog_select" ng-model="moreSearch.condition.dealStatus"
+             repeat-items="data in moreSearch.dealStatus" item-key="value"
+        >
+           {{data.name}}
+        </select-options>
+    </div>
+    <div class="dialog-list" ng-if="moreSearch.condition.sideBarCode!='receive'">
+        <span class="dialog_name">发送状态</span>
+        <select-options name="" id="" class="dialog_select" ng-model="moreSearch.condition.publishStatus"
+            repeat-items="publishStatus in moreSearch.publishStatus" item-key="value"
+        >
+            {{publishStatus.name}}
+        </select-options>
+    </div>
+    <div class="dialog-list" ng-if="moreSearch.condition.sideBarCode!='send'">
+        <span class="dialog_name">发送人</span>
+        <input type="text" name="accountName" class="dialog_input dialog_applyAccount" placeholder="10个汉字以内，非必填" ng-model="moreSearch.condition.accountName" maxlength="10">
+    </div>
+    <div class="dialog-list">
+        <span class="dialog_name">发送时间</span>
+        <div class="dialog_date">
+            <input type="text" id="startTime" lw-laydate='YYYY-MM-DD hh:mm' ng-class="{'error':moreSearch.validStartTime&&!moreSearch.condition.startTime}" ng-model="moreSearch.condition.startTime" max-date="moreSearch.condition.endTime" class="dialog_input_middle" placeholder="开始时间">
+            <div class="iconfont icon-llreservecalendar dialog_date_icon"></div>
+        </div>
+        <span class="dialog_line">一</span>
+        <div class="dialog_date">
+            <input type="text" id="endTime" lw-laydate='YYYY-MM-DD hh:mm' ng-class="{'error':moreSearch.validEndTime&&!moreSearch.condition.endTime}" ng-model="moreSearch.condition.endTime" min-date="moreSearch.condition.startTime" class="dialog_input_middle" readonly="readonly" placeholder="结束时间" >
+            <div class="iconfont icon-llreservecalendar dialog_date_icon"></div>
+        </div>
+    </div>
+    <div class="dialog-btn">
+        <div class="btn_bd" ng-click="closeThisDialog()">取消</div>
+        <div class="btn_bg" form-submit-valid="moreSearch.clickSure()">确定</div>
+    </div>
+    </form>
+</div>

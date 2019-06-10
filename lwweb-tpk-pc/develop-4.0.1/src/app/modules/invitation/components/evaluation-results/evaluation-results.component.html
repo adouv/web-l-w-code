@@ -1,0 +1,31 @@
+<div *ngIf="!edit">
+	<div class="comments-container" *ngIf="comment && comment.comment">
+		<ul>
+			<li>
+				<div class="img-wrapper">
+					<img src="../../../../../assets/images/user-icon.png" alt="">
+				</div>
+				<div class="rs-wrapper">
+					<div>
+						<span>{{comment?.appraiserName}}</span>
+						<span class="fr">{{comment?.lastUpdateTime|date:'yyyy/MM/dd HH:mm'}}</span>
+					</div>
+					<div class="comment-wrapper word-break">
+						{{comment?.comment}}
+					</div>
+				</div>
+			</li>
+		</ul>
+	</div>
+
+	<div class="no-result" *ngIf="!comment?.comment && isCurrentAccount">
+		{{isOutTime?'当前评课活动已结束，无法继续评课':'暂无老师完成教学评价'}}
+	</div>
+	<div class="no-result" *ngIf="!comment?.comment && !isCurrentAccount">所选用户未对该项内容进行评价</div>
+</div>
+<div *ngIf="edit">
+	<textarea class="textarea-input" cols="30" rows="10" [(ngModel)]="comment" (keyup)="emitModel(comment)" [maxlength]="300"></textarea>
+	<div class="footer">
+		<button nz-button nzType="danger" btnDebunce (debounceClick)="submitCommentMsg()" [waitTime]="1500" [disabled]="!comment || !btnDebunce">提交</button>
+	</div>
+</div>

@@ -1,0 +1,276 @@
+@import "../../../../../styles/variable";
+.course-prepare::ng-deep {
+    width: 100%;
+    height: 100%;
+    .disable-tag {
+        border: 1px solid red;
+    }
+    .ant-steps {
+        line-height: computer(28px);
+    }
+    .ant-steps .ant-steps-title {
+        line-height: computer(30px);
+        font-size: computer(15px);
+    }
+    .ant-steps .ant-steps-head-inner {
+        height: computer(30px);
+        width: computer(30px);
+        line-height: computer(28px);
+        border-radius: computer(30px);
+    }
+    .ant-steps .ant-steps-item.ant-steps-status-process .ant-steps-head-inner {
+        border-color: $color_main;
+        background-color: $color_main;
+    }
+    nz-header {
+        padding: 0;
+        background: #fff;
+        height: computer(100px);
+        line-height: computer(50px);
+        border-bottom: 1px solid $color_border;
+        margin: 0 computer(20px);
+        .header {
+            height: computer(50px);
+            line-height: computer(50px);
+            position: relative;
+            nz-breadcrumb {
+                position: absolute;
+                z-index: 999;
+            }
+            .title {
+                text-align: center;
+                position: absolute;
+                z-index: 998;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: computer(50px);
+                line-height: computer(50px);
+                text-align: center;
+                font-size: computer(16px);
+                color: $color_font-center;
+            }
+        }
+        .steps {
+            width: computer(567px);
+            margin: 0 auto;
+            padding: computer(10px) 0;
+        }
+    }
+    nz-content {
+        .tool {
+            // padding: computer(20px) 0;
+            margin: 0 computer(20px);
+        }
+        .input-class {
+            height: computer(30px);
+            border-radius: 3px;
+            padding: 0 computer(8px);
+            border: solid 1px #dddddd;
+            width: computer(500px);
+        }
+        .error {
+            color: red;
+            font-size: computer(14px);
+            margin-left: computer(10px);
+        }
+        .input-error {
+            border: 1px solid red;
+        }
+        .header-content {
+            // background-color: #f8f8f8;
+            padding: computer(20px) computer(40px) 0;
+            // border: solid 1px $color_border;
+            height: auto;
+            display: inline-block;
+            width: 100%;
+            .text-group {
+                font-size: computer(14px);
+                color: $color_font-deep;
+                margin-bottom: computer(20px);
+                min-height: computer(30px);
+                line-height: computer(30px);
+                display: inline-block;
+                width: 100%;
+                height: auto;
+                .check-title {
+                    color: $color_font-light;
+                    font-size: computer(14px);
+                    display: inline-block;
+                    margin-left: computer(20px);
+                }
+            }
+            .select-tag {
+                padding: 0 computer(10px) 0 computer(20px);
+                margin-bottom: computer(10px);
+                font-size: computer(14px);
+                border-radius: computer(15px);
+                height: computer(30px);
+                line-height: computer(30px);
+                text-align: center;
+                background-color: $color_border;
+                color: $color_font-deep;
+                margin-right: computer(10px);
+                cursor: default;
+                //float: left;
+                display: inline-block;
+                .icon-span {
+                    cursor: pointer;
+                    font-size: computer(12px) !important;
+                    margin-left: computer(10px);
+                    color: #333333;
+                    &:hover {
+                        color: $color_main;
+                    }
+                    .iconfont:before {
+                        font-size: computer(12px) !important;
+                    }
+                }
+            }
+        }
+        .span-maohao {
+            margin: 0 computer(10px);
+        }
+        .content {
+            max-width: 100%;
+            padding: 0 0 0 computer(20px);
+            box-sizing: border-box;
+            .left {
+                width: computer(120px);
+                border-right: 1px solid $color_border;
+                padding: computer(10px) 0;
+                box-sizing: border-box;
+                float: left;
+                ul li {
+                    height: computer(30px);
+                    line-height: computer(30px);
+                    font-size: computer(16px);
+                    color: $color_font-center;
+                    margin-bottom: computer(30px);
+                    text-align: center;
+                    cursor: pointer;
+                    border-left: 2px solid #fff;
+                }
+                .active {
+                    color: $color_main !important;
+                    border-left: 2px solid $color_main !important;
+                }
+            }
+            .right {
+                width: calc(100% - #{computer(120px)});
+                // float: left;
+                max-width: 100%;
+                // .auto-scroll{
+                // }
+                .right-content {
+                    height: 100%;
+                    width: 100%;
+                }
+                .li-0,
+                .li-1,
+                .li-3 {
+                    padding-right: computer(20px);
+                }
+                .li-2 {
+                    padding-left: computer(20px);
+                    .designStatus-div {
+                        padding-right: computer(20px);
+                    }
+                    .auto-scroll {
+                        padding-right: computer(20px);
+                    }
+                    .auto-elliptical-page-new {
+                        .elliptical-page {
+                            margin-top: 0px !important;
+                        }
+                    }
+                    .col-blue {
+                        font-size: computer(14px);
+                    }
+                    // 全选
+                    .check-box {
+                        letter-spacing: 0;
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        margin-bottom: computer(18px);
+                        label {
+                            width: auto;
+                        }
+                        .all-check {
+                            margin: 0 computer(10px);
+                            font-size: computer(14px);
+                        }
+                        .nz-button {
+                            float: right;
+                            &:disabled {
+                                opacity: 0.5;
+                                color: #fd8158;
+                                border-color: #fe997b;
+                                background: #fff;
+                            }
+                        }
+                    }
+                    .designStatus {
+                        padding-right: computer(15px);
+                    }
+                    .type-box {
+                        margin-bottom: computer(10px);
+                        margin-top: computer(-10px);
+                        font-size: computer(14px);
+                        .type-title {
+                            display: inline-block;
+                            color: #999999;
+                            white-space: nowrap;
+                            margin-top: computer(15px);
+                        }
+                        .type-items {
+                            display: inline-block;
+                            width: calc(100% - #{computer(60px)});
+                            vertical-align: top;
+                        }
+                        .type-item {
+                            display: inline-block;
+                            height: computer(30px);
+                            color: $color_font-center;
+                            border-radius: 15px;
+                            text-align: center;
+                            line-height: computer(30px);
+                            cursor: pointer;
+                            margin-right: computer(10px);
+                            padding: 0 computer(15px);
+                            margin-top: computer(10px);
+                            &:hover {
+                                color: #226cfb;
+                            }
+                            &.active {
+                                background-color: #226cfb;
+                                color: #ffffff;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    nz-footer {
+        background: #fff;
+        text-align: center;
+        height: computer(50px);
+        padding: 0;
+        line-height: computer(50px);
+        border-top: 1px solid $color_border;
+        margin: 0 computer(20px);
+        .ant-btn {
+            margin-left: computer(20px);
+        }
+    }
+}
+
+.force-class {
+    color: red;
+    span {
+        display: block;
+        padding: computer(5px) 0;
+    }
+}

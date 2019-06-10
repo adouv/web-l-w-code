@@ -1,0 +1,215 @@
+<div class="projectcapitalIncome">
+    <div class="breadnav">
+        <ul>
+            <!--<li>项目财务管理 ></li>-->
+            <li ng-click="backToList()" class="secondTitle">项目财务库 ></li>
+            <li class="thirdTitle">添加财务记录</li>
+        </ul>
+    </div>
+    <div class="page">
+        <p class="pagetit font_MY">
+            <!--添加财务记录-->
+            <span class="tableBtn blue" has-permission="bdp:projectCapital:batchImport"
+                  ng-click="batchAddIncome()">批量导入</span>
+        <p class="income_nav">
+        <span class="income_nav_click">
+            <span>添加项目收入</span></span>
+            <span><a ui-sref="bill.projectcapital.payout">
+            <span>添加项目支出</span></a></span>
+            <span><a ui-sref="bill.projectcapital.recovery ">
+            <span>添加财政收走资金</span></a></span>
+        </p>
+        <form class="w5c-form" w5c-form novalidate w5c-form-validate name="income" stop-event>
+            <div class="income_title">
+                <p class="spacing">
+                    记账类型
+                    <span>*</span>
+                    <i class="illustrate">说明:冲红表示为了抵消某笔错误的账目而记入的反向操作。</i>
+                </p>
+                <div class=" form-group">
+                    <select class="form-control" ng-model="incomeType">
+                        <option value="income">收入</option>
+                        <option value="incomeWriteBack">冲红</option>
+                    </select>
+                </div>
+                <p class="spacing" ng-if="incomeType=='income'">该笔收入对应的项目 <span>*</span></p>
+                <p class="spacing" ng-if="incomeType=='incomeWriteBack'">请选择冲红对应的项目 <span>*</span></p>
+                <input name="email" id="selectProject" type="text" class="form-control curpoint income_search"
+                       ng-model="selectedProject.name" name="projectId">
+                <select-project ids="selectedProject.id" named="selectedProject.name"></select-project>
+                <!--收入部分 start-->
+                <div class="type_box" ng-show="incomeType=='income'">
+                    <p class="spacing">项目收入来源 <span>*</span></p>
+                    <div class=" form-group">
+                        <select class="form-control" ng-model="incomeCapitalType"
+                                ng-options="item.itemValue as item.itemName for item in incomeCapitalTypeList"
+                                ng-change="initCapitalNumberList(incomeCapitalType)">
+                            <option value="">请选择</option>
+                        </select>
+                    </div>
+                    <div class="choose_income capital_num" ng-show="incomeCapitalType=='capitalNumber'">
+                        <div class="form-group">
+                            <select name="" class="form-control" ng-model="gardenIdString"
+                                    ng-options="garden.gardenTypeId as garden.gardenName for garden in gardens">
+                                <option value="">选择园区</option>
+                            </select>
+                            <select name="" class="form-control" ng-model="capitalType"
+                                    ng-options="item.itemValue as item.itemName for item in capitalNumberSourceTypeList">
+                                <option value="">选择资金文号类型</option>
+                            </select>
+                            <input class="form-control" type="text" placeholder="回车键提交查询"  ng-model="capitalNumberName">
+                            <!--<span class="search_btn" ng-click="searchCapitalNumber()"></span>-->
+                            <span class="tableBtn blue" ng-click="searchCapitalNumber()">查询</span>
+                        </div>
+                        <div class="choosenum capnumber_result">
+                            <div class="hasresult" ng-if="gardens.length>0">
+                                <ul>
+                                    <li ng-repeat="item in capitalNumberList"
+                                        ng-click="showCapitalNumberDialog($index,item)">
+                                        {{item.name}}（{{item.totalAmount }};<em class="blue">{{item.usedAmount }};</em><em
+                                            class="green">{{(item.availableAmount) }}</em>）
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div ng-if="selectedCapitalNumberArray && selectedCapitalNumberArray.length > 0">
+                        <p class="spacing">已配置支出的资金文号及金额</p>
+                        <div class="selected_num">
+                            <span ng-repeat="item in selectedCapitalNumberArray">({{item.gardenName}}){{item.name}}（{{item.amount}}）<em
+                                    class="del" ng-click="removeCapitalNumber($index,$event)"></em></span>
+                        </div>
+                        <p class="spacing">本次安排资金总金额为: <span class="red">{{allAssignAmount }}万元</span></p>
+                    </div>
+                    <div ng-show="incomeCapitalType && incomeCapitalType !='capitalNumber'">
+                        <p class="spacing">本次收入金额<span>*</span></p>
+                        <div class="form-group">
+                            <input type="text" class="form-control" ng-model="incomeAmount" name="incomeAmount">
+                        </div>
+                    </div>
+
+                    <p class="spacing">收入实际到账时间:</p>
+                    <div class="form-group" id="get-time">
+                        <input id="ic_time" readonly lw-laydate type="text"
+                               value="{{receivedDate | date:'yyyy/MM/dd'}}" ng-model="receivedDate"
+                               class="form-control curpoint">
+                        <!--<input type="date" class="form-control" ng-model="receivedDate">-->
+                    </div>
+                    <p class="spacing">备注</p>
+                    <textarea class="form-control" ng-model="projectCapital.description" name='description' cols="200"
+                              rows="3" maxlength="500" placeholder="500字以内，非必填"></textarea>
+                </div>
+                <!--收入部分 end-->
+                <!--冲红部分 start-->
+                <div class="type_box" ng-show="incomeType=='incomeWriteBack'">
+                    <p class="spacing">请选择要冲红的项目收入 <span>*</span></p>
+                    <div class="choose_income">
+                        <p class="choose_result" ng-if="selectedIncome">
+                            <span class="pospan">已选中的收入:</span>
+                            <span class="res_span ell">来自{{selectedIncome.typeName}} ({{selectedIncome.incomeAmount}};
+                            <em class="blue">{{selectedIncome.payoutAmount }};</em><em class="green">{{selectedIncome.availableAmount }}</em>)
+                            {{selectedIncome.createTime?(selectedIncome.createTime | date:'yyyy/MM/dd'):''}}
+                            <em class="billiconfont icon_shutdown deleteIcon"
+                                ng-click="delSelectedIncome(selectedIncome.idx)"></em>
+                        </span>
+                        </p>
+                        <div class="choose_box">
+                            <div class="form-group">
+                                <select class="form-control"
+                                        ng-options="item.itemValue as item.itemName for item in incomeCapitalTypeList"
+                                        ng-model="writeBackCapitalType"
+                                        ng-change="searchProjectIncome(writeBackCapitalType)">
+                                    <option value="">请选择资金来源</option>
+                                </select>
+                            </div>
+                            <div class="tableContent" style="padding: 0">
+                                <table class="formTable">
+                                    <tr class="first">
+                                        <th style="width: 90px;">序号</th>
+                                        <th>收入来源</th>
+                                        <th>该笔收入的金额(总额<em class="blue">/已支出金额</em><em class="green">/剩余金额</em>)</th>
+                                        <th>更新时间</th>
+                                    </tr>
+                                    <tr ng-repeat="item in projectIncomeList" for="choose_ic{{$index}}">
+                                        <td><input type="radio" id="choose_ic{{$index}}" class="radioClass"
+                                                   name="choose_ic" ng-checked="item.checked"
+                                                   ng-click="showIncomeBillDetail($index,item)"> {{$index+1}}
+                                        </td>
+                                        <td><span class="text">{{item.typeName}}</span></td>
+                                        <td>(<span class="text">{{item.incomeAmount }};<em class="blue">{{item.payoutAmount }};</em><em
+                                                class="green">{{item.availableAmount }}</em></span>)
+                                        </td>
+                                        <td><span class="text">{{item.createTime ?(item.createTime | date:'yyyy/MM/dd'):''}}</span>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="spacing normal" ng-show="selectedIncome">
+                        <input type="radio" class="radioClass" name="backType" value="part" ng-model="backType"> 部分冲红
+                        <span class="pad_l"><input type="radio" class="radioClass" name="backType" value="all"
+                                                   ng-model="backType"> 全部冲红</span>
+                    </p>
+                    <!--部分冲红 start-->
+                    <div class="part_back" ng-show="selectedIncome && backType=='part'">
+                        <p class="illustrate spe">该收入对应的可冲红金额（未支出部分金额）:
+                            {{selectedIncome.availableAmount }}万元</p>
+                        <p class="spacing">本次要冲红的总金额</p>
+                        <div class="form-group">
+                            <input type="text" class="form-control"
+                                   placeholder="只能小于等于{{selectedIncome.availableAmount}}万元" name="writeBackTotalAmount"
+                                   ng-model="writeBackTotalAmount"
+                                   ng-keyup="inputed(writeBackTotalAmount,'writeBackTotalAmount',selectedIncome.availableAmount)"
+                                   ng-disabled="selectedIncome.availableAmount<=0">
+                        </div>
+                        <p class="allocation" ng-show="selectedIncome.typeName=='资金文号'">冲红金额在该收入中的具体分配 <span style="color:red">*</span>: <span ng-show="writeBackTotalAmount">(已分配: {{writeBackAmountSum }} 万元,待分配 : {{(writeBackTotalAmount - writeBackAmountSum) }} 万元,您必须待分配金额为0时才能提交该冲红)</span>
+                        </p>
+                        <div class="choose_income" ng-show="selectedIncome.typeName=='资金文号'">
+                            <div class="tableContent" style="padding: 0">
+                                <table class="formTable">
+                                    <tr>
+                                        <td class="tableAverage">您选择的收入来源构成 <i>(总额/<em class="blue">已支出金额/</em><em
+                                                class="green">可冲红金额</em>)</i>
+                                        </td>
+                                        <td>冲红的金额</td>
+                                    </tr>
+                                    <tr ng-repeat="item in incomeDetailList">
+                                        <td>{{item.name}}({{item.totalAmount }};<em class="blue">{{item.payoutAmount }};</em><em
+                                                class="green">{{item.availableAmount }}</em>)
+                                        </td>
+                                        <td><input type="text" placeholder="≤{{item.availableAmount }}"
+                                                   ng-model="item.amount"
+                                                   class="form-control" ng-keyup="checkWriteBackTotalAmount(item)"
+                                                   ng-disabled="selectedIncome.availableAmount<=0 || item.availableAmount<=0">
+                                            万元
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <!--部分冲红 end-->
+                    <!--全部冲红 start-->
+                    <div ng-show="selectedIncome && backType=='all'">
+                        <p class="illustrate spe">收入总金额 {{selectedIncome.incomeAmount }}万元 ( 已支出金额
+                            {{selectedIncome.payoutAmount }}万元,未支出 {{selectedIncome.availableAmount }}万元
+                            )对于已支出金额的冲红,将撤销其对应的所有支出记录;</p>
+                        <p class="spacing">本次要冲红的总金额: <span
+                                class="red">{{(selectedIncome.incomeAmount) }}万元</span></p>
+                    </div>
+                    <!--全部冲红 end-->
+                    <p class="spacing">冲红原因 <span>*</span></p>
+                    <textarea class="form-control" ng-model="writeBackReason" cols="200" rows="3" maxlength="500"
+                              placeholder="500字以内,非必填"></textarea>
+                </div>
+                <!--冲红部分 end-->
+            </div>
+            <div class="income_div">
+                <input class="income_sure setbtn sureBtn " type="button" value="确定" name="" ng-click="save()">
+            </div>
+        </form>
+
+    </div>
+</div>
+

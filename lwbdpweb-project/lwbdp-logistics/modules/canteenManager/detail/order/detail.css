@@ -1,0 +1,18 @@
+.canteen_order .canteen_info_tit {
+    width: 100%;
+    margin-bottom: 20px;
+}
+.canteen_order .canteen_info_tit h3 {
+    height: 40px;
+    line-height: 40px;
+    border-bottom: 1px solid #dbe3ee;
+    text-align: center;
+    font-size: 16px;
+}
+
+.canteen_order .canteen_info_tit p {
+    text-align: center;
+    font-size: 14px;
+    color: #999;
+    margin-top: 5px;
+}

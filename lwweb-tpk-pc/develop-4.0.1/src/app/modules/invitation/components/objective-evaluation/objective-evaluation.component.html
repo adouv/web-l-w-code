@@ -1,0 +1,72 @@
+<div *ngIf="objectiveList" class="mar-bot-40px">
+	<div class="time" *ngIf="isShowTime">评价时间：{{objectiveList?.createTime|date:'yyyy/MM/dd HH:mm'}}</div>
+	<table class="evaluate-table" border="0" cellspacing="0" cellpadding="0">
+		<tr>
+			<td class="td-title td-title-font">课题</td>
+			<td *ngIf="edit" colspan="5" class="text-left">
+				<input tabindex=-1 maxlength="30" type="text" class="td-input" [(ngModel)]="objectiveList.theme"/>
+			</td>
+			<td *ngIf="!edit" colspan="5" class="text-left">
+				{{objectiveList.theme}}
+			</td>
+		</tr>
+		<tr>
+			<td class="td-title td-title-font">项目</td>
+			<td class="td-title-font">评分标准细则</td>
+			<td class="td-50 td-title-font">分值</td>
+			<td class="td-50 td-title-font">得分</td>
+			<td class="td-100 td-title-font">简要说明</td>
+			<td class="td-100 td-title-font">备注</td>
+		</tr>
+		<tr *ngFor="let d of objectiveList.items">
+			<td class="td-title">{{d.name}}<br/><!--{{d.score}}分--></td>
+			<td colspan="5" class="no-padding no-line">
+				<table [ngClass]="{'evaluate-one-child-table':d.childItems.length===1}"
+					   class="evaluate-child-table" border="0" cellspacing="0" cellpadding="0">
+					<tr *ngFor="let da of d.childItems;let i = index">
+						<td class="no-left-line text-left">{{da.name}}</td>
+						<td class="td-50 no-right-line">
+							{{da.score}}
+						</td>
+						<td *ngIf="edit" class="td-50 td-num" [ngClass]="{'error':da.isRequire}">
+							<input id="{{da.id}}" class="td-input-num" [(ngModel)]="da.obtainedScore" type="text"
+								   (keyup)="clearNumber($event,da)" (click)="da.isRequire = false"
+								   (blur)="checkNumber(da);emitModel(da.obtainedScore);numChange($event, da)"/>
+						</td>
+						<td *ngIf="!edit" class="td-50 td-num">
+							{{da.obtainedScore}}
+						</td>
+
+						<td *ngIf="edit" class="td-100 td-num">
+							<input id="explain{{da.id}}" class="td-input-num" [(ngModel)]="da.explain" type="text"
+							maxlength="100"/>
+						</td>
+						<td *ngIf="!edit" class="td-100 td-num">
+							{{da.explain}}
+						</td>
+
+						<td *ngIf="edit" class="td-100 td-num">
+							<input id="remark{{da.id}}" class="td-input-num" [(ngModel)]="da.remark" type="text"
+								   maxlength="100"/>
+						</td>
+						<td *ngIf="!edit" class="td-100 td-num">
+							{{da.remark}}
+						</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+		<tr>
+			<td class="td-title">总分</td>
+			<td colspan="5">{{objectiveList.totalObtainedScore}}</td>
+		</tr>
+	</table>
+	<div class="footer" *ngIf="edit">
+		<button nz-button nzType="danger" btnDebunce (debounceClick)="submitCommentMsg($event)" [waitTime]="1500" [disabled]="!allowSubmit || !btnDebunce">提交</button>
+	</div>
+</div>
+
+<div class="no-result" *ngIf="objectiveList === null && isCurrentAccount">
+	{{isOutTime?'当前评课活动已结束，无法继续评课':'暂无老师完成教学评价'}}
+</div>
+<div class="no-result" *ngIf="objectiveList === null && !isCurrentAccount">所选用户未对该项内容进行评价</div>

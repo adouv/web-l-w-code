@@ -1,0 +1,41 @@
+<div class="select-person">
+    <div class="garden-content-middle garden-persons">
+        <div class="content-bar">
+            <input class="garden-input" type="text" placeholder="搜索" ng-model="person.keywords">
+            <span class="garden-delete personIconfont icon-remove" ng-show="person.keywords" ng-click="person.removeKeywords()"></span>
+            <span class="garden-search personIconfont icon-search" ng-show="!person.keywords"></span>
+            <div class="garden-seachResult" ng-show="person.keywords">{{person.searchSelectedIds.length||0}}条结果</div>
+        </div>
+        <div class="garden-list" ng-class="{'high':person.keywords}">
+            <ul>
+                <li ng-repeat="data in person.personList"
+                    ng-show="person.filterPerson(data,department)">
+                    <label>
+                        <input class="garden-check" type="{{multiple?'checkbox':'radio'}}"
+                               name="{{multiple?'':'single'}}"
+                               ng-click="person.checked($event,data)"
+                               ng-checked="person.selectChecked(data)">
+                        <span>{{data.name}}</span>
+                    </label>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="garden-content-change">
+        <div class="garden-change" ng-click="person.selectedAll()"> &gt;&gt; </div>
+        <div class="garden-change" ng-click="person.removeAll()"> &lt;&lt; </div>
+    </div>
+    <div class="garden-content-right garden-selected">
+        <div class="content-bar">
+            <input class="garden-input" type="text" placeholder="搜索" ng-model="person.selectedKeywords">
+            <span class="garden-delete personIconfont icon-remove" ng-show="person.selectedKeywords" ng-click="person.removeSelectedKeyword()"></span>
+            <span class="garden-search personIconfont icon-search" ng-show="!person.selectedKeywords"></span>
+            <div class="garden-seachResult" ng-show="person.selectedKeywords">{{person.selectedIds.length||0}}条结果</div>
+        </div>
+        <div class="garden-list" ng-class="{'high':person.selectedKeywords}">
+            <ul>
+                <li ng-repeat="data in person.selectedPersonList" ng-show="person.filterResult(data)" ng-click="person.removeById(data.id)">{{data.name}}</li>
+            </ul>
+        </div>
+    </div>
+</div>

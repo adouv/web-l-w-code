@@ -1,0 +1,665 @@
+.repair .repaDisposal_info {
+    margin-top: 20px;
+}
+
+.repair .repaDisposal_info .add_img_box {
+    overflow: hidden;
+}
+
+.repair .w200 {
+    width: 200px;
+    margin-right: 10px;
+    text-align: right;
+}
+
+.repair .w230{
+    width: 230px;
+    margin-right: 10px;
+    text-align: right;
+}
+
+.repair .selectW200 {
+    width: 400px !important;
+}
+.repair .border_wrapper{
+    border: 1px dashed #fff;
+    display: inline-block;
+    vertical-align: bottom;
+}
+.repair .border_red{
+    border: 1px dashed red;
+    /*min-width: 888px;*/
+    /*width: 65%;*/
+    padding: 10px;
+    margin-left: -10px;
+    max-width: 89%;
+}
+.repair .border_wrapper + .lookApproveInfo{
+    display: none;
+}
+.repair .border_red + .lookApproveInfo{
+    display: inline-block;
+    vertical-align: bottom;
+}
+
+.repair .w650{
+    width: 650px;
+}
+.repair .w850 {
+    width: 640px;
+    margin-right: -50px;
+    line-height: 24px;
+}
+
+.repair .w850.fl.word_center{
+    float: left !important;
+    width: auto;
+}
+
+.repair.ngdialog .w850 {
+    line-height: 24px;
+    width: 75.4% !important;
+}
+
+@media (max-width:1260px) {
+    .repair .w850 {
+        /*width: 72%;*/
+    }
+}
+@media (max-width:1250px) {
+    .repair .w850 {
+        /*width: 70%;*/
+    }
+}
+
+.repair .w120 {
+    width: 120px;
+    margin-right: 10px;
+    text-align: right;
+}
+
+.repair .w250 {
+    /*max-width: 250px;*/
+    width: 250px;
+    margin-right: 10px;
+    text-align: right;
+}
+
+.repair .disposal_content {
+    /*margin-left: 14%;*/
+    width: 860px;
+    margin: 0 auto;
+}
+/*@media (max-width:1200px) {*/
+    /*.repair .disposal_content {*/
+        /*width: 92%;*/
+    /*}*/
+/*}*/
+.repair .check_list {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.repair .repaDisposal_flow {
+    margin-top: 20px;
+    padding-bottom: 30px;
+    min-width: 1000px;
+}
+
+.repair .info_or_flow {
+    height: 35px;
+    line-height: 35px;
+    border-bottom: 1px solid #dae4ee;
+}
+
+.repair .info_or_flow span {
+    font-size: 16px;
+    display: inline-block;
+    padding: 0 10px;
+    margin-right: 10px;
+}
+
+.repair .info_or_flow span.current {
+    background-image: linear-gradient(-180deg, #786cec 50%, #0096ff 50%);
+    background-image: -webkit-linear-gradient(-180deg, #786cec 50%, #0096ff 50%);
+    background-size: 100% 4px;
+    background-position: bottom right;
+    background-repeat: no-repeat;
+}
+
+.repair .disposal_info {
+    padding: 20px 70px 20px 10%;
+    border-bottom: 1px dashed #dae4ee;
+}
+
+.repair .report_btn {
+    text-align: center;
+}
+
+.repair .bottom_btn{
+    width: 100%;
+    position: absolute;
+    left: 0;
+    bottom: -70px;
+    padding: 20px;
+}
+.repair .attach_upload .title_wrapper{
+    width: 500px;
+}
+.bdp .attach_upload .desc{
+    width: 84%;
+}
+.repair .project_detail {
+    padding: 20px 0;
+    overflow: hidden;
+}
+
+.repair .disposal_list {
+    border-bottom: 1px dashed #dae4ee;
+}
+
+.repair .project_detail:last-child {
+    border: 0 !important;
+}
+
+.repair .project_info {
+    margin: 0 0 0px 8%;
+    position: relative;
+}
+
+.repair .lineDashed {
+    padding: 10px 10px 0;
+    border: 1px dashed #ff3639;
+    position: relative;
+}
+
+.repair .bale_list {
+    color: #0096ff;
+    margin-right: 26px;
+    font-size: 14px;
+    max-width: 46%;
+}
+
+@media (min-width:1500px) {
+    .repair .bale_list {
+        /*max-width: 70%;*/
+    }
+}
+
+.repair .bale_list p {
+    margin-bottom: 3px;
+    cursor: pointer;
+    display: inline-block;
+    border-bottom: 1px solid transparent;
+}
+.repair .bale_list p:hover{
+    border-bottom: 1px solid #0096ff;
+}
+
+
+/*.repair .bale_list .col009:first-child {
+    padding: 0 10px 0 0;
+}*/
+
+.repair .bale_list .col009 {
+    color: #0096ff;
+    display: inline-block;
+    /*padding: 0 10px;*/
+    cursor: pointer;
+}
+
+.repair .return_audit {
+    position: absolute;
+    bottom: 4px;
+    right: -110px;
+    color: #0096ff;
+}
+
+.repair .project_detail .reDraft_list:last-child {
+    padding-bottom: 0;
+}
+
+.repair .project_detail .reDraft_list .downloadBale {
+    visibility: hidden;
+    float: left;
+}
+
+.repair .project_info .reDraft_list {
+    padding: 8px 10px 8px 0;
+    position: relative;
+}
+
+.repair .project_detail .loadBale_list:hover {
+    background: #dbe3ee;
+    display: inline-block;
+    vertical-align: bottom;
+}
+
+.repair .project_detail .loadBale_list:hover .downloadBale {
+    visibility: inherit;
+}
+
+.repair .noneBd {
+    border: 0 !important;
+}
+
+
+/* 上传图片 */
+
+.repair .repairDraft .upload_img_box {
+    margin: 0 0 12px 210px;
+}
+
+.repair .repairDraft .initial_img {
+    display: inline-block;
+    width: 140px;
+    height: 140px;
+    margin-right: 30px;
+    position: relative;
+}
+
+.repair .repairDraft .initial_img.add {
+    background: url('../../../images/upload.png') no-repeat;
+    border: none;
+}
+
+.repair .repairDraft .repair .repairDraft .initial_img:hover .uploaded_del {
+    opacity: 0.5;
+}
+
+.uploaded_del {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    background: url('../../../images/img_delete.png') no-repeat;
+    cursor: pointer;
+    opacity: 0;
+}
+
+.repair .repairDraft .initial_img:hover .uploaded_del:hover {
+    opacity: 1;
+}
+
+.repair .repairDraft .initial_img.uploading {
+    background: url('../../../images/default_picture.png') no-repeat;
+    position: relative;
+    border: none;
+}
+
+.repair .repairDraft .initial_img.uploading p {
+    width: 120px;
+    margin: 0 auto;
+    position: absolute;
+    left: 10px;
+}
+
+.repair .repairDraft .initial_img.uploading .percent {
+    top: 50px;
+    font-size: 20px;
+}
+
+.repair .repairDraft .initial_img.uploading .percent .stop {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    right: 0px;
+    background: url('../../../images/img_delete.png') no-repeat;
+    cursor: pointer;
+    opacity: 0.5;
+}
+
+.repair .repairDraft .initial_img.uploading .percent .stop:hover {
+    opacity: 1;
+}
+
+.repair .repairDraft .initial_img.uploading .procress {
+    top: 80px;
+    height: 10px;
+    background: #f2f2f2;
+}
+
+.repair .repairDraft .initial_img.uploading .procress .bg_purple {
+    width: 20%;
+    position: absolute;
+    height: 100%;
+    background: #786cec;
+}
+
+
+/* 流程图 */
+
+.repair .flow_title {
+    padding: 20px 50px 20px 0;
+    overflow: hidden;
+}
+
+.repair .bd_solid {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    border-width: 1px;
+    border-style: solid;
+}
+
+.repair .bd_solid.col00b {
+    border-color: #00bc8c;
+    background-color: #00bc8c;
+}
+
+.repair .bd_solid.col999 {
+    border-color: #999;
+    background-color: #999;
+}
+
+.repair .bd_solid.col009 {
+    border-color: #0096ff;
+    background-color: #0096ff;
+}
+
+.repair .doneBtn {
+    color: #00bc8c !important;
+}
+
+.repair .undoneBbtn {
+    color: #ff272e !important;
+}
+
+.repair .bd_solid.colffc {
+    border-color: #ffc324;
+    background-color: #ffc324;
+}
+
+.repair .paddl20 {
+    padding-right: 20px;
+    vertical-align: text-bottom;
+}
+
+.repair .flow_info_box {
+    position: relative;
+}
+
+.repair .flow_info_detail {
+    width: 100px;
+    z-index: 33;
+    position: relative;
+}
+
+.repair .flow_info_box span {
+    display: block;
+    text-align: center;
+    height: 35px;
+    line-height: 35px;
+    width: 100%;
+    cursor: pointer;
+    color: #fff;
+    margin-bottom: 2px;
+}
+
+.flow_info_detail .green{
+    background: #00bc8c;
+}
+.flow_info_detail .blue{
+    background: #0195ff;
+}
+.flow_info_detail .gray{
+    background: #999999
+}
+
+.flow_chart_box {
+    min-width: 1200px;
+    margin: 0 auto;
+}
+
+
+/* 节点操作 */
+
+.repair .check_node {
+    padding: 20px 0 0 0;
+}
+
+.repair .check_title {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.repair .check_fail {
+    width: 100%;
+    padding-top: 5px;
+    background-color: #f2f2f2;
+    text-align: center;
+    color: #999999;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+.repair .reDraft_list .red {
+    color: #ff272e;
+}
+
+.repair .reDraft_list .blue {
+    color: #0096FF;
+    cursor: pointer;
+}
+
+.repair .reDraft_list .green {
+    color: #00bb8b;
+}
+
+.repair .check_result {
+    border-top: 1px dashed #dbe3ee;
+    margin-bottom: 10px;
+}
+
+.repair .word_center.textarea_class {
+    width: 600px;
+    height: 100px;
+}
+
+.repair .word_center.select_class {
+    width: 45%;
+}
+
+
+/* 编辑弹窗 */
+
+.repair .exit_content {
+    height: 560px;
+    overflow: auto;
+}
+
+.repair .exit_content .review{
+    position: relative;
+    min-height: 460px;
+}
+
+/* 不可点击的checkbox */
+
+.repair .checkbox_disabled {
+    background: url('../../../images/check_box_disable.png') no-repeat;
+}
+
+
+/* 收起 */
+
+.repair .stop_step {
+    position: fixed;
+    right: 50px;
+    bottom: 50px;
+    width: 70px;
+    height: 70px;
+    background: url('../../../images/stop-default.png') no-repeat;
+    z-index: 9999;
+    cursor: pointer;
+}
+
+.repair .stop_step:hover {
+    background: url('../../../images/stop-emerge.png') no-repeat;
+}
+
+.repair .approval_chartedit .title {
+    line-height: 40px;
+    text-align: center;
+    border-bottom: 1px solid #f8f8f8;
+    position: relative;
+    font-size: 16px;
+}
+
+.repair .approval_chartedit .title span {
+    color: #999999;
+    position: absolute;
+    top: 0px;
+    right: 20px
+}
+
+.repair.layer_fixed {
+    position: fixed;
+    width: 900px;
+    height: 600px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 999;
+    /*overflow: hidden;*/
+    box-shadow: 0px 0px 12px 0px rgba( 7, 0, 2, 0.3);
+    background: #fff;
+}
+
+
+/*.ngdialog .approval_chartedit{
+    width: auto;
+    height: auto;
+    overflow:inherit;
+}*/
+
+.layer_fixed.repair.ngdialog {
+    overflow: hidden
+}
+
+.layer_fixed.repair .approval_chartedit {
+    width: 900px;
+    height: auto;
+}
+
+.layer_fixed.repair .ngdialog-overlay {
+    width: 0;
+    height: 0
+}
+
+.layer_fixed.repair .repaDisposal_info, .layer_fixed.repair .repairDraft {
+    overflow: auto;
+    max-height: 500px;
+    margin-top: 0;
+}
+
+.layer_fixed.repair .ngdialog-close {
+    display: none;
+}
+
+.layer_fixed.repair .btn_poab {
+    text-align: center;
+    margin: 15px 0;
+}
+
+.layer_fixed.repair .repaDisposal_info::-webkit-scrollbar-track {
+    border-radius: 10px;
+    background-color: #ffffff;
+}
+
+.layer_fixed.repair .repaDisposal_info::-webkit-scrollbar {
+    width: 8px;
+    height: 10px;
+    background-color: #ffffff;
+}
+
+.layer_fixed.repair .repaDisposal_info::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.layer_fixed.repair .repairDraft::-webkit-scrollbar-track {
+    border-radius: 10px;
+    background-color: #ffffff;
+}
+
+.layer_fixed.repair .repairDraft::-webkit-scrollbar {
+    width: 8px;
+    height: 10px;
+    background-color: #ffffff;
+}
+
+.layer_fixed.repair .repairDraft::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.repair .btn_box2{
+    text-align: center;
+    margin-top: 10px;
+    border-top: 1px dashed #dae4ee;
+    padding-top: 20px;
+}
+
+.repair .msgInfo {
+    width: 60%;
+    color: #999;
+}
+.repair .msgInfo2 {
+    color: #999;
+    width: 60%;
+}
+
+@media  (min-width:1200px) and (max-width:1300px)  {
+    .repair .msgInfo {
+        /*width: 66%;*/
+    }
+}
+@media (max-width:1200px) {
+    .repair .msgInfo {
+        width: 64%;
+    }
+}
+@media (max-width:1100px) {
+    .repair .msgInfo {
+        width: 60%;
+    }
+}
+
+.repair .auditedBtn{
+    display: inline-block;
+    width: 25px;
+    height: 18px;
+    background: url('../../../images/done_opinion.png') no-repeat;
+}
+
+.repair .auditedBtn2{
+    display: inline-block;
+    width: 25px;
+    height: 18px;
+    background: url('../../../images/not_pass_opinion.png') no-repeat;
+}
+
+.repair .fund_number_list .delete_btn{
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background: url('../../../images/img_delete.png') no-repeat;
+    vertical-align: middle;
+    opacity: .5;
+}
+
+.repair .fund_number_list .delete_btn:hover{
+    opacity: 1;
+}
+
+.repair .smallFullPage .border_wrapper{
+    width: 90%;
+    margin-bottom: 10px;
+}
+.repair .smallFullPage .border_wrapper .w750{
+    width: 635px;
+}
+
+
+

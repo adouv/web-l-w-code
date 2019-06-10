@@ -1,0 +1,330 @@
+.projectcapitalPayout{overflow: hidden}
+
+.projectcapitalPayout .readnav{
+	padding-left: 9.5%;
+}
+.projectcapitalPayout .form-group{
+	margin: 0;
+    position: relative;
+}
+.projectcapitalPayout .income_nav span{
+	cursor: pointer;
+}
+.projectcapitalPayout .income_title{
+	padding:0 12%;
+	width:100%;
+}
+.projectcapitalPayout .income_scroll{
+	width: 100%;
+	
+}
+.projectcapitalPayout .income_scroll img{
+	position:absolute;
+	top:-3px;
+	right:20px;
+}
+.projectcapitalPayout .income_searchBox{
+	position:relative;
+}
+.projectcapitalPayout .income_searchBox>input{
+	top:-5px;
+	left:0;
+	width:100%;
+	height:34px;
+	line-height:34px;
+	position:absolute;
+	padding:5px;
+	padding-left:19px;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	border:1px solid #dcdcdc;
+}
+.projectcapitalPayout .income_content{
+	height: 320px;
+	padding-left: 19px;
+	padding-top: 10px;
+	border-top: 1px solid #dcdcdc; 
+	overflow-y: auto ;
+	border:1px solid #dcdcdc;
+	border-top:none;
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+	margin-top: 5px;
+	padding-top: 34px;
+}
+.projectcapitalPayout .income_content p{
+	margin:  0 20px;
+	display: inline-block;
+	font-size: 12px;
+	color: #333;
+	height: 32px;
+	line-height: 32px;
+	width:42%;
+	overflow:hidden;
+	white-space:nowrap;
+	text-overflow:ellipsis;
+	cursor:pointer;
+}
+.projectcapitalPayout .income_content p span:nth-child(1){
+	color: #333;
+}
+.projectcapitalPayout .income_content p span:nth-child(2){
+	color: #70acc5;
+}
+.projectcapitalPayout .income_content p span:nth-child(3){
+	color: #4c7db6;
+}
+.projectcapitalPayout .income_p{
+	margin-top: 20px;
+	height: 27px;
+	line-height: 27px;
+	font-size: 14px;
+	color: #333;
+	font-weight: 700;
+}
+.projectcapitalPayout .spacing.nor{
+	font-weight: 400;
+}
+.projectcapitalPayout .spacing.nor span{font-weight: 700;}
+.projectcapitalPayout .spacing.nor span.red{color:#ff0000;}
+.projectcapitalPayout .income_p_span{
+	font-size: 13px;
+	color: #333;
+	font-weight: 700;
+}
+.projectcapitalPayout .income_p_span span{
+	display: inline-block;
+	padding: 9px 15px 9px 15px;
+	line-height: 25px;
+	font-weight: normal;
+	margin: 5px 5px 0 0;
+}
+.projectcapitalPayout .income_p_span span .gray{color:#888888;}
+.projectcapitalPayout .income_p_span span .green{color:#12ad40;}
+.projectcapitalPayout .income_p_span span img{
+	display: none;
+	margin-left:15px;
+}
+.projectcapitalPayout .income_p_span_click{
+	background: #f6f6f6;
+}
+.projectcapitalPayout .income_p_span_click .income_p_span_img{
+	display: inline-block;cursor: pointer;
+}
+.projectcapitalPayout .income_sure{
+	margin: 65px auto;
+	text-align: center;
+}
+.projectcapitalPayout .income_div{
+	text-align:center;
+}
+.projectcapitalPayout .pro_footer{
+	display: flex;
+	background: #efefef;
+	height: 250px;
+	border-top: 1px solid #dcdcdc;
+}
+.projectcapitalPayout .pro_footer .pro_footer_l{
+	text-align: center;
+	padding-top:50px ;
+	width: 41%;
+}
+.projectcapitalPayout .pro_footer .pro_footer_l img{
+	height: 60px;
+}
+.projectcapitalPayout .pro_footer .pro_footer_l p{
+	color: #4c7db6;
+	font-weight: 700;
+	font-size: 12px;
+}
+.projectcapitalPayout .pro_footer .pro_footer_r{
+	padding-top: 20px;
+	padding-left: 10%;
+}
+.projectcapitalPayout .pro_footer .pro_footer_r li{
+	font-weight: 700;
+	height: 41px;
+	line-height:41px ;
+	color:  #4c7db6;
+	font-size: 12px;
+	cursor: pointer;
+}
+.projectcapitalPayout .income_nav span strong:first-child{
+	margin-right: 5px;
+}
+.projectcapitalPayout .payout_money span{
+	color: red;
+}
+.projectcapitalPayout .payout .payout_collect span{
+	color: #888888;
+}
+.projectcapitalPayout .payout ul>li>a{
+	color:#fff;
+}
+.projectcapitalPayout .payout ul>li>a:hover{
+	color:#23527c;
+}
+.projectcapitalPayout .income_content p>span:hover{
+	border-bottom: 1px solid #4c7db6;
+}
+.projectcapitalPayout .income_content p>span>span:nth-child(1){
+	color: #333;
+	text-align: center;
+}
+.projectcapitalPayout .income_content p>span>span:nth-child(2){
+	color: #194982;
+	text-align: center;
+}
+.projectcapitalPayout .income_content p>span>span:nth-child(3){
+	color: #12ad40;
+	text-align: center;
+}
+.projectcapitalPayout .capnumInput{
+	width:556px;
+	height: 352px;
+	margin: auto;
+}
+.projectcapitalPayout .capnumInput .modal-header{
+	height: 40px;
+}
+.projectcapitalPayout .capnumInput .modal-footer{
+	text-align: center;
+}
+.projectcapitalPayout .capnumInput .modal-body{
+	width: 100%;
+	height:255px;
+}
+.projectcapitalPayout .capnumInput .shownum{
+	line-height: 40px;
+}
+.projectcapitalPayout .capnumInput .money{
+	padding:5px 0 40px 0;line-height: 20px;
+}
+.projectcapitalPayout .capnumInput .money .green{
+	color:#12ad40;font-weight: 600;
+}
+.projectcapitalPayout .capnumInput .modal-body .num,.capnumInput .numchoose{
+	font-weight: 600;color:#333333;
+}
+.projectcapitalPayout .capnumInput .modal-body .garden{
+	font-weight: 600; color:#888888;
+}
+.projectcapitalPayout .capnumInput .modal-body .money{color:#7a7a7a;font-size: 12px;}
+.projectcapitalPayout .capnumInput  .form-control{
+	width: 240px;
+}
+.projectcapitalPayout .modal-footer .sureBtn{margin-right: 15px;}
+
+/*基础数据平台2*/
+/*.payout_back{margin-top: 25px;}*/
+/*em.blue{color:#4c7db6;}*/
+/*em.green{color:#50c14e;}*/
+/*.choose_payout{width: 100%;border: 1px solid #d3d3d3;border-radius: 5px;margin-top: 10px;}*/
+/*.choose_payout .choose_box{height: 330px;overflow: auto;padding:0 20px;}*/
+.projectcapitalPayout .choose_payout{margin-top: 10px;}
+.projectcapitalPayout .choose_payout .choose_result{padding:9px 20px 9px 120px;/*font-weight: 600;*//*margin-bottom: 15px;*/position: relative;border-bottom: 1px solid #d3d3d3;}
+.projectcapitalPayout .choose_payout .choose_result .pospan{position: absolute;top:19px;left: 0px;color:#333333}
+.projectcapitalPayout .choose_payout .choose_result .res_span{color:#333333;background: #dbe3ee;padding:9px 40px 9px 10px;display: inline-block;display: inline-block;position: relative;}
+.projectcapitalPayout em.del{position: absolute;background: url(../../../images/img_delete.png) no-repeat; width: 16px;height: 16px;right: 10px;top:11px; background-size: 16px;cursor: pointer;}
+.projectcapitalPayout .choose_box .form-group select{width: 15%;margin-right: 1%;}
+.projectcapitalPayout .choose_box .form-group input{width: 19%;margin-right: 10px;}
+.projectcapitalPayout .choose_box .info input{height: 32px;line-height: 32px;}
+.projectcapitalPayout .choose_payout .table{margin-top: 20px;}
+.projectcapitalPayout .choose_payout .table td{border: none;text-align: center;}
+.projectcapitalPayout .choose_payout th{background: #e7f2ff;border: none !important;text-align: center;}
+.projectcapitalPayout .pad_l{padding-left:20px; }
+/*.illustrate{font-size: 12px;font-weight: 600;color:#888888;margin-top: 10px;}*/
+.projectcapitalPayout .illustrate.spe{margin-top: 0px;}
+.projectcapitalPayout .payback_part .allocation{padding:10px 0px;margin-top: 5px;}
+.projectcapitalPayout .payback_part .allocation span{font-weight: normal;font-size: 12px;color:#999999}
+.projectcapitalPayout .choose_payout .fl_tit{height: 40px;padding:10px 0; border-bottom: 1px solid #d3d3d3;margin-bottom: 10px;font-weight: 600;}
+.projectcapitalPayout .fl_info{float: left;width: 55%;text-align: center;}
+.projectcapitalPayout .fr_info{float: left;width: 33%;margin-left: 10%;text-align: center;}
+.projectcapitalPayout .fr_info input{width: 80%;}
+.projectcapitalPayout .choose_payout .info{height: 50px;line-height: 50px;}
+.projectcapitalPayout .payout_back textarea.form-control{height: 150px;}
+.projectcapitalPayout .selected_num span{display: inline-block;width: 48%; padding: 10px 20px 10px 30px;position: relative;margin-top: 10px;
+    background:#f6f6f6;font-size: 12px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
+.projectcapitalPayout .selected_num span:nth-child(2n){
+    margin-left: 3%;
+}
+.projectcapitalPayout .choose_payout .search_btn{position: absolute;width: 30px;height:31px;background: url(/images/search.png) no-repeat;
+    top:7px;right: 10px;}
+.projectcapitalPayout .choose_payout .form-group{margin-top: 20px;  margin-bottom: 10px;}
+
+
+.projectcapitalPayout .table_white{width: 100%;margin-top: 20px;}
+.projectcapitalPayout .table_white p{background: #e7f2ff;font-size: 14px;font-weight: 600;padding:  10px 0;}
+.projectcapitalPayout .table_white span.text{display: inline-block;max-width: 93%;vertical-align: bottom;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
+.projectcapitalPayout .table_white p span,.table_white label li{display: inline-block;text-align: center;vertical-align: middle;}
+.projectcapitalPayout .table_white label{display: block;width: 100%;cursor: pointer;}
+.projectcapitalPayout .table_white label li{height: 40px;line-height: 40px;}
+.projectcapitalPayout  table td .text{display: inline-block;max-width: 93%;vertical-align: bottom;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
+.projectcapitalPayout .tables td .text{max-width: 92%;}
+.projectcapitalPayout .table_white p span:nth-child(1),.table_white label li:nth-child(1){
+    width: 8%;min-width: 49px;
+}
+.projectcapitalPayout .table_white p span:nth-child(2),.table_white label li:nth-child(2){
+    width: 19%;
+}
+.projectcapitalPayout .table_white p span:nth-child(3),.table_white label li:nth-child(3){
+    width: 45%;
+}
+.projectcapitalPayout .table_white p span:nth-child(4),.table_white label li:nth-child(4){
+    width: 23%;
+}
+.projectcapitalPayout .tables{margin-top: 20px;}
+.projectcapitalPayout .tables p{background: #e7f2ff;font-size: 14px;font-weight: 600;padding:  10px 0;}
+.projectcapitalPayout .tables span.text{display: inline-block;max-width: 90%;vertical-align: bottom;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
+.projectcapitalPayout .tables label{display: block;width: 100%;cursor: pointer;}
+.projectcapitalPayout .tables p span,.tables label li{display: inline-block;text-align: center;vertical-align: middle;}
+.projectcapitalPayout .tables label li{display:inline-block;height: 40px;line-height: 40px;}
+.projectcapitalPayout .tables p span:nth-child(1),.tables label li:nth-child(1){
+    width: 8%;min-width: 49px;
+}
+.projectcapitalPayout .tables p span:nth-child(2),.tables label li:nth-child(2){
+    width: 25%;
+}
+.projectcapitalPayout .tables p span:nth-child(3),.tables label li:nth-child(3){
+    width: 12%;
+}
+.projectcapitalPayout .tables p span:nth-child(4),.tables label li:nth-child(4){
+    width: 30%;
+}
+.projectcapitalPayout .tables p span:nth-child(5),.tables label li:nth-child(5){
+    width: 20%;
+}
+
+.projectcapitalPayout .tree_box .show_tree{
+	top:calc((100% - 400px)/2);left:calc((100% - 600px)/2);position: fixed;
+	width: 600px;height:400px;overflow: auto;display: none;z-index: 2;background: #ffffff;
+	border: 1px solid #dbe3ee;border-radius: 5px;padding-bottom: 10px; box-shadow: 0 5px 16px #ccc;}
+.projectcapitalPayout .tree_box .show_tree_title{
+	font-size: 16px; height: 40px;line-height: 40px;text-align: center;position: relative;
+	border: 1px solid #dbe3ee;
+}
+.projectcapitalPayout .tree_box .show_tree_title span{  position: absolute;right: 20px;  top:0;
+	font-size: 16px;color: #999999;cursor: pointer}
+
+.projectcapitalPayout .show_treeUl::-webkit-scrollbar-track {  border-radius: 10px;  background-color: #ffffff;  }
+.projectcapitalPayout .show_treeUl::-webkit-scrollbar {  width: 10px;  height: 10px;  background-color: #ffffff;  }
+.projectcapitalPayout .show_treeUl::-webkit-scrollbar-thumb {  border-radius: 10px;  background-color: rgba(0, 0, 0, 0.2);  }
+.projectcapitalPayout .ztree {  padding: 20px;}
+.projectcapitalPayout .ztree li ul{padding: 0}
+.projectcapitalPayout .show_tree .show_tree_btn{position: absolute;width: 100%;bottom: 20px;text-align: center}
+.projectcapitalPayout .show_tree .show_tree_tip{color:#999999;position: absolute;bottom: 50px;right: 20px}
+.projectcapitalPayout .show_treeUl{max-height: 280px;overflow: auto}
+.projectcapitalPayout .ztree li span.button.switch { font-family: "iconfont" !important;  font-size: 12px;  font-style: normal;  -webkit-font-smoothing: antialiased;  -moz-osx-font-smoothing: grayscale;  background: none;  vertical-align: baseline;  width: 12px;  height: 12px;  margin-right: 5px;  }
+.projectcapitalPayout .ztree li span.button.noline_close:before {  content: "\e824";  }
+.projectcapitalPayout .ztree li span.button.noline_open:before {  content: "\e821";font-size: 18px; margin-left: -2px;}
+.projectcapitalPayout .ztree li span.button.chk {  width: 18px;  height: 18px;  -webkit-appearance: none;  vertical-align: text-top;  margin: 0 5px 0 0 !important;  cursor: pointer;  filter: alpha(opacity=50);  background: url(../../../images/radio_box_default.png) no-repeat;  }
+.projectcapitalPayout .ztree li span.button.chk.radio_true_full {  background-image: url(../../../images/radio_box_choice.png);  }
+.projectcapitalPayout .ztree li span.button.chk.radio_true_full_focus {  background-image: url(../../../images/radio_box_choice.png);  }
+.projectcapitalPayout .ztree li span.button.chk.radio_true_full+a .node_name{color: #0096FF}
+.projectcapitalPayout .ztree li span.button.chk.radio_true_full_focus+a .node_name{color: #0096FF}
+.projectcapitalPayout .ztree li a.curSelectedNode{background-color: transparent ;border: 1px solid transparent;  border-left: 0; border-right: 0;}
+.projectcapitalPayout .ztree li a:hover{text-decoration: none}
+.projectcapitalPayout .ztree li{line-height: 30px}
+.projectcapitalPayout .ztree li span.button.switch{width: 18px;height: 18px}
+.projectcapitalPayout .ztree li span.button.chk.radio_true_full_focus, .projectcapitalPayout  .ztree li span.button.chk.radio_true_full{width: 18px;height: 18px;background: url(../../../images/radio_box_choice.png) no-repeat;}
+.projectcapitalPayout .ztree li span.button.chk.radio_false_full, .projectcapitalPayout .ztree li span.button.chk.radio_false_full_focus{width: 18px;height: 18px;background: url(../../../images/radio_box_default.png) no-repeat;}

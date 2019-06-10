@@ -1,0 +1,119 @@
+<div class="warn-class basic-info">
+    <div class="header">
+        <span ng-if="basicDetail.moduleCode == 'operation_repair'">基础运维 &gt;</span>
+        <span ng-if="basicDetail.moduleCode == 'flood_prevention'">防汛管理 &gt;</span>
+        <span ng-if="basicDetail.moduleCode == 'dining_room'">食堂管理 &gt;</span>
+        <span ng-if="basicDetail.moduleCode == 'fire_protection'">消防管理 &gt;</span>
+        <span ng-if="basicDetail.moduleCode == 'energy_consumption'">节能减排 &gt;</span>
+        <span class="second-warning" onclick="history.go(-1)" >基本信息 &gt;</span>
+        <span class="color_999">基本信息详情页</span>
+    </div>
+    <div class="title">
+        {{basicDetail.model.name}}
+    </div>
+    <div class="name_time color_999">
+        <span>{{basicDetail.model.gardenName}}</span>
+        <span>{{basicDetail.model.creatorName}}</span>
+        <span>{{basicDetail.model.createTime | date:'yyyy/MM/dd HH:mm'}}</span>
+    </div>
+    <!--有内容-->
+    <div class="show_info">
+        <div class="table_absolute overflow_box" ng-show="!basicDetail.isEdit">
+            <div class="table_box" ng-if="basicDetail.dataList.length>0">
+                <table class="listTable">
+                    <thead>
+                        <tr>
+                            <th ng-repeat="title in basicDetail.userTitles" style="min-width: 150px">{{title.name}}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="data in basicDetail.dataList">
+                            <td class='ell' ng-repeat="title in basicDetail.userTitles" style="min-width: 150px">{{data[title.id]}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!--<div class="list" ng-repeat="title in basicDetail.userTitles" >
+                <div class="text_left">{{title.name}}：</div>
+                <div class="text_right">{{basicDetail.model[title.id]}}</div>
+            </div>
+            -->
+            <div class="btn_box">
+                <!--<button class="btn_bd cancel_btn" ng-click="basicDetail.isEdit=true">编辑</button>-->
+                <button class="btn_bd" ng-click="basicDetail.toDelete()" ng-if="basicDetail.model.creatorId==basicDetail.accountId">删除</button>
+            </div>
+        </div>
+
+        <!--<div ng-show="basicDetail.isEdit">
+            <div class="list" ng-repeat="title in basicDetail.userTitles">
+                <div class="text_left">{{title.name}}：</div>
+                <div class="text_right">
+                    &lt;!&ndash;<span>名字</span>&ndash;&gt;
+                    <input type="text" class="input_class" ng-model="basicDetail.tempModel[title.id]" maxlength="50">
+                </div>
+            </div>
+            <div class="btn_box">
+                <button class="btn_bg" ng-click="basicDetail.edit()">确定</button>
+                <button class="btn_bd cancel_btn" ng-click="basicDetail.cancelEdit()">取消</button>
+                <button class="btn_bd" ng-click="basicDetail.toDelete()">删除</button>
+            </div>
+        </div>-->
+
+
+
+    </div>
+    <div class="basic-info-title">
+        {{basicDetail.model.gardenName}}的所有统计信息
+        <button class="btn_bd echo_table_export" ng-click="basicDetail.export()">导出</button>
+    </div>
+    <div class="table_absolute overflow_box">
+        <div class="table_box table_box_left">
+            <table class="listTable">
+                <thead>
+                <tr>
+                    <th style='min-width: 50px'>序号</th>
+                    <th ng-repeat="title in basicDetail.systemTitles" style='min-width: 150px' >{{title.name}}</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="data in basicDetail.systemTitleData track by $index" data-id="{{data.id}}" ng-mouseover="basicDetail.leftTrMouseOver(data.id)" ng-mouseleave="basicDetail.leftTrMouseLeave(data.id)">
+                        <td rowspan="{{data.userTitleDataList.length||1}}" ng-if="data.name">{{data.index + 1}}</td>
+                        <td rowspan="{{data.userTitleDataList.length||1}}" ng-if="data.name" class='ell' ng-repeat="title in basicDetail.systemTitles" ng-click="basicDetail.toEditList(data)">{{data[title.id]| date:'yyyy-MM-dd HH:mm'}}</td>
+                        <td style="padding: 0px 0px;"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="table_box table_box_right">
+            <table class="listTable">
+                <thead>
+                    <tr>
+                        <th ng-repeat="title in basicDetail.userTitles" class="td_class">{{title.name}}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="data in basicDetail.dataValueList" ng-click="basicDetail.toEditList(data)" ng-mouseover="basicDetail.rightTrMouseOver(data.pid||data.id)" ng-mouseleave="basicDetail.rightTrMouseLeave(data.pid||data.id)" pid="{{data.pid||data.id}}">
+                        <td class='ell' ng-repeat="title in basicDetail.userTitles" class="td_class">{{data[title.id]}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <!-- 分页 -->
+        <pagination conf="basicDetail.paginationConf" ng-show="basicDetail.datas.length>0"></pagination>
+
+        <!-- 暂无数据、暂无搜索结果-->
+        <div class="nodata_box" ng-show="basicDetail.datas.length<1">
+            <div class="nodata">
+                <span></span>
+                <p>暂无数据</p>
+            </div>
+            <!--<div class="nodata_search">-->
+                <!--<span></span>-->
+                <!--<p>搜索无结果</p>-->
+            <!--</div>-->
+        </div>
+    </div>
+    <div class="button_box">
+        <button class="btn_bg" onclick="history.go(-1)">返回</button>
+    </div>
+</div>

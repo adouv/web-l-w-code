@@ -1,0 +1,54 @@
+<div class="dialog-evaluate">
+    <table class="evaluate-table" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+            <td class="td-title">项目</td>
+            <td>评分标准细则</td>
+            <td class="td-50">分值</td>
+        </tr>
+        <tr *ngFor="let data of tempData.items;let j=index">
+            <td class="td-title" [ngClass]="{'error': (!data.name&&isSubmit) || (data.name==''&&isSubmit)}">
+                <input *ngIf="isUsed" maxlength="20" type="text" class="td-input inputAuto"
+                       (ngModelChange)='changeName($event,data)' [(ngModel)]="data.name" (focus)="emptyValue()"/>
+                <span *ngIf="!isUsed">{{data.name}}</span>
+                <div>({{data.score}}分)</div>
+            </td>
+            <td *ngIf="data.childItems.length>1" colspan="2" class="no-padding no-line">
+                <table class="evaluate-child-table" border="0" cellspacing="0" cellpadding="0">
+                    <tr *ngFor="let child of data.childItems;let i = index">
+                        <td class="no-left-line text-left"
+                            [ngClass]="{'error':(!child.name&&isSubmit) || (child.name==''&&isSubmit)}">
+                            <span *ngIf="!isUsed">{{child.name}}</span>
+                            <input *ngIf="isUsed" maxlength="100" type="text" class="td-input text-left"
+                                   (ngModelChange)='changeName($event,child)' [(ngModel)]="child.name"
+                                   (focus)="emptyValue()"/>
+                        </td>
+                        <td class="td-50"
+                            [ngClass]="{'error':(!child.score&&isSubmit) || (child.score==''&& isSubmit)}">
+                            <input *ngIf="isUsed" maxlength="2" type="text" class="td-input"
+                                   (keyup)="computeScore(j, data)" (ngModelChange)='changeScore(child,$event)' [(ngModel)]="child.score"
+                                   (focus)="emptyValue()"/>
+                            <span *ngIf="!isUsed">{{child.score}}</span>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+			<td [ngClass]="{'error':(!data.childItems[0]?.name&&isSubmit) || (data.childItems[0]?.name==''&&isSubmit)}" class="text-left" *ngIf="data.childItems.length==1">
+				<span *ngIf="!isUsed">{{data.childItems[0]?.name}}</span>
+				<input *ngIf="isUsed" maxlength="100" type="text" class="td-input text-left"
+					   (ngModelChange)='changeName($event,data.childItems[0])' [(ngModel)]="data.childItems[0].name"
+					   (focus)="emptyValue()"/>
+			</td>
+			<td *ngIf="data.childItems.length==1" class="td-50"
+				[ngClass]="{'error':(!data.childItems[0]?.score&&isSubmit) || (data.childItems[0]?.score==''&& isSubmit)}">
+				<input *ngIf="isUsed" maxlength="2" type="text" class="td-input"
+					   (keyup)="computeScore(j, data)" (ngModelChange)='changeScore(data.childItems[0],$event)' [(ngModel)]="data.childItems[0].score"
+					   (focus)="emptyValue()"/>
+				<span *ngIf="!isUsed">{{data.childItems[0].score}}</span>
+			</td>
+        </tr>
+        <tr>
+            <td>满分</td>
+            <td colspan="2">{{tempData.totalScore}}分</td>
+        </tr>
+    </table>
+</div>

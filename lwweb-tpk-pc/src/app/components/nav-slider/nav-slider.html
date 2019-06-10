@@ -1,0 +1,34 @@
+<nz-layout class="layout lw-tpk-pc">
+    <nz-header>
+        <div class="center-box"></div>
+        <div class="nav-new">
+            <ul>
+                <li *ngFor="let menu of menus;" [ngClass]="{'active': menu.isParentChecked}" (click)="goJump(menu)">
+                    <div class="nav-ico" *permission="menu.permission!=null&&menu.permission!=''?menu.permission:''">
+                        <span>{{menu.title}}</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="header-tools">
+            <i class="icon iconfont icon-meau" (click)="show($event)"></i>
+            <i class="icon iconfont icon-minimize"></i>
+            <i class="icon iconfont icon-close1"></i>
+        </div>
+    </nz-header>
+    <nz-layout>
+        <nz-layout class="right-box">
+            <nz-content class="container">
+                <router-outlet></router-outlet>
+            </nz-content>
+        </nz-layout>
+    </nz-layout>
+
+    <div [hidden]="!isShow" class="garden-wrap-bg" (click)="this.isShow=false">
+        <div [hidden]="!isShow" class="garden-wrap auto-scroll">
+            <div class="garden" [ngClass]="{'active': garden.gardenId == gardenId}" *ngFor="let garden of gardenList" (click)="switchGarden(garden)" [title]="garden.gardenName">
+                {{ garden.gardenName }}
+            </div>
+        </div>
+    </div>
+</nz-layout>

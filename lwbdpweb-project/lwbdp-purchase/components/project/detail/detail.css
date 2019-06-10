@@ -1,0 +1,308 @@
+.purchase .order_detail {
+    padding: 15px 4%;
+}
+
+.purchase .order_detail .crumb_list a {
+    font-size: 14px;
+    color: #000;
+}
+
+.purchase .order_detail .crumb_list a:hover {
+    color: #0096ff;
+}
+
+.purchase .order_detail .crumb_list span {
+    font-size: 14px;
+}
+
+.purchase .order_detail .overflow_box_sm {
+    padding-bottom: 10px;
+    border-bottom: 1px solid #dae4ee;
+}
+
+.purchase .order_detail .header {
+    text-align: center;
+}
+
+.purchase .order_detail .header h1 {
+    font-size: 16px;
+    padding: 10px 0
+}
+
+.purchase .order_detail .header h2 {
+    font-size: 14px;
+    border-top: 1px solid #dae4ee;
+    padding: 10px 0;
+}
+
+.purchase .order_detail .form_external {
+}
+
+.purchase .order_detail .head_bar {
+    margin: 10px 0;
+    border-bottom: 1px solid #dae4ee;
+    font-size: 16px;
+}
+
+.purchase .order_detail .head_bar a {
+    padding: 0 10px;
+    height: 30px;
+    display: inline-block
+}
+.purchase .order_detail .head_bar a:hover{
+    color: #333333;
+}
+.purchase .order_detail .head_bar a.active {
+    background-image: linear-gradient(-180deg, #786cec 50%, #0096ff 50%);
+    background-image: -webkit-linear-gradient(-180deg, #786cec 50%, #0096ff 50%);
+    background-size: 100% 4px;
+    background-position: bottom right;
+    background-repeat: no-repeat;
+    color: #00a0e9;
+}
+
+.purchase .order_detail .flow_tip {
+    line-height: 30px
+}
+
+.purchase .order_detail .flow_tip .status_tip {
+    height: 30px;
+    display: inline-block;
+    margin-right: 20px;
+}
+
+.purchase .order_detail .flow_tip .padd_10 {
+    padding: 10px;
+    display: inline-block;
+    margin: 0 10px -5px 0;
+}
+
+.purchase .tree_wrapper {
+    min-width: 100%;
+    height: 75px;
+    overflow-x: auto;
+    overflow-y: hidden;
+
+}
+.purchase .tree_wrapper .tree_item{
+    vertical-align: middle;
+}
+
+.purchase .structure_tree {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.purchase .structure_tree span {
+    color: #999;
+}
+
+.purchase .tree_title {
+    border-radius: 5px !important;
+    margin: 0 auto;
+    line-height: 25px;
+}
+
+.purchase .tree_line_wrapper {
+    width: 100%;
+    height: 15px;
+    margin-bottom: 10px;
+}
+
+.purchase .tree_line_wrapper .tree_line:first-child {
+    border-right: 1px solid #dae4ee;
+}
+
+.purchase .tree_line {
+    width: 50%;
+    height: 15px;
+    float: left;
+    border-bottom: 1px solid #dae4ee;
+}
+
+.purchase .tree_item {
+    height: 70px;
+    border-radius: 5px 5px 0 0;
+    border: 1px solid #dae4ee;
+    display: inline-block;
+    padding: 10px 15px;
+    margin: 0 5px;
+    width: 200px;
+    cursor: pointer;
+}
+
+.purchase .tree_item.active {
+    border: 1px solid #0097ff;
+    border-bottom: 4px solid #0097ff;
+}
+
+/*项目储备*/
+.purchase .order_detail .head_title {
+    line-height: 26px;
+    border-left: 5px solid #786ceb;
+    padding-left: 10px;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.purchase .order_detail .content-box {
+    padding-top: 20px;
+    border-top: 1px dashed #dbe3ee;
+}
+
+.purchase .order_detail .margin_bot20 {
+    margin: 20px 0;
+}
+
+.purchase .order_detail .content-list {
+    padding: 10px 0;
+}
+
+.purchase .order_detail .red_outbor{
+    height: 100%;
+    position: inherit !important;
+    /*margin-left: 4% !important;*/
+    /*width: 80%;*/
+    width: 100%;
+}
+
+.purchase .order_detail .content-list-left {
+    display: inline-block;
+    width: 43%;
+    text-align: right;
+    vertical-align: top;
+}
+
+.purchase .order_detail .content-list-right {
+    display: inline-block;
+    width: 55%;
+    position: relative;
+}
+/*政府立项采购表*/
+.purchase .order_detail .projectApprovalForm-left{
+    display: inline-block;
+    color: #0096ff;
+}
+.purchase .order_detail .projectApprovalForm-left em{
+    display: inline-block;
+    width: 100%;
+    cursor: pointer;
+    margin-bottom: 4px;
+    border-bottom: 1px solid transparent;
+}
+.purchase .order_detail .projectApprovalForm-left em:hover{
+    border-bottom: 1px solid #0096ff;
+}
+.purchase .order_detail .attachment{
+    color: #0096FF;
+    display: block;
+    cursor: pointer;
+}
+.purchase .order_detail .attachment .picView.img_box .files_name{
+    bottom: 0;
+    width: auto;
+    border-bottom: 1px solid transparent;
+}
+.purchase .order_detail .attachment .picView.img_box .files_name:hover{
+    border-bottom: 1px solid #0096ff;
+}
+.purchase .order_detail .attachment .picView.img_box{
+    height: 30px !important;
+    width: 100%;
+    margin: 0;
+}
+.purchase .order_detail .projectApprovalForm-right{
+    width: calc(100% - 125px);
+    display: inline-block;
+    color: #0096ff;
+    position: absolute;
+}
+.purchase .order_detail .projectApprovalForm-right em{
+    padding: 5px 10px;
+    cursor: pointer;
+}
+.purchase .order_detail .projectApprovalForm-right.top{
+    top: 0;
+}
+.purchase .order_detail .projectApprovalForm-right.bottom{
+    bottom:20px
+}
+
+.purchase .order_detail .content-list.down:hover {
+    cursor: pointer;
+    background-color: #dbe3ee;
+}
+
+.purchase .order_detail .content-list.down:hover .btn_bd.download-btn {
+    display: inline-block;
+}
+
+.purchase .order_detail .content-list-right .btn_bd.download-btn {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    display: none;
+}
+
+.purchase .order_detail .go-back-box {
+    position: relative;
+}
+
+.purchase .order_detail .go-back-box .content-list {
+    width: 80%;
+    display: inline-block;
+}
+
+
+
+.purchase .order_detail .go-back-box .content-list-left {
+    width: 43%;
+}
+
+.purchase .order_detail .go-back-box .content-list-right {
+    width: 55%;
+}
+
+.purchase .order_detail .go-back {
+    color: #0096FF;
+    float: right;
+    cursor: pointer;
+    position: absolute;
+    right: -145px;
+    bottom: 0;
+    display: none;
+}
+
+.purchase .order_detail div.audit_right{
+    right: 130px;
+}
+
+.purchase .order_detail .red_bord{
+    width: 80%;
+    height: 100%;
+    top: 0;
+    position: absolute;
+    left: 0;
+    border: 1px dashed red;
+    right: 0;
+    /*margin-left: 6%;*/
+}
+.purchase .order_detail .red_bord .go-back{
+    display: block;
+}
+.purchase .order_detail .content-btn {
+    text-align: center;
+    margin: 50px 0;
+}
+.purchase .order_detail .table_red_boad .red_bord{
+    margin: auto;
+}
+.purchase .order_detail .table_box {
+    width: 80%;
+    margin: 0 10%;
+}
+
+.purchase .order_detail .go-back-box .red_bord .content-list {
+    width: 100%;
+}

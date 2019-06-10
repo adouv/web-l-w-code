@@ -1,0 +1,27 @@
+{
+  "HOST":"",
+  "PROTOCOL":"http://",
+  "modules": {
+    "IOT":"/lwiot-app",
+    "ASSET":"/lwbdp-web",
+    "BILL":"/lwbdp-web",
+    "TPK":"/lwtpk-web",
+    "OAUTH":"/lw-authz-server",
+    "ACCOUNT":"/lw-garden-server",
+    "GARDEN":"/lw-garden-server",
+    "CONNECTION":"/lw-connect-server"
+  },
+  "file":{
+    "PATH":"/lw-fileserver",
+    "SHOWIMG":"/lw-fileserver/fs/file/showPic?fileName=",
+    "DOWNLOAD":"/lw-fileserver/fs/file/download?fileName=",
+    "OFFICEVIEWER":"/lw-fileserver/FlexPaper/swfFiles/FlexPaperViewer",
+    "WEBOFFICE":"/lw-fileserver/fs/file/office/preview?fileName=",
+    "DOWNLOADZIP": "/lw-fileserver/fs/file/downloadZip"
+  },
+  "oauth2":{
+    "client_id":"1",
+    "client_secret":"123",
+    "scope":"read"
+  }
+}

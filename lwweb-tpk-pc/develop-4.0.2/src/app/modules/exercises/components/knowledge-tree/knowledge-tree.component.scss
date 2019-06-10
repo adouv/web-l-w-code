@@ -1,0 +1,48 @@
+@import "../../../../../styles/variable";
+.knowledge-box {
+    height: 100%;
+}
+
+.collaspe-box {
+    height: calc(100% - #{computer(100px)});
+    overflow: hidden;
+}
+
+.collaspe-scroll {
+    width: calc(100% + 17px);
+    overflow-x: hidden;
+    height: 100%;
+}
+
+.tree-header {
+    nz-select {
+        width: computer(120px);
+        margin-left: computer(1px);
+        margin-right: computer(2px);
+        margin-bottom: computer(20px);
+    }
+}
+
+.check-model {
+    margin-bottom: computer(20px);
+    .check-box {
+        width: computer(120px);
+        height: computer(30px);
+        background-color: #226cfb;
+        border-radius: 15px;
+        display: inline-block;
+        font-size: computer(14px);
+        text-align: center;
+        color: #fff;
+        line-height: computer(30px);
+        &:hover {
+            opacity: 0.5;
+        }
+    }
+    span {
+        margin-left: computer(10px);
+        display: inline-block;
+        line-height: computer(30px);
+        font-size: computer(14px);
+    }
+}

@@ -1,0 +1,57 @@
+<div id="select-garden" class="select-shadow" ng-controller="selectGardenctrl">
+<div class="selectbox">
+    <!--园区-->
+    <div class="select-title">
+        <span ng-if="!isCapitalnumber">请选择建设单位</span>
+        <span ng-if="isCapitalnumber">请选择园区</span>
+        <span class="select-close billiconfont icon-close" type="select-garden" close-select></span>
+    </div>
+    <div class="getType">
+        <div class="select_condition form-group">
+            <span style="display: inline-block;width: 30%">
+            <input type="text" class="form-control width_all" placeholder="请输入关键字" ng-model="condition.keywords"
+                   ng-keyup="setGarden.keyUp($event)" maxlength="50">
+            </span>
+            <button class="btn btn-default" ng-click="setGarden.searchGarden()" style="float: inherit;">查询</button>
+        </div>
+        <div style="display: flex;flex-direction: column;height: 450px;">
+            <div class="selected single" ng-if="isMulit=='single'">
+                <em ng-if="!isCapitalnumber">已选中建设单位 </em>
+                <em ng-if="isCapitalnumber">已选中园区 </em>
+                <span ng-if="returnValue.gardenId">{{returnValue.gardenName}} <i ng-click="setGarden.delAll()"></i></span>
+            </div>
+            <div class="selected mulit" ng-if="isMulit!='single'">
+                <em ng-if="!isCapitalnumber">已选中建设单位 </em>
+                <em ng-if="isCapitalnumber">已选中园区 </em>
+                <span ng-repeat="data in returnValue track by $index">{{data.gardenName}} <i ng-click="setGarden.delOne(data.gardenId,$index)"></i></span>
+            </div>
+            <div class="resultbox hasresult">
+                <div class="hasresult" ng-if="gardens.length>0">
+                    <ul  ng-if="isMulit=='single'">
+                        <li  ng-repeat="data in gardens track by $index" ng-if="data.gardenId">
+                            <input class="radioClass" name ="choose" ng-checked="data.checked" type="radio" id="gar1{{$index}}" ng-click="setGarden.singleChoose(data)">
+                            <label for="gar1{{$index}}" title="{{data.gardenName}}">{{data.gardenName}}</label>
+                        </li>
+                    </ul>
+                    <ul ng-if="isMulit!='single'">
+                        <li ng-repeat="data in gardens track by $index" ng-if="data.gardenId">
+                            <input class="checkboxClass" name ="choose" ng-checked="data.checked" type="checkbox" id="gar{{$index}}" ng-click="setGarden.MulitChoose(data,$event)">
+                            <label for="gar{{$index}}" title="{{data.gardenName}}">{{data.gardenName}}</label>
+                        </li>
+                    </ul>
+                </div>
+                <div class="noresult" ng-if="gardens.length==0 && !isFirstGar">
+                    未找到和您关键词匹配的结果!
+                </div>
+                <div class="nochoose" ng-if="gardens.length==0 && isFirstGar">
+                    您暂无可选园区!
+                </div>
+            </div>
+        </div>
+        <div class="returnbox" style="text-align: center;margin-top: 10px;">
+            <span class="setbtn cancelBtn" type="select-garden" ng-click="setGarden.setGarden()" close-select>取消</span>
+            <span class="setbtn sureBtn" type="select-garden" ng-click="setGarden.setGarden()" close-select>确定</span>
+        </div>
+    </div>
+</div>
+</div>

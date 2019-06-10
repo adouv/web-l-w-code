@@ -1,0 +1,54 @@
+@import "../../../../../styles/variable";
+@import "../../../../../styles/mixin";
+
+.teaching-evaluation ::ng-deep{
+	font-size: computer(14px);
+	height: 100%;
+	position: relative;
+	header{
+		height: auto;
+		display: inline-block;
+		width: 100%;
+		nz-select{
+			float: right;
+		}
+	}
+	.bg-gray{
+		font-size: computer(14px);
+	}
+	.evaluation-content{
+		margin: 0 auto;
+		text-align: center;
+		padding:0 computer(10px);
+		margin-bottom: computer(3px);
+		overflow: auto;
+		width: 100%;
+		dialog-evaluate {
+			height: auto !important;
+			display: inline-block;
+			width: 100%;
+			.auto-scroll{
+				overflow: hidden !important;
+				height: auto !important;
+			}
+		}
+
+	}
+	footer{
+		border-top:1px solid $color_border;
+		padding: computer(10px) 0 computer(10px) 0;
+		box-sizing: border-box;
+		text-align: center;
+		line-height: computer(30px);
+		position: relative;
+		.left-btn{
+			margin-right:computer(40px);
+		}
+	}
+	.elliptical-page-message{
+		margin-top: computer(80px);
+		color:$color_font-light;
+		text-align: center;
+		font-size: computer(15px);
+	}
+}

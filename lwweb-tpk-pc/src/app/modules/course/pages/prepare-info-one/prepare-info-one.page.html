@@ -1,0 +1,46 @@
+<div class="prepare-info">
+    <nz-layout>
+        <nz-header>
+            <div class="header" flex="main:justify cross:center">
+                <nz-breadcrumb [nzSeparator]="'>'">
+                    <nz-breadcrumb-item>
+                        <a (click)="goHome()">教</a>
+                    </nz-breadcrumb-item>
+                    <nz-breadcrumb-item (click)="goBack()">
+                        课表备课
+                    </nz-breadcrumb-item>
+                    <nz-breadcrumb-item>
+                        备课详情
+                    </nz-breadcrumb-item>
+                </nz-breadcrumb>
+                <div class="title">
+                    {{classAllName}}
+                </div>
+            </div>
+        </nz-header>
+
+        <nz-content class="isHaveContent" *ngIf="isHaveContent">
+            <div class="content" flex="">
+                <div class="sub-title" flex="cross:center">教学课件</div>
+                <div class="content-list right-content li-0">
+                    教学课件
+                </div>
+            </div>
+            <div class="content" flex="">
+                <div class="sub-title" flex="cross:center">课上练习</div>
+                <div class="content-list right-content li-1">
+                    课上练习
+                </div>
+            </div>
+            <div class="content" flex="">
+                <div class="sub-title" flex="cross:center">活动材料</div>
+                <div class="content-list right-content li-2">
+                    活动材料
+                </div>
+            </div>
+        </nz-content>
+        <nz-footer>
+            <button nz-button [nzType]="'default'" (click)="goBack()">返回</button>
+        </nz-footer>
+    </nz-layout>
+</div>

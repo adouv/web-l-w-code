@@ -1,0 +1,46 @@
+.organization-container section.row:first-child {border-bottom-style: solid;border-bottom-width: 1px;position: relative}
+.organization-container section.row blockquote{width: 300px;margin: 15px auto;padding: 0px 10px;;font-weight: bold;font-size: 16px;}
+.organization-container section.template-row{border-bottom: 1px solid #969696}
+.organization-container .row .pull-right{margin-top:15px;}
+.organization-container .row .pull-right a.btn{padding: 5px 46px;font-size: 14px;font-weight: bold;}
+.organization-container .row .pull-right a.font-color{font-size: 15px;text-align: center;display: block;margin-top:5px;}
+.organization-container .row.fu{padding:0 5%;}
+.organization-container .win-tab{width: 29%;border:1px solid #e3e3e3;display: inline-block;margin:20px 2%;border-radius: 4px;overflow: hidden}
+.organization-container .win-tab .win-title{font-weight: bold;font-size: 16px;line-height: 45px;background: #F6F6F6;padding: 0 20px;border-bottom: 1px solid #e3e3e3}
+.organization-container .win-tab .win-content{padding: 10px;height: 512px;overflow: auto;}
+.organization-container .win-tab .win-content ul.assign{padding: 3px 15px;}
+.organization-container .win-tab .win-content ul.assign li{padding: 6px 10px;cursor:default;position: relative}
+.organization-container .win-tab .win-content ul.assign li i{
+    position: absolute !important;
+    right:0;
+    top:0 !important;
+}
+.organization-container .win-tab .win-content ul.assign li i.glyphicon{float: right;top:5px;cursor: pointer}
+.organization-container .win-tab .win-content ul.assign li:hover{background: #f6f6f6;color:#00ba8b;}
+.organization-container .win-tab .win-title .btn{margin-top: 8px;}
+/*.row:last-child .btn{padding-left:40px;padding-right:40px;}*/
+.row.footer{width: 38%;margin:0 auto;}
+
+.organization-container section.row.border-color blockquote {
+  border: none;
+  margin-bottom:20px;
+  margin-top:20px;
+}
+.organization-container .mediaInput .breadnav.bgnone {
+  background: none;
+  margin-top:20px;
+  margin-left: -60px;
+}
+.organization-container .mediaInput section.row.border-color.inputTit blockquote {
+  font-weight: 700;
+  border-bottom:1px solid rgb(0,186,139);
+  padding: 20px 0;
+  width: 100%;
+  text-align: center;
+}
+.organization-container .mediaInput p.breadnav span {
+  color: rgb(0,186,139);
+}
+.organization-container div.garden-select {
+  top: 14px;
+}

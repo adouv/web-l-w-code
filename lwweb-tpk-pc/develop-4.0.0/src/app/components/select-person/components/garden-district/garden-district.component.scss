@@ -1,0 +1,47 @@
+@import "../../../../../styles/variable";
+.garden-district{
+    width: 100%;
+    height: 100%;
+    .no-result{
+        width: 100%;
+        height: 100%;
+        color:$color_font-light;
+        .no-result-msg{
+            // margin-top: computer(24px);
+        }
+    }
+    .region-group{
+        .title{
+            padding: 0 computer(10px);
+            background: #f8f8f8;
+            color:$color_font-light;
+            font-size:computer(12px);
+            height: computer(20px);
+            white-space: nowrap;    
+            text-overflow: ellipsis;
+            -o-text-overflow: ellipsis;
+            overflow: hidden;
+            line-height: computer(20px);
+        }
+        .region-content{
+            padding:0 computer(10px) 0 computer(20px);
+            color:$color_font-deep;
+            font-size:computer(14px);
+            line-height: computer(30px);
+            cursor: pointer;
+            white-space: nowrap;    
+            text-overflow: ellipsis;
+            -o-text-overflow: ellipsis;
+            overflow: hidden;
+            height: computer(30px);
+            width: 100%;
+            display: inline-block;
+            &:hover{
+                color:$color_main;
+            }
+        }
+    }
+    .garden-active{
+        color:$color_main !important;
+    }
+}

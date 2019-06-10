@@ -1,0 +1,39 @@
+<div id="select-contract" class="select-shadow" ng-controller="selectContractctrl">
+<div class="selectbox">
+    <div class="select-title">
+        支出对应的项目合同
+        <span class="select-close billiconfont icon-close" type="select-contract" close-select></span>
+    </div>
+    <div class="getType">
+        <div class="select_condition form-group">
+            <span style="display: block;width: 96%;margin:0 auto;position: relative;">
+            <input type="text" class="form-control" placeholder="请输入关键字" ng-model="condition2.keywords"
+                   ng-keyup="setContract.keyUp($event)" maxlength="50">
+            <span class="searchBtn setbtn cancelBtn" ng-click="setContract.searchContract()">查询</span>
+        </span>
+        </div>
+        <div class="selected single">
+            已选中合同: <span ng-if="returnContract.id">{{returnContract.contractName}} <i ng-click="setContract.delAll()"></i></span>
+        </div>
+        <div class="resultbox">
+            <div class="hasresult" ng-if="result_con.length>0">
+                <ul>
+                    <li ng-repeat="data in result_con" ng-if="data.id">
+                        <input class="radioClass" name ="choose" ng-checked="data.checked"  type="radio" id="unit{{$index}}" ng-click="setContract.singleChoose(data)">
+                        <label for="unit{{$index}}" title="{{data.contractName}}">{{data.contractName}}</label>
+                    </li>
+                </ul>
+            </div>
+            <div class="noresult" ng-if="result_con.length==0 && !isFirstCon">
+                未找到和您关键词匹配的结果!
+            </div>
+            <div class="nochoose" ng-if="result_con.length==0 && isFirstCon">
+                {{selectedProject.id?'未找到与当前所选项目相匹配的数据结果':'您暂无可选合同!'}}
+            </div>
+        </div>
+        <div class="returnbox">
+            <span class="setbtn sureBtn" type="select-contract" ng-click="setContract.setContract()" close-select>确定</span>
+        </div>
+    </div>
+</div>
+</div>

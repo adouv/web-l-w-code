@@ -1,0 +1,138 @@
+<div class="warn-class myPublish-detail">
+    <div class="header">
+        <span class="second-warning" ui-sref="logistics.warn.list({sideBarCode:'receive'})">预警预报 &gt;</span>
+        <span class="second-warning" ng-click="myPublishDetail.goBack()"><em ng-if="myPublishDetail.$stateParams.sideBarCode == 'send'">我的</em><em ng-if="myPublishDetail.$stateParams.sideBarCode == 'all'">全部</em>发布 &gt;</span>
+        <span class="first-warning" class="color_999">预警预报通知详情</span>
+    </div>
+    <div class="title">
+        {{myPublishDetail.notice.title}}
+    </div>
+    <div class="name_time color_999">
+        <span>{{myPublishDetail.notice.displayName}}</span>
+        <span>{{myPublishDetail.notice.addDate}}</span>
+        <!--<span>13:22</span>-->
+    </div>
+    <!--有内容-->
+    <div class="show_info">
+        <div class="content" compile-html="myPublishDetail.notice.content"></div>
+        <div class="list">
+            <div class="text_left">类别：</div>
+            <div class="text_right">{{myPublishDetail.notice.typeName}}</div>
+        </div>
+        <div class="list">
+            <div class="text_left">紧急程度：</div>
+            <div class="text_right">{{myPublishDetail.notice.urgencyLevelName}}</div>
+        </div>
+        <div class="list">
+            <div class="text_left ver-top">通知附件：</div>
+            <div class="text_right">
+                <pic-view ng-if="myPublishDetail.notice.attachmentList && myPublishDetail.notice.attachmentList.length > 0"
+                          ng-repeat="x in myPublishDetail.notice.attachmentList track by $index" file-name="x.name" file-path="x.url"></pic-view>
+            </div>
+        </div>
+        <div class="list">
+            <div class="text_left">通知对象：</div>
+            <div class="text_right">
+                <span ng-if="myPublishDetail.noticeAccountList && myPublishDetail.noticeAccountList.length > 0" ng-repeat="account in myPublishDetail.noticeAccountList">
+                   {{account.displayName}}({{account.gardenName}});
+                </span>
+            </div>
+        </div>
+        <div class="list">
+            <div class="text_left">发布状态：</div>
+            <div class="text_right">{{myPublishDetail.notice.publishStatus == 1?"已发布":"撤回"}}</div>
+        </div>
+        <div class="btn_box">
+            <button class="btn_bd" ng-click="myPublishDetail.goBack()">返回</button>
+            <button class="btn_bg" ng-click="myPublishDetail.templateRepublish()">以此为模板重新发布</button>
+        </div>
+        <div class="count">
+            <span class="count_title" ng-class="{'cur':myPublishDetail.isShowStatistics}" ng-click="myPublishDetail.changeStatistics(true)">阅读统计</span>
+            <span class="count_title" ng-show="myPublishDetail.notice.isNeedReply" ng-class="{'cur':!myPublishDetail.isShowStatistics}" ng-click="myPublishDetail.changeStatistics(false)">回复统计</span>
+        </div>
+        <div class="read" ng-if="myPublishDetail.isShowStatistics">
+            <span class="read_title" ng-class="{'cur':myPublishDetail.readFlag}" ng-click="myPublishDetail.changeReadFlag(1)">已读（{{myPublishDetail.readCounts}}人）</span>
+            <span class="read_title" ng-class="{'cur':!myPublishDetail.readFlag}" ng-click="myPublishDetail.changeReadFlag(0)">未读（{{myPublishDetail.unreadCounts}}人）</span>
+        </div>
+        <div class="read" ng-if="!myPublishDetail.isShowStatistics">
+            <span class="read_title" ng-class="{'cur':myPublishDetail.replyFlag}" ng-click="myPublishDetail.changeReplyFlag(1)">已回复（{{myPublishDetail.pageConf.doneCounts}}人）</span>
+            <span class="read_title" ng-class="{'cur':!myPublishDetail.replyFlag}" ng-click="myPublishDetail.changeReplyFlag(0)">未回复（{{myPublishDetail.pageConf.undoCounts}}人）</span>
+        </div>
+        <!--阅读统计-->
+        <div class="people_box" ng-if="myPublishDetail.isShowStatistics">
+            <div class="people" ng-repeat="reader in myPublishDetail.readStatistics track by $index">
+                <div class="people_img_box">
+                    <img ng-if="reader.imgUrl" class="people_img" ng-src="{{myPublishDetail.filePath+reader.imgUrl}}">
+                    <img ng-if="!reader.imgUrl" class="people_img" src="../../../../images/default_touxiang.png">
+                </div>
+                <div>{{reader.displayName}}</div>
+                <div class="color_999">（{{reader.gardenName}}）</div>
+            </div>
+            <div ng-click="myPublishDetail.loadMoreReadPeople()" class="go-more" ng-if="myPublishDetail.showMoreRead">
+                <span class="iconfont icon-dianjijiazaigengduo"></span>
+                点击加载更多
+            </div>
+        </div>
+        <!-- 未回复部分 -->
+        <div class="people_box" ng-if="!myPublishDetail.isShowStatistics && !myPublishDetail.replyFlag">
+            <div class="people" ng-repeat="reader in myPublishDetail.pageList">
+                <div class="people_img_box">
+                    <img ng-if="reader.imgUrl" class="people_img" ng-src="{{myPublishDetail.filePath+reader.imgUrl}}">
+                    <img ng-if="!reader.imgUrl" class="people_img" src="../../../../images/default_touxiang.png">
+                </div>
+                <div>{{reader.displayName}}</div>
+                <div class="color_999">（{{reader.gardenName}}）</div>
+            </div>
+            <div ng-click="myPublishDetail.loadMoreDealPeople()" class="go-more" ng-if="myPublishDetail.showMoreDeal">
+                <span class="iconfont icon-dianjijiazaigengduo"></span>
+                点击加载更多
+            </div>
+        </div>
+        <!--回复统计-->
+        <div class="echo_table" ng-if="!myPublishDetail.isShowStatistics && myPublishDetail.replyFlag">
+            <div class="content_textBar" >
+                <input type="text" class="input_class" placeholder="回车键提交查询"  ng-model="myPublishDetail.keywords" ng-keydown="myPublishDetail.goSearch($event)">
+                <span class="iconfont icon-search" ng-if="myPublishDetail.keywords.length === 0"></span>
+                <span class="iconfont icon-error " ng-if="myPublishDetail.keywords.length > 0"
+                      ng-click="myPublishDetail.keywords = '' "></span>
+            </div>
+            <button class="btn_bd echo_table_export" ng-click="myPublishDetail.exportReply()">导出</button>
+            <div class="table_box" ng-if="myPublishDetail.replyFlag">
+                <table class="listTable">
+                    <thead>
+                    <tr>
+                        <th width="50">序号</th>
+                        <th width="110">姓名</th>
+                        <th width="215">单位</th>
+                        <th width="350">回复内容</th>
+                        <th width="290">回复附件</th>
+                        <th width="150">回复时间</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="data in myPublishDetail.pageList track by $index">
+                        <td>{{$index+1}}</td>
+                        <td>{{data.displayName}}</td>
+                        <td>{{data.gardenName}}</td>
+                        <td>{{data.replyContent}}</td>
+                        <td>
+                            <pic-view ng-repeat="x in data.attachmentList track by $index" file-name="data.gardenName+'-'+x.name" file-path="x.url"></pic-view>
+                        </td>
+                        <td>{{data.replyDate}}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- 分页 -->
+        <pagination conf="myPublishDetail.pageConf" ng-show="myPublishDetail.pageList.length>0 && (!myPublishDetail.isShowStatistics && myPublishDetail.replyFlag)"></pagination>
+        <!-- 暂无数据、暂无搜索结果-->
+        <div class="nodata_box" ng-show="(!myPublishDetail.isShowStatistics && myPublishDetail.replyFlag) && myPublishDetail.pageList.length<1">
+            <div class="nodata"
+                 ng-show="(!myPublishDetail.isShowStatistics && myPublishDetail.replyFlag) && myPublishDetail.pageList.length===0">
+                <span></span>
+                <p>暂无数据</p>
+            </div>
+        </div>
+    </div>
+</div>

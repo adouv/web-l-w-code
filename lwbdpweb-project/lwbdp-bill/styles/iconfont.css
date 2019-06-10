@@ -1,0 +1,95 @@
+@font-face {
+    font-family: "iconfont";
+    src: url('./fonts/iconfont.eot?t=1493891357666');
+    /* IE9*/
+    src: url('./fonts/iconfont.eot?t=1493891357666#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('./fonts/iconfont.woff?t=1493891357666') format('woff'), /* chrome, firefox */
+    url('./fonts/iconfont.ttf?t=1493891357666') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+    url('./fonts/iconfont.svg?t=1493891357666#iconfont') format('svg');
+    /* iOS 4.1- */
+}
+
+.billiconfont {
+    font-family: "iconfont" !important;
+    font-size: 20px;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color: #786cec;
+}
+
+.icon_delete:before {
+    content: "\e600";
+}
+
+.icon_off:before {
+    content: "\e651";
+}
+
+.icon_shutdown:before {
+    content: "\e666";
+}
+
+.icon_funds:before {
+    content: "\e62c";
+}
+
+.icon-triangleUp:before {
+    content: "\e824";
+}
+
+.icon_Instructions:before {
+    content: "\e821";
+}
+
+.icon_prompt:before {
+    content: "\e61d";
+}
+
+.icon_contract:before {
+    content: "\e630";
+}
+
+.icon_look:before {
+    content: "\e663";
+}
+
+.icon_Finance:before {
+    content: "\e8f5";
+}
+
+.icon_SortingDown:before {
+    content: "\e63d";
+}
+
+.icon_add:before {
+    content: "\e633";
+}
+
+.icon_Cleared:before {
+    content: "\e611";
+}
+
+.icon-menuUnfold:before {
+    content: "\e616";
+}
+
+.icon-menuUp:before {
+    content: "\e823"
+}
+
+.icon_SortingUp:before {
+    content: "\e8f6"
+}
+
+.icon-rightarrowIcon:before {
+    content: "\e8d2";
+}
+
+.icon-leftarrowIcon:before {
+    content: "\e745";
+}
+
+.icon-arrowTip:before {
+    content: "\e603";
+}

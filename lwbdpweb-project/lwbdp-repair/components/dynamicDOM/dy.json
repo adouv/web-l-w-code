@@ -1,0 +1,52 @@
+{
+    "formType": "dynamic",
+    "form": [{
+        "id": "approved",
+        "name": "审核结果",
+        "type": "enum",
+        "readable": true,
+        "required": true,
+        "writable": true,
+        "defaultValue": "true",
+        "properties": {
+            "true": "通过",
+            "false": "不通过"
+        }
+    }, {
+        "id": "comment",
+        "name": "审核意见",
+        "type": "textarea",
+        "readable": true,
+        "required": false,
+        "writable": true,
+        "defaultValue": null,
+        "properties": {}
+    }, {
+        "id": "completeStatus",
+        "name": "完成时间状态",
+        "type": "string",
+        "readable": true,
+        "required": true,
+        "writable": false,
+        "defaultValue": null,
+        "properties": {}
+    }, {
+        "id": "nextTaskName",
+        "name": "下一步操作名称",
+        "type": "string",
+        "readable": true,
+        "required": true,
+        "writable": false,
+        "defaultValue": null,
+        "properties": {}
+    }, {
+        "id": "nextAuditor",
+        "name": "下一步操作人",
+        "type": "select",
+        "readable": true,
+        "required": true,
+        "writable": true,
+        "defaultValue": null,
+        "properties": {}
+    }]
+}

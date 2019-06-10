@@ -1,0 +1,66 @@
+<div class="bdp_list_search w5c-form">
+    <div class="dialog-header">
+        更多条件组合搜索
+        <span class="iconfont icon-close del_btn dialog-close" ng-click="closeThisDialog()"></span>
+    </div>
+    <div class="dialog-list">
+        <span class="dialog_name">项目申报单位</span>
+        <input type="text" class="dialog_input" ng-click="assetSearch.chooseGarden()" ng-model="assetSearch.condition.gardenListName" placeholder="可多选，非必填">
+    </div>
+    <div class="dialog-list">
+        <span class="dialog_name">项目所属类别</span>
+        <input type="text" class="dialog_input" ng-click="assetSearch.getProjectType()" ng-model="assetSearch.condition.categoryListName" placeholder="可多选，非必填">
+    </div>
+    <div class="dialog-list" ng-if="!assetSearch.isAllunits">
+        <span class="dialog_name">项目所处阶段</span>
+        <input type="text" class="dialog_input" ng-click="assetSearch.getProjectStage()" ng-model="assetSearch.condition.stageName" placeholder="可多选，非必填">
+    </div>
+    <div class="dialog-list">
+        <span class="dialog_name">项目所处状态</span>
+        <input type="text" class="dialog_input" ng-click="assetSearch.getProjectStatus()" ng-model="assetSearch.condition.statusName" placeholder="可多选，非必填">
+    </div>
+    <div class="dialog-list">
+        <span class="dialog_name">项目申报人</span>
+        <input type="text" maxlength="10" class="dialog_input dialog_applyAccount"  ng-model="assetSearch.condition.applyAccount" placeholder="10个汉字以内，非必填">
+    </div>
+    <div class="dialog-list">
+        <span class="dialog_name">项目提交时间段</span>
+        <div class="dialog_date">
+            <input type="text" id="createTimeStart" lw-laydate='YYYY-MM-DD hh:mm' readonly="readonly" ng-class="{'error':assetSearch.validCreateTimeStart&&!assetSearch.condition.createTimeStart}" class="dialog_input_middle" max-date="assetSearch.condition.createTimeEnd" ng-model="assetSearch.condition.createTimeStart" placeholder="开始时间">
+            <span class="iconfont icon-llreservecalendar dialog_date_icon"></span>
+        </div>
+        <span class="dialog_line">一</span>
+        <div class="dialog_date">
+            <input type="text" id="createTimeEnd" lw-laydate='YYYY-MM-DD hh:mm' readonly="readonly" ng-class="{'error':assetSearch.validCreateTimeEnd&&!assetSearch.condition.createTimeEnd}" class="dialog_input_middle" ng-model="assetSearch.condition.createTimeEnd" placeholder="结束时间" min-date="assetSearch.condition.createTimeStart">
+            <div class="iconfont icon-llreservecalendar dialog_date_icon"></div>
+        </div>
+    </div>
+    <div class="dialog-list" ng-if="!isLibrary&&!assetSearch.isAllunits">
+        <span class="dialog_name">任务生成时间段</span>
+        <div class="dialog_date">
+            <input type="text" id="taskTimeStart" lw-laydate='YYYY-MM-DD hh:mm' readonly="readonly" ng-class="{'error':assetSearch.validTaskTimeStart&&!assetSearch.condition.taskTimeStart}" class="dialog_input_middle" max-date="assetSearch.condition.taskTimeEnd" ng-model="assetSearch.condition.taskTimeStart" placeholder="开始时间">
+            <div class="iconfont icon-llreservecalendar dialog_date_icon"></div>
+        </div>
+        <span class="dialog_line">一</span>
+        <div class="dialog_date">
+            <input type="text" id="taskTimeEnd" lw-laydate='YYYY-MM-DD hh:mm' readonly="readonly" ng-class="{'error':assetSearch.validTaskTimeEnd&&!assetSearch.condition.taskTimeEnd}" class="dialog_input_middle" ng-model="assetSearch.condition.taskTimeEnd" placeholder="结束时间" min-date="assetSearch.condition.taskTimeStart">
+            <div class="iconfont icon-llreservecalendar dialog_date_icon"></div>
+        </div>
+    </div>
+    <div class="dialog-list" ng-if="isLibrary">
+        <span class="dialog_name">完成时间段</span>
+        <div class="dialog_date">
+            <input type="text" id="stageTimeStart" lw-laydate='YYYY-MM-DD hh:mm' readonly="readonly" ng-class="{'error':assetSearch.validStageCompleteStart&&!assetSearch.condition.stageCompleteStart}" class="dialog_input_middle" ng-model="assetSearch.condition.stageCompleteStart" max-date="assetSearch.condition.stageCompleteEnd" placeholder="开始时间">
+            <div class="iconfont icon-llreservecalendar dialog_date_icon"></div>
+        </div>
+        <span class="dialog_line">一</span>
+        <div class="dialog_date">
+            <input type="text" id="stageTimeEnd" lw-laydate='YYYY-MM-DD hh:mm' readonly="readonly" ng-class="{'error':assetSearch.validStageCompleteEnd&&!assetSearch.condition.stageCompleteEnd}" class="dialog_input_middle" ng-model="assetSearch.condition.stageCompleteEnd" placeholder="结束时间" min-date="assetSearch.condition.stageCompleteStart">
+            <div class="iconfont icon-llreservecalendar dialog_date_icon"></div>
+        </div>
+    </div>
+    <div class="dialog-btn">
+        <div class="btn_bd" ng-click="closeThisDialog()">取消</div>
+        <div class="btn_bg" ng-click="assetSearch.clickSure()">确定</div>
+    </div>
+</div>

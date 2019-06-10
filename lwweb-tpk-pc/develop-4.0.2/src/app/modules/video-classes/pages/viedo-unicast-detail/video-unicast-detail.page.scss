@@ -1,0 +1,106 @@
+@import "../../../../../styles/variable";
+::ng-deep {
+    .zan-box {
+        padding: 21.5px 0px 0px 0px !important;
+        margin: 0px !important;
+        display: block;
+        width: 50%;
+        height: 70px;
+        &:first-child {
+            text-align: right;
+            padding-right: 5px !important;
+        }
+        &:last-child {
+            text-align: left;
+            padding-left: 5px !important;
+        }
+    }
+}
+
+.video-container {
+    height: calc(100% - #{computer(55px)});
+    width: 100%;
+    padding: 0 0 computer(10px) computer(20px);
+    background: #fff;
+    .app-adress {
+        position: relative;
+        height: computer(40px);
+        width: 100%;
+        nz-breadcrumb {
+            height: computer(40px);
+            line-height: computer(40px);
+            position: absolute;
+            left: 0;
+            top: 0;
+            z-index: 999;
+        }
+        .title {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            text-align: center;
+            font-size: computer(16px);
+            text-align: center;
+            line-height: computer(40px);
+            z-index: 998;
+            color: $color_font-deep;
+        }
+    }
+    .file-wrapper {
+        width: computer(543px) !important;
+        margin-left: computer(40px);
+    }
+    .video-content {
+        height: calc(100% - #{computer(40px)});
+    }
+}
+
+.left-container {
+    width: 100%;
+    //margin: 0 computer(50px)  computer(50px);
+    .video-wrapper {
+        //height: 100%;
+        margin-bottom: computer(11px);
+        div {
+            height: 100%;
+            background-color: #46444c;
+        }
+    }
+    .auto-scroll-box {
+        height: calc(100% - #{computer(70px)});
+        width: calc(100% + #{computer(10px)});
+        margin: computer(20px) 0;
+        .auto-scroll {
+            height: 100%;
+        }
+    }
+    .scroll-wrapper {
+        width: 100%;
+        .video-scroll {
+            width: 100%;
+        }
+    }
+}
+
+.tabs-content {
+    height: computer(435px);
+}
+
+.footer {
+    display: flex;
+    text-align: center !important;
+    height: 113px !important;
+    //padding-top: 21.5px !important;
+}
+
+.footers {
+    width: calc(100% - #{computer(40px)});
+    border-top: 1px solid $color_border;
+    position: absolute;
+    background-color: #fff;
+    bottom: 0;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+}

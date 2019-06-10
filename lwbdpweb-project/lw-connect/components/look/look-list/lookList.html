@@ -1,0 +1,94 @@
+<div class="middle_list  look_div">
+    <div class="connect_search">
+        <p class="input_group" >
+            <input type="text" id="look_search" class="input_class" placeholder="搜索" ng-model="look.keywords" ng-keyup="look.searchKeyUp($event)" ng-change="look.searchAll()" ng-click="look.stopPropagation($event)">
+            <span class="connectIconfont icon-client_search" ng-show="!look.keywords || look.keywords ===''"></span>
+            <span class="connectIconfont icon-close-circle" ng-click="look.cleanAll()" ng-show="look.keywords && look.keywords !==''"></span>
+        </p>
+    </div>
+    <!--搜索结果  -->
+     <div class="search_result overflow_box_sml" id="look_search_result" ng-show="look.keywords && look.keywords !==''">
+          
+            <p ng-show="look.searchData.eventsCategory.length<1 && look.searchData.modulesCategory.length<1 && look.searchData.scenesCategory.length<1 && look.searchData.gardensCategory.length<1"
+                    class="no_result">搜索无结果</p>
+            <div id="look_search_result_list" ng-if="look.searchData">
+                <auto-list ></auto-list> 
+                <ul ng-show="look.searchData.modulesCategory.length>0">
+                    <p class="title">
+                        模块  
+                        <i ng-show="look.searchData.modulesCategory.length>5">
+                            <span class="more" ng-click="look.showMore($event,'modulesCategory',true)" ng-show="look.modulesCategoryNum<6">显示更多</span>
+                            <span class="more nomore" ng-click="look.showMore($event,'modulesCategory',false)"  ng-show="look.modulesCategoryNum>5">收起</span>
+                        </i>  
+                    </p>
+                    <li class="result_item" ng-repeat="item in look.searchData.modulesCategory" ng-if="$index < look.modulesCategoryNum" 
+                        ng-class="{'hover':item.hover}" ng-click="look.addToMessageList(item)" >
+                        <img ng-src="{{look.filePath+item.ico}}" alt="">
+                        <p class="name ell">{{item.categoryName}}</p>
+                        <p class="text ell">{{item.gardenName}}</p>
+                    </li>
+                </ul>
+                <ul ng-show="look.searchData.scenesCategory.length>0">
+                    <p class="title">
+                        场景
+                        <i ng-show="look.searchData.scenesCategory.length>5">
+                            <span class="more" ng-click="look.showMore($event,'scenesCategory',true)" ng-show="look.scenesCategoryNum<6">显示更多</span>
+                            <span class="more nomore" ng-click="look.showMore($event,'scenesCategory',false)"  ng-show="look.scenesCategoryNum>5">收起</span>
+                        </i>  
+                    </p>
+                    <li class="result_item" ng-repeat="item in look.searchData.scenesCategory" ng-if="$index < look.scenesCategoryNum" 
+                        ng-class="{'hover':item.hover}"  ng-click="look.addToMessageList(item)" >
+                        <img ng-src="{{look.filePath+item.ico}}" alt="">
+                        <p class="name ell">{{item.categoryName}}</p>
+                        <p class="text ell">{{item.gardenName}}</p>
+                    </li>
+                </ul>
+                <ul ng-show="look.searchData.gardensCategory.length>0">
+                    <p class="title">
+                        园区  
+                        <i ng-show="look.searchData.gardensCategory.length>5">
+                            <span class="more" ng-click="look.showMore($event,'gardensCategory',true)" ng-show="look.gardensCategoryNum<6">显示更多</span>
+                            <span class="more nomore" ng-click="look.showMore($event,'gardensCategory',false)"  ng-show="look.gardensCategoryNum>5">收起</span>
+                        </i>  
+                    </p>
+                    <li class="result_item" ng-repeat="item in look.searchData.gardensCategory" ng-show="$index < look.gardensCategoryNum">
+                        <img ng-src="{{look.filePath+item.ico}}" alt="">
+                        <p class="name ell">{{item.categoryName}}</p>
+                        <p class="text ell">{{item.gardenName}}</p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+    <ul class="look_list overflow_box_sml">
+        <li ng-repeat="item in look.list" ng-click="look.swicthMessageList($index,item.categoryId,item.categoryType)" ng-right-click="look.rightClick(item,$index)"
+         ng-class="{'active':item.active,'top' :item.onTop,'right' : $index === look.rightIndex}" ng-if="item.categoryId!=null && item.categoryName!=null && item.categoryType!=null">
+            <dl>
+                <dt>
+                    <img ng-src="{{look.filePath+item.ico}}"/>
+                    <span class="red_num" ng-show="item.number>0 && item.number<99 && !item.isMute">{{item.number}}</span>
+                    <span class="red_num big" ng-show="item.number>99 && !item.isMute">99+</span>
+                    <span class="red_num_sml" ng-show="item.isMute && item.number>0"></span>
+                </dt>
+                <dd>
+                    <h1 class="ell" ng-style="{'width':item.textLength ? item.textLength : 170+ 'px'}">{{item.categoryName}} </h1>
+                    <span class="time">{{item.timeView}}</span>
+                    <p class="ell" ng-class="{'quite' : item.isMute}">{{item.messageTitle}}</p>
+                    <span class="connectIconfont icon-quite" ng-show="item.isMute"></span>
+                </dd>
+            </dl>
+        </li>
+        <div class="operation" id="operation_box"  ng-show="look.showMask">
+            <p ng-click="look.markAsRead()">标为已读</p>
+            <p ng-if="!look.selectItem.isMute" ng-click="look.markOperate('isMute',true)">静音</p>
+            <p ng-if="look.selectItem.isMute" ng-click="look.markOperate('isMute',false)">移除静音</p>
+            <p ng-click="look.markOperate('isShow',false)">移除</p>
+        </div>
+    </ul>
+     
+</div>
+
+<div class="right_contcent" ui-view>
+    <look-content ng-if="look.enter"></look-content>
+</div>

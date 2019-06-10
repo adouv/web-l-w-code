@@ -1,0 +1,9 @@
+<div class="invitation-home">
+    <div style="position: relative;" class="invitation-home-content invitation-home-video-unicas">
+        <video-unicast *ngIf="tabStatus==0"></video-unicast>
+        <video-live *ngIf="isClickLive" [hidden]="tabStatus!=1"></video-live>
+    </div>
+    <div class="footerbottom">
+        <button nz-button [nzType]="'primary'" (click)="goBack()" nzGhost>返回</button>
+    </div>
+</div>

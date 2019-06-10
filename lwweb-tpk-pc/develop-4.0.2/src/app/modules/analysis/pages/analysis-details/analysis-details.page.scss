@@ -1,0 +1,151 @@
+@import "../../../../../styles/variable";
+@import "../../../../../styles/mixin";
+.analysis-details::ng-deep {
+    height: 100%;
+    width: 100%;
+    padding-left: computer(20px);
+    .ant-breadcrumb {
+        height: computer(20px);
+        line-height: computer(20px);
+        margin-top: computer(8px);
+    }
+    .download {
+        width: computer(108px);
+        height: computer(30px);
+        font-size: computer(16px);
+        margin: 0 computer(10px);
+        color: #fff;
+        cursor: pointer;
+        background: rgba(0, 160, 233, 0.5);
+        position: absolute;
+        z-index: 999;
+        right: 0;
+        &:hover {
+            background: $color_main;
+        }
+    }
+    .analysis-title-group {
+        width: calc(100% - #{computer(20px)});
+        height: computer(54px);
+        margin-right: computer(20px);
+        border-bottom: 1px solid $color_border;
+        text-align: center;
+        position: relative;
+        .title {
+            color: $color_font-deep;
+            font-size: computer(16px);
+            margin-bottom: computer(4px);
+        }
+        .datetime {
+            font-size: computer(14px);
+            color: $color_font-light;
+            margin-top: computer(-5px);
+        }
+    }
+    .analysis-content-group {
+        height:calc(100% - #{computer(130px)});
+        padding: computer(20px) 0 computer(40px) 0;
+        .analysis-content-group-items {
+            width: computer(200px);
+            height: computer(180px);
+            padding: 0 computer(10px);
+            float: left;
+            cursor: pointer;
+            text-align: center;
+        }
+        .item {
+            width: computer(180px);
+            height: computer(180px);
+            float: left;
+            text-align: center;
+            border-radius: 5px;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            // margin: 0 computer(10px);
+            // margin-bottom: computer(20px);
+            position: relative;
+            contain: none;
+            cursor: pointer;
+            transition: all 100ms;
+            border: 1px solid #fff;
+            // margin: computer(12px) computer(10px) computer(10px);
+            padding: computer(16px) computer(20px) computer(20px);
+            @include unselecText;
+            .iconfont {
+                display: none;
+                position: absolute;
+                top: computer(10px);
+                left: computer(10px);
+            }
+            .tag {
+                position: absolute;
+                width: computer(20px);
+                padding: computer(2px);
+                color: #fff;
+                top: 50%;
+                height: computer(60px);
+                margin-top: computer(-40px);
+                line-height: computer(14px);
+                left: computer(25px);
+                font-size: computer(12px);
+            }
+            &:hover {
+                border: 1px solid $color_main !important;
+                .close-btn,
+                .download-btn {
+                    display: block;
+                }
+                .iconfont {
+                    display: block;
+                }
+            }
+            .filetype_icon {
+                width: computer(110px);
+                height: computer(120px);
+                pointer-events: none;
+                margin-top: 4px;
+            }
+            .file_name {
+                font-size: computer(14px);
+                color: #333333;
+                width: computer(139px);
+                // margin-top: 12px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                text-align: center;
+                word-break: break-word;
+            }
+            .close-btn:before,
+            .download-btn::before {
+                font-size: 16px;
+            }
+            .close-btn,
+            .download-btn {
+                position: absolute;
+                top: 2px;
+                cursor: pointer;
+                display: none;
+            }
+            .close-btn {
+                right: 5px;
+                &:hover {
+                    color: $color_main;
+                }
+            }
+            .download-btn {
+                left: 5px;
+                &:hover {
+                    color: $color_main;
+                }
+            }
+        }
+    }
+    .footer {
+        height: computer(50px);
+        line-height: computer(50px);
+        text-align: center;
+        border-top: 1px solid $color_border;
+    }
+}

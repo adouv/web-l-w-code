@@ -1,0 +1,31 @@
+<div class="edit_user autograph-dialog autograph-upload" ng-if="isShowUpload">
+    <div class="header_box_top">
+        <div class="statusBtns">
+            <span ng-click="closeDialog()">
+                <i class="clientIconfont icon-client_close"></i>
+            </span>
+            <span>
+                <i class="clientIconfont second"></i>
+            </span>
+            <span>
+                <i class="clientIconfont third"></i>
+            </span>
+        </div>
+    </div>
+    <div class="autograph-content">
+        <h2 class="autograph-dialog-title">{{dialogContent.title}}</h2>
+        <div class="autograph-dialog-text">
+            <p ng-repeat="data in dialogContent.text">
+                {{data}}
+            </p>
+        </div>
+        <div class='upload-wrap' ng-class='{"upload-error":errorStyle && !attachment.length}'>
+            <bdp-upload-file required='true' attachment-list="attachment" type="applyOriginEvidence" size="{{3*1024*1024}}" format="jpg,png,bmp,jpeg" service-path='{{servicePath}}' is-signature='{{singleFile}}'/>
+            </bdp-upload-file>
+        </div>
+        <div class="btn_box">
+            <span class="btn_white" ng-click="closeDialog()">取消</span>
+            <span class="btn_blue" ng-click="confirmHandle()" >确定</span>
+        </div>
+    </div>
+</div>

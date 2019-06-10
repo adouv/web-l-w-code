@@ -1,0 +1,377 @@
+<div class="asset_info_deal" ng-click="assetDetail.visibility(assetDetail.flag)">
+    <p class="bread_nav">
+        <a href="javascript:void(0);" ng-click="assetDetail.goJump(crumb.url)" ng-repeat="crumb in assetDetail.crumbList">{{crumb.name}} ></a>
+        <span class="current">资产处置申请单详情</span>
+    </p>
+    <div class="assetaApplication_detail" style="margin-bottom: 10px">
+        <p class="title">{{ assetDetail.apply.name }}</p>
+        <p class="author">{{assetDetail.apply.creatorName}}（{{assetDetail.apply.applyUnitName}}）{{assetDetail.apply.createTime | date: 'yyyy-MM-dd'}}</p>
+        <div ng-transclude=""></div>
+        <!--外置表单-->
+        <div id="review" class="review"></div>
+        <div class="detail_flow">
+            <p class="detail_or_flow" ng-if="!assetDetail.isEditor">
+                <span class="curr" ng-click="assetDetail.isProcessShow = false" ng-class="{'current':!assetDetail.isProcessShow}">基本信息</span>
+                <span class="curr" ng-click="assetDetail.isProcessShow = true" ng-class="{'current':assetDetail.isProcessShow}">流程进度结果</span>
+            </p>
+            <div id="applyOrder" ng-class="{'nobor_dash':assetDetail.isProcessShow}">
+                <!--基本信息-->
+                <div class="detail_info" ng-show="!assetDetail.isProcessShow">
+                    <p class="is_elec">
+                        <span>
+                             处置的资产是否属于电子类: {{assetDetail.apply.isElectronic?'电子类':'非电子类'}}
+                        </span>
+                        <span class="fr" ng-if="assetDetail.pageName!=='listDetail'">
+                            <label><input type="checkbox" ng-model="assetDetail.export.signature" class="checkbox_class">电子签章</label>
+                            <label><input type="checkbox" ng-model="assetDetail.export.order" class="checkbox_class">申报表</label>
+                            <label><input type="checkbox" ng-model="assetDetail.export.evidence" class="checkbox_class">配套申报材料</label>
+                            <button class="btn_bd" ng-click="assetDetail.exportPdf()" ng-disabled="!assetDetail.export.order&&!assetDetail.export.evidence">导出到PDF</button>
+                        </span>
+                    </p>
+                    <div class="line_strip"></div>
+                    <div class="table_div">
+                        <table class="form_table">
+                            <tr>
+                                <th colspan="2">行政事业单位国有资产处置申报表</th>
+                            </tr>
+                            <tr class=first>
+                                <td style="width: 60%">申报单位:{{assetDetail.apply.applyUnitName}}</td>
+                                <td>资产管理信息系统单位登录名: {{assetDetail.apply.systemLoginName}}</td>
+                            </tr>
+                        </table>
+                        <table class="form_table">
+                            <tbody class="third">
+                                <tr class="second">
+                                    <td>资产大类</td>
+                                    <td class="text_left" colspan="11">{{assetDetail.apply.assetTypeName}}</td>
+                                </tr>
+                                <tr class="second">
+                                    <td>申报原因</td>
+                                    <td class="text_left" colspan="11">{{assetDetail.apply.applyReasonName}}</td>
+                                </tr>
+                                <tr class="second">
+                                    <td>处置形式</td>
+                                    <td class="text_left" colspan="11">{{assetDetail.apply.disposeTypeName}}</td>
+                                </tr>
+                                <tr class="second">
+                                    <td>处置方向</td>
+                                    <td class="text_left" colspan="11">
+                                        {{assetDetail.apply.disposeDirectionName}} {{assetDetail.apply.allocatedGardenName}}
+                                    </td>
+                                </tr>
+                                <tr class="th">
+                                    <td>序号</td>
+                                    <td>资产编号</td>
+                                    <td>中小学办学条件达标系统编号</td>
+                                    <td>资产名称</td>
+                                    <td>账面原值(元)</td>
+                                    <td>数量</td>
+                                    <td>资产大类</td>
+                                    <td>规格型号</td>
+                                    <td>会计凭证号</td>
+                                    <td>取得方式</td>
+                                    <td>取得日期</td>
+                                    <td>已使用年限</td>
+                                </tr>
+                                <tr ng-repeat="detail in assetDetail.apply.assetDisposeDetailList track by $index" ng-click="assetDetail.showImg(assetDetail.flag,$index,detail)" class="trhover" id="trhover">
+                                    <td ng-mouseenter=" assetDetail.verification()">{{ $index+1 }}</td>
+                                    <td ng-mouseenter=" assetDetail.verification()">
+                                        {{ detail.assetNo }}
+                                    </td>
+                                    <td ng-mouseenter=" assetDetail.verification()">
+                                        {{ detail.standardSystemNo }}
+                                    </td>
+                                    <td ng-mouseenter=" assetDetail.verification()">{{ detail.assetName }}</td>
+                                    <td ng-if="detail.assetTotalAmount.toString().indexOf('.')>1" ng-mouseenter=" assetDetail.verification()">
+                                        {{ detail.assetTotalAmount }}
+                                    </td>
+                                    <td ng-if="detail.assetTotalAmount.toString().indexOf('.')<=1" ng-mouseenter=" assetDetail.verification()">
+                                        {{ detail.assetTotalAmount }}.00
+                                    </td>
+                                    <td ng-mouseenter=" assetDetail.verification()">
+                                        {{ detail.assetCount }}
+                                    </td>
+                                    <td ng-mouseenter=" assetDetail.verification()">
+                                        {{ detail.assetTypeName }}
+                                    </td>
+                                    <td ng-mouseenter=" assetDetail.verification()">
+                                        {{ detail.specifications }}
+                                    </td>
+                                    <td ng-mouseenter=" assetDetail.verification()">
+                                        {{ detail.accountingVoucherNumber }}
+                                    </td>
+                                    <td ng-mouseenter=" assetDetail.verification()">
+                                        {{ detail.acquireWayName }}
+                                    </td>
+                                    <td ng-mouseenter=" assetDetail.verification()">
+                                        {{ detail.acquireDate| date:'yyyy-MM-dd' }}
+                                    </td>
+                                    <td class="hover" id="hover" ng-mouseenter=" assetDetail.verification()" ng-click=" assetDetail.showYear()">
+                                        {{ detail.usedYear }}
+                                    </td>
+                                </tr>
+                                <!-- <tr ng-if="assetDetail.flag" id="infoPos"> -->
+                                <tr>
+                                    <td colspan="4">合计</td>
+                                    <td style="width:7%;" ng-if="assetDetail.apply.assetTotalAmountSum.toString().indexOf('.')>1">
+                                        {{ assetDetail.apply.assetTotalAmountSum }}
+                                    </td>
+                                    <td style="width:7%;" ng-if="assetDetail.apply.assetTotalAmountSum.toString().indexOf('.')<=1">
+                                        {{ assetDetail.apply.assetTotalAmountSum }}.00
+                                    </td>
+                                    <td style="width:5%;">{{ assetDetail.apply.assetCountSum }}</td>
+                                    <td colspan="6"></td>
+                                </tr>
+                                <div id="infoPos" ng-click="assetDetail.stopPropagation()">
+                                    <div class="main_img">
+                                        <div ng-if="assetDetail.originAttachments && assetDetail.originAttachments.length>0">
+                                            <div class="main_img_left">
+                                                <p>资产原始材料：</p>
+                                                <pic-view ng-repeat="x in assetDetail.originAttachments track by $index" file-name="x.name" file-path="x.url"></pic-view>
+                                            </div>
+                                        </div>
+                                        <div ng-if="assetDetail.applyAttachments && assetDetail.applyAttachments.length>0">
+                                            <div class="main_img_left">
+                                                <p>资产处置申报说明/申请：</p>
+                                                <pic-view ng-repeat="x in assetDetail.applyAttachments track by $index" file-name="x.name" file-path="x.url"></pic-view>
+                                            </div>
+                                        </div>
+                                        <div ng-if="assetDetail.assetAttachments && assetDetail.assetAttachments.length>0">
+                                            <div class="main_img_left">
+                                                <p>成套设备资产明细：</p>
+                                                <pic-view ng-repeat="x in assetDetail.assetAttachments track by $index" file-name="x.name" file-path="x.url"></pic-view>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </tbody>
+                        </table>
+                        <!--走财政审批 电子类或非电子类单价大于等于5万元或总价大于等于10万-->
+                        <table class="form_table show_box" ng-if="assetDetail.isFinance&&assetDetail.auditCondition.length>0">
+                            <tr>
+                                <td width="25" ng-repeat="data in assetDetail.auditCondition | limitTo : 4">
+                                    <p ng-if="data.taskName" class="dept">{{data.taskName}}:</p>
+                                    <p class="result">
+                                        <span ng-if="data.isApproved===null" class="waitpass">待审核</span>
+                                        <span ng-if="data.isApproved===true" class="notpass">同意</span>
+                                        <span ng-if="data.isApproved===false" class="notpass">未通过</span>
+                                        <span ng-if="data.commentList.length>0" class="note">{{data.commentList[0].fullMessage}}</span>
+                                    </p>
+                                    <p ng-if="data.signLabel" class="sign"><span>{{ data.signLabel }}:</span><span ng-if="data.isApproved!==null"><em ng-if="data.signatureImgUrl"><img ng-src="{{assetDetail.fileServerPicPrefix+data.signatureImgUrl}}" height="30"/></em><em ng-if="!data.signatureImgUrl">{{ data.displayName }}</em></span></p>
+                                    <p ng-if="data.stampLabel" class="seal">{{ data.stampLabel }}</p>
+                                    <p ng-if="data.isApproved!==null" class="date">{{ data.auditDate | date : 'yyyy年MM月dd日'}}</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="25" ng-repeat="data in assetDetail.auditCondition | limitTo : -4">
+                                    <p ng-if="data.taskName" class="dept">{{data.taskName}}:</p>
+                                    <p class="result">
+                                        <span ng-if="data.isApproved===null" class="waitpass">待审核</span>
+                                        <span ng-if="data.isApproved===true" class="notpass">同意</span>
+                                        <span ng-if="data.isApproved===false" class="notpass">未通过</span>
+                                        <span ng-if="data.commentList.length>0" class="note">{{data.commentList[0].fullMessage}}</span>
+                                    </p>
+                                    <p ng-if="data.signLabel" class="sign"><span>{{ data.signLabel }}: </span><span ng-if="data.isApproved!==null"><em ng-if="data.signatureImgUrl"><img ng-src="{{assetDetail.fileServerPicPrefix+data.signatureImgUrl}}" height="30"/></em><em ng-if="!data.signatureImgUrl">{{data.displayName }}</em></span></p>
+                                    <p ng-if="data.stampLabel" class="seal">{{ data.stampLabel }}</p>
+                                    <p ng-if="data.isApproved!==null" class="date">{{ data.auditDate | date : 'yyyy年MM月dd日'}}</p>
+                                </td>
+                            </tr>
+                        </table>
+                        <!--不走财政审批 非电子类单价小于等于5万或总价小于等于10万-->
+                        <table class="form_table show_box" ng-if="!assetDetail.isFinance&&assetDetail.auditCondition.length>0">
+                            <tr>
+                                <td width="33.3" ng-repeat="data in assetDetail.auditCondition | limitTo : 3">
+                                    <p ng-if="data.taskName" class="dept">{{data.taskName}}:</p>
+                                    <p class="result">
+                                        <span ng-if="data.isApproved===null" class="waitpass">待审核</span>
+                                        <span ng-if="data.isApproved===true" class="notpass">同意</span>
+                                        <span ng-if="data.isApproved===false" class="notpass">未通过</span>
+                                        <span ng-if="data.commentList.length>0" class="note">{{data.commentList[0].fullMessage}}</span>
+                                    </p>
+                                    <p ng-if="data.signLabel" class="sign"><span>{{ data.signLabel }}:</span>
+                                        <span ng-if="data.isApproved!==null"><em ng-if="data.signatureImgUrl"><img ng-src="{{assetDetail.fileServerPicPrefix+data.signatureImgUrl}}" height="30"/></em><em ng-if="!data.signatureImgUrl">{{ data.displayName }}</em></span>
+                                    </p>
+                                    <p ng-if="data.stampLabel" class="seal">{{ data.stampLabel }}</p>
+                                    <p ng-if="data.isApproved!==null" class="date">{{ data.auditDate | date : 'yyyy年MM月dd日'}}</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="33.3" ng-repeat="data in assetDetail.auditCondition | limitTo : -3">
+                                    <p ng-if="data.taskName" class="dept">{{data.taskName}}:</p>
+                                    <p class="result">
+                                        <span ng-if="data.isApproved===null" class="waitpass">待审核</span>
+                                        <span ng-if="data.isApproved===true" class="notpass">同意</span>
+                                        <span ng-if="data.isApproved===false" class="notpass">未通过</span>
+                                        <span ng-if="data.commentList.length>0" class="note">{{data.commentList[0].fullMessage}}</span>
+                                    </p>
+                                    <p ng-if="data.signLabel" class="sign"><span>{{ data.signLabel }}:</span>
+                                        <span ng-if="data.isApproved!==null"><em ng-if="data.signatureImgUrl"><img ng-src="{{assetDetail.fileServerPicPrefix+data.signatureImgUrl}}" height="30"/></em><em ng-if="!data.signatureImgUrl">{{ data.displayName }}</em></span>
+                                    </p>
+                                    <p ng-if="data.stampLabel" class="seal">{{ data.stampLabel }}</p>
+                                    <p ng-if="data.isApproved!==null" class="date">{{ data.auditDate | date : 'yyyy年MM月dd日'}}</p>
+                                </td>
+                            </tr>
+                        </table>
+                        <table class="form_table">
+                            <tr class=first>
+                                <td style="width: 60%">资产管理员:{{ assetDetail.apply.creatorName }}</td>
+                                <td>联系电话: {{ assetDetail.apply.phone }}</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div id="lastApplyAttachment" ng-if="assetDetail.attachments&&assetDetail.attachments.applyOriginEvidence">
+                        <div class="project_detail" style="padding:10px 0">
+                            <div class="project_info" style="margin:0">
+                                <div class="reDraft_list" ng-class="{'down2':assetDetail.attachments.applyOriginEvidence.length>1}">
+                                    <span style="margin-left: -5px;" class="wid200 word_center fl">申报表的签字盖章原件扫描件：</span>
+                                    <div class="bale_list fl">
+                                        <pic-view sp="true" file-name="x.name" file-path="x.url" ng-repeat="x in assetDetail.attachments.applyOriginEvidence"></pic-view>
+                                    </div>
+                                    <span class="btn_bd downloadBale" ng-if='assetDetail.attachments.applyOriginEvidence.length>1' download-zip="assetDetail.attachments.applyOriginEvidence" zip-name="申报表的签字盖章原件扫描件">打包下载</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="backAudit">
+                        <a href="javascript:void(0);" ng-click="assetDetail.findAuditArea('#auditApplyOrder','#lastApplyAttachment')">返回审批操作 ＞＞</a>
+                    </div>
+                    <div class="origin_metail">
+                        <div ng-if="assetDetail.apply.originalEvidenceList.length>0">
+                            <p class="purple_p">资产原始材料</p>
+                            <p class="count">当前已有关联资产原始材料的资产
+                                <span class="green"> {{assetDetail.apply.originalEvidenceList.length}}</span> 项
+                            </p>
+                            <div class="line_strip"></div>
+                            <div class="table_div">
+                                <table class="form_table origin_metail">
+                                    <tr>
+                                        <th>关联资产</th>
+                                        <th>
+                                            对应原始资料扫描照片 (无法提供原始材料证明亦是通过照片扫描件的方式上传)
+                                        </th>
+                                    </tr>
+                                    <tr ng-repeat="data in assetDetail.apply.originalEvidenceList track by $index">
+                                        <td>
+                                            <p> {{ data.assetDetails }}; </p>
+                                        </td>
+                                        <td class="add_img_td">
+                                            <pic-view ng-repeat="x in data.attachmentList track by $index" file-name="x.name" file-path="x.url"></pic-view>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                        <div ng-if="assetDetail.apply.applyEvidenceList.length>0">
+                            <p class="purple_p mgt_15">资产处置申报说明/申请</p>
+                            <div class="add_img_box" style="overflow: hidden">
+                                <pic-view ng-repeat="x in assetDetail.apply.applyEvidenceList[0].attachmentList track by $index" file-name="x.name" file-path="x.url"></pic-view>
+                            </div>
+                        </div>
+                        <div ng-if="assetDetail.apply.batchAssetEvidenceList.length>0">
+                            <p class="purple_p mgt_15">成套设备资产明细/清单</p>
+                            <div class="line_strip"></div>
+                            <div class="table_div">
+                                <table class="form_table">
+                                    <tr>
+                                        <th>成套设备资产</th>
+                                        <th>对应资产明细文件</th>
+                                    </tr>
+                                    <tr ng-repeat="data in assetDetail.apply.batchAssetEvidenceList track by $index">
+                                        <td>
+                                            <p> {{ data.assetDetails }}; </p>
+                                        </td>
+                                        <td class="add_img_td">
+                                            <pic-view ng-repeat="x in data.attachmentList track by $index" file-name="x.name" file-path="x.url"></pic-view>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                        <div ng-if="assetDetail.apply.otherEvidenceList.length>0">
+                            <p class="purple_p mgt_15">其他辅助支持材料</p>
+                            <div class="line_strip"></div>
+                            <div class="table_div">
+                                <table class="form_table">
+                                    <tr>
+                                        <th>材料名称</th>
+                                        <th>对应文件</th>
+                                        <th>描述</th>
+                                    </tr>
+                                    <tr ng-repeat="data in assetDetail.apply.otherEvidenceList track by $index">
+                                        <td>
+                                            {{data.name}}
+                                        </td>
+                                        <td class="add_img_td">
+                                            <pic-view ng-repeat="x in data.attachmentList" file-name="x.name" file-path="x.url"></pic-view>
+                                        </td>
+                                        <td>{{data.description}}</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                        <div id="approvalAttachment" ng-if="assetDetail.attachments&&assetDetail.attachments.proveData">
+                            <!-- 项目立项信息 -->
+                            <div class="disposal_list">
+                                <div class="project_detail">
+                                    <p class="file_preview_tit">
+                                        <span>资产处置信息</span>
+                                    </p>
+                                    <div class="project_info fl">
+                                        <div class="reDraft_list" ng-class="{'down2':assetDetail.attachments.proveData.length>1}">
+                                            <span class="wid200 word_center fl">相关证明材料：</span>
+                                            <div class="bale_list fl">
+                                                <pic-view sp="true" file-name="x.name" file-path="x.url" ng-repeat="x in assetDetail.attachments.proveData"></pic-view>
+                                            </div>
+                                            <span class="btn_bd downloadBale" ng-if='assetDetail.attachments.proveData.length>1' download-zip="assetDetail.attachments.proveData" zip-name="相关证明材料">打包下载</span>
+                                        </div>
+                                        <div class="reDraft_list" ng-class="{'down2':assetDetail.attachments.applyData.length>1}">
+                                            <span class="wid200 word_center fl">资产处置申请单原件扫描件：</span>
+                                            <div class="bale_list fl">
+                                                <pic-view sp="true" file-name="x.name" file-path="x.url" ng-repeat="x in assetDetail.attachments.applyData"></pic-view>
+                                            </div>
+                                            <span class="btn_bd downloadBale" ng-if='assetDetail.attachments.applyData.length>1' download-zip="assetDetail.attachments.applyData" zip-name="资产处置申请单原件扫描件">打包下载</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="backAudit">
+                            <a href="javascript:void(0);" ng-click="assetDetail.findAuditArea('#auditApplyOrder','#approvalAttachment')">返回审批操作 ＞＞</a>
+                        </div>
+                        <div class="btn_box">
+                            <span class="btn_bg" ng-click="assetDetail.goBack()" ng-if="!assetDetail.isAudit">返回</span>
+                            <span ng-if="assetDetail.prevCurrent==='draft'" class="btn_bd" ui-sref="asset.edit({id:assetDetail.id})">编辑</span>
+                            <span ng-if="!assetDetail.isAll" class="btn_bd" ng-click="assetDetail.goEdit(assetDetail.apply.id,assetDetail.isEditor)">{{assetDetail.isEditor?'编辑':'以此申报表为模板重新申报'}}</span>
+                        </div>
+                    </div>
+
+                </div>
+                <!--进度流程结果-->
+                <div class="detail_info" ng-show="assetDetail.isProcessShow" ng-if="!assetDetail.isEditor">
+                    <div class="flow_title_detail">
+                        <p>当前资产处置申请单流程进度状态: <span ng-class="{'red_color':stage.status==1,'green_color':stage.status==2}">{{assetDetail.apply.projectStatusName}}</span></p>
+                        <div style="margin: 10px 0">
+                            <span class="bd_solid col00b"></span>
+                            <span class="paddl20">已完成</span>
+                            <span class="bd_solid col999"></span>
+                            <span class="paddl20">未完成</span>
+                            <span class="bd_solid col009"></span>
+                            <span class="paddl20">当前代办</span>
+                            <span class="bd_solid colffc"></span>
+                            <span class="paddl20">待再次处理</span>
+                        </div>
+                    </div>
+                    <div class="flow_box">
+                        <audit-flow orderid='assetDetail.projectId' audit="assetDetail.auditInfo"></audit-flow>
+                    </div>
+                </div>
+            </div>
+            <div class="backAudit">
+                <a href="javascript:void(0);" ng-click="assetDetail.findAuditArea('#auditApplyOrder','#applyOrder')">返回审批操作 ＞＞</a>
+            </div>
+        </div>
+    </div>
+    <div class="stop_step" back-to-top=".main_content">
+    </div>
+</div>

@@ -1,0 +1,117 @@
+<div class="repairInput" style="padding: 15px 4%;">
+    <form class="w5c-form"  novalidate  name="Form">
+        <!-- 面包屑导航 -->
+        <div class="repair_bread_nav">
+            <a href="JavaScript:void(0)" class="jump_href" ng-click="repairInput.goJump(crumb.url)" ng-repeat="crumb in repairInput.crumbList">{{crumb.name}} &gt;</a>
+            <span>{{repairInput.isEdit?'编辑':'添加'}}修缮项目申请单</span>
+        </div>
+        <div class="draft_title">
+            <!--草稿箱-->
+            <p class="draft_detail" ng-if="repairInput.isEdit">修缮项目草稿</p>
+            <p class="draft_date" ng-if="repairInput.isEdit">{{ repairInput.apply.createTime | date:'yyyy-MM-dd HH:mm' }}</p>
+            <!--申请单-->
+            <p class="draft_detail" ng-if="!repairInput.isEdit">添加修缮项目申请单</p>
+        </div>
+        <div class="reDraft_content">
+            <p class="f_size12">整体说明：所申报项目必须真实、准确，具有可行性</p>
+            <div class="reDraft_list">
+                <span class="w140 word_center">项目申报单位：</span>
+                <span class="word_center">{{ repairInput.apply.gardenName}}</span>
+                <span ng-if="repairInput.visibleGardens.length>1" ng-click="repairInput.chooseGarden()" class="iconfont icon-switch word_center switch_fos16"></span>
+                <input type="hidden" ng-model="repairInput.apply.gardenId" required name="gardenId">
+                <span class="error" ng-if="!repairInput.apply.gardenId&&repairInput.isVaild" style="color:#ff272e;display: block;margin: 0 42px">此项不能为空</span>
+            </div>
+            <div class="reDraft_list">
+                <span class="w140 word_center">项目名称：</span>
+                <input ng-blur="repairInput.verificationProjectName()" ng-model="repairInput.apply.name" maxlength="100" type="text" class="draft_input word_center" placeholder="100字以内，必填"
+                name="name" required />
+                <div class="draft_from">
+                    <span class="w140 fl">&nbsp;</span>
+                    <p class="declare fl">*形如XXX维修工程、XXX改造工程，包含建筑物、设施或部位名称，不含学校名称，例如：教学楼外墙维修工程、室外暖气管道改造工程。一项目一报，杜绝打包申报。</p>
+                </div>
+            </div>
+            <div class="reDraft_list">
+                <span class="w140 fl">项目内容：</span>
+                <div class="draft_from fl">
+                    <textarea ng-model="repairInput.apply.content" maxlength="1000" class="draft_input h100" placeholder="1000字以内，必填" name="content" required ></textarea>
+                    <p class="declare">*将所报项目作简要说明，比如维修改造的具体位置、数量、所用材质、最近一次维修改造时间等，项目内容与项目名称相符。</p>
+                </div>
+            </div>
+            <div class="reDraft_list">
+                <span class="w140 fl">申报理由：</span>
+                <div class="draft_from fl">
+                    <textarea ng-model="repairInput.apply.reason" maxlength="1000" class="draft_input h100" placeholder="1000字以内，必填" name="reason" required></textarea>
+                    <p class="declare">*对申报项目的现状进行简要描述，阐述项目执行的必要性。</p>
+                </div>
+            </div>
+            <div class="reDraft_list">
+                <span class="w140 fl">备注：</span>
+                <div class="draft_from fl">
+                    <textarea ng-model="repairInput.apply.remarks" maxlength="1000" class="draft_input h100" placeholder="1000字以内，不必填" name="remarks" ></textarea>
+                    <p class="declare">*如有特殊情况，请在备注中说明。</p>
+                </div>
+            </div>
+            <div class="reDraft_list">
+                <span class="w140 word_center">年度项目优先级：</span>
+                <select-options class="select_class" ng-model="repairInput.apply.priority" name="priority" required
+                        change="repairInput.getAttrName(repairInput.prioritys,repairInput.apply.priority,'priorityName')"
+                        repeat-items="data in repairInput.prioritys" item-key="id"
+                >
+                    {{data.name}}
+                </select-options>
+                <div class="draft_from">
+                    <span class="w140 fl">&nbsp;</span>
+                    <p class="declare fl">*请根据您学校在本年度的所有申报项目进行综合设置。</p>
+                </div>
+            </div>
+            <div class="reDraft_list">
+                <span class="w140 word_center">项目类别：</span>
+                <select-options class="select_class" ng-model="repairInput.apply.category" name="type" required repeat-items="data in repairInput.types" change="repairInput.getAttrName(repairInput.types,repairInput.apply.category,'categoryName')" item-key="id">
+                    {{data.name}}
+                </select-options>
+            </div>
+            <div class="reDraft_list">
+                <span class="w140 word_center">项目联系人：</span>
+                <span class="word_center">{{ repairInput.apply.creatorName }}</span>
+            </div>
+            <div class="reDraft_list">
+                <span class="w140 word_center">联系人电话：</span>
+                <span class="word_center" ng-show="!repairInput.phoneInputShow">{{repairInput.apply.cellphone}}</span>
+                <input ng-model="repairInput.apply.cellphone" ng-pattern="/^((\+?86)|(\+86))?(1[3|4|5|7|8][0-9]\d{8})$/" type="text" class="input_class word_center" placeholder="请输入手机号" ng-show="repairInput.phoneInputShow" name="cellphone" required>
+                <span class="iconfont icon-edit word_center" ng-click="repairInput.editPhone()" ng-show="!repairInput.phoneInputShow"></span>
+            </div>
+            <!--<div class="reDraft_list">
+                <span class="w140 word_center">请选择该项目要使用的审批流程：</span>
+                <select class="select_class" id="" ng-change='repairInput.getNextAuditTaskInfo()' ng-model="repairInput.apply.processConfigId" name="type" required>
+                    <option value="">请选择</option>
+                    <option value="{{value.id}}" ng-repeat="(key, value) in repairInput.processConfig">{{value.name}}</option>
+                </select>
+            </div>-->
+            <div class="reDraft_list">
+                <span class="w140 word_center">下一步操作名称：</span>
+                <span class="word_center">{{ repairInput.nextAuditInfo.taskName }}</span>
+            </div>
+            <div class="reDraft_list">
+                <span class="w140 word_center">下一步操作人：</span>
+                <select-options class="select_class selectWid400" ng-model="repairInput.apply.nextOperator" name="nextOperator" required=""
+                                repeat-items="data in repairInput.nextAuditInfo.nextAuditorQoList" item-key="accountId"
+                >
+                 {{data.displayName}}<span>({{data.gardenName}})</span>
+                </select-options>
+            </div>
+            <!--草稿-->
+            <div class="reDraft_btn" ng-if="repairInput.isEdit">
+                <span class="btn_bg" ng-click="repairInput.isVaild = true" form-submit-valid="repairInput.saveProject(0,true)">提交申报</span>
+                <span class="btn_bd" ng-click="repairInput.isVaild = true" form-submit-valid="repairInput.saveProject(-1,true)">继续保存草稿</span>
+                <span class="btn_bd" ng-click="repairInput.goBack()">取消</span>
+            </div>
+            <!--添加-->
+            <div class="reDraft_btn" ng-if="!repairInput.isEdit">
+                <span class="btn_bg" ng-click="repairInput.isVaild = true" form-submit-valid="repairInput.saveProject(0)" >提交并继续申报</span>
+                <span class="btn_bd" ng-click="repairInput.isVaild = true" form-submit-valid="repairInput.saveProject(0,true)">提交并返回</span>
+                <span class="btn_bd" ng-click="repairInput.isVaild = true" form-submit-valid="repairInput.saveProject(-1,true)">保存草稿</span>
+                <span class="btn_bd" ng-click="repairInput.goBack()">取消</span>
+            </div>
+        </div>
+    </form>
+</div>

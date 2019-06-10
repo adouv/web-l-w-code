@@ -1,0 +1,279 @@
+/*全局清空边距、字体、表单*/
+
+@import './clear.scss';
+
+/*样式变量公共类*/
+
+@import './variable.scss';
+
+/*窗口大小适应*/
+
+@import './mixin.scss';
+
+/*覆盖样式*/
+
+@import './coverEle.scss';
+@import './chartUpper.scss';
+@include scroll-bar(10px);
+@include computer-html-font-size();
+@include font-size();
+@include distance();
+.cursor {
+    cursor: pointer;
+}
+
+.auto-scroll {
+    overflow: auto;
+    @include scroll-bar(6px);
+}
+
+.mar-r-10px {
+    margin-right: 10px;
+}
+
+.mar-r-20px {
+    margin-right: 20px;
+}
+
+.mar-r-30px {
+    margin-right: 30px;
+}
+
+.mar-r-40px {
+    margin-right: 40px;
+}
+
+
+/*
+    可拖动区域
+*/
+
+.drag-area {
+    -webkit-app-region: drag;
+}
+
+
+/*
+    不可拖动区域
+*/
+
+.nodrag-area {
+    -webkit-app-region: no-drag;
+}
+
+.ant-select-dropdown-content {
+    -webkit-app-region: no-drag;
+}
+
+.auto-scroll-6 {
+    overflow: auto;
+    @include scroll-bar(6px);
+}
+
+.ant-notification {
+    -webkit-app-region: no-drag !important;
+}
+
+.result-table-page,
+.all-results-overview,
+.el-table,
+.el-table__expanded-cell {
+    background-color: transparent !important;
+}
+
+.el-table,
+.el-table__header-wrapper {
+    overflow: unset !important;
+}
+
+.is-scrolling-none {
+    width: calc(100% + 1px);
+}
+
+.el-table__empty-text {
+    color: #ffffff !important;
+    font-size: 28px;
+    color: rgb(34, 108, 251) !important;
+    border-left: transparent !important;
+}
+
+.el-table th,
+.el-table tr {
+    background-color: transparent !important;
+    color: #ffffff;
+    text-align: center;
+}
+
+.el-table .hover-row {
+    background-color: transparent !important;
+}
+
+.el-table th>.cell {
+    font-weight: normal;
+}
+
+.el-table--border,
+.el-table--group {
+    border: none;
+}
+
+tr.hover-row>td {
+    background-color: transparent !important;
+}
+
+//滚动条的宽度
+ ::-webkit-scrollbar {
+    width: .6rem;
+    height: 10px;
+}
+
+//滚动条的滑块
+ ::-webkit-scrollbar-thumb {
+    background-color: #1146ab;
+    border-radius: 3px;
+}
+
+//滚动条的交角
+ ::-webkit-scrollbar-corner {
+    background-color: transparent;
+}
+
+.el-table--border::after,
+.el-table--group::after,
+.el-table::before {
+    background-color: transparent !important;
+}
+
+.el-table--border th,
+.el-table__fixed-right-patch {
+    border-bottom: none !important;
+    border-right: 1px solid #1146ab !important;
+    border-top: 1px solid #226cfb !important;
+    border-bottom: 1px solid #1146ab !important;
+}
+
+.result-table-page .el-table--border th,
+.result-table-page .el-table__fixed-right-patch {
+    border-right: 1px solid #1146ab !important;
+    border-top: 1px solid #226cfb !important;
+    border-bottom: 1px solid #1146ab !important;
+}
+
+.el-table--scrollable-y .el-table__body-wrapper {
+    width: calc(100% + 1px);
+}
+
+.el-table--border th.gutter:last-of-type {
+    //border-left: 1px solid #226cfb !important;
+}
+
+.el-table td,
+.is-leaf {
+    border-bottom: 1px solid #1146ab !important;
+}
+
+.el-table--border td,
+.el-table__body-wrapper .el-table--border.is-scrolling-left~.el-table__fixed {
+    border-right: 1px solid #1146ab !important;
+}
+
+.el-table__fixed-right::before,
+.el-table__fixed::before {
+    background-color: transparent !important;
+}
+
+.el-table__fixed-right-patch {
+    background-color: transparent !important;
+}
+
+.all-results-overview .el-table__fixed-right-patch {
+    border-right: none !important;
+}
+
+.el-table .cell {
+    text-align: center !important;
+}
+
+.el-table__header-wrapper .has-gutter .gutter {
+    border: none !important;
+}
+
+.el-table__body,
+.el-table__footer,
+.el-table__header {
+    border-left: 1px solid #226cfb;
+}
+
+.el-table__empty-text {
+    color: #ffffff !important;
+    font-size: 28px;
+    color: rgb(34, 108, 251) !important;
+    border-left: transparent !important;
+    margin: 80px 0 !important;
+}
+
+.el-table--border th:nth-last-child(2) {
+    border-right: 1px solid #226cfb !important;
+}
+
+.el-table__fixed-right-patch {
+    border: none !important;
+}
+
+.el-table--border td:last-child,
+.el-table--border th:last-child {
+    border-right: 1px solid #226cfb !important;
+}
+
+.el-table__body {
+    border-bottom: 1px solid #226cfb !important;
+}
+
+.el-table__fixed {
+    background-color: #001a4c;
+}
+
+.el-table--border {
+    border: none !important;
+}
+
+.select-component,
+.common-top {
+    .el-input__inner {
+        color: #fff;
+        font-size: 18px;
+        border-radius: 0;
+        border: 1px solid #ffffff;
+        background-color: rgba(225, 225, 225, 0);
+    }
+    .el-select .el-input .el-select__caret {
+        font-size: 18px;
+    }
+}
+
+.cos {
+    position: absolute;
+    display: inline-block;
+    width: 22px;
+    height: 22px;
+    &.cos-top-left {
+        top: 0;
+        left: 0;
+        background: url('../../assets/images/upper-left-corner.png') no-repeat center;
+    }
+    &.cos-top-right {
+        top: 0;
+        right: 0;
+        background: url('../../assets/images/upper-right-corner.png') no-repeat center;
+    }
+    &.cos-bottom-left {
+        bottom: 0;
+        left: 0;
+        background: url('../../assets/images/bottom-left-corner.png') no-repeat center;
+    }
+    &.cos-bottom-right {
+        bottom: 0;
+        right: 0;
+        background: url('../../assets/images/bottom-right-corner.png') no-repeat center;
+    }
+}

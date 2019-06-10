@@ -1,0 +1,137 @@
+@import "../../../styles/mixin";
+@mixin height-background($height:100%, $line_height:normal) {
+    height: $height;
+    background: url(../../../assets/images/new4.0/topbg.png) repeat-x;
+    // background: #f00;
+    color: #ffffff;
+    line-height: $line_height;
+}
+
+@mixin flex($align, $justify) {
+    display: flex;
+    align-items: $align;
+}
+
+.lw-tpk-pc.ant-layout {
+    position: absolute;
+    width: computer(1366px);
+    height: computer(738px);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    vertical-align: middle;
+    overflow: hidden;
+}
+
+.ant-layout-header {
+    @include height-background(computer(100px));
+    @include flex(center, space-between);
+    padding: 0 computer(20px);
+    .center-box {
+        width: computer(140px);
+        height: computer(58px);
+        background: url("../../../assets/images/new4.0/logo-new.png") no-repeat center center;
+        background-size: 100%;
+    }
+    .nav-new {
+        height: computer(100px);
+        margin-left: computer(45px);
+        ul {
+            @include flex(center,
+            space-between);
+            li {
+                height: computer(100px);
+                width: computer(140px);
+                text-align: center;
+                cursor: pointer;
+                .nav-ico {
+                    width: 100%;
+                    height: 100%;
+                    span {
+                        display: block;
+                        padding-top: computer(72px);
+                        font-size: computer(14px);
+                    }
+                }
+                &:first-child {
+                    .nav-ico {
+                        background: url(../../../assets/images/new4.0/jiao.png) no-repeat center computer(15px);
+                    }
+                }
+                &:nth-child(2) {
+                    .nav-ico {
+                        background: url(../../../assets/images/new4.0/ping.png) no-repeat center computer(15px);
+                    }
+                }
+                &:last-child {
+                    .nav-ico {
+                        background: url(../../../assets/images/new4.0/xi.png) no-repeat center computer(15px);
+                    }
+                }
+                &:hover,
+                &.active {
+                    background: url(../../../assets/images/new4.0/nav-hover-bg.png) no-repeat center center;
+                }
+            }
+        }
+    }
+    .header-tools {
+        width: 97px;
+        position: absolute;
+        right: computer(20px);
+        top: computer(22px);
+        i {
+            cursor: pointer;
+            &:nth-child(2) {
+                margin: 0 computer(13px);
+            }
+        }
+    }
+}
+
+.right-box {
+    background: #ffffff;
+    overflow: hidden;
+}
+
+.garden-wrap-bg {
+    position: absolute;
+    width: 100%;
+    height: 95%;
+    top: computer(55px);
+    background: rgba(250, 250, 250, 0);
+    z-index: 1000;
+    .garden-wrap {
+        position: absolute;
+        left: calc(100% - #{computer(340px)});
+        width: computer(240px);
+        max-height: computer(161px);
+        background-color: #ffffff;
+        box-shadow: 0px computer(2px) computer(8px) 0px rgba(7, 0, 2, 0.3);
+        border-radius: 6px;
+        border: solid computer(1px) #dddddd;
+        overflow-x: hidden;
+        z-index: 1000;
+        .garden {
+            width: 100%;
+            height: computer(40px);
+            padding: 0 0 0 computer(15px);
+            font-size: computer(14px);
+            font-weight: normal;
+            font-stretch: normal;
+            line-height: computer(40px);
+            letter-spacing: 0px;
+            color: #333333;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            cursor: pointer;
+            &:hover {
+                background-color: #eeeeee;
+            }
+        }
+        .active {
+            color: #226cfb;
+        }
+    }
+}

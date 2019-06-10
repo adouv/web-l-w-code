@@ -1,0 +1,30 @@
+@import "../../../styles/variable";
+@import "../../../styles/mixin";
+
+.video-list-ul {
+	flex-wrap: wrap;
+}
+
+.video-list-li:nth-child(2n-1) {
+	margin-right: px2rem(18px);
+}
+
+.video-list-li {
+	margin-bottom: px2rem(20px);
+	padding-top: px2rem(20px);
+	box-shadow: 0 1px 40px 0 rgba(117, 82, 248, 0.1);
+	width: px2rem(450px);
+	height: px2rem(380px);
+	.image {
+		position: relative;
+		width: px2rem(400px);
+		height: px2rem(300px);
+		margin-bottom: px2rem(6px);
+	}
+	.content {
+		margin-top: px2rem(6px);
+		.title {
+			font-size: px2rem(24px);
+		}
+	}
+}

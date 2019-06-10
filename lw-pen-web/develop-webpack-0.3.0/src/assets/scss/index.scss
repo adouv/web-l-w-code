@@ -1,0 +1,55 @@
+/*全局清空边距、字体、表单*/
+@import './clear.scss';
+/*样式变量公共类*/
+@import './variable.scss';
+/*窗口大小适应*/
+@import './mixin.scss';
+
+@import './coverAntd.scss';
+
+.cursor{
+  cursor: pointer;
+}
+.auto-scroll{
+  overflow:auto;
+  @include scroll-bar(6px);
+}
+.mar-r-10px{
+  margin-right: 10px;
+}
+.mar-r-20px{
+  margin-right: 20px;
+}
+.mar-r-30px{
+  margin-right: 30px;
+}
+.mar-r-40px{
+  margin-right: 40px;
+}
+
+/*
+    可拖动区域
+*/
+
+.drag-area {
+  -webkit-app-region: drag;
+}
+
+/*
+    不可拖动区域
+*/
+.nodrag-area {
+  -webkit-app-region: no-drag;
+}
+.ant-select-dropdown-content{
+  -webkit-app-region: no-drag;
+}
+
+.auto-scroll-6{
+	overflow: auto;
+	@include scroll-bar(6px);
+}
+
+.ant-notification{
+  -webkit-app-region: no-drag !important;
+}

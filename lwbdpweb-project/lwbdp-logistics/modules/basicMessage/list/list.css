@@ -1,0 +1,44 @@
+.basic .table_box::-webkit-scrollbar-track {
+    border-radius: 10px;
+    background-color: #ffffff;
+}
+
+.basic .table_box::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+    background-color: #ffffff;
+}
+
+.basic .table_box::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+.basic .table_box.table_box_right tr th:first-child,
+.basic .table_box.table_box_right tr td:first-child{
+    border-left: 1px solid #dbe3ee;
+}
+.bdp .table_box.table_box_right .listTable thead th{
+    border-bottom: 1px solid #dbe3ee;
+    border-top: 1px solid transparent;
+}
+.basic .content_textBar .icon-error {
+    position: absolute;
+    top: 0;
+    right: 8px;
+}
+.basic .count {
+    margin: 14px 0 0 20px;
+}
+.basic .table100{
+    width: 100%;
+}
+.basic .over_in{
+    overflow: initial;
+}
+
+.bdp .table_box .selectTrClass{
+    background-color: #dbe3ee !important;
+}
+.basic .font_bold{
+    font-weight: bold;
+}

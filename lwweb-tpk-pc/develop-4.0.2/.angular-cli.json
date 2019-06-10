@@ -1,0 +1,74 @@
+{
+    "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+    "project": {
+        "name": "lw-tpk-pc"
+    },
+    "apps": [{
+        "root": "src",
+        "outDir": "dist",
+        "assets": [
+            "assets"
+        ],
+        "index": "index.html",
+        "main": "main.ts",
+        "polyfills": "polyfills.ts",
+        "test": "test.ts",
+        "tsconfig": "../tsconfig/tsconfig.app.json",
+        "testTsconfig": "../tsconfig/tsconfig.spec.json",
+        "prefix": "app",
+        "styles": [
+            "styles/styles.scss",
+            "../node_modules/primeng/resources/primeng.min.css",
+            "../node_modules/primeng/resources/themes/omega/theme.scss",
+            "../node_modules/flex.css/dist/flex.css",
+            "../node_modules/font-awesome/css/font-awesome.min.css",
+            "../node_modules/lw-font/css/pc-iconfont.css",
+            "../node_modules/animate.css/animate.css",
+            "assets/iconfont/iconfont.css",
+            "assets/iconfont1/iconfont.css",
+            "assets/laydate/laydate.css",
+            "assets/videojs/video-js.css"
+        ],
+        "scripts": [
+            "../node_modules/video.js/dist/video.js",
+            "../node_modules/echarts/dist/echarts.min.js",
+            "../node_modules/echarts-liquidfill/dist/echarts-liquidfill.min.js",
+            "../node_modules/videojs-flash/dist/videojs-flash.js",
+            "../node_modules/layui-laydate/dist/laydate.js",
+            "../node_modules/jquery/dist/jquery.min.js"
+        ],
+        "environmentSource": "environments/environment.ts",
+        "environments": {
+            "dev": "environments/environment.ts",
+            "hmr": "environments/environment.hmr.ts",
+            "prod": "environments/environment.prod.ts"
+        }
+    }],
+    "e2e": {
+        "protractor": {
+            "config": "./protractor.conf.js"
+        }
+    },
+    "lint": [{
+            "project": "src/tsconfig/tsconfig.app.json",
+            "exclude": "**/node_modules/**"
+        },
+        {
+            "project": "src/tsconfig/tsconfig.spec.json",
+            "exclude": "**/node_modules/**"
+        },
+        {
+            "project": "e2e/tsconfig/tsconfig.e2e.json",
+            "exclude": "**/node_modules/**"
+        }
+    ],
+    "test": {
+        "karma": {
+            "config": "./karma.conf.js"
+        }
+    },
+    "defaults": {
+        "styleExt": "scss",
+        "component": {}
+    }
+}

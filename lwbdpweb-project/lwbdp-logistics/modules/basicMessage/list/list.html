@@ -1,0 +1,102 @@
+<div class="main_in basic">
+    <!-- 搜索 -->
+    <div class="search_box clearfix">
+        <div>
+            <div class="content_textBar">
+                <input type="text" class="input_class" maxlength="50" placeholder="回车键提交查询"
+                       ng-model="basicList.condition.keywords" ng-keydown="basicList.goSearch($event)">
+                <span class="iconfont icon-search" ng-if="basicList.condition.keywords.length === 0"></span>
+                <span class="iconfont icon-error" ng-show="basicList.condition.keywords!=''"
+                      ng-click="basicList.removeKeywords()"></span>
+            </div>
+            <a href="javascript:void(0)" class="more_search" ng-click="basicList.getMoreSearch()">更多条件查询 ></a>
+        </div>
+        <div class="search_result"
+             ng-if="basicList.condition.gardenName||(basicList.condition.startTime && basicList.condition.endTime)||basicList.condition.list">
+            搜索条件：
+            <span ng-if="basicList.condition.gardenName">
+                统计单位（{{basicList.condition.gardenName}}）;
+            </span>
+            <span ng-if="basicList.condition.startTime && basicList.condition.endTime">
+                统计时间（{{basicList.condition.startTime}}~{{basicList.condition.endTime}}）;
+            </span>
+            <span ng-if="condition.value" ng-repeat="condition in basicList.condition.list">{{condition.viewName}}（{{condition.value}}）;</span>
+            <span ng-if="basicList.isShowCancel" class="iconfont icon-error"
+                  ng-click="basicList.deleteCondition()"></span>
+
+        </div>
+    </div>
+    <!-- 总计 -->
+    <div class="totalize clearfix" style='padding-right: 20px'>
+        <div class="count">
+            <span class="total_info">总计<em class="blue_color">{{basicList.total}}</em>条，其中参与统计单位<em class="color_333">{{basicList.gardenCount}}</em>个</span>
+            <span class="btn_bg fr" ng-click="basicList.export()">导出</span>
+            <span class="btn_bd fr" has-permission="{{basicList.createPermissionCode}}" ng-click="basicList.addBasic()">添加</span>
+        </div>
+    </div>
+    <!-- 表格 -->
+    <div class="line_pad" basic-width watch-change="basicList.systemTitleData">
+        <div class="line_strip"></div>
+    </div>
+    <div class="table_absolute overflow_box">
+        <div class="table_box table_box_left" id='tableAbst' ng-class="{'table100':basicList.userTitles.length==0}">
+            <table class="listTable table-hover">
+                <thead>
+                <tr>
+                    <th style='min-width: 50px'>序号</th>
+                    <th ng-repeat="title in basicList.systemTitles" style='min-width: 150px'>{{title.name}}</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                <tr ng-repeat="data in basicList.systemTitleData track by $index" data-id="{{data.id}}"
+                    ng-mouseover="basicList.leftTrMouseOver(data.id)"
+                    ng-mouseleave="basicList.leftTrMouseLeave(data.id)" ng-class="{'font_bold':!data.hasRead}">
+                    <td rowspan="{{data.userTitleDataList.length||1}}" ng-if="data.name">{{data.index + 1}}</td>
+                    <td rowspan="{{data.userTitleDataList.length||1}}" ng-if="data.name" class='ell'
+                        title="{{title.id=='createTime'?(data[title.id]| date:'yyyy-MM-dd HH:mm'):data[title.id]}}"
+                        ng-repeat="title in basicList.systemTitles" ng-click="basicList.goDetailPage(data.id)">
+                        {{title.id=='createTime'?(data[title.id]| date:'yyyy-MM-dd HH:mm'):data[title.id]}}
+                    </td>
+                    <td style="padding: 0px 0px;"></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <!--<div class="table_box table_box_right" ng-if="basicList.userTitles.length>0" ng-class="{'over_in':basicList.hasSearch || basicList.userTitles}">-->
+        <div class="table_box table_box_right" ng-if="basicList.userTitles.length>0">
+            <table class="listTable table-hover">
+                <thead>
+                <tr>
+                    <th ng-repeat="title in basicList.userTitles" style="min-width: 150px">{{title.name}}</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="data in basicList.dataValueList"
+                    ng-mouseover="basicList.rightTrMouseOver(data.pid||data.id)"
+                    ng-mouseleave="basicList.rightTrMouseLeave(data.pid||data.id)"
+                    ng-click="basicList.goDetailPage(data.pid||data.id)" pid="{{data.pid||data.id}}"
+                    class="table_box_right_tr" ng-class="{'font_bold':!data.hasRead}">
+                    <td class='ell' ng-repeat="title in basicList.userTitles" style="min-width: 150px">
+                        {{data[title.id]}}
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <!-- 分页 -->
+        <pagination conf="basicList.paginationConf" ng-show="basicList.datas.length>0"></pagination>
+
+        <!-- 暂无数据、暂无搜索结果-->
+        <div class="nodata_box" ng-show="basicList.datas.length<1">
+            <div class="nodata" ng-if="!basicList.hasSearch">
+                <span></span>
+                <p>暂无数据</p>
+            </div>
+            <div class="nodata_search" ng-if="basicList.hasSearch">
+                <span></span>
+                <p>搜索无结果</p>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,31 @@
+<div class="teaching-evaluation" flex="dir:top box:justify">
+	<header>
+		<nz-select *ngIf="type==0" style="width: 120px;" (nzOpenChange)="searchTeaching($event)"
+				   [(ngModel)]="selectedTeaching" [nzPlaceHolder]="teachings.length>0?teachings[0].displayName:'暂无老师'"
+				   nzAllowClear
+				   class="mar-bot-10px mar-lef-20px radius bg-gray">
+			<nz-option
+				*ngFor="let teach of teachings"
+				[nzLabel]="teach.displayName"
+				[nzValue]="teach"
+				[nzDisabled]="teach.disabled">
+			</nz-option>
+		</nz-select>
+	</header>
+	<div class="evaluation-content auto-scroll" #evaluationContent>
+		<dialog-evaluate *ngIf="commentdata!=null&&videoDetails !=null" [videoDetails]="videoDetails" [type]="type"
+						 [isUsed]="isUsed"
+						 [isStatistics] = "isStatistics"
+						 [isShow]="isShow"
+						 [commentdata]="commentdata"></dialog-evaluate>
+		<div *ngIf="commentdata ==null" class="elliptical-page-message">{{defaultMessage}}</div>
+	</div>
+	<footer *ngIf="commentdata!=null">
+		<button (click)="exportFile()" class="left-btn" nz-button [nzType]="'default'">
+			<span>导出</span>
+		</button>
+		<!--<button (click)="printView()" nz-button [nzType]="'danger'">-->
+			<!--<span>打印</span>-->
+		<!--</button>-->
+	</footer>
+</div>

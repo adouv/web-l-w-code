@@ -1,0 +1,70 @@
+<div class="exercise-card" >
+	<div style="width: 100%;" flex="">
+		<div *ngIf="!config.hiddenCheckBox" flex-box="0" class="check-content">
+			<label class="label-checkbox" nz-checkbox  [(ngModel)]="data.status" (ngModelChange)="cardStatusChange($event)">
+			</label>
+		</div>
+		<div flex-box="1" class="exercise-card-container">
+			<!--<div class="tag-class" [ngClass]="{'before-class': data.lessonStage===0, 'in-class': data.lessonStage===1, 'after-class': data.lessonStage===2}"></div>-->
+			<div flex class="exercise-card-container-content" (click)="showExerciseDetails('showAnswer')">
+				<span>{{index+1}}. </span>
+				<div class="dynamicHtml" [dynamicHtml]="data.exercise.content.contentHtml">
+			</div>
+			</div>
+			<div *ngIf="config.showExercises" class="exercise-card-container-footer" flex="dir:right box:first">
+				<div class="buttons-group">
+					<div *ngIf="data.statisticsStatus == 0||data.statisticsStatus == 1" [ngClass]="{'btn-disabled':data.statisticsStatus == 1}" class="button-group" flex="main:center cross:center" (click)="goToStatistics(data.statisticsStatus == 1)">
+						<span class="icon-span">
+							<i class="iconfont icon-statistical"></i>
+						</span>
+						作答统计
+					</div>
+					<div class="button-group" flex="main:center cross:center" (click)="showExerciseDetails('showDetails')">
+						<span class="icon-span">
+							<i class="iconfont icon-write"></i>
+						</span>
+						做题
+					</div>
+				</div>
+				<div>
+					<div *ngIf="!(data?.design?.name==''||data?.design?.name==null)" [ngStyle]="{'border':'1px solid ' + data?.design?.fontTone,'color':data?.design?.fontTone, 'background-color':data?.design?.backgroundTone}" class="exercises-tag">
+						{{data?.design?.name}}
+					</div>
+				</div>
+			</div>
+			<div *ngIf="!config.showExercises" class="exercise-card-handle-container-footer" flex="dir:right box:first">
+				<div class="buttons-group">
+					<div class="button-group" (click)="goToStatistics()">
+						<span class="icon-span">
+							<i class="iconfont icon-Manuscript_icon"></i>
+						</span>
+						删除
+					</div>
+					<div class="button-group" (click)="showAnswer()">
+						<span class="icon-span">
+							<i class="iconfont icon-Edit_icon"></i>
+						</span>
+						答案
+					</div>
+				</div>
+				<div>
+					<div *ngFor="let t of data.tags" [ngStyle]="{'border':'1px solid ' + t.color,'color':t.color}" class="exercises-tag">
+						{{t.title}}
+					</div>
+				</div>
+			</div>
+			<div *ngIf="!config.showExercises&&isShowAnswer" class="exercises-answer">
+				{{data.exercise.content.answer}}
+				<!--<div class="right-answer">-->
+					<!--<p>[ 正确答案 ]</p>-->
+					<!--<p>A.非负数</p>-->
+				<!--</div>-->
+				<!--<div class="answer-analyze">-->
+					<!--<p>[ 答案解析 ]</p>-->
+					<!--<p>解: 一个数的绝对值等于这个数的本身，这个数是非负数</p>-->
+					<!--<p>故选:A</p>-->
+				<!--</div>-->
+			</div>
+		</div>
+	</div>
+</div>

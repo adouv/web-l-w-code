@@ -1,0 +1,16 @@
+<div class="bdp_list_search w5c-form">
+    <div class="dialog-header">
+        乙方选择
+        <span class="iconfont icon-close del_btn dialog-close" ng-click="closeThisDialog()"></span>
+    </div>
+    <div class="choose_box overflow_box_sml">
+        <div class="label_box" ng-repeat="data in secondParty.allSecondParties track by $index">
+            <input name="flatTree" type="checkbox" id="kind{{$index}}" class="checkbox_class" ng-click="secondParty.checked($event,data)" ng-checked="data.checked">
+            <label for="kind{{$index}}" ng-click="secondParty.checked($event,data)">{{data.name}}</label>
+        </div>
+    </div>
+    <div class="dialog-btn">
+        <div class="btn_bd" ng-click="closeThisDialog()">取消</div>
+        <div class="btn_bg" ng-click="secondParty.sureSupplier(closeThisDialog)">确定</div>
+    </div>
+</div>

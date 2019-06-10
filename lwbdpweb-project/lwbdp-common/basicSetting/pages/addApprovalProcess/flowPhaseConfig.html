@@ -1,0 +1,38 @@
+<div class="approval_stage_config w5c-form">
+    <p class="title">
+        流程阶段及下属子项显示名称配置
+    </p>
+    <div class="config_con">
+        <p>
+            流程阶段名称：<input type="text" class="input_class stage_name"
+                             ng-class="{'error':!flowPhaseConfig.stageConfigData.name}"
+                              name="phasename" ng-model="flowPhaseConfig.stageConfigData.name"
+                             maxlength="20" placeholder="20个汉字以内,必填" required>        
+        </p>
+        <p class="stage_descri">
+            对应子项侧边栏显示名称配置：<i class="iconfont icon-prompt child_name" ng-mouseover="flowPhaseConfig.isShowChild = true"
+            ng-mouseleave="flowPhaseConfig.isShowChild = false"></i>
+            <div class="show_child_name" ng-if="flowPhaseConfig.isShowChild"></div>
+        </p>
+        <p class="stage_config">
+            <span class="stage_config_index">子项</span>
+            <span class="stage_config_indexdes">对应的侧边栏显示名称</span>
+        </p>
+        <p class="stage_config">
+            <span>我的项目&nbsp;---&nbsp;&nbsp;</span>
+            <input class="input_class" type="text" maxlength="5" ng-model="flowPhaseConfig.stageConfigData.stageItemList[0].name"/>
+        </p>
+        <p class="stage_config">
+            <span>我的审批&nbsp;---&nbsp;&nbsp;</span>
+            <input class="input_class" type="text" maxlength="5" ng-model="flowPhaseConfig.stageConfigData.stageItemList[1].name"/>
+        </p>
+        <p class="stage_config">
+            <span>阶段项目库&nbsp;---&nbsp;&nbsp;</span>
+            <input class="input_class" type="text" maxlength="5" ng-model="flowPhaseConfig.stageConfigData.stageItemList[2].name"/>
+        </p>
+    </div>
+    <div class="garden-footer">
+        <button class="garden-btn cancel" ng-click="flowPhaseConfig.confirmCancel()">取消</button>
+        <button class="garden-btn sure" ng-click="flowPhaseConfig.confirmSuccess($event)">确定</button>
+    </div>
+</div>

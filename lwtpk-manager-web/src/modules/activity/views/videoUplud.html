@@ -1,0 +1,105 @@
+<div class="row manage_add">
+  <span class="manage" ng-click="goList()">园区点播和直播活动管理--></span>
+  <span class="add">园区点播和直播活动编辑</span>
+</div>
+<section class="row border-color edit">
+  <blockquote class="border-color">园区点播和直播活动编辑</blockquote>
+  <div class="garden-select">
+    <select class="form-control select-control"
+            ng-model="gardenId">
+      <option value="">管理</option>
+      <option value="">直播</option>
+    </select>
+  </div>
+</section>
+<div class="content_main">
+
+  <div class="con_name clearfix">
+    <p class="con_left">名称 :</p>
+    <input type="text" value="xxxxxxxxxxx" class="inp form-control">
+  </div>
+  <div class="con_name clearfix">
+    <p class="con_left">嘉宾 :</p>
+    <input type="text" value="50个字以内，可以为空.." class="inp form-control">
+  </div>
+  <div class="con_name clearfix">
+    <p class="con_left">类型 :</p>
+    <select class="inp form-control" ng-model="type" ng-change="switch()">
+      <option value="">管理</option>
+      <option value="">直播</option>
+    </select>
+  </div>
+
+  <div class="con_name">
+    <p class="con_left live">直播活动封面 :</p>
+    <div class="live_page">
+      <div class="live_name_hd clearfix">
+        <div class="ll">
+          <input type="button" class="btn" value="上传">
+        </div>
+        <div class="rr">
+          <p>图片最大不超过2M；</p>
+          <p>最佳分辨率为750像素x340像素</p>
+        </div>
+      </div>
+      <div class="live_video">
+        <i class="cover"></i>
+      </div>
+    </div>
+  </div>
+  <div class="con_name">
+    <p class="con_left">直播摄像头地址 :</p>
+    <div class="upload_con">
+      <input type="text" class="inp form-control" value="XXXXXXXXXXX" style="margin-left: 0">
+      <button class="btn select">选择</button>
+    </div>
+  </div>
+  <div class="con_name">
+    <p class="con_left vdo">已有视频集 :</p>
+    <div class="upload_go clearfix">
+       <div class="video_list">
+         <p><span>xxxxxxxxxxxxxxxx.mp4</span><span>删除</span></p>
+         <p><span>xxxxxxxxxxxxxxxx.mp4</span><span>删除</span></p>
+         <p><span>xxxxxxxxxxxxxxxx.mp4</span><span>删除</span></p>
+       </div>
+      <div class="upload_con fr" style="margin-top: 0;margin-left: 55px">
+        <button class="btn"ng-click="chooseGarden()" style="width: 91px" >上传视频</button>
+      </div>
+    </div>
+  </div>
+  <div class="con_name btm_0">
+    <p class="con_left live rang">直播时间 :</p>
+    <div class="view_can">
+      <p>xxxx/xx:xx~xxxx/xx:xx</p>
+    </div>
+  </div>
+  <div class="con_name">
+    <p class="con_left live rang">直播观看人数 :</p>
+    <div class="view_can">
+      <p>50人</p>
+    </div>
+  </div>
+  <div class="con_name clearfix">
+    <p class="con_left live">内容介绍 :</p>
+    <textarea class="texta cont" cols="30" rows="10" maxlength="200">xxxxxxxxxxxxx</textarea>
+  </div>
+  <div class="con_name clearfix">
+    <p class="con_left">可见范围 :</p>
+    <select class="inp form-control" ng-model="type" ng-change="switch()">
+      <option value="">完全公开</option>
+      <option value="">不完全公开</option>
+    </select>
+  </div>
+  <div class="con_name">
+    <p class="con_left">有效性 :</p>
+    <div class="inblk va-middle effect">
+      <input id="chekck1" type="checkbox" class="cbx hidden">
+      <label for="chekck1" class="lbl"></label>
+    </div>
+  </div>
+</div>
+<div class="sure_back clearfix">
+  <button class="btn btn-lg tpk-btn">确 定</button>
+  <button class="btn btn-default btn-lg tpk-btn-o">返 回</button>
+</div>
+

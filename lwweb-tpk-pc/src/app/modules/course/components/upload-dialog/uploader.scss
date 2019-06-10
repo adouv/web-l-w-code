@@ -1,0 +1,167 @@
+.custom_dialog_class .ng-trigger-slideDialog {
+    padding: 0px !important;
+    border-radius: 10px !important;
+    overflow: hidden;
+    min-width: 800px;
+}
+
+//.cdk-overlay-backdrop.cdk-overlay-backdrop {
+//    background: rgba(0, 0, 0, .6) !important;
+//}
+.custom_dialog_class {
+    width: 800px;
+    min-width: 800px;
+    height: 600px;
+    border-radius: 10px !important;
+    overflow: hidden;
+}
+
+.basedialog {
+    width: 800px;
+    min-width: 800px;
+    height: 600px;
+    border-radius: 10px;
+    background: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .head {
+        width: 100%;
+        height: 70px;
+        position: relative;
+        border-bottom: 1px solid #C4CFE3;
+        .title {
+            font-size: 30px;
+            color: #666666;
+            position: absolute;
+            width: 100%;
+            text-align: center;
+            line-height: 70px;
+        }
+        .caozuo {
+            position: absolute;
+            top: 15px;
+            right: 18px;
+            .zuixiaohua {
+                font-size: 40px;
+                color: rgba(153, 153, 153, 0.5);
+                margin-right: 10px;
+                cursor: pointer;
+                &:hover {
+                    color: rgba(153, 153, 153, 1);
+                }
+            }
+            .guanbi {
+                font-size: 40px;
+                color: #226cfb;
+                color: rgba(0, 160, 233, 0.5);
+                cursor: pointer;
+                &:hover {
+                    color: rgba(0, 160, 233, 1);
+                }
+            }
+        }
+    }
+    .tip {
+        width: 100%;
+        padding: 20px 20px 10px;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        position: relative;
+        .tip_mark {
+            cursor: pointer;
+        }
+        .question_mark {
+            width: 24px;
+            height: 24px;
+            color: #226cfb;
+            border: 1px solid #226cfb;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 24px;
+            margin-right: 7px;
+        }
+        .tip_name {
+            font-size: 20px;
+            color: #226cfb;
+        }
+        .tip_mark div {
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .tip_mark:hover+.tip_content {
+            display: block;
+        }
+        .tip_content {
+            position: absolute;
+            background: #FFFFFF;
+            top: 45px;
+            right: 135px;
+            width: 400px;
+            height: 200px;
+            padding: 20px;
+            font-size: 16px;
+            color: #333333;
+            border-radius: 3px;
+            box-shadow: 1px 1px 5px 3px rgba(0, 0, 0, 0.3);
+            display: none;
+        }
+        .tip_content p {
+            line-height: 28px;
+        }
+    }
+    .items {
+        //height: 364px;
+        overflow: auto;
+        width: 100%;
+        height: 0;
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 20px;
+        margin-top: 10px;
+    }
+    .wancheng {
+        width: 760px;
+        height: 100px;
+        display: flex;
+        justify-content: flex-end;
+        //align-items: center;
+        .wancheng_btn {
+            width: 161px;
+            height: 62px;
+            border-radius: 5px;
+            flex-shrink: 0;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            opacity: 0.5;
+            cursor: not-allowed;
+            &.active {
+                opacity: 1;
+                cursor: pointer;
+            }
+            img {
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                top: 0;
+                left: 0;
+            }
+            .btn_name {
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                top: 0;
+                left: 0;
+                text-align: center;
+                line-height: 62px;
+                font-size: 24px;
+                color: white;
+                z-index: 1;
+            }
+        }
+    }
+}

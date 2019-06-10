@@ -1,0 +1,10 @@
+.asset .main_content {
+    flex: 10;
+    position: relative;
+    overflow-x: auto;
+}
+
+.asset {
+    display: flex;
+    height: 100%;
+}

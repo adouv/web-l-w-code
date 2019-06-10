@@ -1,0 +1,212 @@
+<div class="canteen-list">
+    <div class="top-tab">
+        <span class="top-tab-list" has-permission="logistics:purchaseOrder:list" ng-class="{'cur':canteenList.tabName == 'order'}" ng-click="canteenList.switchTable('order')">月采购单</span>
+        <span class="top-tab-list" has-permission="logistics:purchaseContract:list" ng-class="{'cur':canteenList.tabName == 'contract'}" ng-click="canteenList.switchTable('contract')">供应商合同</span>
+    </div>
+
+    <div class="main_in my-warn" ng-if="canteenList.tabName == 'order'" has-permission="logistics:purchaseOrder:list">
+        <!-- 搜索 -->
+        <div class="search_box clearfix">
+            <div>
+                <div class="content_textBar">
+                    <input type="text" class="input_class" maxlength="50" placeholder="回车键提交查询"  ng-model="canteenList.purchaseOrderKeywords" ng-keydown="canteenList.goPurchaseOrderSearch($event)">
+                    <span class="iconfont icon-search" ng-show="!canteenList.purchaseOrderKeywords"></span>
+                    <span class="iconfont icon-error" ng-show="canteenList.purchaseOrderKeywords" ng-click="canteenList.clearPurchaseOrderKeywords()"></span>
+                </div>
+                <a href="javascript:void(0)" class="more_search" ng-click="canteenList.getMoreSearch()">更多条件查询 ></a>
+            </div>
+            <div class="search_result" ng-show="canteenList.showPurchaseSearch">搜索条件：
+                <span ng-if="canteenList.purchaseOrderCondition.gardenName" ng-init="canteenList.showPurchaseSearch=true">
+                    采购单位（{{canteenList.purchaseOrderCondition.gardenName}}）;
+                </span>
+                <span ng-if="canteenList.purchaseOrderCondition.reportTimeStart && canteenList.purchaseOrderCondition.reportTimeEnd" ng-init="canteenList.showPurchaseSearch=true">
+                    上报月份（{{canteenList.purchaseOrderCondition.reportTimeStart}}~{{canteenList.purchaseOrderCondition.reportTimeEnd}}）;
+                </span>
+                <span ng-if="canteenList.purchaseOrderCondition.amountMin && canteenList.purchaseOrderCondition.amountMax" ng-init="canteenList.showPurchaseSearch=true">
+                    采购金额（{{canteenList.purchaseOrderCondition.amountMin}}~{{canteenList.purchaseOrderCondition.amountMax}}）;
+                </span>
+                <span ng-if="canteenList.purchaseOrderCondition.createTimeStart && canteenList.purchaseOrderCondition.createTimeEnd" ng-init="canteenList.showPurchaseSearch=true">
+                    上报时间（{{canteenList.purchaseOrderCondition.createTimeStart}}~{{canteenList.purchaseOrderCondition.createTimeEnd}}）;
+                </span>
+               <!-- <span ng-if="condition.value" ng-repeat="condition in basicList.condition.list">{{condition.viewName}}（{{condition.value}}）;</span>-->
+                <span class="iconfont icon-error" ng-click="canteenList.deletePurchaseCondition()"></span>
+            </div>
+        </div>
+        <!-- 总计 -->
+        <div class="totalize clearfix" style='padding-right: 20px'>
+            <div class="count">
+                <span class="total_info">总计<em class="blue_color">{{canteenList.purchase.paginationConf.totalItems }}</em>条，其中参与统计单位<em class="color_333">{{canteenList.purchase.gardenCount}}</em>个</span>
+                <span class="btn_bg fr" ng-click="canteenList.exportPurchaseOrder();">导出</span>
+                <span class="btn_bd fr" has-permission="logistics:purchaseOrder:create" ui-sref="logistics.canteen.orderInput({id:''})">添加</span>
+            </div>
+        </div>
+        <!-- 表格 -->
+        <div class="line_pad" auto-width=".table_absolute" watch-change="canteenList.purchase.datas">
+            <div class="line_strip"></div>
+            <div class="table_box">
+                <table class="listTable table-hover">
+                    <thead id="theadTh">
+                    <tr>
+                        <th width="5%">序号</th>
+                        <th width="30%">采购单位</th>
+                        <th width="12%">月份</th>
+                        <th width="15%">采购金额（元）</th>
+                        <th width="10%">上报人</th>
+                        <th width="16%">上报时间</th>
+                        <th width="12%">操作</th>
+                    </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+        <div class="table_absolute overflow_box">
+            <div class="table_box">
+                <table class="listTable table-hover">
+                    <tbody>
+                        <tr table-width ui-sref='logistics.canteen.orderDetail({id:data.id})' ng-repeat="data in canteenList.purchase.datas">
+                            <td>
+                                <!--<input type="checkbox" name="noticeMethod" class="checkbox_class" id="checked"/>-->
+                                <label>{{$index+1}}</label>
+                            </td>
+                            <td>{{data.gardenName}}</td>
+                            <td>{{data.reportTime | date:'yyyy-MM'}}</td>
+                            <td>{{data.totalAmount}}</td>
+                            <td>{{data.creatorName}}</td>
+                            <td>{{data.createTime | date:'yyyy-MM-dd HH:mm'}}</td>
+                            <td>
+                                <span class="iconfont icon-editPen" ng-if="canteenList.accountId == data.creator" ng-click="canteenList.toUpdatePurchaseOrder(data.id,$event)"></span>
+                                <span class="iconfont icon-del" ng-if="canteenList.accountId == data.creator" ng-click="canteenList.deletePurchaseOrder(data.id,$event)"></span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!-- 分页 -->
+            <!--<pagination conf="canteenList.purchase.paginationConf" ng-show="canteenList.purchase.pageList.length>0"></pagination>-->
+            <pagination conf="canteenList.purchase.paginationConf" ng-show="canteenList.purchase.datas.length>0"></pagination>
+
+            <!-- 暂无数据、暂无搜索结果-->
+
+            <div class="nodata_box" ng-show="canteenList.purchase.datas.length<1">
+                <div class="nodata" ng-show="!canteenList.hasPurchaseOrderSearch">
+                    <span></span>
+                    <p>暂无数据</p>
+                </div>
+                <div class="nodata_search" ng-show="canteenList.hasPurchaseOrderSearch">
+                    <span></span>
+                    <p>搜索无结果</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="main_in my-warn" ng-if="canteenList.tabName == 'contract'" has-permission="logistics:purchaseContract:list">
+        <!-- 搜索 -->
+        <div class="search_box clearfix">
+            <div>
+                <div class="content_textBar">
+                    <input type="text" class="input_class" maxlength="50" placeholder="回车键提交查询"  ng-model="canteenList.supplierPactKeywords"  ng-keydown="canteenList.goSupplierPactSearch($event)">
+                    <span class="iconfont icon-search" ng-if="!canteenList.supplierPactKeywords"></span>
+                    <span class="iconfont icon-error" ng-if="canteenList.supplierPactKeywords" ng-click="canteenList.clearSupplierPactKeywords()"></span>
+                </div>
+                <a href="javascript:void(0)" class="more_search" ng-click="canteenList.getMoreSearch()">更多条件查询 ></a>
+            </div>
+            <div class="search_result" ng-show="canteenList.showSupplierPactSearch">搜索条件：
+                <span ng-if="canteenList.supplierPactCondition.name" ng-init="canteenList.showSupplierPactSearch=true">
+                    合同名称（{{canteenList.supplierPactCondition.name}}）;
+                </span>
+                <span ng-if="canteenList.supplierPactCondition.firstPartyName" ng-init="canteenList.showSupplierPactSearch=true">
+                    合同甲方（{{canteenList.supplierPactCondition.firstPartyName}}）;
+                </span>
+                <span ng-if="canteenList.supplierPactCondition.secondPartyName" ng-init="canteenList.showSupplierPactSearch=true">
+                    合同乙方（{{canteenList.supplierPactCondition.secondPartyName}}）;
+                </span>
+                <span ng-if="canteenList.supplierPactCondition.validityStart && canteenList.supplierPactCondition.validityEnd" ng-init="canteenList.showSupplierPactSearch=true">
+                    有效期限（{{canteenList.supplierPactCondition.validityStart}}~{{canteenList.supplierPactCondition.validityEnd}}）;
+                </span>
+                <span ng-if="canteenList.supplierPactCondition.amountMin && canteenList.supplierPactCondition.amountMax" ng-init="canteenList.showSupplierPactSearch=true">
+                    合同金额（{{canteenList.supplierPactCondition.amountMin}}~{{canteenList.supplierPactCondition.amountMax}}）;
+                </span>
+                <span ng-if="canteenList.supplierPactCondition.createTimeStart && canteenList.supplierPactCondition.createTimeEnd" ng-init="canteenList.showSupplierPactSearch=true">
+                    提交时间（{{canteenList.supplierPactCondition.createTimeStart}}~{{canteenList.supplierPactCondition.createTimeEnd}}）;
+                </span>
+                <!-- <span ng-if="condition.value" ng-repeat="condition in basicList.condition.list">{{condition.viewName}}（{{condition.value}}）;</span>-->
+                <span class="iconfont icon-error" ng-click="canteenList.deleteSupplierPactCondition()"></span>
+            </div>
+        </div>
+        <!-- 总计 -->
+        <div class="totalize clearfix" style='padding-right: 20px'>
+            <div class="count">
+                <span class="total_info">总计<em class="blue_color">{{canteenList.supplierPact.paginationConf.totalItems }}</em>条，其中参与统计单位<em class="color_333">{{canteenList.supplierPact.gardenCount}}</em>个</span>
+                <span class="btn_bg fr" ng-click="canteenList.exportSupplierPact()">导出</span>
+                <span class="btn_bd fr" has-permission="logistics:purchaseContract:create" ui-sref="logistics.canteen.contractInput">添加</span>
+            </div>
+        </div>
+        <!-- 表格 -->
+        <div class="line_pad" auto-width=".table_absolute" watch-change="canteenList.supplierPact.datas">
+            <div class="line_strip"></div>
+            <div class="table_box">
+                <table class="listTable table-hover">
+                    <thead id="theadTh">
+                    <tr>
+                        <th width="5%">序号</th>
+                        <th width="13%">名称</th>
+                        <th width="11%">合同金额（元）</th>
+                        <th width="13%">甲方</th>
+                        <th width="13%">乙方</th>
+                        <th width="16%">有效期</th>
+                        <th width="8%">添加人</th>
+                        <th width="13%">添加时间</th>
+                        <th width="8%">操作</th>
+                    </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+
+        <div class="table_absolute overflow_box">
+            <div class="table_box">
+                <table class="listTable table-hover">
+                    <tbody>
+                    <tr table-width ui-sref='logistics.canteen.contractDetail({id:data.id})' ng-repeat="data in canteenList.supplierPact.datas">
+                        <td>
+                            <!--<input type="checkbox" name="noticeMethod" class="checkbox_class" id="checkedTwo"/>-->
+                            <label>{{$index+1}}</label>
+                        </td>
+                        <td>{{data.name}}</td>
+                        <td>{{data.amount}}</td>
+                        <td>{{data.firstPartyName}}</td>
+                        <td>{{data.secondPartyName}}</td>
+                        <td>{{data.validityStart | date:'yyyy-MM-dd'}} ~ {{data.validityEnd | date:'yyyy-MM-dd'}}</td>
+                        <td>{{data.creatorName}}</td>
+                        <td>{{data.createTime | date:'yyyy-MM-dd HH:mm'}}</td>
+                        <td>
+                            <span ng-if="canteenList.accountId == data.creator" class="iconfont icon-editPen" ng-click="canteenList.toUpdateSupplierContract(data.id,$event)"></span>
+                            <span ng-if="canteenList.accountId == data.creator" class="iconfont icon-del" ng-click="canteenList.deleteSupplierContract(data.id,$event)"></span>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!-- 分页 -->
+            <!--<pagination conf="canteenList.supplierPact.paginationConf" ng-show="canteenList.supplierPact.pageList.length>0"></pagination>-->
+            <pagination conf="canteenList.supplierPact.paginationConf" ng-show="canteenList.supplierPact.datas.length>0"></pagination>
+
+
+
+            <div class="nodata_box" ng-show="canteenList.supplierPact.datas.length<1">
+                <div class="nodata"  ng-show="!canteenList.hasSupplierPactSearch">
+                    <span></span>
+                    <p>暂无数据</p>
+                </div>
+                <div class="nodata_search" ng-show="canteenList.hasSupplierPactSearch">
+                    <span></span>
+                    <p>搜索无结果</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>

@@ -1,0 +1,34 @@
+<div class="bdp_list_search">
+    <div class="dialog-header">
+        更多条件组合搜索
+        <span class="iconfont icon-close del_btn dialog-close" ng-click="closeThisDialog()"></span>
+    </div>
+    <form>
+        <div class="auto-box" >
+            <div class="dialog-list">
+                <span class="dialog_name">统计单位</span>
+                <input type="text" class="dialog_input" ng-model="moveMoreSearch.condition.gardenName" readonly  ng-click="moveMoreSearch.chooseGarden()">
+            </div>
+            <div class="dialog-list">
+                <span class="dialog_name">统计时间</span>
+                <div class="dialog_date">
+                    <input type="text" id="start" lw-laydate='yyyy-MM-dd HH:mm' ng-class="{'error_red':moveMoreSearch.validStartTime}" max-date="moveMoreSearch.condition.endTime" ng-model="moveMoreSearch.condition.startTime" class="dialog_input_middle" readonly="readonly" placeholder="开始时间">
+                    <div class="iconfont icon-llreservecalendar dialog_date_icon"></div>
+                </div>
+                <span class="dialog_line">一</span>
+                <div class="dialog_date">
+                    <input type="text" id="end" lw-laydate='yyyy-MM-dd HH:mm' ng-class="{'error_red':moveMoreSearch.validEndTime}" min-date="moveMoreSearch.condition.startTime" ng-model="moveMoreSearch.condition.endTime" class="dialog_input_middle" readonly="readonly" placeholder="结束时间" >
+                    <div class="iconfont icon-llreservecalendar dialog_date_icon"></div>
+                </div>
+            </div>
+            <div class="dialog-list" ng-repeat="data in moveMoreSearch.titles">
+                <span class="dialog_name">{{data.name}}</span>
+                <input type="text" class="dialog_input dialog_applyAccount" ng-model="moveMoreSearch.condition.list[$index].value">
+            </div>
+        </div>
+        <div class="dialog-btn">
+            <div class="btn_bd" ng-click="closeThisDialog()">取消</div>
+            <div class="btn_bg" ng-click="moveMoreSearch.toSearch(closeThisDialog)">确定</div>
+        </div>
+    </form>
+</div>

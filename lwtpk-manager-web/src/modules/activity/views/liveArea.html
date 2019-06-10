@@ -1,0 +1,21 @@
+<div class="modal-header ng-scope">
+  <p class="modal-title" id="modal-title">园区公开</p>
+</div>
+<div id="modal-body" class="modal-body modal-upload-main">
+  <section class="clear" ng-init="keywords=''">
+    <div class="form-group search-group search-range">
+      <input type="text" class="search form-control" ng-model="keywords" ng-keydown="search()" placeholder="请输入…" style="width: 100%">
+      <button class="icon"><i class="glyphicon glyphicon-search"></i></button>
+    </div>
+  </section>
+  <div class="peak-name">
+    <div ng-repeat="garden in gardens" ng-show="keywords==''||garden.name.indexOf(keywords)>=0">
+      <input  type="checkbox" class="checkboxClass" value="{{garden.id}}" ng-model="gardenIds" ng-click="checked($event,garden.id,garden.name)" ng-checked="gardenIds.indexOf(garden.id)>-1"><span class="gardenNames">{{garden.name}}</span>
+    </div>
+  </div>
+
+  <div class="sure_back clearfix">
+    <button class="btn btn-lg tpk-btn" ng-click="ok()">确 定</button>
+    <button class="btn btn-default btn-lg tpk-btn-o" ng-click="cancel()">返 回</button>
+  </div>
+</div>

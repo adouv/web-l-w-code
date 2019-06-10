@@ -1,0 +1,18 @@
+<div class="dialog-image dialog-image-fullScreen">
+  <div class="diolog_title">
+    <div class="title">{{currentImg.name}}<span [hidden]="hideHandle">({{itemIndex+1}}/{{listCount}})</span></div>
+    <button class="iconfont icon-guanbi closeBtn" (click)='close()'></button>
+  </div>
+  <div class="word_detail">
+    <p-carousel #pcarousel [value]="list" numVisible="1">
+      <ng-template let-d pTemplate="item">
+        <div class="ui-grid ui-grid-responsive">
+          <img src="{{d.path|showImg}}">
+          <!--<span class="msg" [hidden]="!hideHandle">该文件不支持预览</span>-->
+        </div>
+      </ng-template>
+    </p-carousel>
+    <button [hidden]="hideHandle" [ngClass]="{'img-disable':itemIndex==0}" class="iconfont icon-zuo prev" (click)="prevClick()"></button>
+    <button [hidden]="hideHandle" [ngClass]="{'img-disable':(itemIndex+1)==listCount}" class="iconfont icon-you next" (click)="nextClick()"></button>
+  </div>
+</div>

@@ -1,0 +1,109 @@
+<div class="yunhome overflow_box">
+	<div class="banner" *ngIf="isBannerShow">
+		<img src="assets/images/banner.png"/>
+		<div class="banner_name">让您随时随处可备课，轻轻松松到教室一键上课！</div>
+		<div class="icon iconfont icon-guanbi banner_close" (click)="closeBanner()"></div>
+	</div>
+
+	<nz-spin [nzSize]="'large'" class="spin-loading"
+			 [nzSpinning]="weeks.length == 0 && hasLesson && hasYear"></nz-spin>
+
+	<nz-tabset class="tabPromise" nzSize="default" [nzSelectedIndex]="selectIndex" flex-box="0"
+			   (nzSelectedIndexChange)="changeClass($event)"
+			   *ngIf="!promise">
+		<nz-tab>
+			<ng-template [ngIf]="weeks.length > 0">
+				<div class="filter fadeIn" *ngIf="hasYear">
+					<nz-select class="year radius bg-gray" style="width:150px;height:30px;" [(ngModel)]="selectedYear"
+							   (ngModelChange)="getSemesterList($event)">
+						<nz-option *ngFor="let p of years" [nzValue]="p.value" [nzLabel]="p.label"></nz-option>
+					</nz-select>
+					<nz-select class="school_year radius bg-gray" style="width:150px;height:30px;"
+							   [(ngModel)]="selectedSemester"
+							   (ngModelChange)="getWeekList($event)">
+						<nz-option *ngFor="let p of semesters" [nzValue]="p.value" [nzLabel]="p.label"></nz-option>
+					</nz-select>
+					<nz-select class="week radius bg-gray" style="width:150px;height:30px;" [(ngModel)]="selectedWeek"
+							   (ngModelChange)="getClassList($event)">
+						<nz-option *ngFor="let p of weeks" [nzValue]="p.value" [nzLabel]="p.label"></nz-option>
+					</nz-select>
+					<div class="holder"></div>
+					<div class="greenkuai"></div>
+					<div class="beikename">已备课</div>
+					<div class="bluekuai"></div>
+					<div class="beikename">备课中</div>
+					<div class="blackkuai"></div>
+					<div class="beikename">未备课</div>
+				</div>
+				<course-class-table class="tabs animated fadeIn" [items]="classes" [currItem]="selectedClass"
+									(selected)="getLessons($event)"></course-class-table>
+				<course-time-table class="sheet animated fadeIn" [tabType]="0" [items]="lessons" *ngIf="hasLesson"
+								   (prepareLesson)="startPrepareLesson($event)"></course-time-table>
+
+			</ng-template>
+
+			<div class="nolesson animated fadeIn" *ngIf="!hasLesson||!hasYear">
+				<div class="center" *ngIf="!hasLesson && hasYear">
+					<img src="./assets/images/no-classHour.png"/>
+					<div class="nolesson_name">当前周您没有课时安排</div>
+				</div>
+				<div class="center" *ngIf="!hasYear">
+					<img src="./assets/images/no-schedule.png"/>
+					<div class="nolesson_name">目前暂无您的上课课表</div>
+				</div>
+			</div>
+		</nz-tab>
+	</nz-tabset>
+
+	<nz-tabset nzSize="default" [nzSelectedIndex]="selectIndex" flex-box="0"
+			   (nzSelectedIndexChange)="changeClass($event)"
+			   *ngIf="promise">
+		<nz-tab>
+			<ng-template #nzTabHeading>授课视图</ng-template>
+
+			<ng-template [ngIf]="weeks.length > 0">
+				<div class="filter fadeIn" *ngIf="hasYear">
+					<nz-select class="year radius bg-gray" style="width:80px;height:30px;" [(ngModel)]="selectedYear"
+							   (ngModelChange)="getSemesterList($event)">
+						<nz-option *ngFor="let p of years" [nzValue]="p.value" [nzLabel]="p.label"></nz-option>
+					</nz-select>
+					<nz-select class="school_year radius bg-gray" style="width:100px;height:30px;"
+							   [(ngModel)]="selectedSemester"
+							   (ngModelChange)="getWeekList($event)">
+						<nz-option *ngFor="let p of semesters" [nzValue]="p.value" [nzLabel]="p.label"></nz-option>
+					</nz-select>
+					<nz-select class="week radius bg-gray" style="width:90px;height:30px;" [(ngModel)]="selectedWeek"
+							   (ngModelChange)="getClassList($event)">
+						<nz-option *ngFor="let p of weeks" [nzValue]="p.value" [nzLabel]="p.label"></nz-option>
+					</nz-select>
+					<div class="holder"></div>
+					<div class="greenkuai"></div>
+					<div class="beikename">已备课</div>
+					<div class="bluekuai"></div>
+					<div class="beikename">备课中</div>
+					<div class="blackkuai"></div>
+					<div class="beikename">未备课</div>
+				</div>
+				<course-class-table class="tabs animated fadeIn" [items]="classes" [currItem]="selectedClass"
+									(selected)="getLessons($event)"></course-class-table>
+				<course-time-table class="sheet animated fadeIn" [tabType]="0" [items]="lessons" *ngIf="hasLesson"
+								   (prepareLesson)="startPrepareLesson($event)"></course-time-table>
+			</ng-template>
+
+			<div class="nolesson animated fadeIn" *ngIf="!hasYear||!hasYear">
+				<div class="center" *ngIf="!hasLesson && hasYear">
+					<img src="./assets/images/no-classHour.png"/>
+					<div class="nolesson_name">当前周您没有课时安排</div>
+				</div>
+				<div class="center" *ngIf="!hasYear">
+					<img src="./assets/images/no-schedule.png"/>
+					<div class="nolesson_name">目前暂无您的上课课表</div>
+				</div>
+			</div>
+		</nz-tab>
+		<nz-tab>
+			<ng-template #nzTabHeading>巡课视图</ng-template>
+			<patrol></patrol>
+		</nz-tab>
+	</nz-tabset>
+</div>

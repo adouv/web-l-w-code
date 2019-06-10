@@ -1,0 +1,23 @@
+<div class="shool-infor">
+	<div class="leftaa" (click)="showModal()">
+		<em class="icon"></em>
+		<div class="bg-img">
+
+		</div>
+	</div>
+	<div class="rightaa">
+		<div class="shadow-cover">
+			<h2>教学特色</h2>
+			<div class="p">
+				牛栏山一中实验学校位于顺义区新城核心区域，2008年奥林匹克水上公园西侧，
+				占地380余亩，建筑总面积9万余平方米，有教学楼、实验楼、公寓楼、餐饮
+				中心和标准的400米塑胶田径运动场。
+				<div class="look">查看详情</div>
+			</div>
+
+		</div>
+	</div>
+	<nz-modal [(nzVisible)]="isVisible" nzTitle="教学特色" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
+		<app-video></app-video>
+	</nz-modal>
+</div>

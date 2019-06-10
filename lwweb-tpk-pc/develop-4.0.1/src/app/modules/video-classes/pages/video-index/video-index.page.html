@@ -1,0 +1,151 @@
+<section class="video-index auto-scroll">
+	<nz-spin [nzSize]="'large'" class="spin-loading" [nzSpinning]="load" *ngIf="load"></nz-spin>
+	<nz-layout style="margin-bottom:0px;">
+		<nz-header flex="main:justify cross:center">
+			<h3>
+				<i></i>评课活动
+			</h3>
+			<div flex='cross:center main:center'>
+				<button *permission="'commentTemplate:list|commentTemplate:create|commentTemplate:update|commentTemplate:delete'"
+					class="scale-btn" (click)="goInvitationScale()" nz-button [nzType]="'default'">
+					<span>量表管理</span>
+				</button>
+				<button nz-button [nzType]="'default'" (click)="goInvitationAdd()" style="margin-right: 23px;">
+					<span>新建活动</span>
+				</button>
+				<button nz-button [nzType]="'danger'" (click)="goVodeoList()">
+						<span>查看任务</span>
+				</button>
+			</div>
+		</nz-header>
+		<nz-content>
+			<div class="video-commentary-activity" *ngIf="activityResponseItem!=null">
+				<div class="video-commentary-activity-left" [style.background]="activityResponseItem?.subjectCode | backgroundImgCss"  (click)="goActivityDetail(activityResponseItem);">
+					<!-- <img *ngIf="activityResponseItem" src="{{activityResponseItem?.subjectCode | courseImg}} " alt=""> -->
+					<div class="video-commentary-activity-info">
+						<div class="video-commentary-activity-info-content">
+								<div class="video-commentary-activity-info-contentp-header">{{ activityResponseItem.subjectName }}</div>
+								<div class="video-commentary-activity-info-contentp-body">
+									<em class="iconfont pingkehuodong"></em>
+									<ul>
+										<li>
+											<span>发起人：</span>
+											<span>{{activityResponseItem.initiatorName}}</span>
+										</li>
+										<li class="speacker">
+											<span>授课人：</span>
+											<span>{{activityResponseItem.appraiseeName}}</span>
+										</li>
+										<li class="validTime">
+											<span>有效时间：</span>
+											<span>
+												{{activityResponseItem.startTime|date:'yyyy/MM/dd'}}~{{activityResponseItem.endTime|date:'yyyy/MM/dd'}}
+											</span>
+										</li>
+									</ul>
+								</div>
+						</div>
+						
+						
+					</div>
+					<div class="video-commentary-activity-footer">
+						{{activityResponseItem.name}}
+					</div>
+				</div>
+				<div class="video-commentary-activity-center">
+					<ul>
+						<li *ngFor="let item of activityList;let i=index;" (click)="goActivityDetail(item);" (mouseenter)="switchActivityTabs(item,$event);"
+						    [ngClass]="{'current':activityResponseItem.id===item.id}">
+							<div>
+								<i [ngClass]="{'lv': item.stage == 1,'huang':item.stage == 0,'hui':item.stage == 2 }"></i>
+							</div>
+							<div>
+								<div title="{{item.name}}">{{item.name}}</div>
+								<img *ngIf="item.status==0" src="../../../../../assets/images/to_review.png" />
+								<img *ngIf="item.status==1" src="../../../../../assets/images/evaluation_ongoing.png" />
+								<img *ngIf="item.status==2" src="../../../../../assets/images/have_ratings.png" />
+							</div>
+							<div>
+								<div title="{{item.appraiseeName}}">{{item.appraiseeName}}</div>
+							</div>
+							<div>
+								{{item.startTime|date:'yyyy/MM/dd'}}~{{item.endTime|date:'yyyy/MM/dd'}}
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="nolesson animated fadeIn " *ngIf="activityResponseItem==null">
+				<div class="center kDefaultElm">
+					<!-- <img src="./assets/images/no-invitation.png" /> -->
+					<div class="nolesson_name">暂无评课活动</div>
+				</div>
+			</div>
+			<!-- <div class="video-commentary-activity-right">
+				<a routerLink="/video/list">查看更多></a>
+			</div> -->
+		</nz-content>
+	</nz-layout>
+
+	<nz-layout>
+		<nz-header flex="main:justify cross:center" style="margin-bottom:0px !important">
+			<h3>
+				<i></i>课堂直播
+			</h3>
+		</nz-header>
+		<nz-content #template>
+			<div class="video-live-classroom">
+				<!-- <video-live [line]="1"></video-live> -->
+				<classroom-live></classroom-live>
+			</div>
+		</nz-content>
+	</nz-layout>
+
+	<nz-layout>
+		<nz-header flex="main:justify cross:center" style="margin-bottom:0px !important;">
+			<h3>
+				<i></i>课堂回放
+			</h3>
+			<div flex='cross:center main:center' *ngIf="unicastList.length>0">
+				<a routerLink="/video/invitation">高级筛选></a>
+			</div>
+		</nz-header>
+
+		<nz-content #template>
+			<div class="video-classroom-playback">
+				<!-- <div class="unicast-list">
+					<div class="unicast-list-content">
+						<div #unicastListEle class="unicast-list-scroll">
+							<div> -->
+								<!-- <video-card style="float: left;" *ngFor="let video of unicastList" (click)="goVideoDetail(video)" [video]="video"></video-card> -->
+								<classroom-playback></classroom-playback>
+							<!-- </div>
+						</div>
+					</div> -->
+				<!-- </div>	 -->
+			</div>
+	</nz-content>
+
+
+		<!-- <nz-content [hidden]="(unicastList.length>0)?true:false">
+			<div class="nolesson animated fadeIn">
+				<div class="center kDefaultElm"> -->
+					<!-- <img src="./assets/images/no-course.png" /> -->
+					<!-- <div class="nolesson_name">暂无课堂回放
+					</div>
+				</div>
+			</div>
+		</nz-content> -->
+	</nz-layout>
+
+	<!-- <div class="nolesson animated fadeIn" *ngIf="activityList.length==0||unicastList.length==0">
+		<div class="center">
+			<img src="./assets/images/no-invitation.png" />
+			<div class="nolesson_name">暂无评课活动</div>
+		</div>
+	</div> -->
+	<!-- <div class="setting" (click)="btnFollow(true);" *ngIf="isShowButton">
+		<i></i>
+		<p>设置关注标签</p>
+	</div> -->
+</section>

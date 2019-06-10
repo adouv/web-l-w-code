@@ -1,0 +1,38 @@
+.projectcapitalDetail{overflow: hidden}
+.projectcapitalDetail .page .income_nav{text-align: center;padding-left: 0}
+/*项目财务详情*/
+.projectcapitalDetail.income_payout .income_nav{text-align: center;padding-left: 0}
+.projectcapitalDetail .recovery.infobox div{padding:0px;}
+.projectcapitalDetail .recovery.infobox>div{padding: 22px 0;}
+.projectcapitalDetail .back_tit{height: 40px;line-height: 40px;margin: 10px auto 0px ;
+    font-size: 16px;text-align: center;width: 80%;border-bottom: 1px solid #e3e3e3;}
+.projectcapitalDetail .show_detail{width: 77%;margin: 15px auto 5px;overflow: auto;border-radius: 5px;padding-top: 15px;}
+.projectcapitalDetail .show_detail .title{height: 38px;line-height: 38px;text-align: center;font-size: 16px;font-weight: 600;}
+.projectcapitalDetail .tit_blue{width: 100%; padding:5px 20px;}
+.projectcapitalDetail .tit_blue p{width: 100%;}
+.projectcapitalDetail .ul_white{width: 100%;height: 45px;line-height: 45px;}
+.projectcapitalDetail .ul_white ul{width: 100%; padding:0 20px;}
+.projectcapitalDetail .tit_blue p span,.ul_white ul li{display: inline-block;text-align: center;}
+.projectcapitalDetail .ul_white ul li span{    vertical-align: bottom;  display: inline-block;  width: 90%;  text-overflow: ellipsis;  overflow: hidden;  white-space: nowrap;}
+.projectcapitalDetail .tit_blue p span{vertical-align: middle;font-weight: 600;font-size: 14px;}
+.projectcapitalDetail .tit_blue p span:nth-child(1),.ul_white ul li:nth-child(1){
+    min-width: 36px;width: 9%;
+}
+.projectcapitalDetail .tit_blue p span:nth-child(2),.ul_white ul li:nth-child(2) {
+    width:28% ;
+}
+.projectcapitalDetail .tit_blue p span:nth-child(3),.ul_white ul li:nth-child(3) {
+    width: 35%;
+}
+.projectcapitalDetail .tit_blue p span:nth-child(4),.ul_white ul li:nth-child(4)  {
+    width: 24%;
+}
+.projectcapitalDetail .table>tbody+tbody{border: none;}
+.projectcapitalDetail .income_payout .table thead{background: #e7f2ff;}
+.projectcapitalDetail .income_payout .table th{text-align: center;border: none;}
+.projectcapitalDetail .income_payout .table td{text-align: center;border: none;}
+.projectcapitalDetail .income_payout .table tr .blue_down{color:#0096FF;}
+.projectcapitalDetail .income_payout .table tr .caret{border-top: 9px dashed;vertical-align: inherit;  border-right: 5px solid transparent;  border-left: 5px solid transparent;}
+.projectcapitalDetail .income_payout .table tr.detail_tr{display: none; color:#888888;}
+.projectcapitalDetail .infobox>div.btnbox{padding: 30px 0px 60px 0px;}
+.projectcapitalDetail .table_bt{margin-bottom: 10px;}

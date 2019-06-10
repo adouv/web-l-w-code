@@ -1,0 +1,36 @@
+.todo-task .search_box{
+    margin-top: 0;
+}
+.todo-task .total_num{
+    margin-bottom: 0;
+}
+.flowDialog-list .flowDialog-ul.todo-task-list  {
+    max-height: 400px;
+}
+.task-idx{
+    width: 6%!important;
+}
+.task-name{
+    width: 58%!important;
+}
+.task-type{
+    width: 17%!important;
+}
+.task-time{
+    width: 19%!important;
+}
+.todo-task .tm_pagination .page-total{
+    padding-top: 0;
+}
+.todo-task .page-list {
+    padding-top: 10px;
+}
+.todo-task .tm_pagination .page-total{
+    vertical-align: top;
+}
+.bdp .todo-task .table_box .listTable{
+    width: 760px;
+}
+.todo-task .listTable tr{
+    cursor: pointer;
+}

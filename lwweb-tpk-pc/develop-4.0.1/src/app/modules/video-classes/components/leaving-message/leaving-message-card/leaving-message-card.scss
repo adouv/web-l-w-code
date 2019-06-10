@@ -1,0 +1,34 @@
+@import "../../../../../../styles/variable";
+@import "../../../../../../styles/mixin";
+
+.leaving-message-card {
+	//height: computer(100px);
+	border-bottom: 1px solid $color_border;
+	padding: computer(20px) 0;
+	display: inline-block;
+	width: 100%;
+	box-sizing: border-box;
+	.headImg {
+		width: computer(40px);
+		height: computer(40px);
+		float: left;
+		img {
+			width: computer(40px);
+			height: computer(40px);
+			border-radius: computer(40px);
+		}
+	}
+	.messages {
+		padding-left: computer(55px);
+		box-sizing: border-box;
+		font-size: computer(13px);
+		color: $color_font-center;
+		.time {
+			color: $color_font-light;
+		}
+		.message-content {
+			padding-top: computer(15px);
+			word-wrap: break-word;
+		}
+	}
+}

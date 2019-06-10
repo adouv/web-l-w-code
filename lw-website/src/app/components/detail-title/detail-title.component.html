@@ -1,0 +1,11 @@
+<div class="detail-title-container">
+  <div class="click-btn" *ngIf="isShow">
+    现在开始报名
+  </div>
+  <h2>{{title}}</h2>
+  <div>
+    <span class="author">作者：{{author}}</span>
+    <span class="timer" *ngIf="articleType=='richText'">报名时间：{{time | date: 'y-MM-dd'}}</span>
+    <span class="timer" *ngIf="articleType=='register'">发布时间：{{startTime | date: 'y-MM-dd'}} -{{endTime | date: 'y-MM-dd'}}</span>
+  </div>
+</div>

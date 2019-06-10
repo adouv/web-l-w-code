@@ -1,0 +1,55 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:ui="clr-namespace:MLPen.ModernUI.Windows.UI">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/MLPen.ModernUI;component/Assets/Styles/Colors.xaml" />
+        <ResourceDictionary Source="/MLPen.ModernUI;component/Assets/Styles/Fonts.xaml" />
+        <ResourceDictionary Source="/MLPen.ModernUI;component/Assets/Styles/Default.xaml" />
+        <ResourceDictionary Source="/MLPen.ModernUI;component/Assets/Controls/IconFont.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+
+    <Style TargetType="{x:Type ui:FaceView}">
+        <Setter Property="Background" Value="Transparent"></Setter>
+        <Setter Property="IconSize" Value="68"></Setter>
+        <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+        <Setter Property="VerticalAlignment" Value="Center"></Setter>
+        <Setter Property="Foreground" Value="Black"></Setter>
+        <Setter Property="Width" Value="83"></Setter>
+        <Setter Property="FontSize" Value="9pt"></Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ui:FaceView}">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid Height="{TemplateBinding IconSize}" Width="{TemplateBinding IconSize}">
+                            <Ellipse Height="{TemplateBinding IconSize}" Width="{TemplateBinding IconSize}" StrokeThickness="0">
+                                <Ellipse.Fill>
+                                    <ImageBrush ImageSource="{Binding FaceSource, RelativeSource={RelativeSource TemplatedParent}}" />
+                                </Ellipse.Fill>
+                            </Ellipse>
+                            <Grid HorizontalAlignment="Right" VerticalAlignment="Bottom" Name="state" Visibility="Hidden">
+                                <Grid Width="16" Height="16" Visibility="Visible" VerticalAlignment="Center" HorizontalAlignment="Center">
+                                    <Ellipse Fill="{StaticResource PrimaryBrush}" x:Name="Fill" Visibility="Visible" />
+                                </Grid>
+                                <Path Data="M30.561941,0L31.997,1.393004 10.467954,23.597999 0,15.350999 1.2379759,13.780992 10.287961,20.909952z" Stretch="Uniform" Fill="#FFFFFFFF" Width="10" Height="10" Margin="0,0,0,0" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                </Path>
+                            </Grid>
+                        </Grid>
+                        <TextBlock Text="{TemplateBinding Content}" TextTrimming="CharacterEllipsis" Margin="5" Grid.Row="1" TextAlignment="Center" />
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsSelected" Value="true">
+                            <Setter Property="Visibility" Value="Visible" TargetName="state"></Setter>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="false">
+                            <Setter Property="Opacity" Value="0.25"></Setter>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

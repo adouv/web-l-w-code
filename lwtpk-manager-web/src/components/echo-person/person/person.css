@@ -1,0 +1,21 @@
+.lw-select-person .select-person{
+    display: flex;
+    margin-left: 10px;
+    height: 435px;
+}
+.lw-select-person .select-person .garden-persons{}
+.lw-select-person .person-selected::-webkit-scrollbar-track,.lw-select-person .garden-persons::-webkit-scrollbar-track {
+    border-radius: 2px;
+    background-color: #ffffff;
+}
+
+.lw-select-person .person-selected::-webkit-scrollbar,.lw-select-person .garden-persons::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+    background-color: #ffffff;
+}
+
+.lw-select-person .person-selected::-webkit-scrollbar-thumb,.lw-select-person .garden-persons::-webkit-scrollbar-thumb {
+    border-radius: 2px;
+    background-color: rgba(0, 0, 0, 0.2);
+}

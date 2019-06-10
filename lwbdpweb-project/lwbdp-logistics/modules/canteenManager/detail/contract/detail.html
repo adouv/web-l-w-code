@@ -1,0 +1,44 @@
+<div class="canteen_detail canteen_add warn-class">
+    <div class="header">
+        <span class="second-warning" ng-click="canteenContractDetail.goBack('order')">食堂管理 &gt;</span>
+        <span class="second-warning" ng-click="canteenContractDetail.goBack()">大宗食品采购 &gt;</span>
+        <span class="color_999 first-warning">供应商合同详情</span>
+    </div>
+    <div class="canteen_info_tit">
+        <h3>{{canteenContractDetail.contract.name}}</h3>
+        <p>{{canteenContractDetail.contract.creatorName}} &nbsp; {{canteenContractDetail.contract.createTime?(canteenContractDetail.contract.createTime| date:'yyyy/MM/dd HH:mm'):''}}</p>
+    </div>
+    <ul class="canteen_infos">
+        <li class="canteen_li clearfix">
+            <span class="pact_tit">合同甲方：</span>
+            <span class="canteen_infos_content">{{canteenContractDetail.contract.firstPartyName}}</span>
+        </li>
+        <li class="canteen_li clearfix">
+            <span class="pact_tit">合同乙方：</span>
+            <span class="canteen_infos_content">{{canteenContractDetail.contract.secondPartyName}}</span>
+        </li>
+        <li class="canteen_li clearfix">
+            <span class="pact_tit">有效期限：</span>
+            <span class="canteen_infos_content"> <em ng-if="canteenContractDetail.contract.validityStart&&canteenContractDetail.contract.validityEnd">{{canteenContractDetail.contract.validityStart?(canteenContractDetail.contract.validityStart| date:'yyyy/MM/dd HH:mm' ):''}}  ~  {{canteenContractDetail.contract.validityEnd?(canteenContractDetail.contract.validityEnd| date:'yyyy/MM/dd HH:mm'):''}}</em></span>
+        </li>
+        <li class="canteen_li clearfix">
+            <span class="pact_tit fl">合同金额：</span>
+            <span class="canteen_infos_content fl">{{canteenContractDetail.contract.amount}}</span>
+        </li>
+        <li class="canteen_li clearfix">
+            <span class="pact_tit ver-top">合同规定的采购内容：</span>
+            <span class="canteen_infos_content">{{canteenContractDetail.contract.content}}</span>
+        </li>
+        <li class="canteen_li clearfix">
+            <span class="pact_tit fl">对应的采购凭证单据：</span>
+            <div class="fl echoPic">
+                <pic-view ng-if="canteenContractDetail.contract.attachments && canteenContractDetail.contract.attachments.length > 0"
+                          ng-repeat="x in canteenContractDetail.contract.attachments track by $index" file-name="x.name" file-path="x.url"></pic-view>
+            </div>
+        </li>
+    </ul>
+    <div class="canteen_add_button">
+        <!--<span class="btn_bd">删除</span>-->
+        <span class="btn_bg" ng-click="canteenContractDetail.goBack()">返回</span>
+    </div>
+</div>

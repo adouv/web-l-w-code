@@ -1,0 +1,125 @@
+<div class="exercise-add">
+	<div class="header-title">
+		导入习题
+	</div>
+	<div class="exercise-add-content auto-scroll">
+		<div class="exercise-add-type">
+			<nz-select class="exercises-header-select bg-gray radius"
+					   (nzOpenChange)="exerciseTypeChange()"
+					   [(ngModel)]="exerciseTypeCheck"
+					   [nzPlaceHolder]="exerciseTypes.length>0?exerciseTypes[0].title:'高一'">
+				<nz-option *ngFor="let type of exerciseTypes" [nzLabel]="type.title"
+						   [nzValue]="type">
+				</nz-option>
+			</nz-select>
+			<nz-select class="exercises-header-select bg-gray radius"
+					   (nzOpenChange)="exerciseTypeChange()"
+					   [(ngModel)]="exerciseTypeCheck"
+					   [nzPlaceHolder]="exerciseTypes.length>0?exerciseTypes[0].title:'数学'">
+				<nz-option *ngFor="let type of exerciseTypes" [nzLabel]="type.title"
+						   [nzValue]="type">
+				</nz-option>
+			</nz-select>
+		</div>
+		<div class="exercise-add-select" flex="">
+			<div class="select-content-title" flex-box="0">
+				<button (click)="selectChapter()" tabindex='-1' class="btn-exercise" [nzType]="'default'" nz-button
+						[nzType]="'danger'">
+					<span>选择章节</span>
+				</button>
+			</div>
+			<div class="select-content" flex-box="1" flex="">
+				<div class="select-content-title" flex-box="0" >已选:</div>
+				<div flex-box="1" >
+					<div class="select-contents">
+						<div class="select-tag">
+							正数和负数
+							<span class="icon-span">
+							<i class="iconfont icon-label-close"></i>
+						</span>
+						</div>
+						<div class="select-tag">
+							正数和负数
+							<span class="icon-span">
+							<i class="iconfont icon-label-close"></i>
+						</span>
+						</div>
+						<div class="select-tag">
+							正数和负数
+							<span class="icon-span">
+							<i class="iconfont icon-label-close"></i>
+						</span>
+						</div>
+						<div class="select-tag">
+							正数和负数
+							<span class="icon-span">
+							<i class="iconfont icon-label-close"></i>
+						</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="exercise-add-select" flex="">
+			<div class="select-content-title" flex-box="0">
+				<button (click)="selectChapter()" tabindex='-1' class="btn-exercise" [nzType]="'default'" nz-button
+						[nzType]="'danger'">
+					<span>选择章节</span>
+				</button>
+			</div>
+			<div class="select-content" flex-box="1" flex="">
+				<div class="select-content-title" flex-box="0" >已选:</div>
+				<div flex-box="1" >
+					<div class="select-contents">
+						<span class="no-content-msg">(请选择章节,最多可选5个章节)</span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="exercise-editor">
+			<div class="beforeDrop"  [ngClass]="{'dropping': isDrop}" (click)="uploaderDropClick()" multiple ng2FileDrop (fileOver)="fileOverBase($event)" (onFileDrop)="fileDropOver($event)" [uploader]="uploader">
+				<span class="icon-span"><i class="iconfont icon-exercises"></i></span>
+				<div class="beforeDrop-title">
+					点击或将文件拖拽到这里上传
+				</div>
+				<div class="beforeDrop-msg">
+					支持扩展名 .doc
+				</div>
+			</div>
+			<input hidden="true" type="file" value='上传' ng2FileSelect [uploader]="uploader" #resource id="resource" multiple class="file-input"/>
+			<!--<ueditor #editfull style="height: 340px; " [(ngModel)]="editContent"></ueditor>-->
+			<div class="upload-content">
+
+			</div>
+			<div class="upload-msg">
+				<ul>
+					<li>
+						上传须知:
+					</li>
+					<li>
+						1、请先<span class="down-template">下载模版</span>,根据模版设置相应数据再上传;
+					</li>
+					<li>
+						2、只能导出固定板式的word文档,文档格式为doc;
+					</li>
+					<li>
+						3、同一文档内的习题,将统一绑定当次上传所绑定的知识点及章节。原则上章节和知识点都需绑定,二者都不绑定,将不能导入;
+					</li>
+					<li>
+						4、支持多文档同时导入,单次上传文档大小不应超过5M;
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="footer">
+		<button (click)="doExercises(0)" tabindex='-1' class="close" [nzType]="'default'" nz-button
+				[nzType]="'danger'">
+			<span>取消</span>
+		</button>
+		<button (click)="doExercises(1)" tabindex='-1' nz-button
+				[nzType]="'danger'">
+			<span>发布</span>
+		</button>
+	</div>
+</div>

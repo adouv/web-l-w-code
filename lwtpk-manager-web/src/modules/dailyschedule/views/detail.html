@@ -1,0 +1,90 @@
+<div class="daily-detail">
+
+
+    <!--<section class="row border-color">-->
+        <!--<blockquote class="border-color inputTit">园区作息时间表查看</blockquote>-->
+    <!--</section>-->
+
+  <section class="row bd-none">
+    <ol class="breadcrumb">
+      <span ng-click="toBack()"><a href="javascript:void(0);">园区作息时间表管理--></a></span>
+      <span class="active">园区作息时间表查看</span>
+    </ol>
+  </section>
+  <section class="row border-color inputTit">
+    <blockquote class="border-color inputTit">园区作息时间表查看</blockquote>
+  </section>
+
+    <section class="row form-horizontal">
+        <form class="w5c-form" w5c-form novalidate w5c-form-validate name="organizationForm">
+            <div class="row font">
+                <label class="col-sm-5 control-label">所属园区：</label>
+                <div class="col-sm-5">
+                    <span>{{gardenName}}</span>
+                </div>
+            </div>
+            <div class="row font">
+                <label class="col-sm-5 control-label">名称：</label>
+                <div class="col-sm-5">
+                    <span>{{timeTable.name}}</span>
+                </div>
+            </div>
+            <div class="row font">
+                <label class="col-sm-5 control-label">作用对象：</label>
+                <div class="col-sm-5">
+                    <span ng-repeat="organization in timeTable.organizations">{{organization.name+' ;'}}</span>
+                    <!--{{timeTable.organizations|foreach:'name':'；'}}-->
+                </div>
+            </div>
+            <div class="row font">
+                <label class="col-sm-5 control-label">起止日期：</label>
+                <div class="col-sm-5 form-inline">
+                    <span>{{timeTable.startTime|date:'yyyy-MM-dd'}}</span>
+                    <span>&nbsp; ~ &nbsp;</span>
+                    <span>{{timeTable.endTime|date:'yyyy-MM-dd'}}</span>
+                </div>
+            </div>
+            <div class="row font">
+                <label class="col-sm-5 control-label">日时间段配置：</label>
+                <div class="col-sm-6">
+                    <table>
+                        <thead>
+                        <tr>
+                            <td>序号</td>
+                            <td>节次名称</td>
+                            <td>开始时间</td>
+                            <td>结束时间</td>
+                        </tr>
+                        </thead>
+                        <tbody class="tbody">
+                        <tr ng-repeat="timeConfig in timeTable.timeConfigs">
+                            <td>
+                                {{timeConfig.no}}
+                            </td>
+                            <td>
+                                {{timeConfig.name}}
+                            </td>
+                            <td>
+                                {{timeConfig.startTime}}
+                            </td>
+                            <td>
+                              {{timeConfig.endTime}}
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="row font">
+                <label class="col-sm-5 control-label">有效性 :</label>
+                <div class="col-sm-5">
+                    <span>{{timeTable.status?'有效':'无效'}}</span>
+                </div>
+            </div>
+        </form>
+        <div class="row form-result">
+            <!--<button class="btn btn-lg tpk-btn">确 定</button>-->
+            <button class="btn btn-lg tpk-btn-o" ng-click="toBack()">返 回</button>
+        </div>
+    </section>
+</div>

@@ -1,0 +1,45 @@
+<div class="look_content" ui-view>
+    <h1>
+        {{look.messageItem.categoryName}}
+        <span class="garden">|</span>
+        <span class="garden">{{look.messageItem.gardenName}}</span>
+        <div class="look_search">
+            <p class="input_group">
+                <input type="text" class="input_class" ng-model="look.searchKeywords" ng-change="look.searchMessageList()" id="searchKeywords" placeholder="搜索">
+                <span class="connectIconfont icon-client_search"  ng-show="!look.searchKeywords || look.searchKeywords ===''"></span>
+                <span class="connectIconfont icon-close-circle" ng-click="look.cleanAllKeywords()" ng-show="look.searchKeywords && look.searchKeywords !==''"></span>
+            </p>
+        </div>
+    </h1>
+    <div class="content_list overflow_box_sml" id="content_list">
+        <div class="no_data" ng-show="look.messageList && look.messageList.length<1 && !look.searchKeywords">
+            暂无数据
+        </div>
+        <div class="search_no_result" ng-show="look.messageList && look.messageList.length<1 && look.searchKeywords && look.searchKeywords !==''">
+            搜索无结果
+        </div>
+        <div id="content" ng-if="look.messageList && look.messageList.length>0" scroll-bottom>
+            <div class="" id="content_fresh"></div>
+            <div class="content_item" ng-repeat="item in look.messageList |orderBy:'messageCreateTime'" ng-class="{'hasRead':item.isRead}" >
+                <p class="time">
+                    <!--昨天下午 14:30-->{{item.messageTime}}
+                </p>
+                <div class="item" ng-click="look.readItem(item,$index)">
+                    <p class="title">
+                        {{item.messageTitle}}
+                    </p>
+                    <div compile-html="item.messageContent">
+                        <!--{{item.messageContent | limitTo:200 }}<span ng-if="item.messageContent.length==200||item.messageContent.length>200">...</span>-->
+                    </div>
+                    <p class="detail">详情 >></p>
+                </div>
+            </div>
+         </div>
+    </div>
+    <span id="getPage" ng-click="look.getMessageList(5)"></span>
+    <div class="enter_module" ng-click="look.toModule(look.messageItem.sceneEntryUrl,'isModule')">
+        进入
+    </div>
+    
+    
+</div>

@@ -1,0 +1,16 @@
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:MLPen.ModernUI">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/MLPen.ModernUI;component/Themes/Controls/MSFastWindow.xaml" />
+        <ResourceDictionary Source="/MLPen.ModernUI;component/Themes/Controls/NavButton.xaml" />
+        <ResourceDictionary Source="/MLPen.ModernUI;component/Themes/Controls/IconButton.xaml" />
+        <ResourceDictionary Source="/MLPen.ModernUI;component/Themes/Controls/FaceView.xaml" />
+        <ResourceDictionary Source="/MLPen.ModernUI;component/Themes/Controls/TextBoxEx.xaml" />
+        <ResourceDictionary Source="/MLPen.ModernUI;component/Themes/Controls/RadioIcon.xaml" />
+        <ResourceDictionary Source="/MLPen.ModernUI;component/Themes/Controls/MSLoading.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+    
+</ResourceDictionary>

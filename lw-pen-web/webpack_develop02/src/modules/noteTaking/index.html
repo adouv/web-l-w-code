@@ -1,0 +1,48 @@
+<div class="noteTaking">
+  <div class="note-result">
+    <a-layout>
+      <a-layout-content>
+        <div class="inner-box" id="inner-box-a" flex>
+          <div class="bg"></div>
+          <div class="content">
+            <div class="name">{{studentInfo.studentName}}</div>
+            <div class="content-text">
+              <h2 v-if="autoGrade">提交选项：{{studentInfo.answer}}</h2>
+              <h2>书写过程：</h2>
+              <!-- <template v-if="penData > 0"> -->
+                  <div class="note-box" :width="box.width" :height="box.height" id="inner-box-b">
+                      <canvas id="canvas" :width="canvas.canvasWidth" draggable="true" @dragstart="handleDragStart($event)"
+                        :height="canvas.canvasHeight">
+                        Sorry, your browser doesn't support the &lt;canvas&gt; element.
+                      </canvas>
+                    </div>
+              <!-- </template>
+              <template v-else>
+                  <div class="note-box" flex="main:center cross:center">
+                      <template v-if="autoGrade">
+                          <div class="noneImg"><img src="../../assets/images/no-write-answer.png">
+                            <p>没有找到他/她的书写答案呢</p>
+                          </div>
+                      </template>
+                      <template v-else>
+                          <div class="noneImg"><img src="../../assets/images/no-write-answer.png">
+                            <p>他/她大概是心算出来的</p>
+                          </div>
+                      </template>
+                      
+                    </div>
+              </template> -->
+            </div>
+          </div>
+        </div>
+      </a-layout-content>
+      <a-layout-footer>
+        <div class="footer">
+          <div class="lw-tpk-pc footer-right nodrag-area">
+            <a-button type="default" @click="closeBtn" class="close">关闭</a-button>
+          </div>
+        </div>
+      </a-layout-footer>
+    </a-layout>
+  </div>
+</div>

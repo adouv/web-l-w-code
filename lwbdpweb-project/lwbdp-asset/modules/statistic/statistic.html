@@ -1,0 +1,77 @@
+<div class="main_in" ng-click="assetStatistic.showDirections($event,false)">
+<div class="dispose_static">
+    <div class="list_box">
+        <div class="name" ng-click="assetStatistic.showDirections($event,true)" ng-bind="assetStatistic.title||'处置形式'"></div>
+        <div class="list_items" ng-show="assetStatistic.isShowDirections" ng-click="assetStatistic.stopPropagation($event)">
+            <ul class="list_item">
+                <li  ng-repeat="direction in assetStatistic.directions">
+                    <label>
+                        <input type="checkbox" id="type{{$index}}" ng-checked="assetStatistic.selectedDirection.indexOf(direction.id)>-1" ng-click="assetStatistic.checkDirection($event,direction)" class="checkbox_class">
+                        <span class="showname">{{direction.name}}</span>
+                    </label> 
+                </li>
+            </ul>
+            <div class="btns">
+                    <a href="javascript:void(0);" class="iconfont icon-error" ng-class="{true:'active'}[assetStatistic.selectedDirection.length>0]" ng-click="assetStatistic.cancelAllCheckBox()"></a>
+                    <a href="javascript:void(0);" class="iconfont icon-success active" ng-click="assetStatistic.saveSelected($event,false)"></a>
+            </div>
+        </div>
+        
+    </div>
+    <p class="count">总计 <span>{{assetStatistic.totalNum}}</span> 条
+        <span class="fr btn_bd" onclick="history.go(-1)">返回</span>
+    </p>
+    <div id="mychart" style="width:1030px;height:550px;">
+    </div>
+    <p class="gray">*点击数字下方的圆点查看详细列表</p>
+    <p class="choose">
+        参统学校(机关) <span class="iconfont icon-setting" ng-class="{'opacity':assetStatistic.isMyApply}" ng-click="assetStatistic.chooseGarden()"></span> 
+        <input type="checkbox" class="checkbox_class" ng-model="assetStatistic.isMyApply" ng-click="assetStatistic.getChart()">只统计由我发起的资产处置申请单
+    </p>
+    <p class="showback" ng-class="{'opacity':assetStatistic.isMyApply}"><span ng-repeat="garden in assetStatistic.selectedGarden">{{garden.name||garden.gardenName}};</span></p> 
+    
+    <!-- 弹窗-->
+    <dialog ng-if="assetStatistic.showDialog" modal close="!assetStatistic.showDialog">
+         <div dialog-content> 
+             <div class="dispose_static_dialog">
+                  <h2>
+                      <em class="purple_color">{{assetStatistic.DialogTitle}}</em>阶段项目统计
+                        <span class="iconfont icon-close" ng-click="assetStatistic.showDialog=false"></span>
+                  </h2> 
+                   <p class="count">总计 <span>{{assetStatistic.paginationConf.totalItems}}</span> 条</p> 
+                <div class="table_list overflow_box_sml">
+                    <table>
+                    <tr>
+                        <th>序号</th>
+                        <th>名称</th>
+                        <th>资产大类</th>
+                        <th>处置形式</th>
+                        <th>添加人</th>
+                        <th>添加时间</th>
+                        <th>所处学校/机关</th>
+                    </tr> 
+                    <tr ng-repeat="data in assetStatistic.applyList track by $index">
+                        <td>{{$index+1}}</td>
+                        <td>{{data.name}}</td>
+                        <td>{{data.assetTypeName}}</td>
+                        <td>{{data.disposeTypeName}}</td>
+                        <td>{{data.applyAccount}}</td>
+                        <td>{{data.createTime| date:'yyyy/MM/dd HH:mm'}}</td>
+                        <td>{{data.applyUnitName}}</td>
+                    </tr>
+                    </table>
+                    <div class="nodata_box" ng-show="assetStatistic.applyList.length<1">
+                            <div class="nodata">
+                                <span></span>
+                                <p>暂无数据</p>
+                            </div>
+                    </div>
+                </div>
+                 <div ng-show="assetStatistic.applyList.length>0">
+                        <pagination conf="assetStatistic.paginationConf"></pagination>
+                 </div>
+            </div>
+        </div>
+    </dialog>
+</div>
+   </div>

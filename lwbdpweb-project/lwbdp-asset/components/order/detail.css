@@ -1,0 +1,857 @@
+.asset .asset_info_deal {
+    width: 100%;
+    padding: 0 4%;
+    min-width: 1200px;
+}
+
+.asset .assetaApplication_detail .title {
+    border-bottom: 1px solid #dbe3ee;
+    line-height: 30px;
+    text-align: center;
+    font-size: 16px;
+}
+
+.asset .assetaApplication_detail .author {
+    line-height: 35px;
+    height: 35px;
+    text-align: center;
+    color: #999;
+}
+
+
+/*审核*/
+
+.asset .review {
+    margin-left: 14%;
+}
+
+.ngdialog.asset .review {
+    margin-left: 0;
+}
+
+.asset .detail_info {
+    min-width: 1200px;
+}
+
+.asset div.nobor_dash {
+    border: 0;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.asset .bor_dashed {
+    border: 1px dashed red;
+    margin-top: 10px;
+    width: calc(100% + 20px);
+    padding: 0 10px;
+    margin-left: -10px;
+    margin-bottom: 10px;
+}
+
+.asset .bor_dashed+.backAudit {
+    display: block;
+}
+
+.asset .backAudit {
+    display: none;
+    margin-right: -10px;
+    text-align: right;
+}
+
+.asset .backAudit a {
+    color: #0096ff;
+}
+
+.asset .w250 {
+    width: 250px;
+}
+
+.asset .disposal_content .w250 {
+    text-align: right;
+}
+
+.asset .review .lf_name {
+    width: 250px;
+    text-align: right;
+    vertical-align: top;
+    display: inline-block;
+    margin-right: 7px;
+}
+
+.asset .assetaApplication_detail .review .lf_name.mid {
+    margin-top: 6px;
+    vertical-align: top;
+}
+
+.asset .assetaApplication_detail .review i {
+    color: #999999;
+}
+
+.asset .attach_upload .process {
+    left: auto;
+}
+
+.asset .review p {
+    min-height: 20px;
+    margin-top: 10px;
+}
+
+.asset .assetaApplication_detail .review .textarea_class {
+    width: 580px;
+    height: 100px;
+}
+
+.asset .assetaApplication_detail .choose_way label {
+    padding-left: 10px;
+}
+
+.asset .assetaApplication_detail .review .select_class {
+    width: 400px;
+}
+
+
+/*详情表格*/
+
+.asset .detail_or_flow {
+    height: 35px;
+    line-height: 35px;
+    border-bottom: 1px solid #dbe3ee;
+}
+
+.asset .detail_or_flow span {
+    font-size: 16px;
+    display: inline-block;
+    padding: 0 10px;
+    margin-right: 10px;
+}
+
+.asset .detail_or_flow span.current {
+    background-image: linear-gradient(-180deg, #786cec 50%, #0096ff 50%);
+    background-image: -o-linear-gradient(-180deg, #786cec 50%, #0096ff 50%);
+    background-image: -moz-linear-gradient(-180deg, #786cec 50%, #0096ff 50%);
+    background-image: -webkit-linear-gradient(-180deg, #786cec 50%, #0096ff 50%);
+    background-size: 100% 4px;
+    background-position: bottom right;
+    background-repeat: no-repeat;
+    color: #0096ff;
+}
+
+.asset .assetaApplication_detail .is_elec {
+    line-height: 45px;
+    height: 45px;
+}
+
+.asset .assetaApplication_detail .is_elec .checkbox_class,
+.asset .assetaApplication_detail .is_elec .btn_bd {
+    margin-left: 15px;
+}
+
+.asset .assetaApplication_detail .table_div {
+    font-family: "SimSun" !important;
+}
+
+.asset .assetaApplication_detail .line_strip {
+    height: 4px;
+    background-image: linear-gradient(-180deg, rgb(120, 108, 236) 50%, rgb(0, 150, 255) 50%);
+    background-image: -webkit-linear-gradient(left, #786cec 20%, #3c76f6 20%, #008aff 20%, #0096ff 20%, #017eff 20%);
+    background-size: 100% 4px;
+    background-position: top right;
+    background-repeat: no-repeat;
+}
+
+.asset .assetaApplication_detail .form_table {
+    width: 100%;
+    overflow: auto;
+    text-align: center;
+    border-collapse: collapse;
+    margin-top: -1px;
+    position: relative;
+}
+
+.asset .assetaApplication_detail .form_table td,
+.assetaApplication_detail .form_table th {
+    border: 1px solid #999999;
+}
+
+.asset .assetaApplication_detail .form_table th {
+    text-align: center;
+    height: 40px;
+    font-size: 16px;
+    border-top: none;
+    overflow: hidden;
+    background-color: #f8f8f8;
+    position: relative;
+}
+
+.asset .assetaApplication_detail .form_table td {
+    height: 40px;
+}
+
+.asset .assetaApplication_detail .form_table .first td {
+    width: 40%;
+    text-align: left;
+    padding-left: 10px;
+}
+
+.asset .assetaApplication_detail .form_table .first td .input_class {
+    width: 360px;
+}
+
+.JCYhover:hover {
+    color: #786cec !important;
+    -webkit-text-fill-color: #786cec;
+    cursor: pointer;
+}
+
+.JCYtrhover:hover {
+    cursor: pointer;
+    background: #dbe3ee;
+}
+
+.JCYtrhover:hover .hover {
+    color: #786cec !important;
+    z-index: 100;
+}
+
+.asset .assetaApplication_detail .form_table tr.second {
+    height: 50px;
+}
+
+.asset .assetaApplication_detail .form_table tr.second td:first-of-type {
+    width: 100px;
+}
+
+.asset .assetaApplication_detail .form_table td.text_left {
+    text-align: left;
+    padding-left: 10px;
+}
+
+.asset .assetaApplication_detail .form_table .third {
+    height: 60px;
+}
+
+.asset .assetaApplication_detail .form_table .third .th {
+    height: 50px;
+}
+
+.asset .assetaApplication_detail .form_table .third .mouse .hover:hover {
+    color: skyblue;
+}
+
+.asset .assetaApplication_detail .form_table .third td:first-child {
+    width: 60px;
+}
+
+.asset .assetaApplication_detail .show_box td {
+    height: 180px;
+    position: relative;
+}
+
+.asset .assetaApplication_detail .show_box p {
+    text-align: left;
+    padding-left: 10px;
+}
+
+.asset .assetaApplication_detail .show_box .result {
+    top: 36px;
+    padding: 0 20px 0 20px;
+    width: 100%;
+    text-align: center;
+}
+
+.asset .assetaApplication_detail .show_box .result .pass,
+.asset .assetaApplication_detail .show_box .result .notpass {
+    display: block;
+    font-size: 24px;
+    margin-top: 35px;
+}
+
+.asset .assetaApplication_detail .show_box .result .waitpass {
+    display: block;
+    font-size: 24px;
+    margin: 35px 0;
+    color: #dbe3ee;
+}
+
+.asset .assetaApplication_detail .show_box .result .note {}
+
+.asset .assetaApplication_detail .show_box .dept {
+    margin-top: 20px;
+}
+
+.asset .assetaApplication_detail .show_box .sign {
+    margin: 10px;
+    position:relative;
+}
+.asset .assetaApplication_detail .show_box .sign img{
+    position:absolute;
+    top: -10px;
+}
+
+.asset .assetaApplication_detail .show_box .date {
+    position: absolute;
+    right: 0;
+    bottom: 5px;
+    float: right;
+    margin-right: 10px;
+}
+
+.asset .assetaApplication_detail .show_box .seal {
+    margin-bottom: 10px;
+}
+
+.asset .assetaApplication_detail .purple_p {
+    padding-left: 8px;
+    margin-left: -10px;
+    font-size: 16px;
+    height: 24px;
+    line-height: 24px;
+    margin-top: 25px;
+    background-image: linear-gradient(-180deg, #786cec 100%, #ffffff 0%);
+    background-image: -o-linear-gradient(-180deg, #786cec 100%, #ffffff 0%);
+    background-image: -moz-linear-gradient(-180deg, #786cec 100%, #ffffff 0%);
+    background-image: -webkit-linear-gradient(-180deg, #786cec 100%, #ffffff 0%);
+    background-size: 4px 100%;
+    background-position: left top;
+    background-repeat: no-repeat;
+}
+
+.asset .assetaApplication_detail .purple_p.mgt_15 {
+    margin-bottom: 15px;
+}
+
+.asset .origin_metail .form_table td {
+    height: 180px;
+}
+
+.asset .origin_metail .form_table td:nth-child(1) {
+    width: 19%;
+}
+
+.asset .origin_metail .form_table td:nth-child(3) {
+    width: 19%;
+}
+
+.asset .origin_metail .form_table .add_img_td {
+    text-align: left;
+    padding-left: 10px;
+}
+
+.asset .origin_metail .form_table .deal_box {
+    width: 100px;
+}
+
+.asset .assetaApplication_detail .img_box {
+    display: inline-block;
+    width: 140px;
+    height: 165px;
+    margin-right: 30px;
+    margin-top: 0;
+}
+
+.asset .img_box {
+    display: inline-block;
+    width: 140px;
+    height: 140px;
+    margin-right: 40px;
+    position: relative;
+}
+
+.asset .img_box:hover .uploaded_del {
+    opacity: 0.5;
+}
+
+.asset .uploaded_del {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    background: url(../../images/img_delete.png) no-repeat;
+    cursor: pointer;
+    opacity: 0;
+}
+
+.asset .img_box:hover .uploaded_del:hover {
+    opacity: 1;
+}
+
+.asset .img_box.uploading {
+    background: url(../../images/default_picture.png) no-repeat;
+    position: relative;
+    border: none;
+    overflow: hidden;
+}
+
+.asset .img_box.uploading .percent {
+    top: 50px;
+    font-size: 20px;
+}
+
+.asset .img_box.uploading .percent .stop {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    right: 0px;
+    background: url(../../images/img_delete.png) no-repeat;
+    cursor: pointer;
+    opacity: 0.5;
+}
+
+.asset .img_box.uploading .percent .stop.top {
+    top: -45px;
+    display: none;
+}
+
+.asset .img_box.uploading:hover .percent .stop.top {
+    display: block;
+}
+
+.asset .img_box.uploading .percent .stop:hover {
+    opacity: 1;
+}
+
+.asset .img_box.uploading .procress {
+    top: 80px;
+    height: 10px;
+    background: #f2f2f2;
+}
+
+.asset .img_box.uploading .procress .bg_purple {
+    width: 20%;
+    position: absolute;
+    height: 100%;
+    background: #786cec;
+    -webkit-transition: all .4s linear;
+    -moz-transition: all .4s linear;
+    -ms-transition: all .4s linear;
+    -o-transition: all .4s linear;
+    transition: all .4s linear;
+}
+
+.asset .img_box.add {
+    background: url(../../images/upload.png) no-repeat;
+    border: none;
+}
+
+.asset .fileSuccess {
+    /*position: absolute;*/
+    width: 136px;
+    display: block;
+}
+
+.asset .fileSuccess.bigHeight {
+    height: auto;
+    top: 50%;
+    transform: translateY(-50%);
+    overflow: hidden;
+}
+
+
+/*.asset .fileSuccess.smallHeight {
+    height: 136px;
+}*/
+
+.asset .origin_metail .count {
+    line-height: 35px;
+}
+
+.asset .origin_metail .count .green {
+    color: #00bb8b;
+}
+
+.asset .assetaApplication_detail .form_table .third tr td {
+    overflow: hidden;
+    word-break: break-all;
+}
+
+.asset .assetaApplication_detail .form_table .third tr td:nth-child(1) {
+    width: 7%;
+    min-width: 60px;
+}
+
+.asset .assetaApplication_detail .form_table .third tr td:nth-child(2) {
+    width: 14%;
+}
+
+.asset .assetaApplication_detail .form_table .third tr td:nth-child(3) {
+    width: 12%;
+}
+
+.asset .assetaApplication_detail .form_table .third tr td:nth-child(4) {
+    width: 6%;
+}
+
+.asset .assetaApplication_detail .form_table .third tr td:nth-child(5) {
+    width: 7%;
+}
+
+.asset .assetaApplication_detail .form_table .third tr td:nth-child(6) {
+    width: 5%;
+}
+
+.asset .assetaApplication_detail .form_table .third tr td:nth-child(7) {
+    width: 13%;
+}
+
+.asset .assetaApplication_detail .form_table .third tr td:nth-child(8) {
+    width: 5%;
+}
+
+.asset .assetaApplication_detail .form_table .third tr td:nth-child(9) {
+    width: 7%;
+}
+
+.asset .assetaApplication_detail .form_table .third tr td:nth-child(10) {
+    width: 8%;
+}
+
+.asset .assetaApplication_detail .form_table .third tr td:nth-child(11) {
+    width: 8%;
+}
+
+.asset .assetaApplication_detail .form_table .third tr td:nth-child(12) {
+    width: 8%;
+}
+
+
+/* 节点操作 */
+
+.asset .assetaApplication_detail .file_preview_tit {
+    font-size: 16px;
+    padding-left: 10px;
+    height: 24px;
+    line-height: 24px;
+    background-image: linear-gradient(-180deg, #786cec 100%, #ffffff 0%);
+    background-image: -webkit-linear-gradient(-180deg, #786cec 100%, #ffffff 0%);
+    background-size: 4px 100%;
+    background-position: left top;
+    background-repeat: no-repeat;
+}
+
+.asset .assetaApplication_detail .disposal_content {
+    margin-left: 14%;
+}
+
+.asset .assetaApplication_detail .reDraft_list {
+    /*padding-bottom: 15px;*/
+    padding: 8px 0;
+    font-size: 0;
+    overflow: hidden;
+}
+
+.asset .assetaApplication_detail .w200 {
+    width: 200px;
+    margin-right: 10px;
+    text-align: right;
+}
+
+.asset .assetaApplication_detail .word_center {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.asset .assetaApplication_detail .check_node.word_center {
+    text-align: center;
+    display: block;
+}
+
+.asset .assetaApplication_detail .reDraft_list span {
+    font-size: 14px;
+}
+
+.asset .assetaApplication_detail .switch_fos16 {
+    font-size: 16px !important;
+}
+
+.asset .assetaApplication_detail .reDraft_list span.iconfont {
+    font-size: 20px;
+    color: #786cec;
+    margin-left: 15px;
+    cursor: pointer;
+}
+
+.asset .assetaApplication_detail .check_node {
+    padding: 20px 0 0 0;
+}
+
+.asset .assetaApplication_detail .check_title {
+    font-size: 16px;
+    font-weight: bold;
+    padding-left: 50px;
+}
+
+.asset .assetaApplication_detail .check_fail {
+    width: 100%;
+    padding-top: 5px;
+    background-color: #f2f2f2;
+    text-align: center;
+    color: #999999;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+.asset .assetaApplication_detail .reDraft_list .red {
+    color: #ff272e;
+}
+
+.asset .assetaApplication_detail .reDraft_list .blue {
+    color: #0096FF;
+    cursor: pointer;
+}
+
+.asset .assetaApplication_detail .reDraft_list .green {
+    color: #00bb8b;
+}
+
+.asset .assetaApplication_detail .check_result {
+    border-top: 1px dashed #dbe3ee;
+    margin-bottom: 10px;
+}
+
+.asset .assetaApplication_detail .word_center.textarea_class {
+    width: 60%;
+    height: 100px;
+}
+
+.asset .assetaApplication_detail .word_center.select_class {
+    width: 45%;
+}
+
+.asset .assetaApplication_detail .bale_list {
+    color: #0096ff;
+    margin-right: 26px;
+    font-size: 14px;
+    max-width: 60%;
+}
+
+@media (min-width: 1500px) {
+    .asset .assetaApplication_detail .bale_list {
+        max-width: 70%;
+    }
+}
+
+.asset .assetaApplication_detail .bale_list p {
+    margin-bottom: 3px;
+    cursor: pointer;
+    display: inline-block;
+    border-bottom: 1px solid transparent;
+}
+
+.asset .assetaApplication_detail .bale_list p:hover {
+    border-bottom: 1px solid #0096ff;
+}
+
+
+/*.repair .bale_list .col009:first-child {
+    padding: 0 10px 0 0;
+}*/
+
+.asset .assetaApplication_detail .bale_list .col009 {
+    color: #0096ff;
+    display: inline-block;
+    /*padding: 0 10px;*/
+}
+
+.asset .assetaApplication_detail .project_detail {
+    padding: 20px 0;
+    overflow: hidden;
+}
+
+.asset .assetaApplication_detail .disposal_list {
+    border-bottom: 1px dashed #dae4ee;
+}
+
+.asset .assetaApplication_detail .project_detail:last-child {
+    border: 0 !important;
+}
+
+.asset .assetaApplication_detail .project_info {
+    margin: 0 0 0px 13%;
+    position: relative;
+}
+
+.asset .assetaApplication_detail .lineDashed {
+    padding: 10px 10px 0;
+    border: 1px dashed #ff3639;
+    position: relative;
+    max-width: 78%;
+}
+
+.asset .assetaApplication_detail .return_audit {
+    position: absolute;
+    bottom: 4px;
+    right: -110px;
+    color: #0096ff;
+}
+
+.asset .assetaApplication_detail .project_detail .reDraft_list:last-child {
+    padding-bottom: 0;
+}
+
+.asset .assetaApplication_detail .project_detail .reDraft_list .downloadBale {
+    visibility: hidden;
+    float: right;
+}
+
+.asset .assetaApplication_detail .project_info .reDraft_list {
+    padding: 8px 10px 8px 0;
+}
+
+.asset .assetaApplication_detail .down2:hover {
+    background: #dbe3ee;
+    cursor: pointer;
+}
+
+.asset .assetaApplication_detail .project_info .reDraft_list:hover .downloadBale {
+    visibility: visible;
+}
+
+.asset .assetaApplication_detail .project_detail .loadBale_list:hover {
+    background: #dbe3ee;
+}
+
+.asset .assetaApplication_detail .project_detail .loadBale_list:hover .downloadBale {
+    visibility: inherit;
+}
+
+.asset .assetaApplication_detail .noneBd {
+    border: 0 !important;
+}
+
+.asset_info_deal .wid200 {
+    width: 200px;
+    text-align: right;
+}
+
+
+/* 修改流程图那块标题 */
+
+.asset .flow_title_detail {
+    padding: 10px 50px 20px 0;
+    overflow: hidden;
+}
+
+.asset .flow_title_detail .bd_solid {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    border-width: 1px;
+    border-style: solid;
+}
+
+.asset .flow_title_detail .bd_solid.col00b {
+    border-color: #00bc8c;
+    background-color: #00bc8c;
+}
+
+.asset .flow_title_detail .bd_solid.col999 {
+    border-color: #999;
+    background-color: #999;
+}
+
+.asset .flow_title_detail .bd_solid.col009 {
+    border-color: #0096ff;
+    background-color: #0096ff;
+}
+
+.asset .flow_title_detail .doneBtn {
+    color: #00bc8c !important;
+}
+
+.asset .flow_title_detail .undoneBbtn {
+    color: #ff272e !important;
+}
+
+.asset .flow_title_detail .bd_solid.colffc {
+    border-color: #ffc324;
+    background-color: #ffc324;
+}
+
+.asset .exit_content {
+    height: 560px;
+}
+
+.asset .flow_title_detail .paddl20 {
+    padding-right: 20px;
+    vertical-align: text-bottom;
+}
+
+.asset .flow_title_detail .auditedBtn {
+    display: inline-block;
+    width: 25px;
+    height: 18px;
+    background: url('../../images/done_opinion.png') no-repeat;
+}
+
+.asset .flow_title_detail .auditedBtn2 {
+    display: inline-block;
+    width: 25px;
+    height: 18px;
+    background: url('../../images/not_pass_opinion.png') no-repeat;
+}
+
+.asset .bread_nav {
+    padding: 15px 0 5px 0;
+}
+
+.asset .stop_step {
+    position: fixed;
+    right: 50px;
+    bottom: 50px;
+    width: 70px;
+    height: 70px;
+    background: url('../../images/stop-default.png') no-repeat;
+    z-index: 9;
+    cursor: pointer;
+}
+
+.asset .stop_step:hover {
+    background: url('../../images/stop-emerge.png') no-repeat;
+}
+
+.asset #infoPos {
+    background: #FFF;
+    z-index: 100;
+    width: 92%;
+    visibility: hidden;
+    position: absolute;
+    left: 4%;
+    min-width: 1200px;
+    box-shadow: 0 0 12px 0 rgba(7, 0, 2, 0.3);
+}
+
+#infoImg #infoImg_td {
+    width: 100%;
+}
+
+.main_img {
+    width: 100%;
+    box-sizing: content-box;
+    margin-top: -14px;
+    padding: 5px;
+    overflow: hidden;
+    display: flex;
+}
+
+.main_img .main_img_left p {
+    line-height: 40px;
+    font-size: 16px;
+    padding-left: 10px;
+    padding-top: 5px;
+    box-sizing: border-box;
+    text-align: left;
+    font-weight: bold;
+}
+
+.main_img .main_img_left {
+    max-width: 510px;
+    flex: 1;
+}
+
+.main_img .main_img_left .ib {}
+
+.ngdialog.asset .attach_upload .img_box.file_wrapper{
+    margin-top: 0;
+}

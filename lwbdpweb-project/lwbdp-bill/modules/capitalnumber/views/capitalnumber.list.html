@@ -1,0 +1,88 @@
+<div class="capitalNum">
+    <div class="capitalContent" ng-class="{true: 'isfoldCon'}[isfold]">
+        <div class="search">
+            <div class="condition">
+                <input type="text" class="selectGarden choose_garden form-control" placeholder="请选择园区" id="selectGarden" ng-model="condition.constructUnitName"
+                    name="constructUnitName">
+                    <!--字段名称TODO-->
+                    <select-garden ids="condition.gardenIdString" named="condition.constructUnitName" showcapitalnumber='true' type="multi"></select-garden>
+                    <input type="text" class="form-control" ng-model="condition.minAmount" ng-keyup="checkMinAmount(condition.minAmount)"> &lt;=资 金总额 &lt;= <input type="text" class="form-control" ng-model="condition.maxAmount" ng-keyup="checkMaxAmount(condition.maxAmount)"
+                        ng-blur="checkMaxMoreThenMin()">
+                        收回日期
+                    &lt;= <em id="get-time">
+                            <input id="py_time" lw-laydate type="text" value="{{condition.recoveryDate | date:'yyyy/MM/dd'}}" ng-model="condition.recoveryDate"
+                                class="form-control">
+                                </em>
+                                <!--<input type="text" class="form-control long" placeholder="回车键提交查询"  ng-model="condition.keywords" maxlength="50">-->
+                                <div class="content_txBar">
+                                    <input type="text" class="form-control long" placeholder="回车键提交查询"  ng-model="condition.keywords" ng-keydown="enterSearch($event)" maxlength="50">
+                                    <span class="billiconfont icon_shutdown" ng-show="condition.keywords" ng-click="removeKeywords()"></span>
+                                </div>
+                                <span id="lw-search" class="tableBtn blue" ng-click="amountInfo()" id="lw-search">查询</span>
+            </div>
+            <p class="btns">
+                <span class="tableBtn blue fl" delete-capital-number has-permission="bdp:capitalNumber:delete">删除</span>
+                <span class="tableBtn blue fr" has-permission="bdp:capitalNumber:batchImport" ng-click="batchAdd()">批量导入</span>
+                <a ui-sref="bill.capitalnumber.input" has-permission="bdp:capitalNumber:create"><span
+                    class="tableBtn red fr" style="margin-right: 16px;">添加</span></a>
+                <span class="tableBtn blue fr" ng-click="batchExport()">导出</span>
+            </p>
+        </div>
+        <div class="tableContent" style="padding:0;margin-top:8px;">
+            <!--posr-->
+            <p class="total">
+                <span ng-if="totalAmount * 1 > 0">总计金额：{{totalAmount}}万元；其中</span>
+                <span ng-repeat="item in investList">{{item.typeName}}：{{item.amount}}万元；</span>
+            </p>
+            <div class="form_top_line"></div>
+            <div class="billTable_absolute" style="top:98px;">
+                <table class="formTable">
+                    <tr class="first">
+                        <th style="width: 90px;"><input type="checkbox" class="checkboxClass" ng-model="allChecked" ng-click="checkAll(allChecked)">序号
+                        </th>
+                        <th>资金文号名称</th>
+                        <th>所属园区</th>
+                        <th>资金总额（万元）</th>
+                        <th>批复日期</th>
+                        <th>收回日期</th>
+                        <th>对应项目数</th>
+                        <th>最近更新人</th>
+                        <th>最近更新时间</th>
+                        <th style="width: 110px;">操作</th>
+                    </tr>
+                    <tr ng-repeat="item in datas" ng-dblclick="info(item)">
+                        <td><input type="checkbox" class="checkboxClass" ng-model="item.checked" ng-click="checkItem($event,$index)"><span
+                                class="checkboxSpan">{{$index+1}}</span>
+                        </td>
+                        <td style="width: 170px;" title="{{item.name}}">{{item.name}}</td>
+                        <td>{{item.gardenName}}</td>
+                        <td>{{item.totalAmount}}</td>
+                        <td>{{item.replyDate| date:'yyyy-MM-dd'}}</td>
+                        <td>{{item.recoveryDate| date:'yyyy-MM-dd'}}</td>
+                        <td class="blue">
+                            <a class="blue" ng-if="item.projectCounts != 0" ng-click="showCapitalProject(item.id,'lg')">
+                            {{item.projectCounts}}
+                        </a>
+                            <div ng-if="item.projectCounts == 0">
+                                {{item.projectCounts}}
+                            </div>
+                        </td>
+                        <td>{{item.lastUpdateUserName}}</td>
+                        <td>{{item.lastUpdateTime| date:'yyyy-MM-dd HH:mm:ss'}}</td>
+                        <td class="btntd">
+                            <a class="btns infobtn billiconfont icon_look" title="详情" style="margin-right: 20px" has-permission="bdp:capitalNumber:list"
+                                ng-click="info(item)"></a>
+                                <!--<a class="btns editbtn" title="编辑" has-permission="bdp:capitalNumber:update" ng-click="edit(item)"></a>-->
+                                <a class="btns delbtn billiconfont icon_delete" title="删除" has-permission="bdp:capitalNumber:delete" delete-capital-number="{{item.id}}"
+                                    value="删除"></a>
+                    </tr>
+                </table>
+                <div class="pageBox">
+                    <lw-page url="/capital"></lw-page>
+                </div>
+            </div>
+        </div>
+
+        <!--<p class="pageBoxnum" ng-if="headerCount>0">{{headerCount}}条数据被找到</p>-->
+    </div>
+</div>

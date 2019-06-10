@@ -1,0 +1,75 @@
+ <!--<h1>-->
+	<!--<a routerLink="/resource/info">info</a>-->
+<!--</h1>-->
+<!--<h1>-->
+	<!--<a routerLink="/resource/prepare">prepare</a>-->
+<!--</h1>-->
+<nz-spin [nzSize]="'large'" *ngIf="isPending"></nz-spin>
+<div class="resource-home animated fadeIn" *ngIf="!isPending" flex="dir:top">
+	<div class="resource-home-top" >
+		<div class='select-container'>
+			<nz-select class="radius bg-gray select" (nzOpenChange)="gradeChange()" [(ngModel)]="selectGrade" [nzPlaceHolder]="grades.length>0?grades[0].name:!gradesLoadComplete?'':'暂无年级'">
+				<nz-option
+					*ngFor="let grade of grades"
+					[nzLabel]="grade.name"
+					[nzValue]="grade">
+				</nz-option>
+			</nz-select>
+			<nz-select class="radius bg-gray select" (nzOpenChange)="classesChange()" [(ngModel)]="selectClass" [nzPlaceHolder]="classes.length>0?classes[0].name:classesLoadComplete?'暂无班级':''">
+				<nz-option
+					*ngFor="let sub of classes"
+					[nzLabel]="sub.name"
+					[nzValue]="sub">
+				</nz-option>
+			</nz-select>
+			<nz-select class="radius bg-gray select" (nzOpenChange)="subjectsChange()" [(ngModel)]="selectSubjects" [nzPlaceHolder]="subjects.length>0?subjects[0].name:subjectsLoadComplete?'暂无学科':''">
+				<nz-option
+					*ngFor="let sub of subjects"
+					[nzLabel]="sub.name"
+					[nzValue]="sub">
+				</nz-option>
+			</nz-select>
+			<!--<nz-select class="radius bg-gray select" (nzOpenChange)="editionsChange()" [(ngModel)]="selectEdition" [nzPlaceHolder]="editions.length>0?editions[0].name:'暂无教材版本'">-->
+				<!--<nz-option-->
+					<!--*ngFor="let edition of editions"-->
+					<!--[nzLabel]="edition.name"-->
+					<!--[nzValue]="edition">-->
+				<!--</nz-option>-->
+			<!--</nz-select>-->
+			<nz-select class="radius bg-gray select" (nzOpenChange)="semesterChange()" [(ngModel)]="selectSemester" [nzPlaceHolder]="semesters.length>0?semesters[0].name:semestersLoadComplete?'暂无学期':''">
+				<nz-option
+					*ngFor="let semester of semesters"
+					[nzLabel]="semester.name"
+					[nzValue]="semester">
+				</nz-option>
+			</nz-select>
+		</div>
+		<!--<button nz-button class="ant-btn-default ant-btn" style='margin-top: 10px'>编辑知识点</button>-->
+		<div class="right-btns">
+			<!--<button  [routerLink]="['/resource/home/-1']"  [nzType]="'default'" nz-button >-->
+				<!--<span>返回</span>-->
+			<!--</button>-->
+			<button *ngIf="type==-1" class="beike" [routerLink]="['/resource/home/1']" nz-button [nzType]="'default'">
+				<span>云微课</span>
+			</button>
+			<button *ngIf="type==0" [routerLink]="['/exercises/class']" nz-button nzType="danger">
+				<span>习题管理</span>
+			</button>
+			<button *ngIf="type==-1" [routerLink]="['/course/timetable']" nz-button nzType="danger" >
+				<span>开始备课</span>
+			</button>
+		</div>
+	</div>
+	<div [ngClass]="{'footer-main':type !=-1}" class="resource-home-main" flex-box='1'>
+			<collapse-multilevel [resource]="resource" [config]="collapseConfig" *ngIf="selectSubjects" (nodeClick)="nodeClick($event)" [clickId]="clickId" [data]="panels" [subjectCode]="selectSubjects.id"  [isCurrent]="isCurrent" ></collapse-multilevel>
+		<!--<div *ngFor="let panel of panels" class="">-->
+			<!--<div *ngIf="panel.childOutlineList == null" class='chapter-item'>{{panel.title}}</div>-->
+		<!--</div>-->
+		<elliptical-page *ngIf="isLoadComplete&&(panels==null||(panels&&panels.length == 0))" imgName="no-classHour.png" [title]="ellipticalTitle"></elliptical-page>
+	</div>
+	<div *ngIf="type !=-1" class="footer">
+		<button [routerLink]="['/resource/home/-1']"  [nzType]="'default'" nz-button >
+			<span>返回</span>
+		</button>
+	</div>
+</div>

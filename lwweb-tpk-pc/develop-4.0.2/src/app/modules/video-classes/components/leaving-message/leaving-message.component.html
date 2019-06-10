@@ -1,0 +1,25 @@
+<div class="leaving-message" [ngClass]="{'leaving-message-live':type==='live','leaving-message-video':type==='video'}">
+    <div class="input-group">
+        <a class="textarea" [ngClass]="{'none-border':videoDetails.status==0||(videoDetails.status!=0&&videoDetails.subjectName=='自习')}">
+            <textarea (keyup.enter)="enterMessage()" [disabled]="videoDetails.status==0||(videoDetails.status!=0&&videoDetails.subjectName=='自习')" (ngModelChange)="wordChange($event)" maxlength="140" [(ngModel)]="leavingWord"></textarea>
+        </a>
+        <div class="input-handle" flex="main:justify">
+            <div class="word-count">
+                {{leavingWord.length}}/140
+            </div>
+            <button class="send-word" (click)="addMessage()" [ngClass]="{'noContent':!isHaveContent}" [disabled]="videoDetails.status==0||(videoDetails.status!=0&&videoDetails.subjectName=='自习')">
+				发送
+			</button>
+        </div>
+    </div>
+    <div class="leaving-content" flex="dir:top">
+        <header flex-box="0">
+            最新留言 ({{messagesCount}})
+            <!--<span (click)="refresherLeaving()" class="leaving-refresher"><i class="iconfont icon-flowIcon"></i></span>-->
+        </header>
+        <div flex-box="1" class="content auto-scroll" #leavingContent>
+            <leaving-message-card class="leaving-message-card-item" [message]="m" *ngFor="let m of messages"></leaving-message-card>
+            <div *ngIf="messages.length==0" class="elliptical-page-message">暂无留言</div>
+        </div>
+    </div>
+</div>

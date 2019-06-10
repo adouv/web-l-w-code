@@ -1,0 +1,12 @@
+<div class="search_box clearfix  center-hor search_box_big">
+        <div class="query-icon"></div>
+        <p class="input_group">
+            <input type="text" class="input_class" maxlength="50" placeholder="请输入项目审批表编号" ng-model='queryHome.searchNumber' ng-keyup='queryHome.goSearch($event)'>
+            <i class="iconfont icon-search ng-scope" ng-if="!queryHome.searchNumber.length"></i>
+            <i class="iconfont icon-error" ng-if="queryHome.searchNumber.length" ng-click="queryHome.cleanKeywords()"></i>
+        </p>
+        <button class="btn btn-default cur" type='button' ng-click='queryHome.getApprovalSheet()'>查询 </button>
+        <i class="icon-prompt iconfont"></i>
+        <div class='help-wrapper'>
+        </div>
+</div>

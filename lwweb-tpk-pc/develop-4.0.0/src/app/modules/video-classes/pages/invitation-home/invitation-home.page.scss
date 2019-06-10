@@ -1,0 +1,331 @@
+@import "../../../../../styles/variable";
+
+/**/
+.invitation-home::ng-deep {
+	width: 100%;
+	height: 100%;
+
+	//padding: 0 computer(20px);
+	.ant-tabs-bar {
+		margin-bottom: 16px !important;
+	}
+
+	.ant-tabs-nav-scroll {
+		text-align: center;
+	}
+
+	.header-breadcrumb {
+		position: absolute;
+		top: 10px;
+	}
+
+	.header-buttom {
+		position: absolute;
+		top: 13px;
+		right: 0;
+
+		>button {
+			margin-right: 10px;
+		}
+	}
+
+	.invitation-home-content {
+		//height: calc(100% - #{computer(76px)});
+		height: 100%;
+	}
+
+	.invitation-home-video-unicas {
+		//margin-top: computer(-20px);
+	}
+
+	.invitation-home-content-right {
+		margin-left: computer(20px);
+		width: computer(367px);
+
+		.header {
+			height: computer(30px);
+			text-align: right;
+
+			.scale-btn {
+				margin-right: computer(20px);
+			}
+		}
+
+		.btn-group {
+			margin-top: computer(10px);
+			height: computer(30px);
+			line-height: computer(30px);
+
+			.legend-group {
+				float: right;
+				color: $color_font-light;
+				font-size: computer(14px);
+				margin-left: computer(30px);
+			}
+		}
+
+		.video-box {
+			width: 100%;
+			height: computer(206px); //background-color: $color_main;
+			position: relative;
+
+			.background {
+				width: 100%;
+				height: 100%;
+
+				img {
+					width: 100%;
+					height: 100%;
+				}
+			}
+
+			.video-box-footer {
+				width: 100%;
+				position: absolute;
+				bottom: 0;
+				left: 0;
+				height: computer(40px);
+				line-height: computer(40px);
+
+				.background-footer {
+					position: absolute;
+					height: computer(40px);
+					background-color: rgba(255, 255, 255, 0.5);
+					box-shadow: 0px -1px 0px 0px rgba(238, 238, 238, 0.5), inset 0px -1px 0px 0px rgba(238, 238, 238, 0.5);
+					opacity: 0.5;
+					z-index: 90;
+					left: 0;
+					width: 100%;
+				}
+
+				.video-box-footer-left {
+					left: computer(20px);
+					font-size: computer(14px);
+					color: $color_font-deep;
+					position: absolute;
+					z-index: 99;
+				}
+
+				.video-box-footer-right {
+					right: computer(20px);
+					font-size: computer(14px);
+					color: $color_font-deep;
+					position: absolute;
+					z-index: 99;
+				}
+			}
+		}
+
+		.video-message-group {
+			margin-top: computer(10px);
+		}
+
+		.video-message-group-title {
+			width: computer(85px);
+			text-align: right;
+			color: $color_font-center;
+			font-size: computer(14px);
+			margin-right: computer(5px);
+		}
+
+		.video-message-group-content {
+			color: $color_font-deep;
+			font-size: computer(14px);
+		}
+	}
+
+	.invitation-home-content-left {
+		.header {
+			height: computer(30px);
+			line-height: computer(30px);
+			font-weight: bold;
+		}
+
+		.btn-group {
+			margin-top: computer(10px);
+			height: computer(30px);
+			line-height: computer(30px);
+			padding-right: computer(20px);
+
+			.title-type {
+				//width: computer(60px);
+				font-size: computer(14px);
+				padding: 0 computer(10px);
+				text-align: center;
+				display: inline-block;
+				border-radius: computer(15px);
+				cursor: pointer;
+				margin-bottom: computer(5px);
+				margin-right: computer(5px);
+				color: $color_font-deep;
+
+				&:hover {
+					color: $color_main;
+				}
+			}
+
+			.title-type-active {
+				line-height: computer(30px);
+				background-color: $color_main;
+				color: #fff;
+
+				&:hover {
+					color: #fff;
+				}
+			}
+		}
+
+		.invitation-home-content-left-content {
+			height: calc(100% - #{computer(90px)});
+			margin-top: computer(20px);
+
+			.invitation-message-card {
+				padding: computer(10px);
+				height: auto;
+				display: inline-block;
+				font-size: computer(14px);
+				color: $color_font-deep;
+				width: calc(100% - #{computer(20px)});
+				cursor: pointer;
+				margin-bottom: computer(5px);
+
+				.invitation-message-card-container {
+					height: computer(20px);
+					line-height: computer(20px);
+				}
+
+				.legend-group-color {
+					margin-top: computer(5px);
+					margin-right: computer(10px);
+				}
+
+				.name {
+					width: computer(56px);
+					display: inline-block;
+					margin-left: computer(40px);
+					overflow: hidden;
+					text-overflow: ellipsis;
+					white-space: nowrap;
+				}
+
+				&:hover {
+					background-color: $color_border; //color:$color_main;
+				}
+			}
+
+			.check-card-active {
+				//background-color: $color_border;
+				color: $color_main;
+			}
+		}
+	}
+
+	.span-btn {
+		font-size: computer(16px);
+		color: $color_font-deep;
+		cursor: pointer;
+
+		&.active {
+			color: $color_main;
+		}
+	}
+
+	.margin-left-50 {
+		margin-left: computer(50px);
+	}
+
+	.input-search {
+		margin-left: computer(20px);
+	}
+
+	.legend-group-color {
+		width: computer(10px);
+		height: computer(10px);
+		border-radius: computer(10px);
+		display: inline-block;
+		margin-right: computer(5px);
+
+		&.lan {
+			background-color: #28ca8f;
+		}
+
+		&.huang {
+			background-color: #febd60;
+		}
+
+		&.hui {
+			background-color: #999999;
+		}
+	}
+
+	.click-show-more {
+		font-size: computer(14px);
+		margin: computer(10px) 0;
+		text-align: center;
+		color: $color_font-light;
+		cursor: default;
+
+		&.pointer {
+			cursor: pointer;
+		}
+	}
+
+	.message {
+		margin-right: computer(10px);
+	}
+
+	.class-data {
+		height: computer(20px);
+		width: 100%;
+		overflow: hidden;
+
+		span {
+			display: inline-block;
+			max-width: calc(100% - #{computer(60px)});
+			height: computer(20px);
+			line-height: computer(20px);
+			overflow: hidden;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+		}
+
+		img {
+			height: computer(20px);
+		}
+	}
+
+	.invitation-home-content-right-footer {
+		text-align: center;
+		margin-top: computer(40px);
+	}
+
+	.invitation-home-content-right-content {
+		height: 100%;
+		overflow: hidden;
+		display: flex;
+		flex-direction: column;
+	}
+
+	.tab-btn {
+		position: absolute;
+		right: computer(20px);
+		top: computer(13px);
+		z-index: 99999;
+	}
+
+}
+
+:host {
+	width: 100%;
+}
+.footerbottom {
+	position: absolute;
+	bottom: 0;
+	height: computer(50px);
+	line-height: computer(50px);
+	margin: 0 computer(20px);
+	border-top:1px solid $color_border;
+	text-align: center;
+	width: calc(100vw - #{computer(240px)});
+    margin: 0 computer(60px) 0 computer(35px);
+}

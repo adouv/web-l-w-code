@@ -1,0 +1,22 @@
+{
+	"/lw-authz-server": {
+		"target": "http://10.0.0.84:8084",
+		"secure": false
+	},
+	"/lw-garden-server": {
+		"target": "http://10.0.0.84:8083",
+		"secure": false
+	},
+	"/lw-fileserver": {
+		"target": "http://10.0.0.10:96",
+		"secure": false
+	},
+	"/lw-website-server": {
+		"target": "http://10.0.0.6:8091/",
+		"secure": false
+	},
+	"/lw-website-cms": {
+		"target": "http://222.249.224.116:8082",
+		"secure": false
+	}
+}

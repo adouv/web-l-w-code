@@ -1,0 +1,28 @@
+<section class="video-live" [ngClass]="{'line':line==1}">
+	<nz-tabset (nzSelectedIndexChange)="changeGrade($event)" [nzSelectedIndex]="activeTab">
+		<nz-tab *ngFor="let grade of gradeList">
+			<ng-template #nzTabHeading>
+				<span class="ellipse">{{grade.name}}</span>
+			</ng-template>
+			<div>
+				<div class="video-live-list" *ngIf="classesList.length > 0" table-center>
+					<div class="video-live-item-padding permission" *ngFor="let classes of classesList" (click)="goDetail(classes)">
+						<div class="video-live-item" [ngClass]="{'active':classes.id == classesId}">
+							<span class="iconfont icon-fushangbanji"></span>
+							<span class="name">{{classes.name}}</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</nz-tab>
+	</nz-tabset>
+	<nz-content *ngIf="classesList.length <= 0" style="padding:40px 0;">
+		<div class="nolesson animated fadeIn">
+			<div class="center">
+				<!-- <img src="./assets/images/no-course.png" /> -->
+				<div class="nolesson_name">暂无课堂直播
+				</div>
+			</div>
+		</div>
+	</nz-content>
+</section>

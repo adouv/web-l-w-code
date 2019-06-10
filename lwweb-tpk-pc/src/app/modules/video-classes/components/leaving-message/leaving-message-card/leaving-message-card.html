@@ -1,0 +1,15 @@
+<div class="leaving-message-card">
+	<div class="headImg">
+		<img *ngIf="message.headImg" src="{{message.headImg}}"  onerror="javascript:this.src='../../../../assets/images/user-icon.png';"/>
+		<img *ngIf="!message.headImg" src="../../../../assets/images/user-icon.png">
+	</div>
+	<div class="messages">
+		<div class="message-deatils" flex="main:justify">
+			<span>{{message.senderName}}</span>
+			<span class="time">{{datePipe.transform(message.createTime,'yyyy-MM-dd HH:mm')}}</span>
+		</div>
+		<div class="message-content">
+			{{message.content}}
+		</div>
+	</div>
+</div>

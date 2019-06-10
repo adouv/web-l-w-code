@@ -1,0 +1,56 @@
+<div class="select-chapter" flex="dir:top">
+	<div class="chapter-search">
+		<div class="chapter-search-condition" flex="main:justify">
+			<!--<nz-input class="chapter-search-condition-input" [nzType]="'search'" nzPlaceHolder="请输入关键字" [(ngModel)]="selectParams.title"
+					  (keyup)="onSearch($event)"></nz-input>-->
+			<input-search [tpkPlaceholder]="'关键字查询'" [(tpkModel)]="selectParams.title" class="chapter-search-condition-input" (onSearch)="onSearch($event)"></input-search>
+			<div class="select-box">
+				<!--<nz-select [hidden]="'true'" disabled class="mar-bot-10px radius bg-gray select-120"
+						   [nzDisabled]="optionDisable"
+						   (nzOpenChange)="changeGrade($event, selectParams.gradeCode)"
+						   [(ngModel)]="selectParams.gradeCode"
+						   [nzPlaceHolder]="'暂无年级'">
+					<nz-option *ngFor="let grade of gradeList" [nzLabel]="grade.name"
+							   [nzValue]="grade.gradeCode">
+					</nz-option>
+				</nz-select>
+				<nz-select [hidden]="'true'" disabled class="mar-bot-10px radius bg-gray select-120"
+						   [nzDisabled]="optionDisable"
+						   (nzOpenChange)="changeSubject($event, selectParams.subjectCode)"
+						   [(ngModel)]="selectParams.subjectCode"
+						   [nzPlaceHolder]="'暂无学科'">
+					<nz-option *ngFor="let subject of subjectList" [nzLabel]="subject.name"
+							   [nzValue]="subject.id">
+					</nz-option>
+				</nz-select>-->
+				<nz-select [hidden]="type!=1" *ngIf="type==1" class="mar-bot-10px radius bg-gray select-120" (nzOpenChange)="changeEdition($event, selectParams.semesterCode)"
+				 [(ngModel)]="selectParams.semesterCode" [nzPlaceHolder]="'暂无学期'">
+					<nz-option *ngFor="let edition of editionList" [nzLabel]="edition.name" [nzValue]="edition.id">
+					</nz-option>
+				</nz-select>
+			</div>
+		</div>
+		<div class="search-result" flex="">
+			<span flex-box="0" class="choose-name">已选：</span>
+			<ul flex-box="1" class="search-result-list auto-scroll-6" flex>
+				<li class="search-result-li" *ngFor="let td of checkAry">
+					<span>{{td.name}}</span>
+					<span (click)="removeLi(td)" class="iconfont icon-label-close close-btn"></span>
+				</li>
+				<li class="no-li" *ngIf="checkAry.length==0">
+					<!-- {{type==0?'(请选择知识点,最多可选5个知识点)':'(请选择章节,最多可选5个章节)'}} -->
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div class="chapter-list auto-scroll-sm">
+		<tpk-course-tree class="chapter-list-tree" [openStatus]="title.trim()!=''" [data]="treeData" [checkAry]="checkAry" [maxLength]="maxLength"
+		 [openList]="openList" (checkClick)="checkClick($event)"></tpk-course-tree>
+		<elliptical-page *ngIf="treeDataLoadComplete&&treeData.length==0" [title]="selectParams.title.trim()!=''?'暂无相对应的章节，请选换关键词查询':'暂无可关联章节'"></elliptical-page>
+	</div>
+</div>
+<div class="footer" flex="main:center cross:center">
+	<button nz-button [nzType]="'default'" (click)="cancel()">取消</button>
+	<button *ngIf="checkAry.length!=0" nz-button [nzType]="'danger'" (click)="sure()">确定</button>
+	<button *ngIf="checkAry.length==0" disabled nz-button [nzType]="'danger'">确定</button>
+</div>

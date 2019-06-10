@@ -1,0 +1,29 @@
+<div tabindex="-1" role="dialog" :id="modalOptions.idName" aria-labelledby="rcDialogTitle0" class="ant-modal-wrap ant-modal-mask"
+  v-if="show">
+  <div role="document" class="ant-modal" :style="{width:`${modalOptions.width}px`}" :class="modalOptions.position" v-if="show">
+    <div class="ant-modal-content" :class="modalOptions.className">
+      <button aria-label="Close" class="ant-modal-close nodrag-area" @click="btnClose();"><span class="ant-modal-close-x">
+          </span></button>
+      <div class="ant-modal-header" v-if="modalOptions.showTitle">
+        <div id="rcDialogTitle0" class="ant-modal-title">{{modalOptions.title}}</div>
+      </div>
+      <div class="ant-modal-body nodrag-area" :class="modalOptions.className" :style="{maxHeight:modalOptions.height+'px'}">
+        <component :is="modalOptions.componentName" :params="modalOptions.params"></component>
+      </div>
+      <div class="ant-modal-footer" style="   display: flex;justify-content: center" v-if="modalOptions.showFooter">
+        <div>
+          <button type="button" class="ant-btn ant-btn-default" @click="btnClose();">
+            <span>{{modalOptions.cleanText}}</span>
+          </button>
+          <button type="button" class="ant-btn ant-btn-primary"  v-if="modalOptions.showSave" @click="btnSave();">
+            <span>{{modalOptions.saveText}}</span>
+          </button>
+          </div>
+      </div>
+      <div class="zpButton lw-tpk-pc" v-if="modalOptions.zpButton">
+        <a-button type="danger" v-if="modalOptions.showSave" @click="btnSave">{{modalOptions.saveText}}</a-button>
+      </div>
+    </div>
+    <div tabindex="0" style="width: 0px; height: 0px; overflow: hidden;">sentinel</div>
+  </div>
+</div>

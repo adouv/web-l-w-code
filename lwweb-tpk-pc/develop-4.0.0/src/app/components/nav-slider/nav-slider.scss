@@ -1,0 +1,232 @@
+@import "../../../styles/mixin";
+
+@mixin height-background($height:100%,$line_height:normal) {
+	height: $height;
+	background: $color-background;
+	color: #ffffff;
+	line-height: $line_height;
+}
+
+@mixin flex($align,$justify) {
+	display: flex;
+	align-items: $align;
+	justify-content: $justify;
+}
+
+.lw-tpk-pc.ant-layout {
+	background: url("../../../assets/images/bg.jpg") center;
+	height: 100%;
+	overflow: hidden;
+}
+
+.ant-layout-header {
+	@include height-background(computer(68px));
+	@include flex(center, space-between);
+	padding: 0 computer(20px);
+	.time {
+		font-size: computer(33px);
+		margin-right: computer(20px);
+	}
+	.logo {
+		max-width: computer(80px);
+		height: computer(40px);
+		margin-right: computer(10px);
+	}
+	.center-box {
+		width: computer(142px);
+		height: computer(45px);
+		background: url("../../../assets/images/logo-slogan.png") no-repeat center center;
+		background-size: 100%;
+	}
+	.left-box {
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+		align-items: center;
+		margin: 0 computer(40px);
+		// max-width: calc(100% - 405px);
+		max-width: calc(100% - 330px);
+		span {
+			margin: 0 computer(10px);
+			overflow: hidden;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+		}
+		.switch {
+			padding: computer(10px);
+			cursor: pointer;
+			&:hover {
+				color: #00a0e9;
+			}
+		}
+		.qiehuan:before {
+			content: "\e6c7";
+			font-size: computer(21px);
+		}
+		
+
+	}
+}
+
+.ant-layout-sider {
+	@include height-background();
+	flex: 0 0 computer(160px) !important;
+	width: computer(160px) !important;
+	color: #ffffff;
+	transition: all 0s;
+	.user-box {
+		padding: computer(0px) computer(10px) computer(10px);
+		img {
+			width: computer(140px);
+			height: computer(140px);
+		}
+	}
+	.user-icon {
+		height: computer(140px);
+		background-color: #ffffff;
+	}
+	.user-info {
+		background-color: rgba(255, 255, 255, 0.1);
+		box-shadow: -1px 0px 0px 0px rgba(52, 56, 63, 0.05);
+		padding: computer(10px);
+		.classes {
+			color: $color-font-light;
+		}
+	}
+}
+
+.container {
+	//padding-bottom: 20px;
+}
+
+ul.first-ul {
+	&.active {
+		opacity: 1;
+	}
+	opacity: .5;
+	&:hover {
+		opacity: 1;
+	}
+	li {
+		color: white;
+		font-size: computer(16px);
+		cursor: pointer;
+		.title-box {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			em {
+				padding: computer(0px) computer(15px);
+			}
+		}
+		span.title {
+			//border-left: 2px solid transparent;
+			//padding-left: computer(10px);
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			flex-grow: 1;
+			width: 100%;
+			text-align: center;
+			max-width: computer(1440px);
+			overflow: hidden;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+			&:hover {
+				color: $color_main;
+				margin: 0;
+			}
+			.iconfont {
+				&:before {
+					font-size: computer(34px);
+				}
+				display: inline-flex;
+				align-items: center;
+				justify-content: center;
+				margin-right: computer(20px);
+			}
+			&:before {
+				//content: '';
+				//width: computer(2px);
+				//height: computer(20px);
+				//color: transparent;
+				//border-left: 2px solid transparent;
+				//padding-left: computer(10px);
+			}
+		}
+
+		span.active {
+			&:before {
+				border-left: 2px solid $color_main;
+			}
+			color: $color_main;
+		}
+
+		.iconfont:before {
+			font-size: computer(10px);
+		}
+	}
+	.second-ul {
+		li {
+			line-height: computer(30px);
+			font-size: computer(14px);
+			padding-left: computer(20px);
+		}
+	}
+	.list-item {
+		line-height: computer(100px);
+		&:hover {
+			opacity: 1;
+		}
+	}
+}
+
+.right-box {
+	background: #ffffff;
+	overflow: hidden;
+}
+.garden-wrap-bg {
+	position: fixed;
+	width: 100%;
+	height: 95%;
+	top: computer(55px);
+	background: rgba(250, 250, 250, 0);
+	z-index: 1000;
+	.garden-wrap {
+		position: absolute;
+		left: calc(50% - #{computer(140px)});
+		// top: computer(55px);	
+		width: computer(240px);
+		max-height: computer(161px);
+		background-color: #ffffff;
+		box-shadow: 0px computer(2px) computer(8px) 0px 
+			rgba(7, 0, 2, 0.3);
+		border-radius: 6px;
+		border: solid computer(1px) #dddddd;
+		overflow-x: hidden;
+		z-index: 1000;
+	
+		.garden {
+			// width: computer(240px);
+			width: 100%;
+			height: computer(40px);
+			padding: 0 0 0 computer(15px);
+			font-size: computer(14px);
+			font-weight: normal;
+			font-stretch: normal;
+			line-height: computer(40px);
+			letter-spacing: 0px;
+			color: #333333;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+			cursor: pointer;
+			&:hover {
+				background-color: #eeeeee;
+			}
+		}
+		.active {
+			color: #00a0e9;
+		}
+	}
+}

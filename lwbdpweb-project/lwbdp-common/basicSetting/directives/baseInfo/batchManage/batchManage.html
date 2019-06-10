@@ -1,0 +1,37 @@
+<div class="batchManage">
+    <form-upload submit-url="batchManage.uploadTemplateUrl"
+                 format="xls,xlsx" size="{{1024*1024*2}}"
+                 submit-added="batchManage.fileAdded($file)"
+                 before-submit="batchManage.beforeUpload($params)"
+                 single="true"
+                 upload-process="batchManage.uploadSuccess($files)"
+                 submit-success="batchManage.submitSuccess($flow,closeThisDialog)">
+            <div class="header">
+                批量管理{{batchManage.moduleName}}模板
+                <span class="iconfont icon-close del_btn" ng-click="closeThisDialog()"></span>
+            </div>
+
+            <div class="content">
+                <div class="content-text">编辑已有模板：
+                    <span class='content-text-a' ng-click="batchManage.downloadTemplate()">批量编辑模板项.xls</span>
+                </div>
+                <div class="content-upload">
+                    上传模板：
+                    <button class="btn_bd" file-btn>上传</button>
+                    <div class="content-upload-text" ng-if="batchManage.showFileName">
+                        {{batchManage.fileName}}
+                        <span class="iconfont icon_shutdown" ng-show="batchManage.showFileName" file-remove="batchManage.removeFile()"></span>
+                    </div>
+                </div>
+                <span class="warn-red red_color" ng-if="batchManage.showFileErr">此项不能为空</span>
+            </div>
+            <div class="footer">
+                <button class="btn_bd" ng-click="closeThisDialog()">取消</button>
+                <button class="btn_bg" ng-disabled="batchManage.disabled" file-sure="batchManage.submit()">确定</button>
+            </div>
+        </form>
+    </form-upload>
+</div>
+
+
+

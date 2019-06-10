@@ -1,0 +1,267 @@
+.bdp .attach_upload {
+    font-size: 14px;
+}
+
+.bdp .attach_upload .desc {
+    color: #aaa;
+    display: inline-block;
+    height: 100%;
+    font-size: 14px;
+    margin-left: 10px;
+    width: 85%;
+}
+
+.bdp .attach_upload .file_wrapper {
+    height: 140px;
+    width: 140px;
+    position: relative;
+    display: inline-block;
+    margin-right: 20px;
+    vertical-align: middle;
+    margin-top: 10px;
+}
+
+.bdp .attach_upload .mag_top {
+    margin-top: -75px;
+}
+
+.bdp .attach_upload .remark-title {
+    display: block;
+    line-height: normal;
+    margin-top: -12px;
+    color: #aaa;
+}
+
+.bdp .attach_upload .filename {
+    /*position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -24px;*/
+    margin: auto;
+    text-align: center;
+    padding-top: 5px;
+    width: 100%;
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-size: 14px;
+}
+
+.bdp .attach_upload .uploadAttachmentValid {
+    display: none;
+}
+
+.bdp .attach_upload div span.uploadFileMessage {
+    display: none;
+    padding: 0 10px;
+}
+
+.bdp .attach_upload div .uploadAttachmentValid.error + span.uploadFileMessage {
+    display: block;
+}
+
+.bdp .attach_upload .uploading {
+    background: url("./images/default_picture.png") no-repeat center;
+    /*float: left;*/
+    border: 0;
+}
+
+.bdp .attach_upload .add_img_box {
+    display: inline-block;
+    max-width: calc(100% - 263px);
+    width: calc(100% - 263px);
+    overflow: inherit !important;
+    vertical-align: top;
+}
+
+.bdp .attach_upload .w250 {
+    height: 40px;
+    line-height: 40px;
+    display: inline-block;
+}
+.bdp .attach_upload .head_wrapper{
+    padding: 0 !important;
+}
+.bdp .attach_upload .title_wrapper {
+    display: inline-block;
+    height: 40px;
+    width: 66%;
+    position: relative;
+}
+
+.bdp .attach_upload .title_wrapper .btn_bd {
+    margin-top: 5px;
+}
+
+.bdp .attach_upload .lf_name {
+    height: 45px;
+    font-size: 14px;
+}
+
+.bdp .attach_upload .head_wrapper:before,.bdp .attach_upload .head_wrapper:after{
+    content:""; display:table;
+}
+.bdp .attach_upload .head_wrapper:after{
+    content: '';
+    clear: both;
+}
+
+.bdp .attach_upload .process {
+    position: absolute;
+    top: 20px;
+    bottom: 0;
+    right: 0;
+    width: 80%;
+    height: 15px;
+    margin: auto 20px auto 0;
+}
+
+.bdp .attach_upload .percent em {
+    top: -20px;
+    position: absolute
+}
+
+.bdp .attach_upload .process .bg_purple {
+    display: block;
+    height: 100%;
+    background-color: #756aea;
+}
+
+.bdp .attach_upload .percent .remove {
+    width: 25px;
+    height: 25px;
+    background: #756aea;
+    position: absolute;
+    top: -30px;
+    right: 0;
+    border-radius: 50%;
+}
+
+.bdp .attach_upload .file_wrapper:hover .percent .remove.top {
+    display: block;
+}
+
+.bdp .attach_upload .percent .remove.top {
+    top: 0;
+    display: none;
+}
+
+.bdp .attach_upload .uploaded:hover .remove {
+    opacity: .5
+}
+
+.bdp .attach_upload .remove:hover {
+    opacity: .8 !important;
+}
+
+.bdp .attach_upload .remove {
+    position: absolute;
+    right: 5px;
+    top: 3px;
+    cursor: pointer !important;
+    background-image: url("../picView/image/img_delete.png");
+    width: 20px;
+    height: 20px;
+    opacity: 0;
+}
+
+.bdp .attach_upload .remove.opacity {
+    position: absolute;
+    right: -12px;
+    top: -25px;
+    cursor: pointer !important;
+    background-image: url("../picView/image/img_delete.png");
+    width: 20px;
+    height: 20px;
+    opacity: .8
+}
+
+.bdp .attach_upload .uploaded {
+    background: none;
+    height: 165px;
+    margin-right: 10px;
+    display: inline-block;
+    vertical-align: top;
+    cursor: pointer;
+}
+
+.bdp .attach_upload img {
+    /*border: 1px solid #dbe3ee;*/
+}
+
+.bdp .text_right_upload {
+    width: auto;
+    display: inline-block;
+}
+
+.bdp .text_right_upload:hover ~ .float-massage {
+    display: inline-block;
+}
+
+.bdp .float-massage {
+    font-size: 14px;
+    padding: 16px 20px;
+    width: 320px;
+    /* height: 90px; */
+    display: none;
+    position: absolute;
+    top: 50px;
+    left: 0px;
+    border: 1px solid rgb(235, 235, 235);
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0px 2px 6px 0px rgba(7, 0, 2, .2);
+    z-index: 9999;
+    line-height: 1.5;
+    word-break: break-all;
+}
+
+.bdp .reDraft_list.width870 {
+    overflow: inherit;
+}
+
+.bdp .file_type {
+    height: 140px;
+}
+
+.bdp .mgl144 {
+    margin-left: 144px;
+    display: flex;
+}
+.bdp .distance_num{
+    font-size: 0;
+}
+.bdp .distance_num .process em{
+    font-size: 14px;
+}
+.bdp .single-img-wrapper{
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    left: 90px;
+    max-width: 370px;
+    max-height: 150px;
+    border: 1px solid #ccc;
+    overflow-y: scroll;
+    background: #fff;
+    text-align: center;
+}
+.bdp .single-img-wrapper::-webkit-scrollbar-track {
+    border-radius: 10px;
+    background-color: #ffffff;
+}
+.bdp .single-img-wrapper::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+    background-color: #ffffff;
+}
+.bdp .single-img-wrapper::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+.bdp .single-img-wrapper img{ 
+    max-width: 100%;
+}
+
+
+

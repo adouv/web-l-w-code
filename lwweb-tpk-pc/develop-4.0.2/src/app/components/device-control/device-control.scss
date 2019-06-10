@@ -1,0 +1,93 @@
+@import "../../../styles/variable";
+
+.control-box {
+	width: computer(100px);
+	height: computer(100px);
+	border-radius: 50%;
+	background: #ffffff;
+	opacity: .4;
+	position: absolute;
+	bottom: computer(80px);
+	left: computer(50px);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	cursor: pointer;
+	overflow: hidden;
+	&:hover {
+		background: #ffffff;
+		opacity: .6;
+	}
+}
+
+.control-home {
+	width: computer(30px);
+	height: computer(30px);
+	border-radius: 50%;
+	background: rgb(221, 221, 221);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	.iconfont.index-icon-copy {
+		font-size: computer(14px);
+		color: #333333;
+	}
+}
+
+.control-arrow {
+	color: #333333;
+	position: absolute;
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+	&:before {
+		font-size: computer(14px);
+	}
+	&:active {
+		background-color: #e0e0e0;
+		border-color: #dbdbdb;
+	}
+	&.up {
+		top: computer(3px);
+		width: 100%;
+	}
+	&.down {
+		bottom: computer(3px);
+		width: 100%;
+	}
+	&.left {
+		left: computer(3px);
+		height: 100%;
+	}
+	&.right {
+		right: computer(3px);
+		height: 100%;
+	}
+}
+
+.control-zoom {
+	width: auto;
+	height: auto;
+	position: absolute;
+	bottom: computer(80px);
+	right: computer(50px);
+	border-radius: 6px;
+	cursor: pointer;
+	overflow: hidden;
+	opacity: .4;
+	background: #ffffff;
+	&:hover {
+		opacity: .6;
+	}
+	img {
+		padding: computer(10px) computer(16px);
+		float: left;
+		&:nth-of-type(1) {
+			border-right: 1px solid #ccc;
+		}
+		&:active {
+			background-color: #e0e0e0;
+			border-color: #dbdbdb;
+		}
+	}
+}

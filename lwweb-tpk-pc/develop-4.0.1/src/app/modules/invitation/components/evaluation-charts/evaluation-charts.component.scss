@@ -1,0 +1,211 @@
+@import "../../../../../styles/variable";
+.header-wrapper{
+	margin: computer(20px) 0;
+	ul,li{
+		list-style: none;
+	}
+
+	li{
+		display: inline-block;
+		margin-right: computer(40px);
+		color: #666;
+		font-size: computer(14px);
+		cursor: pointer;
+	}
+	li.active{
+		color: #00a0e9;
+		cursor: default;
+	}
+}
+.score-container{
+	.circle-wrapper{
+		display: inline-block;
+		&:first-child{
+			margin-right: computer(20px);
+		}
+		label{
+			vertical-align: top;
+			display: inline-block;
+			line-height: computer(100px);
+			font-size: computer(15px);
+			color: #333;
+		}
+		.circle{
+			display: inline-block;
+			width: computer(100px);
+			height: computer(100px);
+			border-radius: 50%;
+			background-color: rgba(0, 160, 233, 0.1);
+			border: dashed 1px #00a0e9;
+			line-height: computer(100px);
+			text-align: center;
+			font-size: computer(23px);
+			span{
+				background: -webkit-gradient(linear, left top, right top, from(#00d3ec), to(#00a0e9)), -webkit-gradient(linear, left top, left bottom, from(#34383f), to(#34383f));
+				background: linear-gradient(90deg, #00d3ec 0%, #00a0e9 100%), linear-gradient(#34383f, #34383f);
+				-webkit-background-clip: text;
+				color: transparent;
+			}
+		}
+	}
+}
+
+.comments-container{
+	ul,li{
+		list-style: none;
+	}
+
+	li{
+		border-top: 1px solid #eee;
+		padding: computer(20px) 0;
+		box-sizing: border-box;
+		.img-wrapper{
+			width: computer(40px);
+			height: computer(40px);
+			border-radius: 50%;
+			display: inline-block;
+			img{
+				width: 100%;
+				height: 100%;
+				display: block;
+				border-radius: 50%;
+			}
+		}
+		div{
+			font-size: computer(14px);
+			word-break: break-word;
+			color: $color_font-center;
+			margin-bottom: computer(10px);
+			&.rs-wrapper{
+				display: inline-block;
+				margin-left: computer(10px);
+				width: calc(100% - #{computer(60px)});
+				vertical-align: top;
+			}
+			&.comment-wrapper{
+				font-size: computer(14px);
+				color: $color_font-deep;
+			}
+			.fr{
+				float: right;
+				display: inline-block;
+				text-align: left;
+				font-size: computer(12px);
+				color: $color_font-light;
+			}
+		}
+	}
+}
+.no-result{
+	margin-top: computer(70px);
+	text-align: center;
+	color: $color_font-light;
+}
+
+:host{
+	display: block;
+	overflow: hidden;
+	height: 100%;
+}
+
+.chart-scroll-box{
+	overflow: auto;
+	height: calc(100% - #{computer(61px)});
+	padding-bottom: computer(40px);
+	width: 100%;
+	padding-right: computer(20px);
+}
+
+.light-gray-text {
+	color: $color_font-light;
+	font-size: computer(12px);
+}
+
+.subjective-evaluation-item {
+	font-size: computer(14px);
+	color: $color_font-deep;
+	p {
+		padding-bottom: computer(20px);
+		border-bottom: 1px solid $color_border;
+	}
+	&:first-child p {
+		margin-top: 0;
+	}
+}
+
+.evaluation-answer-box {
+	padding-top: computer(20px);
+	padding-bottom: computer(15px);
+	.icon-box {
+		min-width: computer(40px);
+		height: computer(40px);
+		border-radius: 50%;
+		margin-right: computer(10px);
+		line-height: 1;
+		flex-basis: 0;
+	}
+	.user-info-box {
+		color: $color_font-center;
+		margin-bottom: computer(10px);
+		overflow: hidden;
+		span:last-of-type {
+			@extend .light-gray-text;
+			float: right;
+		}
+	}
+	.answered-user-box {
+		padding-top: computer(20px);
+		padding-bottom: computer(10px);
+		line-height: 1;
+	}
+	.answer-btn {
+		display: block;
+		text-align: right;
+		margin-top: computer(15px);
+		margin-bottom: computer(10px);
+		cursor: pointer;
+		line-height: 1;
+	}
+	.submit-btn {
+		float: right;
+		background: #ffffff;
+		border: none;
+		color: $color_main;
+		cursor: pointer;
+		&:focus {
+			outline-color: transparent;
+		}
+		&:disabled {
+			opacity: .5;
+			cursor: not-allowed;
+		}
+	}
+}
+
+.textarea-class {
+	resize: none;
+	font-size: computer(14px);
+	height: computer(120px);
+	border-radius: 0;
+	width: 100%;
+	border: 1px solid #cccccc;
+	padding: computer(5px);
+	&:focus {
+		border: 1px solid $color_main;
+		outline-color: transparent;
+	}
+}
+
+.evaluation-answer-box .textarea-class {
+	height: computer(80px);
+}
+
+.wave-charts{
+	margin-top: -60px;
+	.wave-charts-1{
+		margin: 0 auto;
+	}
+	.margin-left-70{
+		margin-left: computer(70px);
+	}
+}

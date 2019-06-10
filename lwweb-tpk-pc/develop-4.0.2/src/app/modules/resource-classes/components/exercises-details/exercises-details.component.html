@@ -1,0 +1,54 @@
+<div class="exercises-details">
+    <div *ngIf="!answerStatus" class="exercises-details-content exercises-details-flex auto-scroll" #scrollBar>
+        <div flex>
+            <span *ngIf="allData.length!=0" class="number">{{currentData?.index+1}}/{{allData.length}}.</span>
+            <div class="dynamicHtml" [dynamicHtml]="currentData?.exercise?.content?.contentHtml"></div>
+            <!--<p>-->
+            <!--<span>A.非负数 </span>             <span>B.非 正数</span>            <span> C. 正数</span>             <span>D.0</span>-->
+            <!--</p>-->
+        </div>
+    </div>
+    <div *ngIf="answerStatus" class="exercises-details-content  auto-scroll" #scrollBar>
+        <div flex>
+            <span *ngIf="allData.length!=0" class="number">{{currentData?.index+1}}/{{allData.length}}.</span>
+            <div class="dynamicHtml" [dynamicHtml]="currentData?.exercise?.content?.contentHtml"></div>
+            <!--<p>-->
+            <!--<span>A.非负数 </span>             <span>B.非 正数</span>            <span> C. 正数</span>             <span>D.0</span>-->
+            <!--</p>-->
+        </div>
+        <div *ngIf="answerStatus" #answerHtml class="exercises-answer">
+            <div class="right-answer">
+                <div class="title">[ 正确答案 ]</div>
+                <div class="dynamicHtml" [dynamicHtml]="currentData?.exercise?.content?.answer"></div>
+            </div>
+            <div class="answer-analyze">
+                <div class="title">[ 答案解析 ]</div>
+                <div class="dynamicHtml" [dynamicHtml]="currentData?.exercise?.content?.analysis"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer" flex="dir:left box:justify">
+        <div class="exercise-footer-answer">
+            <button *ngIf="type == 0" (click)="showAnswer()" tabindex='-1' nz-button [nzType]="'primary'">
+				<span>参考答案</span>
+			</button>
+        </div>
+        <div class="exercise-footer-handle">
+            <button tabindex='-1' class="close" nz-button (click)="goBack()" [nzType]="'primary'" nzGhost>
+				<span>返回</span>
+			</button>
+            <button *ngIf="type == 0&&allData.length>1" [ngClass]="{'btn-danger-disable':currentData?.index==0}" (click)="prevExercises(currentData?.index, currentData?.index==0)" tabindex='-1' class="close" nz-button [nzType]="'primary'">
+				<span>上一题</span>
+			</button>
+            <button [ngClass]="{'btn-danger-disable':currentData?.index==allData.length-1}" *ngIf="allData.length>1" (click)="nextExercises(currentData?.index, currentData?.index==allData.length-1)" tabindex='-1' nz-button [nzType]="'primary'">
+				<span>下一题</span>
+			</button>
+        </div>
+        <div style="display: none;" class="studentLine">
+            <span>
+				<i class="iconfont icon-student"></i>
+			</span>作答人数 40/50
+        </div>
+    </div>
+</div>

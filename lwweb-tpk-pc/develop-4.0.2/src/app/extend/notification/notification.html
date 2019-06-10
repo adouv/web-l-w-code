@@ -1,0 +1,18 @@
+<div class="tpk-notification" flex="">
+	<div flex-box="0" *ngIf="_type"  flex="main:center cross:center">
+		<span class="iconfont icon-success tpk-icon" *ngIf="_type=='success'"></span>
+		<span class="iconfont icon-cancelIcon tpk-icon" *ngIf="_type=='error'"></span>
+
+	</div>
+	<div flex-box="1">
+		<div class="tpk-notification-header">
+			<span class="tpk-notification-title">{{_title}}</span>
+			<span class="tpk-notification-close"  (click)="closeNotification()"></span>
+		</div>
+		<div class="tpk-notification-content">
+			<ng-template #defaultContent>{{ _content }}</ng-template>
+			<ng-template [ngTemplateOutlet]="_contentTpl || defaultContent"></ng-template>
+			<ng-template #modal_component></ng-template>
+		</div>
+	</div>
+</div>

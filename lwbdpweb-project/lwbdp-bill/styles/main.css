@@ -1,0 +1,1292 @@
+
+.ngdialog {
+    box-sizing: border-box;
+}
+
+.ngdialog *, .ngdialog *:before, .ngdialog *:after {
+    box-sizing: inherit;
+}
+
+.ngdialog {
+    position: fixed;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+    z-index: 10000;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+.ngdialog.ngdialog-disabled-animation, .ngdialog.ngdialog-disabled-animation .ngdialog-overlay, .ngdialog.ngdialog-disabled-animation .ngdialog-content {
+    -webkit-animation: none!important;
+    animation: none!important;
+}
+
+.ngdialog-overlay {
+    position: fixed;
+    background: rgba(0, 0, 0, 0.4);
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    -webkit-backface-visibility: hidden;
+    -webkit-animation: ngdialog-flyin 0.5s;
+    animation: ngdialog-flyin 0.5s;
+}
+
+.ngdialog-no-overlay {
+    pointer-events: none;
+}
+
+.ngdialog.ngdialog-closing .ngdialog-overlay {
+    -webkit-backface-visibility: hidden;
+    -webkit-animation: ngdialog-flyout 0.5s;
+    animation: ngdialog-flyout 0.5s;
+}
+
+.ngdialog-content {
+    background: white;
+    -webkit-backface-visibility: hidden;
+    -webkit-animation: ngdialog-flyin 0.5s;
+    animation: ngdialog-flyin 0.5s;
+    pointer-events: all;
+}
+
+.ngdialog.ngdialog-closing .ngdialog-content {
+    -webkit-backface-visibility: hidden;
+    -webkit-animation: ngdialog-flyout 0.5s;
+    animation: ngdialog-flyout 0.5s;
+}
+
+.ngdialog-close:before {
+    font-family: 'Helvetica', Arial, sans-serif;
+    content: '\00D7';
+    cursor: pointer;
+}
+
+html.ngdialog-open, body.ngdialog-open {
+    overflow: hidden;
+}
+
+.ngdialog.bill-dialog {
+    padding-bottom: 160px;
+    padding-top: 160px;
+}
+
+.ngdialog.bill-dialog.ngdialog-closing .ngdialog-content {
+    -webkit-animation: ngdialog-flyout .5s;
+    animation: ngdialog-flyout .5s;
+}
+
+.ngdialog.bill-dialog .ngdialog-content {
+    animation: ngdialog-flyin .5s;
+    background: #fff;
+    border-radius: 3px;
+    color: #444;
+    font-family: 'Helvetica', sans-serif;
+    font-size: 1.1em;
+    line-height: 1.5em;
+    width: 600px;
+    height: 400px;
+    box-shadow: 0 5px 16px #ccc;
+    position: absolute;
+    top: calc((100% - 400px)/2);
+    left: calc((100% - 600px)/2);
+}
+
+.ngdialog.bill-dialog-big .ngdialog-content {
+    animation: ngdialog-flyin .5s;
+    background: #fff;
+    border-radius: 3px;
+    color: #444;
+    font-family: 'Helvetica', sans-serif;
+    font-size: 1.1em;
+    line-height: 1.5em;
+    width: 1060px;
+    height: 600px;
+    box-shadow: 0 5px 16px #ccc;
+    position: absolute;
+    top: calc((100% - 600px)/2);
+    left: calc((100% - 1060px)/2);
+}
+
+.ngdialog.bill-dialog-big .ngdialog-content p.tit {
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    font-size: 16px;
+    border-bottom: 1px solid #dbe3ee;
+}
+
+.ngdialog.bill-dialog-big .capitalnumTable {
+    padding: 20px;
+}
+
+.ngdialog.bill-dialog-big .num_table {
+    width: 100%;
+    text-align: center;
+}
+
+.ngdialog.bill-dialog-big .num_table tr th {
+    text-align: center;
+    line-height: 40px;
+    background-color: #f8f8f8;
+    border: 1px solid #dbe3ee;
+}
+
+.ngdialog.bill-dialog-big .num_table tr td {
+    border: 1px solid #dbe3ee;
+    line-height: 50px;
+}
+
+.ngdialog.bill-dialog-big .modal-footer {
+    border: 0;
+    position: absolute;
+    bottom: 20px;
+    text-align: center;
+    width: 100%;
+}
+
+.ngdialog.bill-dialog-big .capitalnumBtn {
+    display: inline-block;
+    padding: 6px 27px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    user-select: none;
+    background-image: none;
+    border: 1px solid #0096ff;
+    border-radius: 4px;
+    font-family: "Microsoft YaHei", "Simsun", "arial", "sans-serif";
+    color: #fff;
+    background-color: #0096ff;
+    margin-left: 20px;
+}
+
+.ngdialog.bill-dialog-big .capitalnumBtn:hover {
+    border-style: solid;
+    border-width: 1px;
+    border-color: #0096ff;
+    border-radius: 3px;
+    box-shadow: 0 2px 4px 0 #0096ff;
+}
+
+.ngdialog.bill-dialog .ngdialog-close {
+    border-radius: 5px;
+    cursor: pointer;
+    position: absolute;
+    right: 0;
+    top: -1px;
+    border: 0;
+    outline: 0;
+    background-color: #fff;
+}
+
+.ngdialog.bill-dialog .ngdialog-close:before {
+    background: transparent;
+    border-radius: 3px;
+    color: #bbb;
+    content: '\D7';
+    font-size: 30px;
+    font-weight: 400;
+    height: 40px;
+    line-height: 40px;
+    margin-right: 20px;
+}
+
+.ngdialog.bill-dialog .ngdialog-close:hover:before, .ngdialog.bill-dialog .ngdialog-close:active:before {
+    color: #777;
+}
+
+.ngdialog.bill-dialog .ngdialog-message {
+    margin-bottom: .5em;
+}
+
+.ngdialog.bill-dialog .ngdialog-input {
+    margin-bottom: 1em;
+}
+
+.ngdialog.bill-dialog .ngdialog-input textarea, .ngdialog.bill-dialog .ngdialog-input input[type="text"], .ngdialog.bill-dialog .ngdialog-input input[type="password"], .ngdialog.bill-dialog .ngdialog-input input[type="email"], .ngdialog.bill-dialog .ngdialog-input input[type="url"] {
+    background: #fff;
+    border: 0;
+    border-radius: 3px;
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    margin: 0 0 .25em;
+    min-height: 2.5em;
+    padding: .25em .67em;
+    width: 100%;
+}
+
+.ngdialog.bill-dialog .ngdialog-input textarea:focus, .ngdialog.bill-dialog .ngdialog-input input[type="text"]:focus, .ngdialog.bill-dialog .ngdialog-input input[type="password"]:focus, .ngdialog.bill-dialog .ngdialog-input input[type="email"]:focus, .ngdialog.bill-dialog .ngdialog-input input[type="url"]:focus {
+    box-shadow: inset 0 0 0 2px #8dbdf1;
+    outline: none;
+}
+
+.ngdialog.bill-dialog .ngdialog-buttons {
+    *zoom: 1;
+}
+
+.ngdialog.bill-dialog .ngdialog-buttons:after {
+    content: '';
+    display: table;
+    clear: both;
+}
+
+.ngdialog.bill-dialog .ngdialog-button {
+    border: 0;
+    border-radius: 3px;
+    cursor: pointer;
+    float: right;
+    font-family: inherit;
+    font-size: .8em;
+    letter-spacing: .1em;
+    line-height: 1em;
+    margin: 0 0 0 .5em;
+    padding: .75em 2em;
+    text-transform: uppercase;
+}
+
+.ngdialog.bill-dialog .ngdialog-button:focus {
+    -webkit-animation: ngdialog-pulse 1.1s infinite;
+    animation: ngdialog-pulse 1.1s infinite;
+    outline: none;
+}
+
+@media (max-width: 568px) {
+    .ngdialog.bill-dialog .ngdialog-button:focus {
+        -webkit-animation: none;
+        animation: none;
+    }
+}
+
+.ngdialog.bill-dialog .ngdialog-button.ngdialog-button-primary {
+    background: #3288e6;
+    color: #fff;
+}
+
+.ngdialog.bill-dialog .ngdialog-button.ngdialog-button-secondary {
+    background: #e0e0e0;
+    color: #777;
+}
+
+.bill {
+    display: flex;
+    height: 100%;
+}
+
+.bill select {
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    font-size: 14px;
+    color: #333;
+    padding: 0 30px 0 10px;
+    background: url('../images/drop_down.png') no-repeat 100%;
+    background-size: 29px 29px;
+    border: 1px solid #dbe3ee;
+    box-sizing: border-box;
+    margin: 0 10px 0 0;
+    vertical-align: middle;
+    cursor: pointer;
+}
+
+
+/*内容区*/
+
+.bill .mainContent {
+    width: 100%;
+    background-color: #fff;
+    overflow-x: auto;
+    /*overflow-y: hidden;*/
+    position: relative;
+}
+
+
+/*面包屑导航*/
+
+.bill .breadnav {
+    clear: both;
+    box-sizing: border-box;
+    height: 50px;
+    width: 100%;
+    line-height: 50px;
+    font-size: 16px;
+    font-family: "Microsoft YaHei", "Simsun", "arial", "sans-serif";
+}
+
+.bill .breadnav ul {
+    padding-left: 1.66%
+}
+
+.bill .breadnav ul li {
+    float: left;
+    cursor: pointer;
+    margin-left: 3px;
+    font-size: 14px
+}
+
+.bill .breadnav .secondTitle {
+    color: #333333
+}
+
+.bill .breadnav .secondTitle:hover {
+    color: #0096FF
+}
+
+.bill .breadnav .thirdTitle {
+    cursor: default;
+    color: #999;
+}
+
+
+/*内容块详情*/
+
+.bill .page {
+    width: 100%;
+    padding: 0 20px;
+    box-sizing: border-box;
+    background: #fff;
+}
+
+.bill .page .pagetit {
+    color: #3b3b3b;
+    font-size: 16px;
+    text-align: right;
+}
+
+
+/*添加财务 导航栏*/
+
+.bill .page .income_nav {
+    color: #333333;
+    font-size: 16px;
+    padding: 10px 0;
+    padding-left: 14%;
+    border-bottom: 1px solid #dbe3ee;
+}
+
+.bill .page .income_navTitle {
+    text-align: center;
+}
+
+.bill .page .income_nav>span {
+    text-align: center;
+    padding: 13px 10px;
+    margin: 0 15px;
+}
+
+.bill .page .income_nav_click {
+    color: #0096ff;
+    background-image: url('../images/form_top_line.png');
+    background-size: 100% 3px;
+    background-position: center bottom;
+    background-repeat: no-repeat;
+    text-align: center;
+    padding: 13px 25px;
+}
+
+.bill .page .income_nav span a {
+    color: #333333;
+}
+
+
+/*添加财务 表单*/
+
+.bill .income_title .spacing {
+    color: #333333;
+    padding: 20px 0 10px 0;
+}
+
+.bill .income_title p>span {
+    color: red;
+}
+
+.bill .illustrate {
+    font-size: 12px;
+    color: #999999;
+    margin-top: 10px;
+}
+
+.bill em.blue {
+    color: #0096ff;
+}
+
+.bill em.green {
+    color: #00bb8b;
+}
+
+.bill textarea {
+    width: 100% !important;
+    height: 150px !important;
+    padding-left: 10px;
+    padding-top: 10px;
+    border: 1px solid #dbe3ee;
+}
+
+.bill .checkboxClass {
+    width: 16px;
+    height: 16px;
+    -webkit-appearance: none;
+    vertical-align: text-top;
+    /*-moz-appearance: none; */
+    margin: 0 5px 0 0 !important;
+    cursor: pointer;
+    filter: alpha(opacity=50);
+    background: url('../images/check_box_default.png') no-repeat;
+}
+
+.bill .checkboxClass:checked {
+    background-image: url(../images/check_box_choice.png);
+}
+
+
+/*添加财务 列表*/
+
+.bill .capital_num {
+    padding-top: 10px;
+}
+
+.bill .capital_num .form-group select {
+    width: 25%;
+}
+
+.bill .capital_num .form-group input {
+    width: 41%;
+}
+
+.bill .capital_num .search_btn {
+    right: 2%;
+}
+
+.bill .choosenum {
+    width: 100%;
+    overflow: auto;
+}
+
+.bill .choosenum span {
+    display: inline-block;
+    width: 50%;
+    cursor: pointer;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    height: 40px;
+    line-height: 40px;
+    border: 1px solid #dbe3ee;
+    border-left: 0;
+    text-align: center;
+}
+
+.bill .choosenum span:nth-child(2n) {
+    margin-left: -4px;
+    border-right: 0;
+}
+
+.bill .selected_num span {
+    display: inline-block;
+    width: 48%;
+    padding: 10px 20px 10px 30px;
+    position: relative;
+    margin-top: 10px;
+    background: #f6f6f6;
+    font-size: 12px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.bill .selected_num span:nth-child(2n) {
+    margin-left: 3%;
+}
+
+.bill .choosenum .tableContent {
+    padding: 0
+}
+
+
+/* 冲红*/
+
+.bill .spacing .pad_l {
+    color: #333333
+}
+
+.bill .part_back .illustrate.spe {
+    margin-top: 10px
+}
+
+
+/*内容块列表*/
+
+.bill .list_content {
+    min-width: 1050px;
+    position: absolute !important;
+    width: 100%;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: column;
+}
+
+.bill .form-control {
+    display: inline;
+    border-radius: 0;
+    border: 1px solid #dbe3ee;
+    background-color: #fff !important;
+}
+
+.bill .form-control .btn-default:hover {
+    background: #fff;
+}
+
+.bill .form-control:focus {
+    box-shadow: none;
+    border-color: #0096FF !important
+}
+
+.bill .form-control::-webkit-input-placeholder {
+    color: #999;
+    font-size: 14px;
+}
+
+.bill .form-control::-moz-placeholder {
+    color: #999;
+    font-size: 14px;
+}
+
+.bill .form-control::-ms-placeholder {
+    color: #999;
+    font-size: 14px;
+}
+
+
+/*按钮*/
+
+.bill .setbtn {
+    display: inline-block;
+    padding: 4px 20px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    user-select: none;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    font-family: "Microsoft YaHei", "Simsun", "arial", "sans-serif";
+}
+
+.bill .setbtn:hover {
+    border-style: solid;
+    border-width: 1px;
+    border-color: #0096ff;
+    border-radius: 3px;
+    box-shadow: 0 2px 4px 0 rgba(0, 127, 255, 0.5);
+}
+
+.bill .cancelBtn {
+    color: #0096ff;
+    background-color: #fff;
+    border-color: #0096ff;
+}
+
+.bill .sureBtn {
+    color: #fff;
+    background-color: #0096ff;
+    border-color: #0096ff;
+    margin-left: 20px;
+}
+
+.bill .deleteIcon {
+    position: absolute;
+    right: 10px;
+    top: 6px;
+    cursor: pointer;
+    opacity: 0.5
+}
+
+.bill .deleteIcon:hover {
+    opacity: 1
+}
+
+
+/*无背景有边框按钮*/
+
+.bill span.tableBtn {
+    font-family: "Microsoft YaHei", "Simsun", "arial", "sans-serif";
+    display: inline-block;
+    width: 70px;
+    height: 30px;
+    box-sizing: border-box;
+    font-size: 14px;
+    border: 1px solid #9d9d9d;
+    border-radius: 4px;
+    color: #888888;
+    line-height: 30px;
+    font-weight: normal;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    margin: 0 5px 0 0;
+}
+
+.bill span.tableBtn:hover {
+    box-shadow: 0 2px 4px 0 rgba(0, 127, 255, 0.5)
+}
+
+.bill span.tableBtn.blue {
+    border-color: #0096ff;
+    color: #0096ff;
+    margin-right: 16px;
+}
+
+.bill span.tableBtn.red {
+    border-color: #0096ff;
+    color: #fff;
+    background-color: #0096ff;
+}
+
+
+/*表格*/
+
+.bill .form_top_line {
+    background-image: url('../images/form_top_line.png');
+    height: 5px;
+}
+
+.bill .tableContent {
+    width: 100%;
+    padding: 0 20px;
+}
+
+.bill .tableContent .formTable {
+    width: 100%;
+    table-layout: fixed;
+}
+
+.bill .tableContent .formTable tr {
+    box-sizing: border-box;
+    height: 40px;
+    padding-top: 13px;
+    text-align: center;
+}
+
+.bill .tableContent .formTable tr th {
+    text-align: center;
+    background: #f8f8f8;
+    border: 1px solid #dbe3ee;
+}
+
+.bill .tableContent tbody:nth-child(even) {
+    background-color: #f8f8f8;
+}
+
+.bill .tableContent tr:nth-child(odd) {
+    background-color: #f8f8f8;
+}
+
+.bill .tableContent .formTable tr>:first-child {
+    border-left: 0;
+}
+
+.bill .tableContent .formTable tr>:last-child {
+    border-right: 0;
+}
+
+.bill .formTable td {
+    overflow: hidden;
+}
+
+.bill .tableContent .formTable tr:nth-of-type(1) th:nth-of-type(1), .bill .tableContent .formTable tr:nth-of-type(1) td:nth-of-type(1) {
+    width: 90px;
+}
+
+.bill .tableContent .formTable .tableAverage {
+    width: auto !important;
+}
+
+.bill .projectcapital .tableContent .formTable tr:hover, .bill .capitalNum .tableContent .formTable tr:hover {
+    background: #dbe3ee;
+    cursor: pointer;
+}
+
+.bill .tableContent .formTable tr.first:hover {
+    background: #f8f8f8;
+    color: #333;
+}
+
+.bill .tableContent .formTable tr:nth-of-type(1):hover {
+    background: #f8f8f8;
+    color: #333;
+}
+
+.bill .formTable tr td {
+    border: 1px solid #dbe3ee;
+    padding: 0 10px;
+}
+
+.bill .formTable tr td>.form-control {
+    width: 80%;
+}
+
+.bill .formTable tr:nth-of-type(1) td {
+    font-weight: bold
+}
+
+.bill .formTable tr td>:last-child {
+    padding-right: 0px;
+}
+
+.bill .formTable tr .btns {
+    display: none;
+}
+
+.bill .formTable tr:hover .btns {
+    display: inline-block;
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+    color: #786cec;
+}
+
+.bill .formTable .btntd {
+    width: 110px;
+    overflow: hidden;
+}
+
+.bill .formTable .btns.infobtn {
+    width: 25px;
+    /*background: url(/images/see.png) no-repeat 100%;*/
+}
+
+.bill .formTable .btns.delbtn {
+    /*background: url(/images/del.png) no-repeat 100%;*/
+}
+
+.bill .formTable .btns.editbtn {
+    background: url(../images/edit.png) no-repeat 100%;
+}
+
+.bill .white {
+    color: #fff !important;
+}
+
+.bill .formTable tr td .checkboxSpan {
+    width: 25px;
+    display: inline-block;
+}
+
+
+/*排序*/
+
+.bill .order_type {
+    display: inline-block;
+    width: 20px;
+    height: 19px;
+    background-repeat: no-repeat;
+    vertical-align: middle;
+    margin-top: -4px;
+    background-size: 20px 19px;
+    cursor: pointer;
+    background-image: url(../images/filter_order.png);
+}
+
+.bill .order_type.order_up {
+    background-image: url(../images/ft_or_up.png);
+}
+
+.bill .order_type.order_down {
+    background-image: url(../images/ft_or_down.png);
+}
+
+
+/*二级导航*/
+
+.bill .project_nav {
+    height: 60px;
+    line-height: 60px;
+    background: #e7f2ff;
+    border-bottom: 1px solid #91abca;
+    width: 100%;
+}
+
+.bill .project_nav ul {
+    width: 84.3%;
+    margin: 0 auto;
+    line-height: 59px;
+}
+
+.bill .project_nav ul a {
+    margin-right: 40px;
+    display: inline-block;
+    font-size: 18px;
+    color: #83b4ed;
+    cursor: pointer;
+}
+
+.bill .project_nav ul a.cur {
+    color: #2c5e97;
+}
+
+.bill .project_nav.detail ul a.cur {
+    color: #2c5e97;
+    border-bottom: 1px solid #2c5e97;
+}
+
+.bill .project_nav ul a:hover {
+    text-decoration: none !important;
+}
+
+.bill .addOrbatch {
+    height: 30px;
+}
+
+.bill .addOrbatch .sureBtn {
+    padding: 4px 27px;
+}
+
+
+/*上传进度首页展示*/
+
+.bill .uploadShow {
+    height: 30px;
+    line-height: 30px;
+    color: #fff;
+    background: #83b4ed;
+    text-indent: 28px;
+    cursor: pointer;
+}
+
+.bill .red {
+    color: #ff0000;
+}
+.bill .header_box .header_user,.logistics .header_box .header_user{
+    display: none;
+}
+.bill .hblue {
+    color: #2c5e97;
+}
+
+.bill .black {
+    color: #333333;
+}
+
+
+/*灰色小X*/
+
+.bill .graycross {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    margin-top: -9px;
+    background: url(/images/x.png) no-repeat;
+    vertical-align: middle;
+    right: 10px;
+}
+
+
+/*模块首页左侧筛选选项*/
+
+.bill .left .typelist {
+    clear: both;
+}
+
+.bill .left .typelist .typebox {
+    display: none;
+}
+
+.bill .left .typelist .typebox p {
+    line-height: 40px;
+    height: 40px;
+    color: #333;
+    border-bottom: 1px #4c7db6 dashed;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    position: relative;
+}
+
+.bill .left .typelist .typebox p.cur {
+    background: #f6f6f6;
+}
+
+.bill .left .typelist li {
+    line-height: 40px;
+    border-bottom: 1px #4c7db6 dashed;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.bill .ztree li span.button.noline_open, .bill .ztree li span.button.noline_close, .bill .left .typelist li .caret {
+    width: 10px !important;
+    height: 11px !important;
+    border: none !important;
+}
+
+.bill .left .typelist .up .caret, .bill .ztree li span.button.noline_open {
+    background-image: url(../images/down.png);
+}
+
+.bill .left .typelist li:hover {
+    background: #f6f6f6;
+}
+
+.bill .left .typelist li.cur {
+    color: #4c7db6;
+    background: #f6f6f6;
+}
+
+.bill .left .typelist li .caretbox {
+    display: inline-block;
+    height: 41px;
+    width: 30px;
+    background: #fff;
+    vertical-align: middle;
+    margin-top: -2px;
+    text-align: center;
+}
+
+.bill .left .typelist p .caretbox {
+    display: inline-block;
+    height: 38px;
+    width: 30px;
+    background: #fff;
+    vertical-align: middle;
+    margin-top: -4px;
+}
+
+.bill .left .typelist .cross {
+    display: none;
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+    position: absolute;
+    right: 10%;
+    bottom: 12px;
+    background: url(/images/x.png) no-repeat;
+    vertical-align: middle;
+}
+
+.bill .left .typelist li.cur .cross, .left .typelist p.cur .cross {
+    display: inline-block;
+}
+
+
+/*底部按钮容器*/
+
+.bill .btnbox {
+    padding: 60px 0 70px 0;
+    text-align: center;
+}
+
+.bill .tables ul:hover {
+    background: #f6f6f6;
+    cursor: pointer;
+}
+
+.bill .table_white ul:hover {
+    background: #f6f6f6;
+    cursor: pointer;
+}
+
+
+/*ZTREE*/
+
+.bill .ztree li span.button.chk.radio_false_full, .bill .ztree li span.button.chk.radio_false_full_focus {
+    width: 14px;
+    height: 14px;
+    background: url(../images/checkbox.png);
+    background-size: 100%;
+}
+
+.bill .ztree li span.button.chk.radio_true_full_focus, .bill .ztree li span.button.chk.radio_true_full {
+    width: 14px;
+    height: 14px;
+    background: url(../images/checkbox2.png);
+    background-size: 100%;
+}
+
+.bill .ztree li {
+    margin-top: 10px;
+}
+
+.bill .ztree li span {
+    color: #333333;
+    font-size: 14px !important;
+    font-family: 'microsoft yahei',PingFangSC-Light,'helvetica neue','hiragino sans gb',arial,'microsoft yahei ui',simsun,sans-serif !important;
+}
+
+
+/*侧边*/
+
+.bill .side-left {
+    width: 150px;
+    height: 100%;
+    background-color: #fff;
+    border-right: 1px solid #dbe3ee;
+    min-width: 150px;
+}
+
+.bill .mainListIcon {
+    height: 40px;
+    background-color: #f8f8f8;
+    line-height: 40px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.bill .mainListIcon span {
+    color: #b1b0b0;
+    font-size: 16px;
+}
+
+.bill .secondList {
+    line-height: 40px;
+    text-align: center;
+    cursor: pointer;
+    display: block;
+    position: relative;
+}
+
+.bill .secondList:hover {
+    background-color: #eee
+}
+
+.bill .secondList span.billiconfont {
+    font-size: 16px
+}
+
+.bill .secondList.active {
+    background-color: #0096ff;
+    color: #fff
+}
+
+.bill .secondList.active span {
+    color: #fff
+}
+
+.bill .secondList span {
+    color: #333333;
+    margin-right: 10px;
+    vertical-align: middle
+}
+
+.bill .list_content, .capitalContent {
+    /*float: right; */
+    width: 100%;
+    border: 0;
+    padding: 0 20px;
+}
+
+
+/*侧边折叠*/
+
+.bill .isfoldSide {
+    width: 50px;
+    min-width: 50px;
+}
+
+.bill .isfoldSide .secondList span {
+    margin-right: 0
+}
+
+.bill .font_MY {
+    font-family: "Microsoft YaHei", "Simsun", "arial", "sans-serif";
+}
+
+.bill .posr {
+    position: relative
+}
+
+.bill .layui-layer-dialog .layui-layer-content .layui-layer-ico {
+    height: 31px !important;
+}
+
+.bill .modal-backdrop {
+    background: #91b9e8 !important;
+}
+
+.bill .modal-content {
+    border-radius: 0;
+    box-shadow: none;
+}
+
+.bill .radioClass {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    border: 0;
+    margin: -2px 0px 0 0 !important;
+    background: url('../images/radio_box_default.png') no-repeat;
+    -webkit-background-size: 18px;
+    background-size: 18px;
+    background-color: transparent;
+    -webkit-appearance: none;
+    vertical-align: middle;
+}
+
+.bill .radioClass:checked {
+    background-image: url('../images/radio_box_choice.png');
+}
+
+.bill .radioClass:focus {
+    box-shadow: none !important;
+}
+
+
+/*滚动条*/
+
+.bill .mainContent::-webkit-scrollbar-track {
+    border-radius: 10px;
+    background-color: #ffffff;
+}
+
+.bill .mainContent::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+    background-color: #ffffff;
+}
+
+.bill .mainContent::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.bill::-webkit-scrollbar-track {
+    border-radius: 10px;
+    background-color: #ffffff;
+}
+
+.bill::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+    background-color: #ffffff;
+}
+
+.bill::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+
+/*侧边鼠标移上去出现title*/
+
+.bill .billhover_title {
+    position: absolute;
+    left: 62px;
+    top: 0;
+    padding: 0 14px;
+    height: 40px;
+    line-height: 40px;
+    border: 1px solid #dbe3ee;
+    background: #fff;
+    z-index: 1000;
+    white-space: nowrap;
+    visibility: hidden;
+    font-size: 14px;
+    color: #333;
+}
+
+.bill .billhorn_btn {
+    position: absolute;
+    left: -8px;
+    top: 50%;
+    margin-top: -6px;
+    width: 8px;
+    height: 12px;
+    z-index: 100;
+    background: url('../images/horn_btn.png') no-repeat;
+}
+
+.bill .secondList:hover .billhover_title {
+    visibility: visible;
+}
+
+
+/* 表格出现滚动条 */
+
+.bill .billTable_absolute {
+    position: absolute;
+    left: 0px;
+    right: 0;
+    overflow-y: auto;
+    padding: 0 20px;
+    margin-top: 20px;
+    top: 57px;
+    bottom: 0;
+    padding-bottom: 80px;
+}
+
+.bill .billTable_absolute::-webkit-scrollbar-track {
+    border-radius: 10   px;
+    background-color: #ffffff;
+}
+
+.bill .billTable_absolute::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+    background-color: #ffffff;
+}
+
+.bill .billTable_absolute::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+.bill #selectGarden,.bill #replyDate,.bill #recoveryDate{
+    cursor: pointer;
+}
+.bill .curpoint{
+    cursor: pointer;
+}
+
+/* input新样式 */
+
+.bill .content_txBar {
+    display: inline-block;
+    vertical-align: middle;
+    position: relative;
+    border: 1px solid #dbe3ee;
+    width: 180px;
+    height: 30px;
+    line-height: 30px;
+    padding: 0 6px 0 10px;
+    margin-right: 10px;
+}
+.bill .content_txBar:hover{
+    border-color: #0096ff;
+}
+
+.bill .content_txBar input {
+    border: 0 !important;
+    width: 82% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    height: 100% !important;
+    vertical-align: top !important;
+}
+
+.bill .content_txBar .icon_shutdown {
+    color: rgba(120, 108, 236, .5);
+    cursor: pointer;
+    vertical-align: middle;
+    float: right;
+}
+.bill .content_txBar .icon_shutdown:hover{
+    color: rgba(120, 108, 236,1);
+}

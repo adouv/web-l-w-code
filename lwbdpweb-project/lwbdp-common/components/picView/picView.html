@@ -1,0 +1,40 @@
+<div style="vertical-align:top" class="{{divStyle}}">
+    <!--支持小图预览-->
+    <div ng-if="!sp" class="picView img_box {{classValue}}" ng-click="showFileView()">
+        <img class="bd_col99" ng-if="img && (!hideFile || hideFile!=='true')" ng-class="{true:'picViewBigHeight',false:'picViewSmallHeight'}[picViewImgStyle]"
+            ng-src="{{fileSrc}}" alt="">
+        <div ng-if="!img" class="file-{{ext}}"></div>
+        <span ng-if="edit"  ng-click="deleteFile($event)" class="file_closeBtn file_delBtn curr"></span>
+        <!--ng-if="hideName!=='true'"-->
+        <span class="files_name"  title="{{fileName}}">{{fileName| processFileName:9}}</span>
+    </div>
+    <!--不支持小图预览-->
+    <p ng-if="sp" ng-click="showFileView()" class="curr">{{ fileName }}</p>
+    <div class="filePreview" id="filePreview" ng-if="isOpen">
+        <div id="fullpage">
+            <div class="file_tit">
+                <span class="spac">查看文件</span>
+                <span class="iconfont icon-close view_icon" title="关闭" ng-click="closeFileView()"></span>
+                <!--<span class="iconfont icon-maximize view_icon" title="{{isFullPage?'退出全屏':'全屏'}}" ng-click="showFullScreen()"></span>-->
+            </div>
+            <!-- 图片 -->
+            <div ng-if="img" class="filePic overflow_box_sml ">
+                <div class="file_showPic overflow_box_sml ">
+                    <img ng-src="{{fileSrc}}" alt="" class="{{minWidthHeightPic}}" id="showImg">
+                </div>
+            </div>
+            <!--office-->
+            <div ng-if="office" class="filePic overflow_box_sml office" id="webOffice">
+                <web-office path="{{filePath}}"></web-office>
+                <p id="officeMask"></p>
+                <p id="officeMask2"></p>
+            </div>
+            <!--other-->
+            <div ng-if="other" class="filePic overflow_box_sml ">
+                <div class="file_showPic overflow_box_sml ">
+                    <img alt="" class="minWidthHeightPic">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

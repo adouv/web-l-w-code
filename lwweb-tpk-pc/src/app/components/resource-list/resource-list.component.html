@@ -1,0 +1,13 @@
+<main>
+    <section table-center *ngIf="resourceList.length > 0" class="section-list">
+        <div class="resource-item-padding" *ngFor="let item of resourceList;let i = index;" (dblclick)="openImg(item)">
+            <div class="resource-item">
+                <img src="{{item.name | filetype}}" alt="">
+                <p title="{{item.name}}">{{item.name}}</p>
+                <span *ngIf="showDownload" class="iconfont icon-download" (click)="download(item)"></span>
+                <span *ngIf="showDeleteBtn" class="iconfont icon-del" (click)="delete(item)"></span>
+            </div>
+        </div>
+    </section>
+    <elliptical-page *ngIf="!resourceList || resourceList.length == 0" imgName="no-courseware.png" [title]="ellipticalTitle"></elliptical-page>
+</main>

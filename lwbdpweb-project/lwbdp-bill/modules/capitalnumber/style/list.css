@@ -1,0 +1,48 @@
+.capitalNum{  overflow: hidden;    min-width: 1200px;     position: absolute;
+    width: 100%;
+    top: 0;
+    bottom: 0; }
+.capitalNum .capitalContent{min-height: 810px;}
+.capitalNum .capitalContent .tableContent .blue:hover a{border-bottom: 1px solid #0096FF;color: #0096FF}
+.capitalNum .search{  /*padding:0 20px;*/height: 105px;  }
+.capitalNum .search .condition{  height: 60px;  padding-top:20px;position: relative;  }
+.capitalNum .search .condition  .choose_garden .caret{  position: absolute;right: 12px;top:15px;color:#4370b9;  }
+.capitalNum .search .condition .color{color:#b5d0d0;padding:0 7px;}
+.capitalNum .search .condition .form-control{  width: 80px;line-height: 30px;border: 1px solid #dbe3ee;margin: 0 5px;  }
+.capitalNum .search .condition #py_time{width: 160px;cursor: pointer;}
+.capitalNum .search .condition  .choose_garden{ width: 160px; border: 1px solid #dbe3ee;border-radius: 0px;position: relative;margin-left: 0; cursor: pointer;}
+.capitalNum .search .condition .form-control.long{width: 19%;padding:0 10px;}
+@media screen and (max-width: 1240px){
+    .capitalNum .search .condition #py_time{width: 105px}
+    .capitalNum .search .condition .form-control.long{width: 105px}
+    .capitalNum .search .condition  .choose_garden{width: 105px}
+}
+.capitalNum .search .condition .search_btn{  width:30px;cursor: pointer;  background: url(/images/search.png) no-repeat; vertical-align: middle;  }
+.capitalNum .search .condition .searchBtn{  top:2px;right: 14px;  }
+.capitalNum .search .btns{  height: 60px; line-height: 60px;  margin-top: 10px;}
+.capitalNum .breadnav ul>li>a{  color:#fff;  }
+.capitalNum .breadnav ul>li>a:hover{  color:#23527c;  }
+.capitalNum .pageBox{height:90px;line-height: 90px;}
+.capitalNum .pageBoxnum{  width: 100%;line-height: 40px;height: 90px;margin-top: -20px;  font-size: 14px;font-weight: 600;text-align: center;  }
+/*.capitalNum .tableContent .total{  position: absolute;  top: -60px;  left: 114px;  color:#333333;font-size: 14px;margin-top: 15px;line-height: 30px;  margin-bottom: 10px;  }*/
+.capitalNum .tableContent .total{  position: absolute;  top: 44px;  left: 120px;  color:#333333;font-size: 14px;margin-top: 26px;line-height: 30px;  margin-bottom: 10px;  }
+.capitalNum .lwpage{width: 100%;text-align: center;}
+.capitalNum .large_dialog{  height:100%;  }
+.capitalNum .large_dialog .tit{  height:88px;line-height: 88px;font-size: 18px;text-align: center;  }
+.capitalNum .num_table{width: 79%;margin:0 auto;margin-bottom: 30px;border:1px solid #d3d3d3;}
+.capitalNum .num_table tr{  height: 50px;line-height: 50px;  text-align: center;  }
+.capitalNum .num_table .first{line-height: 40px;}
+.capitalNum .num_table .first th{text-align: center;}
+.capitalNum .num_table td,.num_table th{border:1px solid #d3d3d3;}
+.capitalNum .modal-footer .btn{padding:4px 20px;}
+
+.capitalNumInput{overflow: hidden}
+.capitalNumInput .input_form{  width:53%;margin:0px auto;  }
+/*.capitalNumInput .input_form input{font-size: 12px;}*/
+.capitalNumInput .input_form .form_name{  line-height: 35px;height: 35px;margin-top: 13px;font-size: 14px;  }
+.capitalNumInput .input_form .form_name span{color:#ff272e}
+.capitalNumInput .input_form textarea{height: 110px;}
+.capitalNumInput .input_form .discrip{  color:#888888;font-size: 12px;  }
+
+.capitalNumDetail{overflow: hidden}
+.capitalNumDetail .income_nav{  text-align: center;  padding-left: 0 !important;}

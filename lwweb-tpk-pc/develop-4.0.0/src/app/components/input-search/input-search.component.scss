@@ -1,0 +1,53 @@
+@import "../../../styles/variable";
+.input-group-search{
+	width: computer(240px);
+	height: computer(30px);
+	border: 0;
+	padding-left: computer(5px);
+	position: relative;
+	display: inline-block;
+	text-align: center;
+	line-height: computer(30px);
+	input {
+		border: 1px solid $color_border;
+		outline: 0;
+		width: 100%;
+		height: computer(28px);
+		list-style: none;
+		padding-right: computer(30px);
+		padding-left: computer(11px);
+		font-size: computer(12px);
+		&:focus {
+			outline: none;
+			border: 1px solid #00a0e9;
+			-webkit-box-shadow: 0 0 10px #9ecaed;
+			box-shadow: 0 0 10px #9ecaed;
+		}
+		&:hover{
+			border:1px solid #00a0e9;
+		}
+	}
+	input::-webkit-input-placeholder{
+        font-size:computer(14px);
+    }
+	.ant-input-suffix {
+		height: 100%;
+		width: computer(30px);
+		cursor: pointer;
+		position: absolute;
+		color: $color_font-light;
+		top: 50%;
+		right: 0;
+		margin-top: computer(-16px);
+	}
+	.iconfont:before{
+		font-size: computer(16px);
+	}
+	.icon-icon_shutdown{
+		color:$color_main;
+		opacity: 0.5;
+		&:hover{
+			opacity: 1;
+		}
+	}
+}

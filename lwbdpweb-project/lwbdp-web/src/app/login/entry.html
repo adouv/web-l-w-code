@@ -1,0 +1,18 @@
+<div class='login'>
+    <div class="login-header"></div>
+    <div class="login-content">
+        <div class="login-choose-garden">
+            <p>请选择您要进入的园区</p>
+            <div class="login-garden-list">
+                <div class="login-garden" ng-repeat="garden in entry.accountMsg.gardens" ng-click="entry.enterGarden(garden)">
+                    <div class="login-garden-title">{{garden.gardenName}}</div>
+                    <div class="login-garden-name">{{entry.accountMsg.accountName}}</div>
+                    <div class="login-garden-content ell">角色</div>
+                    <div class="login-garden-row">
+                        <span class="bdpIconfont icon-jinruyuanqu"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

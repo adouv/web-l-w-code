@@ -1,0 +1,222 @@
+@import "../../../../../styles/variable";
+@import "../../../../../styles/mixin";
+
+.scale-manage-add::ng-deep{
+	font-size: 14px;
+	width:100%;
+	height: 100%;
+	.ant-input{
+		height: computer(30px) !important;
+	}
+	.header-title{
+		height: computer(50px);
+		line-height: computer(50px);
+		text-align: center;
+		color:$color_font-deep;
+		border-bottom: 1px solid $color_border;
+		font-size: computer(16px);
+		margin-bottom: computer(20px);
+		font-weight: bold;
+	}
+	.breadcrumb {
+		padding-top: 20px;
+	}
+	.title {
+		height: 60px;
+		line-height: 60px;
+		font-size: 16px;
+		text-align: center;
+		border-bottom: 1px solid $color_main;
+		font-weight: bold;
+	}
+	.add-info-list {
+		width: 100%;
+		height: calc(100% - #{computer(120px)});
+	}
+	.add-info-list-content{
+		width: computer(655px);
+		margin: 0 auto computer(50px);
+	}
+	.wrong{
+		color: #ff0000;
+	}
+	.add-info-scale{
+		margin-top: computer(8px);
+	}
+	.add-info {
+		padding: computer(10px) 0 0;
+		.input-tepl {
+			width: computer(500px);
+			font-size: computer(14px);
+			color:$color_font-deep;
+		}
+		.add-li {
+			padding: computer(10px) 0;
+			p{
+				color: #999;
+				margin-left: 6px;
+				line-height: 18px;
+				font-size: computer(12px);
+			}
+			.name {
+				//width: 30%;
+				text-align: left;
+				color:$color_font-light;
+				margin-right: computer(4px);
+				font-size: computer(14px);
+				line-height: computer(30px);
+			}
+			.content {
+				width: 50%;
+				color: $color_font-deep;
+				line-height: 22px;
+			}
+		}
+	}
+	.temp-table-box {
+		width: 100%;
+		.input-temp {
+			border: 0;
+			height: 100%;
+		}
+		.temp-table {
+			width: 100%;
+			border-collapse: collapse;
+			border-top: 1px solid $color_border;
+			border-left: 1px solid $color_border;
+			tr {
+				height: 30px;
+			}
+			td,
+			th {
+				border-bottom: 1px solid $color_border;
+				border-right: 1px solid $color_border;
+				text-align: center;
+			}
+			.td-150 {
+				width: 150px;
+			}
+		}
+		.temp-table-child {
+			width: 100%;
+			border-collapse: collapse;
+		}
+		.no-bd-bottom {
+			border-bottom: 0 !important;
+		}
+		.no-bd-right {
+			border-right: 0 !important;
+		}
+	}
+	.footer-btn {
+		text-align: center;
+		padding: 30px 0;
+		button {
+			margin: 0 10px;
+			width: 100px;
+		}
+	}
+	.upload-input {
+		width: 0;
+		height: 0;
+		display: none;
+	}
+	.progress-bar {
+		width: 200px;
+		height: 10px;
+		position: relative;
+		background: #eeeeee;
+		border-radius: 5px;
+		overflow: hidden;
+	}
+	.percent {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 0;
+		height: 10px;
+		border-radius: 5px;
+		background: $color_main;
+	}
+	.footer{
+		text-align: center;
+		border-top: 1px solid $color_border;
+		padding: computer(10px) 0;
+		position: relative;
+		line-height: computer(30px);
+		background-color: #fff;
+		margin: 0 !important;
+		.close{
+			margin-right: computer(20px);
+		}
+	}
+	.span-maohao{
+		margin: 0 computer(5px);
+	}
+	.list-title{
+		color:$color_main;
+		font-size: computer(16px);
+		margin-bottom: computer(10px);
+	}
+	.answer-input-group-add {
+		height: computer(30px);
+		line-height: computer(30px);
+		margin-left: computer(7px);
+		float: right;
+		text-align: right;
+		.iconfont{
+			cursor: pointer;
+		}
+		.iconfont:before {
+			font-size: computer(32px);
+			color: $color_main;
+		}
+	}
+	.input-group{
+		clear: both;
+		margin-bottom: computer(20px);
+	}
+	.check-box-add{
+		margin-top: computer(-20px);
+		.check-box-add-title{
+			font-size: computer(14px);
+			color:$color_font-deep;
+		}
+		.ant-radio-inner:after{
+			width: 8px;
+			height: 8px;
+		}
+		.ant-radio-inner{
+			width: 16px;
+			height: 16px;
+		}
+	}
+	.select-search{
+		width: computer(120px);
+		height: computer(50px);
+		float: left;
+		margin-right: computer(15px);
+		padding-top: computer(10px);
+	}
+	.btn-span{
+		margin-right: computer(23px);
+		font-size: computer(14px);
+		color:#ff8863;
+		cursor: pointer;
+		margin-left: computer(20px);
+	}
+}
+
+::ng-deep {
+	.lw-tpk-pc .add-info .ant-radio-checked .ant-radio-inner{
+		border-color: $color_main !important;
+	}
+	input.ant-input:focus {
+		box-shadow: none;
+	}
+	
+	
+	.ant-switch-checked{
+		background-color: #00a0e9;
+	}
+}

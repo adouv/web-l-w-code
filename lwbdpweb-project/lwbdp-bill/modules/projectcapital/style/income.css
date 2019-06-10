@@ -1,0 +1,241 @@
+.projectcapitalIncome{overflow: hidden}
+.projectcapitalIncome ul>li>a{  color:#fff;  }
+.projectcapitalIncome ul>li>a:hover{  color:#23527c;  }
+.projectcapitalIncome .page .pagetit{font-size: 18px;font-weight: normal;}
+.projectcapitalIncome .income_nav span{  cursor: pointer;  }
+.projectcapitalIncome .income_nav span strong:first-child{  margin-right: 5px;  }
+.projectcapitalIncome .income_title{  padding:0 12%;  width:100%;  }
+.projectcapitalIncome .income_scroll{  width: 100%;  }
+.projectcapitalIncome .income_scroll img{  position:absolute;  top:-3px;  right:20px;  }
+.projectcapitalIncome .income_searchBox{  position:relative;  }
+.projectcapitalIncome .income_searchBox>input{
+	top:-5px;
+	left:0;
+	width:100%;
+	height:34px;
+	line-height:34px;
+	position:absolute;
+	padding:5px;
+	padding-left:19px;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	border:1px solid #dcdcdc;
+}
+.projectcapitalIncome .income_content{
+	height: 320px;
+	padding-left: 19px;
+	padding-top: 10px;
+	border-top: 1px solid #dcdcdc; 
+	overflow-y: auto ;
+	border:1px solid #dcdcdc;
+	border-top:none;
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+	margin-top: 5px;
+	padding-top: 34px;
+}
+.projectcapitalIncome .income_content p{
+	margin:  0 20px;
+	display: inline-block;
+	font-size: 12px;
+	color: #333;
+	height: 32px;
+	line-height: 32px;
+	width:42%;
+	overflow:hidden;
+	white-space:nowrap;
+	text-overflow:ellipsis;
+	cursor:pointer;
+}
+.projectcapitalIncome .income_content p>span:hover{
+	border-bottom: 1px solid #4c7db6;
+}
+.projectcapitalIncome .income_content p>span>span:nth-of-type(1){
+	color: #333;
+	padding:  0 4px;
+	text-align: center;
+}
+.projectcapitalIncome .income_content p>span>span:nth-of-type(2){
+	color: #194982;
+	/*padding: 0 15px;*/
+	text-align: center;
+}
+.projectcapitalIncome .income_content p>span>span:nth-of-type(3){
+	color: #12ad40;
+	/*padding : 0 4px;*/
+	text-align: center;
+}
+.projectcapitalIncome .income_p{
+	height: 27px;
+	line-height: 27px;
+	font-size: 14px;
+	color: #333;
+	font-weight: 700;
+}
+.projectcapitalIncome .spacing.nor{
+	font-weight: 400;
+}
+.projectcapitalIncome .spacing.nor span{font-weight: 700;}
+.projectcapitalIncome .spacing.nor span.red{color:#ff0000;}
+.projectcapitalIncome .income_p_span{
+	font-size: 13px;
+	color: #333;
+	font-weight: 700;
+}
+.projectcapitalIncome .income_p_span span{
+	display: inline-block;
+	padding: 9px 15px 9px 15px;
+	line-height: 25px;
+	font-weight: normal;
+	margin: 5px 5px 0 0;
+}
+.projectcapitalIncome .income_p_span span .gray{color:#888888;}
+.projectcapitalIncome .income_p_span span .green{color:#12ad40;}
+.projectcapitalIncome .income_p_span span img{
+	display: none;
+	margin-left:15px;
+	cursor: pointer;
+}
+.projectcapitalIncome .income_p_span_click{
+	background: #f6f6f6;
+}
+.projectcapitalIncome .income_p_span_click .income_p_span_img{
+	display: inline-block;
+	margin-top: -3px;
+}
+.projectcapitalIncome .income_sure{
+	margin: 65px auto;
+	text-align: center;
+}
+.projectcapitalIncome .income_div{
+	text-align:center;
+}
+.projectcapitalIncome .pro_footer{
+	display: flex;
+	background: #efefef;
+	height: 250px;
+	border-top: 1px solid #dcdcdc;
+}
+.projectcapitalIncome .pro_footer .pro_footer_l{
+	text-align: center;
+	padding-top:50px ;
+	width: 41%;
+}
+.projectcapitalIncome .pro_footer .pro_footer_l img{
+	height: 60px;
+}
+.projectcapitalIncome .pro_footer .pro_footer_l p{
+	color: #4c7db6;
+	font-weight: 700;
+	font-size: 12px;
+}
+.projectcapitalIncome .pro_footer .pro_footer_r{
+	padding-top: 20px;
+	padding-left: 10%;
+}
+.projectcapitalIncome .pro_footer .pro_footer_r li{
+	font-weight: 700;
+	height: 41px;
+	line-height:41px ;
+	color:  #4c7db6;
+	font-size: 12px;
+	cursor: pointer;
+}
+.projectcapitalIncome .payout_money span{
+	color: red;
+}
+.projectcapitalIncome .payout .payout_collect span{
+	color: #888888;
+}
+.projectcapitalIncome .capnumInput{
+	width:556px;
+	height: 352px;
+	margin: auto;
+}
+.projectcapitalIncome .capnumInput .modal-header{
+	height: 40px;
+}
+.projectcapitalIncome .capnumInput .modal-footer{
+	text-align: center;
+}
+.projectcapitalIncome .capnumInput .modal-body{
+ 	width: 100%;
+	height:255px;
+}
+.projectcapitalIncome .modal-footer .sureBtn{margin-right: 15px;}
+.projectcapitalIncome .capnumInput .shownum{
+	line-height: 40px;
+}
+.projectcapitalIncome .capnumInput .money{
+	padding:5px 0 40px 0;line-height: 20px;
+}
+.projectcapitalIncome .capnumInput .money .green{
+	color:#12ad40;font-weight: 600;
+}
+.projectcapitalIncome .capnumInput .modal-body .num,.capnumInput .numchoose{
+	font-weight: 600;color:#333333;
+}
+.projectcapitalIncome .capnumInput .modal-body .garden{
+	font-weight: 600; color:#888888;
+}
+.projectcapitalIncome .capnumInput .modal-body .money{color:#7a7a7a;font-size: 12px;}
+.projectcapitalIncome .capnumInput  .form-control{
+	width: 240px;
+}
+
+.projectcapitalIncome .normal{font-weight: normal !important;}
+
+.projectcapitalIncome .illustrate.spe{margin-top: 0px;}
+
+.projectcapitalIncome .choose_income .choose_result{padding:9px 20px 9px 120px;margin-bottom: 5px;position: relative;}
+.projectcapitalIncome .choose_income .choose_result .pospan{position: absolute;top:19px;left: 10px;color:#333333}
+.projectcapitalIncome .choose_income .choose_result .res_span{  background: #dbe3ee;  padding: 9px 40px 9px 10px;  display: inline-block;  position: relative;  color: #333333;  }
+.projectcapitalIncome em.del{position: absolute;background: url(../../../images/img_delete.png) no-repeat; width: 16px;height: 16px;right: 10px;top:11px; background-size: 16px;cursor: pointer;}
+.projectcapitalIncome .choose_income .form-group{position: relative;margin: 10px 0}
+.projectcapitalIncome .choose_income .form-group .form-control{width: 15%;margin-right: 10px}
+.projectcapitalIncome .choose_income .table td{border: none;text-align: center;}
+.projectcapitalIncome .choose_income th{background: #e7f2ff;text-align: center;}
+.projectcapitalIncome .choose_income .fl_tit{height: 40px;padding:10px 0; border-bottom: 1px solid #d3d3d3;margin-bottom: 10px;font-weight: 600;}
+.projectcapitalIncome .fl_info{float: left;width: 55%;text-align: center;}
+.projectcapitalIncome .fr_info{float: left;width: 33%;margin-left: 10%;text-align: center;}
+.projectcapitalIncome .fr_info input{width: 80%;}
+.projectcapitalIncome .choose_income .info{height: 50px;line-height: 50px;}
+.projectcapitalIncome .part_back .allocation{padding:10px 0px;}
+.projectcapitalIncome .part_back .allocation span{font-weight: normal;font-size: 12px;color: #999999;}
+.projectcapitalIncome  textarea.form-control{height: 150px;}
+.projectcapitalIncome .pad_l{padding-left:20px; }
+.projectcapitalIncome .choose_income .search_btn{position: absolute;width: 30px;height:31px;background: url(/images/search.png) no-repeat;
+top:7px;right: 15px;}
+
+.projectcapitalIncome .table_white{width: 100%;}
+.projectcapitalIncome .table_white p{background: #e7f2ff;font-size: 14px;font-weight: 600;padding:  10px 0;}
+.projectcapitalIncome .table_white span.text{display: inline-block;max-width: 93%;vertical-align: bottom;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
+.projectcapitalIncome .table_white label{display: block;width: 100%;cursor: pointer;}
+.projectcapitalIncome .table_white p span,.table_white label li{display: inline-block;text-align: center;vertical-align: middle;}
+.projectcapitalIncome .table_white label li{height: 40px;line-height: 40px;}
+.projectcapitalIncome .table_white p span:nth-of-type(1),.table_white label li:nth-of-type(1){
+    width: 8%;
+}
+
+.projectcapitalIncome .table_white p span:nth-of-type(2),.table_white label li:nth-of-type(2){
+    width: 19%;
+}
+.projectcapitalIncome .table_white p span:nth-of-type(3),.table_white label li:nth-of-type(3){
+    width: 50%;
+}
+.projectcapitalIncome .table_white p span:nth-of-type(4),.table_white label li:nth-of-type(4){
+    width: 19%;
+}
+.projectcapitalIncome .text{display: inline-block;max-width: 90%;text-overflow: ellipsis;overflow: hidden;white-space: nowrap;vertical-align: bottom;}
+.projectcapitalIncome .choose_box .info input{height: 32px;line-height: 32px;}
+.projectcapitalIncome .capital_num{padding-top: 10px;}
+.projectcapitalIncome .capital_num .form-group select{width: 25%;}
+.projectcapitalIncome .capital_num .form-group input{width: 41%;}
+.projectcapitalIncome .capital_num .search_btn{right: 2%;}
+
+.projectcapitalIncome .choosenum .hasresult{overflow-x: hidden;overflow-y: auto;max-height: 260px}
+.projectcapitalIncome .hasresult li{border-bottom: 1px solid #dbe3ee;border-right: 1px solid #dbe3ee;line-height: 40px;width: 50%;float: left;background-color: #f8f8f8;}
+.projectcapitalIncome .hasresult li{cursor:pointer;display: inline-block; height: 40px;  width: 50%; line-height: 40px;  color:#494949;  overflow: hidden;  text-overflow: ellipsis;  white-space: nowrap;  padding-left: 10px;  }
+.projectcapitalIncome .hasresult li:nth-child(2n+2){border-right:0;}
+.projectcapitalIncome .hasresult li:nth-child(4n+3){background-color: #fff;}
+.projectcapitalIncome .hasresult li:nth-child(4n+4){background-color: #fff;}

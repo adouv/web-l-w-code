@@ -1,0 +1,107 @@
+<div id="select-project" class="selectbox" ng-controller="selectBoxctrl" ng-switch="selectType">
+    <!--项目-->
+    <div class="getType" ng-switch-when="project">
+        <div class="select_condition form-group">
+            <select ng-model="condition.gardenId"  class="form-control" style="width: 18%;">
+                <option value="">选择园区</option>
+                <option ng-repeat="data in gardens" value="{{data.id}}">{{data.name}}</option>
+            </select>
+            <select ng-model="condition.projectTypeId" class="form-control" style="width: 22%;">
+                <option value="">选择项目大类</option>
+                <option ng-repeat="data in projectTypeList" value="{{data.id}}">{{data.name}}</option>
+            </select>
+            <select ng-model="condition.projectItemTypeId" class="form-control" style="width: 26%;">
+                <option value="">选择项目/工程类别</option>
+                <option ng-repeat="data in projectItemTypeList" value="{{data.id}}">{{data.name}}</option>
+            </select>
+            <span style="display: inline-block;width: 29%;position: relative;">
+            <input type="text" class="form-control" placeholder="请输入项目名称关键字" ng-model="condition.keywords">
+            <span class="searchBtn setbtn cancelBtn" ng-click="doSearch.searchProject()">查询</span>
+        </span>
+        </div>
+        <div class="selected single">
+            已选中项目: <span ng-if="returnValue.id">{{returnValue.name}} <i ng-click="setProject.delAll()"></i></span>
+        </div>
+        <div class="resultbox">
+            <div class="hasresult" ng-if="result.length>0">
+                <ul>
+                    <li ng-repeat="data in result">
+                        <input class="radioClass" name ="choose"  type="radio" id="pro{{$index}}" ng-click="setProject.singleChoose(data)">
+                        <label for="pro{{$index}}" title="{{data.name}}">{{data.name}}</label>
+                    </li>
+                </ul>
+            </div>
+            <div class="noresult" ng-if="result.length==0">
+                未找到和您关键词匹配的结果!
+            </div>
+        </div>
+        <div class="returnbox">
+            <span class="setbtn sureBtn" close-select ng-click="saveReturn()">确定</span>
+        </div>
+    </div>
+    <!--园区-->
+    <div class="getType" ng-switch-when="garden">
+        <div class="select_condition form-group">
+            <span style="display: block;width: 96%;margin:0 auto;position: relative;">
+            <input type="text" class="form-control" placeholder="请输入项目名称关键字" ng-model="condition.keywords">
+            <span class="searchBtn" ng-click="doSearch.searchGarden()"></span>
+        </span>
+        </div>
+        <div class="selected single" ng-if="isMulit=='single'">
+            已选中园区: <span ng-if="returnValue.id">{{returnValue.name}} <i ng-click="setProject.delAll()"></i></span>
+        </div>
+        <div class="selected single" ng-if="isMulit!='single'">
+            已选中园区: <span ng-repeat="data in returnValue">{{data.name}} <i ng-click="setGarden.delOne(data)"></i></span>
+        </div>
+        <div class="resultbox">
+            <div class="hasresult" ng-if="gardens.length>0">
+                <ul>
+                    <li ng-if="isMulit=='single'" ng-repeat="data in gardens" ng-if="data.id">
+                        <input class="radioClass" name ="choose"  type="radio" id="gar1{{$index}}" ng-click="setGarden.singleChoose(data)">
+                        <label for="gar{{$index}}">{{data.name}}</label>
+                    </li>
+                    <li ng-if="isMulit!='single'" ng-repeat="data in gardens" ng-if="data.id">
+                        <input class="radioClass" name ="choose"  type="checkbox" id="gar{{$index}}" ng-click="setGarden.MulitChoose(data)">
+                        <label for="gar{{$index}}" title="{{data.name}}">{{data.name}}</label>
+                    </li>
+                </ul>
+            </div>
+            <div class="noresult" ng-if="gardens.length==0">
+                未找到和您关键词匹配的结果!
+            </div>
+        </div>
+        <div class="returnbox">
+            <span class="setbtn sureBtn" ng-click="saveReturn()" close-select>确定</span>
+        </div>
+    </div>
+    <!--建设单位-->
+    <div class="getType" ng-switch-when="default">
+        <div class="select_condition form-group">
+            <span style="display: block;width: 96%;margin:0 auto;position: relative;">
+            <input type="text" class="form-control" placeholder="请输入关键字" ng-model="condition.keywords">
+            <span class="searchBtn" ng-if="selectType=='buildunit'" ng-click="doSearch.searchbuildUnit()"></span>
+            <span class="searchBtn" ng-if="selectType=='capitalnumber'" ng-click="doSearch.searchCapnum()"></span>
+            <span class="searchBtn" ng-if="selectType=='contract'" ng-click="doSearch.searchContract()"></span>
+        </span>
+        </div>
+        <div class="selected single">
+            已选中: <span ng-if="returnValue.id">{{returnValue.name}} <i ng-click="setProject.delAll()"></i></span>
+        </div>
+        <div class="resultbox">
+            <div class="hasresult" ng-if="result.length>0">
+                <ul>
+                    <li ng-repeat="data in gardens" ng-if="data.id">
+                        <input class="radioClass" name ="choose"  type="radio" id="unit{{$index}}" ng-click="setProject.singleChoose(data)">
+                        <label for="unit{{$index}}" title="{{data.name?data.name:data.contractName}}">{{data.name?data.name:data.contractName}}</label>
+                    </li>
+                </ul>
+            </div>
+            <div class="noresult" ng-if="result.length==0">
+                未找到和您关键词匹配的结果!
+            </div>
+        </div>
+        <div class="returnbox">
+            <span class="setbtn sureBtn" ng-click="saveReturn()" close-select>确定</span>
+        </div>
+    </div>
+</div>

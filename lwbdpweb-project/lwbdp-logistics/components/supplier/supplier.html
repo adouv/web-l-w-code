@@ -1,0 +1,16 @@
+<div class="bdp_list_search w5c-form">
+    <div class="dialog-header">
+        供应商选择
+        <span class="iconfont icon-close del_btn dialog-close" ng-click="closeThisDialog()"></span>
+    </div>
+    <div class="choose_box overflow_box_sml">
+        <div class="label_box" ng-repeat="data in supplier.suppliers track by $index">
+            <input name="flatTree" type="radio" id="kind{{$index}}" class="radio_class" ng-click="supplier.chooseId(data.id,data.name)" ng-checked="data.checked">
+            <label for="kind{{$index}}" ng-click="supplier.chooseId(data.id,data.name)">{{data.name}}</label>
+        </div>
+    </div>
+    <div class="dialog-btn">
+        <div class="btn_bd" ng-click="closeThisDialog()">取消</div>
+        <div class="btn_bg" ng-click="supplier.sureSupplier(closeThisDialog)">确定</div>
+    </div>
+</div>

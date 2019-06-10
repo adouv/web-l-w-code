@@ -1,0 +1,78 @@
+<div>
+    <div class="order_detail">
+        <div class="crumb_list flowContent">
+            <a href="javascript:void(0);" ng-repeat="crumb in purchaseDetail.crumbList"
+               ng-click="purchaseDetail.goCrumb(crumb.url)">{{crumb.name}}></a>
+            <span class="gray_color">设备采购项目详情</span>
+        </div>
+        <header class="header" ng-if="purchaseDetail.treeData.length<2">
+            <h1>{{purchaseDetail.apply.projectName}}</h1>
+            <h2 class="gray_color">
+                {{purchaseDetail.apply.applyAccount}}（{{purchaseDetail.apply.projectGarden}}）{{purchaseDetail.apply.createTime|date:'yyyy/MM/dd'}}</h2>
+        </header>
+        <div class="structure_tree" ng-if="purchaseDetail.treeData.length>1">
+            <div class="tree_title tree_item" style="width: auto;">
+                <p>{{purchaseDetail.treeData[0].name}}</p>
+                <span>{{purchaseDetail.apply.applyAccount}}（{{purchaseDetail.apply.projectGarden}}）{{purchaseDetail.apply.createTime|date:'yyyy/MM/dd'}}</span>
+            </div>
+            <div class="tree_line_wrapper">
+                <div class="tree_line"></div>
+                <div class="tree_line"></div>
+            </div>
+            <div class="overflow_box_sm">
+                <div class="tree_wrapper" ng-style="{'width':(purchaseDetail.treeData.length-1)*210+10+'px'}">
+                    <div class="tree_item" ng-class="{'active':purchaseDetail.apply.projectId==tree.id}"
+                         ng-repeat="tree in purchaseDetail.treeData" ng-if="tree.pId"
+                         ng-click="purchaseDetail.goOtherForm(tree)">【{{tree.name}}】{{tree.purchaseMethodName}}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <section class="form_external" ng-transclude=""></section>
+        <section class="repaDisposal_flow">
+            <div class="head_bar">
+                <a href="javascript:void(0);" ng-class="{'active':!isToggle}" ng-click="isToggle=false">项目信息</a>
+                <a href="javascript:void(0);" ng-class="{'active':isToggle}" ng-click="isToggle=true">流程进度结果</a>
+            </div>
+            <div ng-show="!isToggle">
+                <div ng-class="{'content-box':$index!=0}" ng-repeat="stage in purchaseDetail.stage">
+                    <h1 class="head_title">{{stage.name}}</h1>
+                    <div compile-html="stage.template">
+                    </div>
+                </div>
+                <div class="content-btn">
+                    <button class="btn_bg" ng-click="purchaseDetail.goBack()" ng-if="purchaseDetail.isDetail">返回</button>
+                </div>
+            </div>
+            <div ng-show="isToggle">
+                <div class="flow_tip">
+                    <p>当前设备采购申请单流程进度状态 ：<span>进行中</span></p>
+                    <span class="status_tip"><span class="padd_10 bg_green"></span>已完成</span>
+                    <span class="status_tip"><span class="padd_10 bg_gray"></span>未完成</span>
+                    <span class="status_tip"><span class="padd_10 bg_blue"></span>当前代办</span>
+                    <span class="status_tip"><span class="padd_10 bg_yellow"></span>待再次处理</span>
+                    <!--<span class="status_tip"><span class="iconfont icon-done doneBtn"></span>通过</span>-->
+                    <!--<span class="status_tip"><span class="iconfont icon-done undoneBbtn"></span>不通过</span>-->
+                    <!--<span class="status_tip"><span class="auditedBtn"></span>通过且有审核意见</span>-->
+                    <!--<span class="status_tip"><span class="auditedBtn2"></span>未通过且有审核意见</span>-->
+                </div>
+                <div class="flow_info_box">
+                    <div class="flow_info_detail fl" status-position="main_content">
+                     <span ng-repeat="stage in stagePosition|orderBy:'position'"
+                           ng-click="goPosition(stage.position,'main_content','flowContent')"
+                           ng-class="{'green':(purchaseDetail.apply.projectStatus==1||currentStage>stage.stageId||purchaseDetail.apply.projectStatus==2&&currentStage==stage.stageId),
+                           'blue':(purchaseDetail.apply.projectStatus==0&&currentStage==stage.stageId),
+                           'gray':currentStage<stage.stageId}">{{stage.stageName}} ></span>
+                    </div>
+                    <!-- 流程图位置 -->
+                    <div class="flow_chart_box">
+                        <audit-flow orderid='purchaseDetail.projectId' audit="purchaseDetail.auditInfo"></audit-flow>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!--收起-->
+        <div class="stop_step" back-to-top=".main_content"></div>
+    </div>
+</div>

@@ -1,0 +1,13 @@
+.modal-title {font-size: 16px;font-weight: bold}
+
+.modal-body .form-group{position: relative}
+.modal-body .search-group{width: 100%;}
+.modal-body .tpk-btn{padding-left: 20px;padding-right: 20px}
+.modal-body button.icon {border: 0;outline: 0;background: rgba(255,255,255,0);position: absolute;right: 0;top:0;padding: 6px 12px}
+.modal-body .list-header .form-group{border-bottom: 1px solid #ccc;width: 100%}
+.modal-body .form-group #checkAll {margin-right: 5px;}
+.modal-body .form-group label.checkbox {line-height: 28px}
+.modal-body .subject-list .form-inline{line-height: 28px;margin-left: 98px;}
+.modal-body .subject-list .form-inline input.checkboxClass{margin-right: 7px}
+.select-course {position: relative;bottom: 3px}
+.subject-list {height: 200px;overflow-y: auto;padding-top: 7px}

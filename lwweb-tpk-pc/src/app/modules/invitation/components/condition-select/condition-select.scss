@@ -1,0 +1,39 @@
+@import "../../../../../styles/variable";
+
+.condition-select-box {
+	padding: computer(10px) 0;
+	display: flex;
+	p {
+		font-size: computer(14px);
+		color: $color_font-light;
+		flex-shrink: 0;
+		padding-top: computer(3px);
+	}
+
+	nz-select {
+		width: computer(120px);
+		margin-right: computer(10px);
+		margin-bottom: computer(10px);
+		&.ant-select-disabled {
+			opacity: .5;
+		}
+	}
+}
+
+.condition-select-box::ng-deep {
+	.ant-input-lg {
+		background-color: #eeeeee;
+		border: 0;
+		border-radius: computer(20px);
+
+	}
+	.ant-calendar-range-picker-input {
+		font-size: computer(14px);
+		&::placeholder {
+			color: $color_font-deep !important;
+		}
+	}
+}
+
+
+

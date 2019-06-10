@@ -1,0 +1,66 @@
+<div class="video-card video-active">
+	<div class="inl-bl-mid video-item" [style.background]="video?.subjectCode | backgroundImgCss" (click)="onClick()">
+		<div class="video-box" (click)="goDetail(video)">
+			<!-- <img *ngIf="video.subjectCode" src="{{video.subjectCode | courseImg}}" alt="" (click)="goDetail(video)"> -->
+			<!-- <div class="img-box-title">
+				<div (click)="goDetail(video)">
+					<span>授课人：</span>
+					<span class="name">{{video.appraiseeName}}</span>
+				</div>
+				<div (click)="goDetail(video)">
+					<span>发起人：</span>
+					<span class="name">{{video.initiatorName}}</span>
+				</div>
+				<div class="down" (click)="downEvaluationTemplate(video.id)" *ngIf="selectIndex == 1">
+					<span class="iconfont icon-download" title="下载教学评价报告"></span>
+				</div>
+			</div> -->
+
+			<!-- <div class="types">{{video.type==0?'研讨型':'诊断型'}}</div> -->
+			<p class="teacher-name">
+				<img class="to_review" *ngIf="video.status==0" src="../../../../../assets/images/to_review.png" />
+				<img class="evaluation_ongoing" *ngIf="video.status==1" src="../../../../../assets/images/evaluation_ongoing.png" />
+				<img class="have_ratings" *ngIf="video.status==2" src="../../../../../assets/images/have_ratings.png" />
+			</p>
+
+			<div class="video-detail">
+					<div class="video-detail-subjectname">
+						<span>{{ video.subjectName }}</span>
+						 <em class="iconfont xiazai" *ngIf="selectIndex == 1" (click)="downEvaluationTemplate($event,video.id)"></em>
+					</div>
+					<div class="video-detail-teachername">
+						<em class="iconfont pingkehuodong"></em>
+						<div class="video-detail-teachername-info">
+							<span>{{ video.name }}</span>
+							<p>
+								<span>授课人：</span>
+								<span class="name">{{video.appraiseeName}}</span>
+								<span>(&nbsp;{{ video.type==0?'研讨型':'诊断型' }}&nbsp;)</span>
+							</p>
+						</div>
+					</div>
+					<div class="video-detail-data" *ngIf="!video.datetimetext">
+						<span class="video-detail-data-left">有效时间&nbsp;:&nbsp;</span>
+						<div class="video-detail-data-right">
+							<span>{{video.startTime|date:'yyyy/MM/dd'}}&nbsp;~&nbsp;{{ video.endTime|date:'yyyy/MM/dd' }}</span>
+						</div>
+					</div>
+				</div>
+
+		</div>
+		<!-- <div flex="main:justify" class="txt-wrapper text-box" [ngClass]="{'active': actived}">
+			<p class="teacher-name" title="{{video.name}}">
+				{{video.name}}
+			</p>
+			<p class="teacher-name">
+				<img class="to_review" *ngIf="video.status==0" src="../../../../../assets/images/to_review.png" />
+				<img class="evaluation_ongoing" *ngIf="video.status==1" src="../../../../../assets/images/evaluation_ongoing.png" />
+				<img class="have_ratings" *ngIf="video.status==2" src="../../../../../assets/images/have_ratings.png" />
+			</p>
+		</div>
+		<p class="txt-wrapper class-name" flex="cross:left" [ngClass]="{'active': actived}">
+			<i class="fa fa-circle" style="margin-right:5px;" [ngClass]="{'lv': video.stage == 1,'huang':video.stage == 0,'hui':video.stage == 2 }"></i>
+			<span *ngIf="!video.datetimetext">有效时间：{{video.startTime|date:'yyyy/MM/dd'}}~{{video.endTime|date:'yyyy/MM/dd'}}</span>
+		</p> -->
+	</div>
+</div>

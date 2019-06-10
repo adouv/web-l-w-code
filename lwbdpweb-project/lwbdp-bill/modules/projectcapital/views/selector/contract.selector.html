@@ -1,0 +1,25 @@
+<div class="modal-header">
+    <h3 class="modal-title" id="modal-title">项目选择</h3>
+</div>
+<div class="modal-body" id="modal-body">
+    <section class="clear">
+       <input type="text" class="search form-control" placeholder="请输入合同名称..." ng-model="keywords">
+       <button class="icon" ng-click="searchContract()"><i class="glyphicon glyphicon-search"></i></button>
+    </section>
+    已选中合同：
+    <section class="list-header clear">
+        <span ng-if="selectedContract">{{selectedContract.contractName}}</span>
+    </section>
+    合同列表
+    <section class="clear" style="height: 100px">
+      <ul>
+        <li ng-repeat="contract in projectContractList">
+          <input type="radio" id="{{contract.id}}" name="contract"><label for="{{contract.id}}" ng-click="changeSelectedContract(contract)">{{contract.contractName}}</label>
+        </li>
+      </ul>
+    </section>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" type="button" ng-click="ok()">确 定</button>
+    <button class="btn btn-warning" type="button" ng-click="cancle()">取 消</button>
+</div>

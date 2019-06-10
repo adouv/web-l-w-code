@@ -1,0 +1,91 @@
+﻿
+
+/* 嵌套页面部分 */
+.sub_nav{ margin-left: 70px; width: 100%;}
+
+.article{position: absolute; top: 56px; bottom: 0; left: 15px; right: 0; overflow: auto; z-index: 1;/* background: #fff; */}
+
+/* 表单部分 */
+.formItem{ padding: 8px 0; overflow: hidden; position: relative; font-size: 0;}
+.formSpan{ display: inline-block; width: 140px; font-size: 14px; color: #466a84; text-align: right; vertical-align: middle;}
+/*input样式*/
+.inputClass{ width: 14%; height: 28px !important; line-height: 28px !important; border: 1px solid #afbfd3; border-radius: 3px; padding:0 10px; font-size: 13px; color: #466a84; margin:0 6px; vertical-align: middle; font-family:"Microsoft YaHei";}
+.inputClass:focus{ border:1px solid #05a2e8; box-shadow: 0 0 5px rgba(5,162,232,0.3);}
+
+/*清除默认select样式*/
+.selectClass{ margin: 0 5px; width: 15.5%; height: 30px; line-height: 27px; padding:0 22px 0 10px; font-size: 13px; color: #466a84; -webkit-appearance: none; -moz-appearance: none; appearance:none; background:none; background:#fff url(/common/images/select.png) 100% center no-repeat; border: 1px solid #c6d3e4; cursor:pointer; border-radius: 3px; padding-top: -5px\9; padding-right: 0\9; font-family:"Microsoft YaHei"; vertical-align: middle;}
+.selectClass:focus{ border:1px solid #05a2e8; box-shadow: 0 0 5px rgba(5,162,232,0.3);}
+select::-ms-expand { display: none;}
+@media (max-width: 1100px){
+	.selectClass{ margin: 0 2px;}
+}
+@media (max-width: 1100px){
+	.inputClass{ margin: 0 2px;}
+}
+/*清除默认checkbox样式*/
+input[type=checkbox].checkboxClass{ width: 15px; height: 16px;outline: none;border:0; -webkit-appearance: none; cursor: pointer; filter: alpha(opacity=50); background: url(/common/images/check.png) no-repeat; float: left; background-position: 0 1px; margin-top: 5px; border: none; vertical-align: middle;}
+input[type=checkbox]:focus{outline: none;}
+input[type=checkbox].checkboxClass:checked{ background-position: 0 -19px; border: 0;}
+.ordinal{ font-size: 14px; color: #466a84; margin: 4px 0 0 8px; cursor: pointer; overflow: hidden; text-overflow:ellipsis; white-space:nowrap; cursor: pointer; font-weight: normal; vertical-align: middle;}
+.checkbox{ margin:3px 0 0 8px; width: 76%;}
+.check{ margin-right: 20px;}
+
+/*清除默认radio样式*/
+.radioClass{ width: 20px; height: 20px; cursor: pointer; -webkit-appearance: none; filter: alpha(opacity=50); background: url(/common/images/check.png) no-repeat; background-position: 0 -39px; margin-left: 8px; float: left;}
+.radioClass:checked{ width: 20px; height: 20px; border: 0; border:0\9; background-position: 0 -62px;}
+.radio_name{ display: inline-block; font-size: 14px; color: #466a84; overflow: hidden; text-overflow:ellipsis; white-space:nowrap; cursor: pointer; font-family: "Microsoft YaHei"; margin-left: 5px;}
+.radio{ margin: 10px 0; overflow: hidden;}
+.radio-inline{ display: inline-block; vertical-align: middle; overflow: hidden;}
+
+/* textarea 样式 */
+.textareaClass{  width: 64%; height: 100px; border: 1px solid #afbfd3; margin: 0 7px; border-radius: 5px; padding: 10px; font-size: 14px; color: #466a84; font-family: "Microsoft YaHei";}
+
+/* 日期的input */
+.date_input{ width: 135px; height: 28px !important; line-height: 28px; border: 1px solid #afbfd3; border-radius: 5px; padding: 0 20px 0 5px; font-size: 13px; color: #3da0ff; font-family: "Microsoft YaHei"; margin: 0 5px; background: #fff url(/common/images/input_date_bg.png) no-repeat 97% center; vertical-align: middle;}
+.Wdate{ background: #fff url("/common/images/input_date_bg.png") no-repeat scroll 97% center !important;}
+/*清除input[type="file"]默认样式*/
+.uploading{ position: relative; display: inline-block; vertical-align: middle;}
+.upload{ width: 74px; height: 28px; position: absolute; top: 0; left: 15px; z-index: 100; filter: progid:DXImageTransform.Microsoft.Alpha(opacity=0);filter:alpha(opacity=0);-moz-opacity:0;-khtml-opacity: 0; opacity:0; background: none; border: none; cursor: pointer;}
+.uploadBtn{ display: inline-block; width: 74px; height: 28px; line-height: 28px; font-size: 14px; color: #fff; background: #41c1e0; border: 1px solid #41c1e0; border-radius: 5px; margin: 0 15px; cursor: pointer; text-align: center;}
+.inputSpan{ display: inline-block; height: 28px;}
+
+.sureBtn{ display: inline-block; padding: 0px 23px; height: 28px; line-height: 28px; font-size: 14px;color: #fff; background: #328efe; border: 1px solid #328efe; border-radius: 5px; margin: 0 15px; box-shadow: 0 1px 2px rgba(0,0,0,0.3);}
+.sureBtn:hover{ color: #4fc3f7; background: #dbf4fb; border: 1px solid #7dd3f9;}
+.returnBtn{ display: inline-block; padding: 0px 23px; height: 28px; line-height: 28px; font-size: 14px; color: #424242; background: #eceeef; border: 1px solid #c6c9ca; border-radius: 5px; margin: 0 15px; box-shadow: 0 1px 2px rgba(0,0,0,0.3);}
+.returnBtn:hover{ color: #d4d4d4; background: #fff; border: 1px solid #e5e5e5;}
+
+/* 加减按钮 */
+.plus_btn{ display: inline-block; width: 16px; height: 16px; background: url(/common/images/plus_btn.png) no-repeat center; padding: 5px; float: left;}
+.minus_btn{ display: inline-block; width: 16px; height: 16px; background: url(/common/images/minus_btn.png) no-repeat center; padding: 5px; float: left;}
+/*上下按钮*/
+.up_btn{ display: inline-block; width: 16px; height: 16px; background: url(/common/images/topArrow.png) no-repeat center; padding: 5px; }
+.down_btn{ display: inline-block; width: 16px; height: 16px; background: url(/common/images/bottomArrow.png) no-repeat center; padding: 5px;}
+/* on-off开关按钮 */
+.on_btn{ width: 71px; height: 23px; background-image: url(/common/images/off_btn.png); position: relative; top:0; margin:0 auto; cursor: pointer;}
+.on_btn.cur{ background-image: url(/common/images/on_btn.png);}
+.move_btn{ width: 34px; height: 23px; background-image: url(/common/images/white_btn.png); position: absolute; top:1px; left: 1px; cursor: pointer;}
+.move_btn.cur{ left: 35px;}
+
+
+/* 左侧边栏更多 */
+.aside_more{ width: 0; padding: 0; position: absolute; left: 70px; background: #fff;border: 1px solid #dcdcdc;border-bottom:0px; bottom: 3px; display: none;}
+@media(max-width:1300px){
+	.aside_more{ bottom:20px;}
+}
+.more_li{ width: 100%; border-bottom: 1px solid #dcdcdc; position: relative;}
+.aside_more .more_tit{ width: 100%; display: inline-block; height: 30px; line-height: 30px; font-size: 14px !important; color: #466a84 !important; padding: 0;}
+.aside_more a:hover{  background: #1589D7 !important; color: #fff !important;}
+.more_li.last{ border: 0;}
+
+.more_name{ position: absolute; top: 0px; left: 150px; background: #fff; border: 1px solid #22bae6; line-height: 33px; height: 33px; font-size: 14px; color: #22bae6; width: 110px; border-radius: 3px; z-index: 99; display: none;}
+.sanjiao{ position: absolute; top: 11px; left: -8px; width: 8px; height: 12px; background: url(/common/images/sanjiao.png) no-repeat center;}
+
+.unread-num{ display: inline-block; min-width: 18px; height: 18px; border-radius: 50%; position: absolute; top: 0; right: 8px; font-size: 8px; color: #fff; text-align: center; line-height: 18px; background: #ff0000;}
+/*工作日志蓝色对号*/
+.bluedui{
+	width:100%;height:100%;background:rgba(0,0,0,0.5) url(/common/images/workblogdui.png) no-repeat center center;position: absolute;
+	left: 0;top: 0;right: 0;bottom: 0;display:none;
+}
+/*流程控件样式*/
+.orgchart .node{width:200px !important;}
+.orgchart .node .content{  overflow: initial !important;  text-overflow: initial !important;  white-space: initial !important;height:55px !important;}

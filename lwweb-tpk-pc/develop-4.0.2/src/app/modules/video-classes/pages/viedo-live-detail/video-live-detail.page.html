@@ -1,0 +1,56 @@
+<div class="video-container">
+    <div class="app-adress">
+        <nz-breadcrumb [nzSeparator]="'>'">
+            <nz-breadcrumb-item>
+                <a (click)="goVideoIndex()">评</a>
+            </nz-breadcrumb-item>
+            <nz-breadcrumb-item>
+                课堂直播详情
+            </nz-breadcrumb-item>
+        </nz-breadcrumb>
+    </div>
+    <div flex="dir:left box:last" class="video-content">
+        <div flex="dir:top" class="left-container">
+            <video-header [videoDetails]="videoLiveDetails" *ngIf="videoLiveDetails" (changeCamera)="changeCamera($event)"></video-header>
+            <div class="auto-scroll-box">
+                <div flex-box="1">
+                    <div class="video-scroll" flex-box="1" scrollWidth>
+                        <div class="video-wrapper">
+                            <div scaleWidth="16" scaleHeight="9" scaleOrigin="width" class="scaleContainer">
+                                <!-- <video-player *ngIf="source !=null&&(source&&source.length>0&&source[0].pcPlayUrl != null&&!noSource)" [source]="source" [playType]="playType"></video-player> -->
+                                <video-player *ngIf="source !=null&&(source&&source.length>0&&!noSource)" [source]="source" [playType]="playType"></video-player>
+                                <!-- <video-player  [source]="source" [playType]="playType"></video-player> -->
+                                <!-- <video-player [source]="testUrl"></video-player> -->
+
+                                <!-- 2019/04/16 修改去掉暂无摄像头缺省-->
+                                <!-- <div *ngIf="loadComplete&&(!source||source.length==0||noSource)" class="video-elliptical-page" flex="main:center cross:center">
+                                    <elliptical-page title="暂无摄像头" imgName="no-camera.png"></elliptical-page>
+                                </div> -->
+                            </div>
+                            <!--控制器-->
+                            <div *permission="'camera:ptz'">
+                                <device-control *ngIf="source&&(source&&source.pcPlayUrl != null)" [camera]="source"></device-control>
+                            </div>
+                        </div>
+                        <div style="clear:both;"></div>
+                        <!-- <div *ngIf="videoLiveDetails.status != 0 && videoLiveDetails.status != undefined"> -->
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="file-wrapper" [hidden]=" videoLiveDetails.status === undefined">
+            <div class="right-container">
+                <dynamic-tabs [tabsComponents]="tabsComponents" [tabInputs]="tabInputs"></dynamic-tabs>
+            </div>
+            <div class="footer">
+                <!-- <tabs-footer [videoDetails]="videoLiveDetails"></tabs-footer> -->
+                <video-thumbsup [videoDetails]="videoLiveDetails" *ngIf="videoLiveDetails"></video-thumbsup>
+            </div>
+        </div>
+    </div>
+
+    <div class="footers">
+        <button nz-button [nzType]="'primary'" (click)="goVideoIndex()" nzGhost>返回</button>
+    </div>
+</div>

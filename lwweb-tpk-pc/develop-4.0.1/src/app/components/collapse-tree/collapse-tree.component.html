@@ -1,0 +1,12 @@
+<nz-collapseset class="animated fadeIn" nzAccordion [nzBordered]="false" *ngIf="data && data.length > 0">
+	<nz-collapse *ngFor="let panel of data" [ngClass]="{'last-collapse':!panel.children || panel.children.length<=0}"
+				 class="level-{{panel.level}}" [nzActive]="panel.isOpen">
+		<!-- title模板 -->
+		<div id="{{panel.id}}" collapse-title (click)="onNodeSelect($event,panel)"
+			 [ngClass]="{'radio-node-box':selectNodes?.indexOf(panel)>-1}">
+			<span class="ell-box" title="{{panel.name}}">{{panel.name}}</span>
+		</div>
+
+		<collapse-tree [data]="panel.children" [single]="single" [type]="type" (change)="mergeNodes($event)" [clickId]="clickId"></collapse-tree>
+	</nz-collapse>
+</nz-collapseset>

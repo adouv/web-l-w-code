@@ -1,0 +1,16 @@
+/**
+ * mutation-type
+ */
+export default {
+  SET_NAME: 'SET_NAME',
+  SET_AGE: 'SET_AGE',
+  /** 
+   * 菜单类型
+   */
+  SET_SIDEBAR: 'SET_SIDEBAR',
+  SET_WINLIST: 'SET_WINLIST',
+  SET_ON_LIST: 'SET_ON_LIST',
+  SET_CLEAR_ON_LIST:'SET_CLEAR_ON_LIST',
+  SET_DELETE_ON_LIST:'SET_DELETE_ON_LIST',
+  SET_PERSONLIST:'SET_PERSONLIST'
+}

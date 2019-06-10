@@ -1,0 +1,193 @@
+.infoTemplate{
+    padding: 20px 20px 50px 20px;
+    height: 100%;
+    overflow: auto;
+}
+/*滚动条*/
+.infoTemplate::-webkit-scrollbar-track {
+    border-radius: 10px;
+    background-color: #ffffff;
+}
+
+.infoTemplate::-webkit-scrollbar {
+    width: 10px;
+    background-color: #ffffff;
+}
+
+.infoTemplate::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+/*顶部*/
+.infoTemplate .nav-top{
+    text-align: center;
+    font-size: 16px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ebebeb;
+}
+/*下拉框和按钮*/
+.infoTemplate .nav-select-button{
+    margin-top:10px;
+    overflow: hidden;
+}
+.infoTemplate .nav-select{
+    float: left;
+}
+.infoTemplate .nav-button{
+    float: right;
+}
+/*内容*/
+.infoTemplate .content{
+    padding:0 50px;
+}
+.infoTemplate .content-title{
+    margin-top: 50px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ebebeb;
+    text-align: center;
+}
+/*表格*/
+.infoTemplate .content-table-box{
+    width: 100%;
+    overflow: auto;
+}
+.infoTemplate .content-table{
+    width: 100%;
+    margin-top: 50px;
+    overflow-x: auto;
+    border: 1px solid #ebebeb;
+    border-collapse: collapse;
+}
+.infoTemplate .content-table th,.infoTemplate .content-table td{
+    width: 150px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    border: 1px solid #ebebeb;
+    position: relative;
+}
+.infoTemplate .content-table th{
+    color:#0096ff;
+    min-width: 150px;
+}
+/*滚动条*/
+.infoTemplate .content-table-box::-webkit-scrollbar-track {
+    border-radius: 10px;
+    background-color: #ffffff;
+}
+
+.infoTemplate .content-table-box::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+    background-color: #ffffff;
+}
+
+.infoTemplate .content-table-box::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+.infoTemplate .content-table th:hover span{
+    opacity: 1;
+}
+.infoTemplate .content-table-left-arrow{
+    position: absolute;
+    left: 25px;
+    opacity: 0;
+    cursor: pointer;
+}
+.infoTemplate .content-table-right-arrow{
+    position: absolute;
+    right: 25px;
+    opacity: 0;
+    cursor: pointer;
+}
+.infoTemplate .content-table-left-edit{
+    color: #0096ff;
+    position: absolute;
+    right: 13px;
+    top:0px;
+    cursor: pointer;
+    opacity: 0;
+    background: rgba(255,255,255,0.8);
+}
+.infoTemplate .content-table td:hover span{
+    opacity: 1;
+}
+/*不可见工资*/
+.infoTemplate .content-no-see{
+    display: flex;
+    padding: 20px 0;
+    width: 70%;
+    margin: 0 auto;
+}
+.infoTemplate .content-center{
+    width: 200px;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.infoTemplate .content-center div{
+    display: inline-block;
+    text-align: center;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    font-size: 22px;
+    color: #999999;
+    cursor: pointer;
+}
+.infoTemplate .content-left,.infoTemplate .content-right{
+    width:300px;
+    height: 500px;
+    border: 1px solid #ebebeb;
+    border-radius: 5px;
+}
+.infoTemplate .content-no-see-title{
+    height: 40px;
+    line-height: 40px;
+    background-color: #f2f2f2;
+    font-weight: bold;
+    text-align: center;
+}
+.infoTemplate .content-no-see-search{
+    padding: 10px 20px;
+    position: relative;
+}
+.infoTemplate .input_class.content-no-see-input{
+    width: 100%;
+}
+.infoTemplate .content-no-see-icon{
+    position: absolute;
+    top: 15px;
+    right: 30px;
+    color: #999999;
+}
+.infoTemplate .content-no-see-text{
+    padding: 0 20px 10px 20px;
+    overflow: auto;
+    height: 400px;
+}
+.infoTemplate .content-no-see-text::-webkit-scrollbar-track {
+    border-radius: 10px;
+    background-color: #ffffff;
+}
+
+.infoTemplate .content-no-see-text::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+    background-color: #ffffff;
+}
+
+.infoTemplate .content-no-see-text::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+.infoTemplate .content-no-see-text-list{
+    padding: 5px 0;
+    cursor: pointer;
+}
+.infoTemplate .content-table-box .nodata_box{
+    padding: 0;
+}

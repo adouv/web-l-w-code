@@ -1,0 +1,43 @@
+.area-camera.modal-body.modal-upload-main {
+  border-top-right-radius: 6px;
+}
+.area-camera.modal-body.modal-upload-main .delete {
+  width: 33px;
+  height: 33px;
+  background: url("../images/delete-logo_03.png") no-repeat;
+  position: absolute;
+  right: 4px;
+  top: -14px;
+}
+.area-camera.modal-body .content_main.modal-upload {
+  width: 565px;
+  position: relative;
+}
+.area-camera.modal-body .content_main.modal-upload .con_name p {
+  width: 100px;
+  float: left;
+  text-align: right;
+  height: 38px;
+  line-height: 38px;
+  margin: 0;
+}
+.area-camera.modal-body .content_main.modal-upload .con_name:first-child {
+  margin-top:62px;
+}
+.area-camera .win-tab {
+    width: 200px;
+    height: 200px;
+    border: 1px solid #ccc
+}
+.camera-ed.checked-camera{
+    height: 70px;
+    padding: 0 15px;
+}
+.area-camera .radioClass.course-radio{
+    margin: 0;
+}
+.area-camera label{
+    font-weight: normal;
+    display: block;
+    padding-left: 20px;
+}

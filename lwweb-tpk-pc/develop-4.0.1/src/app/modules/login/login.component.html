@@ -1,0 +1,46 @@
+<div class="login">
+	<!-- 登录用户名和密码 -->
+	<div class="login_box" >
+		<div class="logo">
+			<!-- <img src="assets/images/login/login-logo.png" alt=""> -->
+			<img src="assets/images/loginlogin1.png" alt="">
+		</div>
+		<div class="login_in mart30">
+			<div class="login_in_box">
+				<span class='iconfont icon-user'></span>
+				<input type="text" class='login_input' placeholder="用户名" [(ngModel)]="userName" (keypress)='goLogin($event)' />
+			</div>
+			<div class="login_in_box">
+				<span class='iconfont icon-password'></span>
+				<input type="password" class='login_input' placeholder="密码" autocomplete="new-password" [(ngModel)]="passWord" (keypress)='goLogin($event)'/>
+			</div>
+			<div class="register" (click)="login()">
+				<span *ngIf='!isLonging'>登&nbsp;&nbsp;&nbsp;录</span>
+				<svg *ngIf="isLonging" width='40px' height='40px' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"
+					 preserveAspectRatio="xMidYMid" class="uil-balls"><rect x="0" y="0" width="100" height="100" fill="none" class="bk"></rect>
+					<g transform="rotate(0 50 50)">
+						<circle r="5" cx="30" cy="50">
+							<animateTransform attributeName="transform" type="translate" begin="0s" repeatCount="indefinite" dur="1s" values="0 0;29.999999999999996 -17.320508075688775" keyTimes="0;1"/>
+							<animate attributeName="fill" dur="1s" begin="0s" repeatCount="indefinite"  keyTimes="0;1" values="#fefefe;#cec9c9"/>
+						</circle>
+					</g>
+					<g transform="rotate(120 50 50)">
+						<circle r="5" cx="30" cy="50">
+							<animateTransform attributeName="transform" type="translate" begin="0s" repeatCount="indefinite" dur="1s" values="0 0;29.999999999999996 -17.320508075688775" keyTimes="0;1"/>
+							<animate attributeName="fill" dur="1s" begin="0s" repeatCount="indefinite"  keyTimes="0;1" values="#cec9c9;#3c302e"/>
+						</circle>
+					</g>
+					<g transform="rotate(240 50 50)">
+						<circle r="5" cx="30" cy="50">
+							<animateTransform attributeName="transform" type="translate" begin="0s" repeatCount="indefinite" dur="1s" values="0 0;29.999999999999996 -17.320508075688775" keyTimes="0;1"/>
+							<animate attributeName="fill" dur="1s" begin="0s" repeatCount="indefinite"  keyTimes="0;1" values="#3c302e;#fefefe"/>
+						</circle>
+					</g>
+				</svg>
+			</div>
+		</div>
+	</div>
+	<!-- <div class="copyright">
+		<img src="../../../assets/images/login/copyright.png" alt="">
+	</div> -->
+</div>

@@ -1,0 +1,54 @@
+<div class="bdp_list_search declareDialog">
+    <div class="dialog-header">
+        项目列表
+        <span class="iconfont icon-close del_btn dialog-close" ng-click="closeThisDialog()"></span>
+    </div>
+    <div class="dialog-count">
+        <span>共计<em class="blue_color">{{purchaseDeclareDialog.paginationConf.totalItems}}</em>条</span>
+        <button class="btn_bd fr" ng-click="purchaseDeclareDialog.export()">导出</button>
+    </div>
+    <div class="dialog-list">
+        <div class="table_absolute overflow_box">
+            <div class="table_box">
+                <table class="listTable">
+                    <thead>
+                    <th width="50">序号</th>
+                    <th width="200">项目类型</th>
+                    <th width="260">项目名称</th>
+                    <th width="80">项目单位</th>
+                    <th width="100">校内优先级</th>
+                    <th width="90">申报人</th>
+                    <th>资产中心班子会审批结果及意见</th>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="data in purchaseDeclareDialog.datas">
+                            <td>{{$index+1}}</td>
+                            <td>{{data.categoryName}}</td>
+                            <td>{{data.name}}</td>
+                            <td>{{data.gardenName}}</td>
+                            <td>{{data.priorityName}}</td>
+                            <td>{{data.applyAccountName}}</td>
+                            <td ng-if="data.auditResult==null&&data.status==0">待审核;</td>
+                            <td ng-if="data.auditResult==null&&data.status==2"></td>
+                            <td ng-if="data.auditResult!=null">{{data.auditResult==1?'同意;':'不同意；'}}{{data.reason}}{{data.comment?';'+data.comment:''}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!-- 分页 -->
+            <pagination conf="purchaseDeclareDialog.paginationConf" ng-show="purchaseDeclareDialog.datas.length>0"></pagination>
+
+            <!-- 暂无数据、暂无搜索结果-->
+            <div class="nodata_box" ng-if="purchaseDeclareDialog.datas.length ==0">
+                <div class="nodata">
+                    <span></span>
+                    <p>暂无数据</p>
+                </div>
+                <!--<div class="nodata_search">
+                    <span></span>
+                    <p>搜索无结果</p>
+                </div>-->
+            </div>
+        </div>
+    </div>
+</div>

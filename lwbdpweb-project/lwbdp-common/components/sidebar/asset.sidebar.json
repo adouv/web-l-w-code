@@ -1,0 +1,47 @@
+[
+  {
+    "id":"all-5",
+    "name":"全部申请",
+    "url":"/asset/all",
+    "icon":"",
+    "hasPage":true,
+    "pId":"0",
+    "permission":"asset:processConfig:all"
+  },
+  {
+    "id":"setting-5",
+    "name":"基础设置",
+    "url":"",
+    "icon":"",
+    "hasPage":false,
+    "pId":"0",
+    "permission":"asset:basicSetting:dictionary || asset:basicSetting:process || asset:basicSetting:minLifecycle"
+  },
+  {
+    "id":"setting-18",
+    "name":"模块字典",
+    "url":"/asset/settings/dictionary",
+    "icon":"&#xe623;",
+    "hasPage":true,
+    "pId":"setting-5",
+    "permission":"asset:basicSetting:dictionary"
+  },
+  {
+    "id":"setting-19",
+    "name":"审批流程",
+    "url":"/asset/settings/process",
+    "icon":"&#xe624;",
+    "hasPage":true,
+    "pId":"setting-5",
+    "permission":"asset:basicSetting:process"
+  },
+  {
+    "id":"setting-21",
+    "name":"最低年限",
+    "url":"/asset/settings/time",
+    "icon":"&#xe625;",
+    "hasPage":true,
+    "pId":"setting-5",
+    "permission":"asset:basicSetting:minLifecycle"
+  }
+]

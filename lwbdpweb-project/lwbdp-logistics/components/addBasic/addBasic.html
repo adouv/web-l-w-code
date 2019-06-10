@@ -1,0 +1,42 @@
+<div class="bdp_list_search" ng-click="addBasic.clearMsg()">
+    <div class="dialog-header">
+        导入基本信息
+        <span class="iconfont icon-close del_btn dialog-close" ng-click="closeThisDialog()"></span>
+    </div>
+    <form-upload submit-url="addBasic.uploadTemplateUrl"
+                 format="xls,xlsx" size="{{1024*1024*2}}"
+                 submit-added="addBasic.fileAdded($file)"
+                 before-submit="addBasic.beforeUpload($params)"
+                 upload-process="addBasic.uploadSuccess($files)"
+                 submit-success="addBasic.submitSuccess($flow,closeThisDialog)">
+        <div class="auto-box-form">
+            <div class="list-item">
+                <span class="list-item-left">名称:</span>
+                <div class="warn-err-box">
+                    <input type="text" class="input_class" ng-blur="addBasic.validateName(addBasic.name)"  placeholder="50个汉字以内，必填" ng-model="addBasic.name" maxlength="50" ng-class="{'error_red':addBasic.nameErr||addBasic.validName}" ng-click="addBasic.nameErr=false">
+                    <span class="iconfont icon-warn warn-err" ng-if="addBasic.validName" ng-click="addBasic.verify('showErrWarnMsg')"></span>
+                    <span class="right_format" ng-show="addBasic.showErrWarnMsg">该名称系统已存在!</span>
+                </div>
+            </div>
+            <div class="list-item">
+                <span class="list-item-left ver-top">上传文件：</span>
+                <div class="upload-msg list-item-right">
+                    <button class="btn_bd" file-btn>浏览</button>
+                    <span class="mar-left10" ng-if="addBasic.showFileName">{{addBasic.fileName}}</span>
+                    <span class="iconfont icon_shutdown" ng-show="addBasic.showFileName" file-remove="addBasic.removeFile()"></span>
+                </div>
+            </div>
+            <div class="list-item">
+                <span class="list-item-left red_color" ng-if="addBasic.showFileErr">此项不能为空</span>
+            </div>
+            <div>
+                <span class="color_999">*请使用模版文件进行数据导入。</span>
+                <span class="download-temp" ng-click="addBasic.downloadTemplate()">模板文件下载</span>
+            </div>
+        </div>
+        <div class="dialog-btn">
+            <div class="btn_bd" ng-click="closeThisDialog()">取消</div>
+            <div class="btn_bg" file-sure="addBasic.submit()">确定</div>
+        </div>
+    </form-upload>
+</div>

@@ -1,0 +1,29 @@
+<div class="linkContent">
+    <div class="search_box">
+        <p>
+            <input type="text" class="input_class" ng-model="link.listKeywords" ng-change="link.searchList('garden')">
+            <span class="connectIconfont icon-close-circle" ng-click="link.cleanAll('garden')" ng-show="link.listKeywords && link.listKeywords!==''"></span>
+            <span class="connectIconfont icon-client_search" ng-show="!link.listKeywords || link.listKeywords===''"></span>
+        </p>
+    </div>
+    <div class="no_data" ng-show="link.gardenList && link.gardenList.length<1 && !link.listKeywords">
+        暂无数据
+    </div>
+    <div class="search_no_result" ng-show="link.gardenList && link.gardenList.length<1 && link.listKeywords && link.listKeywords!==''">
+        搜索无结果
+    </div>
+    <ul class="link_garden_list overflow_box_sml">
+        <li ng-repeat="item in link.gardenList" ng-right-click="link.rightClick(item.id,item.onTop)" ng-class="{'top':item.onTop}" ng-click="link.enterModule(item,item.connectDetailUrl)">
+            <img ng-src="{{link.filePath+item.ico}}" /> {{item.categoryName}}
+        </li>
+        <div class="operation" id="operation_box" ng-show="link.showMask">
+            <p ng-show="!link.selectedTop" ng-click="link.toTop(true)">置顶</p>
+            <p ng-show="link.selectedTop" ng-click="link.toTop(false)">取消置顶</p>
+            <p ng-click="link.cancelLink()">取消连接</p>
+        </div>
+    </ul>
+
+    <div class="bottom_posa" ng-click="link.showSearch()">
+        <span class="connectIconfont icon-add"></span>
+    </div>
+</div>

@@ -1,0 +1,243 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import "clear";
+@import "mixin";
+@import "coverAntd";
+@import 'subjectBg';
+@import '~@ngx-gallery/core/styles/gallery';
+@import '~@ngx-gallery/core/styles/lightbox';
+@include computer-html-font-size();
+@include font-size();
+@include distance();
+// 清除输入框/下拉框的默认样式
+.clear-default {
+    -moz-appearance: none;
+    -webkit-appearance: none;
+}
+
+// 行内元素对齐
+.inl-bl-mid {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.container {
+    display: flex;
+    > :nth-child(2).ng-star-inserted {
+        flex-grow: 1;
+        width: 100%;
+    }
+}
+
+.right-container {
+    width: computer(388px) !important;
+}
+
+.inl-bl-mid {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.auto-scroll {
+    overflow: auto;
+    @include scroll-bar();
+}
+
+.auto-scroll-sm {
+    overflow: auto;
+    @include scroll-bar(6px);
+}
+
+
+/* .video-js.vjs-fullscreen {
+    width: auto!important;
+    height: auto!important;
+} */
+
+page-video-detail,
+ng-component,
+app-resource-prepare {
+    width: 100%;
+}
+
+.elliptical-page-message {
+    text-align: center;
+    color: $color_font-light;
+    margin-top: computer(80px);
+    font-size: computer(13px);
+}
+
+.video-elliptical-page {
+    width: 100%;
+    min-height: 100%;
+    position: relative;
+    border: 1px solid #46444c;
+    background: #46444c !important;
+    .elliptical-page {
+        margin-top: 0 !important;
+        height: 100%;
+    }
+}
+
+elliptical-page {
+    height: 100%;
+}
+
+input[type="text"],
+textarea {
+    -webkit-appearance: none;
+}
+
+// 图片预览轮播样式
+.image-carousel {
+    background: transparent !important;
+    border: 0 !important;
+    height: 100%;
+    .ui-carousel-header {
+        display: none;
+    }
+    .ui-carousel-viewport,
+    ul,
+    .ui-carousel-item {
+        height: 100%;
+    }
+    .ui-widget-content,
+    .ui-widget-header {
+        border: 0;
+    }
+    .ui-carousel-item {
+        background: transparent;
+        border: 0;
+        overflow: hidden;
+        .ui-grid {
+            width: 100%;
+            height: calc(100% - 40px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-flow: column;
+            img {
+                max-height: 90%;
+                //max-width: 80%;
+            }
+        }
+    }
+}
+
+.lw-tpk-pc .video-js .vjs-big-play-button {
+    opacity: 0;
+}
+
+.col-blue {
+    color: #226cfb;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.font-bold {
+    font-weight: bold;
+}
+
+.ver-top {
+    vertical-align: top;
+}
+
+.select-chaper {
+    width: computer(800px) !important;
+    .ant-modal {
+        width: computer(800px) !important;
+    }
+}
+
+.word-break {
+    word-break: break-word;
+}
+
+.col-orange {
+    color: #fe997b;
+}
+
+.lw-tpk-pc {
+    .layui-laydate-content td.laydate-selected {
+        background-color: #eef6fc;
+        color: #333;
+    }
+    .laydate-selected:hover {
+        background-color: $color_main !important;
+    }
+    .layui-laydate-footer span:hover {
+        color: $color_main;
+    }
+}
+
+// 日期控件
+.date-picker-box {
+    width: computer(240px);
+    color: $color_font-light;
+    font-size: computer(14px);
+    & .date-picker {
+        width: 100%;
+        display: inline-block;
+        padding: 4px 7px;
+        height: 28px;
+        line-height: 1.5;
+        background: #fff none;
+        border: 1px solid #d9d9d9;
+        border-radius: 0;
+        transition: all .3s;
+        outline: none;
+        &:focus {
+            border: 1px solid #226cfb;
+            -webkit-box-shadow: 0 0 10px #9ecaed;
+            box-shadow: 0 0 10px #9ecaed;
+        }
+    }
+    &:after {
+        font-family: "iconfont", serif !important;
+        font-size: computer(16px);
+        font-style: normal;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        content: "\e601";
+        position: absolute;
+        right: computer(7px);
+        top: 0;
+        color: $color_font-light;
+    }
+}
+
+.layui-laydate-range {
+    box-shadow: 0 0 10px rgba(0, 0, 0, .2) !important;
+    .layui-laydate-header {
+        background-color: #fff !important;
+    }
+    .laydate-icon {
+        color: $color_font-light !important;
+        &:hover {
+            color: $color_main !important;
+        }
+    }
+    .laydate-set-ym span {
+        color: $color_font-deep !important;
+        &:hover {
+            color: $color_main !important;
+        }
+    }
+    .layui-laydate-footer,
+    .layui-laydate-content {
+        border: 0 !important;
+    }
+}
+
+.video-js.vjs-fullscreen {
+    width: 100%;
+    height: 100%;
+    padding-top: 56.25%!important;
+}
+
+.btn-disable {
+    cursor: not-allowed !important;
+    opacity: 0.5 !important;
+}

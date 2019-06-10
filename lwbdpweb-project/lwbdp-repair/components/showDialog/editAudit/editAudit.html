@@ -1,0 +1,301 @@
+<div class="basicDialog ui-popup-large repair">
+    <div class="addConfig">
+        <div class="addConfig_tit">
+            查看
+            <span class="iconfont icon-close del_btn" ng-click="cancel()"></span>
+        </div>
+        <div class="exit_content overflow_box">
+            <div class="repairDraft">
+                <!--<form class="w5c-form" w5c-form novalidate w5c-form-validate name="addConfigForm">-->
+                <!--<div class="draft_title">-->
+                <!--<p class="draft_detail">添加项目立项材料</p>-->
+                <!--</div>-->
+                <!-- 表格 -->
+                <div class="addTable_box">
+                    <div class="line_strip"></div>
+                    <table class="itemTable">
+                        <caption>政府采购立项表</caption>
+                        <tbody>
+                        <tr>
+                            <td class="oneTitle">申请日期：<input type="text" class="input_class" id="date"
+                                                             lw-laydate ng-show="repairDisposal.show"
+                                                             value="{{appData.dueDate | date:'yyyy/MM/dd'}}"
+                                                             ng-model="repairDisposal.appData.startDate"
+                                                             name="dueDate" required>
+                                <span ng-show="!repairDisposal.show">{{repairDisposal.appData.startDate}}</span>
+                            </td>
+                            <td>
+                                <span class="word_center">项目编号：</span>
+                                <span ng-show="!repairDisposal.show">{{ repairDisposal.appData.projectNo }}</span>
+                                <input ng-show="repairDisposal.show" type="text" class="input_class"
+                                       ng-model="repairDisposal.appData.projectNo" placeholder="请输入"
+                                       name="projectNo" required>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <table class="itemTable">
+                        <tbody>
+                        <tr>
+                            <td width="38" rowspan="10">预算单位填写</td>
+                            <td colspan="3" ng-show="repairDisposal.garden.gardenName">预算单位全称：{{
+                                repairDisposal.garden.gardenName }}
+                            </td>
+                            <td colspan="3" ng-show="garden.gardenName">预算单位全称：{{ garden.gardenName }}</td>
+                            <td width="110">联系人</td>
+                            <td ng-show="repairDisposal.account">
+                                <span ng-show="!repairDisposal.show">{{ repairDisposal.account.displayName }}</span>
+                                <input ng-show="repairDisposal.show" placeholder="联系人"
+                                       ng-model="repairDisposal.account.displayName" type="text"
+                                       class="input_class w50" name="accountName" required>
+                            </td>
+                            <td width="140">联系电话</td>
+                            <td>
+                                <span ng-show="!repairDisposal.show">{{ repairDisposal.appData.cellphone }}</span>
+                                <input ng-show="repairDisposal.show" ng-model="repairDisposal.appData.cellphone"
+                                       type="text" class="input_class w50" placeholder="请输入手机号" name="cellphone"
+                                       required>
+                                <span ng-show="repairDisposal.show" class="col0096ff"
+                                      ng-click="repairDisposal.togglePhoneStatus()">修改</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">上级主管部门全称：
+                                <span ng-show="!repairDisposal.show">{{ repairDisposal.appData.superiorDepartment }}</span>
+                                <input ng-show="repairDisposal.show" type="text" class="input_class"
+                                       ng-model="repairDisposal.appData.superiorDepartment"
+                                       placeholder="50个汉字以内，必填" name="superiorDepartment" required>
+                            </td>
+                            <td width="110">联系人</td>
+                            <td>
+                                <span ng-show="!repairDisposal.show">{{ repairDisposal.appData.superiorName }}</span>
+                                <input ng-show="repairDisposal.show" type="text" class="input_class"
+                                       ng-model="repairDisposal.appData.superiorName" placeholder="10个汉字以内，必填"
+                                       name="superiorName" required>
+                            </td>
+                            <td width="140">联系电话</td>
+                            <td>
+                                <span ng-show="!repairDisposal.show">{{ repairDisposal.appData.superiorCellphone }}</span>
+                                <input ng-show="repairDisposal.show" type="text"
+                                       ng-model="repairDisposal.appData.superiorCellphone" class="input_class w50"
+                                       placeholder="必填" name="superiorCellphone" required>
+                                <span ng-show="repairDisposal.show" class="col0096ff">修改</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="7">项目名称：
+                                <span ng-show="!repairDisposal.show">{{ repairDisposal.appData.projectName }}</span>
+                                <input ng-show="repairDisposal.show" type="text"
+                                       ng-model="repairDisposal.appData.projectName" class="input_class w50"
+                                       placeholder="必填" name="projectName" required>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width:60px !important" rowspan="4">资金来源情况
+                            </td>
+                            <td colspan="6">预算批复文号：<span class="btn_bd"
+                                                         ng-click="repairDisposal.chooseNumber()">选择</span></td>
+                        </tr>
+                        <tr>
+                            <td colspan="4" align="center">财政性资金</td>
+                            <td align="center">非财政性资金（元）</td>
+                            <td align="center">总计（元）</td>
+                        </tr>
+                        <tr>
+                            <td width="180" align="center">小计（元）</td>
+                            <td width="180" align="center">一般公共预算资金（元）</td>
+                            <td width="180" align="center">政府性基金预算（元）</td>
+                            <td width="180" align="center">其他资金（元）</td>
+                            <td align="center" rowspan="2">
+                                <span ng-show="!repairDisposal.show">{{ repairDisposal.appData.noAccountTotal }}</span>
+                                <input ng-blur="repairDisposal.computeTotal()" ng-show="repairDisposal.show"
+                                       type="text" ng-model="repairDisposal.appData.noAccountTotal"
+                                       class="input_class w50"
+                                       placeholder="必填" name="noAccountTotal" required>
+                            </td>
+                            <td align="center" rowspan="2">
+                                <span ng-show="!repairDisposal.show">{{ repairDisposal.appData.AllmoneyTotal }}</span>
+                                <input ng-show="repairDisposal.show" type="text"
+                                       ng-model="repairDisposal.appData.AllmoneyTotal" class="input_class w50"
+                                       placeholder="必填" name="AllmoneyTotal" required>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="center">
+                                <span ng-show="!repairDisposal.show">{{ repairDisposal.appData.moneyTotal }}</span>
+                                <input ng-show="repairDisposal.show" type="text"
+                                       ng-model="repairDisposal.appData.moneyTotal" class="input_class w50"
+                                       placeholder="必填" name="moneyTotal" required>
+                            </td>
+                            <td align="center">
+                                <span ng-show="!repairDisposal.show">{{ repairDisposal.appData.accountPublic }}</span>
+                                <input ng-blur="repairDisposal.computeTotal()" ng-show="repairDisposal.show"
+                                       type="text" ng-model="repairDisposal.appData.accountPublic"
+                                       class="input_class w50"
+                                       placeholder="必填" name="accountPublic" required>
+                            </td>
+                            <td align="center">
+                                <span ng-show="!repairDisposal.show">{{ repairDisposal.appData.accountGovernment }}</span>
+                                <input ng-blur="repairDisposal.computeTotal()" ng-show="repairDisposal.show"
+                                       type="text" ng-model="repairDisposal.appData.accountGovernment"
+                                       class="input_class w50"
+                                       placeholder="必填" name="accountGovernment" required>
+                            </td>
+                            <td align="center">
+                                <span ng-show="!repairDisposal.show">{{ repairDisposal.appData.accountOther }}</span>
+                                <input ng-blur="repairDisposal.computeTotal()" ng-show="repairDisposal.show"
+                                       type="text" ng-model="repairDisposal.appData.accountOther"
+                                       class="input_class w50" placeholder="必填" name="accountOther" required>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="7">拟委托代理采购机构名称（必填）：
+                                <span ng-show="!repairDisposal.show">{{ repairDisposal.appData.delegationOrgan }}</span>
+                                <input ng-show="repairDisposal.show" type="text"
+                                       ng-model="repairDisposal.appData.delegationOrgan" class="input_class w50"
+                                       placeholder="50个汉字以内，必填" name="delegationOrgan" required>
+                            </td>
+                        </tr>
+                        <tr class="tab_height90">
+                            <td>项目简介</td>
+                            <td colspan="6">
+                                <span ng-show="!repairDisposal.show">{{ repairDisposal.appData.projectIntroduction }}</span>
+                                <textarea ng-show="repairDisposal.show" class="textarea_h100"
+                                          placeholder="500个汉字以内，必填"
+                                          ng-model="repairDisposal.appData. projectIntroduction"
+                                          name="projectIntroduction" required></textarea>
+                            </td>
+                        </tr>
+                        <tr class="tab_height150">
+                            <td colspan="4">
+                                <span class="tab_top">预算单位意见：</span>
+                                <span class="textarea_h70">{{ repairDisposal.appData.budgetUnitCommit }}</span>
+                                <span class="tab_bottom"> 年 月 日</span>
+                            </td>
+                            <td colspan="3">
+                                <span class="tab_top">上级主管部门意见</span>
+                                <span class="textarea_h70">{{ repairDisposal.appData.directorCommit }}</span>
+                                <span class="tab_bottom"> 年 月 日</span>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <table class="itemTable">
+                        <tbody>
+                        <tr class="tab_height150">
+                            <td width="38" rowspan="10">预算单位填写</td>
+                            <td width="50">财政主管科室意见</td>
+                            <td colspan="2">
+                                <span class="tab_top">上级主管部门意见：</span>
+                                <span class="tab_bottom"> 年 月 日</span>
+                            </td>
+                        </tr>
+                        <tr class="tab_height150">
+                            <td width="50">采购管理科意见</td>
+                            <td width="">
+                                <div>
+                                    <p>拟定采购组织形式：</p>
+                                    <span>集中采购（）</span>
+                                    <span>协议供货（）</span>
+                                    <span>分散采购（）</span>
+                                </div>
+                                <div>
+                                    <p>拟定采购方式：</p>
+                                    <span>公开招标（）</span>
+                                    <span>邀请招标（）</span>
+                                    <span>竞争性谈判（）</span>
+                                    <span>竞争性磋商（）</span>
+                                    <span>询价（）</span>
+                                    <span>单一来源采购（）</span>
+                                    <span>其他（）</span>
+                                </div>
+                                <div>
+                                    <span class="w40">其他需注明事项：</span>
+                                    <span class="w30">经办人签字：</span>
+                                    <span class="w30"> 年 月 日</span>
+                                </div>
+                            </td>
+                            <td width="400">
+                                <span class="tab_top">上级主管部门意见</span>
+                                <span class="tab_bottom"> 年 月 日</span>
+                            </td>
+                        </tr>
+                        <tr class="tab_height150">
+                            <td width="50">主管局领导意见</td>
+                            <td colspan="2">
+                                <span class="tab_bottom">年 月 日</span>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- 文件预览 -->
+                <!--<div class="file_preview">-->
+                <!--<p class="file_preview_tit">-->
+                <!--<span>立项申请</span>-->
+                <!--</p>-->
+                <!--<div class="file_preview_con">-->
+                <!--<p class="col0096ff">查看示例</p>-->
+                <!--<div class="file_preview_list"></div>-->
+                <!--</div>-->
+                <!--</div>-->
+                <!--<div class="file_preview">-->
+                <!--<p class="file_preview_tit">-->
+                <!--<span>项目申请</span>-->
+                <!--</p>-->
+                <!--<div class="file_preview_con">-->
+                <!--<p class="col0096ff">查看示例</p>-->
+                <!--<div class="file_preview_list"></div>-->
+                <!--</div>-->
+                <!--</div>-->
+                <div class="reDraft_content2" ng-show="repairDisposal.show">
+                    <div class="reDraft_list">
+                        <span class="width160 word_center">完成时间状态：</span>
+                        <span class="word_center maleft10">
+                <i ng-if="repairDisposal.appData.statusDescription==='正常'" class="green_color">正常</i>
+                <i ng-if="repairDisposal.appData.statusDescription==='临期'" class="yellow_color">临期</i>
+                <i ng-if="repairDisposal.appData.statusDescription!=='正常'&&repairDisposal.appData.statusDescription!=='临期'"
+                   class="red_color">延期</i>
+            </span>
+                    </div>
+                    <div class="reDraft_list">
+                        <span class="width160 word_center">最晚完成任务日期截点：</span>
+                        <span class="word_center">{{ repairDisposal.appData.dueDate | date:'yyyy-MM-dd' }}</span>
+                    </div>
+                    <div class="reDraft_list">
+                        <span class="width160 word_center">下一步操作名称：</span>
+                        <span class="word_center">{{ repairDisposal.appData.taskName }}</span>
+                    </div>
+                    <div class="reDraft_list">
+                        <span class="width160 word_center">下一步操作人：</span>
+                        <select-options class="select_class get_method selectWid400" name="" id=""
+                               repeat-items="data in repairDisposal.appData.nextAuditorQoList" item-key="accountId"
+                                ng-model="repairDisposal.appData.nextAuditor">
+                                {{data.displayName}}
+                        </select-options>
+                    </div>
+                </div>
+                <div class="reDraft_btn" style="padding:0">
+                    <!--<span class="btn_bd" ng-click="repairDisposal.auditCancel()">取消</span>-->
+                    <!--<span class="btn_bg"-->
+                    <!--w5c-form-submit="repairDisposal.auditDisable?repairDisposal.auditPost():repairDisposal.postSuccess('auditDisable')">确定</span>-->
+                </div>
+                </form>
+            </div>
+
+            <!-- 选择弹窗 -->
+            <dialog ng-if="repairDisposal.fundnumber" modal>
+                <div dialog-content>
+                    <choose-fund-number show="repairDisposal.fundnumber"></choose-fund-number>
+                </div>
+            </dialog>
+
+
+        </div>
+        <div class="btn_poab">
+            <!--<span class="btn_bd" ng-click="cancel()">返回</span>-->
+            <!--<span class="btn_bd" ng-click="cancel()">取消</span>-->
+            <!--<span class="btn_bg" ng-click="save()">确定</span>-->
+        </div>
+    </div>
+</div>

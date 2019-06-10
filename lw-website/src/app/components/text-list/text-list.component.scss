@@ -1,0 +1,36 @@
+@import "../../../styles/variable";
+@import "../../../styles/mixin";
+
+.list-li {
+	width: px2rem(920px);
+	height: px2rem(240px);
+	border-bottom: 1px solid #ddd;
+	padding-top: px2rem(50px);
+	.title {
+		font-size: px2rem(24px);
+		color: #333;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	}
+	.content {
+		@include block-ell();
+		font-size: px2rem(16px);
+		margin: px2rem(16px) 0 px2rem(36px);
+		color: #666;
+		max-height: px2rem(46px);
+		word-break: break-all;
+	}
+	.date {
+		font-size: px2rem(14px);
+		color: #999;
+	}
+	&:hover {
+		cursor: pointer;
+		background: #f8f8f8;
+		.title {
+			color: #ffa500;
+		}
+	}
+}
+

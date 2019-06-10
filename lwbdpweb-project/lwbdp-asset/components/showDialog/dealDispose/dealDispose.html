@@ -1,0 +1,50 @@
+<div class="basicDialog ui-popup-large">
+    <div class="addConfig">
+        <div class="addConfig_tit">
+            处置方向
+            <span class="iconfont icon-close del_btn" ng-click="cancel()"></span>
+        </div>
+        <div class="exit_form">
+            <div class="add_input">
+                <!--<input type="text" class="input_class fl" placeholder="200个字符以内，必填" ng-model="dictionaryName" ng-keyup="ValidateValue(dictionaryName)" />-->
+                <input type="text" class="input_class fl" placeholder="200个字符以内，必填" ng-model="dictionaryName" ng-maxlength="200" ng-keyup="stripscript(dictionaryName)" />
+                <span class="btn_bg fr" ng-click="addData()">添加</span><br>
+                <em style="color:red" ng-show="invalid">{{verifyInfo}}</em>
+            </div>
+            <span class="btn_bd" ng-click="remove()">删除</span>
+        </div>
+        <div class="table_layer">
+            <div class="line_strip"></div>
+            <table class="listTable basicTab">
+                <thead>
+                    <tr>
+                        <th width="15%">
+                            <input type="checkbox" class="checkbox_class" id="exit1" ng-model="checked_all" ng-change="checkedAll()" />
+                            <label for="exit1">序号</label>
+                        </th>
+                        <th>字典值</th>
+                        <th width="15%">有效性</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="(index,data) in changeList track by $index">
+                        <td>
+                            <input type="checkbox" id="exit{{index}}" ng-disabled="data.id==='transferTo'" class="checkbox_class" ng-model="data.checked" ng-change="checkedOne()" />
+                            <label for="exit{{index}}">{{index+1}}</label>
+                        </td>
+                        <td>
+                            <input type="text" class="input_class w100" ng-model="data.name">
+                        </td>
+                        <td>
+                            <on-off isvalid="data.isHidden" ng-if="data.id!=='transferTo'"></on-off>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="btn_poab">
+            <span class="btn_bd" ng-click="cancel()">取消</span>
+            <span class="btn_bg" ng-click="saveClick()">确定</span>
+        </div>
+    </div>
+</div>

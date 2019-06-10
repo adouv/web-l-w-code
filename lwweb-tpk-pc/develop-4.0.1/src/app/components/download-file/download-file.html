@@ -1,0 +1,41 @@
+<div class="download-box">
+	<!-- 文件列表 -->
+	<div class="download-list auto-scroll">
+		<div class="progressitem" *ngFor="let item of downloadList">
+			<div flex="cross:center">
+				<img class="filetype" src="{{item.name | filetype}}"/>
+				<div class="fileinfo">
+					<div class="filename">{{item.name}}</div>
+					<!-- <div class="progress"> -->
+						<!-- <progress-bar class="progressbar" [progress]="20"></progress-bar> -->
+						<!-- <processBar class="progressbar" [progress]="20"></processBar> -->
+						<!-- <div class="progresstext">20%</div> -->
+					<!-- </div> -->
+					<!-- <div class="success" *ngIf="item.state==1">
+						<i class="iconfont icon-success"></i>
+						{{_title+item.msg}}
+					</div> -->
+					<!-- <div class="failed" *ngIf="item.state==2">
+						{{_title + item.msg + "!" + item.errorMsg || ''}}
+					</div> -->
+				</div>
+			</div>
+			<div *ngIf="item.downloading" class="caozuo" flex="cross:center">
+				下载中...
+				<!--<div class="cancel" (click)="cancel(i)">取消</div>-->
+			</div>
+            <div *ngIf="!item.downloading&&!item.success" class="caozuo" flex="cross:center">
+                <span style="color:red;">下载失败</span>
+                <!--<div class="cancel" (click)="cancel(i)">取消</div>-->
+            </div>
+			<div *ngIf="item.success" class="caozuo" flex="cross:center">
+				<div class="cancel" (click)="openFile(item.filePath)">打开</div>
+				<div class="cancel" (click)="openFolder(item.filePath)">打开文件夹</div>
+				<!--<div class="cancel" (click)="cancel(i)">取消</div>-->
+			</div>
+		</div>
+	</div>
+	<div class="download-btn">
+		<button nz-button nzType="danger" [disabled]="isfinished()" (click)="finished()">完成</button>
+	</div>
+</div>

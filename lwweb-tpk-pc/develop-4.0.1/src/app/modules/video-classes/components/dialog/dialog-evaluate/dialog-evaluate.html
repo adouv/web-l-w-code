@@ -1,0 +1,128 @@
+<div class="dialog-evaluate" [ngClass]="{'dialog-draggable': !isShow}" [ngDraggable]="!isShow">
+	<!--<div #myHandle [hidden]="isShow" [ngClass]="{'draggable': !isShow}" class="ant-modal-header">-->
+		<!--<div class="ant-modal-title">-->
+			<!--<div class="ant-modal-title">{{type == 0? '教学评价':'教学反思'}}</div>-->
+			<!--<button (click)="evaluationCancel()" class="ant-modal-close">-->
+				<!--<span class="ant-modal-close-x"></span>-->
+			<!--</button>-->
+		<!--</div>-->
+	<!--</div>-->
+	<div class="container auto-scroll">
+		<div class="dialog-evaluate-content">
+			<div class="explain-title">{{data.title||'教师听课评课表'}}</div>
+			<div class="explain" flex="">
+				<!--<div flex-box="0" class="explain-group lessons">-->
+					<!--&lt;!&ndash;<span class="explain-group-title">授课人:</span>&ndash;&gt;-->
+					<!--&lt;!&ndash;<span class="explain-group-content"><input [(ngModel)]="lecturer" type="text" class="td-input" /></span>&ndash;&gt;-->
+					<!--<span>授课人:</span>-->
+					<!--<span title="{{videoDetails.teacherName}}">{{videoDetails.teacherName}}</span>-->
+				<!--</div>-->
+				<!--<div flex-box="1" flex="">-->
+					<!--<div flex-box="0" class="explain-group class">-->
+						<!--<span>班级:</span>-->
+						<!--<span-->
+							<!--title="{{videoDetails.gradeName}}({{videoDetails.className}})">{{videoDetails.gradeName}}({{videoDetails.className}})</span>-->
+					<!--</div>-->
+					<!--<div flex-box="1" flex="dir:right box:first">-->
+						<!--<div class="explain-group datetime">-->
+							<!--<span>时间:</span>-->
+							<!--<span title="{{videoDetails.giveLessonTime.split(' ')[0].split('-')[0]}}年{{videoDetails.giveLessonTime.split(' ')[0].split('-')[1]}}月{{videoDetails.giveLessonTime.split(' ')[0].split('-')[2]}}日">{{videoDetails.giveLessonTime.split(' ')[0].split('-')[0]}}年{{videoDetails.giveLessonTime.split(' ')[0].split('-')[1]}}月{{videoDetails.giveLessonTime.split(' ')[0].split('-')[2]}}日</span>-->
+						<!--</div>-->
+						<!--<div class="explain-group subject">-->
+							<!--<span>学科:</span>-->
+							<!--<span title="{{videoDetails.subjectName}}">{{videoDetails.subjectName}}</span>-->
+						<!--</div>-->
+					<!--</div>-->
+				<!--</div>-->
+				<div flex-box="1" flex="dir:right box:first">
+					<div class="explain-group datetime">
+						<span>时间:</span>
+						<span title="{{videoDetails.giveLessonTime.split(' ')[0].split('-')[0]}}/{{videoDetails.giveLessonTime.split(' ')[0].split('-')[1]}}/{{videoDetails.giveLessonTime.split(' ')[0].split('-')[2]}}">{{videoDetails.giveLessonTime.split(' ')[0].split('-')[0]}}/{{videoDetails.giveLessonTime.split(' ')[0].split('-')[1]}}/{{videoDetails.giveLessonTime.split(' ')[0].split('-')[2]}}</span>
+					</div>
+					<div class="header-container">
+						<div class="explain-group lessons">
+							<!--<span class="explain-group-title">授课人:</span>-->
+							<!--<span class="explain-group-content"><input [(ngModel)]="lecturer" type="text" class="td-input" /></span>-->
+							<span>授课人:</span>
+							<span title="{{videoDetails.teacherName}}">{{videoDetails.teacherName}}</span>
+						</div>
+						<div class="explain-group class">
+							<span>班级:</span>
+							<span
+								title="{{videoDetails.gradeName}}({{videoDetails.className}})">{{videoDetails.gradeName}}({{videoDetails.className}})</span>
+						</div>
+						<div class="explain-group subject">
+							<span>学科:</span>
+							<span title="{{videoDetails.subjectName}}">{{videoDetails.subjectName}}</span>
+						</div>
+					</div>
+
+				</div>
+			</div>
+			<table class="evaluate-table" border="0" cellspacing="0" cellpadding="0">
+				<tr>
+					<td class="td-title td-title-font">课题</td>
+					<td *ngIf="isUsed" colspan="3" class="text-left">{{data.theme}}</td>
+					<td *ngIf="!isUsed" colspan="3" class="text-left"><input tabindex=-1 title="{{data.theme}}"
+																			 maxlength="30"
+																			 type="text" class="td-input"
+																			 [(ngModel)]="data.theme"/></td>
+				</tr>
+				<tr>
+					<td class="td-title td-title-font">项目</td>
+					<td class="td-title-font">评分标准细则</td>
+					<td class="td-50 td-title-font">分值</td>
+					<td class="td-50 td-title-font">得分</td>
+				</tr>
+				<tr *ngFor="let d of data.items">
+					<td class="td-title">{{d.name}}<br/>{{d.score}}分</td>
+					<td colspan="3" class="no-padding no-line">
+						<table class="evaluate-child-table" border="0" cellspacing="0" cellpadding="0">
+							<tr *ngFor="let da of d.childItems;let i = index">
+								<td class="no-left-line text-left">{{da.name}}</td>
+								<td class="td-50 no-right-line">
+									{{da.score}}
+								</td>
+								<td [hidden]="isUsed"
+									[ngClass]="{'red':(da.obtainedScore+''==''||da.obtainedScore=='undefined'||da.obtainedScore == undefined)&&issubmit}"
+									class="td-50 td-num" >
+									<input id="{{da.id}}" class="td-input-num" type="text" [(ngModel)]="da.obtainedScore" (blur)="numchange($event,da)" />
+								</td>
+								<td [hidden]="!isUsed" class="td-50 td-num-show">{{da.obtainedScore}}</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+				<tr>
+					<td class="td-title">总分</td>
+					<td colspan="3">{{data.totalObtainedScore}}</td>
+				</tr>
+			</table>
+			<div class="other_wrap">
+				<div class="other-title">
+					<span class="title">其他评语</span>
+					<span class="people">评课人 : {{isShow?data.commentatorName:people}}</span>
+				</div>
+				<!--<textarea id="textareaEle" maxlength="3000" #textareaEle (keyup)="otherInput()" class="other-textarea"></textarea>-->
+				<div *ngIf="!isUsed" id="textareaEle" (keyup)="otherInput()" class="test-textarea"
+					 contenteditable="true"></div>
+				<div *ngIf="isUsed" (keyup)="otherInput()" class="test-textarea">
+					{{data.comment}}
+				</div>
+			</div>
+		</div>
+	</div>
+	<div *ngIf="!isStatistics" class="footer">
+		<button tabindex='-1' *ngIf="!isUsed" (click)="submitEvaluate()" nz-button
+				[nzType]="'danger'">
+			<span>提交</span>
+		</button>
+		<button tabindex='-1' class="close" [nzType]="'default'" (click)="evaluationCancel()" nz-button
+				[nzType]="'danger'">
+			<span>关闭</span>
+		</button>
+	</div>
+	<ng-template #tplContent>
+		<p class="tplcontent" style="font-size: 14px;"><span style="color:#F04134;">提交后将不得修改</span>，你还要继续吗？</p>
+	</ng-template>
+</div>

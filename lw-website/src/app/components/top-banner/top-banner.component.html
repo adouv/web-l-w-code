@@ -1,0 +1,70 @@
+<div class="banner-container" id="pub_home_Swiper" *ngIf="imageSources?.length !== 0">
+	<div class="banner-wrapper" [ngStyle]="{'height':isType?'600px':'240px'}">
+		<div class="slider" [ngStyle]="{'height':isType?'600px':'240px'}" *ngIf="imageSources.length>1">
+			<ul class="slides" [ngStyle]="{'height':isType?'600px':'240px'}" *ngIf="isType">
+				<li class="slide" *ngFor="let image of imageSources;let i=index;" [ngStyle]="{'background-image':'url('+image.url+')','height':isType?'600px':'240px','backgroundSize':'cover'}" 
+				[ngClass]="{'activeLi':(currentPic==i)&&isType, 'activeLiX':(currentPic==i)&&!isType}">
+					<!-- <img src="{{image.url}}"> -->
+				</li>
+			</ul>
+			<ul class="ul-swiper" [ngStyle]="{'height':isType?'auto':'240px'}" *ngIf="!isType">
+				<li class="slide" *ngFor="let image of imageSources;let i=index;" [ngClass]="{'activeLi':(currentPic==i)&&isType, 'activeLiX':(currentPic==i)&&!isType}" [ngStyle]="{'background-image':'url('+image.url+')','height':'240px','backgroundSize':'cover' }" >
+				</li>
+			</ul>
+			<div class="slides-do-box" *ngIf="isType">
+				<ul class="slides-do">
+					<li *ngFor="let image of imageSources;let i=index;" [ngClass]="{'ac':currentPic==i}" (click)="btnImgChange(image.id)"></li>
+				</ul>
+			</div>
+
+		</div>
+
+		<div class="slider" [ngStyle]="{'height':isType?'600px':'240px'}" *ngIf="imageSources.length==1">
+			<ul class="slides" [ngStyle]="{'height':isType?'600px':'240px'}">
+				<li class="slide" *ngFor="let image of imageSources;let i=index;" [ngStyle]="{'display':'block','left':'0','background-image':'url('+image.url+')','height':isType?'600px':'240px','backgroundSize':'cover','opacity':'1'}">
+					<!-- <div class="box" [ngStyle]="{'background-image':'url('+image.url+')','height':isType?'600px':'240px','backgroundSize':'contain' }"></div> -->
+					<!-- <img [src]="image.url" alt=""> -->
+				</li>
+			</ul>
+		</div>
+	</div>     
+	<div class="Illustrations" *ngIf="isHome">
+		<div class="cloud-box0 shake1"></div>
+		<div class="cloud-box1 shake2"></div>
+		<div class="tree-box"></div>
+		<div class="slides-arrow slides-arrow-left" *ngIf="isType" (click)="prev()">
+			<em class="iconfont icon-arrow-left"></em>
+		</div>
+		<div class="slides-arrow slides-arrow-right" *ngIf="isType" (click)="next()">
+			<em class="iconfont icon-arrow-right"></em>
+		</div>
+	</div>
+	<div class="Illustrations" *ngIf="!isHome&&!imageSources.length===0">
+		<div class="sub-cloud shake1"></div>
+		<!-- <div class="subanner"></div> -->
+		<div class="slides-arrow slides-arrow-left" *ngIf="isType" (click)="prev()">
+			<em class="iconfont icon-arrow-left"></em>
+		</div>
+		<div class="slides-arrow slides-arrow-right" *ngIf="isType" (click)="next()">
+			<em class="iconfont icon-arrow-right"></em>
+		</div>
+	</div>
+	<svg style="bottom: 0;position: absolute;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="100%" height="100" *ngIf="isWave">
+		<g fill="rgba(0,0,0,0)">
+			<path d="M 0 70 Q 250 20, 500 70 T 1000 70 T 1500 70 T 2000 70 T 2500 70 T 3000 70 T 3500 70 T 4000 70 T 4500 70 T 5000 70 T 5500 70 T 6000 70 V 100 H 0 V 0"
+			 fill="rgba(255,255,255,0.8)">
+			</path>
+			<animateTransform attributeName="transform" attributeType="XML" type="translate" from="0" to="-1000" dur="2.5s"
+			 repeatCount="indefinite">
+			</animateTransform>
+		</g>
+		<g fill="rgba(0,0,0,0)">
+			<path d="M 0 70 Q 250 20, 500 70 T 1000 70 T 1500 70 T 2000 70 T 2500 70 T 3000 70 T 3500 70 T 4000 70 T 4500 70 T 5000 70 T 5500 70 T 6000 70 V 100 H 0 V 0"
+			 fill="#fff">
+			</path>
+			<animateTransform attributeName="transform" attributeType="XML" type="translate" from="0" to="-1000" dur="5s"
+			 repeatCount="indefinite">
+			</animateTransform>
+		</g>
+	</svg>
+</div>

@@ -1,0 +1,163 @@
+<div class="exercise-library" flex="dir:top">
+	<div class="exercise-library-box">
+		<h1 class="exercise-header">校本题库</h1>
+		<div class="exercise-right-btn" flex="cross:center">
+			<span class="selected-topic" *ngIf="exerciseTotal">已备{{exerciseTotal||0}}题</span>
+			<button (click)="addQuestion()" tabindex='-1' nz-button
+					[nzType]="'danger'">
+				<span>新建</span>
+			</button>
+		</div>
+		<nz-tabset (nzSelectChange)="tabChange($event)">
+			<nz-tab>
+				<ng-template #nzTabHeading>
+					<span>章节</span>
+				</ng-template>
+				<div class="exercise-wrapper" flex="">
+					<div class="tree-container">
+						<outline-tree *ngIf="initSelectParams && tabIndex==0" [selectedNodes]="outlineParams"
+									  [selectParams]="initSelectParams" [optionDisable]="true"
+									  (change)="outlineChange($event)"
+									  [clickId]="outlineExerciseIds.length>0?outlineExerciseIds[0]:''"></outline-tree>
+					</div>
+					<div flex-box="1" class="exercise-list">
+						<ng-container *ngTemplateOutlet="exerciseList"></ng-container>
+					</div>
+				</div>
+			</nz-tab>
+			<nz-tab nzTitle="">
+				<ng-template #nzTabHeading>
+					<span>知识点</span>
+				</ng-template>
+				<div class="exercise-wrapper" flex="">
+					<div class="tree-container">
+						<knowledge-tree *ngIf="initSelectParams && tabIndex==1" [selectedNodes]="outlineParams"
+										[selectParams]="initSelectParams" [optionDisable]="true" [classId]="classId"
+										(change)="knowledgeChange($event)"></knowledge-tree>
+
+					</div>
+					<div flex-box="1" class="exercise-list">
+						<ng-container *ngTemplateOutlet="exerciseList"></ng-container>
+					</div>
+				</div>
+			</nz-tab>
+		</nz-tabset>
+
+		<ng-template #exerciseList>
+			<div class="list-container" flex="dir:top">
+				<div class="list-header">
+					<!-- 搜索 -->
+					<div class="searchquestionIds-wrapper">
+
+						<input-search [maxlength]="'40'" [tpkPlaceholder]="'关键字查询'" [(tpkModel)]="keyword"
+									  class="mar-rig-20px" (onSearch)="searchQuestionList($event)"></input-search>
+
+						<!--<nz-input [nzType]="'search'" nzPlaceHolder="请输入关键字" [(ngModel)]="keyword"-->
+								  <!--(nzOnSearch)="searchQuestionList($event)" (keyup)="changeKeyword()"></nz-input>-->
+						<nz-radio-group [(ngModel)]="searchType" (ngModelChange)="changeType($event)">
+							<label nz-radio [nzValue]="0">已选{{tabIndex===0?"章节":"知识点"}}搜索</label>
+							<label nz-radio [nzValue]="1">所有{{tabIndex===0?"章节":"知识点"}}搜索</label>
+						</nz-radio-group>
+					</div>
+
+					<!-- 已选 -->
+					<div class="tag-wrapper">
+						<span class="gray">已选{{tabIndex===0?"章节":"知识点"}}：</span>
+						<ul *ngIf="outlineParams && outlineParams.length>0 && selectMode != 2">
+							<li>
+								<span *ngIf="outlineParams">{{outlineParams[0].name}}</span>
+								<i class="iconfont icon-label-close" (click)="removeOutline()"></i>
+							</li>
+						</ul>
+						<ul *ngIf="outlineParams && selectMode == 2">
+							<li *ngFor="let data of outlineParams;let i = index">
+								<span>{{data.name}}</span>
+								<i class="iconfont icon-label-close" (click)="removeKnowledge(i)"></i>
+							</li>
+						</ul>
+					</div>
+
+					<!--题型-->
+					<div class="type-wrapper">
+						<span class="gray">题型：</span>
+						<ul *ngIf="questionTypeList">
+							<li *ngFor="let data of questionTypeList; let i = index"
+								(click)="changeQuestionType(data.code)"
+								[ngClass]="{'active': typeCode===data.code}">
+								<span>{{data.name}}</span>
+							</li>
+						</ul>
+						<!-- 批量加入弹窗 -->
+						<!--<button nz-button nzType="default" (click)="selectChapterDialog()">批量加入课堂</button>-->
+						<button nz-button nzType="default" (click)="checkedAllExercise()"
+								[disabled]="checkedExerciseIds?.length==0">批量加入课堂
+						</button>
+					</div>
+				</div>
+
+				<!--试题列表-->
+				<div class="list-content auto-scroll" flex-box="1">
+					<ul>
+						<li flex="" *ngFor="let data of questionList;let i = index">
+							<label nz-checkbox [(ngModel)]="data.checked"
+								   (ngModelChange)="onSelectCheckbox($event,data)"
+								   [disabled]="exerciseIds.indexOf(data.id) > -1"></label>
+							<div class="item-exercise">
+								<div class="html-wrapper">
+									<div class="html-top">{{data.num}}.</div>
+									<div class="dynamic-html" [dynamicHtml]="data.contentHtml"></div>
+								</div>
+								<div class="operate-wrapper" flex="">
+									<div class="button-group" flex (click)="showExerciseInfo(data)">
+										<span class="iconfont icon-answer"></span>
+										<span>习题解析</span>
+									</div>
+									<div class="button-group" flex (click)="addJoinExercise(data,i)"
+										 *ngIf="exerciseIds.indexOf(data.id) == -1">
+										<span class="iconfont icon-add_activity"></span>
+										<span>加入课堂</span>
+									</div>
+									<div class="button-group" flex *ngIf="exerciseIds.indexOf(data.id) > -1"
+										 (click)="removeExercise(data,i)">
+										<span class="iconfont icon-del"></span>
+										<span>移出课堂</span>
+									</div>
+								</div>
+								<div class="exercises-detail" *ngIf="data.showInfo">
+									<div>
+										<div class="font-bold">[ 正确答案 ]</div>
+										<div class="dynamic-html" [dynamicHtml]="questionInfo.answer"></div>
+									</div>
+									<div class="mar-top-30px">
+										<div class="font-bold">[ 答案解析 ]</div>
+										<div class="dynamic-html" [dynamicHtml]="questionInfo.analysis"></div>
+									</div>
+								</div>
+							</div>
+						</li>
+					</ul>
+
+					<div class="pagination-box" *ngIf="totalCount > 10 && questionList && questionList.length>0">
+						<nz-pagination [nzTotal]="totalCount" [nzPageIndex]="pageNo"
+									   *ngIf="totalCount > 0" (nzPageIndexChange)="onPageChangedQuestion($event)"
+									   [nzPageSize]="'10'"></nz-pagination>
+					</div>
+					<div class="spin-loading-div" *ngIf="!isloadComplete">
+							<nz-spin  [nzSize]="'large'" class="spin-loading" [nzSpinning]="questionList.length == 0"></nz-spin>
+					</div>
+					<elliptical-page
+						*ngIf="isloadComplete&&(outlineParams && outlineParams.length>0 && (!questionList || questionList.length==0)) || (keyword && (!questionList || questionList.length==0))"
+						imgName="no-exercises.png"
+						title="没有相应的试题，请选换其他条件尝试"></elliptical-page>
+					<elliptical-page *ngIf="isloadComplete&&outlineParams && keyword=='' && outlineParams.length==0 && selectMode==0&&(!questionList || questionList.length==0)"
+									 imgName="no-exercises.png" title="请选择章节进行选题"></elliptical-page>
+					<elliptical-page *ngIf="isloadComplete&&outlineParams && keyword=='' &&outlineParams.length==0 && selectMode!=0&&(!questionList || questionList.length==0)"
+									 imgName="no-exercises.png" title="请选择知识点进行选题"></elliptical-page>
+				</div>
+			</div>
+		</ng-template>
+	</div>
+	<footer flex="main:center cross:center">
+		<button nz-button nzType="default" (click)="goback()">返回</button>
+	</footer>
+</div>

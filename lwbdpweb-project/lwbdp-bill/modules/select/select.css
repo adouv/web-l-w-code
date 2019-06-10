@@ -1,0 +1,40 @@
+.bill #back{position:fixed; top:400px;left:0;right:0;bottom: 0;  background-color: transparent;  z-index: 1;display: none  }
+.bill .selectbox{box-shadow: 0px 5px 16px #ccc;position: fixed;  z-index: 4;  background: #ffF;  top: calc((100% - 600px) / 2);  left: calc((100% - 800px) / 2);  width: 800px;  border: 1px solid #dbe3ee;  height: 600px}
+.bill .selectbox .select-title{line-height: 40px;font-size: 16px;text-align: center;padding: 0 20px;border-bottom: 1px solid #dbe3ee;position: relative}
+.bill .selectbox .select-title .select-close{position: absolute;right: 10px;color: #999999;  font-size: 16px;cursor: pointer}
+/*.bill .selectbox input,.selectbox select{height: 30px;line-height: 30px;width: 160px;}*/
+.bill .selectbox .getType{  width: 100%;height: 100%;  }
+.bill .selectbox .gardenChange{  padding: 10px 0;  text-align: center;  border-bottom: 1px solid #dbe3ee;  }
+.bill .selectbox .gardenChange span{  position: absolute;  right: 10px;  top: 0;  font-size: 30px;  color: #999999;  cursor: pointer;  }
+.bill .selectbox .select_condition{  padding: 15px 3% 0 3%;margin:0;  font-weight: normal;  }
+.bill .selectbox .select_condition select{width: 160px !important;}
+.bill .selectbox .select_condition>span{width: 160px !important;display: inline-block !important;}
+.bill .selectbox .select_condition .searchBtn{    position: absolute;  top: 0;  right: -80px; cursor: pointer;  padding: 4.5px 21px;}
+.bill .selectbox .width_all{width: 100% !important;}
+.bill .selectbox .selected{  padding-left: 20px;min-height: 40px;line-height: 40px;max-height: 80px;overflow: auto;margin: 5px 0}
+.bill .selectbox .selected.single span{  display: inline-block;padding:1px 13px;  background: #dbe3ee;font-size: 12px;font-weight: normal;vertical-align: middle;  overflow: hidden;text-overflow: ellipsis;white-space: nowrap;height: 30px;  line-height: 30px;  }
+.bill .selectbox .selected.mulit span{ display: inline-block;padding:1px 10px;margin-right: 5px;  background: #dbe3ee;font-size: 12px;font-weight: normal;  height: 30px;  line-height: 30px;  }
+.bill .selectbox .selected span i{ opacity:0.5;display: inline-block;width: 16px;height:16px;vertical-align: middle;overflow: hidden;  background: url('../../images/img_delete.png') no-repeat;background-size: 16px;cursor: pointer; margin-left:25px;margin-top: -1px;  }
+.bill .selectbox .selected span i:hover{opacity: 1}
+.bill .selectbox .noresult{  color:#999999;font-size: 16px;line-height:400px;text-align: center;  width: 100%;height: 100%;background: url(../../images/noresult.png) no-repeat center 33px;  }
+.bill .selectbox .resultbox{ min-height: 360px;max-height: 400px;overflow-x: hidden;overflow-y: auto;  padding: 0 20px;text-align: center  }
+.bill .selectbox .selected::-webkit-scrollbar-track ,.bill .selectbox .hasresult::-webkit-scrollbar-track {  border-radius: 10px;  background-color: #ffffff;  }
+.bill .selectbox .selected::-webkit-scrollbar,.bill .selectbox .hasresult::-webkit-scrollbar {  width: 10px;  height: 10px;  background-color: #ffffff;  }
+.bill .selectbox .selected::-webkit-scrollbar-thumb,.bill .selectbox .hasresult::-webkit-scrollbar-thumb {  border-radius: 10px;  background-color: rgba(0, 0, 0, 0.2);  }
+.bill .selectbox .hasresult li{  display: inline-block; height: 40px;  width: 37%; line-height: 40px;  color:#494949;  overflow: hidden;  text-overflow: ellipsis;  white-space: nowrap;  padding-left: 10px;  }
+.bill .selectbox .hasresult li{border-bottom: 1px solid #dbe3ee;border-right: 1px solid #dbe3ee;line-height: 40px;width: 50%;float: left;background-color: #f8f8f8;}
+.bill .selectbox .hasresult li:nth-child(2n+2){border-right:0;}
+.bill .selectbox .hasresult li:nth-child(4n+3){background-color: #fff;}
+.bill .selectbox .hasresult li:nth-child(4n+4){background-color: #fff;}
+.bill .selectbox .hasresult .radioClass{  display: inline-block; width: 18px; height: 18px; border: 0; margin:-2px 0px 0 0 ;  background: url('../../images/radio_box_default.png') no-repeat; -webkit-background-size: 18px; background-size: 18px;  background-color: transparent; -webkit-appearance: none; vertical-align: middle;  }
+.bill .selectbox .hasresult .radioClass:checked{  background-image: url('../../images/radio_box_choice.png');  }
+.bill .selectbox .hasresult .radioClass:focus{box-shadow:none !important;outline: 0}
+.bill .selectbox .hasresult li label{  cursor: pointer;  display: inline-block;  font-weight: normal !important;  width: 100%;  height: 100%;  vertical-align: middle;  overflow: hidden;  text-overflow: ellipsis;  white-space: nowrap;  max-width: 90%;  margin-top: -4px;  }
+.bill .selectbox .nochoose{  color:#999999;font-size: 16px;line-height:400px;text-align: center;  width: 100%;height: 100%;background: url(../../images/nochoose.png) no-repeat center 33px; }
+.bill .select_condition_num input{margin-left: 1%;}
+.bill .select_condition .btn {  border-color: #0096ff;  color: #0096ff;  padding: 4px 20px;  border-radius: 3px;  margin-left: 10px;}
+.bill .btn-default:hover{background-color: transparent;box-shadow: 0 2px 4px 0 rgba(0, 127, 255, 0.5)}
+.bill .closeSelect{ display: none;}
+.bill .select-shadow{left: 0;top: 0;width: 100%;background: rgba(0,0,0,0);position: fixed;height: 100%;z-index: 999;display: none}
+
+.bill .selectbox .returnbox{  padding:10px 0;  text-align: center;  }

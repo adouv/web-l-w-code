@@ -1,0 +1,25 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:MLPen.ModernUI">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/MLPen.ModernUI;component/Assets/Styles/Fonts.xaml" />
+        <ResourceDictionary Source="/MLPen.ModernUI;component/Assets/Styles/Colors.xaml" />
+        <ResourceDictionary Source="/MLPen.ModernUI;component/Assets/Controls/IconFont.xaml" />
+        <ResourceDictionary Source="/MLPen.ModernUI;component/Assets/Controls/FaceViewStyle.xaml" />
+
+        <!--系统控件-->
+        <ResourceDictionary Source="/MLPen.ModernUI;component/Assets/Controls/Button.xaml" />
+        <ResourceDictionary Source="/MLPen.ModernUI;component/Assets/Controls/TabControl.xaml" />
+        <ResourceDictionary Source="/MLPen.ModernUI;component/Assets/Controls/Window.xaml" />
+        <ResourceDictionary Source="/MLPen.ModernUI;component/Assets/Controls/PasswordBox.xaml" />
+        <ResourceDictionary Source="/MLPen.ModernUI;component/Assets/Controls/CheckBox.xaml" />
+        <ResourceDictionary Source="/MLPen.ModernUI;component/Assets/Controls/RadioButton.xaml" />
+        <ResourceDictionary Source="/MLPen.ModernUI;component/Assets/Controls/ListBox.xaml" />
+        <ResourceDictionary Source="/MLPen.ModernUI;component/Assets/Controls/ScrollBar.xaml" />
+        <ResourceDictionary Source="/MLPen.ModernUI;component/Assets/Controls/ComboBox.xaml" />
+        <ResourceDictionary Source="/MLPen.ModernUI;component/Assets/Controls/TextBox.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <!--默认-->
+    <Style TargetType="Button" BasedOn="{StaticResource MSButton}"/>
+</ResourceDictionary>

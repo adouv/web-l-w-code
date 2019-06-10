@@ -1,0 +1,36 @@
+
+<div class="modal-header">
+    <!--<button class="Close fr" >-->
+        <span class="Close fr" ng-click="cancle()">×</span>
+        <span class="sr-only">Close</span>
+    <!--</button>-->
+    <h3 class="modal-title" id="modal-title" style="text-align: center">学科选择</h3>
+</div>
+<div class="modal-body" id="modal-body">
+    <section class="clear">
+        <div class="form-group search-group fl">
+            <input type="text" class="search form-control" ng-model="subjectKeyword" placeholder="请输入…">
+            <button class="icon"><i class="glyphicon glyphicon-search"></i></button>
+        </div>
+    </section>
+    <section class="list-header form-inline clear">
+        <div class="form-group">
+            <label class="checkbox">
+                <input id="checkAll" type="checkbox" class="checkboxClass" ng-checked="isCheckedAll" ng-click="allChecked($event)">
+                <span class="select-course">全选（共计{{subjects.length}}个）</span>
+            </label>
+        </div>
+    </section>
+    <section class="subject-list clear" >
+        <div class="form-inline" ng-repeat="subject in subjects" ng-show="searchSubject(subject.name)">
+            <label>
+                <input class="checkboxClass" type="checkbox" ng-checked="subject.checked" ng-click="singleChecked($event,subject.id)">
+                <span class="select-course">{{subject.name}}</span>
+            </label>
+        </div>
+    </section>
+</div>
+<div class="modal-footer" style="text-align:center">
+    <button class="btn btn-default tpk-btn" type="button" ng-click="ok()">确 定</button>
+    <button class="btn btn-default tpk-btn-o" type="button" ng-click="cancle()">取 消</button>
+</div>

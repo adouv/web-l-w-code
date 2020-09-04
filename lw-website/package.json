@@ -25,7 +25,7 @@
 		"core-js": "2.5.4",
 		"flex.css": "1.1.7",
 		"ng-zorro-antd": "1.1.1",
-		"node-sass": "4.9.2",
+		"node-sass": "4.13.1",
 		"rxjs": "6.0.0",
 		"videogular2": "6.3.0",
 		"web-animations-js": "^2.3.1",

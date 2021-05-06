@@ -3515,10 +3515,10 @@ he@1.2.x, he@^1.1.0:
   resolved "http://registry.npm.taobao.org/he/download/he-1.2.0.tgz#84ae65fa7eafb165fddb61566ae14baf05664f0f"
   integrity sha1-hK5l+n6vsWX922FWauFLrwVmTw8=
 
-highcharts@^7.0.3:
-  version "7.1.0"
-  resolved "http://registry.npm.taobao.org/highcharts/download/highcharts-7.1.0.tgz#24dfc9ecba0aa4da18f45759084deb0ad6c7cd20"
-  integrity sha1-JN/J7LoKpNoY9FdZCE3rCtbHzSA=
+highcharts@^9.0.0:
+  version "9.0.0"
+  resolved "https://registry.yarnpkg.com/highcharts/-/highcharts-9.0.0.tgz#2e5d382481f71c50ac7f086e7bdead394fab71d4"
+  integrity sha512-MJCtidFytGSQvsV3OEM+vFTLpjUcp7jmFpLn8h3oL4WKp0gxUOQg6Nw00sqMWGdiadst0gOZO4804zynTcYjZQ==
 
 hmac-drbg@^1.0.0:
   version "1.0.1"

@@ -62,7 +62,7 @@
         "jsencrypt": "^3.0.0-rc.1",
         "less": "^3.9.0",
         "less-loader": "^4.1.0",
-        "moment": "^2.24.0",
+        "moment": "^2.29.4",
         "nightwatch": "^0.9.12",
         "node-notifier": "^5.1.2",
         "node-sass": "^4.11.0",
